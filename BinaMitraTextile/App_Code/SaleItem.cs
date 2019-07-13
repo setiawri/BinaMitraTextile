@@ -1,0 +1,240 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using System.Data;
+using System.Data.SqlClient;
+
+namespace BinaMitraTextile
+{
+    public class SaleItem
+    {
+        /*******************************************************************************************************/
+
+        #region CLASS VARIABLES
+
+        public static string connectionString = DBUtil.connectionString;
+
+        public const string COL_ID = "id";
+        public const string COL_INVENTORY_ID = "inventory_id";
+        public const string COL_INVENTORY_ITEM_ID = "inventory_item_id";
+        public const string COL_BARCODE = "barcode";
+        public const string COL_SELLPRICE = "sell_price";
+        public const string COL_ADJUSTMENT = "adjustment";
+        public const string COL_LENGTH = "item_length";
+        public const string COL_CUSTOMERID = "customer_id";
+        public const string COL_CUSTOMERNAME = "customer_name";
+        public const string COL_DB_isManualAdjustment = "isManualAdjustment";
+
+        public const string COL_QTY = "qty";
+        public const string COL_SUBTOTAL = "subtotal";
+        public const string COL_INVENTORYCODE = "inventory_code";
+        public const string COL_BUYPRICE = "buy_price";
+        public const string COL_PROFIT = "profit";
+        public const string COL_PROFITPERCENT = "profit_percent";
+        public const string COL_SALE_ADJUSTEDPRICE = "adjusted_price";
+        public const string COL_PRODUCTSTORENAME = "product_store_name";
+        public const string COL_PRODUCTWIDTHNAME = "product_width_name";
+        public const string COL_INVENTORYCOLORNAME = "inventory_color_name";
+        public const string COL_INVENTORYITEMCOLORNAME = "inventoryitem_color_name";
+        public const string COL_SELECTED = "selected";
+
+        public Guid id;
+        public Guid sale_id;
+        public Guid inventory_item_id;
+        public Decimal sell_price;
+        public Decimal adjustment;
+        public bool isManualAdjustment;
+
+        #endregion CLASS VARIABLES
+
+        /*******************************************************************************************************/
+
+        #region CONSTRUCTORS
+        
+        public SaleItem()
+        {
+
+        }
+
+        public SaleItem(string Barcode)
+        {
+
+        }
+
+        #endregion CONSTRUCTORS
+
+        /*******************************************************************************************************/
+        #region METHODS
+
+        public static DataTable getItemForReturn(string InventoryItemBarcode)
+        {
+            DataTable dataTable = getItem(InventoryItemBarcode, true);
+
+            Tools.addColumn<int>(dataTable, SaleItem.COL_QTY, 1);
+
+            return dataTable;
+        }
+
+        #endregion METHODS
+        /*******************************************************************************************************/
+
+        #region DATABASE METHODS
+        
+        public static void submitItems(SqlConnection sqlConnection, List<SaleItem> SaleItems, string SaleBarcode)
+        {
+            foreach (SaleItem item in SaleItems)
+            {
+                using (SqlCommand cmd = new SqlCommand("saleitem_new", sqlConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.id;
+                    cmd.Parameters.Add("@sale_id", SqlDbType.UniqueIdentifier).Value = item.sale_id;
+                    cmd.Parameters.Add("@inventory_item_id", SqlDbType.UniqueIdentifier).Value = item.inventory_item_id;
+                    cmd.Parameters.Add("@sell_price", SqlDbType.Decimal).Value = item.sell_price;
+                    cmd.Parameters.Add("@adjustment", SqlDbType.Decimal).Value = item.adjustment;
+                    cmd.Parameters.Add("@" + COL_DB_isManualAdjustment, SqlDbType.Bit).Value = item.isManualAdjustment;
+
+                    if (sqlConnection.State != ConnectionState.Open)
+                        sqlConnection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    ActivityLog.submit(sqlConnection, item.id, "New Sale Item added");
+                    ActivityLog.submit(sqlConnection, item.inventory_item_id, "Sale ID: " + SaleBarcode);
+                }
+            }
+        }
+
+        public static void updateItems(SqlConnection sqlConnection, List<SaleItem> SaleItems)
+        {
+            foreach (SaleItem item in SaleItems)
+            {
+                using (SqlCommand cmd = new SqlCommand("saleitem_update", sqlConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.id;
+                    cmd.Parameters.Add("@adjustment", SqlDbType.Decimal).Value = item.adjustment;
+
+                    if (sqlConnection.State != ConnectionState.Open)
+                        sqlConnection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    ActivityLog.submit(sqlConnection, item.id, "Updated");
+                }
+            }
+        }
+        
+        public static DataTable getItem(string InventoryItemBarcode, bool isForReturn)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_inventory_item_barcode", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@inventory_item_barcode", SqlDbType.VarChar).Value = InventoryItemBarcode;
+                if(isForReturn)
+                    cmd.Parameters.Add("@is_for_return", SqlDbType.Bit).Value = true;
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getItems(Guid SaleID)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_sale_id", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@sale_id", SqlDbType.UniqueIdentifier).Value = SaleID;
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+            Tools.addColumn<bool>(dataTable, COL_SELECTED, 0);
+            Tools.addColumn<bool>(dataTable, COL_DB_isManualAdjustment, 0);
+
+            return dataTable;
+        }
+
+        public static DataTable getItemSummary(Guid SaleID)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_sale_id", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@sale_id", SqlDbType.UniqueIdentifier).Value = SaleID;
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getReturnedItemSummary(Guid SaleReturnID)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_salereturn_id", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@salereturn_id", SqlDbType.UniqueIdentifier).Value = SaleReturnID;
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getReturnedItems(Guid saleReturnID)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_salereturn_id", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@salereturn_id", SqlDbType.UniqueIdentifier).Value = saleReturnID;
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        public static DataTable getSold(DateTime filterStartDateTime, DateTime? filterEndDateTime)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_sold", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(filterStartDateTime);
+                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(filterEndDateTime);
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        #endregion DATABASE METHODS
+
+        /*******************************************************************************************************/
+
+    }
+}

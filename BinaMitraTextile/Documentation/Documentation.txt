@@ -1,0 +1,347 @@
+﻿ALTER PROCEDURE [dbo].[inventory_get]
+
+	@id uniqueidentifier 
+
+AS
+
+BEGIN
+
+	SELECT Inventory.id,code,buy_price,Inventory.active,product_id,product_width_id,length_unit_id,color_id,vendorinvoice_id,
+			color_name,Inventory.notes,Inventory.receive_date,po_item_id,packinglist_no,Inventory.isConsignment,
+			POItems.product_description AS po_item_description,
+			ProductStoreNames.name + ': ' + Products.name_vendor AS product_name_full,
+			Products.name_vendor AS product_name_vendor,
+			ProductStoreNames.id AS product_store_name_id,
+			ProductStoreNames.name AS product_store_name,
+			Products.name_vendor AS product_name_vendor,
+			Grades.id AS grade_id,
+			Grades.grade_name AS grade_name,
+			LengthUnits.length_unit_name AS length_unit_name,
+			ProductWidths.product_width_name AS product_width_name,
+			Colors.color_name AS color_name,
+			Vendors.id AS vendor_id,
+			VendorInvoices.invoice_no AS vendorinvoice_no,
+			COALESCE(items_count.qty,0) AS qty,
+			COALESCE(items_count.item_length,0) AS item_length
+	FROM Inventory 
+			LEFT OUTER JOIN Products ON Inventory.product_id = Products.id
+			LEFT OUTER JOIN POItems ON POItems.id = Inventory.po_item_id
+			LEFT OUTER JOIN Vendors ON Vendors.id = Products.vendor_id
+			LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+			LEFT OUTER JOIN Grades ON Grades.id = Inventory.grade_id
+			LEFT OUTER JOIN LengthUnits ON Inventory.length_unit_id = LengthUnits.id
+			LEFT OUTER JOIN ProductWidths ON Inventory.product_width_id = ProductWidths.id
+			LEFT OUTER JOIN Colors ON Inventory.color_id = Colors.id
+			LEFT OUTER JOIN VendorInvoices ON VendorInvoices.id = Inventory.vendorinvoice_id
+			LEFT OUTER JOIN (SELECT InventoryItems.inventory_id, 
+									COUNT(InventoryItems.item_length) AS qty,
+									SUM(InventoryItems.item_length) AS item_length 
+								FROM InventoryItems GROUP BY InventoryItems.inventory_id) items_count 
+				ON Inventory.id = items_count.inventory_id
+	WHERE Inventory.id = @id
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[inventory_getall]
+
+	@include_inactive bit, 
+	@last3Months bit = 0,
+	@code smallint = NULL,  
+	@vendor_id uniqueidentifier = NULL,
+	@vendorinvoice_id uniqueidentifier = NULL,
+	@grade_id_list AS Array READONLY,
+	@productstorename_id_list AS Array READONLY,
+	@productwidth_id_list AS Array READONLY,
+	@lengthunit_id_list AS Array READONLY,
+	@color_id_list AS Array READONLY
+
+AS
+
+BEGIN
+
+	SELECT Inventory.id AS id, Inventory.id AS inventory_id,Inventory.code,Inventory.buy_price,Inventory.active,Inventory.product_id,Inventory.product_width_id,
+			Inventory.length_unit_id,Inventory.color_id,color_name,Inventory.notes,Inventory.receive_date,po_item_id,packinglist_no,Inventory.isConsignment,
+			POItems.product_description AS po_item_description,
+			ProductStoreNames.name + ': ' + Products.name_vendor AS product_name_full,
+			Products.name_vendor AS product_name_vendor,
+			ProductStoreNames.id AS product_store_name_id,
+			ProductStoreNames.name AS product_store_name,
+			Products.name_vendor AS product_name_vendor,
+			ISNULL(ProductPrices1.sell_price,ISNULL(ProductPrices2.sell_price, COALESCE(ProductPrices3.sell_price,0))) AS sell_price,
+			Grades.id AS grade_id,
+			Grades.grade_name AS grade_name,
+			ProductWidths.product_width_name AS product_width_name,
+			LengthUnits.length_unit_name AS length_unit_name,
+			Colors.color_name AS color_name,
+			Vendors.id AS vendor_id,
+			VendorInvoices.id AS vendorinvoice_id,
+			VendorInvoices.invoice_no AS vendorinvoice_no,
+			COALESCE(items_count.qty,0) AS qty,
+			COALESCE(items_count.item_length,0) AS item_length,
+			COALESCE(solditems_count.qty,0) AS sold_qty,
+			COALESCE(solditems_count.item_length,0) AS sold_item_length,
+			COALESCE(items_count.qty,0) - COALESCE(solditems_count.qty,0) AS available_qty,
+			COALESCE(items_count.item_length,0) - COALESCE(solditems_count.item_length,0) AS available_item_length
+	FROM Inventory 
+		LEFT OUTER JOIN Products ON Inventory.product_id = Products.id
+		LEFT OUTER JOIN POItems ON POItems.id = Inventory.po_item_id
+		LEFT OUTER JOIN VendorInvoices ON VendorInvoices.id = Inventory.vendorinvoice_id
+		LEFT OUTER JOIN Vendors ON Vendors.id = Products.vendor_id
+		LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+		LEFT OUTER JOIN ProductPrices ProductPrices1 ON ProductPrices1.inventory_id = Inventory.id
+		LEFT OUTER JOIN (
+				SELECT ProductPrices.* FROM ProductPrices WHERE ProductPrices.color_id IS NOT NULL
+			) ProductPrices2 ON (ProductPrices2.product_store_name_id = Products.store_name_id
+								AND ProductPrices2.grade_id = Inventory.grade_id
+								AND ProductPrices2.product_width_id = Inventory.product_width_id
+								AND ProductPrices2.length_unit_id = Inventory.length_unit_id
+								AND ProductPrices2.color_id = Inventory.color_id)
+		LEFT OUTER JOIN (
+				SELECT ProductPrices.* FROM ProductPrices WHERE ProductPrices.color_id IS NULL
+			) ProductPrices3 ON (ProductPrices3.product_store_name_id = Products.store_name_id
+								AND ProductPrices3.grade_id = Inventory.grade_id
+								AND ProductPrices3.product_width_id = Inventory.product_width_id
+								AND ProductPrices3.length_unit_id = Inventory.length_unit_id)
+		LEFT OUTER JOIN Grades ON Grades.id = Inventory.grade_id
+		LEFT OUTER JOIN LengthUnits ON Inventory.length_unit_id = LengthUnits.id
+		LEFT OUTER JOIN ProductWidths ON Inventory.product_width_id = ProductWidths.id
+		LEFT OUTER JOIN Colors ON Inventory.color_id = Colors.id
+		LEFT OUTER JOIN (SELECT InventoryItems.inventory_id, 
+								COUNT(InventoryItems.item_length) AS qty,
+								SUM(InventoryItems.item_length) AS item_length 
+							FROM InventoryItems GROUP BY InventoryItems.inventory_id) items_count 
+		ON Inventory.id = items_count.inventory_id
+		LEFT OUTER JOIN (SELECT sold_inventory_items.inventory_id, 
+								COUNT(sold_inventory_items.item_length) AS qty,
+								SUM(sold_inventory_items.item_length) AS item_length 
+							FROM SaleItems
+								LEFT OUTER JOIN InventoryItems sold_inventory_items ON sold_inventory_items.id = SaleItems.inventory_item_id
+							WHERE SaleItems.return_id IS null
+							GROUP BY sold_inventory_items.inventory_id) solditems_count 
+		ON Inventory.id = solditems_count.inventory_id
+	WHERE 1=1
+		AND (@include_inactive = 1 OR (@include_inactive = 0 AND Inventory.active = 1)) 
+		AND (@last3Months = 0 OR Inventory.receive_date > DATEADD(month, -3, GETDATE()))
+		AND ((SELECT COUNT(value_str) FROM @grade_id_list) = 0 OR Inventory.grade_id IN (SELECT value_str FROM @grade_id_list))
+		AND ((SELECT COUNT(value_str) FROM @productstorename_id_list) = 0 OR ProductStoreNames.id IN (SELECT value_str FROM @productstorename_id_list))
+		AND ((SELECT COUNT(value_str) FROM @productwidth_id_list) = 0 OR Inventory.product_width_id IN (SELECT value_str FROM @productwidth_id_list))
+		AND ((SELECT COUNT(value_str) FROM @lengthunit_id_list) = 0 OR Inventory.length_unit_id IN (SELECT value_str FROM @lengthunit_id_list))
+		AND ((SELECT COUNT(value_str) FROM @color_id_list) = 0 OR Inventory.color_id IN (SELECT value_str FROM @color_id_list))
+		AND (@code IS NULL OR Inventory.code = @code)
+		AND (@vendor_id IS NULL OR Vendors.id = @vendor_id)
+		AND (@vendorinvoice_id IS NULL OR Inventory.vendorinvoice_id = @vendorinvoice_id)
+	ORDER BY code DESC
+
+END
+GO
+
+ALTER TABLE Inventory ADD isConsignment bit NOT NULL DEFAULT 0
+GO
+
+ALTER PROCEDURE [dbo].[PettyCashRecords_add]
+
+	@Id uniqueidentifier,
+	@PettyCashRecordsCategories_Id uniqueidentifier,
+	@Amount decimal(11,2),
+	@Notes varchar(MAX)
+
+AS
+
+BEGIN
+
+	-- increment last no
+	DECLARE @HexLength int = 6;
+	DECLARE @NewNo nvarchar(10) = RIGHT(CONVERT(NVARCHAR(10), CONVERT(VARBINARY(8), ISNULL(CONVERT(INT, CONVERT(VARBINARY, (SELECT MAX(No) FROM PettyCashRecords), 2)),0) + 1), 1),@HexLength)
+
+	INSERT INTO PettyCashRecords(Id,Timestamp,PettyCashRecordsCategories_Id,Amount,Notes,No) VALUES(@Id,CURRENT_TIMESTAMP,@PettyCashRecordsCategories_Id,@Amount,@Notes,@NewNo)
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[PettyCashRecords_update]
+
+	@Id uniqueidentifier,
+	@PettyCashRecordsCategories_Id uniqueidentifier,
+	@Amount decimal(11,2),
+	@Notes varchar(MAX)
+
+AS
+
+BEGIN
+
+	UPDATE PettyCashRecords 
+	SET PettyCashRecordsCategories_Id = @PettyCashRecordsCategories_Id,
+		Amount = @Amount,
+		Notes = @Notes 
+	WHERE id=@id
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[Inventory_update_isConsignment]
+
+	@id uniqueidentifier,
+	@isConsignment bit
+
+AS
+
+BEGIN
+
+	UPDATE Inventory SET isConsignment = @isConsignment WHERE id=@id
+
+END
+GO
+
+==========================================================================================================================================================================
+
+
+==========================================================================================================================================================================
+
+
+
+
+
+ALTER PROCEDURE [dbo].[inventoryitemcheck_getall]
+	
+	@date_start datetime = NULL,
+	@date_end datetime = NULL,
+	@Users_Id uniqueidentifier = NULL
+
+AS
+
+BEGIN
+
+	SELECT	InventoryChecks.id, InventoryChecks.time_stamp,manual_input,
+			Users.username AS username,
+			InventoryItems.barcode AS barcode,
+			InventoryItems.item_length AS item_length,
+			Inventory.id AS inventory_id,
+			Inventory.code AS inventory_code,
+			ISNULL(ProductPrices1.sell_price,ISNULL(ProductPrices2.sell_price, COALESCE(ProductPrices3.sell_price,0))) AS sell_price,
+			ProductWidths.product_width_name AS product_width_name, 
+			ProductStoreNames.name AS product_store_name,
+			LengthUnits.length_unit_name AS length_unit_name,
+			Grades.grade_name AS grade_name,
+			Colors.color_name AS color_name,
+			1 AS qty,
+			0 AS subtotal,
+			COALESCE(items_count.qty,0) - COALESCE(solditems_count.qty,0) AS available_qty,
+			COALESCE(items_count.item_length,0) - COALESCE(solditems_count.item_length,0) AS available_item_length,
+			0 AS diff_qty,
+			0 AS diff_length
+	FROM InventoryChecks 
+		LEFT OUTER JOIN InventoryItems ON InventoryItems.id = InventoryChecks.inventory_item_id
+		LEFT OUTER JOIN Users ON Users.id = InventoryChecks.user_id
+		LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+		LEFT OUTER JOIN Products ON Products.id = Inventory.product_id
+		LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+		LEFT OUTER JOIN ProductWidths ON ProductWidths.id = Inventory.product_width_id
+		LEFT OUTER JOIN LengthUnits ON LengthUnits.id = Inventory.length_unit_id
+		LEFT OUTER JOIN Grades ON Grades.id = Inventory.grade_id
+		LEFT OUTER JOIN Colors ON Colors.id = Inventory.color_id 
+		LEFT OUTER JOIN ProductPrices ProductPrices1 ON ProductPrices1.inventory_id = Inventory.id
+		LEFT OUTER JOIN (
+				SELECT ProductPrices.* FROM ProductPrices WHERE ProductPrices.color_id IS NOT NULL
+			) ProductPrices2 ON (ProductPrices2.product_store_name_id = Products.store_name_id
+								AND ProductPrices2.grade_id = Inventory.grade_id
+								AND ProductPrices2.product_width_id = Inventory.product_width_id
+								AND ProductPrices2.length_unit_id = Inventory.length_unit_id
+								AND ProductPrices2.color_id = Inventory.color_id)
+		LEFT OUTER JOIN (
+				SELECT ProductPrices.* FROM ProductPrices WHERE ProductPrices.color_id IS NULL
+			) ProductPrices3 ON (ProductPrices3.product_store_name_id = Products.store_name_id
+								AND ProductPrices3.grade_id = Inventory.grade_id
+								AND ProductPrices3.product_width_id = Inventory.product_width_id
+								AND ProductPrices3.length_unit_id = Inventory.length_unit_id)
+		LEFT OUTER JOIN (SELECT InventoryItems.inventory_id, 
+								COUNT(InventoryItems.item_length) AS qty,
+								SUM(InventoryItems.item_length) AS item_length 
+							FROM InventoryItems GROUP BY InventoryItems.inventory_id) items_count 
+		ON Inventory.id = items_count.inventory_id
+		LEFT OUTER JOIN (SELECT sold_inventory_items.inventory_id, 
+								COUNT(sold_inventory_items.item_length) AS qty,
+								SUM(sold_inventory_items.item_length) AS item_length 
+							FROM SaleItems
+								LEFT OUTER JOIN InventoryItems sold_inventory_items ON sold_inventory_items.id = SaleItems.inventory_item_id
+							WHERE SaleItems.return_id IS null
+							GROUP BY sold_inventory_items.inventory_id) solditems_count 
+		ON Inventory.id = solditems_count.inventory_id
+		LEFT OUTER JOIN (SELECT inventory_item_id, isSold=1 FROM SaleItems WHERE return_id IS NULL) SoldItems ON SoldItems.inventory_item_id = InventoryItems.id
+	WHERE 1=1
+		AND SoldItems.isSold IS NULL
+		AND (@Users_Id IS NULL OR InventoryChecks.user_id = @Users_Id)
+		AND InventoryChecks.time_stamp IN (
+				SELECT FilteredInventoryChecks.time_stamp 
+				FROM (	SELECT MAX(InventoryChecks.time_stamp) AS time_stamp 
+						FROM InventoryChecks 
+						WHERE 1=1 
+								AND (@date_start IS NULL OR InventoryChecks.time_stamp > @date_start)
+								AND (@date_end IS NULL OR InventoryChecks.time_stamp < @date_end)
+						GROUP BY inventory_item_id) FilteredInventoryChecks)
+		AND (@date_start IS NULL OR InventoryChecks.time_stamp > @date_start)
+		AND (@date_end IS NULL OR InventoryChecks.time_stamp < @date_end)
+	ORDER BY InventoryChecks.time_stamp DESC
+
+END
+
+=======================================================================================================================================================
+
+
+
+
+=======================================================================================================================================================
+
+UPDATE Customers SET sales_user_id=null WHERE sales_user_id <> 'EA4718C8-5420-4B0F-AB40-34D3775720E9' AND sales_user_id <> '065CFECD-98D7-40CB-9789-BA00705EE75D'
+
+
+IF NOT EXISTS (
+  SELECT * 
+  FROM   sys.columns 
+  WHERE  object_id = OBJECT_ID(N'Users') 
+         AND name = 'PercentCommission'
+)
+ALTER TABLE Users ADD PercentCommission tinyint not null default 0
+
+
+
+
+
+
+
+--USE [BinaMitraTextile]
+--GO
+ 
+--IF OBJECT_ID ( 'customercredit_get_summary', 'P' ) IS NOT NULL   
+--    DROP PROCEDURE customercredit_get_summary;  
+--GO
+ 
+--CREATE PROCEDURE [dbo].[customercredit_get_summary]
+
+--	@FILTER_onlyHasActivityLast3Months bit
+
+--AS
+
+--BEGIN
+
+--	SELECT CustomerCreditSummary.customer_id, CustomerCreditSummary.balance, 
+--		Customers.customer_name
+--	FROM (	SELECT CustomerCredits.customer_id, 
+--					SUM(CustomerCredits.amount) AS balance 
+--			FROM CustomerCredits
+--			WHERE 1=1
+--				AND (@FILTER_onlyHasActivityLast3Months = 0 OR CustomerCredits.customer_id IN (
+--						SELECT DISTINCT(CustomerCredits.customer_id) FROM CustomerCredits WHERE DATEDIFF(DAY,CustomerCredits.time_stamp, CURRENT_TIMESTAMP) < 180 )
+--					)
+--			GROUP BY CustomerCredits.customer_id) CustomerCreditSummary
+--		LEFT OUTER JOIN Customers ON Customers.id = CustomerCreditSummary.customer_id
+--	ORDER BY Customers.customer_name ASC
+--END
+--GO
+
+
+
+
+
+
+

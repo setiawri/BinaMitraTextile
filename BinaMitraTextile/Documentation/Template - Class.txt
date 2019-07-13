@@ -1,0 +1,138 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using System.Data;
+using System.Data.SqlClient;
+
+namespace BinaMitraTextile
+{
+    public class GordenOrderItem
+    {
+        /*******************************************************************************************************/
+        #region PUBLIC VARIABLES
+
+        public Guid ID;
+        public string Notes = "";
+
+        #endregion PUBLIC VARIABLES
+        /*******************************************************************************************************/
+        #region DATABASE FIELDS
+
+        public const string COL_DB_ID = "id";
+        public const string COL_DB_NOTES = "notes";
+
+        #endregion PUBLIC VARIABLES
+        /*******************************************************************************************************/
+        #region CONSTRUCTOR METHODS
+
+        public GordenOrderItem() { }
+        public GordenOrderItem(Guid id)
+        {
+            DataRow row = get(id);
+            ID = id;
+            Notes = DBUtil.parseData<string>(row, COL_DB_NOTES);
+        }
+
+        #endregion CONSTRUCTOR METHODS
+        /*******************************************************************************************************/
+        #region DATABASE METHODS
+
+        public static void add(string notes)
+        {
+            Guid id = Guid.NewGuid();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                using (SqlCommand cmd = new SqlCommand("gordenorderitem_add", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    ActivityLog.submit(conn, id, "Item added");
+                }
+            }
+            catch (Exception ex) { Tools.showError(ex.Message); }
+        }
+
+        public static DataRow get(Guid id) { return Tools.getRow(get(id, null)); }
+
+        public static DataTable get(Guid? id, string notes)
+        {
+            DataTable datatable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlCommand cmd = new SqlCommand("gordenitem_get", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
+                cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+
+                adapter.SelectCommand = cmd;
+                adapter.Fill(datatable);
+            }
+            return datatable;
+        }
+
+        public static void update(Guid id, string notes)
+        {
+            try
+            {
+                string log = "";
+                GordenOrderItem objOld = new GordenOrderItem(id);
+                log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+
+                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                using (SqlCommand cmd = new SqlCommand("gordenorderitem_update", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    if(GlobalData.UserAccount.role != Roles.Super)
+						ActivityLog.submit(conn, id, String.Format("Item updated: {0}", log), (int)Roles.Super);
+                    else
+						ActivityLog.submit(conn, id, String.Format("Item updated: {0}", log));
+                }
+            }
+            catch (Exception ex) { Tools.showError(ex.Message); }
+        }
+
+        public static string delete(Guid id)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                using (SqlCommand cmd = new SqlCommand("gordenorderitem_delete", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    ActivityLog.submit(conn, id, "Item deleted");
+                }
+            }
+            catch (Exception ex) { return ex.Message; }
+
+            return string.Empty;
+        }
+
+        #endregion DATABASE METHODS
+        /*******************************************************************************************************/
+        #region CLASS METHODS
+
+        #endregion CLASS METHODS
+        /*******************************************************************************************************/
+    }
+}
