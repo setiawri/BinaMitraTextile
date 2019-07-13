@@ -770,6 +770,10 @@
       <Project>{f8646414-0c9c-49bb-9da3-3923bf78a398}</Project>
       <Name>BarcodeLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\LIBUtil\LIBUtil\LIBUtil\LIBUtil.csproj">
+      <Project>{23013bfc-021e-426a-8a92-8c1c34836974}</Project>
+      <Name>LIBUtil</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
