@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_1B9496E65FDF3FE5554F1F4733C6324E"
+        "OwnerKey" = "8:_44A55196F54D4F279C46906623D901EA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1B9496E65FDF3FE5554F1F4733C6324E"
+        "OwnerKey" = "8:_68B5892E981EB4D08C0CDB4C5A478C9D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_332619E3E6F4EA4AB0F79BFBE4FFEBB6"
         "OwnerKey" = "8:_44A55196F54D4F279C46906623D901EA"
         "MsmSig" = "8:_UNDEFINED"
@@ -51,14 +63,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C9A4CC3288020C1AFA248A14544A815F"
-        "OwnerKey" = "8:_44A55196F54D4F279C46906623D901EA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C9A4CC3288020C1AFA248A14544A815F"
-        "OwnerKey" = "8:_68B5892E981EB4D08C0CDB4C5A478C9D"
+        "MsmKey" = "8:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,6 +76,12 @@
         "Entry"
         {
         "MsmKey" = "8:_CF853044E9DB241A26957563668E78B4"
+        "OwnerKey" = "8:_44A55196F54D4F279C46906623D901EA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F2E35FDBBBE82CE3FD01CDDD4FCA69A3"
         "OwnerKey" = "8:_44A55196F54D4F279C46906623D901EA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -88,6 +100,24 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CF853044E9DB241A26957563668E78B4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B0D57EC249FE2F56FC98E8D87A1FCF7E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_68B5892E981EB4D08C0CDB4C5A478C9D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FF9EC8B984E9631BB8869931F52F3058"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -100,25 +130,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B0D57EC249FE2F56FC98E8D87A1FCF7E"
+        "OwnerKey" = "8:_F2E35FDBBBE82CE3FD01CDDD4FCA69A3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CF853044E9DB241A26957563668E78B4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_68B5892E981EB4D08C0CDB4C5A478C9D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C9A4CC3288020C1AFA248A14544A815F"
+        "OwnerKey" = "8:_1B9496E65FDF3FE5554F1F4733C6324E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -216,6 +234,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1B9496E65FDF3FE5554F1F4733C6324E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_1B9496E65FDF3FE5554F1F4733C6324E"
+                    {
+                    "Name" = "8:stdole.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:stdole.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_332619E3E6F4EA4AB0F79BFBE4FFEBB6"
             {
             "AssemblyRegister" = "3:1"
@@ -309,20 +358,40 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C9A4CC3288020C1AFA248A14544A815F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
+            {
+            "SourcePath" = "8:..\\BinaMitraTextile\\Images\\Icons\\handshake-512.ico"
+            "TargetName" = "8:handshake-512.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_25A0B3DA86C043458ED6BB64B3907F03"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CF853044E9DB241A26957563668E78B4"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C9A4CC3288020C1AFA248A14544A815F"
+                    "_CF853044E9DB241A26957563668E78B4"
                     {
-                    "Name" = "8:stdole.dll"
+                    "Name" = "8:Microsoft.Vbe.Interop.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:stdole.dll"
+            "SourcePath" = "8:Microsoft.Vbe.Interop.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
@@ -340,20 +409,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CF853044E9DB241A26957563668E78B4"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F2E35FDBBBE82CE3FD01CDDD4FCA69A3"
             {
             "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:BarcodeLib, Version=1.0.0.22, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CF853044E9DB241A26957563668E78B4"
+                    "_F2E35FDBBBE82CE3FD01CDDD4FCA69A3"
                     {
-                    "Name" = "8:Microsoft.Vbe.Interop.dll"
+                    "Name" = "8:BarcodeLib.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Microsoft.Vbe.Interop.dll"
+            "SourcePath" = "8:BarcodeLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
@@ -470,7 +539,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Bina Mitra Textile App"
         "ProductCode" = "8:{2608DF98-1279-40F9-A572-DC877C67CBB8}"
-        "PackageCode" = "8:{7A08E6A5-D84E-44B1-9D26-7DDB2E07F924}"
+        "PackageCode" = "8:{EF2FAB72-D659-46DB-B4FF-D300C72628A6}"
         "UpgradeCode" = "8:{14126598-C868-4587-B3FD-BFD697B329C0}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -487,7 +556,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Store App"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -601,7 +670,7 @@
             "Target" = "8:_44A55196F54D4F279C46906623D901EA"
             "Folder" = "8:_3A733D9CC6DC4304A52BE7FD689D0CAE"
             "WorkingFolder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
-            "Icon" = "8:"
+            "Icon" = "8:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A12AD66E849C4F44872AD86B95857036"
@@ -615,7 +684,7 @@
             "Target" = "8:_44A55196F54D4F279C46906623D901EA"
             "Folder" = "8:_DD8EEA51E29D4B4D9F35924094D432A6"
             "WorkingFolder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
-            "Icon" = "8:"
+            "Icon" = "8:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
             "Feature" = "8:"
             }
         }

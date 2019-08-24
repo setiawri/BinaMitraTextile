@@ -264,7 +264,7 @@ namespace BinaMitraTextile
             if (gridview.Rows.Count > 0 && gridview.SelectedRows.Count > 0)
             {
                 btnLog.Enabled = true;
-                //if (GlobalData.UserAccount.role == Roles.User)
+                //if (GlobalData.UserAccount.role != Roles.Super)
                 //    btnUpdate.Enabled = false;
                 //else
                     btnUpdate.Enabled = true;

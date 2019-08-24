@@ -25,6 +25,7 @@ namespace BinaMitraTextile.Sales
         public Main_Form()
         {
             InitializeComponent();
+            this.Text += DBUtil.appendTitleWithInfo();
 
             //initialize filter fields
             dtStart.ShowCheckBox = true;
@@ -63,7 +64,7 @@ namespace BinaMitraTextile.Sales
             col_gridSummary_profitpercent.DataPropertyName = SaleItem.COL_PROFITPERCENT;
             col_gridSummary_isManualAdjustment.DataPropertyName = SaleItem.COL_DB_isManualAdjustment;
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_gridmaster_specialuseronly.Visible = false;
                 col_gridmaster_completed.Visible = false;

@@ -59,7 +59,7 @@ namespace BinaMitraTextile.Admin
             col_grid_colorname.DataPropertyName = ProductPrice.COL_COLORNAME;
             col_grid_Checked.DataPropertyName = ProductPrice.COL_DB_Checked;
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_grid_Checked.Visible = false;
                 chkOnlyNotOK.Visible = false;

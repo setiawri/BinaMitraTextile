@@ -117,7 +117,7 @@ namespace BinaMitraTextile.Gorden
             //set default control to focus
             DefaultInputToFocus = _inputTxtName;
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 _inputTxtBuyRetailPricePerUnit.Visible = false;
                 gridview.Columns[GordenItem.COL_DB_BUYRETAILPRICEPERUNIT].Visible = false;

@@ -63,7 +63,7 @@ namespace BinaMitraTextile.POs
             col_gridPOItems_subtotal.DataPropertyName = POItem.COL_SUBTOTAL;
             col_gridPOItems_notes.DataPropertyName = POItem.COL_DB_NOTES;
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_gridPOItems_pricePerUnit.Visible = false;
                 col_gridPOItems_subtotal.Visible = false;

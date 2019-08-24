@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using LIBUtil;
+
 namespace BinaMitraTextile.POs
 {
     public partial class Add_Edit_Form : Form
@@ -20,7 +22,6 @@ namespace BinaMitraTextile.POs
         /*-----------------------------------------------------------------------------------------------------*/
         #region CLASS VARIABLES
 
-        private Guid _vendorID;
         private Guid _id;
         private FormMode _formMode = FormMode.New;
 
@@ -44,7 +45,7 @@ namespace BinaMitraTextile.POs
         {
             if (items.Count > 0)
             {
-                cbVendors.SelectedValue = new Inventory(items[0].InventoryID).VendorID;
+                iddl_Vendor.SelectedValue = new Inventory(items[0].InventoryID).VendorID;
                 for (int i = 0; i < items.Count; i++)
                 {
                     addItem(new Inventory(items[i].InventoryID), items[i].Qty, i, items[i].PONotes);
@@ -68,8 +69,9 @@ namespace BinaMitraTextile.POs
             txtPONo.Text = PO.getNextPONo(); //default PO number
             dtpTarget.Value = DateTime.Now.AddDays(14); //default target date
 
-            populateDropVendors();
-            lblVendorInfo.Text = "";
+            lblInfo.Text = "";
+            Customer.populateDropDownList(iddl_Customers.Dropdownlist.combobox, false, true);
+            Vendor.populateDropDownList(iddl_Vendor.Dropdownlist.combobox, false, true);
 
             gridPOItems.Enabled = false;
             gridPOItems.AutoGenerateColumns = false;
@@ -79,7 +81,7 @@ namespace BinaMitraTextile.POs
             if(_formMode == FormMode.Update)
             {
                 txtPONo.Enabled = false;
-                cbVendors.Enabled = false;
+                iddl_Vendor.Enabled = false;
                 txtNotes.Enabled = false;
                 foreach (DataGridViewColumn column in gridPOItems.Columns)
                     if(column != col_gridPOItems_pricePerUnit)
@@ -87,11 +89,6 @@ namespace BinaMitraTextile.POs
             }
 
             calculateGrandTotal();
-        }
-
-        private void populateDropVendors()
-        {
-            Vendor.populateDropDownList(cbVendors, false, true);
         }
 
         private void populatePageData()
@@ -107,7 +104,7 @@ namespace BinaMitraTextile.POs
         {
             if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridPOItems_findInventory.Name))
             {
-                var browseForm = new InventoryForm.Main_Form(FormMode.Browse, (Guid?)cbVendors.SelectedValue);
+                var browseForm = new InventoryForm.Main_Form(FormMode.Browse, (Guid?)iddl_Vendor.SelectedValue);
                 Tools.displayForm(browseForm);
                 if (browseForm.DialogResult == DialogResult.OK)
                 {
@@ -129,7 +126,8 @@ namespace BinaMitraTextile.POs
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_gradeName.Name].Value = inventory.grade_name;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_colorName.Name].Value = inventory.color_name;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_unitName.Name].Value = inventory.length_unit_name;
-            gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_pricePerUnit.Name].Value = inventory.buy_price;
+            if (GlobalData.UserAccount.role == Roles.Super)
+                gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_pricePerUnit.Name].Value = inventory.buy_price;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_referencedInventoryID.Name].Value = inventory.id;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_qty.Name].Value = qty;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_notes.Name].Value = notes ?? string.Empty;
@@ -167,33 +165,6 @@ namespace BinaMitraTextile.POs
         /*******************************************************************************************************/
         #region FORM METHODS
         
-        private void btnAddVendor_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new MasterData.Vendors_Form(FormMode.New));
-            populateDropVendors();
-        }
-
-        private void cbVendors_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Guid selectedVendorID;
-            if (cbVendors.SelectedIndex > -1 && Guid.TryParse(cbVendors.SelectedValue.ToString(), out selectedVendorID))
-            {
-                lblVendorInfo.Text = new Vendor(selectedVendorID).Info;
-                gridPOItems.Enabled = true;
-                if(selectedVendorID != _vendorID)
-                {
-                    gridPOItems.Rows.Clear();
-                    gridPOItems.Rows.Add();
-                    _vendorID = selectedVendorID;
-                }
-            }
-            else
-            {
-                lblVendorInfo.Text = "";
-                gridPOItems.Enabled = false;
-            }
-        }
-
         private void calculateGrandTotal()
         {
             decimal total = 0;
@@ -205,6 +176,52 @@ namespace BinaMitraTextile.POs
             lblTotalAmount.Text = string.Format("Total: {0:N2}", total);
         }
 
+        private void iddl_Customers_UpdateLink_Click(object sender, EventArgs e)
+        {
+            Util.displayForm(null, new MasterData.Customers_Form(FormMode.New), false);
+            Customer.populateDropDownList(iddl_Customers.Dropdownlist.combobox, false, true);
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender == rbVendor)
+            {
+                iddl_Vendor.Enabled = true;
+                iddl_Customers.Enabled = false;
+            }
+            else
+            {
+                iddl_Vendor.Enabled = false;
+                iddl_Customers.Enabled = true;
+            }
+        }
+
+        private void Iddl_Vendor_UpdateLink_Click(object sender, EventArgs e)
+        {
+            Util.displayForm(null, new MasterData.Vendors_Form(FormMode.New), false);
+            Vendor.populateDropDownList(iddl_Vendor.Dropdownlist.combobox, false, true);
+        }
+
+        private void iddl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Guid selectedID;
+            if ((iddl_Vendor.Enabled && iddl_Vendor.SelectedIndex > -1 && Guid.TryParse(iddl_Vendor.SelectedValue.ToString(), out selectedID))
+                || (iddl_Customers.Enabled && iddl_Customers.SelectedIndex > -1 && Guid.TryParse(iddl_Customers.SelectedValue.ToString(), out selectedID)))
+            {
+                if(iddl_Vendor.Enabled)
+                    lblInfo.Text = new Vendor(selectedID).Info;
+                else
+                    lblInfo.Text = new Customer(selectedID).Info;
+
+                gridPOItems.Enabled = true;
+            }
+            else
+            {
+                lblInfo.Text = "";
+                gridPOItems.Enabled = false;
+            }
+        }
+
         #endregion FORM METHODS
         /*******************************************************************************************************/
         #region SUBMISSION
@@ -213,10 +230,12 @@ namespace BinaMitraTextile.POs
         {
             if (isInputValid())
             {
+                string productDescription = "";
                 Guid poID = Guid.NewGuid();
 
                 //compile data
-                List<POItem> items = new List<POItem>();
+                List<POItem> POItems = new List<POItem>();
+                List<SaleOrderItem> saleOrderItems = new List<SaleOrderItem>();
                 foreach (DataGridViewRow row in gridPOItems.Rows)
                 {
                     if(isValidProductName(row) && isValidQty(row))
@@ -225,15 +244,30 @@ namespace BinaMitraTextile.POs
                         if(row.Cells[col_gridPOItems_referencedInventoryID.Name].Value != null)
                             referencedInventoryID = (Guid)row.Cells[col_gridPOItems_referencedInventoryID.Name].Value;
 
-                        items.Add(new POItem(
-                            Guid.NewGuid(), 
-                            poID,
-                            row.Index + 1,
-                            POItem.compileProductDescription(
-                                row.Cells[col_gridPOItems_productName.Name].Value.ToString(),
-                                row.Cells[col_gridPOItems_widthName.Name].Value.ToString(), 
-                                row.Cells[col_gridPOItems_gradeName.Name].Value.ToString(), 
-                                row.Cells[col_gridPOItems_colorName.Name].Value.ToString()),
+                        productDescription = compileProductDescription(
+                                    row.Cells[col_gridPOItems_productName.Name].Value.ToString(),
+                                    row.Cells[col_gridPOItems_widthName.Name].Value.ToString(),
+                                    row.Cells[col_gridPOItems_gradeName.Name].Value.ToString(),
+                                    row.Cells[col_gridPOItems_colorName.Name].Value.ToString());
+
+                        //add each row to list
+                        if (iddl_Vendor.Enabled)
+                            POItems.Add(new POItem(
+                                Guid.NewGuid(), 
+                                poID,
+                                row.Index + 1,       
+                                productDescription,
+                                Convert.ToDecimal(row.Cells[col_gridPOItems_qty.Name].Value),
+                                row.Cells[col_gridPOItems_unitName.Name].Value.ToString(),
+                                Convert.ToDecimal(row.Cells[col_gridPOItems_pricePerUnit.Name].Value),
+                                Tools.wrapDBNullValue<string>(row.Cells[col_gridPOItems_notes.Name].Value),
+                                referencedInventoryID));
+                        else
+                            saleOrderItems.Add(new SaleOrderItem(
+                                Guid.NewGuid(),
+                                poID,
+                                row.Index + 1,
+                                productDescription,
                                 Convert.ToDecimal(row.Cells[col_gridPOItems_qty.Name].Value),
                                 row.Cells[col_gridPOItems_unitName.Name].Value.ToString(),
                                 Convert.ToDecimal(row.Cells[col_gridPOItems_pricePerUnit.Name].Value),
@@ -241,12 +275,25 @@ namespace BinaMitraTextile.POs
                                 referencedInventoryID));
                     }
                 }
-                if (!Tools.hasMessage(PO.submitNew(poID, (Guid)cbVendors.SelectedValue, lblVendorInfo.Text, items, txtNotes.Text.Trim(), dtpTarget.Value, txtPONo.Text)))
+                if (iddl_Vendor.Enabled && !Tools.hasMessage(PO.submitNew(poID, (Guid)iddl_Vendor.SelectedValue, lblInfo.Text, POItems, txtNotes.Text.Trim(), dtpTarget.Value, txtPONo.Text)))
                 {
                     Tools.displayForm(new POs.Print_Form(poID));
                     this.Close();
                 }
+                else if (SaleOrder.add(poID, (Guid)iddl_Customers.SelectedValue, lblInfo.Text, saleOrderItems, txtNotes.Text.Trim(), dtpTarget.Value, txtPONo.Text))
+                    this.Close();
+                
             }
+        }
+
+        public string compileProductDescription(string productName, string widthName, string gradeName, string colorName)
+        {
+            string description = productName;
+            description = Tools.append(description, "Lebar: " + widthName, " ");
+            description = Tools.append(description, "Grade: " + gradeName, Environment.NewLine);
+            description = Tools.append(description, "Warna: " + colorName, " ");
+
+            return description;
         }
 
         private bool isInputValid()
@@ -259,8 +306,10 @@ namespace BinaMitraTextile.POs
                 return Tools.inputError<TextBox>(txtPONo, "PO Number is required");
             else if (PO.isPONoExist(txtPONo.Text))
                 return Tools.inputError<TextBox>(txtPONo, "PO Number already exists");
-            else if (cbVendors.SelectedIndex == -1)
-                return Tools.inputError<CheckBox>(cbVendors, "Please select a vendor");
+            else if (iddl_Vendor.Enabled && iddl_Vendor.SelectedIndex == -1)
+                return iddl_Vendor.SelectedValueError("Please select a vendor");
+            else if (iddl_Customers.Enabled && iddl_Customers.SelectedIndex == -1)
+                return iddl_Customers.SelectedValueError("Please select a customer");
 
             //validate items
             bool isValid = true;

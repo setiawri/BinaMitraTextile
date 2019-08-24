@@ -34,7 +34,7 @@ namespace BinaMitraTextile
         {
             this.Text += DBUtil.appendTitleWithInfo();
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_gridPOItems_statusname.Visible = false;
 
@@ -52,7 +52,38 @@ namespace BinaMitraTextile
                 menu_admin_vendorinvoices.Visible = false;
                 btnInvoices.Visible = false;
 
+                menu_account_log.Visible = false;
+
                 btnShowHidden.Visible = false;
+            }
+
+            if(GlobalData.UserAccount.role == Roles.Assistant)
+            {
+                menu_sales.Visible = false;
+                menu_inventory.Visible = false;
+                menu_returns.Visible = false;
+                menu_customercredit.Visible = false;
+                menu_admin.Visible = false;
+                menu_users.Visible = false;
+                menu_reports.Visible = false;
+                menu_test.Visible = false;
+                menu_account_salescomission.Visible = false;
+                menu_account_log.Visible = false;
+
+                //disable to be hidden in rearrange
+                btnNewSale.Enabled = false;
+                btnSamples.Enabled = false;
+                btnOpname.Enabled = false;
+                btnCash.Enabled = false;
+                btnRefresh.Enabled = false;
+                btnShowHidden.Enabled = false;
+                btnInvoices.Enabled = false;
+                Tools.rearrangeButtonsInPanel(scButtonsAndReceivables.Panel1, HorizontalAlignment.Left);
+
+                scButtonsAndReceivables.Panel2Collapsed = true;
+                scMain.Panel2Collapsed = true;
+                this.Width = 300;
+                this.Height = 200;
             }
 
             gridPOItems.AutoGenerateColumns = false;
@@ -158,11 +189,6 @@ namespace BinaMitraTextile
         #endregion INITIALIZATION
         /*******************************************************************************************************/
         #region MENU - SALES
-
-        private void menu_sales_Click_1(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Sales.Main_Form());
-        }
 
         #endregion MENU - SALES
         /*******************************************************************************************************/
@@ -505,6 +531,16 @@ namespace BinaMitraTextile
         private void menu_admin_customerterms_Click(object sender, EventArgs e)
         {
             Tools.displayForm(this, new Admin.MasterData_v1_CustomerTerms_Form());
+        }
+
+        private void Menu_sales_list_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(this, new Sales.Main_Form());
+        }
+
+        private void Menu_sales_saleorders_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(this, new SaleOrders.Main_Form());
         }
 
         #endregion CLASS METHODS

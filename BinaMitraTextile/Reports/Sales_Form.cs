@@ -106,7 +106,7 @@ namespace BinaMitraTextile.Reports
             col_dgvDetailByCustomers_profit_percent.Visible = false;
             col_dgvDetailByCustomers_sale_amount.Visible = false;
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkShowHidden.Visible = false;
 

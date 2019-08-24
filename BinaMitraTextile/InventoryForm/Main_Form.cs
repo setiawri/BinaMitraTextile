@@ -94,7 +94,7 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_code.Frozen = true;
 
             col_grid_buyPrice.Visible = false;
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkShowHidden.Visible = false;
                 btnLog.Enabled = false;

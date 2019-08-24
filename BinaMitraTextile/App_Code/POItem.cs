@@ -230,16 +230,6 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CLASS METHODS
 
-        public static string compileProductDescription(string productName, string widthName, string gradeName, string colorName)
-        {
-            string description = productName;
-            description = Tools.append(description, "Lebar: " + widthName, " ");
-            description = Tools.append(description, "Grade: " + gradeName, Environment.NewLine);
-            description = Tools.append(description, "Warna: " + colorName, " ");
-
-            return description;
-        }
-
         public static void updateStatus(Guid id, POItemStatus statusEnumID)
         {
             try

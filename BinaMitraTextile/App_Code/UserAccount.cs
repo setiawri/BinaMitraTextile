@@ -13,7 +13,8 @@ namespace BinaMitraTextile
     {
         User,
         Admin,
-        Super
+        Super,
+        Assistant
     };
 
     public class UserAccount

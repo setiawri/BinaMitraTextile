@@ -38,6 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_Edit_Form));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,7 +49,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_Edit_Form));
             this.gridSummary = new System.Windows.Forms.DataGridView();
             this.col_gridSummary_select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gridSummaryCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +75,21 @@
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.lblTotalCounts = new System.Windows.Forms.Label();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbTemporarySaves = new System.Windows.Forms.ComboBox();
+            this.btnSaveSale = new System.Windows.Forms.Button();
+            this.btnClearForm = new System.Windows.Forms.Button();
+            this.cbTransports = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnAddTransport = new System.Windows.Forms.Button();
+            this.txtShippingCost = new System.Windows.Forms.TextBox();
+            this.btnSplitItem = new System.Windows.Forms.Button();
+            this.itxt_SaleOrderItems = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.btnApplySaleOrderItem = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.col_grid_select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_grid_barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_inventorycode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,22 +103,12 @@
             this.Adjustment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_adjustedprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_SaleOrderItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTotalCounts = new System.Windows.Forms.Label();
-            this.btnAddCustomer = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbTemporarySaves = new System.Windows.Forms.ComboBox();
-            this.btnSaveSale = new System.Windows.Forms.Button();
-            this.btnClearForm = new System.Windows.Forms.Button();
-            this.cbTransports = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnAddTransport = new System.Windows.Forms.Button();
-            this.txtShippingCost = new System.Windows.Forms.TextBox();
-            this.btnSplitItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridSummary
@@ -278,7 +283,7 @@
             // txtAdjustSelected
             // 
             this.txtAdjustSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAdjustSelected.Location = new System.Drawing.Point(382, 41);
+            this.txtAdjustSelected.Location = new System.Drawing.Point(354, 41);
             this.txtAdjustSelected.Margin = new System.Windows.Forms.Padding(2);
             this.txtAdjustSelected.Name = "txtAdjustSelected";
             this.txtAdjustSelected.Size = new System.Drawing.Size(59, 20);
@@ -301,8 +306,7 @@
             // 
             // btnRemoveSelected
             // 
-            this.btnRemoveSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveSelected.Location = new System.Drawing.Point(4, 35);
+            this.btnRemoveSelected.Location = new System.Drawing.Point(8, 37);
             this.btnRemoveSelected.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveSelected.Name = "btnRemoveSelected";
             this.btnRemoveSelected.Size = new System.Drawing.Size(119, 26);
@@ -413,10 +417,10 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(557, 384);
+            this.lblTotalAmount.Location = new System.Drawing.Point(606, 384);
             this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(315, 32);
+            this.lblTotalAmount.Size = new System.Drawing.Size(266, 32);
             this.lblTotalAmount.TabIndex = 96;
             this.lblTotalAmount.Text = "GrandTotal";
             this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -455,6 +459,7 @@
             this.Adjustment,
             this.col_grid_adjustedprice,
             this.Subtotal,
+            this.col_grid_SaleOrderItemDescription,
             this.col_grid_id});
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
@@ -474,6 +479,196 @@
             this.grid.Size = new System.Drawing.Size(860, 329);
             this.grid.TabIndex = 93;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
+            // 
+            // lblTotalCounts
+            // 
+            this.lblTotalCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCounts.Location = new System.Drawing.Point(606, 360);
+            this.lblTotalCounts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalCounts.Name = "lblTotalCounts";
+            this.lblTotalCounts.Size = new System.Drawing.Size(266, 20);
+            this.lblTotalCounts.TabIndex = 95;
+            this.lblTotalCounts.Text = "TotalCounts";
+            this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCustomer.BackgroundImage")));
+            this.btnAddCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddCustomer.FlatAppearance.BorderSize = 0;
+            this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCustomer.Location = new System.Drawing.Point(263, 8);
+            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(15, 16);
+            this.btnAddCustomer.TabIndex = 110;
+            this.btnAddCustomer.UseVisualStyleBackColor = false;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnRemoveSelected);
+            this.groupBox1.Controls.Add(this.txtAdjustSelected);
+            this.groupBox1.Controls.Add(this.lblSelectedTotal);
+            this.groupBox1.Location = new System.Drawing.Point(12, 358);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(417, 65);
+            this.groupBox1.TabIndex = 111;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Selected";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(291, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 121;
+            this.label1.Text = "Adjustment";
+            // 
+            // cbTemporarySaves
+            // 
+            this.cbTemporarySaves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbTemporarySaves.FormattingEnabled = true;
+            this.cbTemporarySaves.Location = new System.Drawing.Point(626, 6);
+            this.cbTemporarySaves.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTemporarySaves.Name = "cbTemporarySaves";
+            this.cbTemporarySaves.Size = new System.Drawing.Size(109, 21);
+            this.cbTemporarySaves.TabIndex = 112;
+            this.cbTemporarySaves.SelectedIndexChanged += new System.EventHandler(this.cbTemporarySaves_SelectedIndexChanged);
+            this.cbTemporarySaves.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTemporarySaves_KeyDown);
+            // 
+            // btnSaveSale
+            // 
+            this.btnSaveSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveSale.Location = new System.Drawing.Point(737, 5);
+            this.btnSaveSale.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveSale.Name = "btnSaveSale";
+            this.btnSaveSale.Size = new System.Drawing.Size(46, 23);
+            this.btnSaveSale.TabIndex = 115;
+            this.btnSaveSale.Text = "SAVE";
+            this.btnSaveSale.UseVisualStyleBackColor = true;
+            this.btnSaveSale.Click += new System.EventHandler(this.btnSaveSale_Click);
+            // 
+            // btnClearForm
+            // 
+            this.btnClearForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearForm.Location = new System.Drawing.Point(784, 5);
+            this.btnClearForm.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClearForm.Name = "btnClearForm";
+            this.btnClearForm.Size = new System.Drawing.Size(88, 23);
+            this.btnClearForm.TabIndex = 116;
+            this.btnClearForm.Text = "CLEAR FORM";
+            this.btnClearForm.UseVisualStyleBackColor = true;
+            this.btnClearForm.Click += new System.EventHandler(this.btnClearForm_Click);
+            // 
+            // cbTransports
+            // 
+            this.cbTransports.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbTransports.FormattingEnabled = true;
+            this.cbTransports.Location = new System.Drawing.Point(678, 599);
+            this.cbTransports.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTransports.Name = "cbTransports";
+            this.cbTransports.Size = new System.Drawing.Size(137, 21);
+            this.cbTransports.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(603, 603);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.TabIndex = 118;
+            this.label4.Text = "Angkutan";
+            // 
+            // btnAddTransport
+            // 
+            this.btnAddTransport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddTransport.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddTransport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddTransport.BackgroundImage")));
+            this.btnAddTransport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddTransport.FlatAppearance.BorderSize = 0;
+            this.btnAddTransport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTransport.Location = new System.Drawing.Point(659, 601);
+            this.btnAddTransport.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddTransport.Name = "btnAddTransport";
+            this.btnAddTransport.Size = new System.Drawing.Size(15, 16);
+            this.btnAddTransport.TabIndex = 119;
+            this.btnAddTransport.UseVisualStyleBackColor = false;
+            this.btnAddTransport.Click += new System.EventHandler(this.btnAddTransport_Click);
+            // 
+            // txtShippingCost
+            // 
+            this.txtShippingCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtShippingCost.Location = new System.Drawing.Point(819, 599);
+            this.txtShippingCost.Margin = new System.Windows.Forms.Padding(2);
+            this.txtShippingCost.Name = "txtShippingCost";
+            this.txtShippingCost.Size = new System.Drawing.Size(53, 20);
+            this.txtShippingCost.TabIndex = 6;
+            this.txtShippingCost.TextChanged += new System.EventHandler(this.txtShippingCost_TextChanged);
+            // 
+            // btnSplitItem
+            // 
+            this.btnSplitItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSplitItem.Location = new System.Drawing.Point(433, 5);
+            this.btnSplitItem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSplitItem.Name = "btnSplitItem";
+            this.btnSplitItem.Size = new System.Drawing.Size(96, 23);
+            this.btnSplitItem.TabIndex = 3;
+            this.btnSplitItem.Text = "POTONG ROLL";
+            this.btnSplitItem.UseVisualStyleBackColor = true;
+            this.btnSplitItem.Click += new System.EventHandler(this.btnSplitItem_Click);
+            // 
+            // itxt_SaleOrderItems
+            // 
+            this.itxt_SaleOrderItems.IsBrowseMode = true;
+            this.itxt_SaleOrderItems.LabelText = "Sale Order";
+            this.itxt_SaleOrderItems.Location = new System.Drawing.Point(6, 16);
+            this.itxt_SaleOrderItems.MaxLength = 32767;
+            this.itxt_SaleOrderItems.MultiLine = false;
+            this.itxt_SaleOrderItems.Name = "itxt_SaleOrderItems";
+            this.itxt_SaleOrderItems.PasswordChar = '\0';
+            this.itxt_SaleOrderItems.RowCount = 1;
+            this.itxt_SaleOrderItems.ShowDeleteButton = true;
+            this.itxt_SaleOrderItems.ShowFilter = false;
+            this.itxt_SaleOrderItems.ShowTextboxOnly = true;
+            this.itxt_SaleOrderItems.Size = new System.Drawing.Size(155, 21);
+            this.itxt_SaleOrderItems.TabIndex = 122;
+            this.itxt_SaleOrderItems.ValueText = "";
+            this.itxt_SaleOrderItems.isBrowseMode_Clicked += new System.EventHandler(this.Iddl_SaleOrderItems_isBrowseMode_Clicked);
+            // 
+            // btnApplySaleOrderItem
+            // 
+            this.btnApplySaleOrderItem.Location = new System.Drawing.Point(6, 37);
+            this.btnApplySaleOrderItem.Name = "btnApplySaleOrderItem";
+            this.btnApplySaleOrderItem.Size = new System.Drawing.Size(70, 23);
+            this.btnApplySaleOrderItem.TabIndex = 123;
+            this.btnApplySaleOrderItem.Text = "APPLY";
+            this.btnApplySaleOrderItem.UseVisualStyleBackColor = true;
+            this.btnApplySaleOrderItem.Click += new System.EventHandler(this.BtnApplySaleOrderItem_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.itxt_SaleOrderItems);
+            this.groupBox2.Controls.Add(this.btnApplySaleOrderItem);
+            this.groupBox2.Location = new System.Drawing.Point(434, 358);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(167, 65);
+            this.groupBox2.TabIndex = 125;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Sale Order";
             // 
             // col_grid_select
             // 
@@ -631,6 +826,15 @@
             this.Subtotal.ReadOnly = true;
             this.Subtotal.Width = 50;
             // 
+            // col_grid_SaleOrderItemDescription
+            // 
+            this.col_grid_SaleOrderItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_SaleOrderItemDescription.HeaderText = "SO";
+            this.col_grid_SaleOrderItemDescription.MinimumWidth = 20;
+            this.col_grid_SaleOrderItemDescription.Name = "col_grid_SaleOrderItemDescription";
+            this.col_grid_SaleOrderItemDescription.ReadOnly = true;
+            this.col_grid_SaleOrderItemDescription.Width = 20;
+            // 
             // col_grid_id
             // 
             this.col_grid_id.HeaderText = "id";
@@ -638,162 +842,12 @@
             this.col_grid_id.ReadOnly = true;
             this.col_grid_id.Visible = false;
             // 
-            // lblTotalCounts
-            // 
-            this.lblTotalCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCounts.Location = new System.Drawing.Point(558, 360);
-            this.lblTotalCounts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTotalCounts.Name = "lblTotalCounts";
-            this.lblTotalCounts.Size = new System.Drawing.Size(314, 20);
-            this.lblTotalCounts.TabIndex = 95;
-            this.lblTotalCounts.Text = "TotalCounts";
-            this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAddCustomer
-            // 
-            this.btnAddCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCustomer.BackgroundImage")));
-            this.btnAddCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddCustomer.FlatAppearance.BorderSize = 0;
-            this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCustomer.Location = new System.Drawing.Point(263, 8);
-            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(15, 16);
-            this.btnAddCustomer.TabIndex = 110;
-            this.btnAddCustomer.UseVisualStyleBackColor = false;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnRemoveSelected);
-            this.groupBox1.Controls.Add(this.txtAdjustSelected);
-            this.groupBox1.Controls.Add(this.lblSelectedTotal);
-            this.groupBox1.Location = new System.Drawing.Point(12, 358);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(445, 65);
-            this.groupBox1.TabIndex = 111;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Selected";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(319, 44);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 121;
-            this.label1.Text = "Adjustment";
-            // 
-            // cbTemporarySaves
-            // 
-            this.cbTemporarySaves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbTemporarySaves.FormattingEnabled = true;
-            this.cbTemporarySaves.Location = new System.Drawing.Point(626, 6);
-            this.cbTemporarySaves.Margin = new System.Windows.Forms.Padding(2);
-            this.cbTemporarySaves.Name = "cbTemporarySaves";
-            this.cbTemporarySaves.Size = new System.Drawing.Size(109, 21);
-            this.cbTemporarySaves.TabIndex = 112;
-            this.cbTemporarySaves.SelectedIndexChanged += new System.EventHandler(this.cbTemporarySaves_SelectedIndexChanged);
-            this.cbTemporarySaves.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbTemporarySaves_KeyDown);
-            // 
-            // btnSaveSale
-            // 
-            this.btnSaveSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveSale.Location = new System.Drawing.Point(737, 5);
-            this.btnSaveSale.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSaveSale.Name = "btnSaveSale";
-            this.btnSaveSale.Size = new System.Drawing.Size(46, 23);
-            this.btnSaveSale.TabIndex = 115;
-            this.btnSaveSale.Text = "SAVE";
-            this.btnSaveSale.UseVisualStyleBackColor = true;
-            this.btnSaveSale.Click += new System.EventHandler(this.btnSaveSale_Click);
-            // 
-            // btnClearForm
-            // 
-            this.btnClearForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearForm.Location = new System.Drawing.Point(784, 5);
-            this.btnClearForm.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClearForm.Name = "btnClearForm";
-            this.btnClearForm.Size = new System.Drawing.Size(88, 23);
-            this.btnClearForm.TabIndex = 116;
-            this.btnClearForm.Text = "CLEAR FORM";
-            this.btnClearForm.UseVisualStyleBackColor = true;
-            this.btnClearForm.Click += new System.EventHandler(this.btnClearForm_Click);
-            // 
-            // cbTransports
-            // 
-            this.cbTransports.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbTransports.FormattingEnabled = true;
-            this.cbTransports.Location = new System.Drawing.Point(678, 599);
-            this.cbTransports.Margin = new System.Windows.Forms.Padding(2);
-            this.cbTransports.Name = "cbTransports";
-            this.cbTransports.Size = new System.Drawing.Size(137, 21);
-            this.cbTransports.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(603, 603);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 118;
-            this.label4.Text = "Angkutan";
-            // 
-            // btnAddTransport
-            // 
-            this.btnAddTransport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddTransport.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddTransport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddTransport.BackgroundImage")));
-            this.btnAddTransport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddTransport.FlatAppearance.BorderSize = 0;
-            this.btnAddTransport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTransport.Location = new System.Drawing.Point(659, 601);
-            this.btnAddTransport.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddTransport.Name = "btnAddTransport";
-            this.btnAddTransport.Size = new System.Drawing.Size(15, 16);
-            this.btnAddTransport.TabIndex = 119;
-            this.btnAddTransport.UseVisualStyleBackColor = false;
-            this.btnAddTransport.Click += new System.EventHandler(this.btnAddTransport_Click);
-            // 
-            // txtShippingCost
-            // 
-            this.txtShippingCost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtShippingCost.Location = new System.Drawing.Point(819, 599);
-            this.txtShippingCost.Margin = new System.Windows.Forms.Padding(2);
-            this.txtShippingCost.Name = "txtShippingCost";
-            this.txtShippingCost.Size = new System.Drawing.Size(53, 20);
-            this.txtShippingCost.TabIndex = 6;
-            this.txtShippingCost.TextChanged += new System.EventHandler(this.txtShippingCost_TextChanged);
-            // 
-            // btnSplitItem
-            // 
-            this.btnSplitItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSplitItem.Location = new System.Drawing.Point(433, 5);
-            this.btnSplitItem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSplitItem.Name = "btnSplitItem";
-            this.btnSplitItem.Size = new System.Drawing.Size(96, 23);
-            this.btnSplitItem.TabIndex = 3;
-            this.btnSplitItem.Text = "POTONG ROLL";
-            this.btnSplitItem.UseVisualStyleBackColor = true;
-            this.btnSplitItem.Click += new System.EventHandler(this.btnSplitItem_Click);
-            // 
             // Add_Edit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 661);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnSplitItem);
             this.Controls.Add(this.txtShippingCost);
             this.Controls.Add(this.btnAddTransport);
@@ -827,6 +881,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -872,6 +927,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridsummary_priceperunit;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_SaleOrderItems;
+        private System.Windows.Forms.Button btnApplySaleOrderItem;
+        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_select;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_barcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_inventorycode;
@@ -885,6 +943,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Adjustment;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_adjustedprice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_SaleOrderItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_id;
     }
 }

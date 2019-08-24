@@ -26,6 +26,7 @@ namespace BinaMitraTextile.InventoryForm
         public BarcodePrint_Form()
         {
             InitializeComponent();
+            this.Text += DBUtil.appendTitleWithInfo();
 
             listBarcodeUC = new List<BarcodeUC>() { 
                 barcodeUC1, barcodeUC2, barcodeUC3, barcodeUC4, barcodeUC5,

@@ -21,6 +21,7 @@ namespace BinaMitraTextile
         public const string COL_IS_SOLD = "isSold";
         public const string COL_DB_COLORID = "color_id";
         public const string COL_DB_Grades_Id = "Grades_Id";
+        public const string COL_DB_SaleOrderItems_Id = "SaleOrderItems_Id";
         public const string COL_NOTES = "notes";
 
         public const string COL_INVENTORYCOLORNAME = "inventory_color_name";
@@ -28,6 +29,9 @@ namespace BinaMitraTextile
         public const string COL_Grades_Name = "grade_name";
         public const string COL_ProductWidths_Name = "product_width_name";
         public const string COL_ProductStoreName = "product_store_name";
+        public const string COL_SaleOrderItemDescription = "SaleOrderItemDescription";
+        public const string COL_SaleOrderItemCustomerName = "SaleOrderItemCustomerName";
+        public const string COL_SaleOrders_Customers_Id = "SaleOrders_Customers_Id";
 
         public const string COL_SALE_SELLPRICE = "sell_price";
         public const string COL_SALE_SELECTED = "selected";
@@ -48,6 +52,7 @@ namespace BinaMitraTextile
         public string barcode;
         public Guid? ColorID;
         public Guid Grades_Id;
+        public Guid? SaleOrderItems_Id;
         public string notes;
 
         public string ColorName = "";
@@ -57,6 +62,10 @@ namespace BinaMitraTextile
         public string ProductWidths_Name = "";
         public string ProductStoreName = "";
         public bool OpnameMarker;
+        public string SaleOrderItemDescription;
+        public string SaleOrderItemCustomerName;
+        public Guid? SaleOrders_Customers_Id;
+        public bool isSold;
 
         public InventoryItem(Guid ID)
         {
@@ -70,12 +79,17 @@ namespace BinaMitraTextile
                 item_length = Convert.ToDecimal(row[COL_LENGTH]);
                 barcode = row[COL_BARCODE].ToString();
                 ColorID = DBUtil.parseData<Guid?>(row, COL_DB_COLORID);
+                SaleOrderItems_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleOrderItems_Id);
                 notes = row[COL_NOTES].ToString();
 
                 ColorName = DBUtil.parseData<string>(row, COL_INVENTORYITEMCOLORNAME);
                 InventoryColorName = DBUtil.parseData<string>(row, COL_INVENTORYCOLORNAME);
                 LengthUnitName = DBUtil.parseData<string>(row, COL_LENGTHUNITNAME);
                 ProductStoreName = DBUtil.parseData<string>(row, COL_ProductStoreName);
+                SaleOrderItemDescription = DBUtil.parseData<string>(row, COL_SaleOrderItemDescription);
+                SaleOrderItemCustomerName = DBUtil.parseData<string>(row, COL_SaleOrderItemCustomerName);
+                isSold = Util.wrapNullable<bool>(row, COL_IS_SOLD);
+                SaleOrders_Customers_Id = Util.wrapNullable<Guid?>(row, COL_SaleOrders_Customers_Id);
 
                 Grades_Id = Util.wrapNullable<Guid>(row, COL_DB_Grades_Id);
                 Grades_Name = Util.wrapNullable<string>(row, COL_Grades_Name);
@@ -160,10 +174,6 @@ namespace BinaMitraTextile
             DataTable dt = getRows("inventoryitem_get", IDList, customerID);
 
             Tools.addColumn<bool>(dt, COL_SALE_SELECTED, 0);
-            //Tools.addColumn<int>(dt, COL_SALE_QTY, 1);
-            //dt.Columns.Add(COL_SALE_ADJUSTMENT, typeof(Decimal));
-            //dt.Columns.Add(COL_SALE_ADJUSTEDPRICE, typeof(Decimal));
-            //dt.Columns.Add(COL_SALE_SUBTOTAL, typeof(Decimal));
             return dt;
         }
 
@@ -451,6 +461,31 @@ namespace BinaMitraTextile
             }
 
             return dataTable;
+        }
+
+        public static bool updateSaleOrderItem(List<Guid> IdList, Guid? SaleOrderItems_Id, string description)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                foreach (Guid id in IdList)
+                {
+                    SqlQueryResult result = DBConnection.query(
+                       sqlConnection,
+                       QueryTypes.ExecuteNonQuery,
+                       "InventoryItems_update_SaleOrderItems_Id",
+                       new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                       new SqlQueryParameter(COL_DB_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(SaleOrderItems_Id))
+                    );
+
+                    if (!result.IsSuccessful)
+                        return false;
+                    else if(SaleOrderItems_Id == null)
+                        ActivityLog.submit(sqlConnection, id, "Sale Order Item removed");
+                    else
+                        ActivityLog.submit(sqlConnection, id, "Sale Order Item Updated to: " + description);
+                }
+            }
+            return true;
         }
     }
 }

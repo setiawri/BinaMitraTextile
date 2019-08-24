@@ -39,6 +39,8 @@ namespace BinaMitraTextile
         public const string COL_INVENTORYCOLORNAME = "inventory_color_name";
         public const string COL_INVENTORYITEMCOLORNAME = "inventoryitem_color_name";
         public const string COL_SELECTED = "selected";
+        public const string COL_SaleOrderItemDescription = "SaleOrderItemDescription";
+        public const string COL_SaleOrderItems_Id = "SaleOrderItems_Id";
 
         public Guid id;
         public Guid sale_id;

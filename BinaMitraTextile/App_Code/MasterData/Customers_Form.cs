@@ -90,15 +90,16 @@ namespace BinaMitraTextile.MasterData
             _inputTxtNotes.setMaxLength(100); //set max length
 
             //Field Sales - dropdownlist
-            _inputDDLSales = (InputDropdownlist)setupInputControl(new InputDropdownlist(), 1, "Sales", Customer.COL_SALESUSERNAME, 0, true, false, null);
+            _inputDDLSales = (InputDropdownlist)setupInputControl(new InputDropdownlist(), 1, "Sales", Customer.COL_SALESUSERNAME, 0, true, true, null);
             UserAccount.populateDropDownList(_inputDDLSales.Dropdownlist, false, true); //populate
 
             //set default control to focus
             DefaultInputToFocus = _inputTxtName;
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 _inputDDLSales.Visible = false;
+                gridview.Columns[Customer.COL_SALESUSERNAME].Visible = false;
             }
         }
 

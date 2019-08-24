@@ -310,7 +310,7 @@
             this.btnAddPO.Name = "btnAddPO";
             this.btnAddPO.Size = new System.Drawing.Size(120, 28);
             this.btnAddPO.TabIndex = 0;
-            this.btnAddPO.Text = "NEW PO";
+            this.btnAddPO.Text = "CREATE";
             this.btnAddPO.UseVisualStyleBackColor = true;
             this.btnAddPO.Click += new System.EventHandler(this.btnAddPO_Click);
             // 

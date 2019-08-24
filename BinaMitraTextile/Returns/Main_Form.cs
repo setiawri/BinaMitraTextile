@@ -36,10 +36,12 @@ namespace BinaMitraTextile.Returns
 
         private void setupControls()
         {
+            this.Text += DBUtil.appendTitleWithInfo();
+
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_Checked.DataPropertyName = SaleReturn.COL_Checked;
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_grid_Checked.Visible = false;
             }

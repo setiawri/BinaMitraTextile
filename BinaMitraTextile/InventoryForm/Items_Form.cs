@@ -33,6 +33,7 @@ namespace BinaMitraTextile.InventoryForm
         public Items_Form(Guid inventoryID)
         {
             InitializeComponent();
+            this.Text += DBUtil.appendTitleWithInfo();
 
             _inventory = new Inventory(inventoryID);
             lblInventoryID.Text = String.Format("{0} - {1}", _inventory.code.ToString(), _inventory.product_store_name);
@@ -55,6 +56,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridInventoryItems_lastOpname.DataPropertyName = InventoryItem.COL_LASTOPNAME;
             col_grid_colorname.DataPropertyName = InventoryItem.COL_INVENTORYITEMCOLORNAME;
             col_grid_notes.DataPropertyName = InventoryItem.COL_NOTES;
+            col_grid_SaleOrderItems_Description.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
             populateGrid();
 
             txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
@@ -153,7 +155,7 @@ namespace BinaMitraTextile.InventoryForm
                 Tools.setValue(cbColors, obj.ColorID);
                 txtNotes.Text = obj.notes;
                 btnSubmit.Text = BTN_TEXT_UPDATE;
-                if (GlobalData.UserAccount.role == Roles.User)
+                if (GlobalData.UserAccount.role != Roles.Super)
                 {
                     txtLength.Enabled = false;                    
                 }

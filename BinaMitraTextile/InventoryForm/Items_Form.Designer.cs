@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Items_Form));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,13 +39,6 @@
             this.lblLengthUnit = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Barcode = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_gridInventoryItems_lastOpname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_colorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblInventoryID = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +60,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblReceived = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Barcode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_gridInventoryItems_lastOpname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_colorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_SaleOrderItems_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.gbForm.SuspendLayout();
             this.SuspendLayout();
@@ -143,14 +144,14 @@
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_grid_id,
@@ -159,6 +160,7 @@
             this.Sold,
             this.col_gridInventoryItems_lastOpname,
             this.col_grid_colorname,
+            this.col_grid_SaleOrderItems_Description,
             this.col_grid_notes});
             this.grid.Location = new System.Drawing.Point(276, 16);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
@@ -172,68 +174,6 @@
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
-            // 
-            // col_grid_id
-            // 
-            this.col_grid_id.HeaderText = "ID";
-            this.col_grid_id.Name = "col_grid_id";
-            this.col_grid_id.ReadOnly = true;
-            this.col_grid_id.Visible = false;
-            // 
-            // Barcode
-            // 
-            this.Barcode.ActiveLinkColor = System.Drawing.Color.Orange;
-            this.Barcode.DataPropertyName = "barcode";
-            this.Barcode.HeaderText = "Barcode";
-            this.Barcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.Barcode.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.Barcode.Name = "Barcode";
-            this.Barcode.ReadOnly = true;
-            this.Barcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Barcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Barcode.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.Barcode.Width = 60;
-            // 
-            // Length
-            // 
-            this.Length.DataPropertyName = "item_length";
-            this.Length.HeaderText = "Length";
-            this.Length.Name = "Length";
-            this.Length.ReadOnly = true;
-            this.Length.Width = 60;
-            // 
-            // Sold
-            // 
-            this.Sold.DataPropertyName = "isSold";
-            this.Sold.HeaderText = "Sold";
-            this.Sold.Name = "Sold";
-            this.Sold.ReadOnly = true;
-            this.Sold.Width = 40;
-            // 
-            // col_gridInventoryItems_lastOpname
-            // 
-            dataGridViewCellStyle5.Format = "dd/MM/yy HH:mm";
-            this.col_gridInventoryItems_lastOpname.DefaultCellStyle = dataGridViewCellStyle5;
-            this.col_gridInventoryItems_lastOpname.HeaderText = "Opname";
-            this.col_gridInventoryItems_lastOpname.Name = "col_gridInventoryItems_lastOpname";
-            this.col_gridInventoryItems_lastOpname.ReadOnly = true;
-            this.col_gridInventoryItems_lastOpname.Width = 110;
-            // 
-            // col_grid_colorname
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_colorname.DefaultCellStyle = dataGridViewCellStyle6;
-            this.col_grid_colorname.HeaderText = "Color";
-            this.col_grid_colorname.Name = "col_grid_colorname";
-            this.col_grid_colorname.ReadOnly = true;
-            this.col_grid_colorname.Width = 120;
-            // 
-            // col_grid_notes
-            // 
-            this.col_grid_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_grid_notes.HeaderText = "Notes";
-            this.col_grid_notes.Name = "col_grid_notes";
-            this.col_grid_notes.ReadOnly = true;
             // 
             // lblInventoryID
             // 
@@ -466,6 +406,77 @@
             this.label12.TabIndex = 72;
             this.label12.Text = "Received:";
             // 
+            // col_grid_id
+            // 
+            this.col_grid_id.HeaderText = "ID";
+            this.col_grid_id.Name = "col_grid_id";
+            this.col_grid_id.ReadOnly = true;
+            this.col_grid_id.Visible = false;
+            // 
+            // Barcode
+            // 
+            this.Barcode.ActiveLinkColor = System.Drawing.Color.Orange;
+            this.Barcode.DataPropertyName = "barcode";
+            this.Barcode.HeaderText = "Barcode";
+            this.Barcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.Barcode.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.Barcode.Name = "Barcode";
+            this.Barcode.ReadOnly = true;
+            this.Barcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Barcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Barcode.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.Barcode.Width = 60;
+            // 
+            // Length
+            // 
+            this.Length.DataPropertyName = "item_length";
+            this.Length.HeaderText = "Length";
+            this.Length.Name = "Length";
+            this.Length.ReadOnly = true;
+            this.Length.Width = 60;
+            // 
+            // Sold
+            // 
+            this.Sold.DataPropertyName = "isSold";
+            this.Sold.HeaderText = "Sold";
+            this.Sold.Name = "Sold";
+            this.Sold.ReadOnly = true;
+            this.Sold.Width = 40;
+            // 
+            // col_gridInventoryItems_lastOpname
+            // 
+            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
+            this.col_gridInventoryItems_lastOpname.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_gridInventoryItems_lastOpname.HeaderText = "Opname";
+            this.col_gridInventoryItems_lastOpname.Name = "col_gridInventoryItems_lastOpname";
+            this.col_gridInventoryItems_lastOpname.ReadOnly = true;
+            this.col_gridInventoryItems_lastOpname.Width = 110;
+            // 
+            // col_grid_colorname
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_colorname.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_grid_colorname.HeaderText = "Color";
+            this.col_grid_colorname.Name = "col_grid_colorname";
+            this.col_grid_colorname.ReadOnly = true;
+            this.col_grid_colorname.Width = 120;
+            // 
+            // col_grid_SaleOrderItems_Description
+            // 
+            this.col_grid_SaleOrderItems_Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_SaleOrderItems_Description.HeaderText = "SO";
+            this.col_grid_SaleOrderItems_Description.MinimumWidth = 30;
+            this.col_grid_SaleOrderItems_Description.Name = "col_grid_SaleOrderItems_Description";
+            this.col_grid_SaleOrderItems_Description.ReadOnly = true;
+            this.col_grid_SaleOrderItems_Description.Width = 30;
+            // 
+            // col_grid_notes
+            // 
+            this.col_grid_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_grid_notes.HeaderText = "Notes";
+            this.col_grid_notes.Name = "col_grid_notes";
+            this.col_grid_notes.ReadOnly = true;
+            // 
             // Items_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,15 +538,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbColors;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnAddColor;
+        private System.Windows.Forms.Label lblReceived;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_id;
         private System.Windows.Forms.DataGridViewLinkColumn Barcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Length;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Sold;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridInventoryItems_lastOpname;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_colorname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_SaleOrderItems_Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_notes;
-        private System.Windows.Forms.Button btnAddColor;
-        private System.Windows.Forms.Label lblReceived;
-        private System.Windows.Forms.Label label12;
     }
 }

@@ -159,7 +159,7 @@ namespace BinaMitraTextile.Admin
 
             clearInputFields(); //clear dropdownlists
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 btnAction1.Enabled = false;
                 btnAction3.Enabled = false;

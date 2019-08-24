@@ -34,6 +34,7 @@ namespace BinaMitraTextile.Sales
         public PackingList_Form(Guid SaleID)
         {
             InitializeComponent();
+            this.Text += DBUtil.appendTitleWithInfo();
 
             _sale = new Sale(SaleID);
             Tools.disableResizing(this);

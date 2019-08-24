@@ -55,6 +55,9 @@
   <PropertyGroup>
     <StartupObject>BinaMitraTextile.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\Icons\handshake-512.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IDAutomation.LinearBarCode">
       <HintPath>Dependencies\IDAutomation.LinearBarCode.dll</HintPath>
@@ -101,6 +104,8 @@
     </Compile>
     <Compile Include="App_Code\Payment.cs" />
     <Compile Include="App_Code\CustomerTerm.cs" />
+    <Compile Include="App_Code\SaleOrder.cs" />
+    <Compile Include="App_Code\SaleOrderItem.cs" />
     <Compile Include="App_Code\VendorDebit.cs" />
     <Compile Include="App_Code\GordenItem.cs" />
     <Compile Include="App_Code\GordenOrder.cs" />
@@ -220,6 +225,12 @@
     </Compile>
     <Compile Include="InventoryForm\InventoryItems_Split_Form.Designer.cs">
       <DependentUpon>InventoryItems_Split_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleOrders\Main_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrders\Main_Form.Designer.cs">
+      <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="POs\MasterData_v1_Status_Form.cs">
       <SubType>Form</SubType>
@@ -581,6 +592,9 @@
     <EmbeddedResource Include="InventoryForm\InventoryItems_Split_Form.resx">
       <DependentUpon>InventoryItems_Split_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrders\Main_Form.resx">
+      <DependentUpon>Main_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="POs\MasterData_v1_Status_Form.resx">
       <DependentUpon>MasterData_v1_Status_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -760,6 +774,7 @@
     <None Include="Resources\expand-collapse-down.png" />
     <None Include="Resources\notification02.wav" />
     <None Include="Resources\notification03.wav" />
+    <Content Include="Images\Icons\handshake-512.ico" />
     <Content Include="Resources\Sounds\Notification.mp3" />
     <Content Include="Resources\Sounds\Notification.wav" />
     <Content Include="SqlScripts\CustomTypes.sql" />

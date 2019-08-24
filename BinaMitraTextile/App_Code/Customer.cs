@@ -29,7 +29,7 @@ namespace BinaMitraTextile
         public const string COL_STATENAME = "state_name";
         public const string COL_DEFAULTTRANSPORTNAME = "default_transport_name";
         public const string COL_SALESUSERNAME = "sales_user_name";
-
+         
         public Guid ID;
         public string Name = "";
         public string Address = "";
@@ -45,6 +45,23 @@ namespace BinaMitraTextile
         public string StateName = "";
         public string DefaultTransportName = "";
         public string SalesUserName;
+
+        public string Info
+        {
+            get
+            {
+                string info = Name;
+
+                if (!string.IsNullOrEmpty(Address))
+                    info += Environment.NewLine + Address;
+
+                string phones = Tools.append(Phone1, Phone2, ",");
+                if (!string.IsNullOrEmpty(phones))
+                    info += Environment.NewLine + phones;
+
+                return info;
+            }
+        }
 
         public Customer(Guid? id) { }
 

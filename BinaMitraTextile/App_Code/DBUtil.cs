@@ -37,7 +37,7 @@ namespace BinaMitraTextile
                 else if (isDevEnvironment && !GlobalData.ConnectToLiveDB && !GlobalData.ConnectToLiveDBLocal)
                     return ConfigurationManager.ConnectionStrings["connDBDev"].ConnectionString;
                 else if(isServerEnvironment)
-                    return ConfigurationManager.ConnectionStrings["connDBLiveServer"].ConnectionString;
+                    return ConfigurationManager.ConnectionStrings["connDBLiveForServer"].ConnectionString;
                 else
                     return ConfigurationManager.ConnectionStrings["connDBLive"].ConnectionString;
             }
@@ -52,6 +52,10 @@ namespace BinaMitraTextile
 
             if (GlobalData.ConnectToLiveDB)
                 info += string.Format(" (LIVE DB)");
+            else if (GlobalData.ConnectToLiveDBLocal)
+                info += string.Format(" (LOCAL LIVE DB)");
+            else if (isDevEnvironment)
+                info += string.Format(" (DEV DB)");
 
             return info;
         }

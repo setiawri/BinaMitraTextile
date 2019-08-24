@@ -60,22 +60,22 @@ namespace BinaMitraTextile.POs
             col_ProductDescription = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ProductDescription", "Description", POItem.COL_DB_PRODUCTDESCRIPTION, true, true, "", true, true, 100, DataGridViewContentAlignment.TopLeft);
             col_ProductDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_PONo = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PONo", "PO", POItem.COL_PONO, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleCenter);
-            col_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_Timestamp", "Date", POItem.COL_TIMESTAMP, true, true, "dd/MM/yy", true, false, 40, DataGridViewContentAlignment.MiddleCenter);
-            col_Age = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_Age", "Age", POItem.COL_AGE, true, true, "", true, false, 30, DataGridViewContentAlignment.MiddleRight);
-            col_OrderQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_OrderQty", "Order", POItem.COL_DB_QTY, true, true, "N0", true, false, 30, DataGridViewContentAlignment.MiddleRight);
+            col_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_Timestamp", "Date", POItem.COL_TIMESTAMP, true, true, "dd/MM/yy", false, false, 40, DataGridViewContentAlignment.MiddleCenter);
+            col_Age = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_Age", "Age", POItem.COL_AGE, true, true, "", false, false, 30, DataGridViewContentAlignment.MiddleRight);
+            col_OrderQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_OrderQty", "Order", POItem.COL_DB_QTY, true, true, "N0", false, false, 30, DataGridViewContentAlignment.MiddleRight);
             col_UnitName = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_UnitName", "Unit", POItem.COL_DB_UNITNAME, true, true, "", true, false, 30, DataGridViewContentAlignment.MiddleLeft);
-            col_ReceivedQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ReceivedQty", "Terima", POItem.COL_RECEIVEDQTY, true, true, "N0", true, false, 40, DataGridViewContentAlignment.MiddleRight);
-            col_PendingQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PendingQty", "Sisa", POItem.COL_PENDINGQTY, true, true, "N0", true, false, 40, DataGridViewContentAlignment.MiddleRight);
-            col_PendingQtyValue = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PendingQtyValue", "Value", POItem.COL_PENDINGQTYVALUE, true, false, "N0", true, false, 40, DataGridViewContentAlignment.MiddleRight);
-            col_PriorityNo = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PriorityNo", "Priority", POItem.COL_DB_PriorityNo, true, true, "", true, false, 40, DataGridViewContentAlignment.MiddleRight);
+            col_ReceivedQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ReceivedQty", "Terima", POItem.COL_RECEIVEDQTY, true, true, "N0", false, false, 40, DataGridViewContentAlignment.MiddleRight);
+            col_PendingQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PendingQty", "Sisa", POItem.COL_PENDINGQTY, true, true, "N0", false, false, 40, DataGridViewContentAlignment.MiddleRight);
+            col_PendingQtyValue = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PendingQtyValue", "Value", POItem.COL_PENDINGQTYVALUE, true, false, "N0", false, false, 40, DataGridViewContentAlignment.MiddleRight);
+            col_PriorityNo = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PriorityNo", "Priority", POItem.COL_DB_PriorityNo, true, true, "", false, false, 40, DataGridViewContentAlignment.MiddleRight);
             Util.updateForeColorAndStyle(col_PriorityNo, Color.DarkBlue, FontStyle.Bold);
-            col_PriorityQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PriorityQty", "Qty", POItem.COL_DB_PriorityQty, true, true, "N0", true, false, 40, DataGridViewContentAlignment.MiddleRight);
+            col_PriorityQty = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_PriorityQty", "Qty", POItem.COL_DB_PriorityQty, true, true, "N0", false, false, 40, DataGridViewContentAlignment.MiddleRight);
             Util.updateForeColorAndStyle(col_PriorityQty, Color.DarkBlue, FontStyle.Bold);
-            col_ExpectedDeliveryDate = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ExpectedDeliveryDate", "Delivery", POItem.COL_DB_ExpectedDeliveryDate, true, true, "ddd dd/MM", true, false, 50, DataGridViewContentAlignment.MiddleCenter);
+            col_ExpectedDeliveryDate = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ExpectedDeliveryDate", "Delivery", POItem.COL_DB_ExpectedDeliveryDate, true, true, "ddd dd/MM", false, false, 50, DataGridViewContentAlignment.MiddleCenter);
             Util.updateForeColorAndStyle(col_ExpectedDeliveryDate, Color.DarkOrange, FontStyle.Bold);
             col_dgv_StatusName.DisplayIndex = col_ExpectedDeliveryDate.DisplayIndex - 1;
             Util.updateForeColorAndStyle(col_dgv_StatusName, Color.DarkOrange, FontStyle.Bold);
-            col_ExpectedDeliveryDayCount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ExpectedDeliveryDayCount", "Due", POItem.COL_DB_ExpectedDeliveryDayCount, true, true, "N0", true, false, 30, DataGridViewContentAlignment.MiddleRight);
+            col_ExpectedDeliveryDayCount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ExpectedDeliveryDayCount", "Due", POItem.COL_DB_ExpectedDeliveryDayCount, true, true, "N0", false, false, 30, DataGridViewContentAlignment.MiddleRight);
         }
 
         protected override void setupControlsBasedOnRoles()

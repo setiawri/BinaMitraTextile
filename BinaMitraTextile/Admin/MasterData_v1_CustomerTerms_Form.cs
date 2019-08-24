@@ -59,7 +59,7 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupControlsBasedOnRoles()
         {
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkOnlyNotOK.Visible = false;
                 col_dgv_Checked.Visible = false;

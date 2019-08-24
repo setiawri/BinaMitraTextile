@@ -31,6 +31,8 @@ namespace BinaMitraTextile.Users
         {
             InitializeComponent();
 
+            this.Text += DBUtil.appendTitleWithInfo();
+
             grid.AutoGenerateColumns = false;
             col_grid_PercentCommission.DataPropertyName = UserAccount.COL_DB_PercentCommission;
             populateGrid();

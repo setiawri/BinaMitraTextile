@@ -861,6 +861,7 @@
             this.itxt_InventoryCode.PasswordChar = '\0';
             this.itxt_InventoryCode.RowCount = 1;
             this.itxt_InventoryCode.ShowDeleteButton = false;
+            this.itxt_InventoryCode.ShowFilter = false;
             this.itxt_InventoryCode.ShowTextboxOnly = false;
             this.itxt_InventoryCode.Size = new System.Drawing.Size(70, 41);
             this.itxt_InventoryCode.TabIndex = 94;
@@ -897,7 +898,9 @@
             this.iddl_UserAccounts.LabelText = "Sales";
             this.iddl_UserAccounts.Location = new System.Drawing.Point(104, 362);
             this.iddl_UserAccounts.Name = "iddl_UserAccounts";
+            this.iddl_UserAccounts.SelectedIndex = -1;
             this.iddl_UserAccounts.SelectedItem = null;
+            this.iddl_UserAccounts.SelectedItemText = "";
             this.iddl_UserAccounts.SelectedValue = null;
             this.iddl_UserAccounts.ShowDropdownlistOnly = true;
             this.iddl_UserAccounts.Size = new System.Drawing.Size(107, 22);
@@ -911,7 +914,9 @@
             this.iddl_Customers.LabelText = "Customers";
             this.iddl_Customers.Location = new System.Drawing.Point(81, 90);
             this.iddl_Customers.Name = "iddl_Customers";
+            this.iddl_Customers.SelectedIndex = -1;
             this.iddl_Customers.SelectedItem = null;
+            this.iddl_Customers.SelectedItemText = "";
             this.iddl_Customers.SelectedValue = null;
             this.iddl_Customers.ShowDropdownlistOnly = false;
             this.iddl_Customers.Size = new System.Drawing.Size(130, 41);
@@ -1031,7 +1036,7 @@
             this.btnAddSale.Name = "btnAddSale";
             this.btnAddSale.Size = new System.Drawing.Size(100, 28);
             this.btnAddSale.TabIndex = 0;
-            this.btnAddSale.Text = "NEW SALE";
+            this.btnAddSale.Text = "CREATE";
             this.btnAddSale.UseVisualStyleBackColor = true;
             this.btnAddSale.Click += new System.EventHandler(this.btnAddSale_Click);
             // 

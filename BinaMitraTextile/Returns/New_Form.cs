@@ -27,6 +27,7 @@ namespace BinaMitraTextile.Returns
         public New_Form()
         {
             InitializeComponent();
+            this.Text += DBUtil.appendTitleWithInfo();
 
             grid.AutoGenerateColumns = false;
             gridSummary.AutoGenerateColumns = false;

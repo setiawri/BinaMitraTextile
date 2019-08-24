@@ -118,7 +118,7 @@ namespace BinaMitraTextile.Admin
 
             clearInputFields(); //clear dropdownlists
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 _inputDtpPriceDate.Visible = false;
                 _inputTxtPricePerUnit.Visible = false;

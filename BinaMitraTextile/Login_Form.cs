@@ -16,6 +16,7 @@ namespace BinaMitraTextile
         #region CLASS VARIABLES
 
         private bool _bypassLogin = false;
+        private string _title = "LOGIN";
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -31,26 +32,22 @@ namespace BinaMitraTextile
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
+            this.Text = _title + DBUtil.appendTitleWithInfo();
 
             populateCBUsers();
 
-            if (DBUtil.isDevEnvironment)
+            if(DBUtil.isSalesEnvironment)
             {
-                rbLiveDB.Focus();
-                _bypassLogin = true;
-                //lblConnectionType.Text = "3";
+                chkLiveDB.Visible = false;
+                chkLiveDBLocal.Visible = false;
+                cbUsers.Focus();
             }
             else
             {
-                rbLiveDB.Visible = false;
-                rbLiveDBLocal.Visible = false;
-                cbUsers.Focus();
+                chkLiveDBLocal.Focus();
 
-                //if (DBUtil.isSalesEnvironment)
-                //    lblConnectionType.Text = "1";
-                //else if (DBUtil.isServerEnvironment)
-                //    lblConnectionType.Text = "2";
+                if(DBUtil.isDevEnvironment)
+                    _bypassLogin = true;
             }
         }
 
@@ -118,21 +115,33 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region EVENT HANDLERS
         
-        private void rbDBConnection_CheckedChanged(object sender, EventArgs e)
+        private void chkDBConnection_CheckedChanged(object sender, EventArgs e)
         {
-            GlobalData.ConnectToLiveDB = rbLiveDB.Checked;
-            GlobalData.ConnectToLiveDBLocal = rbLiveDBLocal.Checked;
+            this.chkLiveDB.CheckedChanged -= new System.EventHandler(this.chkDBConnection_CheckedChanged);
+            this.chkLiveDBLocal.CheckedChanged -= new System.EventHandler(this.chkDBConnection_CheckedChanged);
+            
+            if (sender == chkLiveDBLocal)
+                chkLiveDB.Checked = false;
+            else
+                chkLiveDBLocal.Checked = false;
+
+            GlobalData.ConnectToLiveDB = chkLiveDB.Checked;
+            GlobalData.ConnectToLiveDBLocal = chkLiveDBLocal.Checked;
             if (!DBUtil.isDBConnectionAvailable())
             {
-                GlobalData.ConnectToLiveDB = GlobalData.ConnectToLiveDBLocal = rbLiveDB.Checked = rbLiveDBLocal.Checked = false;
-                rbLiveDB.Focus();
+                GlobalData.ConnectToLiveDB = GlobalData.ConnectToLiveDBLocal = chkLiveDB.Checked = chkLiveDBLocal.Checked = false;
+                chkLiveDBLocal.Focus();
             }
             else
             {
                 cbUsers.Focus();
             }
-        }
 
+            this.chkLiveDB.CheckedChanged += new System.EventHandler(this.chkDBConnection_CheckedChanged);
+            this.chkLiveDBLocal.CheckedChanged += new System.EventHandler(this.chkDBConnection_CheckedChanged);
+
+            this.Text = _title + DBUtil.appendTitleWithInfo();
+        }
         #endregion
         /*******************************************************************************************************/
 

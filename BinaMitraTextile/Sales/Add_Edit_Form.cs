@@ -15,12 +15,6 @@ namespace BinaMitraTextile.Sales
         /*******************************************************************************************************/
         #region CLASS VARIABLES
 
-        const string COL_ID = "id";
-        const string COL_CODE = "inventory_code";
-
-        const string BTN_SELECT_ALL = "Pilih Semua";
-        const string BTN_UNSELECT_ALL = "Kosongkan pilihan";
-
         const string TEMPSAVE_COL_TEXT = "Text";
         const string TEMPSAVE_COL_MASTER = "MasterTable";
         const string TEMPSAVE_COL_SUMMARY = "SummaryTable";
@@ -30,12 +24,11 @@ namespace BinaMitraTextile.Sales
         private DataTable _dtTemporarySaves = GlobalData.TemporarySaleTables;
         private FormMode _formMode = FormMode.New;
         private Guid? _saleID = null;
-
-        DataTable _dtCustomerSaleAdjustment;
+        private Guid? _browseItemCustomerId = null;
 
         protected CheckBox _gridSelectCheckboxHeader;
         protected CheckBox _gridSummarySelectCheckboxHeader;
-
+        
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
         #region INITIALIZATION
@@ -77,6 +70,7 @@ namespace BinaMitraTextile.Sales
             col_grid_productwidthname.DataPropertyName = SaleItem.COL_PRODUCTWIDTHNAME;
             col_grid_colorname.DataPropertyName = SaleItem.COL_INVENTORYCOLORNAME;
             col_grid_id.DataPropertyName = SaleItem.COL_ID;
+            col_grid_SaleOrderItemDescription.DataPropertyName = SaleItem.COL_SaleOrderItemDescription;
 
             gridSummary.AutoGenerateColumns = false;
             col_gridsummary_priceperunit.DataPropertyName = SaleItem.COL_SALE_ADJUSTEDPRICE;
@@ -125,6 +119,13 @@ namespace BinaMitraTextile.Sales
 
             //clear header checkboxes
             if (_gridSelectCheckboxHeader != null) _gridSelectCheckboxHeader.Checked = false;
+
+            //if a row has sales order, disable customer selection
+            cbCustomers.Enabled = true;
+            foreach (DataRow dr in dt.Rows)
+                if ((_formMode == FormMode.Update && dr[SaleItem.COL_SaleOrderItems_Id] != DBNull.Value)
+                    || dr[InventoryItem.COL_DB_SaleOrderItems_Id] != DBNull.Value)
+                    cbCustomers.Enabled = false;
         }
 
         private void setGridSummaryDataSource(DataTable dt)
@@ -353,15 +354,14 @@ namespace BinaMitraTextile.Sales
                 return;
 
             string barcodeWithoutPrefix = InventoryItem.getBarcodeWithoutPrefix(txtBarcode.Text.Trim());
+            InventoryItem item = new InventoryItem(barcodeWithoutPrefix);
 
             if (!InventoryItem.isBarcodeExist(barcodeWithoutPrefix))
-            {
                 Tools.hasMessage(barcodeWithoutPrefix + " is not found in database");
-            }
-            else if (!InventoryItem.isBarcodeValidForSale(barcodeWithoutPrefix))
-            {
+            else if (item.isSold)
                 Tools.hasMessage(barcodeWithoutPrefix + " has already been sold");
-            }
+            else if(item.SaleOrderItems_Id != null && cbCustomers.SelectedValue != null && item.SaleOrders_Customers_Id != (Guid?)cbCustomers.SelectedValue)
+                Tools.hasMessage(barcodeWithoutPrefix + " has sale order " + item.SaleOrderItemDescription + " for customer: " + item.SaleOrderItemCustomerName);
             else
             {
                 DataTable dt;
@@ -386,6 +386,9 @@ namespace BinaMitraTextile.Sales
                         }
                     }
                 }
+
+                if (cbCustomers.SelectedValue == null && item.SaleOrders_Customers_Id != null)
+                    cbCustomers.SelectedValue = item.SaleOrders_Customers_Id;
 
                 setGridDataSource(dt);
                 applyCustomerSaleAdjustment();
@@ -555,28 +558,6 @@ namespace BinaMitraTextile.Sales
         #endregion CALCULATIONS
         /*******************************************************************************************************/
         #region ADJUSTMENT CONTROL
-
-        //private void showOrHideAdjustmentControl()
-        //{
-        //    if(isAllSelected())
-        //    {
-        //        btnSelectAll.Text = BTN_UNSELECT_ALL;
-        //        txtAdjustSelected.Visible = true;
-        //        txtAdjustSelected.Focus();
-        //    }
-        //    else if(isNothingSelected())
-        //    {
-        //        btnSelectAll.Text = BTN_SELECT_ALL;
-        //        txtAdjustSelected.Visible = false;
-        //        txtBarcode.Focus();
-        //    }
-        //    else
-        //    {
-        //        btnSelectAll.Text = BTN_SELECT_ALL;
-        //        txtAdjustSelected.Visible = true;
-        //        txtAdjustSelected.Focus();
-        //    }
-        //}
 
         private void txtSelectedAdjustment_Leave(object sender, EventArgs e)
         {
@@ -749,6 +730,63 @@ namespace BinaMitraTextile.Sales
                                                   //add the new split item to the list
                 txtBarcode.Text = Settings.itemBarcodeMandatoryPrefix + newInventoryItemId.barcode;
                 addBarcode();
+            }
+        }
+
+        private void Iddl_SaleOrderItems_isBrowseMode_Clicked(object sender, EventArgs e)
+        {
+            SaleOrders.Main_Form form = new SaleOrders.Main_Form(FormMode.Browse, (Guid?)cbCustomers.SelectedValue);
+            Tools.displayForm(form);
+            if (form.DialogResult == DialogResult.OK)
+            {
+                itxt_SaleOrderItems.ValueGuid = form.browseItemSelection;
+                itxt_SaleOrderItems.ValueText = form.browseItemDescription;
+                _browseItemCustomerId = form.browseItemCustomers_Id;
+            }            
+        }
+
+        private void BtnApplySaleOrderItem_Click(object sender, EventArgs e)
+        {
+            List<Guid> InventoryItemIdList = new List<Guid>();
+
+            DataTable dt = (DataTable)grid.DataSource;
+            foreach (DataRow dr in dt.Rows)
+                if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
+                    if (_formMode == FormMode.Update)
+                        InventoryItemIdList.Add((Guid)dr[SaleItem.COL_INVENTORY_ITEM_ID]);
+                    else
+                        InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_ID]);
+
+            if (InventoryItemIdList.Count == 0)
+                LIBUtil.Util.displayMessageBoxError("Select item to update");
+            else
+            {
+                if (InventoryItem.updateSaleOrderItem(InventoryItemIdList, itxt_SaleOrderItems.ValueGuid, itxt_SaleOrderItems.ValueText))
+                { 
+                    if (_formMode == FormMode.Update)
+                        setGridDataSource(new Sale((Guid)_saleID).sale_items); //load data from database
+                    else
+                    { 
+                        //manually update list since it is not saved in database yet
+                        foreach (DataRow dr in dt.Rows)
+                        if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
+                        {
+                            dr[InventoryItem.COL_DB_SaleOrderItems_Id] = LIBUtil.Util.wrapNullable(itxt_SaleOrderItems.ValueGuid);
+                            dr[InventoryItem.COL_SaleOrderItemDescription] = itxt_SaleOrderItems.ValueText;
+                        }
+                        setGridDataSource(dt);
+                    }
+                }
+
+                if (cbCustomers.SelectedValue == null && itxt_SaleOrderItems.ValueGuid != null)
+                {
+                    bool isCustomerSelectionEnabled = cbCustomers.Enabled;
+                    cbCustomers.Enabled = true;
+                    cbCustomers.SelectedValue = _browseItemCustomerId;
+                    cbCustomers.Enabled = isCustomerSelectionEnabled;
+                }
+
+                LIBUtil.Util.displayMessageBoxSuccess("Updated");
             }
         }
 

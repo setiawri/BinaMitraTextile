@@ -47,6 +47,7 @@ namespace BinaMitraTextile.FinancialRecords
         private void setupControls()
         {
             this.Text = "PETTY CASH";
+            this.Text += DBUtil.appendTitleWithInfo();
 
             //set filter to last 30 days
             idtp_FilterStart.Value = DateTime.Now.Date.AddDays(-30);
@@ -76,7 +77,7 @@ namespace BinaMitraTextile.FinancialRecords
             //Calculator Fields
             _calculatorFields = new List<InputControl>() { in_100rb, in_50rb, in_20rb, in_10rb, in_5rb, in_2rb, in_1rb, in_500, in_200, in_100 };
 
-            if (GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_grid_IsChecked.Visible = false;
                 btnUpdate.Visible = false;
