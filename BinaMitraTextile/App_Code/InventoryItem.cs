@@ -45,6 +45,8 @@ namespace BinaMitraTextile
         public const string COL_LASTOPNAME = "last_opname";
         public const string COL_OpnameMarker = Inventory.COL_DB_OpnameMarker;
 
+        public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
+
         public Guid id;
         public Guid inventory_id;
         public decimal item_length = 0;
@@ -208,47 +210,6 @@ namespace BinaMitraTextile
             return masterTable;
         }
 
-        //public static DataTable addToForSaleTable(DataTable dt, string BarcodeWithoutPrefix)
-        //{
-        //    //add item to table
-        //    if (dt == null)
-        //    {
-        //        dt = InventoryItem.getRowForSale(BarcodeWithoutPrefix);
-        //        Tools.displayForm(new Sales.Verify_Form(dt.Rows[0][InventoryItem.COL_INVENTORY_CODE].ToString(), dt.Rows[0][InventoryItem.COL_LENGTH].ToString()));
-        //    }
-        //    else
-        //    {
-        //        dt = Tools.setDataTablePrimaryKey(dt, InventoryItem.COL_ID);
-        //        foreach (DataRow dr in InventoryItem.getRowForSale(BarcodeWithoutPrefix).Rows)
-        //        {
-        //            if (dt.Rows.Contains(dr[InventoryItem.COL_ID]))
-        //            {
-        //                Tools.hasMessage(dr[InventoryItem.COL_BARCODE].ToString() + " is already in the list");
-        //            }
-        //            else
-        //            {
-        //                Tools.displayForm(new Sales.Verify_Form(dr[InventoryItem.COL_INVENTORY_CODE].ToString(), dr[InventoryItem.COL_LENGTH].ToString()));
-        //                dt.Rows.Add(dr.ItemArray);
-        //            }
-        //        }
-        //    }
-
-        //    return recalculateSubtotals(dt);
-        //}
-
-        //public static DataTable recalculateSubtotals(DataTable dt) 
-        //{
-        //    //update subtotals
-        //    foreach (DataRow dr in dt.Rows)
-        //    {
-        //        dr[InventoryItem.COL_SALE_SUBTOTAL] = String.Format("{0}",
-        //            Convert.ToDecimal(dr[InventoryItem.COL_LENGTH])
-        //            * (Tools.zeroNonNumericString(dr[InventoryItem.COL_SALE_SELLPRICE].ToString())
-        //            - Tools.zeroNonNumericString(dr[InventoryItem.COL_SALE_ADJUSTMENT])));
-        //    }
-        //    return dt;
-        //}
-
         public static DataTable getItems(Guid inventoryID)
         {
             DataTable dataTable = new DataTable();
@@ -266,6 +227,21 @@ namespace BinaMitraTextile
             return dataTable;
         }
 
+        public static DataTable get_Booked(Guid saleOrders_Id)
+        {
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "InventoryItems_get_Booked",
+                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, saleOrders_Id)
+                    );
+            }
+            return result.Datatable;
+        }
+        
         public string update()
         {
             try

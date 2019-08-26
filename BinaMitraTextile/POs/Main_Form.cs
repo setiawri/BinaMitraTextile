@@ -32,12 +32,12 @@ namespace BinaMitraTextile.POs
             InitializeComponent();
 
             _formMode = formMode;
-            setupControls();
-            populatePageData();
         }
 
         private void Form_Load(object sender, EventArgs e)
         {
+            setupControls();
+            populatePageData();
         }
 
         private void setupControls()

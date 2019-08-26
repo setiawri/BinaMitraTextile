@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -26,6 +27,7 @@ namespace BinaMitraTextile
         public const string COL_CUSTOMERID = "customer_id";
         public const string COL_CUSTOMERNAME = "customer_name";
         public const string COL_DB_isManualAdjustment = "isManualAdjustment";
+        public const string COL_DB_sale_id = "sale_id";
 
         public const string COL_QTY = "qty";
         public const string COL_SUBTOTAL = "subtotal";
@@ -41,6 +43,12 @@ namespace BinaMitraTextile
         public const string COL_SELECTED = "selected";
         public const string COL_SaleOrderItemDescription = "SaleOrderItemDescription";
         public const string COL_SaleOrderItems_Id = "SaleOrderItems_Id";
+        public const string COL_Sales_Barcode = "Sales_Barcode";
+        public const string COL_Sales_Timestamp = "Sales_Timestamp";
+
+        public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
+        public const string FILTER_SaleItems_StartDate = "FILTER_SaleItems_StartDate";
+        public const string FILTER_SaleItems_EndDate = "FILTER_SaleItems_EndDate";
 
         public Guid id;
         public Guid sale_id;
@@ -216,22 +224,21 @@ namespace BinaMitraTextile
             return dataTable;
         }
 
-        public static DataTable getSold(DateTime filterStartDateTime, DateTime? filterEndDateTime)
+        public static DataTable getSold(DateTime? filterStartDateTime, DateTime? filterEndDateTime, Guid? saleOrderItems_Id)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_sold", conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(filterStartDateTime);
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(filterEndDateTime);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "saleitem_get_sold",
+                        new SqlQueryParameter(FILTER_SaleItems_StartDate, SqlDbType.DateTime, Tools.wrapNullable(filterStartDateTime)),
+                        new SqlQueryParameter(FILTER_SaleItems_EndDate, SqlDbType.DateTime, Tools.wrapNullable(filterEndDateTime)),
+                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    );
             }
-
-            return dataTable;
+            return result.Datatable;
         }
 
         #endregion DATABASE METHODS

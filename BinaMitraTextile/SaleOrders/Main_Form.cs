@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BinaMitraTextile.SaleOrders
@@ -34,12 +27,12 @@ namespace BinaMitraTextile.SaleOrders
 
             _formMode = formMode;
             _Customers_Id = Customers_Id;
-            setupControls();
-            populatePageData();
         }
 
         private void Form_Load(object sender, EventArgs e)
         {
+            setupControls();
+            populatePageData();
         }
 
         private void setupControls()
@@ -87,9 +80,26 @@ namespace BinaMitraTextile.SaleOrders
             col_gridSaleOrderItems_Customers_Id.DataPropertyName = SaleOrderItem.COL_Customers_Id;
             col_gridSaleOrderItems_CustomerName.DataPropertyName = SaleOrderItem.COL_CustomerName;
 
+            gridSold.AutoGenerateColumns = false;
+            gridSold.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridSold_InventoryItems_Id.DataPropertyName = SaleItem.COL_INVENTORY_ITEM_ID;
+            col_gridSold_InventoryItems_ItemLength.DataPropertyName = SaleItem.COL_LENGTH;
+            col_gridSold_InventoryItems_Barcode.DataPropertyName = SaleItem.COL_BARCODE;
+            col_gridSold_Sales_No.DataPropertyName = SaleItem.COL_Sales_Barcode;
+            col_gridSold_Sales_Timestamp.DataPropertyName = SaleItem.COL_Sales_Timestamp;
+            col_gridSold_Sales_Id.DataPropertyName = SaleItem.COL_DB_sale_id;
+            col_gridSold_Inventory_Code.DataPropertyName = SaleItem.COL_INVENTORYCODE;
+
+            gridBooked.AutoGenerateColumns = false;
+            gridBooked.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridBooked_InventoryItems_Barcode.DataPropertyName = InventoryItem.COL_BARCODE;
+            col_gridBooked_InventoryItems_Id.DataPropertyName = InventoryItem.COL_ID;
+            col_gridBooked_InventoryItems_ItemLength.DataPropertyName = InventoryItem.COL_LENGTH;
+            col_gridBooked_Inventory_Code.DataPropertyName = InventoryItem.COL_INVENTORY_CODE;
+
             addStatusContextMenu(col_gridSaleOrderItems_Status_Name);
 
-            if(GlobalData.UserAccount.role == Roles.User)
+            if (GlobalData.UserAccount.role == Roles.User)
             {
 
             }
@@ -104,6 +114,8 @@ namespace BinaMitraTextile.SaleOrders
             if (_formMode == FormMode.Search)
             {
                 populateGridSaleOrders();
+                if (gridSaleOrders.SelectedRows.Count > 0)
+                    populateGridSaleOrderItems();
             }
             else if (_formMode == FormMode.Browse)
             {
@@ -229,6 +241,28 @@ namespace BinaMitraTextile.SaleOrders
         {
             txtCustomerPONo.Text = "";
             dtpEnd.Checked = false;
+        }
+
+        private void GridSaleOrderItems_SelectionChanged(object sender, EventArgs e)
+        {
+            if(gridSaleOrderItems.SelectedRows.Count > 0)
+                populateGridSoldAndBooked((Guid)LIBUtil.Util.getSelectedRowValue(sender, col_gridSaleOrderItems_Id));
+        }
+
+        private void populateGridSoldAndBooked(Guid saleOrderItems_Id)
+        {
+            gridSold.DataSource = SaleItem.getSold(null, null, saleOrderItems_Id);
+            gridBooked.DataSource = InventoryItem.get_Booked(saleOrderItems_Id);
+        }
+
+        private void GridSold_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridSold_Sales_No.Name))
+            {
+                Sale sale = new Sale(new Guid(gridSold.Rows[e.RowIndex].Cells[col_gridSold_Sales_Id.Name].Value.ToString()));
+                var form = new Sales.Invoice_Form(sale, SaleItem.getItems(sale.id), false);
+                Tools.displayForm(form);
+            }
         }
 
         #endregion FORM METHODS
