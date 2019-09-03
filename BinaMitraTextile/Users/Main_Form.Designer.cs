@@ -40,6 +40,11 @@
             this.chkShowInactive = new System.Windows.Forms.CheckBox();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.LinkName = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_grid_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_PercentCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtConfirmNewPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
@@ -47,13 +52,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtPercentCommission = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.LinkName = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.col_grid_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_PercentCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtPercentCommission = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -199,6 +199,58 @@
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "id";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // active
+            // 
+            this.active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.active.DataPropertyName = "active";
+            this.active.HeaderText = "Active";
+            this.active.MinimumWidth = 40;
+            this.active.Name = "active";
+            this.active.ReadOnly = true;
+            this.active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.active.Width = 40;
+            // 
+            // LinkName
+            // 
+            this.LinkName.ActiveLinkColor = System.Drawing.Color.Orange;
+            this.LinkName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LinkName.DataPropertyName = "username";
+            this.LinkName.HeaderText = "Name";
+            this.LinkName.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.LinkName.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.LinkName.MinimumWidth = 100;
+            this.LinkName.Name = "LinkName";
+            this.LinkName.ReadOnly = true;
+            this.LinkName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.LinkName.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            // 
+            // col_grid_role
+            // 
+            this.col_grid_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_role.DataPropertyName = "rolename";
+            this.col_grid_role.HeaderText = "Role";
+            this.col_grid_role.MinimumWidth = 50;
+            this.col_grid_role.Name = "col_grid_role";
+            this.col_grid_role.ReadOnly = true;
+            this.col_grid_role.Width = 50;
+            // 
+            // col_grid_PercentCommission
+            // 
+            this.col_grid_PercentCommission.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_PercentCommission.HeaderText = "%";
+            this.col_grid_PercentCommission.MinimumWidth = 30;
+            this.col_grid_PercentCommission.Name = "col_grid_PercentCommission";
+            this.col_grid_PercentCommission.ReadOnly = true;
+            this.col_grid_PercentCommission.Width = 30;
+            // 
             // txtConfirmNewPassword
             // 
             this.txtConfirmNewPassword.Location = new System.Drawing.Point(277, 59);
@@ -284,15 +336,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // txtPercentCommission
-            // 
-            this.txtPercentCommission.Location = new System.Drawing.Point(47, 115);
-            this.txtPercentCommission.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPercentCommission.MaxLength = 30;
-            this.txtPercentCommission.Name = "txtPercentCommission";
-            this.txtPercentCommission.Size = new System.Drawing.Size(138, 20);
-            this.txtPercentCommission.TabIndex = 107;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -303,57 +346,14 @@
             this.label8.TabIndex = 108;
             this.label8.Text = "%";
             // 
-            // ID
+            // txtPercentCommission
             // 
-            this.ID.DataPropertyName = "id";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // active
-            // 
-            this.active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.active.DataPropertyName = "active";
-            this.active.HeaderText = "Active";
-            this.active.MinimumWidth = 40;
-            this.active.Name = "active";
-            this.active.ReadOnly = true;
-            this.active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.active.Width = 40;
-            // 
-            // LinkName
-            // 
-            this.LinkName.ActiveLinkColor = System.Drawing.Color.Orange;
-            this.LinkName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LinkName.DataPropertyName = "username";
-            this.LinkName.HeaderText = "Name";
-            this.LinkName.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.LinkName.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.LinkName.MinimumWidth = 100;
-            this.LinkName.Name = "LinkName";
-            this.LinkName.ReadOnly = true;
-            this.LinkName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.LinkName.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            // 
-            // col_grid_role
-            // 
-            this.col_grid_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_role.DataPropertyName = "rolename";
-            this.col_grid_role.HeaderText = "Role";
-            this.col_grid_role.MinimumWidth = 50;
-            this.col_grid_role.Name = "col_grid_role";
-            this.col_grid_role.ReadOnly = true;
-            this.col_grid_role.Width = 50;
-            // 
-            // col_grid_PercentCommission
-            // 
-            this.col_grid_PercentCommission.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_PercentCommission.HeaderText = "%";
-            this.col_grid_PercentCommission.MinimumWidth = 30;
-            this.col_grid_PercentCommission.Name = "col_grid_PercentCommission";
-            this.col_grid_PercentCommission.ReadOnly = true;
-            this.col_grid_PercentCommission.Width = 30;
+            this.txtPercentCommission.Location = new System.Drawing.Point(47, 115);
+            this.txtPercentCommission.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPercentCommission.MaxLength = 30;
+            this.txtPercentCommission.Name = "txtPercentCommission";
+            this.txtPercentCommission.Size = new System.Drawing.Size(138, 20);
+            this.txtPercentCommission.TabIndex = 107;
             // 
             // Main_Form
             // 
@@ -365,7 +365,7 @@
             this.Controls.Add(this.grid);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main_Form";
-            this.Text = "Users";
+            this.Text = "USER ACCOUNTS";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);

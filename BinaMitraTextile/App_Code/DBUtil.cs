@@ -32,15 +32,46 @@ namespace BinaMitraTextile
         {
             get
             {
-                if (isSalesEnvironment || GlobalData.ConnectToLiveDBLocal)
-                    return ConfigurationManager.ConnectionStrings["connDBLiveLocal"].ConnectionString;
-                else if (isDevEnvironment && !GlobalData.ConnectToLiveDB && !GlobalData.ConnectToLiveDBLocal)
-                    return ConfigurationManager.ConnectionStrings["connDBDev"].ConnectionString;
-                else if(isServerEnvironment)
-                    return ConfigurationManager.ConnectionStrings["connDBLiveForServer"].ConnectionString;
-                else
-                    return ConfigurationManager.ConnectionStrings["connDBLive"].ConnectionString;
+                if (string.IsNullOrEmpty(_connectionString))
+                    setConnectionString();
+                return _connectionString;
             }
+        }
+        private static string _connectionString = "";
+
+        public static string setConnectionString()
+        {
+            if (GlobalData.ConnectToLocalLiveDB)
+                _connectionString = ConfigurationManager.ConnectionStrings["connDBLiveLocal"].ConnectionString;
+            else if (GlobalData.ConnectToDevDB)
+                _connectionString = ConfigurationManager.ConnectionStrings["connDBDev"].ConnectionString;
+            else if (GlobalData.ConnectAsServer)
+                _connectionString = ConfigurationManager.ConnectionStrings["connDBLiveForServer"].ConnectionString;
+            else
+                _connectionString = ConfigurationManager.ConnectionStrings["connDBLive"].ConnectionString;
+            
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(_connectionString);
+            string servername = builder.DataSource;
+            if(servername.IndexOf(',') > -1)
+            {
+                servername = servername.Substring(0, servername.IndexOf(','));
+            }
+
+            if(!string.IsNullOrEmpty(GlobalData.LiveConnectionPort))
+            {
+                builder.DataSource = servername + ',' + GlobalData.LiveConnectionPort;
+                _connectionString = builder.ConnectionString;
+            }
+
+            return _connectionString;
+        }
+
+        public static string connectionInfo()
+        {
+            string connectionInfo = connectionString;
+            if (connectionInfo.IndexOf(';') > 0)
+                connectionInfo = connectionInfo.Substring(0, connectionInfo.IndexOf(';'));
+            return connectionInfo;
         }
 
         public static string appendTitleWithInfo()
@@ -52,10 +83,12 @@ namespace BinaMitraTextile
 
             if (GlobalData.ConnectToLiveDB)
                 info += string.Format(" (LIVE DB)");
-            else if (GlobalData.ConnectToLiveDBLocal)
+            else if (GlobalData.ConnectToLocalLiveDB)
                 info += string.Format(" (LOCAL LIVE DB)");
-            else if (isDevEnvironment)
+            else if (GlobalData.ConnectToDevDB)
                 info += string.Format(" (DEV DB)");
+            else if (GlobalData.ConnectAsServer)
+                info += string.Format(" (AS SERVER)");
 
             return info;
         }
@@ -72,7 +105,7 @@ namespace BinaMitraTextile
 
         public static void testDBConnection()
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            using (SqlConnection conn = new SqlConnection(DBUtil.setConnectionString()))
             {
                 conn.Open();
             }

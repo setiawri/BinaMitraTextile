@@ -40,8 +40,6 @@ namespace BinaMitraTextile.Returns
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             grid.AutoGenerateColumns = false;
             Tools.clearWhenSelected(grid);
             col_grid_priceperunit.DataPropertyName = SaleReturn.COL_PRICEPERUNIT;

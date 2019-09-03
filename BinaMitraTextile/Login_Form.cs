@@ -26,34 +26,36 @@ namespace BinaMitraTextile
         public Login_Form()
         {
             InitializeComponent();
-
-            setupControls();
         }
 
         private void setupControls()
         {
-            this.Text = _title + DBUtil.appendTitleWithInfo();
-
-            populateCBUsers();
-
-            if(DBUtil.isSalesEnvironment)
+            if (DBUtil.isSalesEnvironment)
             {
-                chkLiveDB.Visible = false;
-                chkLiveDBLocal.Visible = false;
-                cbUsers.Focus();
+                rbLocalDB.Checked = true;
+                rbDevDB.Visible = false;
+                rbConnectAsServer.Visible = false;
+            }
+            else if (DBUtil.isDevEnvironment)
+            {
+                rbDevDB.Checked = true;
+                _bypassLogin = true;
+            }
+            else if (DBUtil.isServerEnvironment)
+            {
+                rbConnectAsServer.Checked = true;
+                rbDevDB.Visible = false;
             }
             else
             {
-                chkLiveDBLocal.Focus();
+                rbLiveDB.Checked = true;
 
-                if(DBUtil.isDevEnvironment)
-                    _bypassLogin = true;
+                rbDevDB.Visible = false;
+                rbConnectAsServer.Visible = false;
             }
-        }
 
-        private void populateCBUsers()
-        {
-            Tools.populateDropDownList(cbUsers, UserAccount.getAll(false).DefaultView, UserAccount.COL_DB_NAME, UserAccount.COL_DB_ID, false);
+            toggleConnectionProperties();
+            itxt_Username.focus();
         }
 
         #endregion INITIALIZATION
@@ -63,85 +65,122 @@ namespace BinaMitraTextile
 
         private void authenticate()
         {
-            if (cbUsers.SelectedValue == null)
+            LIBUtil.Util.sanitize(itxt_Username.textbox, itxt_Password.textbox);
+            GlobalData.UserAccount = UserAccount.authenticate(itxt_Username.ValueText, itxt_Password.ValueText, _bypassLogin);
+
+            if (GlobalData.UserAccount != null)
             {
-                if (((DataView)cbUsers.DataSource).Count == 0) //allow creation of first user
-                {
-                    cbUsers.Text = "";
-                    txtPassword.Text = "";
-                    Tools.displayForm(new Users.Main_Form());
-                    populateCBUsers();
-                    cbUsers.Focus();
-                }
-                else
-                {
-                    Tools.hasMessage("Select a user from the drop down list");
-                    cbUsers.Focus();
-                }
+                this.Hide();
+                LIBUtil.Util.displayForm(null, new Container_Form(), true);
+                this.Show();
+                this.Close();
             }
             else
             {
-                UserAccount user = new UserAccount((Guid)cbUsers.SelectedValue);
-                
-                if (_bypassLogin || user.authenticated(txtPassword.Text.Trim()))
-                {
-                    cbUsers.Text = "";
-                    txtPassword.Text = "";
-                    GlobalData.UserAccount = user;
-                    Tools.displayForm(this, new Main_Form());
-                    if(!this.IsDisposed)
-                    {
-                        populateCBUsers();
-                        cbUsers.Focus();
-                    }
-                    this.Close();
-                }
-                else
-                {
-                    Tools.hasMessage("Invalid password");
-                    txtPassword.Text = "";
-                    txtPassword.Focus();
-                }
+                itxt_Password.ValueText = "";
+                itxt_Password.focus();
             }
-        }
 
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-                authenticate();
+
+            //UserAccount user = UserAccount.authenticate(itxt_Username.ValueText, itxt_Password.ValueText.Trim(), _bypassLogin);
+            //if (user != null)
+            //{
+            //    itxt_Username.ValueText = "";
+            //    itxt_Password.ValueText = "";
+            //    GlobalData.UserAccount = user;
+
+            //    //Tools.displayForm(this, new Main_Form());
+            //    LIBUtil.Util.displayForm(this, new Container_Form(), true);
+
+            //    this.Hide();
+            //    LIBUtil.Util.displayForm(null, new Main_Form(), true);
+            //    this.Show();
+            //    this.Close();
+            //}
+            //else
+            //{
+            //    itxt_Password.ValueText = "";
+            //    itxt_Password.focus();
+            //}
         }
 
         #endregion AUTHENTICATION
         /*******************************************************************************************************/
         #region EVENT HANDLERS
-        
-        private void chkDBConnection_CheckedChanged(object sender, EventArgs e)
-        {
-            this.chkLiveDB.CheckedChanged -= new System.EventHandler(this.chkDBConnection_CheckedChanged);
-            this.chkLiveDBLocal.CheckedChanged -= new System.EventHandler(this.chkDBConnection_CheckedChanged);
             
-            if (sender == chkLiveDBLocal)
-                chkLiveDB.Checked = false;
-            else
-                chkLiveDBLocal.Checked = false;
-
-            GlobalData.ConnectToLiveDB = chkLiveDB.Checked;
-            GlobalData.ConnectToLiveDBLocal = chkLiveDBLocal.Checked;
-            if (!DBUtil.isDBConnectionAvailable())
-            {
-                GlobalData.ConnectToLiveDB = GlobalData.ConnectToLiveDBLocal = chkLiveDB.Checked = chkLiveDBLocal.Checked = false;
-                chkLiveDBLocal.Focus();
-            }
-            else
-            {
-                cbUsers.Focus();
-            }
-
-            this.chkLiveDB.CheckedChanged += new System.EventHandler(this.chkDBConnection_CheckedChanged);
-            this.chkLiveDBLocal.CheckedChanged += new System.EventHandler(this.chkDBConnection_CheckedChanged);
-
-            this.Text = _title + DBUtil.appendTitleWithInfo();
+        private void Login_Form_Load(object sender, EventArgs e)
+        {
+            setupControls();
         }
+
+        private void ChkShowConnectionProperties_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                if (isConnectedToServer())
+                    authenticate();
+                else
+                    itxt_Password.focus();
+            }
+        }
+
+        private bool isConnectedToServer()
+        {
+            GlobalData.ConnectAsServer = rbConnectAsServer.Checked;
+            GlobalData.ConnectToDevDB = rbDevDB.Checked;
+            GlobalData.ConnectToLiveDB = rbLiveDB.Checked;
+            GlobalData.ConnectToLocalLiveDB = rbLocalDB.Checked;
+            GlobalData.LiveConnectionPort = itxt_Port.ValueText;
+            DBUtil.setConnectionString();
+
+            if (DBUtil.isDBConnectionAvailable())
+                return true;
+            else
+                return false;
+        }
+
+        private void rbConnection_CheckedChanged(object sender, EventArgs e)
+        {
+            itxt_Username.focus();
+        }
+
+        private void BtnTestConnection_Click(object sender, EventArgs e)
+        {
+            if (isConnectedToServer())
+                LIBUtil.Util.displayMessageBoxSuccess(DBUtil.connectionInfo());
+            else
+                LIBUtil.Util.displayMessageBoxError("Connection Failed: " + DBUtil.connectionInfo());
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                toggleConnectionProperties();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void toggleConnectionProperties()
+        {
+            if (gbConnectionProperties.Visible)
+            {
+                gbConnectionProperties.Visible = false;
+                this.Height -= gbConnectionProperties.Height;
+            }
+            else
+            {
+                gbConnectionProperties.Visible = true;
+                this.Height += gbConnectionProperties.Height;
+            }
+
+            itxt_Username.focus();
+        }
+
         #endregion
         /*******************************************************************************************************/
 

@@ -71,19 +71,20 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 9);
+            this.label3.Location = new System.Drawing.Point(2, 7);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 25);
+            this.label3.Size = new System.Drawing.Size(82, 20);
             this.label3.TabIndex = 130;
             this.label3.Text = "RETURN";
             // 
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(5, 2);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrint.Location = new System.Drawing.Point(4, 2);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(169, 34);
+            this.btnPrint.Size = new System.Drawing.Size(127, 28);
             this.btnPrint.TabIndex = 0;
             this.btnPrint.Text = "PRINT";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -91,9 +92,10 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(644, 38);
+            this.label8.Location = new System.Drawing.Point(483, 31);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(315, 70);
+            this.label8.Size = new System.Drawing.Size(236, 57);
             this.label8.TabIndex = 129;
             this.label8.Text = "Jl. Mayor Sunarya Blok K No. 11A\r\nBandung, Jawa Barat\r\nsimpati/whatsapp: 081.2240" +
     ".44338\r\nbina.mitra.textile@gmail.com";
@@ -102,35 +104,39 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(4, 96);
+            this.lblDate.Location = new System.Drawing.Point(3, 78);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(52, 17);
+            this.lblDate.Size = new System.Drawing.Size(40, 13);
             this.lblDate.TabIndex = 127;
             this.lblDate.Text = "lblDate";
             // 
             // lblNotes
             // 
-            this.lblNotes.Location = new System.Drawing.Point(60, 540);
+            this.lblNotes.Location = new System.Drawing.Point(45, 439);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(464, 75);
+            this.lblNotes.Size = new System.Drawing.Size(348, 61);
             this.lblNotes.TabIndex = 118;
             this.lblNotes.Text = "lblNotes";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 540);
+            this.label1.Location = new System.Drawing.Point(3, 439);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 117;
             this.label1.Text = "Notes:";
             // 
             // lblCustomerInfo
             // 
             this.lblCustomerInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCustomerInfo.Location = new System.Drawing.Point(136, 9);
+            this.lblCustomerInfo.Location = new System.Drawing.Point(102, 7);
+            this.lblCustomerInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomerInfo.Name = "lblCustomerInfo";
-            this.lblCustomerInfo.Size = new System.Drawing.Size(465, 98);
+            this.lblCustomerInfo.Size = new System.Drawing.Size(349, 80);
             this.lblCustomerInfo.TabIndex = 120;
             this.lblCustomerInfo.Text = "lblCustomerInfo";
             // 
@@ -138,18 +144,20 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(663, 14);
+            this.label2.Location = new System.Drawing.Point(497, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(273, 25);
+            this.label2.Size = new System.Drawing.Size(222, 20);
             this.label2.TabIndex = 119;
             this.label2.Text = "CV. BINA MITRA TEXTILE";
             // 
             // lblTotalCounts
             // 
             this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCounts.Location = new System.Drawing.Point(604, 545);
+            this.lblTotalCounts.Location = new System.Drawing.Point(453, 443);
+            this.lblTotalCounts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalCounts.Name = "lblTotalCounts";
-            this.lblTotalCounts.Size = new System.Drawing.Size(355, 25);
+            this.lblTotalCounts.Size = new System.Drawing.Size(266, 20);
             this.lblTotalCounts.TabIndex = 114;
             this.lblTotalCounts.Text = "TotalCounts";
             this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -157,9 +165,10 @@
             // lblTotalAmount
             // 
             this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(608, 576);
+            this.lblTotalAmount.Location = new System.Drawing.Point(456, 468);
+            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(351, 39);
+            this.lblTotalAmount.Size = new System.Drawing.Size(263, 32);
             this.lblTotalAmount.TabIndex = 115;
             this.lblTotalAmount.Text = "GrandTotal";
             this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -168,19 +177,19 @@
             // 
             this.pnlButtons.Controls.Add(this.btnPackingList);
             this.pnlButtons.Controls.Add(this.btnPrint);
-            this.pnlButtons.Location = new System.Drawing.Point(19, 642);
-            this.pnlButtons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlButtons.Location = new System.Drawing.Point(14, 522);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(692, 47);
+            this.pnlButtons.Size = new System.Drawing.Size(519, 38);
             this.pnlButtons.TabIndex = 0;
             // 
             // btnPackingList
             // 
             this.btnPackingList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPackingList.Location = new System.Drawing.Point(180, 2);
-            this.btnPackingList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPackingList.Location = new System.Drawing.Point(135, 2);
+            this.btnPackingList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPackingList.Name = "btnPackingList";
-            this.btnPackingList.Size = new System.Drawing.Size(169, 34);
+            this.btnPackingList.Size = new System.Drawing.Size(127, 28);
             this.btnPackingList.TabIndex = 5;
             this.btnPackingList.Text = "Packing List";
             this.btnPackingList.UseVisualStyleBackColor = true;
@@ -199,19 +208,20 @@
             this.pnlPrint.Controls.Add(this.grid);
             this.pnlPrint.Controls.Add(this.lblTotalCounts);
             this.pnlPrint.Controls.Add(this.lblTotalAmount);
-            this.pnlPrint.Location = new System.Drawing.Point(16, 14);
-            this.pnlPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlPrint.Location = new System.Drawing.Point(12, 11);
+            this.pnlPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlPrint.Name = "pnlPrint";
-            this.pnlPrint.Size = new System.Drawing.Size(964, 624);
+            this.pnlPrint.Size = new System.Drawing.Size(723, 507);
             this.pnlPrint.TabIndex = 113;
             // 
             // lblReturnNo
             // 
             this.lblReturnNo.AutoSize = true;
             this.lblReturnNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReturnNo.Location = new System.Drawing.Point(4, 33);
+            this.lblReturnNo.Location = new System.Drawing.Point(3, 27);
+            this.lblReturnNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblReturnNo.Name = "lblReturnNo";
-            this.lblReturnNo.Size = new System.Drawing.Size(108, 20);
+            this.lblReturnNo.Size = new System.Drawing.Size(90, 16);
             this.lblReturnNo.TabIndex = 133;
             this.lblReturnNo.Text = "lblReturnNo";
             // 
@@ -242,15 +252,15 @@
             this.dataGridViewTextBoxColumn4,
             this.col_grid_priceperunit,
             this.dataGridViewTextBoxColumn7});
-            this.grid.Location = new System.Drawing.Point(5, 114);
-            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grid.Location = new System.Drawing.Point(4, 93);
+            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(953, 423);
+            this.grid.Size = new System.Drawing.Size(715, 344);
             this.grid.TabIndex = 109;
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
             // 
@@ -263,7 +273,7 @@
             this.dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
             this.dataGridViewLinkColumn2.ReadOnly = true;
             this.dataGridViewLinkColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLinkColumn2.Width = 61;
+            this.dataGridViewLinkColumn2.Width = 48;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -284,7 +294,7 @@
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 85;
+            this.dataGridViewTextBoxColumn2.Width = 68;
             // 
             // Grade
             // 
@@ -296,7 +306,7 @@
             this.Grade.MinimumWidth = 6;
             this.Grade.Name = "Grade";
             this.Grade.ReadOnly = true;
-            this.Grade.Width = 65;
+            this.Grade.Width = 51;
             // 
             // Color
             // 
@@ -308,7 +318,7 @@
             this.Color.MinimumWidth = 6;
             this.Color.Name = "Color";
             this.Color.ReadOnly = true;
-            this.Color.Width = 66;
+            this.Color.Width = 53;
             // 
             // qty
             // 
@@ -320,7 +330,7 @@
             this.qty.MinimumWidth = 6;
             this.qty.Name = "qty";
             this.qty.ReadOnly = true;
-            this.qty.Width = 53;
+            this.qty.Width = 43;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -332,7 +342,7 @@
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 52;
+            this.dataGridViewTextBoxColumn3.Width = 42;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -344,7 +354,7 @@
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 54;
+            this.dataGridViewTextBoxColumn4.Width = 44;
             // 
             // col_grid_priceperunit
             // 
@@ -356,7 +366,7 @@
             this.col_grid_priceperunit.MinimumWidth = 6;
             this.col_grid_priceperunit.Name = "col_grid_priceperunit";
             this.col_grid_priceperunit.ReadOnly = true;
-            this.col_grid_priceperunit.Width = 64;
+            this.col_grid_priceperunit.Width = 51;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -370,19 +380,18 @@
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 75;
+            this.dataGridViewTextBoxColumn7.Width = 57;
             // 
             // Print_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(995, 708);
+            this.ClientSize = new System.Drawing.Size(746, 575);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.pnlPrint);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Print_Form";
-            this.Text = "Return";
+            this.Text = "SALES RETURN";
             this.Load += new System.EventHandler(this.Form_Load);
             this.pnlButtons.ResumeLayout(false);
             this.pnlPrint.ResumeLayout(false);

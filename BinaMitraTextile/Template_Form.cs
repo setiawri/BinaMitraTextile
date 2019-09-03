@@ -30,8 +30,6 @@ namespace BinaMitraTextile
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             //grid.AutoGenerateColumns = false;
             //grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //grid.Columns[Method.Name].DataPropertyName = SalePayment.COL_METHODNAME;

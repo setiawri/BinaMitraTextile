@@ -39,6 +39,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4FE9CB28879748D7A00901A6E4DD7DA8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_68B5892E981EB4D08C0CDB4C5A478C9D"
         "OwnerKey" = "8:_CF853044E9DB241A26957563668E78B4"
         "MsmSig" = "8:_UNDEFINED"
@@ -294,6 +300,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4FE9CB28879748D7A00901A6E4DD7DA8"
+            {
+            "SourcePath" = "8:..\\BinaMitraTextile\\Images\\Icons\\handshake-512-white.ico"
+            "TargetName" = "8:handshake-512-white.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_25A0B3DA86C043458ED6BB64B3907F03"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_68B5892E981EB4D08C0CDB4C5A478C9D"
@@ -659,20 +685,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7C3825DD85E74F6A9BD088332D51848B"
-            {
-            "Name" = "8:Bina Mitra Textile App"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_44A55196F54D4F279C46906623D901EA"
-            "Folder" = "8:_3A733D9CC6DC4304A52BE7FD689D0CAE"
-            "WorkingFolder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
-            "Icon" = "8:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
-            "Feature" = "8:"
-            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A12AD66E849C4F44872AD86B95857036"
             {
             "Name" = "8:Bina Mitra Textile App"
@@ -684,7 +696,7 @@
             "Target" = "8:_44A55196F54D4F279C46906623D901EA"
             "Folder" = "8:_DD8EEA51E29D4B4D9F35924094D432A6"
             "WorkingFolder" = "8:_5F4EAC6ED9B04FA782F71149D1978C69"
-            "Icon" = "8:_B8FEAE56FE7C41CEAE2572796BC0CCE5"
+            "Icon" = "8:_4FE9CB28879748D7A00901A6E4DD7DA8"
             "Feature" = "8:"
             }
         }

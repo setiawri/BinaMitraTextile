@@ -72,7 +72,7 @@
             this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CheckDBConnection";
-            this.Text = "CheckDBConnection";
+            this.Text = "CHECK CONNECTION";
             this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

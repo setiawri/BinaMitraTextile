@@ -614,7 +614,7 @@
             this.Controls.Add(this.gridPOItems);
             this.Controls.Add(this.scMain);
             this.Name = "Main_Form";
-            this.Text = "Purchase Orders";
+            this.Text = "PURCHASE ORDERS";
             this.Load += new System.EventHandler(this.Form_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

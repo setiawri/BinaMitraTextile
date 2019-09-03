@@ -117,6 +117,12 @@
     <None Include="App_Code\Notification.cs" />
     <Compile Include="App_Code\PettyCashRecord.cs" />
     <Compile Include="App_Code\PettyCashRecordsCategory.cs" />
+    <Compile Include="Container_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Container_Form.Designer.cs">
+      <DependentUpon>Container_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinancialRecords\PettyCash_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -547,6 +553,9 @@
     <EmbeddedResource Include="Admin\MasterData_v1_ToDoList_Form.resx">
       <DependentUpon>MasterData_v1_ToDoList_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Container_Form.resx">
+      <DependentUpon>Container_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FinancialRecords\PettyCash_Form.resx">
       <DependentUpon>PettyCash_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -774,6 +783,7 @@
     <None Include="Resources\expand-collapse-down.png" />
     <None Include="Resources\notification02.wav" />
     <None Include="Resources\notification03.wav" />
+    <Content Include="Images\Icons\handshake-512-white.ico" />
     <Content Include="Images\Icons\handshake-512.ico" />
     <Content Include="Resources\Sounds\Notification.mp3" />
     <Content Include="Resources\Sounds\Notification.wav" />

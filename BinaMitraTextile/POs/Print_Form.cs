@@ -48,7 +48,8 @@ namespace BinaMitraTextile.POs
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
+            
+            
 
             Tools.disableResizing(this);
 
@@ -92,6 +93,16 @@ namespace BinaMitraTextile.POs
         #endregion INITIALIZATION
         /*******************************************************************************************************/
         #region FORM METHODS
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                btnPrint.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         #endregion FORM METHODS
         /*******************************************************************************************************/
         #region PRINT METHODS

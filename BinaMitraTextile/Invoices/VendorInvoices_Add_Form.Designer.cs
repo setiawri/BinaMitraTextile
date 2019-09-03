@@ -65,7 +65,7 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // VendorInvoices_Edit_Form
+            // VendorInvoices_Add_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,8 +73,8 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtInvoiceNo);
-            this.Name = "VendorInvoices_Edit_Form";
-            this.Text = "Vendor Invoice";
+            this.Name = "VendorInvoices_Add_Form";
+            this.Text = "CREATE VENDOR INVOICE";
             this.ResumeLayout(false);
             this.PerformLayout();
 

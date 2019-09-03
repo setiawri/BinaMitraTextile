@@ -26,7 +26,6 @@ namespace BinaMitraTextile.InventoryForm
         public ItemCheck_Form()
         {
             InitializeComponent();
-            this.Text += DBUtil.appendTitleWithInfo();
 
             InventoryItemCheck.CheckCleanup();
 

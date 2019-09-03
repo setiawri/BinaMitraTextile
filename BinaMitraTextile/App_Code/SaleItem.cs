@@ -46,10 +46,6 @@ namespace BinaMitraTextile
         public const string COL_Sales_Barcode = "Sales_Barcode";
         public const string COL_Sales_Timestamp = "Sales_Timestamp";
 
-        public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
-        public const string FILTER_SaleItems_StartDate = "FILTER_SaleItems_StartDate";
-        public const string FILTER_SaleItems_EndDate = "FILTER_SaleItems_EndDate";
-
         public Guid id;
         public Guid sale_id;
         public Guid inventory_item_id;
@@ -222,23 +218,6 @@ namespace BinaMitraTextile
             }
 
             return dataTable;
-        }
-
-        public static DataTable getSold(DateTime? filterStartDateTime, DateTime? filterEndDateTime, Guid? saleOrderItems_Id)
-        {
-            SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "saleitem_get_sold",
-                        new SqlQueryParameter(FILTER_SaleItems_StartDate, SqlDbType.DateTime, Tools.wrapNullable(filterStartDateTime)),
-                        new SqlQueryParameter(FILTER_SaleItems_EndDate, SqlDbType.DateTime, Tools.wrapNullable(filterEndDateTime)),
-                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
-                    );
-            }
-            return result.Datatable;
         }
 
         #endregion DATABASE METHODS

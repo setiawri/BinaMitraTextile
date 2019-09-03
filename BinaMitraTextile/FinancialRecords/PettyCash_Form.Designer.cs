@@ -44,6 +44,16 @@
             this.idtp_FilterStart = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.chkOnlyNotChecked = new System.Windows.Forms.CheckBox();
             this.pnlCalculator = new System.Windows.Forms.Panel();
+            this.lbl5rb = new System.Windows.Forms.Label();
+            this.lbl10rb = new System.Windows.Forms.Label();
+            this.lbl20rb = new System.Windows.Forms.Label();
+            this.lbl50rb = new System.Windows.Forms.Label();
+            this.lbl100rb = new System.Windows.Forms.Label();
+            this.lbl100 = new System.Windows.Forms.Label();
+            this.lbl200 = new System.Windows.Forms.Label();
+            this.lbl500 = new System.Windows.Forms.Label();
+            this.lbl1rb = new System.Windows.Forms.Label();
+            this.lbl2rb = new System.Windows.Forms.Label();
             this.lblCalculatorBalance = new System.Windows.Forms.Label();
             this.lblCalculatorBalanceDiff = new System.Windows.Forms.Label();
             this.btnCloseCalculator = new System.Windows.Forms.Button();
@@ -82,16 +92,6 @@
             this.btnCalculator = new System.Windows.Forms.Button();
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.panelToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lbl2rb = new System.Windows.Forms.Label();
-            this.lbl1rb = new System.Windows.Forms.Label();
-            this.lbl500 = new System.Windows.Forms.Label();
-            this.lbl200 = new System.Windows.Forms.Label();
-            this.lbl100 = new System.Windows.Forms.Label();
-            this.lbl5rb = new System.Windows.Forms.Label();
-            this.lbl10rb = new System.Windows.Forms.Label();
-            this.lbl20rb = new System.Windows.Forms.Label();
-            this.lbl50rb = new System.Windows.Forms.Label();
-            this.lbl100rb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -303,11 +303,101 @@
             this.pnlCalculator.Controls.Add(this.in_20rb);
             this.pnlCalculator.Controls.Add(this.in_50rb);
             this.pnlCalculator.Controls.Add(this.in_100rb);
-            this.pnlCalculator.Location = new System.Drawing.Point(225, 186);
+            this.pnlCalculator.Location = new System.Drawing.Point(225, 187);
             this.pnlCalculator.Name = "pnlCalculator";
             this.pnlCalculator.Size = new System.Drawing.Size(294, 223);
             this.pnlCalculator.TabIndex = 7;
             this.pnlCalculator.Visible = false;
+            // 
+            // lbl5rb
+            // 
+            this.lbl5rb.AutoSize = true;
+            this.lbl5rb.Location = new System.Drawing.Point(12, 142);
+            this.lbl5rb.Name = "lbl5rb";
+            this.lbl5rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl5rb.TabIndex = 121;
+            this.lbl5rb.Text = "0 x";
+            // 
+            // lbl10rb
+            // 
+            this.lbl10rb.AutoSize = true;
+            this.lbl10rb.Location = new System.Drawing.Point(12, 120);
+            this.lbl10rb.Name = "lbl10rb";
+            this.lbl10rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl10rb.TabIndex = 120;
+            this.lbl10rb.Text = "0 x";
+            // 
+            // lbl20rb
+            // 
+            this.lbl20rb.AutoSize = true;
+            this.lbl20rb.Location = new System.Drawing.Point(12, 98);
+            this.lbl20rb.Name = "lbl20rb";
+            this.lbl20rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl20rb.TabIndex = 119;
+            this.lbl20rb.Text = "0 x";
+            // 
+            // lbl50rb
+            // 
+            this.lbl50rb.AutoSize = true;
+            this.lbl50rb.Location = new System.Drawing.Point(12, 76);
+            this.lbl50rb.Name = "lbl50rb";
+            this.lbl50rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl50rb.TabIndex = 118;
+            this.lbl50rb.Text = "0 x";
+            // 
+            // lbl100rb
+            // 
+            this.lbl100rb.AutoSize = true;
+            this.lbl100rb.Location = new System.Drawing.Point(12, 54);
+            this.lbl100rb.Name = "lbl100rb";
+            this.lbl100rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl100rb.TabIndex = 117;
+            this.lbl100rb.Text = "0 x";
+            // 
+            // lbl100
+            // 
+            this.lbl100.AutoSize = true;
+            this.lbl100.Location = new System.Drawing.Point(164, 142);
+            this.lbl100.Name = "lbl100";
+            this.lbl100.Size = new System.Drawing.Size(21, 13);
+            this.lbl100.TabIndex = 116;
+            this.lbl100.Text = "0 x";
+            // 
+            // lbl200
+            // 
+            this.lbl200.AutoSize = true;
+            this.lbl200.Location = new System.Drawing.Point(164, 120);
+            this.lbl200.Name = "lbl200";
+            this.lbl200.Size = new System.Drawing.Size(21, 13);
+            this.lbl200.TabIndex = 115;
+            this.lbl200.Text = "0 x";
+            // 
+            // lbl500
+            // 
+            this.lbl500.AutoSize = true;
+            this.lbl500.Location = new System.Drawing.Point(164, 98);
+            this.lbl500.Name = "lbl500";
+            this.lbl500.Size = new System.Drawing.Size(21, 13);
+            this.lbl500.TabIndex = 114;
+            this.lbl500.Text = "0 x";
+            // 
+            // lbl1rb
+            // 
+            this.lbl1rb.AutoSize = true;
+            this.lbl1rb.Location = new System.Drawing.Point(164, 76);
+            this.lbl1rb.Name = "lbl1rb";
+            this.lbl1rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl1rb.TabIndex = 113;
+            this.lbl1rb.Text = "0 x";
+            // 
+            // lbl2rb
+            // 
+            this.lbl2rb.AutoSize = true;
+            this.lbl2rb.Location = new System.Drawing.Point(164, 54);
+            this.lbl2rb.Name = "lbl2rb";
+            this.lbl2rb.Size = new System.Drawing.Size(21, 13);
+            this.lbl2rb.TabIndex = 112;
+            this.lbl2rb.Text = "0 x";
             // 
             // lblCalculatorBalance
             // 
@@ -993,96 +1083,6 @@
             this.panelToggle1.TabIndex = 123;
             this.panelToggle1.TogglePanel = this.scMain.Panel1;
             // 
-            // lbl2rb
-            // 
-            this.lbl2rb.AutoSize = true;
-            this.lbl2rb.Location = new System.Drawing.Point(164, 54);
-            this.lbl2rb.Name = "lbl2rb";
-            this.lbl2rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl2rb.TabIndex = 112;
-            this.lbl2rb.Text = "0 x";
-            // 
-            // lbl1rb
-            // 
-            this.lbl1rb.AutoSize = true;
-            this.lbl1rb.Location = new System.Drawing.Point(164, 76);
-            this.lbl1rb.Name = "lbl1rb";
-            this.lbl1rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl1rb.TabIndex = 113;
-            this.lbl1rb.Text = "0 x";
-            // 
-            // lbl500
-            // 
-            this.lbl500.AutoSize = true;
-            this.lbl500.Location = new System.Drawing.Point(164, 98);
-            this.lbl500.Name = "lbl500";
-            this.lbl500.Size = new System.Drawing.Size(21, 13);
-            this.lbl500.TabIndex = 114;
-            this.lbl500.Text = "0 x";
-            // 
-            // lbl200
-            // 
-            this.lbl200.AutoSize = true;
-            this.lbl200.Location = new System.Drawing.Point(164, 120);
-            this.lbl200.Name = "lbl200";
-            this.lbl200.Size = new System.Drawing.Size(21, 13);
-            this.lbl200.TabIndex = 115;
-            this.lbl200.Text = "0 x";
-            // 
-            // lbl100
-            // 
-            this.lbl100.AutoSize = true;
-            this.lbl100.Location = new System.Drawing.Point(164, 142);
-            this.lbl100.Name = "lbl100";
-            this.lbl100.Size = new System.Drawing.Size(21, 13);
-            this.lbl100.TabIndex = 116;
-            this.lbl100.Text = "0 x";
-            // 
-            // lbl5rb
-            // 
-            this.lbl5rb.AutoSize = true;
-            this.lbl5rb.Location = new System.Drawing.Point(12, 142);
-            this.lbl5rb.Name = "lbl5rb";
-            this.lbl5rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl5rb.TabIndex = 121;
-            this.lbl5rb.Text = "0 x";
-            // 
-            // lbl10rb
-            // 
-            this.lbl10rb.AutoSize = true;
-            this.lbl10rb.Location = new System.Drawing.Point(12, 120);
-            this.lbl10rb.Name = "lbl10rb";
-            this.lbl10rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl10rb.TabIndex = 120;
-            this.lbl10rb.Text = "0 x";
-            // 
-            // lbl20rb
-            // 
-            this.lbl20rb.AutoSize = true;
-            this.lbl20rb.Location = new System.Drawing.Point(12, 98);
-            this.lbl20rb.Name = "lbl20rb";
-            this.lbl20rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl20rb.TabIndex = 119;
-            this.lbl20rb.Text = "0 x";
-            // 
-            // lbl50rb
-            // 
-            this.lbl50rb.AutoSize = true;
-            this.lbl50rb.Location = new System.Drawing.Point(12, 76);
-            this.lbl50rb.Name = "lbl50rb";
-            this.lbl50rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl50rb.TabIndex = 118;
-            this.lbl50rb.Text = "0 x";
-            // 
-            // lbl100rb
-            // 
-            this.lbl100rb.AutoSize = true;
-            this.lbl100rb.Location = new System.Drawing.Point(12, 54);
-            this.lbl100rb.Name = "lbl100rb";
-            this.lbl100rb.Size = new System.Drawing.Size(21, 13);
-            this.lbl100rb.TabIndex = 117;
-            this.lbl100rb.Text = "0 x";
-            // 
             // PettyCash_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1090,7 +1090,7 @@
             this.ClientSize = new System.Drawing.Size(746, 591);
             this.Controls.Add(this.scMain);
             this.Name = "PettyCash_Form";
-            this.Text = "Petty Cash";
+            this.Text = "PETTY CASH";
             this.Load += new System.EventHandler(this.Form_Load);
             this.Shown += new System.EventHandler(this.PettyCash_Form_Shown);
             this.scMain.Panel1.ResumeLayout(false);

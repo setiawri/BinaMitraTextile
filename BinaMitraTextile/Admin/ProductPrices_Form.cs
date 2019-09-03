@@ -46,8 +46,6 @@ namespace BinaMitraTextile.Admin
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             ProductStoreName.populateDropDownList(cbProductStoreNames, false, false);
             Grade.populateDropDownList(cbGrades, false, false);
             ProductWidth.populateDropDownList(cbProductWidths, false, false);

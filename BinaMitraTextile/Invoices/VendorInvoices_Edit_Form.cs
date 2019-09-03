@@ -25,7 +25,8 @@ namespace BinaMitraTextile.Invoices
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
+            
+            
         }
         
         private void populatePageData()

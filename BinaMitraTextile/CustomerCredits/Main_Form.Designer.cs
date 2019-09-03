@@ -329,7 +329,9 @@
             this.iddl_Customers.LabelText = "Customer";
             this.iddl_Customers.Location = new System.Drawing.Point(275, 3);
             this.iddl_Customers.Name = "iddl_Customers";
+            this.iddl_Customers.SelectedIndex = -1;
             this.iddl_Customers.SelectedItem = null;
+            this.iddl_Customers.SelectedItemText = "";
             this.iddl_Customers.SelectedValue = null;
             this.iddl_Customers.ShowDropdownlistOnly = false;
             this.iddl_Customers.Size = new System.Drawing.Size(142, 41);
@@ -370,7 +372,9 @@
             // 
             // in_Amount
             // 
+            this.in_Amount.Checked = false;
             this.in_Amount.DecimalPlaces = 2;
+            this.in_Amount.HideUpDown = false;
             this.in_Amount.Increment = new decimal(new int[] {
             100000,
             0,
@@ -389,6 +393,8 @@
             0,
             -2147483648});
             this.in_Amount.Name = "in_Amount";
+            this.in_Amount.ShowAllowDecimalCheckbox = false;
+            this.in_Amount.ShowCheckbox = false;
             this.in_Amount.ShowTextboxOnly = false;
             this.in_Amount.Size = new System.Drawing.Size(111, 41);
             this.in_Amount.TabIndex = 2;
@@ -416,7 +422,7 @@
             this.Controls.Add(this.gridSummary);
             this.Controls.Add(this.gridDetail);
             this.Name = "Main_Form";
-            this.Text = "Customer Credit";
+            this.Text = "CUSTOMER CREDITS";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();

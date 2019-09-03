@@ -73,7 +73,7 @@
             this.Controls.Add(this.txtTaxNo);
             this.Controls.Add(this.btnSubmit);
             this.Name = "TaxNo_Edit_Form";
-            this.Text = "Sale Tax No";
+            this.Text = "SALES TAX";
             this.ResumeLayout(false);
             this.PerformLayout();
 

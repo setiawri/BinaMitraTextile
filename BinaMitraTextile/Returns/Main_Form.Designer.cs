@@ -342,7 +342,7 @@
             this.Controls.Add(this.grid);
             this.Controls.Add(this.btnReturnSale);
             this.Name = "Main_Form";
-            this.Text = "Returns";
+            this.Text = "SALES RETURNS";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);

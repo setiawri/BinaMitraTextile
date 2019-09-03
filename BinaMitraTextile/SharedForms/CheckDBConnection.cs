@@ -35,8 +35,6 @@ namespace BinaMitraTextile.SharedForms
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             this.StartPosition = FormStartPosition.CenterScreen;
             timer1.Interval = 100; //raise event every 0.1 second
         }
@@ -78,7 +76,9 @@ namespace BinaMitraTextile.SharedForms
             {
                 timer1.Stop();
                 isDBConnectionAvailable = false;
-                MessageBox.Show("There is a problem connecting to the database. Please contact your administrator and try again.");
+                
+                MessageBox.Show("There is a problem connecting to the database. Please contact your administrator and try again."
+                    + Environment.NewLine + Environment.NewLine + DBUtil.connectionInfo());
                 this.Close();
             }
             else 

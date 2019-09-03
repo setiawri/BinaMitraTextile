@@ -88,8 +88,6 @@ namespace BinaMitraTextile
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             this.Size = FORM_DEFAULTSIZE;
 
             gridview.AutoGenerateColumns = false;

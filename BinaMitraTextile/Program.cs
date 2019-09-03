@@ -20,8 +20,13 @@ namespace BinaMitraTextile
             //AutoUpdaterDotNET.AutoUpdater.ShowRemindLaterButton = false;
             //AutoUpdaterDotNET.AutoUpdater.Start(@"C:\Users\Ricky\Desktop\Update\AutoUpdaterTest.xml");
 
-            if (DBUtil.isDBConnectionAvailable())
-                Application.Run(new Login_Form());
+            LIBUtil.DBConnection.initialize(Settings.CONNECTIONSTRING_DEFAULTPARAMS, Settings.SQL_USERNAME, Settings.SQL_PASSWORD);
+            LIBUtil.Util.ensureSingleInstance(runApplication);
+        }
+
+        static void runApplication()
+        {
+            Application.Run(new Login_Form());
         }
     }
 }

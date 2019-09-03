@@ -718,7 +718,7 @@
             this.Controls.Add(this.pnlSubmit1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Invoice_Form";
-            this.Text = "Sales Verification";
+            this.Text = "VERIFY SALES";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.pnlPrint.ResumeLayout(false);

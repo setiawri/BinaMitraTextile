@@ -467,7 +467,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Name = "Add_Edit_Form";
-            this.Text = "Add_Edit_Form";
+            this.Text = "CREATE INVENTORY";
             this.Load += new System.EventHandler(this.Add_Edit_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

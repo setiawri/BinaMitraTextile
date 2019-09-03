@@ -39,8 +39,6 @@ namespace BinaMitraTextile.Sales
         {
             InitializeComponent();
 
-            this.Text += DBUtil.appendTitleWithInfo();
-
             _sale = Sale;
             _isGenerate = IsGenerate;
             _saleItems = _dataSaleItems;

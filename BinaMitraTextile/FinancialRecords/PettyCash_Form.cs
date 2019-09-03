@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using LIBUtil.Desktop.UserControls;
@@ -46,9 +40,6 @@ namespace BinaMitraTextile.FinancialRecords
 
         private void setupControls()
         {
-            this.Text = "PETTY CASH";
-            this.Text += DBUtil.appendTitleWithInfo();
-
             //set filter to last 30 days
             idtp_FilterStart.Value = DateTime.Now.Date.AddDays(-30);
             idtp_FilterEnd.Value = DateTime.Now.Date;

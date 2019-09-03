@@ -42,9 +42,7 @@ namespace BinaMitraTextile.POs
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
-            if(_formMode == FormMode.Search)
+            if (_formMode == FormMode.Search)
             {
                 Vendor.populateDropDownList(cbVendors, false, true);
                 Tools.populateDropDownList(cbStatus, typeof(POItemStatus));

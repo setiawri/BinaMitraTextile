@@ -848,7 +848,7 @@
             this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.groupBox2);
             this.Name = "ItemCheck_Form";
-            this.Text = "Stock Opname";
+            this.Text = "STOCK OPNAME";
             this.Load += new System.EventHandler(this.ItemCheck_Submit_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridSummaryCheck)).EndInit();
             this.groupBox2.ResumeLayout(false);

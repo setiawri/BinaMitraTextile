@@ -213,7 +213,7 @@
             this.Controls.Add(this.lblDPP);
             this.Controls.Add(this.txtDPP);
             this.Name = "VendorInvoices_Edit_Form";
-            this.Text = "Vendor Invoice";
+            this.Text = "VENDOR INVOICES";
             this.ResumeLayout(false);
             this.PerformLayout();
 

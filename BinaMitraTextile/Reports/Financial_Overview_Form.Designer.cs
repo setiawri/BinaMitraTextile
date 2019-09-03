@@ -84,7 +84,7 @@
             this.Controls.Add(this.lblInventoryBuyValue);
             this.Controls.Add(this.label1);
             this.Name = "Financial_Overview_Form";
-            this.Text = "Financial_Overview_Form";
+            this.Text = "FINANCIAL OVERVIEW";
             this.ResumeLayout(false);
             this.PerformLayout();
 

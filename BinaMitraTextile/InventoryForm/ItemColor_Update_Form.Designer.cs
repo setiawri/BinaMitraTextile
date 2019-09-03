@@ -236,7 +236,7 @@
             this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.label1);
             this.Name = "ItemColor_Update_Form";
-            this.Text = "Update Warna Roll";
+            this.Text = "ITEM COLOR";
             this.pnlItem.ResumeLayout(false);
             this.pnlItem.PerformLayout();
             this.ResumeLayout(false);

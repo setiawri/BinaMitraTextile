@@ -1143,7 +1143,7 @@
             this.Controls.Add(this.btnPrint);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BarcodePrint_Form";
-            this.Text = "Print Barcodes";
+            this.Text = "PRINT BARCODES";
             this.Load += new System.EventHandler(this.BarcodePrint_Form_Load);
             this.Shown += new System.EventHandler(this.BarcodePrint_Form_Shown);
             this.pnlPrint.ResumeLayout(false);

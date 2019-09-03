@@ -25,6 +25,8 @@ namespace BinaMitraTextile
 
         public static Guid GUID_LastOpnameCleanupDate = new Guid("AB6E91C0-1744-4101-BDFA-4F5CC362E04B");
 
+        public const string APPSETTINGSKEY_LiveConnectionPort = "LiveConnectionPort";
+
         public static string CONNECTIONSTRING_DEFAULTPARAMS = "Integrated Security=False;Persist Security Info=False;";
         public const string SQL_USERNAME = "binamitra";
         public const string SQL_PASSWORD = "binamitra";
@@ -32,6 +34,8 @@ namespace BinaMitraTextile
         public static System.Media.SoundPlayer notificationSound = new System.Media.SoundPlayer(Properties.Resources.Notification01);
         public static System.Media.SoundPlayer nonBarcodeScannerSound = new System.Media.SoundPlayer(Properties.Resources.Notification02);
         public static System.Media.SoundPlayer opnameMarkerSound = new System.Media.SoundPlayer(Properties.Resources.Notification03);
+
+        public static System.Drawing.Icon taskbarIcon = Properties.Resources.handshake_512_white;
 
         public const int GRIDVIEW_MINIMUM_RIGHT_MARGIN_TO_CONTAINER = 10;
 
@@ -51,7 +55,7 @@ namespace BinaMitraTextile
         {
             return ConfigurationManager.AppSettings["uploadStorage"];
         }
-
+        
         /// <summary><para></para></summary>
         public static string LastSheetNo
         {

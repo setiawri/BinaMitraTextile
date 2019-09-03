@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using LIBUtil;
@@ -25,59 +20,21 @@ namespace BinaMitraTextile
         public Main_Form()
         {
             InitializeComponent();
-
-            setupControls();
-            populatePageData();
         }
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_gridPOItems_statusname.Visible = false;
-
-                menu_users.Visible = false;
-
-                menu_test.Visible = false;
-
-                menu_inventory_printbarcodes.Visible = false;
-                menu_inventory_po.Visible = false;
-                menu_inventory_invoices.Visible = false;
-
-                menu_reports_financial.Visible = false;
-                menu_reports_tax.Visible = false;
-                
-                menu_admin_vendorinvoices.Visible = false;
-                btnInvoices.Visible = false;
-
-                menu_account_log.Visible = false;
-
                 btnShowHidden.Visible = false;
             }
 
             if(GlobalData.UserAccount.role == Roles.Assistant)
             {
-                menu_sales.Visible = false;
-                menu_inventory.Visible = false;
-                menu_returns.Visible = false;
-                menu_customercredit.Visible = false;
-                menu_admin.Visible = false;
-                menu_users.Visible = false;
-                menu_reports.Visible = false;
-                menu_test.Visible = false;
-                menu_account_salescomission.Visible = false;
-                menu_account_log.Visible = false;
-
                 //disable to be hidden in rearrange
-                btnNewSale.Enabled = false;
-                btnSamples.Enabled = false;
-                btnOpname.Enabled = false;
-                btnCash.Enabled = false;
                 btnRefresh.Enabled = false;
                 btnShowHidden.Enabled = false;
-                btnInvoices.Enabled = false;
                 Tools.rearrangeButtonsInPanel(scButtonsAndReceivables.Panel1, HorizontalAlignment.Left);
 
                 scButtonsAndReceivables.Panel2Collapsed = true;
@@ -188,244 +145,6 @@ namespace BinaMitraTextile
 
         #endregion INITIALIZATION
         /*******************************************************************************************************/
-        #region MENU - SALES
-
-        #endregion MENU - SALES
-        /*******************************************************************************************************/
-        #region MENU - INVENTORY
-
-        private void menu_inventory_samples_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Admin.Samples1_Form(FormMode.New));
-        }
-
-        private void menu_inventory_stock_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new InventoryForm.Main_Form());
-        }
-
-        private void menu_inventory_opname_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new InventoryForm.ItemCheck_Form());
-        }
-
-        private void printBarcodesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new InventoryForm.BarcodePrint_Form());
-        }
-
-        private void menu_inventory_po_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new POs.Main_Form());
-        }
-
-        private void menu_inventory_stocklevel_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Admin.StockLevel_Form(FormMode.New));
-        }
-
-        private void menu_inventory_invoices_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Invoices.VendorInvoices_Form());
-        }
-
-        #endregion MENU - INVENTORY
-        /*******************************************************************************************************/
-        #region RETURNS
-
-        private void menu_returns_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Returns.Main_Form());
-        }
-
-        #endregion RETURNS
-        /*******************************************************************************************************/
-        #region MENU - CUSTOMER CREDIT
-
-        private void menu_customercredit_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new CustomerCredits.Main_Form());
-        }
-
-        #endregion MENU - CUSTOMER CREDIT
-        /*******************************************************************************************************/
-        #region MENU - ADMIN
-        
-        private void menu_admin_vendorinvoices_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Invoices.VendorInvoices_Form());
-        }
-
-        private void menu_admin_vendors_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.Vendors_Form(FormMode.Search));
-        }
-
-        private void menu_admin_length_units_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.LengthUnits_Form(FormMode.Search));
-        }
-
-        private void menu_admin_customers_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.Customers_Form(FormMode.Search));
-        }
-
-        private void menu_admin_cities_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new MasterData.Cities_Form(FormMode.Search));
-        }
-
-        private void menu_admin_products_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.Products_Form(FormMode.Search));
-        }
-
-        private void menu_admin_prices_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Admin.ProductPrices_Form());
-        }
-
-        private void menu_admin_widths_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.ProductWidths_Form(FormMode.Search));
-        }
-
-        private void menu_admin_colors_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.FabricColors_Form(FormMode.Search));
-        }
-
-        private void gradesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new MasterData.Grades_Form(FormMode.Search));
-        }
-
-        private void statesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new MasterData.States_Form(FormMode.Search));
-        }
-
-        private void menu_admin_productstorenames_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new MasterData.ProductStoreNames_Form(FormMode.Search));
-        }
-
-        private void angkutanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new MasterData.Transports_Form(FormMode.Search));
-        }
-
-        private void menu_admin_customersaleadjustments_Click(object sender, EventArgs e)
-        {
-            Util.displayForm(null, new Admin.MasterData_v1_CustomerSaleAdjustments(FormModes.Add));
-        }
-
-        private void menu_admin_pettycash_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new FinancialRecords.PettyCash_Form());
-        }
-
-        private void menu_admin_pettycashcategories_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new MasterData.PettyCashRecordsCategories_Form(FormMode.New));
-        }
-
-        #endregion MENU - ADMIN
-        /*******************************************************************************************************/
-        #region MENU - USERS
-
-        private void menu_users_Click_1(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Users.Main_Form());
-        }
-
-        #endregion MENU - USERS
-        /*******************************************************************************************************/
-        #region MENU - TEST
-
-        private void menu_test_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Test.Main_Form());
-        }
-
-        #endregion MENU - TEST
-        /*******************************************************************************************************/
-        #region MENU - QUIT
-        
-        private void menu_quit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        #endregion MENU - QUIT
-        /*******************************************************************************************************/
-        #region MENU - REPORTS
-
-        private void menu_reports_financial_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Reports.Financial_Overview_Form());
-        }
-
-        private void menu_reports_sales_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Reports.Sales_Form());
-        }
-
-        #endregion MENU - REPORTS
-        /*******************************************************************************************************/
-        #region MENU - REPORTS
-
-        private void menu_samples_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Admin.Samples1_Form(FormMode.New));
-        }
-
-        private void menu_reports_tax_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Reports.Taxes_Form());
-        }
-
-        #endregion
-        /*******************************************************************************************************/
-        #region MENU - ACCOUNT
-
-
-        private void menu_account_password_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Users.PasswordChange_Form());
-        }
-
-        private void menu_account_salescomission_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Users.SalesComission_Form());
-        }
-
-        #endregion
-        /*******************************************************************************************************/
-        #region MENU - TO DO LIST
-
-        private void menu_todolist_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Admin.MasterData_v1_ToDoList_Form(LIBUtil.FormModes.Add));
-        }
-
-        #endregion
-        /*******************************************************************************************************/
-        #region BUTTONS
-
-        private void btnReceiveShipment_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new InventoryForm.Main_Form());
-        }
-
-        private void btnGorden_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Gorden.GordenOrders_Form());
-        }
-
-        #endregion BUTTONS
-        /*******************************************************************************************************/
         #region CLASS METHODS
 
         private void btnNewSale_Click(object sender, EventArgs e)
@@ -499,21 +218,6 @@ namespace BinaMitraTextile
             Tools.displayForm(this, new Admin.StockLevel_Form(FormMode.New));
         }
 
-        private void btnSamples_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Admin.Samples1_Form(FormMode.New));
-        }
-
-        private void btnInvoices_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Invoices.VendorInvoices_Form());
-        }
-
-        private void menu_account_log_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Logs.Main_Form(GlobalData.UserAccount.id));
-        }
-
         private void btnShowHidden_Click(object sender, EventArgs e)
         {
             bool value = !col_gridPOItems_PricePerUnit.Visible;
@@ -525,22 +229,13 @@ namespace BinaMitraTextile
 
         private void lnkIncompletePO_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Util.displayForm(null, new POs.MasterData_v1_Status_Form(), false);
+            Util.displayMDIChild(new POs.MasterData_v1_Status_Form());
         }
 
-        private void menu_admin_customerterms_Click(object sender, EventArgs e)
+        private void Main_Form_Load(object sender, EventArgs e)
         {
-            Tools.displayForm(this, new Admin.MasterData_v1_CustomerTerms_Form());
-        }
-
-        private void Menu_sales_list_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Sales.Main_Form());
-        }
-
-        private void Menu_sales_saleorders_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new SaleOrders.Main_Form());
+            setupControls();
+            populatePageData();
         }
 
         #endregion CLASS METHODS

@@ -27,9 +27,19 @@ namespace BinaMitraTextile.Returns
         public New_Form()
         {
             InitializeComponent();
-            this.Text += DBUtil.appendTitleWithInfo();
+        }
 
+        private void Form_Load(object sender, EventArgs e)
+        {
+            //Tools.adjustGridviewForVScrollbar(this,true);
+            setupControls();
+        }
+
+        private void setupControls()
+        {
             grid.AutoGenerateColumns = false;
+            col_grid_SaleOrderItemDescription.DataPropertyName = SaleItem.COL_SaleOrderItemDescription;
+
             gridSummary.AutoGenerateColumns = false;
 
             Inventory.setAmount(lblTotalAmount, "0");
@@ -43,11 +53,6 @@ namespace BinaMitraTextile.Returns
             Tools.formatDeleteColumn(DeleteRow);
 
             lblCustomerName.Text = "";
-        }
-
-        private void Form_Load(object sender, EventArgs e)
-        {
-            //Tools.adjustGridviewForVScrollbar(this,true);
         }
 
         #endregion INITIALIZATION
@@ -211,6 +216,23 @@ namespace BinaMitraTextile.Returns
             grid.DataSource = dt;
 
             updateSummaryList();
+        }
+
+        private void BtnRemoveSaleOrderItems_Click(object sender, EventArgs e)
+        {
+            List<Guid> InventoryItemIdList = new List<Guid>();
+
+            DataTable dt = (DataTable)grid.DataSource;
+            foreach (DataRow dr in dt.Rows)
+                InventoryItemIdList.Add((Guid)dr[SaleItem.COL_INVENTORY_ITEM_ID]);
+
+            if (InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null))
+            {
+                //manually update list since it is not saved in database yet
+                foreach (DataRow dr in dt.Rows)
+                    dr[SaleItem.COL_SaleOrderItemDescription] = DBNull.Value;
+                grid.DataSource = dt;
+            }
         }
 
         #endregion CALCULATIONS

@@ -45,7 +45,10 @@ namespace BinaMitraTextile
         public const string COL_LASTOPNAME = "last_opname";
         public const string COL_OpnameMarker = Inventory.COL_DB_OpnameMarker;
 
+        public const string FILTER_Sales_Id = "FILTER_Sales_Id";
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
+        public const string FILTER_Customers_Id = "customer_id";
+        public const string FILTER_Inventory_Id = "FILTER_Inventory_Id";
 
         public Guid id;
         public Guid inventory_id;
@@ -225,6 +228,25 @@ namespace BinaMitraTextile
             }
 
             return dataTable;
+        }
+
+        public static DataTable get(Guid? id, Guid? customers_Id, Guid? saleOrderItems_Id, Guid? sales_Id, Guid? inventory_Id)
+        {
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "inventoryitem_get",
+                        new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(id)),
+                        new SqlQueryParameter(FILTER_Customers_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(customers_Id)),
+                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(saleOrderItems_Id)),
+                        new SqlQueryParameter(FILTER_Sales_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(sales_Id)),
+                        new SqlQueryParameter(FILTER_Inventory_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(inventory_Id))
+                    );
+            }
+            return result.Datatable;
         }
 
         public static DataTable get_Booked(Guid saleOrders_Id)

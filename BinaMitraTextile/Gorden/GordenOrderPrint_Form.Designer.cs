@@ -56,10 +56,10 @@
             this.lblNo = new System.Windows.Forms.Label();
             this.lblCustomerInfo = new System.Windows.Forms.Label();
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.chkShowPrintDialog = new System.Windows.Forms.CheckBox();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.chkWorkOrder = new System.Windows.Forms.CheckBox();
             this.btnNext = new System.Windows.Forms.Button();
-            this.chkShowPrintDialog = new System.Windows.Forms.CheckBox();
             this.pnlPrint.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.pnlButtons.SuspendLayout();
@@ -335,6 +335,16 @@
             this.pnlButtons.Size = new System.Drawing.Size(746, 58);
             this.pnlButtons.TabIndex = 0;
             // 
+            // chkShowPrintDialog
+            // 
+            this.chkShowPrintDialog.AutoSize = true;
+            this.chkShowPrintDialog.Location = new System.Drawing.Point(385, 5);
+            this.chkShowPrintDialog.Name = "chkShowPrintDialog";
+            this.chkShowPrintDialog.Size = new System.Drawing.Size(77, 17);
+            this.chkShowPrintDialog.TabIndex = 116;
+            this.chkShowPrintDialog.Text = "print dialog";
+            this.chkShowPrintDialog.UseVisualStyleBackColor = true;
+            // 
             // btnPrevious
             // 
             this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -373,16 +383,6 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // chkShowPrintDialog
-            // 
-            this.chkShowPrintDialog.AutoSize = true;
-            this.chkShowPrintDialog.Location = new System.Drawing.Point(385, 5);
-            this.chkShowPrintDialog.Name = "chkShowPrintDialog";
-            this.chkShowPrintDialog.Size = new System.Drawing.Size(77, 17);
-            this.chkShowPrintDialog.TabIndex = 116;
-            this.chkShowPrintDialog.Text = "print dialog";
-            this.chkShowPrintDialog.UseVisualStyleBackColor = true;
-            // 
             // GordenOrderPrint_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,7 +392,7 @@
             this.Controls.Add(this.pnlPrint);
             this.Controls.Add(this.pnlButtons);
             this.Name = "GordenOrderPrint_Form";
-            this.Text = "Return";
+            this.Text = "GORDEN";
             this.Load += new System.EventHandler(this.Form_Load);
             this.pnlPrint.ResumeLayout(false);
             this.pnlPrint.PerformLayout();

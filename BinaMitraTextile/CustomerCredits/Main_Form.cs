@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BinaMitraTextile.CustomerCredits
@@ -44,8 +38,6 @@ namespace BinaMitraTextile.CustomerCredits
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             Tools.populateDropDownList(cbPaymentMethods, typeof(PaymentMethod));
 
             gridSummary.AutoGenerateColumns = false;

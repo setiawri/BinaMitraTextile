@@ -51,6 +51,8 @@ namespace BinaMitraTextile
         public const string COL_VENDORINVOICENO = "vendorinvoice_no";
         public const string COL_PRODUCTID = "vendor_id";
 
+        public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
+
         public Guid id;
         public int code = 0;
         public int qty = 0;
@@ -252,7 +254,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
                 cmd.Parameters.Add("@last3Months", SqlDbType.Bit).Value = last3Months;
                 cmd.Parameters.Add("@code", SqlDbType.VarChar).Value = code;
-                
+
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
                 DBUtil.addListParameter(cmd, "@productstorename_id_list", dtProductStoreNameID);
                 DBUtil.addListParameter(cmd, "@productwidth_id_list", dtProductWidthID);
@@ -273,6 +275,21 @@ namespace BinaMitraTextile
             //Tools.stopProgressDisplay();
 
             return dataTable;
+        }
+
+        public static DataTable get_by_SaleOrderItems_Id(Guid? saleOrderItems_Id)
+        {
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "Inventory_get_by_SaleOrderItems_Id",
+                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    );
+            }
+            return result.Datatable;
         }
 
         public static string updateActiveStatus(Guid id, Boolean activeStatus)

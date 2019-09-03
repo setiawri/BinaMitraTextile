@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -31,6 +32,8 @@ namespace BinaMitraTextile
         public const string COL_ROLE = "role";
         public const string COL_DB_PercentCommission = "PercentCommission";
 
+        public const string FILTER_IncludeInactive = "FILTER_IncludeInactive";
+
         private const int SALT_LENGTH = 10;
 
         public const string PASSWORD_REQUIREMENTS = "Password must be at least 6 characters";
@@ -55,16 +58,19 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CONSTRUCTORS
 
-        public UserAccount(Guid? ID)
+        public UserAccount(Guid? ID) : this(ID, null) { }
+        public UserAccount(string username) : this(null, username) { }
+
+        public UserAccount(Guid? ID, string username)
         {
-            if(ID != null)
+            DataRow row = Util.getFirstRow(get(username, true));
+            if (row != null)
             {
-                id = (Guid)ID;
-                DataTable dt = getRow(connectionString, id);
-                name = dt.Rows[0][COL_DB_NAME].ToString();
-                _hashed_password = dt.Rows[0]["hashed_password"].ToString();
-                role = Tools.parseEnum<Roles>(dt.Rows[0][COL_ROLE]);
-                notes = dt.Rows[0]["notes"].ToString();
+                id = (Guid)row[COL_DB_ID];
+                name = row[COL_DB_NAME].ToString();
+                _hashed_password = row["hashed_password"].ToString();
+                role = Tools.parseEnum<Roles>(row[COL_ROLE]);
+                notes = row["notes"].ToString();
             }
         }
 
@@ -123,28 +129,21 @@ namespace BinaMitraTextile
             }
         }
 
-        public static DataTable getRow(string connectionString, Guid ID)
+        public static DataTable get(string username, bool includeInactive)
         {
-            return DBUtil.getRows("users_get", ID);
-        }
-
-        public static DataTable getAll(Boolean includeInactive)
-        {
-            DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("users_getall", conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "users_get",
+                        new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(username)),
+                        new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive)
+                    );
             }
 
-            Tools.parseEnum<Roles>(dataTable, COL_ROLENAME, COL_ROLE);
-
-            return dataTable;
+            return Tools.parseEnum<Roles>(result.Datatable, COL_ROLENAME, COL_ROLE);
         }
 
         public static string updateActiveStatus(Guid id, Boolean activeStatus)
@@ -199,9 +198,24 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region PASSWORD HANDLING
 
-        public Boolean authenticated(string input)
+        public static UserAccount authenticate(string username, string password, bool bypassLogin)
         {
-            return _hashed_password == hashPassword(input, _hashed_password.Substring(_hashed_password.Length - SALT_LENGTH, SALT_LENGTH));
+            UserAccount user = new UserAccount(username);
+            if (user.id == new Guid())
+                Util.displayMessageBoxError("Username not found");
+            else if (bypassLogin)
+                return user;
+            else if (!user.authenticated(password))
+                Util.displayMessageBoxError("Invalid password");
+            else
+                return user;
+
+            return null;
+    }
+
+        public bool authenticated(string password)
+        {
+            return _hashed_password == hashPassword(password, _hashed_password.Substring(_hashed_password.Length - SALT_LENGTH, SALT_LENGTH));
         }
 
         public static string hashPassword(string password)
@@ -250,12 +264,12 @@ namespace BinaMitraTextile
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)
         {
-            Tools.populateDropDownList(dropdownlist, getAll(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
+            Tools.populateDropDownList(dropdownlist, get(null, includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
         }
 
         public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool includeInactive)
         {
-            control.populate(getAll(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
+            control.populate(get(null, includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
         }
 
         #endregion METHODS

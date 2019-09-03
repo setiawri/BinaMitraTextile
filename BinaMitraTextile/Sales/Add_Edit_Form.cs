@@ -61,8 +61,6 @@ namespace BinaMitraTextile.Sales
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_adjustedprice.DataPropertyName = SaleItem.COL_SALE_ADJUSTEDPRICE;
@@ -121,11 +119,14 @@ namespace BinaMitraTextile.Sales
             if (_gridSelectCheckboxHeader != null) _gridSelectCheckboxHeader.Checked = false;
 
             //if a row has sales order, disable customer selection
-            cbCustomers.Enabled = true;
-            foreach (DataRow dr in dt.Rows)
-                if ((_formMode == FormMode.Update && dr[SaleItem.COL_SaleOrderItems_Id] != DBNull.Value)
-                    || dr[InventoryItem.COL_DB_SaleOrderItems_Id] != DBNull.Value)
-                    cbCustomers.Enabled = false;
+            if(dt != null)
+            {
+                cbCustomers.Enabled = true;
+                foreach (DataRow dr in dt.Rows)
+                    if ((_formMode == FormMode.Update && dr[SaleItem.COL_SaleOrderItems_Id] != DBNull.Value)
+                        || dr[InventoryItem.COL_DB_SaleOrderItems_Id] != DBNull.Value)
+                        cbCustomers.Enabled = false;
+            }
         }
 
         private void setGridSummaryDataSource(DataTable dt)

@@ -33,8 +33,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             FabricColor.populateDropDownList(cbColors, false, true);
             Tools.resetDropDownList(cbColors);
 

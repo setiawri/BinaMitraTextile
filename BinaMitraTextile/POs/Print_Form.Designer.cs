@@ -324,7 +324,7 @@
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pnlPrint);
             this.Name = "Print_Form";
-            this.Text = "Print PO";
+            this.Text = "PRINT PO";
             this.Load += new System.EventHandler(this.Form_Load);
             this.pnlPrint.ResumeLayout(false);
             this.pnlPrint.PerformLayout();

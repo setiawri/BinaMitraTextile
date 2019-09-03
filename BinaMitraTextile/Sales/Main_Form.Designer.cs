@@ -1129,7 +1129,7 @@
             this.Controls.Add(this.scMain);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main_Form";
-            this.Text = "Sales";
+            this.Text = "SALES";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).EndInit();

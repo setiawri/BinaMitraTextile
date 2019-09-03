@@ -19,6 +19,7 @@ namespace BinaMitraTextile
         public static string connectionString = DBUtil.connectionString;
 
         public const string COL_ID = "id";
+        public const string COL_DB_Timestamp = "time_stamp";        
         public const string COL_BARCODE = "barcode";
         public const string COL_HEXBARCODE = "hexbarcode";
         public const string COL_CUSTOMER_ID = "customer_id";
@@ -33,6 +34,7 @@ namespace BinaMitraTextile
         public const string COL_DB_SHIPPINGCOST = "shipping_cost";
         public const string COL_DB_ISREPORTED = "is_reported";
         public const string COL_DB_TAXNO = "tax_no";
+        public const string COL_DB_Notes = "notes";
 
         public const string COL_TRANSPORTNAME = "transport_name";
         public const string COL_COMPLETED = "completed";
@@ -48,9 +50,13 @@ namespace BinaMitraTextile
         public const string COL_RemainingTermDays = "RemainingTermDays";
         public const string COL_RemainingDebtLimit = "RemainingDebtLimit";
 
+        public const string COL_totalQty = "totalQty";
+
         public const string FILTER_OnlyNotCompleted = "FILTER_OnlyNotCompleted";
         public const string FILTER_Inventory_Code = "FILTER_Inventory_Code";
         public const string FILTER_OnlyManualAdjustment = "FILTER_OnlyManualAdjustment";
+
+        public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
 
         //Charting ****************************************************************
         public const string COL_CHART_SALEYEARMONTH = "sale_year_month";
@@ -612,6 +618,21 @@ namespace BinaMitraTextile
             }
 
             return dataTable;
+        }
+
+        public static DataTable get_by_SaleOrderItems_Id(Guid? saleOrderItems_Id)
+        {
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "Sale_get_by_SaleOrderItems_Id",
+                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    );
+            }
+            return result.Datatable;
         }
 
         #endregion DATABASE METHODS

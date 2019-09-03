@@ -132,6 +132,7 @@
             this.itxt_QuickSearch.PasswordChar = '\0';
             this.itxt_QuickSearch.RowCount = 1;
             this.itxt_QuickSearch.ShowDeleteButton = false;
+            this.itxt_QuickSearch.ShowFilter = false;
             this.itxt_QuickSearch.ShowTextboxOnly = true;
             this.itxt_QuickSearch.Size = new System.Drawing.Size(59, 21);
             this.itxt_QuickSearch.TabIndex = 5;
@@ -158,7 +159,7 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.grid);
             this.Name = "Main_Form";
-            this.Text = "Logs";
+            this.Text = "LOG";
             this.Load += new System.EventHandler(this.Main_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);

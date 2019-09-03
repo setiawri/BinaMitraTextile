@@ -27,8 +27,6 @@ namespace BinaMitraTextile.Logs
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             grid.AutoGenerateColumns = false;
         }
 

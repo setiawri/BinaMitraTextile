@@ -22,7 +22,6 @@ namespace BinaMitraTextile.Invoices
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
             this.DialogResult = DialogResult.Cancel;
         }
 

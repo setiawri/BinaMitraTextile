@@ -53,8 +53,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-            
             if (_formMode == FormMode.Browse)
             {
                 pnlModeButtons.Enabled = false;

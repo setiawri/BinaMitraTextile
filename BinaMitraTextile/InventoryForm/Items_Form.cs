@@ -33,8 +33,7 @@ namespace BinaMitraTextile.InventoryForm
         public Items_Form(Guid inventoryID)
         {
             InitializeComponent();
-            this.Text += DBUtil.appendTitleWithInfo();
-
+            
             _inventory = new Inventory(inventoryID);
             lblInventoryID.Text = String.Format("{0} - {1}", _inventory.code.ToString(), _inventory.product_store_name);
             lblLengthUnit.Text = _inventory.length_unit_name;
@@ -56,7 +55,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridInventoryItems_lastOpname.DataPropertyName = InventoryItem.COL_LASTOPNAME;
             col_grid_colorname.DataPropertyName = InventoryItem.COL_INVENTORYITEMCOLORNAME;
             col_grid_notes.DataPropertyName = InventoryItem.COL_NOTES;
-            col_grid_SaleOrderItems_Description.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
+            col_grid_SaleOrderItemDescription.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
             populateGrid();
 
             txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
@@ -218,6 +217,24 @@ namespace BinaMitraTextile.InventoryForm
         {
             Tools.displayForm(new MasterData.FabricColors_Form(FormMode.New));
             FabricColor.populateDropDownList(cbColors, false, true);
+        }
+
+        private void BtnRemoveSaleOrderItems_Click(object sender, EventArgs e)
+        {
+            List<Guid> InventoryItemIdList = new List<Guid>();
+
+            DataTable dt = (DataTable)grid.DataSource;
+            foreach (DataRow dr in dt.Rows)
+                InventoryItemIdList.Add((Guid)dr[SaleItem.COL_INVENTORY_ITEM_ID]);
+
+            if (InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null))
+            {
+                //manually update list since it is not saved in database yet
+                foreach (DataRow dr in dt.Rows)
+                    dr[SaleItem.COL_SaleOrderItemDescription] = DBNull.Value;
+
+                grid.DataSource = dt;
+            }
         }
 
         #endregion ADD/UPDATE ITEM

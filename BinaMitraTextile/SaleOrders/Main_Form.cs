@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using System.Data;
+using System.Collections.Generic;
+using LIBUtil;
+
 namespace BinaMitraTextile.SaleOrders
 {
     public partial class Main_Form : Form
@@ -14,6 +18,7 @@ namespace BinaMitraTextile.SaleOrders
 
         private FormMode _formMode = FormMode.Search;
         private Guid? _Customers_Id;
+        protected CheckBox _selectCheckboxHeader;
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -35,11 +40,15 @@ namespace BinaMitraTextile.SaleOrders
             populatePageData();
         }
 
+        private void Main_Form_Shown(object sender, EventArgs e)
+        {
+            _selectCheckboxHeader = Tools.addHeaderCheckbox(gridInventoryItems, col_gridInventoryItems_Select, "_selectCheckboxHeader", selectCheckboxHeader_CheckedChanged);
+            _selectCheckboxHeader.Click += new System.EventHandler(this._selectCheckboxHeader_Clieck);
+        }
+
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
-            if(_formMode == FormMode.Browse)
+            if (_formMode == FormMode.Browse)
             {
                 //scMain.Panel1Collapsed = true;
                 scMain.Visible = false;
@@ -80,22 +89,28 @@ namespace BinaMitraTextile.SaleOrders
             col_gridSaleOrderItems_Customers_Id.DataPropertyName = SaleOrderItem.COL_Customers_Id;
             col_gridSaleOrderItems_CustomerName.DataPropertyName = SaleOrderItem.COL_CustomerName;
 
-            gridSold.AutoGenerateColumns = false;
-            gridSold.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            col_gridSold_InventoryItems_Id.DataPropertyName = SaleItem.COL_INVENTORY_ITEM_ID;
-            col_gridSold_InventoryItems_ItemLength.DataPropertyName = SaleItem.COL_LENGTH;
-            col_gridSold_InventoryItems_Barcode.DataPropertyName = SaleItem.COL_BARCODE;
-            col_gridSold_Sales_No.DataPropertyName = SaleItem.COL_Sales_Barcode;
-            col_gridSold_Sales_Timestamp.DataPropertyName = SaleItem.COL_Sales_Timestamp;
-            col_gridSold_Sales_Id.DataPropertyName = SaleItem.COL_DB_sale_id;
-            col_gridSold_Inventory_Code.DataPropertyName = SaleItem.COL_INVENTORYCODE;
+            gridSales.AutoGenerateColumns = false;
+            gridSales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridSales_Sales_Id.DataPropertyName = Sale.COL_ID;
+            col_gridSales_Sales_Timestamp.DataPropertyName = Sale.COL_DB_Timestamp;
+            col_gridSales_Sales_No.DataPropertyName = Sale.COL_HEXBARCODE;
+            col_gridSales_Sales_TotalQty.DataPropertyName = Sale.COL_totalQty;
+            col_gridSales_Notes.DataPropertyName = Sale.COL_DB_Notes;
 
-            gridBooked.AutoGenerateColumns = false;
-            gridBooked.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            col_gridBooked_InventoryItems_Barcode.DataPropertyName = InventoryItem.COL_BARCODE;
-            col_gridBooked_InventoryItems_Id.DataPropertyName = InventoryItem.COL_ID;
-            col_gridBooked_InventoryItems_ItemLength.DataPropertyName = InventoryItem.COL_LENGTH;
-            col_gridBooked_Inventory_Code.DataPropertyName = InventoryItem.COL_INVENTORY_CODE;
+            gridInventory.AutoGenerateColumns = false;
+            gridInventory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridInventory_Id.DataPropertyName = Inventory.COL_DB_ID;
+            col_gridInventory_Code.DataPropertyName = Inventory.COL_DB_CODE;
+            col_gridInventory_length.DataPropertyName = Inventory.COL_ITEMLENGTH;
+            col_gridInventory_Notes.DataPropertyName = Inventory.COL_DB_NOTES;
+
+            gridInventoryItems.AutoGenerateColumns = false;
+            gridInventoryItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridInventoryItems_Id.DataPropertyName = InventoryItem.COL_ID;
+            col_InventoryItems_Inventory_Code.DataPropertyName = InventoryItem.COL_INVENTORY_CODE;
+            col_gridInventoryItems_barcode.DataPropertyName = InventoryItem.COL_BARCODE;
+            col_gridInventoryItems_item_length.DataPropertyName = InventoryItem.COL_LENGTH;
+            col_gridInventoryItems_Notes.DataPropertyName = InventoryItem.COL_NOTES;
 
             addStatusContextMenu(col_gridSaleOrderItems_Status_Name);
 
@@ -251,18 +266,85 @@ namespace BinaMitraTextile.SaleOrders
 
         private void populateGridSoldAndBooked(Guid saleOrderItems_Id)
         {
-            gridSold.DataSource = SaleItem.getSold(null, null, saleOrderItems_Id);
-            gridBooked.DataSource = InventoryItem.get_Booked(saleOrderItems_Id);
+            DataTable dtSales = Sale.get_by_SaleOrderItems_Id(saleOrderItems_Id);
+            gridSales.DataSource = dtSales;
+            lblSales.Text = string.Format("Sales ({0:N2})", LIBUtil.Util.compute(dtSales, "SUM", Sale.COL_totalQty, ""));
+
+            DataTable dtInventory = Inventory.get_by_SaleOrderItems_Id(saleOrderItems_Id);
+            gridInventory.DataSource = dtInventory;
+            lblInventory.Text = string.Format("Inventory ({0:N2})", Util.compute(dtInventory, "SUM", Inventory.COL_ITEMLENGTH, ""));
         }
 
-        private void GridSold_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void GridSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridSold_Sales_No.Name))
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridSales_Sales_No.Name))
             {
-                Sale sale = new Sale(new Guid(gridSold.Rows[e.RowIndex].Cells[col_gridSold_Sales_Id.Name].Value.ToString()));
+                Sale sale = new Sale(new Guid(gridSales.Rows[e.RowIndex].Cells[col_gridSales_Sales_Id.Name].Value.ToString()));
                 var form = new Sales.Invoice_Form(sale, SaleItem.getItems(sale.id), false);
                 Tools.displayForm(form);
             }
+        }
+
+        private void populateGridInventoryItems(Guid? sales_Id, Guid? inventory_Id)
+        {
+            DataTable dt = InventoryItem.get(null, null, (Guid)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Id), sales_Id, inventory_Id);
+            gridInventoryItems.DataSource = dt;
+            lblInventoryItems.Text = string.Format("Items ({0:N2})", Util.compute(dt, "SUM", InventoryItem.COL_LENGTH, ""));
+            btnRemoveSaleOrderItems_Id.Enabled = false;
+            if (_selectCheckboxHeader != null) _selectCheckboxHeader.Checked = false;
+        }
+
+        private void GridSales_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (((DataGridView)sender).SelectedRows.Count > 0)
+                populateGridInventoryItems((Guid)LIBUtil.Util.getSelectedRowValue(sender, col_gridSales_Sales_Id), null);
+        }
+
+        private void GridInventory_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (((DataGridView)sender).SelectedRows.Count > 0)
+                populateGridInventoryItems(null, (Guid)LIBUtil.Util.getSelectedRowValue(sender, col_gridInventory_Id));
+        }
+
+        private void selectCheckboxHeader_CheckedChanged(object sender, EventArgs e)
+        {
+            Tools.toggleCheckboxColumn(gridInventoryItems, col_gridInventoryItems_Select, _selectCheckboxHeader);
+        }
+
+        private void GridInventoryItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_gridInventoryItems_Select.Name))
+            {
+                Util.clickDataGridViewCheckbox(sender, e);
+                updateRemoveSaleOrderItems_IdButton();
+            }
+        }
+
+        private void _selectCheckboxHeader_Clieck(object sender, EventArgs e)
+        {
+            btnRemoveSaleOrderItems_Id.Enabled = _selectCheckboxHeader.Checked;
+        }
+
+        private void updateRemoveSaleOrderItems_IdButton()
+        {
+            btnRemoveSaleOrderItems_Id.Enabled = false;
+            if (gridInventoryItems != null)
+                foreach (DataGridViewRow row in gridInventoryItems.Rows)
+                    if (Util.getCheckboxValue(row, col_gridInventoryItems_Select))
+                        btnRemoveSaleOrderItems_Id.Enabled = true;
+        }
+
+        private void BtnRemoveSaleOrderItems_Id_Click(object sender, EventArgs e)
+        {
+            List<Guid> InventoryItemIdList = new List<Guid>();
+
+            DataTable dt = (DataTable)gridInventoryItems.DataSource;
+            foreach (DataRow dr in dt.Rows)
+                InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_ID]);
+
+            InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null);
+
+            populateGridSaleOrderItems();
         }
 
         #endregion FORM METHODS

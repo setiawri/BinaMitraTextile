@@ -64,8 +64,6 @@ namespace BinaMitraTextile.POs
 
         private void setupControls()
         {
-            this.Text += DBUtil.appendTitleWithInfo();
-
             txtPONo.Text = PO.getNextPONo(); //default PO number
             dtpTarget.Value = DateTime.Now.AddDays(14); //default target date
 
