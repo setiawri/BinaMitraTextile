@@ -85,6 +85,7 @@
             this.col_gridPOItems_subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridPOItems_status_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridPOItems_statusEnumID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_SaleOrderItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -483,7 +484,8 @@
             this.col_gridPOItems_pricePerUnit,
             this.col_gridPOItems_subtotal,
             this.col_gridPOItems_status_name,
-            this.col_gridPOItems_statusEnumID});
+            this.col_gridPOItems_statusEnumID,
+            this.col_grid_SaleOrderItemDescription});
             this.gridPOItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridPOItems.Location = new System.Drawing.Point(0, 288);
             this.gridPOItems.Margin = new System.Windows.Forms.Padding(2);
@@ -606,6 +608,15 @@
             this.col_gridPOItems_statusEnumID.ReadOnly = true;
             this.col_gridPOItems_statusEnumID.Visible = false;
             // 
+            // col_grid_SaleOrderItemDescription
+            // 
+            this.col_grid_SaleOrderItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_SaleOrderItemDescription.HeaderText = "SO";
+            this.col_grid_SaleOrderItemDescription.MinimumWidth = 30;
+            this.col_grid_SaleOrderItemDescription.Name = "col_grid_SaleOrderItemDescription";
+            this.col_grid_SaleOrderItemDescription.ReadOnly = true;
+            this.col_grid_SaleOrderItemDescription.Width = 30;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,5 +687,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridPOItems_subtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridPOItems_status_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridPOItems_statusEnumID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_SaleOrderItemDescription;
     }
 }

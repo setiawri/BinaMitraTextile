@@ -21,7 +21,8 @@ namespace BinaMitraTextile
             //AutoUpdaterDotNET.AutoUpdater.Start(@"C:\Users\Ricky\Desktop\Update\AutoUpdaterTest.xml");
 
             LIBUtil.DBConnection.initialize(Settings.CONNECTIONSTRING_DEFAULTPARAMS, Settings.SQL_USERNAME, Settings.SQL_PASSWORD);
-            LIBUtil.Util.ensureSingleInstance(runApplication);
+            //LIBUtil.Util.ensureSingleInstance(runApplication);
+            runApplication();
         }
 
         static void runApplication()

@@ -30,6 +30,8 @@ namespace BinaMitraTextile
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             if (DBUtil.isSalesEnvironment)
             {
                 rbLocalDB.Checked = true;
@@ -53,9 +55,27 @@ namespace BinaMitraTextile
                 rbDevDB.Visible = false;
                 rbConnectAsServer.Visible = false;
             }
-
+            
             toggleConnectionProperties();
             itxt_Username.focus();
+        }
+
+        private void setLastConnectedPortNo()
+        {
+            if (rbLiveDB.Checked || rbLocalDB.Checked)
+                itxt_Port.ValueText = Settings.LastConnectedPortNo;
+            else
+                itxt_Port.ValueText = "";
+
+            if(!itxt_Port.isEmpty())
+            {
+                if (itxt_Port.ValueText == rbPort1433.Text)
+                    rbPort1433.Checked = true;
+                else if(itxt_Port.ValueText == rbPort1434.Text)
+                    rbPort1434.Checked = true;
+                else if (itxt_Port.ValueText == rbPort1435.Text)
+                    rbPort1435.Checked = true;
+            }
         }
 
         #endregion INITIALIZATION
@@ -70,6 +90,9 @@ namespace BinaMitraTextile
 
             if (GlobalData.UserAccount != null)
             {
+                if(rbLiveDB.Checked || rbLocalDB.Checked)
+                    Settings.LastConnectedPortNo = itxt_Port.ValueText;
+
                 this.Hide();
                 LIBUtil.Util.displayForm(null, new Container_Form(), true);
                 this.Show();
@@ -80,28 +103,6 @@ namespace BinaMitraTextile
                 itxt_Password.ValueText = "";
                 itxt_Password.focus();
             }
-
-
-            //UserAccount user = UserAccount.authenticate(itxt_Username.ValueText, itxt_Password.ValueText.Trim(), _bypassLogin);
-            //if (user != null)
-            //{
-            //    itxt_Username.ValueText = "";
-            //    itxt_Password.ValueText = "";
-            //    GlobalData.UserAccount = user;
-
-            //    //Tools.displayForm(this, new Main_Form());
-            //    LIBUtil.Util.displayForm(this, new Container_Form(), true);
-
-            //    this.Hide();
-            //    LIBUtil.Util.displayForm(null, new Main_Form(), true);
-            //    this.Show();
-            //    this.Close();
-            //}
-            //else
-            //{
-            //    itxt_Password.ValueText = "";
-            //    itxt_Password.focus();
-            //}
         }
 
         #endregion AUTHENTICATION
@@ -145,6 +146,7 @@ namespace BinaMitraTextile
 
         private void rbConnection_CheckedChanged(object sender, EventArgs e)
         {
+            setLastConnectedPortNo();
             itxt_Username.focus();
         }
 
@@ -158,9 +160,23 @@ namespace BinaMitraTextile
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.C))
+            if (keyData == (Keys.Alt | Keys.C) || keyData == (Keys.Control | Keys.C))
             {
                 toggleConnectionProperties();
+                itxt_Port.focus();
+            }
+            else if (keyData == (Keys.Alt | Keys.L))
+            {
+                if (!gbConnectionProperties.Visible)
+                    toggleConnectionProperties();
+
+                if (!rbLocalDB.Checked && !rbLiveDB.Checked)
+                    rbLocalDB.Checked = true;
+                else if (rbLocalDB.Checked)
+                    rbLiveDB.Checked = true;
+                else if (rbLiveDB.Checked)
+                    rbLocalDB.Checked = true;
+
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -179,6 +195,18 @@ namespace BinaMitraTextile
             }
 
             itxt_Username.focus();
+        }
+
+        private void Itxt_Port_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                itxt_Password.focus();
+
+        }
+        private void RbPort_CheckedChanged(object sender, EventArgs e)
+        {
+            itxt_Port.ValueText = ((RadioButton)sender).Text;
+            itxt_Password.focus();
         }
 
         #endregion

@@ -50,7 +50,6 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPOItemID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPackingListNo = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
@@ -60,6 +59,7 @@
             this.cbVendorInvoices = new System.Windows.Forms.ComboBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.chkPOItem = new System.Windows.Forms.CheckBox();
+            this.itxt_POItemID = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.SuspendLayout();
             // 
             // txtNotes
@@ -313,19 +313,6 @@
             this.label4.TabIndex = 135;
             this.label4.Text = "PO Item ID";
             // 
-            // txtPOItemID
-            // 
-            this.txtPOItemID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPOItemID.Location = new System.Drawing.Point(103, 75);
-            this.txtPOItemID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPOItemID.MaxLength = 50;
-            this.txtPOItemID.Name = "txtPOItemID";
-            this.txtPOItemID.ReadOnly = true;
-            this.txtPOItemID.Size = new System.Drawing.Size(206, 20);
-            this.txtPOItemID.TabIndex = 999;
-            this.txtPOItemID.Click += new System.EventHandler(this.txtPOItemID_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -430,11 +417,30 @@
             this.chkPOItem.UseVisualStyleBackColor = true;
             this.chkPOItem.CheckedChanged += new System.EventHandler(this.chkPOItem_CheckedChanged);
             // 
+            // itxt_POItemID
+            // 
+            this.itxt_POItemID.IsBrowseMode = true;
+            this.itxt_POItemID.LabelText = "textbox";
+            this.itxt_POItemID.Location = new System.Drawing.Point(103, 75);
+            this.itxt_POItemID.MaxLength = 32767;
+            this.itxt_POItemID.MultiLine = false;
+            this.itxt_POItemID.Name = "itxt_POItemID";
+            this.itxt_POItemID.PasswordChar = '\0';
+            this.itxt_POItemID.RowCount = 1;
+            this.itxt_POItemID.ShowDeleteButton = true;
+            this.itxt_POItemID.ShowFilter = false;
+            this.itxt_POItemID.ShowTextboxOnly = true;
+            this.itxt_POItemID.Size = new System.Drawing.Size(228, 21);
+            this.itxt_POItemID.TabIndex = 1006;
+            this.itxt_POItemID.ValueText = "";
+            this.itxt_POItemID.isBrowseMode_Clicked += new System.EventHandler(this.Itxt_POItemID_isBrowseMode_Clicked);
+            // 
             // Add_Edit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 421);
+            this.Controls.Add(this.itxt_POItemID);
             this.Controls.Add(this.chkPOItem);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.cbVendorInvoices);
@@ -443,7 +449,6 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtPackingListNo);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtPOItemID);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.txtNotes);
@@ -497,7 +502,6 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPOItemID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPackingListNo;
         private System.Windows.Forms.TextBox txtCode;
@@ -507,5 +511,6 @@
         private System.Windows.Forms.ComboBox cbVendorInvoices;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.CheckBox chkPOItem;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_POItemID;
     }
 }

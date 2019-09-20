@@ -66,6 +66,8 @@ namespace BinaMitraTextile
                 menu_account_log.Visible = false;
 
                 lnkCreateSales.Visible = false;
+                lnkSales.Visible = false;
+                lnkShipping.Visible = false;
                 lnkPettyCash.Visible = false;
                 lnkSummary.Visible = false;
             }
@@ -318,7 +320,8 @@ namespace BinaMitraTextile
             setupControls();
             populatePageData();
 
-            Util.displayMDIChild(new Main_Form());
+            if(lnkSummary.Visible)
+                Util.displayMDIChild(new Main_Form());
         }
 
         private void LnkCreateSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -331,11 +334,6 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new InventoryForm.Main_Form());
         }
 
-        private void LnkOpname_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
-        }
-
         private void LnkPettyCash_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new FinancialRecords.PettyCash_Form());
@@ -344,6 +342,26 @@ namespace BinaMitraTextile
         private void LnkSummary_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new Main_Form());
+        }
+
+        private void BtnOpname_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
+        }
+
+        private void LnlSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Sales.Main_Form());
+        }
+
+        private void LnkShipping_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Sales.Shipping_Form());
+        }
+
+        private void LnkSaleOrders_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new SaleOrders.Main_Form());
         }
 
         #endregion CLASS METHODS

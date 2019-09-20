@@ -60,6 +60,7 @@ namespace BinaMitraTextile
             col_gridPOItems_PricePerUnit.DataPropertyName = POItem.COL_DB_PRICEPERUNIT;
             col_gridPOItems_Age.DataPropertyName = POItem.COL_AGE;
             col_gridPOItems_PendingQtyValue.DataPropertyName = POItem.COL_PENDINGQTYVALUE;
+            col_gridPOItems_SaleOrderItems_CustomerPONo.DataPropertyName = POItem.COL_SaleOrderItems_CustomerPONo;
 
             addStatusContextMenu(col_gridPOItems_statusname);
 
@@ -159,8 +160,17 @@ namespace BinaMitraTextile
 
         private void gridPOItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1 && GlobalData.UserAccount.role != Roles.User)
+           if (Util.isColumnMatch(sender, e, col_gridPOItems_SaleOrderItems_CustomerPONo))
+            {
+                SaleOrders.Main_Form form = new SaleOrders.Main_Form(FormMode.Browse, null);
+                Tools.displayForm(form);
+                if (form.DialogResult == DialogResult.OK)
+                    POItem.updateSaleOrderItem((Guid)Util.getSelectedRowValue(sender, col_gridPOItems_id), form.browseItemSelection, form.browseItemDescription);
+            }
+            else if (e.RowIndex > -1 && GlobalData.UserAccount.role != Roles.User)
+            {
                 Tools.displayForm(new POs.Print_Form((Guid)gridPOItems.Rows[e.RowIndex].Cells[col_gridPOItems_poid.Name].Value));
+            }
         }
 
         private void gridReceivables_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -215,7 +225,7 @@ namespace BinaMitraTextile
 
         private void gridStockLevel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Tools.displayForm(this, new Admin.StockLevel_Form(FormMode.New));
+            Util.displayMDIChild(new Admin.StockLevel_Form(FormMode.New));
         }
 
         private void btnShowHidden_Click(object sender, EventArgs e)
@@ -236,6 +246,16 @@ namespace BinaMitraTextile
         {
             setupControls();
             populatePageData();
+        }
+
+        private void Main_Form_Shown(object sender, EventArgs e)
+        {
+            Form form = new Admin.MasterData_v1_ToDoList_Form();
+
+            form.TopLevel = false;
+            scIncompletePOAndTodoList.Panel2.Controls.Add(form);
+            form.Dock = DockStyle.Fill;
+            form.Show();
         }
 
         #endregion CLASS METHODS

@@ -39,9 +39,6 @@ namespace BinaMitraTextile.Sales
             
             _formMode = mode;
             _saleID = saleID;
-
-            setupControls();
-            populatePageData();
         }
 
         public Add_Edit_Form(Guid saleID) : this(FormMode.Update, saleID) { }
@@ -56,7 +53,8 @@ namespace BinaMitraTextile.Sales
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //Tools.adjustGridviewForVScrollbar(this,true);
+            setupControls();
+            populatePageData();
         }
 
         private void setupControls()

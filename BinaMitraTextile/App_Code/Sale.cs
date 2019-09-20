@@ -51,6 +51,8 @@ namespace BinaMitraTextile
         public const string COL_RemainingDebtLimit = "RemainingDebtLimit";
 
         public const string COL_totalQty = "totalQty";
+        public const string COL_SALEQTY = "sale_qty";
+        public const string COL_SALELENGTH = "sale_length";
 
         public const string FILTER_OnlyNotCompleted = "FILTER_OnlyNotCompleted";
         public const string FILTER_Inventory_Code = "FILTER_Inventory_Code";
@@ -118,6 +120,7 @@ namespace BinaMitraTextile
         public string TransportName = "";
 
         public DataTable sale_items;
+        public DataTable datatable;
         
         public decimal SaleAmount
         {
@@ -133,25 +136,33 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CONSTRUCTORS
 
-        public Sale(Guid ID)
+        public Sale(string hexbarcode) : this(get(hexbarcode)) { }
+
+        public Sale(Guid ID) : this(getRow(ID)) { }
+
+        public Sale(DataTable dt)
         {
-            id = ID;
-            DataTable dt = getRow(ID);
-            time_stamp = Convert.ToDateTime(dt.Rows[0]["time_stamp"]);
-            customer_id = (Guid)dt.Rows[0][COL_CUSTOMER_ID];
-            voided = (Boolean)dt.Rows[0]["voided"];
-            user_id = (Guid)dt.Rows[0]["user_id"];
-            notes = dt.Rows[0]["notes"].ToString();
-            customer_info = dt.Rows[0]["customer_info"].ToString();
-            barcode = Tools.getHex(Convert.ToInt32(dt.Rows[0]["barcode"]), Settings.saleBarcodeLength);
-            TransportID = DBUtil.parseData<Guid?>(dt.Rows[0], COL_DB_TRANSPORTID);
-            ShippingCost = DBUtil.parseData<decimal>(dt.Rows[0], COL_DB_SHIPPINGCOST);
-            TaxNo = DBUtil.parseData<string>(dt.Rows[0], COL_DB_TAXNO);
-            ReturnedToSupplier = LIBUtil.Util.wrapNullable<bool>(dt.Rows[0], COL_DB_RETURNEDTOSUPPLIER);
+            if(dt != null && dt.Rows.Count > 0)
+            {
+                datatable = dt;
+                DataRow row = datatable.Rows[0];
+                id = DBUtil.parseData<Guid>(row, COL_ID);
+                time_stamp = Convert.ToDateTime(row["time_stamp"]);
+                customer_id = (Guid)row[COL_CUSTOMER_ID];
+                voided = (Boolean)row["voided"];
+                user_id = (Guid)row["user_id"];
+                notes = row["notes"].ToString();
+                customer_info = row["customer_info"].ToString();
+                barcode = Tools.getHex(Convert.ToInt32(row["barcode"]), Settings.saleBarcodeLength);
+                TransportID = DBUtil.parseData<Guid?>(row, COL_DB_TRANSPORTID);
+                ShippingCost = DBUtil.parseData<decimal>(row, COL_DB_SHIPPINGCOST);
+                TaxNo = DBUtil.parseData<string>(row, COL_DB_TAXNO);
+                ReturnedToSupplier = LIBUtil.Util.wrapNullable<bool>(row, COL_DB_RETURNEDTOSUPPLIER);
 
-            TransportName = DBUtil.parseData<string>(dt.Rows[0], COL_TRANSPORTNAME);
+                TransportName = DBUtil.parseData<string>(row, COL_TRANSPORTNAME);
 
-            sale_items = SaleItem.getItems(id);
+                sale_items = SaleItem.getItems(id);
+            }
         }
 
         public Sale(Guid CustomerID, Guid? transportID, decimal shippingCost, string Notes)
@@ -630,6 +641,21 @@ namespace BinaMitraTextile
                     QueryTypes.FillByAdapter,
                     "Sale_get_by_SaleOrderItems_Id",
                         new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    );
+            }
+            return result.Datatable;
+        }
+
+        public static DataTable get(string hexbarcode)
+        {
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "sale_get",
+                        new SqlQueryParameter(COL_HEXBARCODE, SqlDbType.VarChar, Tools.wrapNullable(hexbarcode))
                     );
             }
             return result.Datatable;

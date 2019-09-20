@@ -18,9 +18,6 @@ namespace BinaMitraTextile.Returns
         public Main_Form()
         {
             InitializeComponent();
-
-            setupControls();
-            populateGrid();
         }
 
         private void btnReturnSale_Click(object sender, EventArgs e)
@@ -31,11 +28,14 @@ namespace BinaMitraTextile.Returns
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //Tools.adjustGridviewForVScrollbar(this,true);
+            setupControls();
+            populateGrid();
         }
 
         private void setupControls()
         {
+            Customer.populateDropDownList(cbCustomers, true, false);
+
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_Checked.DataPropertyName = SaleReturn.COL_Checked;

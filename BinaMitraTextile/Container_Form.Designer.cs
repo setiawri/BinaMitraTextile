@@ -72,16 +72,18 @@
             this.menu_account_salescomission = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_account_rules = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_account_log = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_quit = new System.Windows.Forms.ToolStripMenuItem();
-            this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
+            this.btnOpname = new System.Windows.Forms.Button();
             this.gbShortcuts = new System.Windows.Forms.GroupBox();
             this.flpShortcuts = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkCreateSales = new System.Windows.Forms.LinkLabel();
+            this.lnkSales = new System.Windows.Forms.LinkLabel();
+            this.lnkShipping = new System.Windows.Forms.LinkLabel();
             this.lnkInventory = new System.Windows.Forms.LinkLabel();
-            this.lnkOpname = new System.Windows.Forms.LinkLabel();
             this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
+            this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcuts.SuspendLayout();
@@ -101,8 +103,7 @@
             this.menu_reports,
             this.menu_todolist,
             this.menu_test,
-            this.menu_account,
-            this.menu_quit});
+            this.menu_account});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -123,14 +124,14 @@
             // menu_sales_list
             // 
             this.menu_sales_list.Name = "menu_sales_list";
-            this.menu_sales_list.Size = new System.Drawing.Size(180, 22);
+            this.menu_sales_list.Size = new System.Drawing.Size(135, 22);
             this.menu_sales_list.Text = "Daftar Sales";
             this.menu_sales_list.Click += new System.EventHandler(this.menu_sales_list_Click);
             // 
             // menu_sales_saleorders
             // 
             this.menu_sales_saleorders.Name = "menu_sales_saleorders";
-            this.menu_sales_saleorders.Size = new System.Drawing.Size(180, 22);
+            this.menu_sales_saleorders.Size = new System.Drawing.Size(135, 22);
             this.menu_sales_saleorders.Text = "Sale Orders";
             this.menu_sales_saleorders.Click += new System.EventHandler(this.menu_sales_saleorders_Click);
             // 
@@ -153,14 +154,14 @@
             // 
             this.menu_inventory_stock.Name = "menu_inventory_stock";
             this.menu_inventory_stock.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.menu_inventory_stock.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_stock.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_stock.Text = "Stock";
             this.menu_inventory_stock.Click += new System.EventHandler(this.menu_inventory_stock_Click);
             // 
             // menu_inventory_stocklevel
             // 
             this.menu_inventory_stocklevel.Name = "menu_inventory_stocklevel";
-            this.menu_inventory_stocklevel.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_stocklevel.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_stocklevel.Text = "Stock Level";
             this.menu_inventory_stocklevel.Click += new System.EventHandler(this.menu_inventory_stocklevel_Click);
             // 
@@ -168,7 +169,7 @@
             // 
             this.menu_inventory_invoices.Name = "menu_inventory_invoices";
             this.menu_inventory_invoices.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.menu_inventory_invoices.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_invoices.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_invoices.Text = "Invoices";
             this.menu_inventory_invoices.Click += new System.EventHandler(this.menu_inventory_invoices_Click);
             // 
@@ -176,7 +177,7 @@
             // 
             this.menu_inventory_opname.Name = "menu_inventory_opname";
             this.menu_inventory_opname.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.menu_inventory_opname.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_opname.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_opname.Text = "Opname";
             this.menu_inventory_opname.Click += new System.EventHandler(this.menu_inventory_opname_Click);
             // 
@@ -184,21 +185,21 @@
             // 
             this.menu_inventory_po.Name = "menu_inventory_po";
             this.menu_inventory_po.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.menu_inventory_po.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_po.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_po.Text = "PO";
             this.menu_inventory_po.Click += new System.EventHandler(this.menu_inventory_po_Click);
             // 
             // menu_inventory_printbarcodes
             // 
             this.menu_inventory_printbarcodes.Name = "menu_inventory_printbarcodes";
-            this.menu_inventory_printbarcodes.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_printbarcodes.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_printbarcodes.Text = "Print Barcodes";
             this.menu_inventory_printbarcodes.Click += new System.EventHandler(this.menu_inventory_printbarcodes_Click);
             // 
             // menu_inventory_samples
             // 
             this.menu_inventory_samples.Name = "menu_inventory_samples";
-            this.menu_inventory_samples.Size = new System.Drawing.Size(180, 22);
+            this.menu_inventory_samples.Size = new System.Drawing.Size(159, 22);
             this.menu_inventory_samples.Text = "Samples";
             this.menu_inventory_samples.Click += new System.EventHandler(this.menu_inventory_samples_Click);
             // 
@@ -390,21 +391,21 @@
             // menu_reports_financial
             // 
             this.menu_reports_financial.Name = "menu_reports_financial";
-            this.menu_reports_financial.Size = new System.Drawing.Size(180, 22);
+            this.menu_reports_financial.Size = new System.Drawing.Size(121, 22);
             this.menu_reports_financial.Text = "Financial";
             this.menu_reports_financial.Click += new System.EventHandler(this.menu_reports_financial_Click);
             // 
             // menu_reports_sales
             // 
             this.menu_reports_sales.Name = "menu_reports_sales";
-            this.menu_reports_sales.Size = new System.Drawing.Size(180, 22);
+            this.menu_reports_sales.Size = new System.Drawing.Size(121, 22);
             this.menu_reports_sales.Text = "Sales";
             this.menu_reports_sales.Click += new System.EventHandler(this.menu_reports_sales_Click);
             // 
             // menu_reports_tax
             // 
             this.menu_reports_tax.Name = "menu_reports_tax";
-            this.menu_reports_tax.Size = new System.Drawing.Size(180, 22);
+            this.menu_reports_tax.Size = new System.Drawing.Size(121, 22);
             this.menu_reports_tax.Text = "Tax";
             this.menu_reports_tax.Click += new System.EventHandler(this.menu_reports_tax_Click);
             // 
@@ -436,52 +437,35 @@
             // menu_account_password
             // 
             this.menu_account_password.Name = "menu_account_password";
-            this.menu_account_password.Size = new System.Drawing.Size(180, 22);
+            this.menu_account_password.Size = new System.Drawing.Size(125, 22);
             this.menu_account_password.Text = "Password";
             this.menu_account_password.Click += new System.EventHandler(this.menu_account_password_Click);
             // 
             // menu_account_salescomission
             // 
             this.menu_account_salescomission.Name = "menu_account_salescomission";
-            this.menu_account_salescomission.Size = new System.Drawing.Size(180, 22);
+            this.menu_account_salescomission.Size = new System.Drawing.Size(125, 22);
             this.menu_account_salescomission.Text = "Komisi";
             this.menu_account_salescomission.Click += new System.EventHandler(this.menu_account_salescomission_Click);
             // 
             // menu_account_rules
             // 
             this.menu_account_rules.Name = "menu_account_rules";
-            this.menu_account_rules.Size = new System.Drawing.Size(180, 22);
+            this.menu_account_rules.Size = new System.Drawing.Size(125, 22);
             this.menu_account_rules.Text = "Peraturan";
             this.menu_account_rules.Visible = false;
             // 
             // menu_account_log
             // 
             this.menu_account_log.Name = "menu_account_log";
-            this.menu_account_log.Size = new System.Drawing.Size(180, 22);
+            this.menu_account_log.Size = new System.Drawing.Size(125, 22);
             this.menu_account_log.Text = "Log";
             this.menu_account_log.Click += new System.EventHandler(this.menu_account_log_Click);
-            // 
-            // menu_quit
-            // 
-            this.menu_quit.Name = "menu_quit";
-            this.menu_quit.Size = new System.Drawing.Size(42, 20);
-            this.menu_quit.Text = "Quit";
-            this.menu_quit.Click += new System.EventHandler(this.menu_quit_Click);
-            // 
-            // expandCollapseToggle1
-            // 
-            this.expandCollapseToggle1.AdjustLocationOnClick = true;
-            this.expandCollapseToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Left;
-            this.expandCollapseToggle1.Location = new System.Drawing.Point(145, 24);
-            this.expandCollapseToggle1.Margin = new System.Windows.Forms.Padding(4);
-            this.expandCollapseToggle1.Name = "expandCollapseToggle1";
-            this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
-            this.expandCollapseToggle1.TabIndex = 19;
-            this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
             // 
             // pnlShortcuts
             // 
             this.pnlShortcuts.BackColor = System.Drawing.Color.White;
+            this.pnlShortcuts.Controls.Add(this.btnOpname);
             this.pnlShortcuts.Controls.Add(this.gbShortcuts);
             this.pnlShortcuts.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlShortcuts.Location = new System.Drawing.Point(0, 24);
@@ -489,6 +473,17 @@
             this.pnlShortcuts.Padding = new System.Windows.Forms.Padding(5);
             this.pnlShortcuts.Size = new System.Drawing.Size(145, 426);
             this.pnlShortcuts.TabIndex = 18;
+            // 
+            // btnOpname
+            // 
+            this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOpname.Location = new System.Drawing.Point(8, 377);
+            this.btnOpname.Name = "btnOpname";
+            this.btnOpname.Size = new System.Drawing.Size(129, 41);
+            this.btnOpname.TabIndex = 21;
+            this.btnOpname.Text = "OPNAME";
+            this.btnOpname.UseVisualStyleBackColor = true;
+            this.btnOpname.Click += new System.EventHandler(this.BtnOpname_Click);
             // 
             // gbShortcuts
             // 
@@ -498,7 +493,7 @@
             this.gbShortcuts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcuts.Location = new System.Drawing.Point(5, 5);
             this.gbShortcuts.Name = "gbShortcuts";
-            this.gbShortcuts.Size = new System.Drawing.Size(135, 144);
+            this.gbShortcuts.Size = new System.Drawing.Size(135, 190);
             this.gbShortcuts.TabIndex = 14;
             this.gbShortcuts.TabStop = false;
             this.gbShortcuts.Text = "Shortcuts";
@@ -508,16 +503,18 @@
             this.flpShortcuts.AutoSize = true;
             this.flpShortcuts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpShortcuts.Controls.Add(this.lnkCreateSales);
+            this.flpShortcuts.Controls.Add(this.lnkSales);
+            this.flpShortcuts.Controls.Add(this.lnkShipping);
             this.flpShortcuts.Controls.Add(this.lnkInventory);
-            this.flpShortcuts.Controls.Add(this.lnkOpname);
             this.flpShortcuts.Controls.Add(this.lnkPettyCash);
+            this.flpShortcuts.Controls.Add(this.lnkSaleOrders);
             this.flpShortcuts.Controls.Add(this.lnkSummary);
             this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpShortcuts.Location = new System.Drawing.Point(3, 16);
             this.flpShortcuts.Name = "flpShortcuts";
             this.flpShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpShortcuts.Size = new System.Drawing.Size(129, 125);
+            this.flpShortcuts.Size = new System.Drawing.Size(129, 171);
             this.flpShortcuts.TabIndex = 17;
             // 
             // lnkCreateSales
@@ -537,6 +534,40 @@
             this.lnkCreateSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCreateSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCreateSales_LinkClicked);
             // 
+            // lnkSales
+            // 
+            this.lnkSales.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales.AutoSize = true;
+            this.lnkSales.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSales.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales.Location = new System.Drawing.Point(3, 28);
+            this.lnkSales.Name = "lnkSales";
+            this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSales.Size = new System.Drawing.Size(41, 23);
+            this.lnkSales.TabIndex = 26;
+            this.lnkSales.TabStop = true;
+            this.lnkSales.Text = "SALES";
+            this.lnkSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnlSales_LinkClicked);
+            // 
+            // lnkShipping
+            // 
+            this.lnkShipping.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkShipping.AutoSize = true;
+            this.lnkShipping.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkShipping.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkShipping.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkShipping.Location = new System.Drawing.Point(3, 51);
+            this.lnkShipping.Name = "lnkShipping";
+            this.lnkShipping.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkShipping.Size = new System.Drawing.Size(58, 23);
+            this.lnkShipping.TabIndex = 27;
+            this.lnkShipping.TabStop = true;
+            this.lnkShipping.Text = "SHIPPING";
+            this.lnkShipping.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkShipping.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkShipping_LinkClicked);
+            // 
             // lnkInventory
             // 
             this.lnkInventory.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
@@ -544,7 +575,7 @@
             this.lnkInventory.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkInventory.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.Location = new System.Drawing.Point(3, 28);
+            this.lnkInventory.Location = new System.Drawing.Point(3, 74);
             this.lnkInventory.Name = "lnkInventory";
             this.lnkInventory.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkInventory.Size = new System.Drawing.Size(70, 23);
@@ -554,23 +585,6 @@
             this.lnkInventory.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkInventory_LinkClicked);
             // 
-            // lnkOpname
-            // 
-            this.lnkOpname.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkOpname.AutoSize = true;
-            this.lnkOpname.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkOpname.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkOpname.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkOpname.Location = new System.Drawing.Point(3, 51);
-            this.lnkOpname.Name = "lnkOpname";
-            this.lnkOpname.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkOpname.Size = new System.Drawing.Size(53, 23);
-            this.lnkOpname.TabIndex = 22;
-            this.lnkOpname.TabStop = true;
-            this.lnkOpname.Text = "OPNAME";
-            this.lnkOpname.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkOpname.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkOpname_LinkClicked);
-            // 
             // lnkPettyCash
             // 
             this.lnkPettyCash.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
@@ -578,7 +592,7 @@
             this.lnkPettyCash.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkPettyCash.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkPettyCash.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.Location = new System.Drawing.Point(3, 74);
+            this.lnkPettyCash.Location = new System.Drawing.Point(3, 97);
             this.lnkPettyCash.Name = "lnkPettyCash";
             this.lnkPettyCash.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkPettyCash.Size = new System.Drawing.Size(36, 23);
@@ -595,7 +609,7 @@
             this.lnkSummary.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.Location = new System.Drawing.Point(3, 97);
+            this.lnkSummary.Location = new System.Drawing.Point(3, 143);
             this.lnkSummary.Name = "lnkSummary";
             this.lnkSummary.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSummary.Size = new System.Drawing.Size(62, 23);
@@ -604,6 +618,34 @@
             this.lnkSummary.Text = "SUMMARY";
             this.lnkSummary.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSummary_LinkClicked);
+            // 
+            // expandCollapseToggle1
+            // 
+            this.expandCollapseToggle1.AdjustLocationOnClick = true;
+            this.expandCollapseToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Left;
+            this.expandCollapseToggle1.Location = new System.Drawing.Point(145, 24);
+            this.expandCollapseToggle1.Margin = new System.Windows.Forms.Padding(4);
+            this.expandCollapseToggle1.Name = "expandCollapseToggle1";
+            this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
+            this.expandCollapseToggle1.TabIndex = 19;
+            this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
+            // 
+            // lnkSaleOrders
+            // 
+            this.lnkSaleOrders.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.AutoSize = true;
+            this.lnkSaleOrders.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSaleOrders.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.Location = new System.Drawing.Point(3, 120);
+            this.lnkSaleOrders.Name = "lnkSaleOrders";
+            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSaleOrders.Size = new System.Drawing.Size(83, 23);
+            this.lnkSaleOrders.TabIndex = 28;
+            this.lnkSaleOrders.TabStop = true;
+            this.lnkSaleOrders.Text = "SALE ORDERS";
+            this.lnkSaleOrders.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleOrders_LinkClicked);
             // 
             // Container_Form
             // 
@@ -676,15 +718,17 @@
         private System.Windows.Forms.ToolStripMenuItem menu_account_salescomission;
         private System.Windows.Forms.ToolStripMenuItem menu_account_rules;
         private System.Windows.Forms.ToolStripMenuItem menu_account_log;
-        private System.Windows.Forms.ToolStripMenuItem menu_quit;
         private LIBUtil.Desktop.UserControls.PanelToggle expandCollapseToggle1;
         private System.Windows.Forms.Panel pnlShortcuts;
         private System.Windows.Forms.GroupBox gbShortcuts;
         private System.Windows.Forms.FlowLayoutPanel flpShortcuts;
         private System.Windows.Forms.LinkLabel lnkCreateSales;
         private System.Windows.Forms.LinkLabel lnkInventory;
-        private System.Windows.Forms.LinkLabel lnkOpname;
         private System.Windows.Forms.LinkLabel lnkPettyCash;
         private System.Windows.Forms.LinkLabel lnkSummary;
+        private System.Windows.Forms.Button btnOpname;
+        private System.Windows.Forms.LinkLabel lnkSales;
+        private System.Windows.Forms.LinkLabel lnkShipping;
+        private System.Windows.Forms.LinkLabel lnkSaleOrders;
     }
 }

@@ -78,6 +78,7 @@ namespace BinaMitraTextile
         public const string COL_DB_PriorityNo = "PriorityNo";
         public const string COL_DB_PriorityQty = "PriorityQty";
         public const string COL_DB_ExpectedDeliveryDate = "ExpectedDeliveryDate";
+        public const string COL_DB_SaleOrderItems_Id = "SaleOrderItems_Id";
 
         public const string COL_SUBTOTAL = "subtotal";
         public const string COL_RECEIVEDQTY = "received_qty";
@@ -85,10 +86,13 @@ namespace BinaMitraTextile
         public const string COL_STATUSNAME = "status_name";
         public const string COL_PONO = "po_no";
         public const string COL_DB_ExpectedDeliveryDayCount = "ExpectedDeliveryDayCount";
+        public const string COL_SaleOrderItems_CustomerPONo = "CustomerPONo";
 
         public const string COL_PENDINGQTY = "pendingqty";
         public const string COL_PENDINGQTYVALUE = "pendingqtyvalue";
         public const string COL_AGE = "age";
+
+        public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
 
         #endregion DATABASE COLUMNS
         /*******************************************************************************************************/
@@ -225,6 +229,43 @@ namespace BinaMitraTextile
 
         //    return dataTable;
         //}
+
+        public static bool updateSaleOrderItem(Guid id, Guid? SaleOrderItems_Id, string description)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                SqlQueryResult result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "poitem_update_SaleOrderItems_Id",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(SaleOrderItems_Id))
+                );
+
+                if (!result.IsSuccessful)
+                    return false;
+                else if (SaleOrderItems_Id == null)
+                    ActivityLog.submit(sqlConnection, id, "Sale Order Item removed");
+                else
+                    ActivityLog.submit(sqlConnection, id, "Sale Order Item Updated to: " + description);
+            }
+            return true;
+        }
+
+        public static DataTable get_by_SaleOrderItems_Id(Guid? saleOrderItems_Id)
+        {
+            SqlQueryResult result = new SqlQueryResult();
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.FillByAdapter,
+                    "poitem_get_by_SaleOrderItems_Id",
+                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    );
+            }
+            return result.Datatable;
+        }
 
         #endregion STATIC DATABASE METHODS
         /*******************************************************************************************************/

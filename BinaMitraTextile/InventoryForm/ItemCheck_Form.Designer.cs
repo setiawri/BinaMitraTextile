@@ -79,7 +79,6 @@
             this.col_gridDetails_itemsellprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridDetails_inventoryItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpStartDate1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.btnCompareToInventory = new System.Windows.Forms.Button();
             this.chkExcludeZeroDiffsFromCompleteSummary = new System.Windows.Forms.CheckBox();
@@ -103,6 +102,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkIgnoreSold = new System.Windows.Forms.CheckBox();
             this.chkCheckListBeforeSubmit = new System.Windows.Forms.CheckBox();
+            this.chkDoNotLoadList = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummaryCheck)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).BeginInit();
@@ -551,19 +551,9 @@
             this.dtpStartDate1.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             this.dtpStartDate1.ValueChanged += new System.EventHandler(this.dtpStartDate1_ValueChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 9);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Barcode";
-            // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(47, 5);
+            this.txtBarcode.Location = new System.Drawing.Point(31, 5);
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(69, 20);
@@ -818,7 +808,7 @@
             // chkIgnoreSold
             // 
             this.chkIgnoreSold.AutoSize = true;
-            this.chkIgnoreSold.Location = new System.Drawing.Point(120, 7);
+            this.chkIgnoreSold.Location = new System.Drawing.Point(104, 7);
             this.chkIgnoreSold.Name = "chkIgnoreSold";
             this.chkIgnoreSold.Size = new System.Drawing.Size(77, 17);
             this.chkIgnoreSold.TabIndex = 116;
@@ -829,22 +819,32 @@
             // chkCheckListBeforeSubmit
             // 
             this.chkCheckListBeforeSubmit.AutoSize = true;
-            this.chkCheckListBeforeSubmit.Location = new System.Drawing.Point(196, 7);
+            this.chkCheckListBeforeSubmit.Location = new System.Drawing.Point(181, 7);
             this.chkCheckListBeforeSubmit.Name = "chkCheckListBeforeSubmit";
             this.chkCheckListBeforeSubmit.Size = new System.Drawing.Size(71, 17);
             this.chkCheckListBeforeSubmit.TabIndex = 117;
             this.chkCheckListBeforeSubmit.Text = "check list";
             this.chkCheckListBeforeSubmit.UseVisualStyleBackColor = true;
             // 
+            // chkDoNotLoadList
+            // 
+            this.chkDoNotLoadList.AutoSize = true;
+            this.chkDoNotLoadList.Location = new System.Drawing.Point(252, 7);
+            this.chkDoNotLoadList.Name = "chkDoNotLoadList";
+            this.chkDoNotLoadList.Size = new System.Drawing.Size(94, 17);
+            this.chkDoNotLoadList.TabIndex = 118;
+            this.chkDoNotLoadList.Text = "do not load list";
+            this.chkDoNotLoadList.UseVisualStyleBackColor = true;
+            // 
             // ItemCheck_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 561);
+            this.Controls.Add(this.chkDoNotLoadList);
             this.Controls.Add(this.chkCheckListBeforeSubmit);
             this.Controls.Add(this.chkIgnoreSold);
             this.Controls.Add(this.tcSummary);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.groupBox2);
             this.Name = "ItemCheck_Form";
@@ -875,7 +875,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView gridDetail;
         private System.Windows.Forms.DateTimePicker dtpStartDate1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpEndDate1;
@@ -926,5 +925,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiffQty;
         private System.Windows.Forms.CheckBox chkShowDeleteTodayData;
         private System.Windows.Forms.CheckBox chkCheckListBeforeSubmit;
+        private System.Windows.Forms.CheckBox chkDoNotLoadList;
     }
 }

@@ -1,1 +1,1 @@
-﻿
+﻿ALTER TABLE POs ADD SaleOrderItems_Id uniqueidentifier NULL

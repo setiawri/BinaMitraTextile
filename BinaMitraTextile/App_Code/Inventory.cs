@@ -45,6 +45,8 @@ namespace BinaMitraTextile
         public const string COL_SUBTOTAL = "subtotal";
         public const string COL_SELLPRICE = "sell_price";
         public const string COL_AVAILABLEITEMLENGTH = "available_item_length";
+        public const string COL_BUYVALUE = "buy_value";
+        public const string COL_SELLVALUE = "sell_value";
         public const string COL_AVAILABLEQTY = "available_qty";
         public const string COL_POITEMDESCRIPTION = "po_item_description";
         public const string COL_PONo = "po_no";
@@ -432,6 +434,57 @@ namespace BinaMitraTextile
         public static void setCountAndAmount(Label lbl, string qty, string length, string total)
         {
             lbl.Text = String.Format("{0} pcs / {1:N2} ({2:N2})", qty, Tools.zeroNonNumericString(length), Tools.zeroNonNumericString(total));
+        }
+        
+        public static DataTable compileSummaryData(DataTable dt)
+        {
+            DataTable dtSummary = dt.Clone();
+            Tools.setDataTablePrimaryKey(dtSummary, Inventory.COL_DB_ID);
+
+            DataRow tempRow;
+            foreach (DataRow dr in dt.Rows)
+            {
+                tempRow = findCombination(dtSummary, dr);
+                if (tempRow != null)
+                {
+                    tempRow[Inventory.COL_AVAILABLEITEMLENGTH] = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH]);
+                    tempRow[Inventory.COL_AVAILABLEQTY] = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEQTY]);
+                    if (Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]) > 0)
+                    {
+                        tempRow[Inventory.COL_DB_BUYPRICE] = 
+                            ((Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]))
+                            + (Tools.zeroNonNumericString(dr[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEQTY])))
+                            / Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]); //calculate average buy price
+                        tempRow[Inventory.COL_BUYVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate buy value
+                        tempRow[Inventory.COL_SELLVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_SELLVALUE]) + (Tools.zeroNonNumericString(dr[Inventory.COL_SELLPRICE]) * Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH])); //calculate buy value
+                    }
+                    dtSummary.AcceptChanges();
+                }
+                else
+                {
+                    tempRow = dtSummary.Rows.Add(dr.ItemArray);
+                    tempRow[Inventory.COL_BUYVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate buy value
+                    tempRow[Inventory.COL_SELLVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_SELLPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate buy value
+                    dtSummary.AcceptChanges();
+                }
+            }
+
+            return dtSummary;
+        }
+
+        public static DataRow findCombination(DataTable datatable, DataRow datarow)
+        {
+            foreach(DataRow row in datatable.Rows)
+            {
+                if (row[Inventory.COL_PRODUCTSTORENAME].ToString() == datarow[Inventory.COL_PRODUCTSTORENAME].ToString()
+                    && row[Inventory.COL_GRADE_NAME].ToString() == datarow[Inventory.COL_GRADE_NAME].ToString()
+                    && row[Inventory.COL_PRODUCT_WIDTH_NAME].ToString() == datarow[Inventory.COL_PRODUCT_WIDTH_NAME].ToString()
+                    && row[Inventory.COL_LENGTH_UNIT_NAME].ToString() == datarow[Inventory.COL_LENGTH_UNIT_NAME].ToString())
+
+                    return row;
+            }
+
+            return null;
         }
     }
 }

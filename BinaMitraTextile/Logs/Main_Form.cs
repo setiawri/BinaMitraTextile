@@ -20,9 +20,6 @@ namespace BinaMitraTextile.Logs
             InitializeComponent();
 
             _id = associatedID;
-
-            setupControls();
-            populatePageData();
         }
 
         private void setupControls()
@@ -36,12 +33,13 @@ namespace BinaMitraTextile.Logs
             dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText, FieldnamesForQuickSearch.ToArray());
 
             grid.DataSource = dvw;
-            grid.ClearSelection();
         }
 
         private void Main_Form_Load(object sender, EventArgs e)
         {
-            grid.ClearSelection();
+            setupControls();
+            populatePageData();
+
             txtDescription.Focus();
         }
 

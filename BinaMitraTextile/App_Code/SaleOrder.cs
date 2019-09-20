@@ -108,7 +108,7 @@ namespace BinaMitraTextile
             }
             return result.Datatable;
         }
-
+        
         public static bool add(Guid id, Guid customerId, string customerInfo, List<SaleOrderItem> items, string notes, DateTime targetDate, string customerPONo)
         {
             bool isSuccess = false;
@@ -137,6 +137,23 @@ namespace BinaMitraTextile
             }
 
             return isSuccess;
+        }
+
+        public static void updateTargetDate(Guid id, DateTime value)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            {
+                SqlQueryResult result = DBConnection.query(
+                    sqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "SaleOrders_update_TargetDate",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, value)
+                );
+
+                if (result.IsSuccessful)
+                    ActivityLog.submit(sqlConnection, id, "Due date updated to: " + value.ToString("dd/MM/yy"));
+            }
         }
 
         #endregion DATABASE STATIC METHODS

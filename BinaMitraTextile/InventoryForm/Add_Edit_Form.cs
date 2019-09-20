@@ -10,7 +10,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private Guid _id;
         private FormMode _formMode = FormMode.New;
-        private Guid? _browsedPOItemID;
         private Guid? _browsedProductID;
 
         private decimal buyPriceBeforePOItemChecked = 0;
@@ -87,10 +86,8 @@ namespace BinaMitraTextile.InventoryForm
                 populateProductName(obj.product_store_name, obj.product_name_vendor);
                 cbProductWidths.SelectedValue = obj.product_width_id;
                 txtPackingListNo.Text = obj.PackingListNo;
-                _browsedPOItemID = obj.POItemID;
-                if(!string.IsNullOrWhiteSpace(obj.POItemDescription))
-                    txtPOItemID.Text = string.Format("[{0}] {1}", obj.PONo, obj.POItemDescription);
-
+                if(obj.POItemID != null)
+                    itxt_POItemID.setValue(string.Format("[{0}] {1}", obj.PONo, obj.POItemDescription), obj.POItemID);
                 txtNotes.Text = obj.notes;
                 txtBuyPrice.Text = obj.buy_price.ToString();
             }
@@ -134,46 +131,7 @@ namespace BinaMitraTextile.InventoryForm
                     break;
             }
         }
-
-        private void txtPOItemID_Click(object sender, EventArgs e)
-        {
-            POs.Main_Form form = new POs.Main_Form(FormMode.Browse);
-            Tools.displayForm(form);
-            if (form.DialogResult == DialogResult.OK)
-            {
-                _browsedPOItemID = form.browseItemSelection;
-                txtPOItemID.Text = form.browseItemDescription;
-
-                decimal poItemPricePerUnit = LIBUtil.Util.zeroNonNumericString(form.browseItemPricePerUnit.ToString());
-                txtBuyPrice.Text = poItemPricePerUnit.ToString();
-
-                if (!chkPOItem.Checked && poItemPricePerUnit > 0)
-                    buyPriceBeforePOItemChecked = poItemPricePerUnit;
-            }
-            txtCode.Focus();
-
-            //automatically fill out form
-            if (_formMode == FormMode.New)
-            {
-                if (_browsedPOItemID != null)
-                {
-                    Guid? inventoryID = new POItem((Guid)_browsedPOItemID).ReferencedInventoryID;
-                    if(inventoryID != null)
-                    {
-                        Inventory obj = new Inventory((Guid)inventoryID);
-                        _browsedProductID = obj.product_id;
-                        populateProductName(obj.product_store_name, obj.product_name_vendor);
-                        cbGrades.SelectedValue = obj.grade_id;
-                        cbProductWidths.SelectedValue = obj.product_width_id;
-                        cbLengthUnits.SelectedValue = obj.length_unit_id;
-                        cbColors.SelectedValue = obj.color_id;
-
-                        chkPOItem.Checked = true;
-                    }
-                }
-            }
-        }
-
+        
         private void txtProductName_Click(object sender, EventArgs e)
         {
             MasterData.Products_Form form = new MasterData.Products_Form(FormMode.Browse);
@@ -245,7 +203,7 @@ namespace BinaMitraTextile.InventoryForm
                     (Guid)cbLengthUnits.SelectedValue,
                     (Guid)cbColors.SelectedValue,
                     txtNotes.Text.Trim(),
-                    _browsedPOItemID,
+                    itxt_POItemID.ValueGuid,
                     txtPackingListNo.Text.Trim(),
                     (Guid?)cbVendorInvoices.SelectedValue,
                     Convert.ToInt32(Tools.zeroNonNumericString(txtCode.Text)));
@@ -309,6 +267,44 @@ namespace BinaMitraTextile.InventoryForm
         private void cbLengthUnits_SelectedIndexChanged(object sender, EventArgs e)
         {
             chkPOItem.Checked = false;
+        }
+
+        private void Itxt_POItemID_isBrowseMode_Clicked(object sender, EventArgs e)
+        {
+            POs.Main_Form form = new POs.Main_Form(FormMode.Browse);
+            Tools.displayForm(form);
+            if (form.DialogResult == DialogResult.OK)
+            {
+                itxt_POItemID.setValue(form.browseItemDescription, form.browseItemSelection);
+
+                decimal poItemPricePerUnit = LIBUtil.Util.zeroNonNumericString(form.browseItemPricePerUnit.ToString());
+                txtBuyPrice.Text = poItemPricePerUnit.ToString();
+
+                if (!chkPOItem.Checked && poItemPricePerUnit > 0)
+                    buyPriceBeforePOItemChecked = poItemPricePerUnit;
+            }
+            txtCode.Focus();
+
+            //automatically fill out form
+            if (_formMode == FormMode.New)
+            {
+                if (itxt_POItemID.ValueGuid != null)
+                { 
+                    Guid? inventoryID = new POItem((Guid)itxt_POItemID.ValueGuid).ReferencedInventoryID;
+                    if (inventoryID != null)
+                    {
+                        Inventory obj = new Inventory((Guid)inventoryID);
+                        _browsedProductID = obj.product_id;
+                        populateProductName(obj.product_store_name, obj.product_name_vendor);
+                        cbGrades.SelectedValue = obj.grade_id;
+                        cbProductWidths.SelectedValue = obj.product_width_id;
+                        cbLengthUnits.SelectedValue = obj.length_unit_id;
+                        cbColors.SelectedValue = obj.color_id;
+
+                        chkPOItem.Checked = true;
+                    }
+                }
+            }
         }
 
         #endregion SUBMISSION

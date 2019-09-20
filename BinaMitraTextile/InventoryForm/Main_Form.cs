@@ -19,6 +19,7 @@ namespace BinaMitraTextile.InventoryForm
         private FormMode _formMode = FormMode.Search;
         private Guid? _vendorID;
         private Guid _clickedInventoryID;
+        private bool _isFormShown = false;
 
         public Guid browseSelection;
         protected CheckBox _selectCheckboxHeader;
@@ -37,18 +38,25 @@ namespace BinaMitraTextile.InventoryForm
 
             _formMode = formMode;
             _vendorID = vendorID;
-            setupControls();
-            populatePageData();
         }
 
 
-        private void Form_Load(object sender, EventArgs e) { }
+        private void Form_Load(object sender, EventArgs e)
+        {
+            setupControls();
+            populatePageData();
+
+            this.Activate();
+            txtQuickSearch.Select();
+        }
 
 
         private void Main_Form_Shown(object sender, EventArgs e)
         {
-            panelToggle1.toggle();
+            ptFilter.toggle();
+            ptSummary.toggle();
             _selectCheckboxHeader = Tools.addHeaderCheckbox(grid, col_grid_select, "_selectCheckboxHeader", selectCheckboxHeader_CheckedChanged);
+            _isFormShown = true;
         }
 
         private void setupControls()
@@ -64,10 +72,7 @@ namespace BinaMitraTextile.InventoryForm
             ProductStoreName.populateInputControlCheckedListBox(iclb_ProductStoreNames, false);
             LengthUnit.populateInputControlCheckedListBox(iclb_LengthUnits, false);
             FabricColor.populateInputControlCheckedListBox(iclb_Colors, false);
-
-            grid.AutoGenerateColumns = false;
-            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+            
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_active.DataPropertyName = Inventory.COL_DB_ACTIVE;
@@ -88,16 +93,32 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_packingListNo.DataPropertyName = Inventory.COL_DB_PACKINGLISTNO;
             col_grid_isConsignment.DataPropertyName = Inventory.COL_DB_IsConsignment;
             col_grid_OpnameMarker.DataPropertyName = Inventory.COL_DB_OpnameMarker;
-
             col_grid_code.Frozen = true;
-
             col_grid_buyPrice.Visible = false;
+
+            gridSummary.AutoGenerateColumns = false;
+            gridSummary.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridSummary_availablePcs.DataPropertyName = Inventory.COL_AVAILABLEQTY;
+            col_gridSummary_availableQty.DataPropertyName = Inventory.COL_AVAILABLEITEMLENGTH;
+            col_gridSummary_averagePrice.DataPropertyName = Inventory.COL_DB_BUYPRICE;
+            col_gridSummary_grade.DataPropertyName = Inventory.COL_GRADE_NAME;
+            col_gridSummary_Product_Id.DataPropertyName = Inventory.COL_PRODUCTID;
+            col_gridSummary_StoreName.DataPropertyName = Inventory.COL_PRODUCTSTORENAME;
+            col_gridSummary_unitName.DataPropertyName = Inventory.COL_LENGTH_UNIT_NAME;
+            col_gridSummary_Width.DataPropertyName = Inventory.COL_PRODUCT_WIDTH_NAME;
+            col_gridSummary_BuyValue.DataPropertyName = Inventory.COL_BUYVALUE;
+            col_gridSummary_SellValue.DataPropertyName = Inventory.COL_SELLVALUE;
+
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkShowHidden.Visible = false;
                 btnLog.Enabled = false;
                 chkRearrange.Visible = false;
                 chkCalculateBuyValue.Visible = false;
+
+                col_gridSummary_averagePrice.Visible = false;
+                col_gridSummary_BuyValue.Visible = false;
+                col_gridSummary_SellValue.Visible = false;
             }
 
         }
@@ -107,10 +128,14 @@ namespace BinaMitraTextile.InventoryForm
             populateGridview(true);
         }
 
-        private void Inventory_Form_Load(object sender, EventArgs e)
+        private void populateGridSummary()
         {
-            this.Activate();
-            txtQuickSearch.Select();
+            if (pnlSummary.Visible && _isFormShown)
+            {
+                DataView dvw = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource)).DefaultView;
+                dvw.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME);
+                gridSummary.DataSource = dvw;
+            }
         }
 
         #endregion INITIALIZATION
@@ -272,9 +297,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             DataView dvw;
             if (!reloadFromDB)
-            {
                 dvw = (DataView)grid.DataSource;
-            }
             else
             {
                 dvw = Inventory.get(chkIncludeInactive.Checked, chkLast3Months.Checked,
@@ -290,6 +313,7 @@ namespace BinaMitraTextile.InventoryForm
 
             dvw.RowFilter = compileQuickSearchFilter();
             setGridviewDataSource(dvw, topRowIndex);
+            populateGridSummary();
 
             lblCounts.Visible = false;
         }
@@ -438,6 +462,11 @@ namespace BinaMitraTextile.InventoryForm
         {
             Inventory.deactivateQtyZeroes();
             populateGridview(true);
+        }
+
+        private void PtSummary_pictureBox_ClickEvent(object sender, EventArgs e)
+        {
+            populateGridSummary();
         }
 
         #endregion FORM METHODS

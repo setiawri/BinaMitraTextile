@@ -26,7 +26,16 @@ namespace BinaMitraTextile.InventoryForm
         public ItemCheck_Form()
         {
             InitializeComponent();
+        }
 
+        private void ItemCheck_Submit_Form_Load(object sender, EventArgs e)
+        {
+            setupControls();
+            populateGridDetail();
+        }
+
+        private void setupControls()
+        {
             InventoryItemCheck.CheckCleanup();
 
             gridDetail.AutoGenerateColumns = false;
@@ -49,11 +58,23 @@ namespace BinaMitraTextile.InventoryForm
             col_dgvSummary_total_qty.DataPropertyName = "total_item_qty";
 
             resetFilters();
-            populateGridDetail();
+
+            createTooltip(chkCheckListBeforeSubmit, "Yang di scan akan di cek ke list barcode. Gunakan kalau opname lebih dari 1 hari.");
         }
 
-        private void ItemCheck_Submit_Form_Load(object sender, EventArgs e)
+        public static void createTooltip(Control control, string message)
         {
+            ToolTip toolTip = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            toolTip.AutoPopDelay = 5000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            toolTip.SetToolTip(control, message);
         }
 
         #endregion INITIALIZATION
@@ -189,9 +210,12 @@ namespace BinaMitraTextile.InventoryForm
 
             LIBUtil.Util.displayMessageBoxError(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkIgnoreSold.Checked));
 
-            populateGridDetail();
-            if (tcSummary.SelectedTab == tpSummary)
-                btnGenerateSummary.PerformClick();
+            if(!chkDoNotLoadList.Checked)
+            {
+                populateGridDetail();
+                if (tcSummary.SelectedTab == tpSummary)
+                    btnGenerateSummary.PerformClick();
+            }
 
             txtBarcode.Text = "";
             txtBarcode.Focus();

@@ -18,6 +18,7 @@ namespace BinaMitraTextile
 
         private static Guid GUID_LastSheetNo = new Guid("0ce05420-c0ab-4cce-86e8-cb9aad787276");
         private static Guid GUID_LastStartHexNo = new Guid("d1ae33ec-4ae5-465a-b896-bd454559ab9f");
+        private static Guid GUID_LastConnectedPortNo = new Guid("06AFBB4E-F66B-42A0-96A7-0B5705629248");
 
         #endregion
         /*******************************************************************************************************/
@@ -83,6 +84,13 @@ namespace BinaMitraTextile
             set { update(DBUtil.connectionString, GUID_LastOpnameCleanupDate, null, value.ToString()); }
         }
 
+        /// <summary><para></para></summary>
+        public static string LastConnectedPortNo
+        {
+            get { return LIBUtil.Util.getAppData(GUID_LastConnectedPortNo.ToString()); }
+            set { LIBUtil.Util.saveAppData(GUID_LastConnectedPortNo.ToString(), value); }
+        }
+
         #endregion PUBLIC VARIABLES
         /*******************************************************************************************************/
         #region DATABASE FIELDS
@@ -111,6 +119,11 @@ namespace BinaMitraTextile
                 return "";
             else
                 return row[COL_DB_Value_String].ToString();
+        }
+
+        public static void setGeneralSettings(Form form)
+        {
+            form.Icon = taskbarIcon;
         }
 
         #endregion

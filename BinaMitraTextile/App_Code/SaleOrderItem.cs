@@ -73,6 +73,7 @@ namespace BinaMitraTextile
         public const string COL_Subtotal = "subtotal";
         public const string COL_StatusName = "StatusName";
         public const string COL_CustomerPONo = "CustomerPONo";
+        public const string COL_POQty = "POQty";
         public const string COL_ShippedQty = "ShippedQty";
         public const string COL_BookedQty = "BookedQty";
         public const string COL_RemainingQty = "RemainingQty";
