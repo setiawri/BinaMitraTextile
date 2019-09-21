@@ -103,12 +103,16 @@ namespace BinaMitraTextile
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));
             
             populateReceivablesSummary(dtReceivables);
+            populateIncompletePO();
 
+            gridStockLevel.DataSource = InventoryStockLevel.getAll(null, null, null, null, null, null, true);
+        }
+
+        private void populateIncompletePO()
+        {
             DataTable dtPOItems = new DataTable();
             LIBUtil.Util.setGridviewDataSource(gridPOItems, true, true, dtPOItems = POItem.getIncompleteItems());
             lblTotalIncompletePO.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtPOItems, "SUM", POItem.COL_PENDINGQTYVALUE, ""));
-            
-            gridStockLevel.DataSource = InventoryStockLevel.getAll(null, null, null, null, null, null, true);
         }
 
         private void populateReceivablesSummary(DataTable dtReceivables)
@@ -165,7 +169,10 @@ namespace BinaMitraTextile
                 SaleOrders.Main_Form form = new SaleOrders.Main_Form(FormMode.Browse, null);
                 Tools.displayForm(form);
                 if (form.DialogResult == DialogResult.OK)
+                {
                     POItem.updateSaleOrderItem((Guid)Util.getSelectedRowValue(sender, col_gridPOItems_id), form.browseItemSelection, form.browseItemDescription);
+                    populateIncompletePO();
+                }
             }
             else if (e.RowIndex > -1 && GlobalData.UserAccount.role != Roles.User)
             {
@@ -255,7 +262,14 @@ namespace BinaMitraTextile
             form.TopLevel = false;
             scIncompletePOAndTodoList.Panel2.Controls.Add(form);
             form.Dock = DockStyle.Fill;
+            form.FormBorderStyle = FormBorderStyle.None;
             form.Show();
+        }
+
+        private void BtnRemoveSO_Click(object sender, EventArgs e)
+        {
+            POItem.updateSaleOrderItem((Guid)Util.getSelectedRowValue(gridPOItems, col_gridPOItems_id), null, null);
+            populateIncompletePO();
         }
 
         #endregion CLASS METHODS

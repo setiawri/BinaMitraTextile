@@ -98,7 +98,7 @@ namespace BinaMitraTextile.Returns
                 }
             }
 
-            grid.DataSource = SaleReturn.getAll(Tools.getDate(dtStart, false), Tools.getDate(dtEnd, true), inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false);
+            LIBUtil.Util.setGridviewDataSource(grid, true, true, SaleReturn.getAll(Tools.getDate(dtStart, false), Tools.getDate(dtEnd, true), inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false));
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)

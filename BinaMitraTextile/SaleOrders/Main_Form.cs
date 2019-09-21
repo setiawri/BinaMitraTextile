@@ -96,10 +96,12 @@ namespace BinaMitraTextile.SaleOrders
             gridPOItems.AutoGenerateColumns = false;
             gridPOItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridPOItems_PONo.DataPropertyName = POItem.COL_PONO;
-            col_gridPOItems_POs_Id.DataPropertyName = POItem.COL_DB_POID;
+            col_gridPOItems_id.DataPropertyName = POItem.COL_DB_ID;
             col_gridPOItems_LineNo.DataPropertyName = POItem.COL_DB_LINENO;
             col_gridPOItems_Qty.DataPropertyName = POItem.COL_DB_QTY;
             col_gridPOItems_Timestamp.DataPropertyName = POItem.COL_TIMESTAMP;
+            col_gridPOItems_ReceivedQty.DataPropertyName = POItem.COL_RECEIVEDQTY;
+            col_gridPOItems_RemainingQty.DataPropertyName = POItem.COL_PENDINGQTY;
 
             gridSales.AutoGenerateColumns = false;
             gridSales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -279,10 +281,8 @@ namespace BinaMitraTextile.SaleOrders
             if (gridSaleOrderItems.SelectedRows.Count > 0 && pnlDetails.Visible)
             {
                 Guid saleOrderItems_Id = (Guid)LIBUtil.Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Id);
-                
-                DataTable dtPOItems = POItem.get_by_SaleOrderItems_Id(saleOrderItems_Id);
-                gridPOItems.DataSource = dtPOItems;
-                lblPOItems.Text = string.Format("PO ({0:N2})", LIBUtil.Util.compute(dtPOItems, "SUM", POItem.COL_DB_QTY, ""));
+
+                populateGridPOItems(saleOrderItems_Id);
 
                 DataTable dtSales = Sale.get_by_SaleOrderItems_Id(saleOrderItems_Id);
                 gridSales.DataSource = dtSales;
@@ -292,6 +292,18 @@ namespace BinaMitraTextile.SaleOrders
                 gridInventory.DataSource = dtInventory;
                 lblInventory.Text = string.Format("Inventory ({0:N2})", Util.compute(dtInventory, "SUM", Inventory.COL_ITEMLENGTH, ""));
             }
+        }
+
+        private Guid getSelectedSaleOrderItemId()
+        {
+            return (Guid)LIBUtil.Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Id);
+        }
+
+        private void populateGridPOItems(Guid saleOrderItems_Id)
+        {
+            DataTable dtPOItems = POItem.get_by_SaleOrderItems_Id(saleOrderItems_Id);
+            gridPOItems.DataSource = dtPOItems;
+            lblPOItems.Text = string.Format("PO ({0:N2})", LIBUtil.Util.compute(dtPOItems, "SUM", POItem.COL_DB_QTY, ""));
         }
 
         private void GridSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -316,7 +328,7 @@ namespace BinaMitraTextile.SaleOrders
 
             lblInventoryItems.Text += string.Format(" ({0:N2})", Util.compute(dt, "SUM", InventoryItem.COL_LENGTH, ""));
 
-            btnRemoveSaleOrderItems_Id.Enabled = false;
+            btnRemoveSOFromInventoryItems.Enabled = false;
             if (_selectCheckboxHeader != null) _selectCheckboxHeader.Checked = false;
         }
 
@@ -348,29 +360,16 @@ namespace BinaMitraTextile.SaleOrders
 
         private void _selectCheckboxHeader_Clieck(object sender, EventArgs e)
         {
-            btnRemoveSaleOrderItems_Id.Enabled = _selectCheckboxHeader.Checked;
+            btnRemoveSOFromInventoryItems.Enabled = _selectCheckboxHeader.Checked;
         }
 
         private void updateRemoveSaleOrderItems_IdButton()
         {
-            btnRemoveSaleOrderItems_Id.Enabled = false;
+            btnRemoveSOFromInventoryItems.Enabled = false;
             if (gridInventoryItems != null)
                 foreach (DataGridViewRow row in gridInventoryItems.Rows)
                     if (Util.getCheckboxValue(row, col_gridInventoryItems_Select))
-                        btnRemoveSaleOrderItems_Id.Enabled = true;
-        }
-
-        private void BtnRemoveSaleOrderItems_Id_Click(object sender, EventArgs e)
-        {
-            List<Guid> InventoryItemIdList = new List<Guid>();
-
-            DataTable dt = (DataTable)gridInventoryItems.DataSource;
-            foreach (DataRow dr in dt.Rows)
-                InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_ID]);
-
-            InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null);
-
-            populateGridSaleOrderItems();
+                        btnRemoveSOFromInventoryItems.Enabled = true;
         }
 
         private void GridSaleOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -407,6 +406,28 @@ namespace BinaMitraTextile.SaleOrders
         private void PtDetails_pictureBox_ClickEvent(object sender, EventArgs e)
         {
             populateGridDetails();
+        }
+
+        private void BtnRemoveSOFromPOItem_Click(object sender, EventArgs e)
+        {
+            if(gridPOItems.SelectedRows.Count > 0)
+            {
+                POItem.updateSaleOrderItem((Guid)Util.getSelectedRowValue(gridPOItems, col_gridPOItems_id), null, null);
+                populateGridPOItems(getSelectedSaleOrderItemId());
+            }
+        }
+
+        private void BtnRemoveSOFromInventoryItems_Click(object sender, EventArgs e)
+        {
+            List<Guid> InventoryItemIdList = new List<Guid>();
+
+            DataTable dt = (DataTable)gridInventoryItems.DataSource;
+            foreach (DataRow dr in dt.Rows)
+                InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_ID]);
+
+            InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null);
+
+            populateGridSaleOrderItems();
         }
 
         #endregion FORM METHODS

@@ -81,9 +81,9 @@
             this.lnkShipping = new System.Windows.Forms.LinkLabel();
             this.lnkInventory = new System.Windows.Forms.LinkLabel();
             this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
+            this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcuts.SuspendLayout();
@@ -493,7 +493,7 @@
             this.gbShortcuts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcuts.Location = new System.Drawing.Point(5, 5);
             this.gbShortcuts.Name = "gbShortcuts";
-            this.gbShortcuts.Size = new System.Drawing.Size(135, 190);
+            this.gbShortcuts.Size = new System.Drawing.Size(135, 204);
             this.gbShortcuts.TabIndex = 14;
             this.gbShortcuts.TabStop = false;
             this.gbShortcuts.Text = "Shortcuts";
@@ -511,10 +511,11 @@
             this.flpShortcuts.Controls.Add(this.lnkSummary);
             this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flpShortcuts.Location = new System.Drawing.Point(3, 16);
             this.flpShortcuts.Name = "flpShortcuts";
             this.flpShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpShortcuts.Size = new System.Drawing.Size(129, 171);
+            this.flpShortcuts.Size = new System.Drawing.Size(129, 185);
             this.flpShortcuts.TabIndex = 17;
             // 
             // lnkCreateSales
@@ -527,7 +528,7 @@
             this.lnkCreateSales.Location = new System.Drawing.Point(3, 5);
             this.lnkCreateSales.Name = "lnkCreateSales";
             this.lnkCreateSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkCreateSales.Size = new System.Drawing.Size(80, 23);
+            this.lnkCreateSales.Size = new System.Drawing.Size(73, 25);
             this.lnkCreateSales.TabIndex = 25;
             this.lnkCreateSales.TabStop = true;
             this.lnkCreateSales.Text = "CREATE SALE";
@@ -541,10 +542,10 @@
             this.lnkSales.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSales.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSales.Location = new System.Drawing.Point(3, 28);
+            this.lnkSales.Location = new System.Drawing.Point(3, 30);
             this.lnkSales.Name = "lnkSales";
             this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSales.Size = new System.Drawing.Size(41, 23);
+            this.lnkSales.Size = new System.Drawing.Size(38, 25);
             this.lnkSales.TabIndex = 26;
             this.lnkSales.TabStop = true;
             this.lnkSales.Text = "SALES";
@@ -558,10 +559,10 @@
             this.lnkShipping.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkShipping.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkShipping.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkShipping.Location = new System.Drawing.Point(3, 51);
+            this.lnkShipping.Location = new System.Drawing.Point(3, 55);
             this.lnkShipping.Name = "lnkShipping";
             this.lnkShipping.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkShipping.Size = new System.Drawing.Size(58, 23);
+            this.lnkShipping.Size = new System.Drawing.Size(52, 25);
             this.lnkShipping.TabIndex = 27;
             this.lnkShipping.TabStop = true;
             this.lnkShipping.Text = "SHIPPING";
@@ -575,10 +576,10 @@
             this.lnkInventory.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkInventory.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.Location = new System.Drawing.Point(3, 74);
+            this.lnkInventory.Location = new System.Drawing.Point(3, 80);
             this.lnkInventory.Name = "lnkInventory";
             this.lnkInventory.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkInventory.Size = new System.Drawing.Size(70, 23);
+            this.lnkInventory.Size = new System.Drawing.Size(61, 25);
             this.lnkInventory.TabIndex = 21;
             this.lnkInventory.TabStop = true;
             this.lnkInventory.Text = "INVENTORY";
@@ -592,15 +593,32 @@
             this.lnkPettyCash.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkPettyCash.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkPettyCash.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.Location = new System.Drawing.Point(3, 97);
+            this.lnkPettyCash.Location = new System.Drawing.Point(3, 105);
             this.lnkPettyCash.Name = "lnkPettyCash";
             this.lnkPettyCash.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkPettyCash.Size = new System.Drawing.Size(36, 23);
+            this.lnkPettyCash.Size = new System.Drawing.Size(34, 25);
             this.lnkPettyCash.TabIndex = 23;
             this.lnkPettyCash.TabStop = true;
             this.lnkPettyCash.Text = "CASH";
             this.lnkPettyCash.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkPettyCash.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkPettyCash_LinkClicked);
+            // 
+            // lnkSaleOrders
+            // 
+            this.lnkSaleOrders.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.AutoSize = true;
+            this.lnkSaleOrders.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSaleOrders.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.Location = new System.Drawing.Point(3, 130);
+            this.lnkSaleOrders.Name = "lnkSaleOrders";
+            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSaleOrders.Size = new System.Drawing.Size(75, 25);
+            this.lnkSaleOrders.TabIndex = 28;
+            this.lnkSaleOrders.TabStop = true;
+            this.lnkSaleOrders.Text = "SALE ORDERS";
+            this.lnkSaleOrders.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleOrders_LinkClicked);
             // 
             // lnkSummary
             // 
@@ -609,10 +627,10 @@
             this.lnkSummary.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.Location = new System.Drawing.Point(3, 143);
+            this.lnkSummary.Location = new System.Drawing.Point(3, 155);
             this.lnkSummary.Name = "lnkSummary";
             this.lnkSummary.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSummary.Size = new System.Drawing.Size(62, 23);
+            this.lnkSummary.Size = new System.Drawing.Size(56, 25);
             this.lnkSummary.TabIndex = 24;
             this.lnkSummary.TabStop = true;
             this.lnkSummary.Text = "SUMMARY";
@@ -629,23 +647,6 @@
             this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
-            // 
-            // lnkSaleOrders
-            // 
-            this.lnkSaleOrders.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.AutoSize = true;
-            this.lnkSaleOrders.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkSaleOrders.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.Location = new System.Drawing.Point(3, 120);
-            this.lnkSaleOrders.Name = "lnkSaleOrders";
-            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSaleOrders.Size = new System.Drawing.Size(83, 23);
-            this.lnkSaleOrders.TabIndex = 28;
-            this.lnkSaleOrders.TabStop = true;
-            this.lnkSaleOrders.Text = "SALE ORDERS";
-            this.lnkSaleOrders.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleOrders_LinkClicked);
             // 
             // Container_Form
             // 

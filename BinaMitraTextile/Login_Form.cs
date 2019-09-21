@@ -176,7 +176,6 @@ namespace BinaMitraTextile
                     rbLiveDB.Checked = true;
                 else if (rbLiveDB.Checked)
                     rbLocalDB.Checked = true;
-
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
