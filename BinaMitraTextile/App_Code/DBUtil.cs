@@ -107,7 +107,7 @@ namespace BinaMitraTextile
         {
             using (SqlConnection conn = new SqlConnection(DBUtil.setConnectionString()))
             {
-                conn.Open();
+                try { conn.Open(); conn.Close(); } catch { }                
             }
         }
 

@@ -154,8 +154,6 @@ namespace BinaMitraTextile
         {
             if (isConnectedToServer())
                 LIBUtil.Util.displayMessageBoxSuccess(DBUtil.connectionInfo());
-            else
-                LIBUtil.Util.displayMessageBoxError("Connection Failed: " + DBUtil.connectionInfo());
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
