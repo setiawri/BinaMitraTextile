@@ -69,8 +69,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_add", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -78,10 +77,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
                     cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(sqlConnection, id, "Item added");
+                    ActivityLog.submit(id, "Item added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
             return id;
@@ -94,8 +92,7 @@ namespace BinaMitraTextile
             DataTable datatable = new DataTable();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_get", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_get", DBUtil.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -137,8 +134,7 @@ namespace BinaMitraTextile
                 log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
                 log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -146,13 +142,12 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
                     cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
                     cmd.ExecuteNonQuery();
 
                     if(GlobalData.UserAccount.role != Roles.Super)
-                        ActivityLog.submit(sqlConnection, id, "Update: " + log, (int)Roles.Super);
+                        ActivityLog.submit(id, "Update: " + log, (int)Roles.Super);
                     else
-                        ActivityLog.submit(sqlConnection, id, "Update: " + log);
+                        ActivityLog.submit(id, "Update: " + log);
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -162,17 +157,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update_IsChecked", conn))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update_IsChecked", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_IsChecked, SqlDbType.Bit).Value = isChecked ?? false;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Update Is Checked to: " + isChecked);
+                    ActivityLog.submit(id, "Update Is Checked to: " + isChecked);
                 }
             }
             catch (Exception ex) { return ex.Message; }

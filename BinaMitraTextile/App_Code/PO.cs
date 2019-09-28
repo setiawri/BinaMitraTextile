@@ -79,15 +79,13 @@ namespace BinaMitraTextile
 
         public static bool isPONoExist(string poNo)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("po_isPONoExist", conn))
+            using (SqlCommand cmd = new SqlCommand("po_isPONoExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_PONO, SqlDbType.VarChar).Value = poNo;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -96,14 +94,12 @@ namespace BinaMitraTextile
 
         public static string getNextPONo()
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("po_get_nextpono", conn))
+            using (SqlCommand cmd = new SqlCommand("po_get_nextpono", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return return_value.Value.ToString();
@@ -118,8 +114,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? id, string poNo, Guid? vendorID, DateTime? dtStart, DateTime? dtEnd, Guid? productStoreNameID, string invoiceNo, string packingListNo, bool showIncompleteOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("po_get_by_filter", conn))
+            using (SqlCommand cmd = new SqlCommand("po_get_by_filter", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -146,29 +141,25 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                //submit new sale record
+                using (SqlCommand cmd = new SqlCommand("po_new", DBUtil.ActiveSqlConnection))
                 {
-                    //submit new sale record
-                    using (SqlCommand cmd = new SqlCommand("po_new", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
-                        cmd.Parameters.Add("@" + COL_DB_VENDORINFO, SqlDbType.VarChar).Value = vendorInfo;
-                        cmd.Parameters.Add("@" + COL_DB_TARGETDATE, SqlDbType.Date).Value = targetDate;
-                        cmd.Parameters.Add("@" + COL_DB_PONO, SqlDbType.VarChar).Value = poNo;
-                        cmd.Parameters.Add("@" + COL_DB_USERID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
-                        if(!string.IsNullOrEmpty(notes)) cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.name, notes);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
+                    cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
+                    cmd.Parameters.Add("@" + COL_DB_VENDORINFO, SqlDbType.VarChar).Value = vendorInfo;
+                    cmd.Parameters.Add("@" + COL_DB_TARGETDATE, SqlDbType.Date).Value = targetDate;
+                    cmd.Parameters.Add("@" + COL_DB_PONO, SqlDbType.VarChar).Value = poNo;
+                    cmd.Parameters.Add("@" + COL_DB_USERID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+                    if(!string.IsNullOrEmpty(notes)) cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.name, notes);
 
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, id, "Item created");
-                    }
-
-                    //submit items
-                    POItem.submitItems(conn, items);
+                    ActivityLog.submit(id, "Item created");
                 }
+
+                //submit items
+                POItem.submitItems(items);
             }
             catch (Exception ex) { return ex.Message; }
 

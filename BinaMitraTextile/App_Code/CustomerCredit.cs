@@ -58,24 +58,20 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                using (SqlCommand cmd = new SqlCommand("customercredit_new", DBUtil.ActiveSqlConnection))
                 {
-                    using (SqlCommand cmd = new SqlCommand("customercredit_new", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
-                        cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
-                        cmd.Parameters.Add("@" + COL_DB_AMOUNT, SqlDbType.Decimal).Value = creditAmount;
-                        cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-                        cmd.Parameters.Add("@" + COL_DB_SALEPAYMENTID, SqlDbType.UniqueIdentifier).Value = (object)salePaymentID ?? DBNull.Value;
-                        cmd.Parameters.Add("@" + COL_DB_USERID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
-                        cmd.Parameters.Add("@" + COL_DB_METHODENUMID, SqlDbType.TinyInt).Value = Tools.wrapNullable(paymentMethod);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
+                    cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
+                    cmd.Parameters.Add("@" + COL_DB_AMOUNT, SqlDbType.Decimal).Value = creditAmount;
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
+                    cmd.Parameters.Add("@" + COL_DB_SALEPAYMENTID, SqlDbType.UniqueIdentifier).Value = (object)salePaymentID ?? DBNull.Value;
+                    cmd.Parameters.Add("@" + COL_DB_USERID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+                    cmd.Parameters.Add("@" + COL_DB_METHODENUMID, SqlDbType.TinyInt).Value = Tools.wrapNullable(paymentMethod);
 
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, customerID, "Credit: Rp." + creditAmount.ToString("N2"));
-                    }
+                    ActivityLog.submit(customerID, "Credit: Rp." + creditAmount.ToString("N2"));
                 }
             }
             catch (Exception ex) { Tools.hasMessage(ex.Message); }
@@ -92,8 +88,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(Guid customerID)
         {
             DataTable datatable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("customercredit_get_by_customer_id", conn))
+            using (SqlCommand cmd = new SqlCommand("customercredit_get_by_customer_id", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -113,8 +108,7 @@ namespace BinaMitraTextile
         public static DataTable getSummary(bool onlyHasActivityLast3Months)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("customercredit_get_summary", conn))
+            using (SqlCommand cmd = new SqlCommand("customercredit_get_summary", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -151,15 +145,12 @@ namespace BinaMitraTextile
         public static decimal getBalance(Guid customerID)
         {
             Object obj;
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("customercredit_get_balance", conn))
+            using (SqlCommand cmd = new SqlCommand("customercredit_get_balance", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
 
-                conn.Open();
                 obj = cmd.ExecuteScalar();
-                conn.Close();
             }
             return Convert.ToDecimal(obj);
         }
@@ -168,17 +159,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("customercredit_update_Confirmed", conn))
+                using (SqlCommand cmd = new SqlCommand("customercredit_update_Confirmed", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_Confirmed, SqlDbType.Bit).Value = value;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Confirmed status changed to: " + value.ToString().ToLower());
+                    ActivityLog.submit(id, "Confirmed status changed to: " + value.ToString().ToLower());
                 }
             }
             catch (Exception ex) { return ex.Message; }

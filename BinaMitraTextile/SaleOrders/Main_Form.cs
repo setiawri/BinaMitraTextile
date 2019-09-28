@@ -92,6 +92,7 @@ namespace BinaMitraTextile.SaleOrders
             col_gridSaleOrderItems_Customers_Id.DataPropertyName = SaleOrderItem.COL_Customers_Id;
             col_gridSaleOrderItems_CustomerName.DataPropertyName = SaleOrderItem.COL_CustomerName;
             col_gridSaleOrderItems_POQty.DataPropertyName = SaleOrderItem.COL_POQty;
+            col_gridSaleOrderItems_POPendingQty.DataPropertyName = SaleOrderItem.COL_POPendingQty;
 
             gridPOItems.AutoGenerateColumns = false;
             gridPOItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -140,16 +141,10 @@ namespace BinaMitraTextile.SaleOrders
 
         private void populatePageData()
         {
-            if (_formMode == FormMode.Search)
-            {
-                populateGridSaleOrders();
-                if (gridSaleOrders.SelectedRows.Count > 0)
-                    populateGridSaleOrderItems();
-            }
-            else if (_formMode == FormMode.Browse)
-            {
+            if (_formMode == FormMode.Browse)
                 gridSaleOrderItems.DataSource = SaleOrderItem.get(null, null, _Customers_Id, true);
-            }
+            else
+                populateGridSaleOrders();
         }
 
         #endregion INITIALIZATION
@@ -180,7 +175,7 @@ namespace BinaMitraTextile.SaleOrders
 
         private void btnAddPO_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(this, new POs.Add_Edit_Form());
+            Tools.displayForm(null, new POs.Add_Edit_Form());
             populateGridSaleOrders();
         }
 
@@ -200,8 +195,6 @@ namespace BinaMitraTextile.SaleOrders
         
         private void populateGridSaleOrders()
         {
-            gridSaleOrders.SelectionChanged -= new System.EventHandler(GridSaleOrders_SelectionChanged); //detach event handler
-
             DateTime? dtStart = null;
             DateTime? dtEnd = null;
             if(_formMode != FormMode.Browse)
@@ -209,20 +202,19 @@ namespace BinaMitraTextile.SaleOrders
                 dtStart = Tools.getDate(dtpStart, false);
                 dtEnd = Tools.getDate(dtpEnd, true);
             }
-            Util.setGridviewDataSource(gridSaleOrders, true, true, SaleOrder.get(null, null, txtCustomerPONo.Text.Trim(), dtStart, dtEnd, _formMode == FormMode.Browse || chkShowIncompleteOnly.Checked));
-            
-            gridSaleOrders.SelectionChanged += new System.EventHandler(GridSaleOrders_SelectionChanged); //reattach event handler
+            Util.setGridviewDataSource(gridSaleOrders, true, true, SaleOrder.get(null, null, txtCustomerPONo.Text.Trim(), dtStart, dtEnd, _formMode == FormMode.Browse || chkShowIncompleteOnly.Checked));            
         }
 
         private void populateGridSaleOrderItems()
         {
-            if(gridSaleOrders.SelectedRows.Count > 0)
-                gridSaleOrderItems.DataSource = SaleOrderItem.get(selectedRowID(), null, _Customers_Id, false);
+            clearGridInventoryItems();
+            if (gridSaleOrders.SelectedRows.Count > 0)
+                gridSaleOrderItems.DataSource = SaleOrderItem.get(selectedSaleOrdersRowID(), null, _Customers_Id, false);
             else
                 gridSaleOrderItems.DataSource = null;
         }
 
-        protected Guid selectedRowID()
+        protected Guid selectedSaleOrdersRowID()
         {
             return (Guid)gridSaleOrders.SelectedRows[0].Cells[col_gridSaleOrders_id.Name].Value;
         }
@@ -232,27 +224,13 @@ namespace BinaMitraTextile.SaleOrders
             return (Guid)gridSaleOrderItems.SelectedRows[0].Cells[col_gridSaleOrderItems_Id.Name].Value;
         }
 
-        private void GridSaleOrders_SelectionChanged(object sender, EventArgs e)
-        {
-            populateGridSaleOrderItems();
-        }
-
         private void GridSaleOrderItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex > -1 && _formMode == FormMode.Browse)
-            {
-                DataGridViewRow row = gridSaleOrderItems.Rows[e.RowIndex];
-                browseItemSelection = (Guid)row.Cells[col_gridSaleOrderItems_Id.Name].Value; 
-                browseItemDescription = string.Format("{0} Line {1}", row.Cells[col_gridSaleOrderItems_CustomerPONo.Name].Value.ToString(), row.Cells[col_gridSaleOrderItems_LineNo.Name].Value.ToString());
-                browseItemCustomers_Id = (Guid)row.Cells[col_gridSaleOrderItems_Customers_Id.Name].Value;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
         }
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new Logs.Main_Form(selectedRowID()));
+            Tools.displayForm(new Logs.Main_Form(selectedSaleOrdersRowID()));
         }
 
         private void GridSaleOrders_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -273,6 +251,7 @@ namespace BinaMitraTextile.SaleOrders
 
         private void GridSaleOrderItems_SelectionChanged(object sender, EventArgs e)
         {
+            clearGridInventoryItems();
             populateGridDetails();
         }
 
@@ -316,15 +295,17 @@ namespace BinaMitraTextile.SaleOrders
             }
         }
 
-        private void populateGridInventoryItems(Guid? sales_Id, Guid? inventory_Id)
+        private void populateGridInventoryItems(Guid? sales_Id, Guid? inventory_Id, Guid? poitem_Id)
         {
-            DataTable dt = InventoryItem.get(null, null, (Guid)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Id), sales_Id, inventory_Id);
+            DataTable dt = InventoryItem.get(null, null, (Guid)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Id), sales_Id, inventory_Id, poitem_Id);
             gridInventoryItems.DataSource = dt;
 
             if (sales_Id != null)
                 lblInventoryItems.Text = "Shipped";
-            else
+            else if(inventory_Id != null)
                 lblInventoryItems.Text = "Booked";
+            else
+                lblInventoryItems.Text = "PO";
 
             lblInventoryItems.Text += string.Format(" ({0:N2})", Util.compute(dt, "SUM", InventoryItem.COL_LENGTH, ""));
 
@@ -335,13 +316,19 @@ namespace BinaMitraTextile.SaleOrders
         private void GridSales_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (((DataGridView)sender).SelectedRows.Count > 0)
-                populateGridInventoryItems((Guid)LIBUtil.Util.getSelectedRowValue(sender, col_gridSales_Sales_Id), null);
+                populateGridInventoryItems((Guid)Util.getSelectedRowValue(sender, col_gridSales_Sales_Id), null, null);
         }
 
         private void GridInventory_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (((DataGridView)sender).SelectedRows.Count > 0)
-                populateGridInventoryItems(null, (Guid)LIBUtil.Util.getSelectedRowValue(sender, col_gridInventory_Id));
+                populateGridInventoryItems(null, (Guid)Util.getSelectedRowValue(sender, col_gridInventory_Id), null);
+        }
+
+        private void GridPOItems_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (((DataGridView)sender).SelectedRows.Count > 0)
+                populateGridInventoryItems(null, null, (Guid)Util.getSelectedRowValue(sender, col_gridPOItems_id));
         }
 
         private void selectCheckboxHeader_CheckedChanged(object sender, EventArgs e)
@@ -354,7 +341,7 @@ namespace BinaMitraTextile.SaleOrders
             if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_gridInventoryItems_Select.Name))
             {
                 Util.clickDataGridViewCheckbox(sender, e);
-                updateRemoveSaleOrderItems_IdButton();
+                updateInventoryItemButtons();
             }
         }
 
@@ -363,13 +350,16 @@ namespace BinaMitraTextile.SaleOrders
             btnRemoveSOFromInventoryItems.Enabled = _selectCheckboxHeader.Checked;
         }
 
-        private void updateRemoveSaleOrderItems_IdButton()
+        private void updateInventoryItemButtons()
         {
-            btnRemoveSOFromInventoryItems.Enabled = false;
-            if (gridInventoryItems != null)
-                foreach (DataGridViewRow row in gridInventoryItems.Rows)
-                    if (Util.getCheckboxValue(row, col_gridInventoryItems_Select))
-                        btnRemoveSOFromInventoryItems.Enabled = true;
+            if(tcSummary.SelectedTab != tcPO)
+            {
+                btnRemoveSOFromInventoryItems.Enabled = false;
+                if (gridInventoryItems != null)
+                    foreach (DataGridViewRow row in gridInventoryItems.Rows)
+                        if (Util.getCheckboxValue(row, col_gridInventoryItems_Select))
+                            btnRemoveSOFromInventoryItems.Enabled = true;
+            }
         }
 
         private void GridSaleOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -381,7 +371,7 @@ namespace BinaMitraTextile.SaleOrders
             }
             else
             {
-                Tools.displayForm(new Logs.Main_Form(selectedRowID()));
+                populateGridSaleOrderItems();
             }
         }
 
@@ -399,8 +389,25 @@ namespace BinaMitraTextile.SaleOrders
 
         private void GridSaleOrderItems_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(_formMode != FormMode.Browse)
-                Tools.displayForm(new Logs.Main_Form(selectedSaleOrderItemsRowId()));
+            if (e.RowIndex > -1 && _formMode == FormMode.Browse)
+            {
+                DataGridViewRow row = gridSaleOrderItems.Rows[e.RowIndex];
+                browseItemSelection = (Guid)row.Cells[col_gridSaleOrderItems_Id.Name].Value;
+                browseItemDescription = string.Format("{0} Line {1}", row.Cells[col_gridSaleOrderItems_CustomerPONo.Name].Value.ToString(), row.Cells[col_gridSaleOrderItems_LineNo.Name].Value.ToString());
+                browseItemCustomers_Id = (Guid)row.Cells[col_gridSaleOrderItems_Customers_Id.Name].Value;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else if (_formMode != FormMode.Browse)
+            {
+                if (Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Qty))
+                {
+                    pnlUpdateSaleOrderItemQty.Visible = true;
+                    in_SaleOrderItemQty.focus();
+                }
+                else
+                    Tools.displayForm(new Logs.Main_Form(selectedSaleOrderItemsRowId()));
+            }
         }
 
         private void PtDetails_pictureBox_ClickEvent(object sender, EventArgs e)
@@ -428,6 +435,38 @@ namespace BinaMitraTextile.SaleOrders
             InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null);
 
             populateGridSaleOrderItems();
+        }
+
+        private void In_qty_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                btnUpdateSaleOrderItemQty.PerformClick();
+        }
+
+        private void BtnCancelUpdatePOItemQty_Click(object sender, EventArgs e)
+        {
+            in_SaleOrderItemQty.Value = 0;
+            pnlUpdateSaleOrderItemQty.Visible = false;
+        }
+
+        private void BtnUpdateSaleOrderItemQty_Click(object sender, EventArgs e)
+        {
+            SaleOrderItem.updateQty(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.Value);
+            in_SaleOrderItemQty.Value = 0;
+            pnlUpdateSaleOrderItemQty.Visible = false;
+            populateGridSaleOrderItems();
+        }
+
+        private void TcSummary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clearGridInventoryItems();
+        }
+
+        private void clearGridInventoryItems()
+        {
+            gridInventoryItems.DataSource = null;
+            btnRemoveSOFromInventoryItems.Enabled = false;
+            lblInventoryItems.Text = "";
         }
 
         #endregion FORM METHODS

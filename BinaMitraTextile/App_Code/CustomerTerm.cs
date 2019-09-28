@@ -8,8 +8,6 @@ namespace BinaMitraTextile
 {
     public class CustomerTerm
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "Id";
         public const string COL_DB_CUSTOMERS_ID = "Customers_Id";
         public const string COL_DB_DEBTLIMIT = "DebtLimit";
@@ -51,8 +49,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("CustomerTerms_add", conn))
+                using (SqlCommand cmd = new SqlCommand("CustomerTerms_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -61,10 +58,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_TERMDAYS, SqlDbType.Int).Value = termDays;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.NVarChar).Value = Tools.wrapNullable(notes);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New item added");
+                    ActivityLog.submit(id, "New item added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
         }
@@ -81,8 +77,7 @@ namespace BinaMitraTextile
                 if (objOld.TermDays != termDays) logDescription = Tools.append(logDescription, String.Format("Term days: '{0}' to '{1}'", objOld.TermDays, termDays), ",");
                 if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
 
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("CustomerTerms_update", conn))
+                using (SqlCommand cmd = new SqlCommand("CustomerTerms_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -90,10 +85,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_TERMDAYS, SqlDbType.Int).Value = termDays;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.NVarChar).Value = Tools.wrapNullable(notes);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, String.Format("Item updated: {0}", logDescription));
+                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -107,8 +101,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? id, Guid? customerID, bool includeInactive, bool onlyNotChecked)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("CustomerTerms_get", conn))
+            using (SqlCommand cmd = new SqlCommand("CustomerTerms_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -128,17 +121,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("CustomerTerms_update_Active", conn))
+                using (SqlCommand cmd = new SqlCommand("CustomerTerms_update_Active", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_ACTIVE, SqlDbType.TinyInt).Value = value;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Active changed to: " + value);
+                    ActivityLog.submit(id, "Active changed to: " + value);
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -146,25 +137,21 @@ namespace BinaMitraTextile
 
         public static void updateCheckedStatus(Guid userAccountID, Guid id, bool value)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "CustomerTerms_update_Checked",
-                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_Checked, SqlDbType.Bit, value)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "CustomerTerms_update_Checked",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Checked, SqlDbType.Bit, value)
+            );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, id, "Update Checked Status to " + value);
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update Checked Status to " + value);
         }
 
         public static bool isExist_CustomersId(Guid? id, Guid customerId)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("CustomerTerms_isExist_Customers_Id", conn))
+            using (SqlCommand cmd = new SqlCommand("CustomerTerms_isExist_Customers_Id", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
@@ -172,7 +159,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);

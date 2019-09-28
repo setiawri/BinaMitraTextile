@@ -109,8 +109,7 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("gordenitem_add", conn))
+                using (SqlCommand cmd = new SqlCommand("gordenitem_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -126,11 +125,10 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_SELLBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellBulkPricePerUnit);
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
 
-                    ActivityLog.submit(conn, id, "Item created");
+                    ActivityLog.submit(id, "Item created");
                 }
                 Tools.hasMessage("Item created");
             }
@@ -139,8 +137,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("gordenitem_isNameExist", conn))
+            using (SqlCommand cmd = new SqlCommand("gordenitem_isNameExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
@@ -148,7 +145,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
                 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -171,8 +167,7 @@ namespace BinaMitraTextile
         public static DataTable get(bool includeInactive, DataTable categoryEnumIDList, Guid? ID, string nameFilter, Guid? vendorID, Guid? retailLengthUnitID, Guid? bulkLengthUnitID, Guid? productWidthID)
         {
             DataTable datatable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("gordenitem_get", conn))
+            using (SqlCommand cmd = new SqlCommand("gordenitem_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -225,8 +220,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("gordenitem_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("gordenitem_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -242,10 +236,9 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_SELLBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellBulkPricePerUnit);
                         cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, id, "Update: " + log);
+                        ActivityLog.submit(id, "Update: " + log);
                     }
                     Tools.hasMessage("Item updated");
                 }

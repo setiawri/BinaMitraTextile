@@ -90,50 +90,44 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? id, Guid? Customers_Id, string customerPONo, DateTime? dateStart, DateTime? dateEnd, bool showIncompleteOnly)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "SaleOrders_get",
-                        new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
-                        new SqlQueryParameter(COL_DB_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id)),
-                        new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, customerPONo),
-                        new SqlQueryParameter(FILTER_DateStart, SqlDbType.DateTime, dateStart),
-                        new SqlQueryParameter(FILTER_DateEnd, SqlDbType.DateTime, dateEnd),
-                        new SqlQueryParameter(FILTER_StatusCompleted, SqlDbType.TinyInt, SaleOrderItemStatus.Completed),
-                        new SqlQueryParameter(FILTER_StatusCancelled, SqlDbType.TinyInt, SaleOrderItemStatus.Cancelled),
-                        new SqlQueryParameter(FILTER_ShowIncompleteOnly, SqlDbType.Bit, showIncompleteOnly)
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "SaleOrders_get",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                    new SqlQueryParameter(COL_DB_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id)),
+                    new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, customerPONo),
+                    new SqlQueryParameter(FILTER_DateStart, SqlDbType.DateTime, dateStart),
+                    new SqlQueryParameter(FILTER_DateEnd, SqlDbType.DateTime, dateEnd),
+                    new SqlQueryParameter(FILTER_StatusCompleted, SqlDbType.TinyInt, SaleOrderItemStatus.Completed),
+                    new SqlQueryParameter(FILTER_StatusCancelled, SqlDbType.TinyInt, SaleOrderItemStatus.Cancelled),
+                    new SqlQueryParameter(FILTER_ShowIncompleteOnly, SqlDbType.Bit, showIncompleteOnly)
+                );
             return result.Datatable;
         }
         
         public static bool add(Guid id, Guid customerId, string customerInfo, List<SaleOrderItem> items, string notes, DateTime targetDate, string customerPONo)
         {
             bool isSuccess = false;
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            { 
-                 SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "SaleOrders_add",
-                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_Customers_Id, SqlDbType.UniqueIdentifier, customerId),
-                    new SqlQueryParameter(COL_DB_CustomerInfo, SqlDbType.VarChar, customerInfo),
-                    new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, targetDate),
-                    new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, customerPONo),
-                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(notes))
-                );
+                SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "SaleOrders_add",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Customers_Id, SqlDbType.UniqueIdentifier, customerId),
+                new SqlQueryParameter(COL_DB_CustomerInfo, SqlDbType.VarChar, customerInfo),
+                new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, targetDate),
+                new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, customerPONo),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(notes))
+            );
 
-                if (result.IsSuccessful)
-                {
-                    ActivityLog.submit(sqlConnection, id, "Added");
+            if (result.IsSuccessful)
+            {
+                ActivityLog.submit(id, "Added");
 
-                    //submit items
-                    if(SaleOrderItem.add(sqlConnection, items))
-                        isSuccess = true;
-                }
+                //submit items
+                if(SaleOrderItem.add(items))
+                    isSuccess = true;
             }
 
             return isSuccess;
@@ -141,19 +135,16 @@ namespace BinaMitraTextile
 
         public static void updateTargetDate(Guid id, DateTime value)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "SaleOrders_update_TargetDate",
-                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, value)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "SaleOrders_update_TargetDate",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, value)
+            );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, id, "Due date updated to: " + value.ToString("dd/MM/yy"));
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Due date updated to: " + value.ToString("dd/MM/yy"));
         }
 
         #endregion DATABASE STATIC METHODS

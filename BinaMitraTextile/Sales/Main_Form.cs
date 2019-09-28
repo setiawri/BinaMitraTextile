@@ -82,7 +82,7 @@ namespace BinaMitraTextile.Sales
 
                 chkOnlyNotCompleted.Visible = false;
 
-                Tools.clearWhenSelected(gridMaster);
+                //Tools.clearWhenSelected(gridMaster);
             }
         }
         public Main_Form(bool hasReceivablesOnly) : this()
@@ -240,7 +240,7 @@ namespace BinaMitraTextile.Sales
             else
             {
                 btnLog.Enabled = false;
-                btnUpdate.Enabled = false;
+                btnUpdate.Enabled = true;
                 lblTaxInfo.Visible = false;
             }
 

@@ -61,22 +61,18 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                using (SqlCommand cmd = new SqlCommand("Payments_add", DBUtil.ActiveSqlConnection))
                 {
-                    using (SqlCommand cmd = new SqlCommand("Payments_add", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_ReferenceId, SqlDbType.UniqueIdentifier).Value = referenceId;
-                        cmd.Parameters.Add("@" + COL_DB_PaymentMethod_enumid, SqlDbType.TinyInt).Value = paymentMethod;
-                        cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
-                        cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
+                    cmd.Parameters.Add("@" + COL_DB_ReferenceId, SqlDbType.UniqueIdentifier).Value = referenceId;
+                    cmd.Parameters.Add("@" + COL_DB_PaymentMethod_enumid, SqlDbType.TinyInt).Value = paymentMethod;
+                    cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
+                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, referenceId, "New Payment: Rp." + amount.ToString("N2"));
-                    }
+                    ActivityLog.submit(referenceId, "New Payment: Rp." + amount.ToString("N2"));
                 }
             }
             catch (Exception ex) { LIBUtil.Util.displayMessageBoxError(ex.Message); }
@@ -87,8 +83,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid referenceId, decimal startingBalance)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("Payments_getby_ReferenceId", conn))
+            using (SqlCommand cmd = new SqlCommand("Payments_getby_ReferenceId", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -108,17 +103,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("Payments_update_Checked", conn))
+                using (SqlCommand cmd = new SqlCommand("Payments_update_Checked", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_Checked, SqlDbType.Bit).Value = value;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Checked status changed to: " + value.ToString().ToLower());
+                    ActivityLog.submit(id, "Checked status changed to: " + value.ToString().ToLower());
                 }
             }
             catch (Exception ex) { return ex.Message; }

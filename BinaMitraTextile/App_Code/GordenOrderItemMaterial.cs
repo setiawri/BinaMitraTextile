@@ -88,12 +88,12 @@ namespace BinaMitraTextile
         //    catch (Exception ex) { Tools.showError(ex.Message); }
         //}
 
-        public static void addItems(SqlConnection conn, List<GordenOrderItemMaterial> materials)
+        public static void addItems(List<GordenOrderItemMaterial> materials)
         {
             try
             {
                 foreach(GordenOrderItemMaterial material in materials)
-                using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_add", conn))
+                using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_add", DBUtil.ActiveSqlConnection))
                 {
                     Guid id = Guid.NewGuid();
 
@@ -106,10 +106,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_QTY, SqlDbType.UniqueIdentifier).Value = material.Qty;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(material.Notes);
 
-                    if (conn.State != ConnectionState.Open) conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Item added");
+                    ActivityLog.submit(id, "Item added");
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -120,8 +119,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? ID, string notes)
         {
             DataTable datatable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_get", conn))
+            using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -142,17 +140,15 @@ namespace BinaMitraTextile
                 GordenOrderItem objOld = new GordenOrderItem(id);
                 log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_update", conn))
+                using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, String.Format("Item updated: {0}", log));
+                    ActivityLog.submit(id, String.Format("Item updated: {0}", log));
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -162,16 +158,14 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_delete", conn))
+                using (SqlCommand cmd = new SqlCommand("gordenorderitemmaterial_delete", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Item deleted");
+                    ActivityLog.submit(id, "Item deleted");
                 }
             }
             catch (Exception ex) { return ex.Message; }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using LIBUtil;
 
 using System.Data;
 
@@ -16,7 +14,7 @@ namespace BinaMitraTextile
         public static bool ConnectToDevDB = false;
         public static bool ConnectToLiveDB = false;
         public static bool ConnectToLocalLiveDB = false;
-        public static string LiveConnectionPort = "";
+        public static string LiveConnectionPort;
 
         public static string TemporarySelectedGridviewValue;
 

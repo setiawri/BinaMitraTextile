@@ -659,6 +659,7 @@
             this.IsMdiContainer = true;
             this.Name = "Container_Form";
             this.Text = "BINA MITRA TEXTILE APP";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Container_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();

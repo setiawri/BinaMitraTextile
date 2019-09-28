@@ -11,8 +11,6 @@ namespace BinaMitraTextile
 {
     public class InventoryItem
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_ID = "id";
         public const string COL_INVENTORY_ID = "inventory_id";
         public const string COL_LENGTH = "item_length";
@@ -49,6 +47,7 @@ namespace BinaMitraTextile
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
         public const string FILTER_Customers_Id = "customer_id";
         public const string FILTER_Inventory_Id = "FILTER_Inventory_Id";
+        public const string FILTER_POItem_Id = "FILTER_POItem_Id";
 
         public Guid id;
         public Guid inventory_id;
@@ -119,8 +118,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventoryitem_new", conn))
+                using (SqlCommand cmd = new SqlCommand("inventoryitem_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -130,10 +128,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(ColorID);
                     cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New Inventory Item added");
+                    ActivityLog.submit(id, "New Inventory Item added");
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -153,13 +150,11 @@ namespace BinaMitraTextile
 
         public static Guid getIDByBarcode(string barcodeWithoutPrefix)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitem_get_id_by_barcode", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitem_get_id_by_barcode", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@barcode", SqlDbType.VarChar).Value = barcodeWithoutPrefix;
 
-                conn.Open();
                 return DBUtil.parseData<Guid>(cmd.ExecuteScalar());
             }
         }
@@ -186,12 +181,11 @@ namespace BinaMitraTextile
         {
             DataTable masterTable = new DataTable();
             DataTable dataTable;
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 foreach (Guid id in IDArray)
                 {
-                    using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
+                    using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -216,8 +210,7 @@ namespace BinaMitraTextile
         public static DataTable getItems(Guid inventoryID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitem_get_by_inventory_id", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitem_get_by_inventory_id", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -230,37 +223,32 @@ namespace BinaMitraTextile
             return dataTable;
         }
 
-        public static DataTable get(Guid? id, Guid? customers_Id, Guid? saleOrderItems_Id, Guid? sales_Id, Guid? inventory_Id)
+        public static DataTable get(Guid? id, Guid? customers_Id, Guid? saleOrderItems_Id, Guid? sales_Id, Guid? inventory_Id, Guid? poitem_Id)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "inventoryitem_get",
-                        new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(id)),
-                        new SqlQueryParameter(FILTER_Customers_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(customers_Id)),
-                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(saleOrderItems_Id)),
-                        new SqlQueryParameter(FILTER_Sales_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(sales_Id)),
-                        new SqlQueryParameter(FILTER_Inventory_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(inventory_Id))
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "inventoryitem_get",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(id)),
+                    new SqlQueryParameter(FILTER_Customers_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(customers_Id)),
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(saleOrderItems_Id)),
+                    new SqlQueryParameter(FILTER_Sales_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(sales_Id)),
+                    new SqlQueryParameter(FILTER_Inventory_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(inventory_Id)),
+                    new SqlQueryParameter(FILTER_POItem_Id, SqlDbType.UniqueIdentifier, LIBUtil.Util.wrapNullable(poitem_Id))
+                );
             return result.Datatable;
         }
 
         public static DataTable get_Booked(Guid saleOrders_Id)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "InventoryItems_get_Booked",
-                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, saleOrders_Id)
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "InventoryItems_get_Booked",
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, saleOrders_Id)
+                );
             return result.Datatable;
         }
         
@@ -283,8 +271,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("inventoryitem_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("inventoryitem_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -294,12 +281,11 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(ColorID);
                         cmd.Parameters.Add("@notes", SqlDbType.VarChar, -1).Value = notes;
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
                         //submit log
                         logDescription = "Inventory Item update: " + logDescription;
-                        ActivityLog.submit(conn, id, logDescription);
+                        ActivityLog.submit(id, logDescription);
                     }
                 }
             }
@@ -317,15 +303,13 @@ namespace BinaMitraTextile
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventoryitem_get_nextsplitbarcode", conn))
+                using (SqlCommand cmd = new SqlCommand("inventoryitem_get_nextsplitbarcode", DBUtil.ActiveSqlConnection))
                 {
                     //get generated split item count
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_BARCODE, SqlDbType.VarChar).Value = barcode;
                     SqlParameter return_value = cmd.Parameters.Add("@nextsplitbarcode", SqlDbType.Int);
                     return_value.Direction = ParameterDirection.Output;
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
                     //update current item
@@ -338,12 +322,12 @@ namespace BinaMitraTextile
                     newInventoryItem.barcode = string.Format("{0}.{1:##00}", barcode, Convert.ToInt32(return_value.Value));
                     newInventoryItem.submitNew();
 
-                    ActivityLog.submit(conn, id, string.Format("Item is split to a new item with barcode: {0} with qty: {1}. Original item qty is split from {2} to {3}",
+                    ActivityLog.submit(id, string.Format("Item is split to a new item with barcode: {0} with qty: {1}. Original item qty is split from {2} to {3}",
                         newInventoryItem.barcode,
                         splitQty,
                         originalItemQty,
                         originalItemNewQty));
-                    ActivityLog.submit(conn, newInventoryItem.id, string.Format("Item created. This is a split from {0}. Original item qty is split from {1} to {2}", barcode, originalItemQty, originalItemNewQty));
+                    ActivityLog.submit(newInventoryItem.id, string.Format("Item created. This is a split from {0}. Original item qty is split from {1} to {2}", barcode, originalItemQty, originalItemNewQty));
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -395,15 +379,13 @@ namespace BinaMitraTextile
 
         public static bool isBarcodeValidForSale(string barcode)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitem_isBarcodeValidForSale", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitem_isBarcodeValidForSale", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@barcode", SqlDbType.VarChar).Value = barcode;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -415,15 +397,13 @@ namespace BinaMitraTextile
             if (string.IsNullOrEmpty(Barcode))
                 return false;
 
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitem_isBarcodeExist", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitem_isBarcodeExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@barcode", SqlDbType.VarChar).Value = Barcode;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -446,8 +426,7 @@ namespace BinaMitraTextile
         public static DataTable getExistingBarcodesForReprinting(DateTime? dtStartReceive, DateTime? dtEndReceive)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitem_get_forBarcodeReprint", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitem_get_forBarcodeReprint", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -463,25 +442,22 @@ namespace BinaMitraTextile
 
         public static bool updateSaleOrderItem(List<Guid> IdList, Guid? SaleOrderItems_Id, string description)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
+            foreach (Guid id in IdList)
             {
-                foreach (Guid id in IdList)
-                {
-                    SqlQueryResult result = DBConnection.query(
-                       sqlConnection,
-                       QueryTypes.ExecuteNonQuery,
-                       "InventoryItems_update_SaleOrderItems_Id",
-                       new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
-                       new SqlQueryParameter(COL_DB_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(SaleOrderItems_Id))
-                    );
+                SqlQueryResult result = DBConnection.query(
+                    DBUtil.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "InventoryItems_update_SaleOrderItems_Id",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(SaleOrderItems_Id))
+                );
 
-                    if (!result.IsSuccessful)
-                        return false;
-                    else if(SaleOrderItems_Id == null)
-                        ActivityLog.submit(sqlConnection, id, "Sale Order Item removed");
-                    else
-                        ActivityLog.submit(sqlConnection, id, "Sale Order Item Updated to: " + description);
-                }
+                if (!result.IsSuccessful)
+                    return false;
+                else if(SaleOrderItems_Id == null)
+                    ActivityLog.submit(id, "Sale Order Item removed");
+                else
+                    ActivityLog.submit(id, "Sale Order Item Updated to: " + description);
             }
             return true;
         }

@@ -41,7 +41,6 @@ namespace BinaMitraTextile
                 menu_test.Visible = false;
 
                 menu_inventory_printbarcodes.Visible = false;
-                menu_inventory_po.Visible = false;
                 menu_inventory_invoices.Visible = false;
 
                 menu_reports_financial.Visible = false;
@@ -362,6 +361,11 @@ namespace BinaMitraTextile
         private void LnkSaleOrders_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new SaleOrders.Main_Form());
+        }
+
+        private void Container_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DBUtil.terminateActiveSqlConnection();
         }
 
         #endregion CLASS METHODS

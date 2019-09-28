@@ -23,9 +23,7 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
 
         #region CLASS VARIABLES
-
-        public static string connectionString = DBUtil.connectionString;
-
+            
         public const string COL_DB_ID = "id";
         public const string COL_DB_NAME = "username";
         public const string COL_ROLENAME = "rolename";
@@ -91,8 +89,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("users_new", conn))
+                using (SqlCommand cmd = new SqlCommand("users_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -100,11 +97,10 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@hashed_password", SqlDbType.VarChar).Value = _hashed_password;
                     cmd.Parameters.Add("@" + COL_ROLE, SqlDbType.SmallInt).Value = role;
                     cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New User added");
+                    ActivityLog.submit(id, "New User added");
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -114,15 +110,13 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string Name)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("users_isNameExist", conn))
+            using (SqlCommand cmd = new SqlCommand("users_isNameExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Name;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -132,16 +126,13 @@ namespace BinaMitraTextile
         public static DataTable get(string username, bool includeInactive)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "users_get",
-                        new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(username)),
-                        new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive)
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "users_get",
+                    new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(username)),
+                    new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive)
+                );
 
             return Tools.parseEnum<Roles>(result.Datatable, COL_ROLENAME, COL_ROLE);
         }
@@ -170,8 +161,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("users_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("users_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -180,12 +170,11 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_ROLE, SqlDbType.SmallInt).Value = role;
                         cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();                        
 
                         //submit log
                         logDescription = "User update: " + logDescription;
-                        ActivityLog.submit(conn, id, logDescription);
+                        ActivityLog.submit(id, logDescription);
                     }
                 }
             }

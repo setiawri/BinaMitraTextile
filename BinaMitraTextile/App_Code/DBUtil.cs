@@ -21,6 +21,7 @@ namespace BinaMitraTextile
         public const string TYPE_ARRAY_INT = "value_int";
 
         public static bool ConnectionTestCompleted;
+        public static Timer SqlConnectionTimer;
 
         public static bool isServerEnvironment { get { return Util.isMachineNameEqualConfigVariable("serverComputerName"); } }
         public static bool isDevEnvironment { get { return Util.isMachineNameEqualConfigVariable("devComputerName"); } }
@@ -28,7 +29,7 @@ namespace BinaMitraTextile
             get { return Util.isMachineNameEqualConfigVariable("salesComputerName") || Util.isMachineNameEqualConfigVariable("tabComputerName"); }
         }
 
-        public static string connectionString
+        private static string connectionString
         {
             get
             {
@@ -145,12 +146,7 @@ namespace BinaMitraTextile
 
         public static DataTable getData(string sql)
         {
-            DataTable datatable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            {
-                datatable = getData(new SqlCommand(sql, conn));
-            }
-            return datatable;
+            return getData(new SqlCommand(sql, DBUtil.ActiveSqlConnection));
         }
 
         public static DataTable getData(string sql, SqlConnection conn)
@@ -172,12 +168,11 @@ namespace BinaMitraTextile
         {
             DataTable masterTable = new DataTable();
             DataTable dataTable;
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 foreach (Guid id in IDArray)
                 {
-                    using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
+                    using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -240,17 +235,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@new_active", SqlDbType.Bit).Value = activeStatus;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Active status changed to: " + activeStatus.ToString().ToLower());
+                    ActivityLog.submit(id, "Active status changed to: " + activeStatus.ToString().ToLower());
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -262,16 +255,14 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, logDescription);
+                    ActivityLog.submit(id, logDescription);
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -306,20 +297,16 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                //submit new sale record
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
                 {
-                    //submit new sale record
-                    using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@timestamp", SqlDbType.VarChar).Value = string.Format("{0:dd/MM/yy}", DateTime.Now);
-                        cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = GlobalData.UserAccount.name;
-                        cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
+                    cmd.Parameters.Add("@timestamp", SqlDbType.VarChar).Value = string.Format("{0:dd/MM/yy}", DateTime.Now);
+                    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = GlobalData.UserAccount.name;
+                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
 
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -347,15 +334,13 @@ namespace BinaMitraTextile
             DateTime timestamp = new DateTime();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("server_get_timestamp", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("server_get_timestamp", DBUtil.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     SqlParameter return_value = cmd.Parameters.Add("@timestamp", SqlDbType.DateTime);
                     return_value.Direction = ParameterDirection.Output;
 
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
                     cmd.ExecuteNonQuery();
 
                     timestamp = Convert.ToDateTime(return_value.Value);
@@ -366,5 +351,45 @@ namespace BinaMitraTextile
             return timestamp;
         }
 
+        public static SqlConnection ActiveSqlConnection
+        {
+            get
+            {
+                if (_ActiveSqlConnection == null)
+                    _ActiveSqlConnection = new SqlConnection(DBUtil.connectionString);
+
+                if (_ActiveSqlConnection.State == ConnectionState.Closed)
+                    _ActiveSqlConnection.Open();
+
+                if (SqlConnectionTimer == null)
+                {
+                    SqlConnectionTimer = new Timer();
+                    SqlConnectionTimer.Tick += new EventHandler(SqlConnectionTimer_Ticked);
+                    SqlConnectionTimer.Interval = 2000;
+                    SqlConnectionTimer.Start();
+                }
+
+                _LastSqlConnectionUsed = DateTime.Now;
+
+                return _ActiveSqlConnection;
+            }
+        }
+        private static SqlConnection _ActiveSqlConnection;
+        private static DateTime _LastSqlConnectionUsed;
+
+        private static void SqlConnectionTimer_Ticked(Object myObject, EventArgs myEventArgs)
+        {
+            terminateActiveSqlConnection();
+        }
+        private static TimeSpan _ActiveSqlConnectionOpenTime = new TimeSpan(0, 0, 3);
+
+        public static void terminateActiveSqlConnection()
+        {
+            if (_ActiveSqlConnection != null && _ActiveSqlConnection.State == ConnectionState.Open && DateTime.Now - _LastSqlConnectionUsed > _ActiveSqlConnectionOpenTime)
+                _ActiveSqlConnection.Close();
+
+            if (_ActiveSqlConnection == null || _ActiveSqlConnection.State == ConnectionState.Closed)
+                SqlConnectionTimer.Stop();
+        }
     }
 }

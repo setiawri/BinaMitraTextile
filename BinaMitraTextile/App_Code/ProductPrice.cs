@@ -12,8 +12,6 @@ namespace BinaMitraTextile
 {
     public class ProductPrice
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "id";
         public const string COL_DB_PRODUCTSTORENAMEID = "product_store_name_id";
         public const string COL_DB_GRADEID = "grade_id";
@@ -89,8 +87,7 @@ namespace BinaMitraTextile
             try 
             {
                 Guid id = Guid.NewGuid();
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("productprice_new", conn))
+                using (SqlCommand cmd = new SqlCommand("productprice_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -103,10 +100,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_SELLPRICE, SqlDbType.Decimal).Value = TagPrice;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Notes;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Item created");
+                    ActivityLog.submit(id, "Item created");
                 }
                 Tools.hasMessage("Item created");
             }
@@ -119,13 +115,11 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("productprice_delete", conn))
+                using (SqlCommand cmd = new SqlCommand("productprice_delete", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = ID;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
                     //generate log description
@@ -139,7 +133,7 @@ namespace BinaMitraTextile
                     logDescription = Tools.append(logDescription, String.Format("Color: '{0}'", ColorName), ",");
                     logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", Notes), ",");
 
-                    ActivityLog.submit(conn, ID, String.Format("Product Price deleted: {0}", logDescription));
+                    ActivityLog.submit(ID, String.Format("Product Price deleted: {0}", logDescription));
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -149,8 +143,7 @@ namespace BinaMitraTextile
 
         public static Guid? getByCombination(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? inventoryID, Guid? ColorID)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("productprice_get_by_combination", conn))
+            using (SqlCommand cmd = new SqlCommand("productprice_get_by_combination", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(inventoryID);
@@ -162,7 +155,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.UniqueIdentifier);
                 return_value.Direction = ParameterDirection.Output;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 if (return_value.Value == DBNull.Value)
@@ -174,8 +166,7 @@ namespace BinaMitraTextile
 
         public static bool isCombinationExist(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? id, Guid? inventoryID, Guid? colorID)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("productprice_isCombinationExist", conn))
+            using (SqlCommand cmd = new SqlCommand("productprice_isCombinationExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(inventoryID);
@@ -188,7 +179,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
                 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -203,8 +193,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(bool onlyNotChecked)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("productprice_getall", conn))
+            using (SqlCommand cmd = new SqlCommand("productprice_getall", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -240,8 +229,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("productprice_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("productprice_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = ID;
@@ -254,12 +242,11 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_SELLPRICE, SqlDbType.Decimal).Value = TagPrice;
                         cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Notes;
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
                         //submit log
                         logDescription = "Product Price update: " + logDescription;
-                        ActivityLog.submit(conn, ID, logDescription);
+                        ActivityLog.submit(ID, logDescription);
                     }
                     Tools.hasMessage("Item updated");
                 }
@@ -270,40 +257,34 @@ namespace BinaMitraTextile
 
         public static void update(List<Guid?> ProductPrices_Ids, decimal sellPrice)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "productprice_update_sell_price",
-                    DBConnection.createTableParameters(
-                        new SqlQueryTableParameterGuid(ARRAY_ProductPrices_Id, ProductPrices_Ids.ToArray())
-                        ),
-                    new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, sellPrice)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "productprice_update_sell_price",
+                DBConnection.createTableParameters(
+                    new SqlQueryTableParameterGuid(ARRAY_ProductPrices_Id, ProductPrices_Ids.ToArray())
+                    ),
+                new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, sellPrice)
+            );
 
-                if (result.IsSuccessful)
-                    foreach(Guid? id in ProductPrices_Ids)
-                        ActivityLog.submit(sqlConnection, (Guid)id, String.Format("Updated Price: {0:c2}", sellPrice));
-            }
+            if (result.IsSuccessful)
+                foreach(Guid? id in ProductPrices_Ids)
+                    ActivityLog.submit((Guid)id, String.Format("Updated Price: {0:c2}", sellPrice));
         }
 
 
         public static void update_Checked(Guid id, bool value)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "productprice_update_Checked",
-                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_Checked, SqlDbType.Bit, value)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "productprice_update_Checked",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Checked, SqlDbType.Bit, value)
+            );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, id, "Checked Status to " + value);
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Checked Status to " + value);
         }
     }
 }

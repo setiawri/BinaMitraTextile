@@ -11,8 +11,6 @@ namespace BinaMitraTextile
 {
     public class Sample
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "id";
         public const string COL_DB_SAMPLENO = "sample_no";
         public const string COL_DB_STORAGENAME = "storage_name";
@@ -70,8 +68,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("sample_add", conn))
+                using (SqlCommand cmd = new SqlCommand("sample_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -86,10 +83,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(lengthUnitID);
                     cmd.Parameters.Add("@" + COL_DB_SELLPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellPricePerUnit);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New item added");
+                    ActivityLog.submit(id, "New item added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
         }
@@ -113,8 +109,7 @@ namespace BinaMitraTextile
                 logDescription = ActivityLog.appendChange(logDescription, objOld.SellPricePerUnit, sellPricePerUnit, "Sell Price: '{0}' to '{1}'");
                 logDescription = ActivityLog.appendChange(logDescription, objOld.LengthUnitName, new LengthUnit(lengthUnitID).Name, "Unit: '{0}' to '{1}'");
 
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("sample_update", conn))
+                using (SqlCommand cmd = new SqlCommand("sample_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -129,10 +124,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(lengthUnitID);
                     cmd.Parameters.Add("@" + COL_DB_SELLPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellPricePerUnit);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, String.Format("Item updated: {0}", logDescription));
+                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -148,8 +142,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("sample_get_byFilter", conn))
+            using (SqlCommand cmd = new SqlCommand("sample_get_byFilter", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

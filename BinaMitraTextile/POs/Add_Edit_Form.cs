@@ -37,6 +37,7 @@ namespace BinaMitraTextile.POs
 
             _formMode = mode;
             if (id != null) _id = (Guid)id;
+
             setupControls();
             populatePageData();
         }
@@ -87,6 +88,12 @@ namespace BinaMitraTextile.POs
             }
 
             calculateGrandTotal();
+
+            if (GlobalData.UserAccount.role == Roles.User)
+            {
+                rbCustomer.Checked = true;
+                rbVendor.Enabled = false;
+            }
         }
 
         private void populatePageData()
@@ -184,11 +191,13 @@ namespace BinaMitraTextile.POs
         {
             if (sender == rbVendor)
             {
+                this.Text = "CREATE PURCHASE ORDER";
                 iddl_Vendor.Enabled = true;
                 iddl_Customers.Enabled = false;
             }
             else
             {
+                this.Text = "CREATE SALES ORDER";
                 iddl_Vendor.Enabled = false;
                 iddl_Customers.Enabled = true;
             }
@@ -359,6 +368,14 @@ namespace BinaMitraTextile.POs
         private bool isValidQty(DataGridViewRow row)
         {
             return row.Cells[col_gridPOItems_qty.Name].Value != null && Tools.isNumeric(row.Cells[col_gridPOItems_qty.Name].Value.ToString());
+        }
+
+        private void Add_Edit_Form_Shown(object sender, EventArgs e)
+        {
+        }
+
+        private void Add_Edit_Form_Load(object sender, EventArgs e)
+        {
         }
 
         #endregion SUBMISSION

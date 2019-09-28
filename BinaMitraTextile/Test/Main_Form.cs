@@ -113,17 +113,12 @@ namespace BinaMitraTextile.Test
 
         private void btnAddCustomerInfoToSalesTable_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+            foreach (DataRow sale in Sale.getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null).Rows)
             {
-                conn.Open();
-
-                foreach (DataRow sale in Sale.getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null).Rows)
+                string sql = String.Format(@"UPDATE Sales SET customer_info = '{0}' WHERE id='{1}'", new Customer((Guid)sale[Sale.COL_CUSTOMER_ID]).compileData(), (Guid)sale[Sale.COL_ID]);
+                using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
                 {
-                    string sql = String.Format(@"UPDATE Sales SET customer_info = '{0}' WHERE id='{1}'", new Customer((Guid)sale[Sale.COL_CUSTOMER_ID]).compileData(), (Guid)sale[Sale.COL_ID]);
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
@@ -159,10 +154,8 @@ namespace BinaMitraTextile.Test
             {
                 try
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
                     {
-                        conn.Open();
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Update done");
@@ -279,10 +272,8 @@ namespace BinaMitraTextile.Test
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
                 {
-                    conn.Open();
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Update done");

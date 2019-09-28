@@ -52,15 +52,13 @@ namespace BinaMitraTextile
 
         public static bool isSubmittedToday(string barcodeWithoutPrefix) 
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_isExistToday", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_isExistToday", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@barcode", SqlDbType.VarChar).Value = barcodeWithoutPrefix;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
                 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -74,8 +72,7 @@ namespace BinaMitraTextile
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_new", conn))
+                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
@@ -94,7 +91,6 @@ namespace BinaMitraTextile
                     SqlParameter errorcodevalue = cmd.Parameters.Add("@errorcode", SqlDbType.TinyInt);
                     errorcodevalue.Direction = ParameterDirection.Output;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
                     int errorcode = Convert.ToInt32(errorcodevalue.Value);
@@ -108,7 +104,7 @@ namespace BinaMitraTextile
                             return barcodeWithoutPrefix + " is already sold";
                     }
 
-                    ActivityLog.submit(conn, new Guid(InventoryItems_id.Value.ToString()), "Opname");
+                    ActivityLog.submit(new Guid(InventoryItems_id.Value.ToString()), "Opname");
 
                     Tools.displayForm(new SharedForms.Verify_Form(inventoryCode.Value.ToString(), itemLength.Value.ToString(), (decimal)(.5)));
                     if (Convert.ToBoolean(opnameMarker.Value))
@@ -125,8 +121,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, bool isAllUsers, bool includeIgnoreSold)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_getall", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_getall", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -146,8 +141,7 @@ namespace BinaMitraTextile
         public static DataTable getSummary(DateTime? dateStart, DateTime? dateEnd, bool isAllUsers)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_get_summary", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_get_summary", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -209,12 +203,9 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deletetodaydata", conn))
+                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deletetodaydata", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    conn.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -225,12 +216,9 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deleteignoresold", conn))
+                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deleteignoresold", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-
-                    conn.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -255,12 +243,9 @@ namespace BinaMitraTextile
 
         public static void cleanup()
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_cleanup", conn))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_cleanup", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }

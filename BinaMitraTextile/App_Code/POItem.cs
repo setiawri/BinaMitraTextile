@@ -26,7 +26,9 @@ namespace BinaMitraTextile
         InProduction,
         [Description("Perbaikan")]
         Reprocessing,
-        Pending
+        Pending,
+        [Description("Celup Ulang")]
+        Reproduce
     };
 
     public class POItem
@@ -142,11 +144,11 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region STATIC DATABASE METHODS
 
-        public static void submitItems(SqlConnection sqlConnection, List<POItem> items)
+        public static void submitItems(List<POItem> items)
         {
             foreach (POItem item in items)
             {
-                using (SqlCommand cmd = new SqlCommand("poitem_new", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("poitem_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.ID;
@@ -162,7 +164,7 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(sqlConnection, item.ID, "Item created");
+                    ActivityLog.submit(item.ID, "Item created");
                 }
             }
         }
@@ -170,8 +172,7 @@ namespace BinaMitraTextile
         public static DataTable getItems(Guid POID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("poitem_get_by_poid", conn))
+            using (SqlCommand cmd = new SqlCommand("poitem_get_by_poid", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -191,8 +192,7 @@ namespace BinaMitraTextile
         public static DataTable getIncompleteItems()
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("poitem_get_incomplete", conn))
+            using (SqlCommand cmd = new SqlCommand("poitem_get_incomplete", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -232,38 +232,33 @@ namespace BinaMitraTextile
 
         public static bool updateSaleOrderItem(Guid id, Guid? SaleOrderItems_Id, string description)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "poitem_update_SaleOrderItems_Id",
-                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(SaleOrderItems_Id))
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "poitem_update_SaleOrderItems_Id",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(SaleOrderItems_Id))
+            );
 
-                if (!result.IsSuccessful)
-                    return false;
-                else if (SaleOrderItems_Id == null)
-                    ActivityLog.submit(sqlConnection, id, "Sale Order Item removed");
-                else
-                    ActivityLog.submit(sqlConnection, id, "Sale Order Item Updated to: " + description);
-            }
+            if (!result.IsSuccessful)
+                return false;
+            else if (SaleOrderItems_Id == null)
+                ActivityLog.submit(id, "Sale Order Item removed");
+            else
+                ActivityLog.submit(id, "Sale Order Item Updated to: " + description);
+            
             return true;
         }
 
         public static DataTable get_by_SaleOrderItems_Id(Guid? saleOrderItems_Id)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "poitem_get_by_SaleOrderItems_Id",
-                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "poitem_get_by_SaleOrderItems_Id",
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                );
             return result.Datatable;
         }
 
@@ -275,17 +270,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("poitem_update_status", conn))
+                using (SqlCommand cmd = new SqlCommand("poitem_update_status", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_STATUSENUMID, SqlDbType.TinyInt).Value = statusEnumID;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Status changed to: " + statusEnumID.ToString());
+                    ActivityLog.submit(id, "Status changed to: " + statusEnumID.ToString());
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -302,21 +295,20 @@ namespace BinaMitraTextile
             log = ActivityLog.appendChange(log, objOld.PriorityQty, priorityQty, "Priority Qty: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(log))
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                {
-                    SqlQueryResult result = DBConnection.query(
-                        sqlConnection,
-                        QueryTypes.ExecuteNonQuery,
-                        "poitem_update",
-                        new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                        new SqlQueryParameter(COL_DB_PriorityNo, SqlDbType.SmallInt, Util.wrapNullable(priorityNo)),
-                        new SqlQueryParameter(COL_DB_PriorityQty, SqlDbType.Int, Util.wrapNullable(priorityQty)),
-                        new SqlQueryParameter(COL_DB_ExpectedDeliveryDate, SqlDbType.Date, Util.wrapNullable(expectedDeliveryDate))
-                    );
+            {
+                SqlQueryResult result = DBConnection.query(
+                    DBUtil.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "poitem_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_PriorityNo, SqlDbType.SmallInt, Util.wrapNullable(priorityNo)),
+                    new SqlQueryParameter(COL_DB_PriorityQty, SqlDbType.Int, Util.wrapNullable(priorityQty)),
+                    new SqlQueryParameter(COL_DB_ExpectedDeliveryDate, SqlDbType.Date, Util.wrapNullable(expectedDeliveryDate))
+                );
 
-                    if (result.IsSuccessful)
-                        ActivityLog.submit(sqlConnection, id, log);
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, log);
+            }
         }
 
         #endregion CLASS METHODS

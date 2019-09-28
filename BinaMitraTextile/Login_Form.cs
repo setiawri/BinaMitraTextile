@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -55,7 +49,10 @@ namespace BinaMitraTextile
                 rbDevDB.Visible = false;
                 rbConnectAsServer.Visible = false;
             }
-            
+
+            LIBUtil.DBConnection.populatePorts(iddl_Ports);
+            setLastConnectedPortNo();
+
             toggleConnectionProperties();
             itxt_Username.focus();
         }
@@ -63,19 +60,9 @@ namespace BinaMitraTextile
         private void setLastConnectedPortNo()
         {
             if (rbLiveDB.Checked || rbLocalDB.Checked)
-                itxt_Port.ValueText = Settings.LastConnectedPortNo;
+                iddl_Ports.SelectedItem = Settings.LastConnectedPortNo;
             else
-                itxt_Port.ValueText = "";
-
-            if(!itxt_Port.isEmpty())
-            {
-                if (itxt_Port.ValueText == rbPort1433.Text)
-                    rbPort1433.Checked = true;
-                else if(itxt_Port.ValueText == rbPort1434.Text)
-                    rbPort1434.Checked = true;
-                else if (itxt_Port.ValueText == rbPort1435.Text)
-                    rbPort1435.Checked = true;
-            }
+                iddl_Ports.reset();
         }
 
         #endregion INITIALIZATION
@@ -91,7 +78,7 @@ namespace BinaMitraTextile
             if (GlobalData.UserAccount != null)
             {
                 if(rbLiveDB.Checked || rbLocalDB.Checked)
-                    Settings.LastConnectedPortNo = itxt_Port.ValueText;
+                    Settings.LastConnectedPortNo = (ConnectionPorts)iddl_Ports.SelectedItem;
 
                 this.Hide();
                 LIBUtil.Util.displayForm(null, new Container_Form(), true);
@@ -135,7 +122,10 @@ namespace BinaMitraTextile
             GlobalData.ConnectToDevDB = rbDevDB.Checked;
             GlobalData.ConnectToLiveDB = rbLiveDB.Checked;
             GlobalData.ConnectToLocalLiveDB = rbLocalDB.Checked;
-            GlobalData.LiveConnectionPort = itxt_Port.ValueText;
+            if (iddl_Ports.hasSelectedValue())
+                GlobalData.LiveConnectionPort = ((ConnectionPorts)iddl_Ports.SelectedItem).ToString().Replace("port","");
+            else
+                GlobalData.LiveConnectionPort = "";
             DBUtil.setConnectionString();
 
             if (DBUtil.isDBConnectionAvailable())
@@ -158,10 +148,10 @@ namespace BinaMitraTextile
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Alt | Keys.C) || keyData == (Keys.Control | Keys.C))
+            if (keyData == (Keys.Alt | Keys.C))
             {
                 toggleConnectionProperties();
-                itxt_Port.focus();
+                iddl_Ports.focus();
             }
             else if (keyData == (Keys.Alt | Keys.L))
             {
@@ -194,15 +184,8 @@ namespace BinaMitraTextile
             itxt_Username.focus();
         }
 
-        private void Itxt_Port_onKeyDown(object sender, KeyEventArgs e)
+        private void Iddl_Ports_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
-                itxt_Password.focus();
-
-        }
-        private void RbPort_CheckedChanged(object sender, EventArgs e)
-        {
-            itxt_Port.ValueText = ((RadioButton)sender).Text;
             itxt_Password.focus();
         }
 

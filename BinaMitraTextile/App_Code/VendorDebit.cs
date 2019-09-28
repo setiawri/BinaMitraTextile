@@ -53,23 +53,19 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                using (SqlCommand cmd = new SqlCommand("VendorDebits_add", DBUtil.ActiveSqlConnection))
                 {
-                    using (SqlCommand cmd = new SqlCommand("VendorDebits_add", conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
-                        cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;
-                        cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
-                        cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = notes;
-                        cmd.Parameters.Add("@" + COL_DB_sale_payment_id, SqlDbType.UniqueIdentifier).Value = (object)salePaymentID ?? DBNull.Value;
-                        cmd.Parameters.Add("@" + COL_DB_Type_enumid, SqlDbType.TinyInt).Value = Tools.wrapNullable(paymentMethod);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
+                    cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;
+                    cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
+                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = notes;
+                    cmd.Parameters.Add("@" + COL_DB_sale_payment_id, SqlDbType.UniqueIdentifier).Value = (object)salePaymentID ?? DBNull.Value;
+                    cmd.Parameters.Add("@" + COL_DB_Type_enumid, SqlDbType.TinyInt).Value = Tools.wrapNullable(paymentMethod);
 
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, vendorId, "Debit: Rp." + amount.ToString("N2"));
-                    }
+                    ActivityLog.submit(vendorId, "Debit: Rp." + amount.ToString("N2"));
                 }
             }
             catch (Exception ex) { Tools.hasMessage(ex.Message); }
@@ -86,8 +82,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(Guid vendorId)
         {
             DataTable datatable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get", conn))
+            using (SqlCommand cmd = new SqlCommand("VendorDebits_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -106,8 +101,7 @@ namespace BinaMitraTextile
         public static DataTable getSummary()
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_summary", conn))
+            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_summary", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -137,15 +131,12 @@ namespace BinaMitraTextile
                 return 0;
 
             Object obj;
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_balance", conn))
+            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_balance", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_SUMMARY_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;
 
-                conn.Open();
                 obj = cmd.ExecuteScalar();
-                conn.Close();
             }
             return Convert.ToDecimal(obj);
         }

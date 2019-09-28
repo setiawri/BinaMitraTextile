@@ -10,8 +10,6 @@ namespace BinaMitraTextile
 {
     public class ActivityLog
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_Id = "id";
         public const string COL_DB_Timestamp = "time_stamp";
         public const string COL_DB_AssociatedId = "associated_id";
@@ -22,8 +20,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(Guid AssociatedID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand("activitylog_getall", conn))
+            using (SqlCommand cmd = new SqlCommand("activitylog_getall", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -38,29 +35,14 @@ namespace BinaMitraTextile
 
         public static string submit(Guid associatedID, string description)
         {
-            return submit(connectionString, associatedID, description);
+            return submit(associatedID, description, null);
         }
 
-        public static string submit(string connectionString, Guid associatedID, string description)
-        {
-            string returnValue = "";
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                returnValue = submit(conn, associatedID, description);
-            }
-            return returnValue;
-        }
-
-        public static string submit(SqlConnection sqlConnection, Guid associatedID, string description)
-        {
-            return submit(sqlConnection, associatedID, description, null);
-        }
-
-        public static string submit(SqlConnection sqlConnection, Guid associatedID, string description, int? notifyRoleEnum)
+        public static string submit(Guid associatedID, string description, int? notifyRoleEnum)
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("activity_log_new", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("activity_log_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
@@ -70,8 +52,6 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@userID", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
                     cmd.Parameters.Add("@notify_role_enum_id", SqlDbType.SmallInt).Value = Tools.wrapNullable(notifyRoleEnum);
 
-                    if (sqlConnection.State != ConnectionState.Open)
-                        sqlConnection.Open();
                     cmd.ExecuteNonQuery();
                 }
             }

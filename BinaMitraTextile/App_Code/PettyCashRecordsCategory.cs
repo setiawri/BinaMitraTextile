@@ -51,8 +51,7 @@ namespace BinaMitraTextile
         
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_isNameExist", conn))
+            using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_isNameExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = name;
@@ -60,7 +59,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -72,18 +70,16 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_add", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = Tools.wrapNullable(name);
                     cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(sqlConnection, id, "New item added");
+                    ActivityLog.submit(id, "New item added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
         }
@@ -95,8 +91,7 @@ namespace BinaMitraTextile
             DataTable datatable = new DataTable();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_get", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_get", DBUtil.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -131,18 +126,16 @@ namespace BinaMitraTextile
                 log = ActivityLog.appendChange(log, objOld.Name, name, "Name: '{0}' to '{1}'");
                 log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_update", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = Tools.wrapNullable(name);
                     cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(sqlConnection, id, "Update: " + log);
+                    ActivityLog.submit(id, "Update: " + log);
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }

@@ -11,8 +11,6 @@ namespace BinaMitraTextile
 {
     public class ProductStoreName
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "id";
         public const string COL_DB_NAME = "name";
         public const string COL_DB_ACTIVE = "active";
@@ -37,18 +35,16 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("productstorename_new", conn))
+                using (SqlCommand cmd = new SqlCommand("productstorename_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Item created");
+                    ActivityLog.submit(id, "Item created");
                 }
                 Tools.hasMessage("Item created");
             }
@@ -57,8 +53,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("productstorename_isNameExist", conn))
+            using (SqlCommand cmd = new SqlCommand("productstorename_isNameExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
@@ -66,7 +61,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -86,8 +80,7 @@ namespace BinaMitraTextile
         public static DataTable getByFilter(bool includeInactive, string nameFilter)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("productstorename_get_byFilter", conn))
+            using (SqlCommand cmd = new SqlCommand("productstorename_get_byFilter", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -124,18 +117,16 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("productstorename_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("productstorename_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                         cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
                         cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, id, "Update: " + logDescription);
+                        ActivityLog.submit(id, "Update: " + logDescription);
                     }
                     Tools.hasMessage("Item updated");
                 }

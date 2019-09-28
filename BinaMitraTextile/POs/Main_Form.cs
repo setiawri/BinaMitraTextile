@@ -89,6 +89,7 @@ namespace BinaMitraTextile.POs
                 col_gridPOItems_pricePerUnit.Visible = false;
                 col_gridPOItems_subtotal.Visible = false;
                 col_gridPOItems_notes.Visible = false;
+                btnAddPO.Enabled = false;
             }
 
             dtpStart.Checked = true;
@@ -159,7 +160,7 @@ namespace BinaMitraTextile.POs
 
         private void btnAddPO_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(this, new POs.Add_Edit_Form());
+            Tools.displayForm(new POs.Add_Edit_Form());
             populateGridPO();
         }
 

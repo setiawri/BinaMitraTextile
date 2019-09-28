@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Configuration;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -16,8 +12,13 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region PRIVATE VARIABLES
 
+        //barcode printing
         private static Guid GUID_LastSheetNo = new Guid("0ce05420-c0ab-4cce-86e8-cb9aad787276");
         private static Guid GUID_LastStartHexNo = new Guid("d1ae33ec-4ae5-465a-b896-bd454559ab9f");
+        private static Guid GUID_OffsetX = new Guid("6BA57BBD-DC44-4295-88C0-47292C1D8B26");
+        private static Guid GUID_OffsetY = new Guid("9630BE8A-01A3-4363-9E63-2DF17DB2339C");
+
+        //sql connection
         private static Guid GUID_LastConnectedPortNo = new Guid("06AFBB4E-F66B-42A0-96A7-0B5705629248");
 
         #endregion
@@ -61,14 +62,28 @@ namespace BinaMitraTextile
         public static string LastSheetNo
         {
             get { return getStringValue(GUID_LastSheetNo); }
-            set { update(DBUtil.connectionString, GUID_LastSheetNo, null, value); }
+            set { update(GUID_LastSheetNo, null, value); }
         }
 
         /// <summary><para></para></summary>
         public static string LastStartHexNo
         {
             get { return getStringValue(GUID_LastStartHexNo); }
-            set { update(DBUtil.connectionString, GUID_LastStartHexNo, null, value); }
+            set { update(GUID_LastStartHexNo, null, value); }
+        }
+
+        /// <summary><para></para></summary>
+        public static int OffsetX
+        {
+            get { return getIntValue(GUID_OffsetX, 0); }
+            set { update(GUID_OffsetX, value, null); }
+        }
+
+        /// <summary><para></para></summary>
+        public static int OffsetY
+        {
+            get { return getIntValue(GUID_OffsetY, 0); }
+            set { update(GUID_OffsetY, value, null); }
         }
 
         /// <summary><para></para></summary>
@@ -81,14 +96,14 @@ namespace BinaMitraTextile
                 else
                     return Convert.ToDateTime(value);
             }
-            set { update(DBUtil.connectionString, GUID_LastOpnameCleanupDate, null, value.ToString()); }
+            set { update(GUID_LastOpnameCleanupDate, null, value.ToString()); }
         }
 
         /// <summary><para></para></summary>
-        public static string LastConnectedPortNo
+        public static ConnectionPorts LastConnectedPortNo
         {
-            get { return LIBUtil.Util.getAppData(GUID_LastConnectedPortNo.ToString()); }
-            set { LIBUtil.Util.saveAppData(GUID_LastConnectedPortNo.ToString(), value); }
+            get { return (ConnectionPorts)Enum.Parse(typeof(ConnectionPorts), Util.getAppData(GUID_LastConnectedPortNo.ToString())); }
+            set { Util.saveAppData(GUID_LastConnectedPortNo.ToString(), value.ToString()); }
         }
 
         #endregion PUBLIC VARIABLES
@@ -105,7 +120,7 @@ namespace BinaMitraTextile
 
         private static int getIntValue(Guid GUID, int defaultValue)
         {
-            DataRow row = get(DBUtil.connectionString, GUID);
+            DataRow row = get(GUID);
             if (row == null)
                 return defaultValue;
             else
@@ -114,7 +129,7 @@ namespace BinaMitraTextile
 
         private static string getStringValue(Guid GUID)
         {
-            DataRow row = get(DBUtil.connectionString, GUID);
+            DataRow row = get(GUID);
             if (row == null)
                 return "";
             else
@@ -130,13 +145,12 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public static DataRow get(string connectionString, Guid? id)
+        public static DataRow get(Guid? id)
         {
             DataTable datatable = new DataTable();
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-                using (SqlCommand cmd = new SqlCommand("Settings_get", sqlConnection))
+                using (SqlCommand cmd = new SqlCommand("Settings_get", DBUtil.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -151,7 +165,7 @@ namespace BinaMitraTextile
             return LIBUtil.Util.getFirstRow(datatable);
         }
 
-        public static void update(string connectionString, Guid id, int? intValue, string stringValue)
+        public static void update(Guid id, int? intValue, string stringValue)
         {
             //Settings objOld = new Settings(connectionString, id);
             //string log = "";
@@ -168,15 +182,13 @@ namespace BinaMitraTextile
             //{
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                using (SqlCommand cmd = new SqlCommand("Settings_update", conn))
+                using (SqlCommand cmd = new SqlCommand("Settings_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_Value_Int, SqlDbType.Int).Value = LIBUtil.Util.wrapNullable(intValue);
                     cmd.Parameters.Add("@" + COL_DB_Value_String, SqlDbType.NVarChar).Value = LIBUtil.Util.wrapNullable(stringValue);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
                     //ActivityLog.add(sqlConnection, userAccountID, id, String.Format("Updated: {0}", log));

@@ -74,6 +74,7 @@ namespace BinaMitraTextile
         public const string COL_StatusName = "StatusName";
         public const string COL_CustomerPONo = "CustomerPONo";
         public const string COL_POQty = "POQty";
+        public const string COL_POPendingQty = "POPendingQty";
         public const string COL_ShippedQty = "ShippedQty";
         public const string COL_BookedQty = "BookedQty";
         public const string COL_RemainingQty = "RemainingQty";
@@ -131,12 +132,12 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region STATIC DATABASE METHODS
 
-        public static bool add(SqlConnection sqlConnection, List<SaleOrderItem> items)
+        public static bool add(List<SaleOrderItem> items)
         {
             foreach (SaleOrderItem item in items)
             {
                 SqlQueryResult result = DBConnection.query(
-                   sqlConnection,
+                   DBUtil.ActiveSqlConnection,
                    QueryTypes.ExecuteNonQuery,
                    "SaleOrderItems_add",
                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, item.Id),
@@ -152,7 +153,7 @@ namespace BinaMitraTextile
                 );
 
                 if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, item.Id, "Added");
+                    ActivityLog.submit(item.Id, "Added");
                 else
                     return false;
             }
@@ -162,23 +163,34 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? id, Guid? saleOrders_Id, Guid? Customers_Id, bool showIncompleteOnly)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "SaleOrderItems_get",
-                        new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
-                        new SqlQueryParameter(COL_DB_SaleOrders_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(saleOrders_Id)),
-                        new SqlQueryParameter(FILTER_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id)),
-                        new SqlQueryParameter(FILTER_StatusCompleted, SqlDbType.TinyInt, SaleOrderItemStatus.Completed),
-                        new SqlQueryParameter(FILTER_StatusCancelled, SqlDbType.TinyInt, SaleOrderItemStatus.Cancelled),
-                        new SqlQueryParameter(FILTER_ShowIncompleteOnly, SqlDbType.Bit, showIncompleteOnly)
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "SaleOrderItems_get",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                    new SqlQueryParameter(COL_DB_SaleOrders_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(saleOrders_Id)),
+                    new SqlQueryParameter(FILTER_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id)),
+                    new SqlQueryParameter(FILTER_StatusCompleted, SqlDbType.TinyInt, SaleOrderItemStatus.Completed),
+                    new SqlQueryParameter(FILTER_StatusCancelled, SqlDbType.TinyInt, SaleOrderItemStatus.Cancelled),
+                    new SqlQueryParameter(FILTER_ShowIncompleteOnly, SqlDbType.Bit, showIncompleteOnly)
+                );
             DataTable datatable = result.Datatable;
             Tools.parseEnum<SaleOrderItemStatus>(datatable, COL_StatusName, COL_DB_Status_enum_id);
             return datatable;
+        }
+
+        public static void updateQty(Guid id, decimal value)
+        {
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "SaleOrderItems_update_Qty",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, value)
+            );
+
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Qty updated to: " + value);
         }
 
         #endregion STATIC DATABASE METHODS
@@ -189,17 +201,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("SaleOrderItems_update_Status_enum_id", conn))
+                using (SqlCommand cmd = new SqlCommand("SaleOrderItems_update_Status_enum_id", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_Status_enum_id, SqlDbType.TinyInt).Value = statusEnumID;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Status changed to: " + statusEnumID.ToString());
+                    ActivityLog.submit(id, "Status changed to: " + statusEnumID.ToString());
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }

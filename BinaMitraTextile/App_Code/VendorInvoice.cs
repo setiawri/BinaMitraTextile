@@ -96,8 +96,7 @@ namespace BinaMitraTextile
 
         public static bool isInvoiceNoExist(Guid? id, string invoiceNo)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("vendorinvoice_isInvoiceNoExist", conn))
+            using (SqlCommand cmd = new SqlCommand("vendorinvoice_isInvoiceNoExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_INVOICENO, SqlDbType.VarChar).Value = invoiceNo;
@@ -105,7 +104,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -115,8 +113,7 @@ namespace BinaMitraTextile
         public static Guid? get(string invoiceNumber)
         {
             Guid? id;
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("vendorinvoice_get_by_invoiceNo", conn))
+            using (SqlCommand cmd = new SqlCommand("vendorinvoice_get_by_invoiceNo", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -124,7 +121,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.UniqueIdentifier);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 id = (Guid?)return_value.Value;
@@ -140,8 +136,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? id, string invoiceNumber, bool includeCompleted)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("vendorinvoice_get", conn))
+            using (SqlCommand cmd = new SqlCommand("vendorinvoice_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -163,18 +158,16 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("vendorinvoice_new", conn))
+                using (SqlCommand cmd = new SqlCommand("vendorinvoice_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_INVOICENO, SqlDbType.VarChar).Value = invoiceNo;
                     cmd.Parameters.Add("@" + COL_DB_STATUSENUMID, SqlDbType.TinyInt).Value = VendorInvoiceStatus.New;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Item created");
+                    ActivityLog.submit(id, "Item created");
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -186,17 +179,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("vendorinvoice_update_status", conn))
+                using (SqlCommand cmd = new SqlCommand("vendorinvoice_update_status", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_STATUSENUMID, SqlDbType.TinyInt).Value = statusEnumID;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Status changed to: " + statusEnumID.ToString());
+                    ActivityLog.submit(id, "Status changed to: " + statusEnumID.ToString());
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -223,8 +214,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("vendorinvoice_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("vendorinvoice_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -235,10 +225,9 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_SetorTunai, SqlDbType.Bit).Value = setorTunai;
                         cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, id, "Update: " + logDescription);
+                        ActivityLog.submit(id, "Update: " + logDescription);
                     }
                 }
             }

@@ -64,6 +64,8 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             in_Qty.Value = 5;
+            in_ManualOffsetX.Value = Settings.OffsetX;
+            in_ManualOffsetY.Value = Settings.OffsetY;
         }
 
         private void BarcodePrint_Form_Load(object sender, EventArgs e)
@@ -203,6 +205,8 @@ namespace BinaMitraTextile.InventoryForm
                         //save for next print session
                         Settings.LastSheetNo = txtSheetNo.Text;
                         Settings.LastStartHexNo = txtStartHex.Text;
+                        Settings.OffsetX = in_ManualOffsetX.ValueInt;
+                        Settings.OffsetY = in_ManualOffsetY.ValueInt;
                     }
                 }
         }

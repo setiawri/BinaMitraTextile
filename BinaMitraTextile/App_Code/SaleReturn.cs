@@ -14,8 +14,6 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CLASS VARIABLES
 
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_ID = "id";
         public const string COL_BARCODE = "barcode";
         public const string COL_HEXBARCODE = "hexbarcode";
@@ -106,42 +104,36 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
+                //submit new sale record
+                using (SqlCommand cmd = new SqlCommand("salereturn_new", DBUtil.ActiveSqlConnection))
                 {
-                    //submit new sale record
-                    using (SqlCommand cmd = new SqlCommand("salereturn_new", conn))
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
+                    cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
+                    cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = user_id;
+                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
+                    SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Int);
+                    return_value.Direction = ParameterDirection.Output;
+
+                    cmd.ExecuteNonQuery();
+                    barcode = Tools.getHex(Convert.ToInt32(return_value.Value), Settings.saleBarcodeLength);
+
+                    ActivityLog.submit(id, "New Sale Return added");
+                }
+
+                //mark sale items as returned
+                foreach (DataRow row in saleReturnItems.Rows)
+                {
+                    using (SqlCommand cmd = new SqlCommand("saleitem_return", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
-                        cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = user_id;
-                        cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-                        SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Int);
-                        return_value.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = (Guid)row[SaleItem.COL_ID];
+                        cmd.Parameters.Add("@return_id", SqlDbType.UniqueIdentifier).Value = id;
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
-                        barcode = Tools.getHex(Convert.ToInt32(return_value.Value), Settings.saleBarcodeLength);
 
-                        ActivityLog.submit(conn, id, "New Sale Return added");
-                    }
-
-                    //mark sale items as returned
-                    foreach (DataRow row in saleReturnItems.Rows)
-                    {
-                        using (SqlCommand cmd = new SqlCommand("saleitem_return", conn))
-                        {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = (Guid)row[SaleItem.COL_ID];
-                            cmd.Parameters.Add("@return_id", SqlDbType.UniqueIdentifier).Value = id;
-
-                            if (conn.State != ConnectionState.Open)
-                                conn.Open();
-                            cmd.ExecuteNonQuery();
-
-                            ActivityLog.submit(conn, (Guid)row[SaleItem.COL_ID], "Sale Item returned in sale return ID: " + id.ToString());
-                            ActivityLog.submit(conn, (Guid)row[SaleItem.COL_INVENTORY_ITEM_ID], "Returned in sale return ID: " + barcode);
-                        }
+                        ActivityLog.submit((Guid)row[SaleItem.COL_ID], "Sale Item returned in sale return ID: " + id.ToString());
+                        ActivityLog.submit((Guid)row[SaleItem.COL_INVENTORY_ITEM_ID], "Returned in sale return ID: " + barcode);
                     }
                 }
             }
@@ -158,8 +150,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleReturnID, bool onlyWithCommission)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("salereturn_getall", conn))
+            using (SqlCommand cmd = new SqlCommand("salereturn_getall", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -187,17 +178,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("SaleReturns_update_Checked", conn))
+                using (SqlCommand cmd = new SqlCommand("SaleReturns_update_Checked", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_Checked, SqlDbType.Bit).Value = value;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Checked status changed to: " + value.ToString().ToLower());
+                    ActivityLog.submit(id, "Checked status changed to: " + value.ToString().ToLower());
                 }
             }
             catch (Exception ex) { return ex.Message; }

@@ -24,8 +24,6 @@ namespace BinaMitraTextile
 
     public class ToDo
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "id";
         public const string COL_DB_TIMESTAMP = "timestamp";
         public const string COL_DB_DESCRIPTION = "description";
@@ -70,8 +68,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("todo_add", conn))
+                using (SqlCommand cmd = new SqlCommand("todo_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -79,10 +76,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(customerID);
                     cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New item added");
+                    ActivityLog.submit(id, "New item added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
         }
@@ -99,8 +95,7 @@ namespace BinaMitraTextile
                 if (objOld.CustomerID != customerID) { logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}' to '{1}'", objOld.CustomerName, new Customer(customerID).Name), ","); }
                 if (objOld.VendorID != vendorID) { logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}' to '{1}'", objOld.VendorName, new Vendor(vendorID).Name), ","); }
 
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("todo_update", conn))
+                using (SqlCommand cmd = new SqlCommand("todo_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -108,10 +103,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(customerID);
                     cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, String.Format("Item updated: {0}", logDescription));
+                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -127,8 +121,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("todo_get_byFilter", conn))
+            using (SqlCommand cmd = new SqlCommand("todo_get_byFilter", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -153,17 +146,15 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("todo_update_status", conn))
+                using (SqlCommand cmd = new SqlCommand("todo_update_status", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_STATUSENUMID, SqlDbType.TinyInt).Value = statusEnumID;
-
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Status changed to: " + statusEnumID.ToString());
+                    ActivityLog.submit(id, "Status changed to: " + statusEnumID.ToString());
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }

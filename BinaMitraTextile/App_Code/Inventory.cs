@@ -12,8 +12,6 @@ namespace BinaMitraTextile
 {
     public class Inventory
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "id";
         public const string COL_DB_CODE = "code";
         public const string COL_DB_ACTIVE = "active";
@@ -154,8 +152,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventory_new", conn))
+                using (SqlCommand cmd = new SqlCommand("inventory_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -170,10 +167,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_PACKINGLISTNO, SqlDbType.VarChar).Value = PackingListNo;
                     cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(VendorInvoiceID);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New Inventory added");
+                    ActivityLog.submit(id, "New Inventory added");
                 }
             } catch (Exception ex) { return ex.Message; }
 
@@ -182,8 +178,7 @@ namespace BinaMitraTextile
 
         public static bool isCodeExist(string Code, Guid? id)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventory_isCodeExist", conn))
+            using (SqlCommand cmd = new SqlCommand("inventory_isCodeExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@code", SqlDbType.SmallInt).Value = Code;
@@ -191,7 +186,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -206,8 +200,7 @@ namespace BinaMitraTextile
         public DataTable getInfo()
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventory_get_info", conn))
+            using (SqlCommand cmd = new SqlCommand("inventory_get_info", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -248,8 +241,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventory_getall", conn))
+            using (SqlCommand cmd = new SqlCommand("inventory_getall", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -282,15 +274,12 @@ namespace BinaMitraTextile
         public static DataTable get_by_SaleOrderItems_Id(Guid? saleOrderItems_Id)
         {
             SqlQueryResult result = new SqlQueryResult();
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.FillByAdapter,
-                    "Inventory_get_by_SaleOrderItems_Id",
-                        new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
-                    );
-            }
+            result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "Inventory_get_by_SaleOrderItems_Id",
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                );
             return result.Datatable;
         }
 
@@ -301,66 +290,54 @@ namespace BinaMitraTextile
         
         public static void updateIsConsignment(Guid id, bool value)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "Inventory_update_isConsignment",
-                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_IsConsignment, SqlDbType.Bit, value)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Inventory_update_isConsignment",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_IsConsignment, SqlDbType.Bit, value)
+            );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, id, "Consignment Status to " + value);
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Consignment Status to " + value);
         }
 
         public static void updateOpnameMarker(Guid id, bool value)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "Inventory_update_OpnameMarker",
-                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_OpnameMarker, SqlDbType.Bit, value)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Inventory_update_OpnameMarker",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_OpnameMarker, SqlDbType.Bit, value)
+            );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, id, "Opname Marker Status to " + value);
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Opname Marker Status to " + value);
         }
 
         public static void updateBuyPrice(Guid id, decimal value)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "Inventory_update_BuyPrice",
-                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_BUYPRICE, SqlDbType.Decimal, value)
-                );
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Inventory_update_BuyPrice",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_BUYPRICE, SqlDbType.Decimal, value)
+            );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(sqlConnection, id, "Buy Price updated to: " + value);
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Buy Price updated to: " + value);
         }
 
         public static void deactivateQtyZeroes()
         {
-            using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-            {
-                SqlQueryResult result = DBConnection.query(
-                    sqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "Inventory_update_DeactivateQtyZeroes",
-                    new SqlQueryParameter(ActivityLog.COL_DB_UserId, SqlDbType.UniqueIdentifier, GlobalData.UserAccount.id)
-                );
-            }
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Inventory_update_DeactivateQtyZeroes",
+                new SqlQueryParameter(ActivityLog.COL_DB_UserId, SqlDbType.UniqueIdentifier, GlobalData.UserAccount.id)
+            );
         }
 
         public string update()
@@ -391,8 +368,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("inventory_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("inventory_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -408,12 +384,11 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_PACKINGLISTNO, SqlDbType.VarChar).Value = PackingListNo;
                         cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(VendorInvoiceID);
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
                         //submit log
                         logDescription = "Inventory update: " + logDescription;
-                        ActivityLog.submit(conn, id, logDescription);
+                        ActivityLog.submit(id, logDescription);
                     }
                 }
             } catch (Exception ex) { return ex.Message; }
@@ -438,25 +413,27 @@ namespace BinaMitraTextile
         
         public static DataTable compileSummaryData(DataTable dt)
         {
-            DataTable dtSummary = dt.Clone();
+            DataTable dtSummary = dt.Clone(); //copy table structure without rows of data
             Tools.setDataTablePrimaryKey(dtSummary, Inventory.COL_DB_ID);
 
             DataRow tempRow;
+            decimal totalLength = 0;
             foreach (DataRow dr in dt.Rows)
             {
                 tempRow = findCombination(dtSummary, dr);
                 if (tempRow != null)
                 {
-                    tempRow[Inventory.COL_AVAILABLEITEMLENGTH] = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH]);
-                    tempRow[Inventory.COL_AVAILABLEQTY] = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEQTY]);
-                    if (Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]) > 0)
+                    totalLength = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH]);
+                    if (totalLength > 0)
                     {
                         tempRow[Inventory.COL_DB_BUYPRICE] = 
-                            ((Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]))
-                            + (Tools.zeroNonNumericString(dr[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEQTY])))
-                            / Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]); //calculate average buy price
-                        tempRow[Inventory.COL_BUYVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate buy value
+                            ((Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]))
+                            + (Tools.zeroNonNumericString(dr[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH])))
+                            / totalLength; //calculate average buy price
+                        tempRow[Inventory.COL_BUYVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * totalLength; //calculate buy value
                         tempRow[Inventory.COL_SELLVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_SELLVALUE]) + (Tools.zeroNonNumericString(dr[Inventory.COL_SELLPRICE]) * Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH])); //calculate buy value
+                        tempRow[Inventory.COL_AVAILABLEITEMLENGTH] = totalLength;
+                        tempRow[Inventory.COL_AVAILABLEQTY] = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEQTY]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEQTY]);
                     }
                     dtSummary.AcceptChanges();
                 }
@@ -464,7 +441,7 @@ namespace BinaMitraTextile
                 {
                     tempRow = dtSummary.Rows.Add(dr.ItemArray);
                     tempRow[Inventory.COL_BUYVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_DB_BUYPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate buy value
-                    tempRow[Inventory.COL_SELLVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_SELLPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate buy value
+                    tempRow[Inventory.COL_SELLVALUE] = Tools.zeroNonNumericString(tempRow[Inventory.COL_SELLPRICE]) * Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]); //calculate sell value
                     dtSummary.AcceptChanges();
                 }
             }

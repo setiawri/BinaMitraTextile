@@ -90,6 +90,9 @@ namespace BinaMitraTextile.Sales
             {
                 Tools.disableControls(txtBarcode, cbTemporarySaves, btnSaveSale, btnClearForm, btnRemoveSelected, txtNotes, btnAddCustomer, cbCustomers, txtCustomerSearch);
                 btnSubmit.Text = "UPDATE";
+
+                if (GlobalData.UserAccount.role != Roles.Super)
+                    Tools.disableControls(txtAdjustSelected, txtShippingCost, cbTransports, cbCustomers);
             }
         }
 
@@ -117,7 +120,9 @@ namespace BinaMitraTextile.Sales
             if (_gridSelectCheckboxHeader != null) _gridSelectCheckboxHeader.Checked = false;
 
             //if a row has sales order, disable customer selection
-            if(dt != null)
+            if (_formMode == FormMode.Update && GlobalData.UserAccount.role != Roles.Super)
+                cbCustomers.Enabled = false;
+            else if(dt != null)
             {
                 cbCustomers.Enabled = true;
                 foreach (DataRow dr in dt.Rows)
@@ -765,19 +770,45 @@ namespace BinaMitraTextile.Sales
                     if (_formMode == FormMode.Update)
                         setGridDataSource(new Sale((Guid)_saleID).sale_items); //load data from database
                     else
-                    { 
+                    {
                         //manually update list since it is not saved in database yet
-                        foreach (DataRow dr in dt.Rows)
-                        if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
+                        //foreach (DataRow dr in dt.Rows)
+                        //    if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
+                        //    {
+                        //        dr[InventoryItem.COL_DB_SaleOrderItems_Id] = LIBUtil.Util.wrapNullable(itxt_SaleOrderItems.ValueGuid);
+                        //        dr[InventoryItem.COL_SaleOrderItemDescription] = itxt_SaleOrderItems.ValueText;
+                        //    }
+                        //setGridDataSource(dt);
+
+
+                        //remove from list and re insert to make sure price is correct (price in po vs price with discount or normal price)
+                        List<string> barcodeList = new List<string>();
+                        for(int i=dt.Rows.Count-1; i>=0; i--)
                         {
-                            dr[InventoryItem.COL_DB_SaleOrderItems_Id] = LIBUtil.Util.wrapNullable(itxt_SaleOrderItems.ValueGuid);
-                            dr[InventoryItem.COL_SaleOrderItemDescription] = itxt_SaleOrderItems.ValueText;
+                            DataRow dr = dt.Rows[i];
+                            if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
+                            {
+                                barcodeList.Add(dr[InventoryItem.COL_BARCODE].ToString());
+                                dr.Delete();
+                            }
                         }
-                        setGridDataSource(dt);
+                        dt.AcceptChanges();
+                        foreach(string barcode in barcodeList)
+                        {
+                            txtBarcode.Text = Settings.itemBarcodeMandatoryPrefix + barcode;
+                            addBarcode();
+                        }
+                        foreach (DataGridViewRow row in grid.Rows)
+                        {
+                            if (barcodeList.Contains(LIBUtil.Util.getRowValue(row, col_grid_barcode)))
+                                LIBUtil.Util.setCheckboxValue(row, col_grid_select, true);
+                        }
                     }
                 }
 
-                if (cbCustomers.SelectedValue == null && itxt_SaleOrderItems.ValueGuid != null)
+                if (_formMode == FormMode.Update && GlobalData.UserAccount.role != Roles.Super)
+                    cbCustomers.Enabled = false;
+                else if (cbCustomers.SelectedValue == null && itxt_SaleOrderItems.ValueGuid != null)
                 {
                     bool isCustomerSelectionEnabled = cbCustomers.Enabled;
                     cbCustomers.Enabled = true;

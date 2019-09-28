@@ -533,17 +533,20 @@
             // 
             // col_gridPOItems_productDescription
             // 
+            this.col_gridPOItems_productDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_gridPOItems_productDescription.HeaderText = "Product Description";
+            this.col_gridPOItems_productDescription.MinimumWidth = 200;
             this.col_gridPOItems_productDescription.Name = "col_gridPOItems_productDescription";
             this.col_gridPOItems_productDescription.ReadOnly = true;
-            this.col_gridPOItems_productDescription.Width = 150;
             // 
             // col_gridPOItems_notes
             // 
-            this.col_gridPOItems_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridPOItems_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_gridPOItems_notes.HeaderText = "Notes";
+            this.col_gridPOItems_notes.MinimumWidth = 50;
             this.col_gridPOItems_notes.Name = "col_gridPOItems_notes";
             this.col_gridPOItems_notes.ReadOnly = true;
+            this.col_gridPOItems_notes.Width = 50;
             // 
             // col_gridPOItems_qty
             // 

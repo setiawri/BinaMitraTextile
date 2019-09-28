@@ -94,8 +94,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_add", conn))
+                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -109,18 +108,16 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_PONOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(poNotes);
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "New item added");
+                    ActivityLog.submit(id, "New item added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static bool isCombinationExist(Guid? id, Guid gradeID, Guid productID, Guid productWidthID, Guid lengthUnitID, Guid colorID)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_isCombinationExist", conn))
+            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_isCombinationExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
@@ -132,7 +129,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -158,8 +154,7 @@ namespace BinaMitraTextile
                 if (objOld.PONotes != poNotes) logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}' to '{1}'", objOld.PONotes, poNotes), ",");
                 if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
 
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_update", conn))
+                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_update", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -173,10 +168,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_PONOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(poNotes);
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, String.Format("Item updated: {0}", logDescription));
+                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
                 }
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
@@ -199,16 +193,14 @@ namespace BinaMitraTextile
                 logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}'", obj.PONotes), ",");
                 logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
 
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_delete", conn))
+                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_delete", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, String.Format("Item deleted: {0}", logDescription));
+                    ActivityLog.submit(id, String.Format("Item deleted: {0}", logDescription));
                 }
             }
             catch (Exception ex) { return ex.Message; }
@@ -226,8 +218,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_get_byFilter", conn))
+            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_get_byFilter", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

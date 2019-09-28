@@ -43,8 +43,7 @@ namespace BinaMitraTextile
         public static FinancialOverview getOverview()
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("financial_get_overview", conn))
+            using (SqlCommand cmd = new SqlCommand("financial_get_overview", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

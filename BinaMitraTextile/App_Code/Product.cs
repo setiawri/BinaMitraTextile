@@ -10,8 +10,6 @@ namespace BinaMitraTextile
 {
     public class Product
     {
-        public static string connectionString = DBUtil.connectionString;
-
         public const string COL_DB_ID = "id";
         public const string COL_DB_STORENAMEID = "store_name_id";
         public const string COL_DB_NAMEVENDOR = "name_vendor";
@@ -50,8 +48,7 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("product_new", conn))
+                using (SqlCommand cmd = new SqlCommand("product_new", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -60,10 +57,9 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
                     cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
 
-                    conn.Open();
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(conn, id, "Item created");
+                    ActivityLog.submit(id, "Item created");
                 }
                 Tools.hasMessage("Item created");
             }
@@ -72,8 +68,7 @@ namespace BinaMitraTextile
 
         public static bool isNameCombinationExist(Guid storeNameID, string nameVendor, Guid vendorID, Guid? id)
         {
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("product_isNameCombinationExist", conn))
+            using (SqlCommand cmd = new SqlCommand("product_isNameCombinationExist", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier).Value = storeNameID;
@@ -83,7 +78,6 @@ namespace BinaMitraTextile
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
                 
-                conn.Open();
                 cmd.ExecuteNonQuery();
 
                 return Convert.ToBoolean(return_value.Value);
@@ -103,8 +97,7 @@ namespace BinaMitraTextile
         public static DataTable getByFilter(bool includeInactive, Guid? storeNameID, string nameVendorFilter, Guid? vendorID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand("product_get_byFilter", conn))
+            using (SqlCommand cmd = new SqlCommand("product_get_byFilter", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -139,8 +132,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                    using (SqlCommand cmd = new SqlCommand("product_update", conn))
+                    using (SqlCommand cmd = new SqlCommand("product_update", DBUtil.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -149,10 +141,9 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
                         cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
 
-                        conn.Open();
                         cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(conn, id, "Update: " + logDescription);
+                        ActivityLog.submit(id, "Update: " + logDescription);
                     }
                     Tools.hasMessage("Item updated");
                 }
