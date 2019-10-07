@@ -175,7 +175,7 @@ namespace BinaMitraTextile.SaleOrders
 
         private void btnAddPO_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(null, new POs.Add_Edit_Form());
+            Tools.displayForm(new POs.Add_Edit_Form());
             populateGridSaleOrders();
         }
 

@@ -114,7 +114,7 @@ namespace BinaMitraTextile.Invoices
         private void gridvendorinvoice_SelectionChanged(object sender, EventArgs e)
         {
             if(gridvendorinvoice.SelectedRows.Count > 0)
-                Tools.setGridviewDataSource(gridinventory, false, false, Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
+                Tools.setGridviewDataSource(gridinventory, false, false, Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false));
         }
 
         private void btnSupplierDebits_Click(object sender, EventArgs e)

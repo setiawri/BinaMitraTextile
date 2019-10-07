@@ -308,7 +308,8 @@ namespace BinaMitraTextile.InventoryForm
                     iclb_LengthUnits.getCheckedItemsInArrayTable(LengthUnit.COL_DB_ID),
                     iclb_Colors.getCheckedItemsInArrayTable(FabricColor.COL_DB_ID),
                     _vendorID,
-                    null).DefaultView;
+                    null,
+                    chkShowNotBookedOnly.Checked).DefaultView;
             }
 
             dvw.RowFilter = compileQuickSearchFilter();
@@ -467,6 +468,11 @@ namespace BinaMitraTextile.InventoryForm
         private void PtSummary_pictureBox_ClickEvent(object sender, EventArgs e)
         {
             populateGridSummary();
+        }
+
+        private void ChkShowNotBookedOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            populateGridview(true);
         }
 
         #endregion FORM METHODS

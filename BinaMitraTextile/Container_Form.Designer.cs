@@ -92,6 +92,7 @@
             // 
             // mainMenu
             // 
+            this.mainMenu.Font = new System.Drawing.Font("Calibri Light", 9F);
             this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_sales,
@@ -496,7 +497,6 @@
             this.gbShortcuts.Size = new System.Drawing.Size(135, 204);
             this.gbShortcuts.TabIndex = 14;
             this.gbShortcuts.TabStop = false;
-            this.gbShortcuts.Text = "Shortcuts";
             // 
             // flpShortcuts
             // 

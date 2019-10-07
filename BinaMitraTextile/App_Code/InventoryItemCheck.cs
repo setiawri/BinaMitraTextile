@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -39,6 +35,8 @@ namespace BinaMitraTextile
         public const string COL_BARCODE = "barcode";
 
         public const string FILTER_IncludeIgnoreSold = "IncludeIgnoreSold";
+        public const string FILTER_TimestampStart = "FILTER_TimestampStart";
+        public const string FILTER_TimestampEnd = "FILTER_TimestampEnd";
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -248,6 +246,17 @@ namespace BinaMitraTextile
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public static DataTable getMissing(DateTime? timestampStart)
+        {
+            SqlQueryResult result = DBConnection.query(
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "InventoryItemCheck_getMissing",
+                    new SqlQueryParameter(FILTER_TimestampStart, SqlDbType.DateTime, timestampStart)
+                );
+            return result.Datatable;
         }
 
         #endregion DATABASE METHODS

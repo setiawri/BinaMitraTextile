@@ -99,7 +99,7 @@ namespace BinaMitraTextile
         {
             DataTable dtReceivables = Sale.getAll(null, null, null, null, null, true, false, false, false, null, null, null, false, false, null);
             gridReceivables.DataSource = dtReceivables;
-            gridReceivables.Sort(col_gridReceivables_daysElapsed, ListSortDirection.Descending);
+            gridReceivables.Sort(col_gridReceivables_RemainingTermDays, ListSortDirection.Ascending);
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));
             
             populateReceivablesSummary(dtReceivables);

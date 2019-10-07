@@ -148,7 +148,7 @@ namespace BinaMitraTextile
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Alt | Keys.C))
+            if (keyData == (Keys.Alt | Keys.C) || keyData == (Keys.Control | Keys.C))
             {
                 toggleConnectionProperties();
                 iddl_Ports.focus();

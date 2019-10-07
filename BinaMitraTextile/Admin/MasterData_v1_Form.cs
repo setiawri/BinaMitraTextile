@@ -456,9 +456,17 @@ namespace BinaMitraTextile
 
         protected void gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (gridview.SelectionMode == DataGridViewSelectionMode.CellSelect)
+            {
+                Clipboard.SetText(Util.getClickedCellValue(sender, e).ToString());
+                gridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                gridview.Rows[e.RowIndex].Selected = true;
+                return;
+            }
+
             if (e.RowIndex == -1)
                 updateModeButtonsAvailabilityForGridRow(); 
-
+            
             if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
             {
                 DataGridViewRow row = gridview.Rows[e.RowIndex];
@@ -574,6 +582,15 @@ namespace BinaMitraTextile
         private void btnShowUserHiddenControls_Click(object sender, EventArgs e)
         {
             showUserHiddenControls();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C) && gridview.Focused)
+            {
+                gridview.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         #endregion EVENT HANDLERS

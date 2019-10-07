@@ -220,23 +220,23 @@ namespace BinaMitraTextile
 
         public static DataTable getAll(bool includeInactive)
         {
-            return getAll(includeInactive, false, null, null, null, null, null, null, null, null);
+            return getAll(includeInactive, false, null, null, null, null, null, null, null, null, false);
         }
 
         public static DataTable getAll(bool includeInactive, Guid? vendorID)
         {
-            return getAll(includeInactive, false, null, null, null, null, null, null, vendorID, null);
+            return getAll(includeInactive, false, null, null, null, null, null, null, vendorID, null, false);
         }
 
         public static DataTable getAll(bool includeInactive, bool last3Months, int? code, Guid? productID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? colorID, 
-            Guid? vendorID, Guid? vendorInvoiceID)
+            Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly)
         {
             return get(includeInactive, last3Months, code, Tools.copyValuesToArrayTable(productID), Tools.copyValuesToArrayTable(gradeID), Tools.copyValuesToArrayTable(productWidthID), 
-                Tools.copyValuesToArrayTable(lengthUnitID), Tools.copyValuesToArrayTable(colorID), vendorID, vendorInvoiceID);
+                Tools.copyValuesToArrayTable(lengthUnitID), Tools.copyValuesToArrayTable(colorID), vendorID, vendorInvoiceID, showNotBookedOnly);
         }
 
         public static DataTable get(bool includeInactive, bool last3Months, int? code, DataTable dtProductStoreNameID, DataTable dtGradeID, DataTable dtProductWidthID, DataTable dtLengthUnitID, 
-            DataTable dtColorID, Guid? vendorID, Guid? vendorInvoiceID)
+            DataTable dtColorID, Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly)
         {
             //Tools.startProgressDisplay("Donwloading data...");
 
@@ -248,6 +248,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
                 cmd.Parameters.Add("@last3Months", SqlDbType.Bit).Value = last3Months;
                 cmd.Parameters.Add("@code", SqlDbType.VarChar).Value = code;
+                cmd.Parameters.Add("@FILTER_ShowNotBookedOnly", SqlDbType.Bit).Value = showNotBookedOnly;
 
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
                 DBUtil.addListParameter(cmd, "@productstorename_id_list", dtProductStoreNameID);

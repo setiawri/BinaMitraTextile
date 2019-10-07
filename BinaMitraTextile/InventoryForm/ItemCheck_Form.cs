@@ -57,6 +57,18 @@ namespace BinaMitraTextile.InventoryForm
             col_dgvSummary_total_length.DataPropertyName = "total_item_length";
             col_dgvSummary_total_qty.DataPropertyName = "total_item_qty";
 
+            gridMissingItems.AutoGenerateColumns = false;
+            gridMissingItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridMissingItems_InventoryCode.DataPropertyName = "inventory_code";
+            col_gridMissingItems_Barcode.DataPropertyName = "barcode";
+            col_gridMissingItems_ColorName.DataPropertyName = "color_name";
+            col_gridMissingItems_GradeName.DataPropertyName = "grade_name";
+            col_gridMissingItems_UnitName.DataPropertyName = "length_unit_name";
+            col_gridMissingItems_ProductName.DataPropertyName = "product_store_name";
+            col_gridMissingItems_ProductWidth.DataPropertyName = "product_width_name";
+            col_gridMissingItems_ItemLength.DataPropertyName = "item_length";
+            col_gridMissingItems_LastOpname.DataPropertyName = "last_opname";
+
             resetFilters();
 
             createTooltip(chkCheckListBeforeSubmit, "Yang di scan akan di cek ke list barcode. Gunakan kalau opname lebih dari 1 hari.");
@@ -302,6 +314,22 @@ namespace BinaMitraTextile.InventoryForm
         private void dtpStartDate1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void TcSummary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tcSummary.SelectedTab == tpMissingInventoryItems)
+                populateMissingInventoryItems();
+        }
+
+        private void BtnRefreshMissingInventoryItems_Click(object sender, EventArgs e)
+        {
+            populateMissingInventoryItems();
+        }
+        
+        private void populateMissingInventoryItems()
+        {
+            gridMissingItems.DataSource = InventoryItemCheck.getMissing(Tools.getDate(dtpStartDate1, false));
         }
 
         #endregion FORM METHODS

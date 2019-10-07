@@ -163,12 +163,13 @@ namespace BinaMitraTextile.InventoryForm
         private void setControlLayout()
         {
             int i = 0;
-            int startX = -3 + in_ManualOffsetX.ValueInt;
+            int startX = -20 + in_ManualOffsetX.ValueInt;
             int startY = 8 + in_ManualOffsetY.ValueInt;
             int gapX = 14;
             int gapY = 24;
             Size barcodeSize = new Size(137, 50); //minimum width of the barcode control inside the user control must be 120 or will throw error
             Size markerSize = new Size(14, 14);
+            Point markerLocation = new Point(1, (barcodeSize.Height / 2) - (markerSize.Height / 2));
             Font barcodeFont = new Font(barcodeUC1.Barcode.Font.FontFamily, 6);
             int columnCount = 5;
 
@@ -176,7 +177,7 @@ namespace BinaMitraTextile.InventoryForm
             Point currentPoint = new Point(startX, startY);
             foreach (BarcodeUC barcode in listBarcodeUC)
             {
-                barcode.setup(BorderStyle.None, barcodeSize, markerSize, barcodeFont, new Point(0, (barcodeSize.Height/2)-(markerSize.Height/2)));
+                barcode.setup(BorderStyle.None, barcodeSize, markerSize, barcodeFont, markerLocation);
                 barcode.Location = currentPoint;
                 i++;
                 currentPoint = new Point(currentPoint.X + barcode.Width + gapX, currentPoint.Y);

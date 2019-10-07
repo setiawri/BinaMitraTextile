@@ -46,6 +46,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridSummaryCheck = new System.Windows.Forms.DataGridView();
             this.col_gridSummary_inventoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummary_inventory_code = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -100,6 +106,19 @@
             this.btnGenerateSummary = new System.Windows.Forms.Button();
             this.tpCheckSummary = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tpMissingInventoryItems = new System.Windows.Forms.TabPage();
+            this.gridMissingItems = new System.Windows.Forms.DataGridView();
+            this.col_gridMissingItems_InventoryCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_GradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_ProductWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_ColorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_ItemLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_LastOpname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnRefreshMissingInventoryItems = new System.Windows.Forms.Button();
             this.chkIgnoreSold = new System.Windows.Forms.CheckBox();
             this.chkCheckListBeforeSubmit = new System.Windows.Forms.CheckBox();
             this.chkDoNotLoadList = new System.Windows.Forms.CheckBox();
@@ -112,6 +131,9 @@
             this.panel2.SuspendLayout();
             this.tpCheckSummary.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tpMissingInventoryItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridMissingItems)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridSummaryCheck
@@ -590,11 +612,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tcSummary.Controls.Add(this.tpSummary);
             this.tcSummary.Controls.Add(this.tpCheckSummary);
+            this.tcSummary.Controls.Add(this.tpMissingInventoryItems);
             this.tcSummary.Location = new System.Drawing.Point(353, 0);
             this.tcSummary.Name = "tcSummary";
             this.tcSummary.SelectedIndex = 0;
             this.tcSummary.Size = new System.Drawing.Size(683, 561);
             this.tcSummary.TabIndex = 115;
+            this.tcSummary.SelectedIndexChanged += new System.EventHandler(this.TcSummary_SelectedIndexChanged);
             // 
             // tpSummary
             // 
@@ -805,6 +829,167 @@
             this.panel1.Size = new System.Drawing.Size(669, 27);
             this.panel1.TabIndex = 115;
             // 
+            // tpMissingInventoryItems
+            // 
+            this.tpMissingInventoryItems.Controls.Add(this.gridMissingItems);
+            this.tpMissingInventoryItems.Controls.Add(this.panel3);
+            this.tpMissingInventoryItems.Location = new System.Drawing.Point(4, 22);
+            this.tpMissingInventoryItems.Name = "tpMissingInventoryItems";
+            this.tpMissingInventoryItems.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMissingInventoryItems.Size = new System.Drawing.Size(675, 535);
+            this.tpMissingInventoryItems.TabIndex = 2;
+            this.tpMissingInventoryItems.Text = "Missing";
+            this.tpMissingInventoryItems.UseVisualStyleBackColor = true;
+            // 
+            // gridMissingItems
+            // 
+            this.gridMissingItems.AllowUserToAddRows = false;
+            this.gridMissingItems.AllowUserToDeleteRows = false;
+            this.gridMissingItems.AllowUserToResizeRows = false;
+            this.gridMissingItems.BackgroundColor = System.Drawing.Color.White;
+            this.gridMissingItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridMissingItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridMissingItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.gridMissingItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridMissingItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridMissingItems_InventoryCode,
+            this.col_gridMissingItems_ProductName,
+            this.col_gridMissingItems_GradeName,
+            this.col_gridMissingItems_ProductWidth,
+            this.col_gridMissingItems_ColorName,
+            this.col_gridMissingItems_Barcode,
+            this.col_gridMissingItems_ItemLength,
+            this.col_gridMissingItems_UnitName,
+            this.col_gridMissingItems_LastOpname});
+            this.gridMissingItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridMissingItems.Location = new System.Drawing.Point(3, 33);
+            this.gridMissingItems.Margin = new System.Windows.Forms.Padding(2);
+            this.gridMissingItems.MultiSelect = false;
+            this.gridMissingItems.Name = "gridMissingItems";
+            this.gridMissingItems.ReadOnly = true;
+            this.gridMissingItems.RowHeadersVisible = false;
+            this.gridMissingItems.RowTemplate.Height = 24;
+            this.gridMissingItems.Size = new System.Drawing.Size(669, 499);
+            this.gridMissingItems.TabIndex = 110;
+            // 
+            // col_gridMissingItems_InventoryCode
+            // 
+            this.col_gridMissingItems_InventoryCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridMissingItems_InventoryCode.HeaderText = "Code";
+            this.col_gridMissingItems_InventoryCode.MinimumWidth = 50;
+            this.col_gridMissingItems_InventoryCode.Name = "col_gridMissingItems_InventoryCode";
+            this.col_gridMissingItems_InventoryCode.ReadOnly = true;
+            this.col_gridMissingItems_InventoryCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridMissingItems_InventoryCode.Width = 50;
+            // 
+            // col_gridMissingItems_ProductName
+            // 
+            this.col_gridMissingItems_ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridMissingItems_ProductName.HeaderText = "Product";
+            this.col_gridMissingItems_ProductName.MinimumWidth = 50;
+            this.col_gridMissingItems_ProductName.Name = "col_gridMissingItems_ProductName";
+            this.col_gridMissingItems_ProductName.ReadOnly = true;
+            // 
+            // col_gridMissingItems_GradeName
+            // 
+            this.col_gridMissingItems_GradeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridMissingItems_GradeName.DefaultCellStyle = dataGridViewCellStyle20;
+            this.col_gridMissingItems_GradeName.HeaderText = "Grade";
+            this.col_gridMissingItems_GradeName.MinimumWidth = 40;
+            this.col_gridMissingItems_GradeName.Name = "col_gridMissingItems_GradeName";
+            this.col_gridMissingItems_GradeName.ReadOnly = true;
+            this.col_gridMissingItems_GradeName.Width = 40;
+            // 
+            // col_gridMissingItems_ProductWidth
+            // 
+            this.col_gridMissingItems_ProductWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridMissingItems_ProductWidth.DefaultCellStyle = dataGridViewCellStyle21;
+            this.col_gridMissingItems_ProductWidth.HeaderText = "Lebar";
+            this.col_gridMissingItems_ProductWidth.MinimumWidth = 40;
+            this.col_gridMissingItems_ProductWidth.Name = "col_gridMissingItems_ProductWidth";
+            this.col_gridMissingItems_ProductWidth.ReadOnly = true;
+            this.col_gridMissingItems_ProductWidth.Width = 40;
+            // 
+            // col_gridMissingItems_ColorName
+            // 
+            this.col_gridMissingItems_ColorName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridMissingItems_ColorName.DefaultCellStyle = dataGridViewCellStyle22;
+            this.col_gridMissingItems_ColorName.HeaderText = "Color";
+            this.col_gridMissingItems_ColorName.MinimumWidth = 50;
+            this.col_gridMissingItems_ColorName.Name = "col_gridMissingItems_ColorName";
+            this.col_gridMissingItems_ColorName.ReadOnly = true;
+            this.col_gridMissingItems_ColorName.Width = 50;
+            // 
+            // col_gridMissingItems_Barcode
+            // 
+            this.col_gridMissingItems_Barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridMissingItems_Barcode.HeaderText = "Barcode";
+            this.col_gridMissingItems_Barcode.MinimumWidth = 40;
+            this.col_gridMissingItems_Barcode.Name = "col_gridMissingItems_Barcode";
+            this.col_gridMissingItems_Barcode.ReadOnly = true;
+            this.col_gridMissingItems_Barcode.Width = 40;
+            // 
+            // col_gridMissingItems_ItemLength
+            // 
+            this.col_gridMissingItems_ItemLength.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_gridMissingItems_ItemLength.DefaultCellStyle = dataGridViewCellStyle23;
+            this.col_gridMissingItems_ItemLength.HeaderText = "Qty";
+            this.col_gridMissingItems_ItemLength.MinimumWidth = 40;
+            this.col_gridMissingItems_ItemLength.Name = "col_gridMissingItems_ItemLength";
+            this.col_gridMissingItems_ItemLength.ReadOnly = true;
+            this.col_gridMissingItems_ItemLength.Width = 40;
+            // 
+            // col_gridMissingItems_UnitName
+            // 
+            this.col_gridMissingItems_UnitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridMissingItems_UnitName.HeaderText = "Unit";
+            this.col_gridMissingItems_UnitName.MinimumWidth = 40;
+            this.col_gridMissingItems_UnitName.Name = "col_gridMissingItems_UnitName";
+            this.col_gridMissingItems_UnitName.ReadOnly = true;
+            this.col_gridMissingItems_UnitName.Width = 40;
+            // 
+            // col_gridMissingItems_LastOpname
+            // 
+            this.col_gridMissingItems_LastOpname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle24.Format = "dd/MM";
+            this.col_gridMissingItems_LastOpname.DefaultCellStyle = dataGridViewCellStyle24;
+            this.col_gridMissingItems_LastOpname.HeaderText = "Last";
+            this.col_gridMissingItems_LastOpname.MinimumWidth = 40;
+            this.col_gridMissingItems_LastOpname.Name = "col_gridMissingItems_LastOpname";
+            this.col_gridMissingItems_LastOpname.ReadOnly = true;
+            this.col_gridMissingItems_LastOpname.Width = 40;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnRefreshMissingInventoryItems);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(669, 30);
+            this.panel3.TabIndex = 117;
+            // 
+            // btnRefreshMissingInventoryItems
+            // 
+            this.btnRefreshMissingInventoryItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshMissingInventoryItems.Location = new System.Drawing.Point(580, 4);
+            this.btnRefreshMissingInventoryItems.Name = "btnRefreshMissingInventoryItems";
+            this.btnRefreshMissingInventoryItems.Size = new System.Drawing.Size(84, 22);
+            this.btnRefreshMissingInventoryItems.TabIndex = 116;
+            this.btnRefreshMissingInventoryItems.Text = "REFRESH";
+            this.btnRefreshMissingInventoryItems.UseVisualStyleBackColor = true;
+            this.btnRefreshMissingInventoryItems.Click += new System.EventHandler(this.BtnRefreshMissingInventoryItems_Click);
+            // 
             // chkIgnoreSold
             // 
             this.chkIgnoreSold.AutoSize = true;
@@ -862,6 +1047,9 @@
             this.tpCheckSummary.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tpMissingInventoryItems.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridMissingItems)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -926,5 +1114,18 @@
         private System.Windows.Forms.CheckBox chkShowDeleteTodayData;
         private System.Windows.Forms.CheckBox chkCheckListBeforeSubmit;
         private System.Windows.Forms.CheckBox chkDoNotLoadList;
+        private System.Windows.Forms.TabPage tpMissingInventoryItems;
+        private System.Windows.Forms.DataGridView gridMissingItems;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnRefreshMissingInventoryItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_InventoryCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_GradeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ProductWidth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ColorName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_Barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ItemLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_UnitName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_LastOpname;
     }
 }

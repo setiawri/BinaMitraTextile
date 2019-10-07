@@ -52,7 +52,7 @@
             this.marker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.marker.BackgroundImage = global::BinaMitraTextile.Properties.Resources.handshake_32;
             this.marker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.marker.Location = new System.Drawing.Point(-8, 16);
+            this.marker.Location = new System.Drawing.Point(-26, 16);
             this.marker.Name = "marker";
             this.marker.Size = new System.Drawing.Size(15, 15);
             this.marker.TabIndex = 80;
