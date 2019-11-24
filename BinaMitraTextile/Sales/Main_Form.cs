@@ -25,9 +25,7 @@ namespace BinaMitraTextile.Sales
         public Main_Form()
         {
             InitializeComponent();
-            
-            
-
+                      
             //initialize filter fields
             dtStart.ShowCheckBox = true;
             dtEnd.ShowCheckBox = true;

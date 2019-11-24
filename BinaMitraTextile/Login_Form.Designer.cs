@@ -37,11 +37,13 @@
             this.rbLocalDB = new System.Windows.Forms.RadioButton();
             this.itxt_Password = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.itxt_Username = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.itxt_ServerName = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.gbConnectionProperties.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbConnectionProperties
             // 
+            this.gbConnectionProperties.Controls.Add(this.itxt_ServerName);
             this.gbConnectionProperties.Controls.Add(this.iddl_Ports);
             this.gbConnectionProperties.Controls.Add(this.btnTestConnection);
             this.gbConnectionProperties.Controls.Add(this.rbConnectAsServer);
@@ -164,6 +166,24 @@
             this.itxt_Username.ValueText = "";
             this.itxt_Username.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
+            // itxt_ServerName
+            // 
+            this.itxt_ServerName.IsBrowseMode = false;
+            this.itxt_ServerName.LabelText = "SERVER";
+            this.itxt_ServerName.Location = new System.Drawing.Point(138, 41);
+            this.itxt_ServerName.MaxLength = 32767;
+            this.itxt_ServerName.MultiLine = false;
+            this.itxt_ServerName.Name = "itxt_ServerName";
+            this.itxt_ServerName.PasswordChar = '\0';
+            this.itxt_ServerName.RowCount = 1;
+            this.itxt_ServerName.ShowDeleteButton = false;
+            this.itxt_ServerName.ShowFilter = false;
+            this.itxt_ServerName.ShowTextboxOnly = false;
+            this.itxt_ServerName.Size = new System.Drawing.Size(125, 41);
+            this.itxt_ServerName.TabIndex = 107;
+            this.itxt_ServerName.ValueText = "";
+            this.itxt_ServerName.Visible = false;
+            // 
             // Login_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,5 +213,6 @@
         private System.Windows.Forms.RadioButton rbLocalDB;
         private System.Windows.Forms.Button btnTestConnection;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Ports;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_ServerName;
     }
 }

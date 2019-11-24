@@ -72,7 +72,7 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(referenceId, "New Payment: Rp." + amount.ToString("N2"));
+                    //ActivityLog.submit(referenceId, "New Payment: Rp." + amount.ToString("N2"));
                 }
             }
             catch (Exception ex) { LIBUtil.Util.displayMessageBoxError(ex.Message); }

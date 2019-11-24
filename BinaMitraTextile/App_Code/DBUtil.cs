@@ -26,7 +26,12 @@ namespace BinaMitraTextile
         public static bool isServerEnvironment { get { return Util.isMachineNameEqualConfigVariable("serverComputerName"); } }
         public static bool isDevEnvironment { get { return Util.isMachineNameEqualConfigVariable("devComputerName"); } }
         public static bool isSalesEnvironment {
-            get { return Util.isMachineNameEqualConfigVariable("salesComputerName") || Util.isMachineNameEqualConfigVariable("tabComputerName"); }
+            get
+            {
+                return Util.isMachineNameEqualConfigVariable("salesComputerName") 
+                    || Util.isMachineNameEqualConfigVariable("tabComputerName")
+                    || Util.isMachineNameEqualConfigVariable("salesComputerName2");
+            }
         }
 
         private static string connectionString
@@ -53,6 +58,8 @@ namespace BinaMitraTextile
             
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(_connectionString);
             string servername = builder.DataSource;
+            if (GlobalData.LiveConnectionServerName != "")
+                servername = GlobalData.LiveConnectionServerName;
             if(servername.IndexOf(',') > -1)
             {
                 servername = servername.Substring(0, servername.IndexOf(','));

@@ -63,7 +63,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (_formMode == FormMode.Browse)
             {
-                pnlModeButtons.Enabled = false;
+                flpButtons.Enabled = false;
                 //splitContainer1.Panel1Collapsed = true;
             }
 
@@ -89,6 +89,7 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_availableQty.DataPropertyName = Inventory.COL_AVAILABLEITEMLENGTH;
             col_grid_totalPcs.DataPropertyName = Inventory.COL_QTY;
             col_grid_totalQty.DataPropertyName = Inventory.COL_ITEMLENGTH;
+            col_grid_PONo.DataPropertyName = Inventory.COL_PONo;
             col_grid_invoiceNo.DataPropertyName = Inventory.COL_VENDORINVOICENO;
             col_grid_packingListNo.DataPropertyName = Inventory.COL_DB_PACKINGLISTNO;
             col_grid_isConsignment.DataPropertyName = Inventory.COL_DB_IsConsignment;
@@ -109,16 +110,35 @@ namespace BinaMitraTextile.InventoryForm
             col_gridSummary_BuyValue.DataPropertyName = Inventory.COL_BUYVALUE;
             col_gridSummary_SellValue.DataPropertyName = Inventory.COL_SELLVALUE;
 
+            gridSummaryByColor.AutoGenerateColumns = false;
+            gridSummaryByColor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_gridSummaryByColor_availablePcs.DataPropertyName = Inventory.COL_AVAILABLEQTY;
+            col_gridSummaryByColor_AvailableQty.DataPropertyName = Inventory.COL_AVAILABLEITEMLENGTH;
+            col_gridSummaryByColor_AveragePrice.DataPropertyName = Inventory.COL_DB_BUYPRICE;
+            col_gridSummaryByColor_Grade.DataPropertyName = Inventory.COL_GRADE_NAME;
+            col_gridSummaryByColor_ColorName.DataPropertyName = Inventory.COL_COLOR_NAME;
+            col_gridSummaryByColor_ProductId.DataPropertyName = Inventory.COL_PRODUCTID;
+            col_gridSummaryByColor_ProductStoreName.DataPropertyName = Inventory.COL_PRODUCTSTORENAME;
+            col_gridSummaryByColor_UnitName.DataPropertyName = Inventory.COL_LENGTH_UNIT_NAME;
+            col_gridSummaryByColor_ProductWidthName.DataPropertyName = Inventory.COL_PRODUCT_WIDTH_NAME;
+            col_gridSummaryByColor_BuyValue.DataPropertyName = Inventory.COL_BUYVALUE;
+            col_gridSummaryByColor_SellValue.DataPropertyName = Inventory.COL_SELLVALUE;
+
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkShowHidden.Visible = false;
                 btnLog.Enabled = false;
                 chkRearrange.Visible = false;
                 chkCalculateBuyValue.Visible = false;
+                col_grid_isConsignment.Visible = false;
 
                 col_gridSummary_averagePrice.Visible = false;
                 col_gridSummary_BuyValue.Visible = false;
                 col_gridSummary_SellValue.Visible = false;
+
+                col_gridSummaryByColor_AveragePrice.Visible = false;
+                col_gridSummaryByColor_BuyValue.Visible = false;
+                col_gridSummaryByColor_SellValue.Visible = false;
             }
 
         }
@@ -132,9 +152,13 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (pnlSummary.Visible && _isFormShown)
             {
-                DataView dvw = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource)).DefaultView;
+                DataView dvw = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource), false).DefaultView;
                 dvw.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME);
                 gridSummary.DataSource = dvw;
+
+                DataView dvwByColor = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource), true).DefaultView;
+                dvwByColor.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC, {3} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_COLOR_NAME);
+                gridSummaryByColor.DataSource = dvwByColor;
             }
         }
 
@@ -405,24 +429,25 @@ namespace BinaMitraTextile.InventoryForm
         
         private void chkRearrange_CheckedChanged(object sender, EventArgs e)
         {
+            int widthOffset = 0;
             chkShowHidden.Checked = chkRearrange.Checked;
             chkLast3Months.Checked = chkRearrange.Checked;
             chkIncludeInactive.Checked = chkRearrange.Checked;
-            col_grid_color.Visible = !chkRearrange.Checked;
             _selectCheckboxHeader.Visible = !chkRearrange.Checked;
-            col_grid_select.Visible = !chkRearrange.Checked;
-            col_grid_availablePcs.Visible = !chkRearrange.Checked;
-            col_grid_availableQty.Visible = !chkRearrange.Checked;
-            col_grid_active.Visible = !chkRearrange.Checked;
-            col_grid_isConsignment.Visible = !chkRearrange.Checked;
-            col_grid_OpnameMarker.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_select.Width; col_grid_select.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_availablePcs.Width; col_grid_availablePcs.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_availableQty.Width; col_grid_availableQty.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_PONo.Width; col_grid_PONo.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_active.Width; col_grid_active.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_isConsignment.Width; col_grid_isConsignment.Visible = !chkRearrange.Checked;
+            widthOffset += col_grid_OpnameMarker.Width; col_grid_OpnameMarker.Visible = !chkRearrange.Checked;
             if (chkRearrange.Checked)
             {
                 grid.Sort(col_grid_code, ListSortDirection.Ascending);
                 grid.FirstDisplayedScrollingRowIndex = grid.Rows.Count-1;
                 grid.ClearSelection();
                 grid.Rows[grid.Rows.Count - 1].Selected = true;
-                this.Width -= 500;
+                this.Width -= widthOffset;
             }
             else
             {
@@ -430,7 +455,7 @@ namespace BinaMitraTextile.InventoryForm
                 grid.FirstDisplayedScrollingRowIndex = 0;
                 grid.ClearSelection();
                 grid.Rows[0].Selected = true;
-                this.Width += 500;
+                this.Width += widthOffset;
             }
         }
 

@@ -60,6 +60,7 @@
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.chkPOItem = new System.Windows.Forms.CheckBox();
             this.itxt_POItemID = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNotes
@@ -435,11 +436,22 @@
             this.itxt_POItemID.ValueText = "";
             this.itxt_POItemID.isBrowseMode_Clicked += new System.EventHandler(this.Itxt_POItemID_isBrowseMode_Clicked);
             // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(102, 343);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(182, 13);
+            this.label10.TabIndex = 1007;
+            this.label10.Text = "biarkan kosong kalau bukan grade A";
+            // 
             // Add_Edit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 421);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.itxt_POItemID);
             this.Controls.Add(this.chkPOItem);
             this.Controls.Add(this.txtProductName);
@@ -512,5 +524,6 @@
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.CheckBox chkPOItem;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_POItemID;
+        private System.Windows.Forms.Label label10;
     }
 }

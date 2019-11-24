@@ -152,9 +152,7 @@ namespace BinaMitraTextile
                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(item.Notes))
                 );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(item.Id, "Added");
-                else
+                if (!result.IsSuccessful)
                     return false;
             }
             return true;

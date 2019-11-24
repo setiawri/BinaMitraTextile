@@ -169,7 +169,7 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(id, "New Inventory added");
+                    //ActivityLog.submit(id, "New Inventory added");
                 }
             } catch (Exception ex) { return ex.Message; }
 
@@ -359,7 +359,7 @@ namespace BinaMitraTextile
                 logDescription = ActivityLog.appendChange(logDescription, objOld.length_unit_name, length_unit_name, "Length Unit: '{0}' to '{1}'");
                 logDescription = ActivityLog.appendChange(logDescription, objOld.color_name, color_name, "Color: '{0}' to '{1}'");
                 logDescription = ActivityLog.appendChange(logDescription, objOld.notes, notes, "Notes: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.POItemID, POItemID, "PO Item: '{0}' to '{1}'");
+                logDescription = ActivityLog.appendChange(logDescription, objOld.PONo, PONo, "PO Item: '{0}' to '{1}'");
                 logDescription = ActivityLog.appendChange(logDescription, objOld.PackingListNo, PackingListNo, "Packing List No: '{0}' to '{1}'");
                 logDescription = ActivityLog.appendChange(logDescription, objOld.VendorInvoiceNo, VendorInvoiceNo, "Vendor Invoice No: '{0}' to '{1}'");
 
@@ -412,7 +412,7 @@ namespace BinaMitraTextile
             lbl.Text = String.Format("{0} pcs / {1:N2} ({2:N2})", qty, Tools.zeroNonNumericString(length), Tools.zeroNonNumericString(total));
         }
         
-        public static DataTable compileSummaryData(DataTable dt)
+        public static DataTable compileSummaryData(DataTable dt, bool showColor)
         {
             DataTable dtSummary = dt.Clone(); //copy table structure without rows of data
             Tools.setDataTablePrimaryKey(dtSummary, Inventory.COL_DB_ID);
@@ -421,7 +421,7 @@ namespace BinaMitraTextile
             decimal totalLength = 0;
             foreach (DataRow dr in dt.Rows)
             {
-                tempRow = findCombination(dtSummary, dr);
+                tempRow = findCombination(dtSummary, dr, showColor);
                 if (tempRow != null)
                 {
                     totalLength = Tools.zeroNonNumericString(tempRow[Inventory.COL_AVAILABLEITEMLENGTH]) + Tools.zeroNonNumericString(dr[Inventory.COL_AVAILABLEITEMLENGTH]);
@@ -450,16 +450,29 @@ namespace BinaMitraTextile
             return dtSummary;
         }
 
-        public static DataRow findCombination(DataTable datatable, DataRow datarow)
+        public static DataRow findCombination(DataTable datatable, DataRow datarow, bool showColor)
         {
             foreach(DataRow row in datatable.Rows)
             {
-                if (row[Inventory.COL_PRODUCTSTORENAME].ToString() == datarow[Inventory.COL_PRODUCTSTORENAME].ToString()
-                    && row[Inventory.COL_GRADE_NAME].ToString() == datarow[Inventory.COL_GRADE_NAME].ToString()
-                    && row[Inventory.COL_PRODUCT_WIDTH_NAME].ToString() == datarow[Inventory.COL_PRODUCT_WIDTH_NAME].ToString()
-                    && row[Inventory.COL_LENGTH_UNIT_NAME].ToString() == datarow[Inventory.COL_LENGTH_UNIT_NAME].ToString())
+                if(showColor)
+                {
+                    if (row[Inventory.COL_PRODUCTSTORENAME].ToString() == datarow[Inventory.COL_PRODUCTSTORENAME].ToString()
+                        && row[Inventory.COL_GRADE_NAME].ToString() == datarow[Inventory.COL_GRADE_NAME].ToString()
+                        && row[Inventory.COL_PRODUCT_WIDTH_NAME].ToString() == datarow[Inventory.COL_PRODUCT_WIDTH_NAME].ToString()
+                        && row[Inventory.COL_LENGTH_UNIT_NAME].ToString() == datarow[Inventory.COL_LENGTH_UNIT_NAME].ToString()
+                        && row[Inventory.COL_DB_COLORID].ToString() == datarow[Inventory.COL_DB_COLORID].ToString())
 
-                    return row;
+                        return row;
+                }
+                else
+                {
+                    if (row[Inventory.COL_PRODUCTSTORENAME].ToString() == datarow[Inventory.COL_PRODUCTSTORENAME].ToString()
+                        && row[Inventory.COL_GRADE_NAME].ToString() == datarow[Inventory.COL_GRADE_NAME].ToString()
+                        && row[Inventory.COL_PRODUCT_WIDTH_NAME].ToString() == datarow[Inventory.COL_PRODUCT_WIDTH_NAME].ToString()
+                        && row[Inventory.COL_LENGTH_UNIT_NAME].ToString() == datarow[Inventory.COL_LENGTH_UNIT_NAME].ToString())
+
+                        return row;
+                }
             }
 
             return null;

@@ -71,7 +71,7 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    ActivityLog.submit(customerID, "Credit: Rp." + creditAmount.ToString("N2"));
+                    //ActivityLog.submit(customerID, "Credit: Rp." + creditAmount.ToString("N2"));
                 }
             }
             catch (Exception ex) { Tools.hasMessage(ex.Message); }

@@ -368,6 +368,11 @@ namespace BinaMitraTextile
             DBUtil.terminateActiveSqlConnection();
         }
 
+        private void LnkSamples_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Admin.Samples1_Form(FormMode.New));
+        }
+
         #endregion CLASS METHODS
         /*******************************************************************************************************/
         #region ----

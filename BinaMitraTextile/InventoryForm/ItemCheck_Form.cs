@@ -59,7 +59,8 @@ namespace BinaMitraTextile.InventoryForm
 
             gridMissingItems.AutoGenerateColumns = false;
             gridMissingItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            col_gridMissingItems_InventoryCode.DataPropertyName = "inventory_code";
+            col_gridMissingItems_InventoryDate.DataPropertyName = "date";
+            col_gridMissingItems_InventoryCode.DataPropertyName = "inventory_receivedate";
             col_gridMissingItems_Barcode.DataPropertyName = "barcode";
             col_gridMissingItems_ColorName.DataPropertyName = "color_name";
             col_gridMissingItems_GradeName.DataPropertyName = "grade_name";
@@ -330,6 +331,11 @@ namespace BinaMitraTextile.InventoryForm
         private void populateMissingInventoryItems()
         {
             gridMissingItems.DataSource = InventoryItemCheck.getMissing(Tools.getDate(dtpStartDate1, false));
+        }
+
+        private void ChkDoNotLoadList_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
         }
 
         #endregion FORM METHODS

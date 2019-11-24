@@ -26,6 +26,8 @@ namespace BinaMitraTextile
         {
             Settings.setGeneralSettings(this);
 
+            LIBUtil.DBConnection.populatePorts(iddl_Ports);
+
             if (DBUtil.isSalesEnvironment)
             {
                 rbLocalDB.Checked = true;
@@ -36,6 +38,7 @@ namespace BinaMitraTextile
             {
                 rbDevDB.Checked = true;
                 _bypassLogin = true;
+                itxt_ServerName.Visible = true;
             }
             else if (DBUtil.isServerEnvironment)
             {
@@ -50,7 +53,6 @@ namespace BinaMitraTextile
                 rbConnectAsServer.Visible = false;
             }
 
-            LIBUtil.DBConnection.populatePorts(iddl_Ports);
             setLastConnectedPortNo();
 
             toggleConnectionProperties();
@@ -126,6 +128,10 @@ namespace BinaMitraTextile
                 GlobalData.LiveConnectionPort = ((ConnectionPorts)iddl_Ports.SelectedItem).ToString().Replace("port","");
             else
                 GlobalData.LiveConnectionPort = "";
+            if (!itxt_ServerName.isEmpty())
+                GlobalData.LiveConnectionServerName = itxt_ServerName.ValueText;
+            else
+                GlobalData.LiveConnectionServerName = "";
             DBUtil.setConnectionString();
 
             if (DBUtil.isDBConnectionAvailable())

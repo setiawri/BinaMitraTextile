@@ -57,7 +57,7 @@ namespace BinaMitraTextile.Users
 
         private void populateGrid()
         {
-            grid.DataSource = UserAccount.get(null, chkShowInactive.Checked).DefaultView;
+            grid.DataSource = UserAccount.get(null, null, chkShowInactive.Checked).DefaultView;
         }
 
         private void grid_SelectionChanged(object sender, EventArgs e)

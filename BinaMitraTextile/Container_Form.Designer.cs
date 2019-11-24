@@ -84,6 +84,7 @@
             this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcuts.SuspendLayout();
@@ -119,20 +120,20 @@
             this.menu_sales_saleorders});
             this.menu_sales.Name = "menu_sales";
             this.menu_sales.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.menu_sales.Size = new System.Drawing.Size(45, 20);
+            this.menu_sales.Size = new System.Drawing.Size(44, 20);
             this.menu_sales.Text = "Sales";
             // 
             // menu_sales_list
             // 
             this.menu_sales_list.Name = "menu_sales_list";
-            this.menu_sales_list.Size = new System.Drawing.Size(135, 22);
+            this.menu_sales_list.Size = new System.Drawing.Size(132, 22);
             this.menu_sales_list.Text = "Daftar Sales";
             this.menu_sales_list.Click += new System.EventHandler(this.menu_sales_list_Click);
             // 
             // menu_sales_saleorders
             // 
             this.menu_sales_saleorders.Name = "menu_sales_saleorders";
-            this.menu_sales_saleorders.Size = new System.Drawing.Size(135, 22);
+            this.menu_sales_saleorders.Size = new System.Drawing.Size(132, 22);
             this.menu_sales_saleorders.Text = "Sale Orders";
             this.menu_sales_saleorders.Click += new System.EventHandler(this.menu_sales_saleorders_Click);
             // 
@@ -148,21 +149,21 @@
             this.menu_inventory_samples});
             this.menu_inventory.Name = "menu_inventory";
             this.menu_inventory.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.menu_inventory.Size = new System.Drawing.Size(69, 20);
+            this.menu_inventory.Size = new System.Drawing.Size(64, 20);
             this.menu_inventory.Text = "Inventory";
             // 
             // menu_inventory_stock
             // 
             this.menu_inventory_stock.Name = "menu_inventory_stock";
             this.menu_inventory_stock.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.menu_inventory_stock.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_stock.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_stock.Text = "Stock";
             this.menu_inventory_stock.Click += new System.EventHandler(this.menu_inventory_stock_Click);
             // 
             // menu_inventory_stocklevel
             // 
             this.menu_inventory_stocklevel.Name = "menu_inventory_stocklevel";
-            this.menu_inventory_stocklevel.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_stocklevel.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_stocklevel.Text = "Stock Level";
             this.menu_inventory_stocklevel.Click += new System.EventHandler(this.menu_inventory_stocklevel_Click);
             // 
@@ -170,7 +171,7 @@
             // 
             this.menu_inventory_invoices.Name = "menu_inventory_invoices";
             this.menu_inventory_invoices.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.menu_inventory_invoices.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_invoices.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_invoices.Text = "Invoices";
             this.menu_inventory_invoices.Click += new System.EventHandler(this.menu_inventory_invoices_Click);
             // 
@@ -178,7 +179,7 @@
             // 
             this.menu_inventory_opname.Name = "menu_inventory_opname";
             this.menu_inventory_opname.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.menu_inventory_opname.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_opname.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_opname.Text = "Opname";
             this.menu_inventory_opname.Click += new System.EventHandler(this.menu_inventory_opname_Click);
             // 
@@ -186,21 +187,21 @@
             // 
             this.menu_inventory_po.Name = "menu_inventory_po";
             this.menu_inventory_po.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.menu_inventory_po.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_po.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_po.Text = "PO";
             this.menu_inventory_po.Click += new System.EventHandler(this.menu_inventory_po_Click);
             // 
             // menu_inventory_printbarcodes
             // 
             this.menu_inventory_printbarcodes.Name = "menu_inventory_printbarcodes";
-            this.menu_inventory_printbarcodes.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_printbarcodes.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_printbarcodes.Text = "Print Barcodes";
             this.menu_inventory_printbarcodes.Click += new System.EventHandler(this.menu_inventory_printbarcodes_Click);
             // 
             // menu_inventory_samples
             // 
             this.menu_inventory_samples.Name = "menu_inventory_samples";
-            this.menu_inventory_samples.Size = new System.Drawing.Size(159, 22);
+            this.menu_inventory_samples.Size = new System.Drawing.Size(151, 22);
             this.menu_inventory_samples.Text = "Samples";
             this.menu_inventory_samples.Click += new System.EventHandler(this.menu_inventory_samples_Click);
             // 
@@ -208,7 +209,7 @@
             // 
             this.menu_returns.Name = "menu_returns";
             this.menu_returns.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.menu_returns.Size = new System.Drawing.Size(59, 20);
+            this.menu_returns.Size = new System.Drawing.Size(56, 20);
             this.menu_returns.Text = "Returns";
             this.menu_returns.Click += new System.EventHandler(this.menu_returns_Click);
             // 
@@ -216,7 +217,7 @@
             // 
             this.menu_customercredit.Name = "menu_customercredit";
             this.menu_customercredit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.menu_customercredit.Size = new System.Drawing.Size(56, 20);
+            this.menu_customercredit.Size = new System.Drawing.Size(53, 20);
             this.menu_customercredit.Text = "Credits";
             this.menu_customercredit.Click += new System.EventHandler(this.menu_customercredit_Click);
             // 
@@ -242,14 +243,14 @@
             this.menu_admin_widths});
             this.menu_admin.Name = "menu_admin";
             this.menu_admin.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.menu_admin.Size = new System.Drawing.Size(55, 20);
+            this.menu_admin.Size = new System.Drawing.Size(51, 20);
             this.menu_admin.Text = "Admin";
             // 
             // angkutanToolStripMenuItem
             // 
             this.angkutanToolStripMenuItem.Name = "angkutanToolStripMenuItem";
             this.angkutanToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.angkutanToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.angkutanToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.angkutanToolStripMenuItem.Text = "Angkutan";
             this.angkutanToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_angkutan_Click);
             // 
@@ -257,35 +258,35 @@
             // 
             this.menu_admin_cities.Name = "menu_admin_cities";
             this.menu_admin_cities.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.menu_admin_cities.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_cities.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_cities.Text = "Cities";
             this.menu_admin_cities.Click += new System.EventHandler(this.menu_admin_cities_Click);
             // 
             // menu_admin_colors
             // 
             this.menu_admin_colors.Name = "menu_admin_colors";
-            this.menu_admin_colors.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_colors.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_colors.Text = "Colors";
             this.menu_admin_colors.Click += new System.EventHandler(this.menu_admin_colors_Click);
             // 
             // menu_admin_customers
             // 
             this.menu_admin_customers.Name = "menu_admin_customers";
-            this.menu_admin_customers.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_customers.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_customers.Text = "Customers";
             this.menu_admin_customers.Click += new System.EventHandler(this.menu_admin_customers_Click);
             // 
             // menu_admin_customersaleadjustments
             // 
             this.menu_admin_customersaleadjustments.Name = "menu_admin_customersaleadjustments";
-            this.menu_admin_customersaleadjustments.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_customersaleadjustments.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_customersaleadjustments.Text = "Customer Discounts";
             this.menu_admin_customersaleadjustments.Click += new System.EventHandler(this.menu_admin_customersaleadjustments_Click);
             // 
             // menu_admin_customerterms
             // 
             this.menu_admin_customerterms.Name = "menu_admin_customerterms";
-            this.menu_admin_customerterms.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_customerterms.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_customerterms.Text = "Debt Limits";
             this.menu_admin_customerterms.Click += new System.EventHandler(this.menu_admin_customerterms_Click);
             // 
@@ -293,7 +294,7 @@
             // 
             this.gradesToolStripMenuItem.Name = "gradesToolStripMenuItem";
             this.gradesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.G)));
-            this.gradesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.gradesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.gradesToolStripMenuItem.Text = "Grades";
             this.gradesToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_grades_Click);
             // 
@@ -301,21 +302,21 @@
             // 
             this.menu_admin_length_units.Name = "menu_admin_length_units";
             this.menu_admin_length_units.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
-            this.menu_admin_length_units.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_length_units.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_length_units.Text = "Length Units";
             this.menu_admin_length_units.Click += new System.EventHandler(this.menu_admin_length_units_Click);
             // 
             // menu_admin_pettycashcategories
             // 
             this.menu_admin_pettycashcategories.Name = "menu_admin_pettycashcategories";
-            this.menu_admin_pettycashcategories.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_pettycashcategories.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_pettycashcategories.Text = "Petty Cash Categories";
             this.menu_admin_pettycashcategories.Click += new System.EventHandler(this.menu_admin_pettycashcategories_Click);
             // 
             // menu_admin_pettycash
             // 
             this.menu_admin_pettycash.Name = "menu_admin_pettycash";
-            this.menu_admin_pettycash.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_pettycash.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_pettycash.Text = "Petty Cash";
             this.menu_admin_pettycash.Click += new System.EventHandler(this.menu_admin_pettycash_Click);
             // 
@@ -323,21 +324,21 @@
             // 
             this.menu_admin_prices.Name = "menu_admin_prices";
             this.menu_admin_prices.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.menu_admin_prices.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_prices.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_prices.Text = "Prices";
             this.menu_admin_prices.Click += new System.EventHandler(this.menu_admin_prices_Click);
             // 
             // menu_admin_products
             // 
             this.menu_admin_products.Name = "menu_admin_products";
-            this.menu_admin_products.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_products.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_products.Text = "Products";
             this.menu_admin_products.Click += new System.EventHandler(this.menu_admin_products_Click);
             // 
             // menu_admin_productstorenames
             // 
             this.menu_admin_productstorenames.Name = "menu_admin_productstorenames";
-            this.menu_admin_productstorenames.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_productstorenames.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_productstorenames.Text = "Product Store Names";
             this.menu_admin_productstorenames.Click += new System.EventHandler(this.menu_admin_productstorenames_Click);
             // 
@@ -345,7 +346,7 @@
             // 
             this.statesToolStripMenuItem.Name = "statesToolStripMenuItem";
             this.statesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.statesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.statesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.statesToolStripMenuItem.Text = "States";
             this.statesToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_states_Click);
             // 
@@ -353,14 +354,14 @@
             // 
             this.menu_admin_vendors.Name = "menu_admin_vendors";
             this.menu_admin_vendors.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
-            this.menu_admin_vendors.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_vendors.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_vendors.Text = "Vendors";
             this.menu_admin_vendors.Click += new System.EventHandler(this.menu_admin_vendors_Click);
             // 
             // menu_admin_vendorinvoices
             // 
             this.menu_admin_vendorinvoices.Name = "menu_admin_vendorinvoices";
-            this.menu_admin_vendorinvoices.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_vendorinvoices.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_vendorinvoices.Text = "Vendor Invoices";
             this.menu_admin_vendorinvoices.Click += new System.EventHandler(this.menu_admin_vendorinvoices_Click);
             // 
@@ -368,7 +369,7 @@
             // 
             this.menu_admin_widths.Name = "menu_admin_widths";
             this.menu_admin_widths.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.menu_admin_widths.Size = new System.Drawing.Size(189, 22);
+            this.menu_admin_widths.Size = new System.Drawing.Size(179, 22);
             this.menu_admin_widths.Text = "Widths";
             this.menu_admin_widths.Click += new System.EventHandler(this.menu_admin_widths_Click);
             // 
@@ -386,34 +387,34 @@
             this.menu_reports_sales,
             this.menu_reports_tax});
             this.menu_reports.Name = "menu_reports";
-            this.menu_reports.Size = new System.Drawing.Size(59, 20);
+            this.menu_reports.Size = new System.Drawing.Size(56, 20);
             this.menu_reports.Text = "Reports";
             // 
             // menu_reports_financial
             // 
             this.menu_reports_financial.Name = "menu_reports_financial";
-            this.menu_reports_financial.Size = new System.Drawing.Size(121, 22);
+            this.menu_reports_financial.Size = new System.Drawing.Size(118, 22);
             this.menu_reports_financial.Text = "Financial";
             this.menu_reports_financial.Click += new System.EventHandler(this.menu_reports_financial_Click);
             // 
             // menu_reports_sales
             // 
             this.menu_reports_sales.Name = "menu_reports_sales";
-            this.menu_reports_sales.Size = new System.Drawing.Size(121, 22);
+            this.menu_reports_sales.Size = new System.Drawing.Size(118, 22);
             this.menu_reports_sales.Text = "Sales";
             this.menu_reports_sales.Click += new System.EventHandler(this.menu_reports_sales_Click);
             // 
             // menu_reports_tax
             // 
             this.menu_reports_tax.Name = "menu_reports_tax";
-            this.menu_reports_tax.Size = new System.Drawing.Size(121, 22);
+            this.menu_reports_tax.Size = new System.Drawing.Size(118, 22);
             this.menu_reports_tax.Text = "Tax";
             this.menu_reports_tax.Click += new System.EventHandler(this.menu_reports_tax_Click);
             // 
             // menu_todolist
             // 
             this.menu_todolist.Name = "menu_todolist";
-            this.menu_todolist.Size = new System.Drawing.Size(70, 20);
+            this.menu_todolist.Size = new System.Drawing.Size(66, 20);
             this.menu_todolist.Text = "To Do List";
             this.menu_todolist.Click += new System.EventHandler(this.menu_todolist_Click);
             // 
@@ -432,34 +433,34 @@
             this.menu_account_rules,
             this.menu_account_log});
             this.menu_account.Name = "menu_account";
-            this.menu_account.Size = new System.Drawing.Size(64, 20);
+            this.menu_account.Size = new System.Drawing.Size(58, 20);
             this.menu_account.Text = "Account";
             // 
             // menu_account_password
             // 
             this.menu_account_password.Name = "menu_account_password";
-            this.menu_account_password.Size = new System.Drawing.Size(125, 22);
+            this.menu_account_password.Size = new System.Drawing.Size(122, 22);
             this.menu_account_password.Text = "Password";
             this.menu_account_password.Click += new System.EventHandler(this.menu_account_password_Click);
             // 
             // menu_account_salescomission
             // 
             this.menu_account_salescomission.Name = "menu_account_salescomission";
-            this.menu_account_salescomission.Size = new System.Drawing.Size(125, 22);
+            this.menu_account_salescomission.Size = new System.Drawing.Size(122, 22);
             this.menu_account_salescomission.Text = "Komisi";
             this.menu_account_salescomission.Click += new System.EventHandler(this.menu_account_salescomission_Click);
             // 
             // menu_account_rules
             // 
             this.menu_account_rules.Name = "menu_account_rules";
-            this.menu_account_rules.Size = new System.Drawing.Size(125, 22);
+            this.menu_account_rules.Size = new System.Drawing.Size(122, 22);
             this.menu_account_rules.Text = "Peraturan";
             this.menu_account_rules.Visible = false;
             // 
             // menu_account_log
             // 
             this.menu_account_log.Name = "menu_account_log";
-            this.menu_account_log.Size = new System.Drawing.Size(125, 22);
+            this.menu_account_log.Size = new System.Drawing.Size(122, 22);
             this.menu_account_log.Text = "Log";
             this.menu_account_log.Click += new System.EventHandler(this.menu_account_log_Click);
             // 
@@ -494,7 +495,7 @@
             this.gbShortcuts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcuts.Location = new System.Drawing.Point(5, 5);
             this.gbShortcuts.Name = "gbShortcuts";
-            this.gbShortcuts.Size = new System.Drawing.Size(135, 204);
+            this.gbShortcuts.Size = new System.Drawing.Size(135, 229);
             this.gbShortcuts.TabIndex = 14;
             this.gbShortcuts.TabStop = false;
             // 
@@ -508,6 +509,7 @@
             this.flpShortcuts.Controls.Add(this.lnkInventory);
             this.flpShortcuts.Controls.Add(this.lnkPettyCash);
             this.flpShortcuts.Controls.Add(this.lnkSaleOrders);
+            this.flpShortcuts.Controls.Add(this.lnkSamples);
             this.flpShortcuts.Controls.Add(this.lnkSummary);
             this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -515,7 +517,7 @@
             this.flpShortcuts.Location = new System.Drawing.Point(3, 16);
             this.flpShortcuts.Name = "flpShortcuts";
             this.flpShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpShortcuts.Size = new System.Drawing.Size(129, 185);
+            this.flpShortcuts.Size = new System.Drawing.Size(129, 210);
             this.flpShortcuts.TabIndex = 17;
             // 
             // lnkCreateSales
@@ -627,7 +629,7 @@
             this.lnkSummary.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.Location = new System.Drawing.Point(3, 155);
+            this.lnkSummary.Location = new System.Drawing.Point(3, 180);
             this.lnkSummary.Name = "lnkSummary";
             this.lnkSummary.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSummary.Size = new System.Drawing.Size(56, 25);
@@ -647,6 +649,23 @@
             this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
+            // 
+            // lnkSamples
+            // 
+            this.lnkSamples.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.AutoSize = true;
+            this.lnkSamples.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSamples.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.Location = new System.Drawing.Point(3, 155);
+            this.lnkSamples.Name = "lnkSamples";
+            this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSamples.Size = new System.Drawing.Size(52, 25);
+            this.lnkSamples.TabIndex = 29;
+            this.lnkSamples.TabStop = true;
+            this.lnkSamples.Text = "SAMPLES";
+            this.lnkSamples.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSamples_LinkClicked);
             // 
             // Container_Form
             // 
@@ -732,5 +751,6 @@
         private System.Windows.Forms.LinkLabel lnkSales;
         private System.Windows.Forms.LinkLabel lnkShipping;
         private System.Windows.Forms.LinkLabel lnkSaleOrders;
+        private System.Windows.Forms.LinkLabel lnkSamples;
     }
 }

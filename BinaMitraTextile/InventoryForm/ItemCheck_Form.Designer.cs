@@ -108,6 +108,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tpMissingInventoryItems = new System.Windows.Forms.TabPage();
             this.gridMissingItems = new System.Windows.Forms.DataGridView();
+            this.col_gridMissingItems_InventoryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_InventoryCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_GradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -859,6 +860,7 @@
             this.gridMissingItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.gridMissingItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridMissingItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridMissingItems_InventoryDate,
             this.col_gridMissingItems_InventoryCode,
             this.col_gridMissingItems_ProductName,
             this.col_gridMissingItems_GradeName,
@@ -878,6 +880,15 @@
             this.gridMissingItems.RowTemplate.Height = 24;
             this.gridMissingItems.Size = new System.Drawing.Size(669, 499);
             this.gridMissingItems.TabIndex = 110;
+            // 
+            // col_gridMissingItems_InventoryDate
+            // 
+            this.col_gridMissingItems_InventoryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridMissingItems_InventoryDate.HeaderText = "Date";
+            this.col_gridMissingItems_InventoryDate.MinimumWidth = 30;
+            this.col_gridMissingItems_InventoryDate.Name = "col_gridMissingItems_InventoryDate";
+            this.col_gridMissingItems_InventoryDate.ReadOnly = true;
+            this.col_gridMissingItems_InventoryDate.Width = 30;
             // 
             // col_gridMissingItems_InventoryCode
             // 
@@ -1020,6 +1031,7 @@
             this.chkDoNotLoadList.TabIndex = 118;
             this.chkDoNotLoadList.Text = "do not load list";
             this.chkDoNotLoadList.UseVisualStyleBackColor = true;
+            this.chkDoNotLoadList.CheckedChanged += new System.EventHandler(this.ChkDoNotLoadList_CheckedChanged);
             // 
             // ItemCheck_Form
             // 
@@ -1118,6 +1130,7 @@
         private System.Windows.Forms.DataGridView gridMissingItems;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnRefreshMissingInventoryItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_InventoryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_InventoryCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_GradeName;

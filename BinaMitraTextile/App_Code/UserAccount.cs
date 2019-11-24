@@ -61,7 +61,7 @@ namespace BinaMitraTextile
 
         public UserAccount(Guid? ID, string username)
         {
-            DataRow row = Util.getFirstRow(get(username, true));
+            DataRow row = Util.getFirstRow(get(ID, username, true));
             if (row != null)
             {
                 id = (Guid)row[COL_DB_ID];
@@ -123,13 +123,14 @@ namespace BinaMitraTextile
             }
         }
 
-        public static DataTable get(string username, bool includeInactive)
+        public static DataTable get(Guid? id, string username, bool includeInactive)
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "users_get",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
                     new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(username)),
                     new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive)
                 );
@@ -253,12 +254,12 @@ namespace BinaMitraTextile
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)
         {
-            Tools.populateDropDownList(dropdownlist, get(null, includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
+            Tools.populateDropDownList(dropdownlist, get(null, null, includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
         }
 
         public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool includeInactive)
         {
-            control.populate(get(null, includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
+            control.populate(get(null, null, includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
         }
 
         #endregion METHODS

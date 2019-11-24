@@ -268,8 +268,11 @@ namespace BinaMitraTextile
 
         private void BtnRemoveSO_Click(object sender, EventArgs e)
         {
-            POItem.updateSaleOrderItem((Guid)Util.getSelectedRowValue(gridPOItems, col_gridPOItems_id), null, null);
-            populateIncompletePO();
+            if(LIBUtil.Util.displayMessageBoxYesNo("Hapus SO?"))
+            {
+                POItem.updateSaleOrderItem((Guid)Util.getSelectedRowValue(gridPOItems, col_gridPOItems_id), null, null);
+                populateIncompletePO();
+            }
         }
 
         #endregion CLASS METHODS

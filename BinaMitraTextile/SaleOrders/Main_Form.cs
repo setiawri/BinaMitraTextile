@@ -208,10 +208,16 @@ namespace BinaMitraTextile.SaleOrders
         private void populateGridSaleOrderItems()
         {
             clearGridInventoryItems();
-            if (gridSaleOrders.SelectedRows.Count > 0)
-                gridSaleOrderItems.DataSource = SaleOrderItem.get(selectedSaleOrdersRowID(), null, _Customers_Id, false);
-            else
+            if (gridSaleOrders.SelectedRows.Count == 0)
                 gridSaleOrderItems.DataSource = null;
+            else
+            {
+                gridSaleOrderItems.DataSource = SaleOrderItem.get(selectedSaleOrdersRowID(), null, _Customers_Id, false);
+                lblSaleOrderInfo.Text = string.Format("Customer PO #{0}  Order Date: {1: dd/MMM/yy}  Target: {2: dd/MMM/yy}", 
+                    Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_CustomerPONo),
+                    Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_Timestamp),  
+                    Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_TargetDate));
+            }
         }
 
         protected Guid selectedSaleOrdersRowID()
@@ -467,6 +473,19 @@ namespace BinaMitraTextile.SaleOrders
             gridInventoryItems.DataSource = null;
             btnRemoveSOFromInventoryItems.Enabled = false;
             lblInventoryItems.Text = "";
+        }
+
+        private void ChkShowPOPending_CheckedChanged(object sender, EventArgs e)
+        {
+            col_gridSaleOrderItems_POPendingQty.Visible = chkShowPOPending.Checked;
+            col_gridSaleOrderItems_POQty.Visible = chkShowPOPending.Checked;
+        }
+
+        private void ChkShowShippedBookedSisa_CheckedChanged(object sender, EventArgs e)
+        {
+            col_gridSaleOrderItems_ShippedQty.Visible = chkShowShippedBookedSisa.Checked;
+            col_gridSaleOrderItems_BookedQty.Visible = chkShowShippedBookedSisa.Checked;
+            col_gridSaleOrderItems_RemainingQty.Visible = chkShowShippedBookedSisa.Checked;
         }
 
         #endregion FORM METHODS

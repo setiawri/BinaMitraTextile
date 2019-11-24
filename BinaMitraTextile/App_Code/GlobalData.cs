@@ -14,7 +14,8 @@ namespace BinaMitraTextile
         public static bool ConnectToDevDB = false;
         public static bool ConnectToLiveDB = false;
         public static bool ConnectToLocalLiveDB = false;
-        public static string LiveConnectionPort;
+        public static string LiveConnectionPort = "";
+        public static string LiveConnectionServerName = "";
 
         public static string TemporarySelectedGridviewValue;
 
