@@ -80,6 +80,9 @@
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
             this.grid.AllowUserToResizeRows = false;
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -101,7 +104,6 @@
             this.sale_amount,
             this.col_grid_id,
             this.col_grid_Checked});
-            this.grid.Dock = System.Windows.Forms.DockStyle.Right;
             this.grid.Location = new System.Drawing.Point(215, 0);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MultiSelect = false;
