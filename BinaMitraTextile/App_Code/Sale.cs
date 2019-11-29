@@ -605,6 +605,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "Sale_get_by_SaleOrderItems_Id",
@@ -617,6 +618,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "sale_get",

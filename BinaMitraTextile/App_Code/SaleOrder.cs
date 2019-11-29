@@ -91,6 +91,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "SaleOrders_get",
@@ -110,6 +111,7 @@ namespace BinaMitraTextile
         {
             bool isSuccess = false;
                 SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "SaleOrders_add",
@@ -136,6 +138,7 @@ namespace BinaMitraTextile
         public static void updateTargetDate(Guid id, DateTime value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "SaleOrders_update_TargetDate",

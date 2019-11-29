@@ -127,6 +127,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "users_get",

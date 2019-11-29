@@ -27,7 +27,7 @@ namespace BinaMitraTextile.SharedForms
 
         public CheckDBConnection()
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             setupControls();
             populatePageData();

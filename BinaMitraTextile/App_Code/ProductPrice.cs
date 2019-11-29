@@ -258,6 +258,7 @@ namespace BinaMitraTextile
         public static void update(List<Guid?> ProductPrices_Ids, decimal sellPrice)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "productprice_update_sell_price",
@@ -276,6 +277,7 @@ namespace BinaMitraTextile
         public static void update_Checked(Guid id, bool value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "productprice_update_Checked",

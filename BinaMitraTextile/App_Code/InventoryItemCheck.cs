@@ -251,6 +251,7 @@ namespace BinaMitraTextile
         public static DataTable getMissing(DateTime? timestampStart)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "InventoryItemCheck_getMissing",

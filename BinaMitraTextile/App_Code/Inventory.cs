@@ -276,6 +276,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "Inventory_get_by_SaleOrderItems_Id",
@@ -292,6 +293,7 @@ namespace BinaMitraTextile
         public static void updateIsConsignment(Guid id, bool value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_isConsignment",
@@ -306,6 +308,7 @@ namespace BinaMitraTextile
         public static void updateOpnameMarker(Guid id, bool value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_OpnameMarker",
@@ -320,6 +323,7 @@ namespace BinaMitraTextile
         public static void updateBuyPrice(Guid id, decimal value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_BuyPrice",
@@ -334,6 +338,7 @@ namespace BinaMitraTextile
         public static void deactivateQtyZeroes()
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_DeactivateQtyZeroes",

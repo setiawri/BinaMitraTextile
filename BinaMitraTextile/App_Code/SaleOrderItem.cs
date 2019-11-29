@@ -137,6 +137,7 @@ namespace BinaMitraTextile
             foreach (SaleOrderItem item in items)
             {
                 SqlQueryResult result = DBConnection.query(
+                   false,
                    DBUtil.ActiveSqlConnection,
                    QueryTypes.ExecuteNonQuery,
                    "SaleOrderItems_add",
@@ -162,6 +163,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                true,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "SaleOrderItems_get",
@@ -180,6 +182,7 @@ namespace BinaMitraTextile
         public static void updateQty(Guid id, decimal value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "SaleOrderItems_update_Qty",

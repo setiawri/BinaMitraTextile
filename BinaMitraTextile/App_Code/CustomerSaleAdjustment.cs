@@ -157,6 +157,7 @@ namespace BinaMitraTextile
         public static void updateCheckedStatus(Guid userAccountID, Guid id, bool value)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "customersaleadjustment_update_Checked",

@@ -227,6 +227,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "inventoryitem_get",
@@ -244,6 +245,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "InventoryItems_get_Booked",
@@ -445,6 +447,7 @@ namespace BinaMitraTextile
             foreach (Guid id in IdList)
             {
                 SqlQueryResult result = DBConnection.query(
+                false,
                     DBUtil.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "InventoryItems_update_SaleOrderItems_Id",

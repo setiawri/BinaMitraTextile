@@ -233,6 +233,7 @@ namespace BinaMitraTextile
         public static bool updateSaleOrderItem(Guid id, Guid? SaleOrderItems_Id, string description)
         {
             SqlQueryResult result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "poitem_update_SaleOrderItems_Id",
@@ -254,6 +255,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
+                false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "poitem_get_by_SaleOrderItems_Id",
@@ -297,6 +299,7 @@ namespace BinaMitraTextile
             if (!string.IsNullOrEmpty(log))
             {
                 SqlQueryResult result = DBConnection.query(
+                    false,
                     DBUtil.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "poitem_update",

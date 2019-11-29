@@ -51,8 +51,8 @@ namespace BinaMitraTextile.SaleOrders
         {
             if (_formMode == FormMode.Browse)
             {
-                //scMain.Panel1Collapsed = true;
-                scMain.Visible = false;
+                pnlMain.Visible = false;
+                pnlSaleOrderInfo.Visible = false;
                 ptDetails.Visible = false;
             }
             else
