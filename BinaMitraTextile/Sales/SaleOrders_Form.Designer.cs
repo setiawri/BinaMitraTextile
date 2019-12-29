@@ -1,6 +1,6 @@
-﻿namespace BinaMitraTextile.SaleOrders
+﻿namespace BinaMitraTextile.Sales
 {
-    partial class Main_Form
+    partial class SaleOrders_Form
     {
         /// <summary>
         /// Required designer variable.

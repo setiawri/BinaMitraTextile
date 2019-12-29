@@ -232,11 +232,17 @@
     <Compile Include="InventoryForm\InventoryItems_Split_Form.Designer.cs">
       <DependentUpon>InventoryItems_Split_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrders\Main_Form.cs">
+    <Compile Include="Sales\Kontrabon_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleOrders\Main_Form.Designer.cs">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <Compile Include="Sales\Kontrabon_Form.Designer.cs">
+      <DependentUpon>Kontrabon_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SaleOrders_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\SaleOrders_Form.Designer.cs">
+      <DependentUpon>SaleOrders_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="POs\MasterData_v1_Status_Form.cs">
       <SubType>Form</SubType>
@@ -607,8 +613,11 @@
     <EmbeddedResource Include="InventoryForm\InventoryItems_Split_Form.resx">
       <DependentUpon>InventoryItems_Split_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrders\Main_Form.resx">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Sales\Kontrabon_Form.resx">
+      <DependentUpon>Kontrabon_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\SaleOrders_Form.resx">
+      <DependentUpon>SaleOrders_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="POs\MasterData_v1_Status_Form.resx">
       <DependentUpon>MasterData_v1_Status_Form.cs</DependentUpon>

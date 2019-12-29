@@ -70,7 +70,7 @@ namespace BinaMitraTextile.CustomerCredits
         {
             gridDetail.DataSource = null;
             _customerID = null;
-            gridSummary.DataSource = CustomerCredit.getSummary(chkOnlyHasActivityLast3Months.Checked);
+            populateGridSummary();
             populateGridDetail();
         }
 
@@ -105,6 +105,11 @@ namespace BinaMitraTextile.CustomerCredits
             }
         }
 
+        private void populateGridSummary()
+        {
+            gridSummary.DataSource = CustomerCredit.getSummary(chkOnlyHasActivityLast3Months.Checked);
+        }
+
         private void populateGridDetail()
         {
             if (_customerID == null)
@@ -131,8 +136,10 @@ namespace BinaMitraTextile.CustomerCredits
             {
                 _customerID = (Guid)iddl_Customers.SelectedValue;
                 CustomerCredit.submitNew((Guid)_customerID, in_Amount.Value, null, txtNotes.Text.Trim(), (PaymentMethod)cbPaymentMethods.SelectedValue);
-                populatePageData();
-                resetForm();
+                populateGridDetail();
+
+                in_Amount.reset();
+                txtNotes.Text = "";
             }
         }
 

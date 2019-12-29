@@ -166,7 +166,7 @@ namespace BinaMitraTextile
         {
            if (Util.isColumnMatch(sender, e, col_gridPOItems_SaleOrderItems_CustomerPONo))
             {
-                SaleOrders.Main_Form form = new SaleOrders.Main_Form(FormMode.Browse, null);
+                Sales.SaleOrders_Form form = new Sales.SaleOrders_Form(FormMode.Browse, null);
                 Tools.displayForm(form);
                 if (form.DialogResult == DialogResult.OK)
                 {

@@ -298,7 +298,7 @@ namespace BinaMitraTextile
 
         private void menu_sales_saleorders_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new SaleOrders.Main_Form());
+            Util.displayMDIChild(new Sales.SaleOrders_Form());
         }
 
         #endregion
@@ -360,7 +360,7 @@ namespace BinaMitraTextile
 
         private void LnkSaleOrders_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Util.displayMDIChild(new SaleOrders.Main_Form());
+            Util.displayMDIChild(new Sales.SaleOrders_Form());
         }
 
         private void Container_Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -371,6 +371,11 @@ namespace BinaMitraTextile
         private void LnkSamples_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new Admin.Samples1_Form(FormMode.New));
+        }
+
+        private void Menu_admin_kontrabon_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Sales.Kontrabon_Form());
         }
 
         #endregion CLASS METHODS

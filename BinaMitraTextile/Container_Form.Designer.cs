@@ -49,7 +49,7 @@
             this.menu_admin_customers = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_admin_customersaleadjustments = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_admin_customerterms = new System.Windows.Forms.ToolStripMenuItem();
-            this.gradesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_admin_grades = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_admin_length_units = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_admin_pettycashcategories = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_admin_pettycash = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,9 +82,11 @@
             this.lnkInventory = new System.Windows.Forms.LinkLabel();
             this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
             this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
+            this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lnkSamples = new System.Windows.Forms.LinkLabel();
+            this.kontrabonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_admin_kontrabon = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcuts.SuspendLayout();
@@ -230,12 +232,14 @@
             this.menu_admin_customers,
             this.menu_admin_customersaleadjustments,
             this.menu_admin_customerterms,
-            this.gradesToolStripMenuItem,
+            this.menu_admin_grades,
+            this.menu_admin_kontrabon,
             this.menu_admin_length_units,
             this.menu_admin_pettycashcategories,
             this.menu_admin_pettycash,
             this.menu_admin_prices,
             this.menu_admin_products,
+            this.kontrabonToolStripMenuItem,
             this.menu_admin_productstorenames,
             this.statesToolStripMenuItem,
             this.menu_admin_vendors,
@@ -250,7 +254,7 @@
             // 
             this.angkutanToolStripMenuItem.Name = "angkutanToolStripMenuItem";
             this.angkutanToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.angkutanToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.angkutanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.angkutanToolStripMenuItem.Text = "Angkutan";
             this.angkutanToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_angkutan_Click);
             // 
@@ -258,65 +262,65 @@
             // 
             this.menu_admin_cities.Name = "menu_admin_cities";
             this.menu_admin_cities.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.menu_admin_cities.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_cities.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_cities.Text = "Cities";
             this.menu_admin_cities.Click += new System.EventHandler(this.menu_admin_cities_Click);
             // 
             // menu_admin_colors
             // 
             this.menu_admin_colors.Name = "menu_admin_colors";
-            this.menu_admin_colors.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_colors.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_colors.Text = "Colors";
             this.menu_admin_colors.Click += new System.EventHandler(this.menu_admin_colors_Click);
             // 
             // menu_admin_customers
             // 
             this.menu_admin_customers.Name = "menu_admin_customers";
-            this.menu_admin_customers.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_customers.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_customers.Text = "Customers";
             this.menu_admin_customers.Click += new System.EventHandler(this.menu_admin_customers_Click);
             // 
             // menu_admin_customersaleadjustments
             // 
             this.menu_admin_customersaleadjustments.Name = "menu_admin_customersaleadjustments";
-            this.menu_admin_customersaleadjustments.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_customersaleadjustments.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_customersaleadjustments.Text = "Customer Discounts";
             this.menu_admin_customersaleadjustments.Click += new System.EventHandler(this.menu_admin_customersaleadjustments_Click);
             // 
             // menu_admin_customerterms
             // 
             this.menu_admin_customerterms.Name = "menu_admin_customerterms";
-            this.menu_admin_customerterms.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_customerterms.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_customerterms.Text = "Debt Limits";
             this.menu_admin_customerterms.Click += new System.EventHandler(this.menu_admin_customerterms_Click);
             // 
-            // gradesToolStripMenuItem
+            // menu_admin_grades
             // 
-            this.gradesToolStripMenuItem.Name = "gradesToolStripMenuItem";
-            this.gradesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.G)));
-            this.gradesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.gradesToolStripMenuItem.Text = "Grades";
-            this.gradesToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_grades_Click);
+            this.menu_admin_grades.Name = "menu_admin_grades";
+            this.menu_admin_grades.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.G)));
+            this.menu_admin_grades.Size = new System.Drawing.Size(180, 22);
+            this.menu_admin_grades.Text = "Grades";
+            this.menu_admin_grades.Click += new System.EventHandler(this.menu_admin_grades_Click);
             // 
             // menu_admin_length_units
             // 
             this.menu_admin_length_units.Name = "menu_admin_length_units";
             this.menu_admin_length_units.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
-            this.menu_admin_length_units.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_length_units.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_length_units.Text = "Length Units";
             this.menu_admin_length_units.Click += new System.EventHandler(this.menu_admin_length_units_Click);
             // 
             // menu_admin_pettycashcategories
             // 
             this.menu_admin_pettycashcategories.Name = "menu_admin_pettycashcategories";
-            this.menu_admin_pettycashcategories.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_pettycashcategories.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_pettycashcategories.Text = "Petty Cash Categories";
             this.menu_admin_pettycashcategories.Click += new System.EventHandler(this.menu_admin_pettycashcategories_Click);
             // 
             // menu_admin_pettycash
             // 
             this.menu_admin_pettycash.Name = "menu_admin_pettycash";
-            this.menu_admin_pettycash.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_pettycash.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_pettycash.Text = "Petty Cash";
             this.menu_admin_pettycash.Click += new System.EventHandler(this.menu_admin_pettycash_Click);
             // 
@@ -324,21 +328,21 @@
             // 
             this.menu_admin_prices.Name = "menu_admin_prices";
             this.menu_admin_prices.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.menu_admin_prices.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_prices.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_prices.Text = "Prices";
             this.menu_admin_prices.Click += new System.EventHandler(this.menu_admin_prices_Click);
             // 
             // menu_admin_products
             // 
             this.menu_admin_products.Name = "menu_admin_products";
-            this.menu_admin_products.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_products.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_products.Text = "Products";
             this.menu_admin_products.Click += new System.EventHandler(this.menu_admin_products_Click);
             // 
             // menu_admin_productstorenames
             // 
             this.menu_admin_productstorenames.Name = "menu_admin_productstorenames";
-            this.menu_admin_productstorenames.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_productstorenames.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_productstorenames.Text = "Product Store Names";
             this.menu_admin_productstorenames.Click += new System.EventHandler(this.menu_admin_productstorenames_Click);
             // 
@@ -346,7 +350,7 @@
             // 
             this.statesToolStripMenuItem.Name = "statesToolStripMenuItem";
             this.statesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.statesToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.statesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.statesToolStripMenuItem.Text = "States";
             this.statesToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_states_Click);
             // 
@@ -354,14 +358,14 @@
             // 
             this.menu_admin_vendors.Name = "menu_admin_vendors";
             this.menu_admin_vendors.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
-            this.menu_admin_vendors.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_vendors.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_vendors.Text = "Vendors";
             this.menu_admin_vendors.Click += new System.EventHandler(this.menu_admin_vendors_Click);
             // 
             // menu_admin_vendorinvoices
             // 
             this.menu_admin_vendorinvoices.Name = "menu_admin_vendorinvoices";
-            this.menu_admin_vendorinvoices.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_vendorinvoices.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_vendorinvoices.Text = "Vendor Invoices";
             this.menu_admin_vendorinvoices.Click += new System.EventHandler(this.menu_admin_vendorinvoices_Click);
             // 
@@ -369,7 +373,7 @@
             // 
             this.menu_admin_widths.Name = "menu_admin_widths";
             this.menu_admin_widths.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.menu_admin_widths.Size = new System.Drawing.Size(179, 22);
+            this.menu_admin_widths.Size = new System.Drawing.Size(180, 22);
             this.menu_admin_widths.Text = "Widths";
             this.menu_admin_widths.Click += new System.EventHandler(this.menu_admin_widths_Click);
             // 
@@ -622,6 +626,23 @@
             this.lnkSaleOrders.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSaleOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleOrders_LinkClicked);
             // 
+            // lnkSamples
+            // 
+            this.lnkSamples.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.AutoSize = true;
+            this.lnkSamples.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSamples.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.Location = new System.Drawing.Point(3, 155);
+            this.lnkSamples.Name = "lnkSamples";
+            this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSamples.Size = new System.Drawing.Size(52, 25);
+            this.lnkSamples.TabIndex = 29;
+            this.lnkSamples.TabStop = true;
+            this.lnkSamples.Text = "SAMPLES";
+            this.lnkSamples.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSamples.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSamples_LinkClicked);
+            // 
             // lnkSummary
             // 
             this.lnkSummary.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
@@ -650,22 +671,18 @@
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
             // 
-            // lnkSamples
+            // kontrabonToolStripMenuItem
             // 
-            this.lnkSamples.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.AutoSize = true;
-            this.lnkSamples.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkSamples.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.Location = new System.Drawing.Point(3, 155);
-            this.lnkSamples.Name = "lnkSamples";
-            this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSamples.Size = new System.Drawing.Size(52, 25);
-            this.lnkSamples.TabIndex = 29;
-            this.lnkSamples.TabStop = true;
-            this.lnkSamples.Text = "SAMPLES";
-            this.lnkSamples.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSamples_LinkClicked);
+            this.kontrabonToolStripMenuItem.Name = "kontrabonToolStripMenuItem";
+            this.kontrabonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kontrabonToolStripMenuItem.Text = "Kontrabon";
+            // 
+            // menu_admin_kontrabon
+            // 
+            this.menu_admin_kontrabon.Name = "menu_admin_kontrabon";
+            this.menu_admin_kontrabon.Size = new System.Drawing.Size(180, 22);
+            this.menu_admin_kontrabon.Text = "Kontrabon";
+            this.menu_admin_kontrabon.Click += new System.EventHandler(this.Menu_admin_kontrabon_Click);
             // 
             // Container_Form
             // 
@@ -716,7 +733,7 @@
         private System.Windows.Forms.ToolStripMenuItem menu_admin_customers;
         private System.Windows.Forms.ToolStripMenuItem menu_admin_customersaleadjustments;
         private System.Windows.Forms.ToolStripMenuItem menu_admin_customerterms;
-        private System.Windows.Forms.ToolStripMenuItem gradesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_admin_grades;
         private System.Windows.Forms.ToolStripMenuItem menu_admin_length_units;
         private System.Windows.Forms.ToolStripMenuItem menu_admin_pettycashcategories;
         private System.Windows.Forms.ToolStripMenuItem menu_admin_pettycash;
@@ -752,5 +769,7 @@
         private System.Windows.Forms.LinkLabel lnkShipping;
         private System.Windows.Forms.LinkLabel lnkSaleOrders;
         private System.Windows.Forms.LinkLabel lnkSamples;
+        private System.Windows.Forms.ToolStripMenuItem menu_admin_kontrabon;
+        private System.Windows.Forms.ToolStripMenuItem kontrabonToolStripMenuItem;
     }
 }

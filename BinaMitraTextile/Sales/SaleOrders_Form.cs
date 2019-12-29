@@ -5,9 +5,9 @@ using System.Data;
 using System.Collections.Generic;
 using LIBUtil;
 
-namespace BinaMitraTextile.SaleOrders
+namespace BinaMitraTextile.Sales
 {
-    public partial class Main_Form : Form
+    public partial class SaleOrders_Form : Form
     {
         /*******************************************************************************************************/
         #region CLASS VARIABLES
@@ -24,9 +24,9 @@ namespace BinaMitraTextile.SaleOrders
         /*******************************************************************************************************/
         #region INITIALIZATION
 
-        public Main_Form() : this(FormMode.Search, null) { }
+        public SaleOrders_Form() : this(FormMode.Search, null) { }
 
-        public Main_Form(FormMode formMode, Guid? Customers_Id)
+        public SaleOrders_Form(FormMode formMode, Guid? Customers_Id)
         {
             InitializeComponent();
 

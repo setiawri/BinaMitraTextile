@@ -739,7 +739,7 @@ namespace BinaMitraTextile.Sales
 
         private void Iddl_SaleOrderItems_isBrowseMode_Clicked(object sender, EventArgs e)
         {
-            SaleOrders.Main_Form form = new SaleOrders.Main_Form(FormMode.Browse, (Guid?)cbCustomers.SelectedValue);
+            SaleOrders_Form form = new SaleOrders_Form(FormMode.Browse, (Guid?)cbCustomers.SelectedValue);
             Tools.displayForm(form);
             if (form.DialogResult == DialogResult.OK)
             {
