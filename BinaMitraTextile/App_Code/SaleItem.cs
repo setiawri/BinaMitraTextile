@@ -102,7 +102,6 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    //ActivityLog.submit(item.id, "New Sale Item added");
                     ActivityLog.submit(item.inventory_item_id, "Sale ID: " + SaleBarcode);
                 }
             }

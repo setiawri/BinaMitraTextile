@@ -163,8 +163,6 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_STATUSENUMID, SqlDbType.TinyInt).Value = POItemStatus.New;
 
                     cmd.ExecuteNonQuery();
-
-                    //ActivityLog.submit(item.ID, "Item created");
                 }
             }
         }

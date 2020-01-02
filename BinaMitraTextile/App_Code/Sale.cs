@@ -205,7 +205,7 @@ namespace BinaMitraTextile
                     cmd.ExecuteNonQuery();
                     barcode = Tools.getHex(Convert.ToInt32(return_value.Value), Settings.saleBarcodeLength);
 
-                    //ActivityLog.submit(id, "New item added");
+                    ActivityLog.submit(id, "New item added");
                 }
 
                 //submit sale items

@@ -78,7 +78,7 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    //ActivityLog.submit(id, "New item added");
+                    ActivityLog.submit(id, "Added");
                 }
             } catch (Exception ex) { Tools.showError(ex.Message); }
         }

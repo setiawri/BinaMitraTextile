@@ -169,7 +169,7 @@ namespace BinaMitraTextile
 
                     cmd.ExecuteNonQuery();
 
-                    //ActivityLog.submit(id, "New Inventory added");
+                    ActivityLog.submit(id, "New Inventory added");
                 }
             } catch (Exception ex) { return ex.Message; }
 
