@@ -338,6 +338,14 @@ namespace BinaMitraTextile.InventoryForm
             txtBarcode.Focus();
         }
 
+        private void Itxt_ItemLocation_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                txtBarcode.Focus();
+            }
+        }
+
         #endregion FORM METHODS
         /*******************************************************************************************************/
         #region SUBMISSION
