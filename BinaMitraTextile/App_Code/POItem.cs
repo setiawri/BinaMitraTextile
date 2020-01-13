@@ -89,6 +89,7 @@ namespace BinaMitraTextile
         public const string COL_PONO = "po_no";
         public const string COL_DB_ExpectedDeliveryDayCount = "ExpectedDeliveryDayCount";
         public const string COL_SaleOrderItems_CustomerPONo = "CustomerPONo";
+        public const string COL_SaleOrderItems_Customers_Name = "Customers_Name";
 
         public const string COL_PENDINGQTY = "pendingqty";
         public const string COL_PENDINGQTYVALUE = "pendingqtyvalue";

@@ -92,6 +92,17 @@ namespace BinaMitraTextile.POs
                 btnAddPO.Enabled = false;
             }
 
+            if (_formMode == FormMode.Browse)
+            {
+                col_gridPOItems_pricePerUnit.Visible = false;
+                col_gridPOItems_subtotal.Visible = false;
+                col_gridPOItems_date.Visible = true;
+                col_gridPOItems_po_no.Visible = true;
+                col_gridPOItems_no.Visible = false;
+                col_gridPOItems_status_name.Visible = false;
+                col_gridPOItems_productDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
             dtpStart.Checked = true;
             dtpStart.Value = DateTime.Today.AddMonths(-3);
             dtpEnd.Checked = false;
@@ -106,10 +117,6 @@ namespace BinaMitraTextile.POs
             else if (_formMode == FormMode.Browse)
             {
                 gridPOItems.DataSource = POItem.getIncompleteItems();
-                col_gridPOItems_date.Visible = true;
-                col_gridPOItems_no.Visible = false;
-                col_gridPOItems_status_name.Visible = false;
-                col_gridPOItems_productDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 

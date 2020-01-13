@@ -33,6 +33,7 @@
             this.idtp_ExpectedDeliveryDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.chkShowHidden = new System.Windows.Forms.CheckBox();
             this.in_PriorityQty = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.chkShowCustomerName = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -55,12 +56,12 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(800, 28);
+            this.panel1.Size = new System.Drawing.Size(834, 28);
             // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 87);
-            this.pnlActionButtons.Size = new System.Drawing.Size(800, 23);
+            this.pnlActionButtons.Size = new System.Drawing.Size(834, 23);
             // 
             // scInputLeft
             // 
@@ -78,30 +79,32 @@
             // 
             // scInputRight
             // 
-            this.scInputRight.Size = new System.Drawing.Size(296, 61);
+            this.scInputRight.Size = new System.Drawing.Size(330, 61);
             // 
             // scMain
             // 
-            this.scMain.Size = new System.Drawing.Size(800, 450);
+            this.scMain.Size = new System.Drawing.Size(834, 450);
             this.scMain.SplitterDistance = 110;
             // 
             // pnlButtons
             // 
-            this.pnlButtons.Size = new System.Drawing.Size(800, 26);
+            this.pnlButtons.Size = new System.Drawing.Size(834, 26);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Size = new System.Drawing.Size(800, 61);
+            this.scInputContainer.Size = new System.Drawing.Size(834, 61);
             // 
             // pnlQuickSearch
             // 
+            this.pnlQuickSearch.Controls.Add(this.chkShowCustomerName);
             this.pnlQuickSearch.Controls.Add(this.chkShowHidden);
-            this.pnlQuickSearch.Size = new System.Drawing.Size(770, 28);
+            this.pnlQuickSearch.Size = new System.Drawing.Size(804, 28);
             this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.label1, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkShowHidden, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.chkShowCustomerName, 0);
             // 
             // iddl_POItemStatus
             // 
@@ -215,11 +218,23 @@
             0,
             0});
             // 
+            // chkShowCustomerName
+            // 
+            this.chkShowCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkShowCustomerName.AutoSize = true;
+            this.chkShowCustomerName.Location = new System.Drawing.Point(729, 6);
+            this.chkShowCustomerName.Name = "chkShowCustomerName";
+            this.chkShowCustomerName.Size = new System.Drawing.Size(70, 17);
+            this.chkShowCustomerName.TabIndex = 15;
+            this.chkShowCustomerName.Text = "Customer";
+            this.chkShowCustomerName.UseVisualStyleBackColor = true;
+            this.chkShowCustomerName.CheckedChanged += new System.EventHandler(this.ChkShowCustomerName_CheckedChanged);
+            // 
             // MasterData_v1_Status_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(834, 450);
             this.Name = "MasterData_v1_Status_Form";
             this.Text = "PO Status";
             this.panel1.ResumeLayout(false);
@@ -252,5 +267,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_ExpectedDeliveryDate;
         private System.Windows.Forms.CheckBox chkShowHidden;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PriorityQty;
+        private System.Windows.Forms.CheckBox chkShowCustomerName;
     }
 }

@@ -221,7 +221,7 @@ namespace BinaMitraTextile.InventoryForm
                     return;
             }
 
-            LIBUtil.Util.displayMessageBoxError(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkIgnoreSold.Checked));
+            LIBUtil.Util.displayMessageBoxError(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkIgnoreSold.Checked, itxt_ItemLocation.ValueText));
 
             if(!chkDoNotLoadList.Checked)
             {

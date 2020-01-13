@@ -13,7 +13,6 @@ namespace BinaMitraTextile.InventoryForm
     public partial class Items_Form : Form
     {
         /*******************************************************************************************************/
-
         #region CLASS VARIABLES
 
         const string BTN_TEXT_ADDNEW = "ADD NEW";
@@ -25,7 +24,6 @@ namespace BinaMitraTextile.InventoryForm
         Inventory _inventory;
 
         #endregion CLASS VARIABLES
-
         /*******************************************************************************************************/
 
         #region INITIALIZATION
@@ -52,7 +50,8 @@ namespace BinaMitraTextile.InventoryForm
 
             grid.AutoGenerateColumns = false;
             col_grid_id.DataPropertyName = InventoryItem.COL_ID;
-            col_gridInventoryItems_lastOpname.DataPropertyName = InventoryItem.COL_LASTOPNAME;
+            col_grid_lastOpname.DataPropertyName = InventoryItem.COL_LASTOPNAME;
+            col_grid_ItemLocation.DataPropertyName = InventoryItemCheck.COL_DB_ItemLocation;
             col_grid_colorname.DataPropertyName = InventoryItem.COL_INVENTORYITEMCOLORNAME;
             col_grid_notes.DataPropertyName = InventoryItem.COL_NOTES;
             col_grid_SaleOrderItemDescription.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
@@ -118,7 +117,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (e.KeyData == Keys.Enter)
             {
-                if (InventoryItem.isValidNewBarcode(txtBarcode.Text.Trim()))
+                if (!string.IsNullOrWhiteSpace(txtBarcode.Text) && InventoryItem.isValidNewBarcode(txtBarcode.Text.Trim()))
                 {
                     enableForm(InventoryItem.getBarcodeWithoutPrefix(txtBarcode.Text), false);
                 }

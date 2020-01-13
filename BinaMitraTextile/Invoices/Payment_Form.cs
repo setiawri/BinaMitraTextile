@@ -232,7 +232,7 @@ namespace BinaMitraTextile.Invoices
         
         private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Tools.displayForm(new Logs.Main_Form(Tools.getClickedRowID(grid, col_grid_id, e.RowIndex)));
+            Tools.displayForm(new Logs.Main_Form(Tools.getClickedRowID(grid, col_grid_referenceid, e.RowIndex)));
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)

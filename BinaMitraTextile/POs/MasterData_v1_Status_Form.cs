@@ -30,6 +30,7 @@ namespace BinaMitraTextile.POs
         private DataGridViewColumn col_PriorityQty;
         private DataGridViewColumn col_ExpectedDeliveryDate;
         private DataGridViewColumn col_ExpectedDeliveryDayCount;
+        private DataGridViewColumn col_Customers_Name;
 
         #endregion PRIVATE VARIABLES
         /*******************************************************************************************************/
@@ -76,6 +77,7 @@ namespace BinaMitraTextile.POs
             col_dgv_StatusName.DisplayIndex = col_ExpectedDeliveryDate.DisplayIndex - 1;
             Util.updateForeColorAndStyle(col_dgv_StatusName, Color.DarkOrange, FontStyle.Bold);
             col_ExpectedDeliveryDayCount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ExpectedDeliveryDayCount", "Due", POItem.COL_DB_ExpectedDeliveryDayCount, true, true, "N0", false, false, 30, DataGridViewContentAlignment.MiddleRight);
+            col_Customers_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_Customers_Name", "Customer", POItem.COL_SaleOrderItems_Customers_Name, true, false, "", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
         }
 
         protected override void setupControlsBasedOnRoles()
@@ -165,6 +167,15 @@ namespace BinaMitraTextile.POs
         private void chkShowHidden_CheckedChanged(object sender, EventArgs e)
         {
             col_PendingQtyValue.Visible = chkShowHidden.Checked;
+        }
+
+        private void ChkShowCustomerName_CheckedChanged(object sender, EventArgs e)
+        {
+            col_Customers_Name.Visible = chkShowCustomerName.Checked;
+            if(chkShowCustomerName.Checked)
+                this.Width += 100;
+            else
+                this.Width -= 100;
         }
 
         #endregion METHODS

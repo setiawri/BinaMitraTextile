@@ -14,6 +14,7 @@ namespace BinaMitraTextile
         public const string COL_DB_INVENTORYITEMID = "inventory_item_id";
         public const string COL_DB_IgnoreSold = "IgnoreSold";
         public const string COL_DB_MANUALINPUT = "manual_input";
+        public const string COL_DB_ItemLocation = "ItemLocation";
 
         public const string COL_TIMESTAMP = "time_stamp";
         public const string COL_TAGPRICE = "sell_price";
@@ -63,7 +64,7 @@ namespace BinaMitraTextile
             }
         }
 
-        public static string submitNew(string barcodeWithoutPrefix, bool isManualInput, bool ignoreSold)
+        public static string submitNew(string barcodeWithoutPrefix, bool isManualInput, bool ignoreSold, string itemLocation)
         {
             if (barcodeWithoutPrefix.Length != Settings.itemBarcodeLength)
                 return barcodeWithoutPrefix + " is not a valid item barcode";
@@ -78,6 +79,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
                     cmd.Parameters.Add("@" + COL_DB_MANUALINPUT, SqlDbType.Bit).Value = isManualInput;
                     cmd.Parameters.Add("@" + COL_DB_IgnoreSold, SqlDbType.Bit).Value = ignoreSold;
+                    cmd.Parameters.Add("@" + COL_DB_ItemLocation, SqlDbType.VarChar).Value = itemLocation;
                     SqlParameter InventoryItems_id = cmd.Parameters.Add("@InventoryItems_id", SqlDbType.UniqueIdentifier);
                     InventoryItems_id.Direction = ParameterDirection.Output;
                     SqlParameter opnameMarker = cmd.Parameters.Add("@opnameMarker", SqlDbType.Bit);
