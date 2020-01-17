@@ -41,7 +41,7 @@ namespace BinaMitraTextile.Admin
             disableFieldActive();
             enableFieldStatus<ToDoStatus>();
             setColumnsDataPropertyNames(ToDo.COL_DB_ID, null, ToDo.COL_STATUSNAME, ToDo.COL_DB_STATUSENUMID, null, null);
-            col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", "Date", ToDo.COL_DB_TIMESTAMP, true, true, "dd/MM/yy", true, true, null, DataGridViewContentAlignment.MiddleCenter);
+            col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", "Date", ToDo.COL_DB_TIMESTAMP, true, true, "dd/MM/yy", false, true, null, DataGridViewContentAlignment.MiddleCenter);
             col_dgv_Description = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Description", itxt_Description.LabelText, ToDo.COL_DB_DESCRIPTION, true, true, "", true, true, null, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_dgv_Customers_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Name", iddl_Customers.LabelText, ToDo.COL_CUSTOMERNAME, true, true, "", true, false, 60, DataGridViewContentAlignment.MiddleLeft);

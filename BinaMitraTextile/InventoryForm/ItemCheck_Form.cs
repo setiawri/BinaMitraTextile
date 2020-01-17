@@ -14,7 +14,7 @@ namespace BinaMitraTextile.InventoryForm
     {
         /*******************************************************************************************************/
         #region CLASS VARIABLES        
-        
+
         DateTime _lastKeystroke = new DateTime(0);
         bool isScanner = false;
 
@@ -32,16 +32,24 @@ namespace BinaMitraTextile.InventoryForm
         {
             setupControls();
             populateGridDetail();
+            txtItemLocation.Text = getItemLocation();
         }
 
         private void setupControls()
         {
             InventoryItemCheck.CheckCleanup();
 
+            in_Floor.Enabled = false;
+            in_Rack.Enabled = false;
+            in_Row.Enabled = false;
+            in_Column.Enabled = false;
+
             gridDetail.AutoGenerateColumns = false;
             col_gridDetails_inventoryItemID.DataPropertyName = InventoryItemCheck.COL_DB_INVENTORYITEMID;
             col_gridDetails_itemsellprice.DataPropertyName = InventoryItemCheck.COL_TAGPRICE;
             col_gridDetail_OpnameMarker.DataPropertyName = InventoryItemCheck.COL_OPNAMEMARKER;
+            col_gridDetail_ItemLocation.DataPropertyName = InventoryItemCheck.COL_DB_ItemLocation;
+            col_gridDetail_inventory_Id.DataPropertyName = InventoryItemCheck.COL_INVENTORYID;
 
             gridSummaryCheck.AutoGenerateColumns = false;
             col_gridSummary_inventoryID.DataPropertyName = InventoryItemCheck.COL_INVENTORYID;
@@ -59,8 +67,8 @@ namespace BinaMitraTextile.InventoryForm
 
             gridMissingItems.AutoGenerateColumns = false;
             gridMissingItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            col_gridMissingItems_InventoryDate.DataPropertyName = "date";
-            col_gridMissingItems_InventoryCode.DataPropertyName = "inventory_receivedate";
+            col_gridMissingItems_InventoryDate.DataPropertyName = "inventory_receivedate";
+            col_gridMissingItems_InventoryCode.DataPropertyName = "inventory_code";
             col_gridMissingItems_Barcode.DataPropertyName = "barcode";
             col_gridMissingItems_ColorName.DataPropertyName = "color_name";
             col_gridMissingItems_GradeName.DataPropertyName = "grade_name";
@@ -154,13 +162,13 @@ namespace BinaMitraTextile.InventoryForm
 
         private void chkExcludeZeroDiffsFromCompleteSummary_CheckedChanged(object sender, EventArgs e)
         {
-            if(gridSummaryCheck.DataSource != null)
+            if (gridSummaryCheck.DataSource != null)
                 gridSummaryCheck.DataSource = filterCompleteSummary((DataView)gridSummaryCheck.DataSource);
         }
 
         private void gridSummary1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridSummary_inventory_code.Name))
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridSummary_inventory_code.Name))
             {
                 Tools.displayForm(new InventoryForm.Items_Form((Guid)gridSummaryCheck.Rows[e.RowIndex].Cells[col_gridSummary_inventoryID.Name].Value));
             }
@@ -221,9 +229,9 @@ namespace BinaMitraTextile.InventoryForm
                     return;
             }
 
-            LIBUtil.Util.displayMessageBoxError(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkIgnoreSold.Checked, itxt_ItemLocation.ValueText));
+            LIBUtil.Util.displayMessageBoxError(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkIgnoreSold.Checked, txtItemLocation.Text));
 
-            if(!chkDoNotLoadList.Checked)
+            if (!chkDoNotLoadList.Checked)
             {
                 populateGridDetail();
                 if (tcSummary.SelectedTab == tpSummary)
@@ -232,6 +240,14 @@ namespace BinaMitraTextile.InventoryForm
 
             txtBarcode.Text = "";
             txtBarcode.Focus();
+        }
+
+        private string getItemLocation()
+        {
+            if (chkNonRack.Checked)
+                return string.Format("{0}{1}", in_Floor.ValueInt, in_Rack.ValueInt);
+            else
+                return string.Format("{0}{1}{2}{3}", in_Floor.ValueInt, in_Rack.ValueInt, in_Row.ValueInt, in_Column.ValueInt);
         }
 
         private string record(DateTime start)
@@ -270,6 +286,7 @@ namespace BinaMitraTextile.InventoryForm
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             btnLoad1.PerformClick();
+            txtBarcode.Focus();
         }
 
         private void btnGenerateSummary_Click(object sender, EventArgs e)
@@ -292,6 +309,7 @@ namespace BinaMitraTextile.InventoryForm
         private void chkIgnoreSold_CheckedChanged(object sender, EventArgs e)
         {
             lblSoldItemsExcluded.Visible = !chkIgnoreSold.Checked;
+            txtBarcode.Focus();
         }
 
         private void btnDeleteIgnoreSold_Click(object sender, EventArgs e)
@@ -321,6 +339,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             if(tcSummary.SelectedTab == tpMissingInventoryItems)
                 populateMissingInventoryItems();
+            txtBarcode.Focus();
         }
 
         private void BtnRefreshMissingInventoryItems_Click(object sender, EventArgs e)
@@ -338,12 +357,51 @@ namespace BinaMitraTextile.InventoryForm
             txtBarcode.Focus();
         }
 
-        private void Itxt_ItemLocation_onKeyDown(object sender, KeyEventArgs e)
+        private void BtnItemLocation_Click(object sender, EventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
-            {
-                txtBarcode.Focus();
-            }
+            if (sender == btnFloorLess)
+                in_Floor.Value -= 1;
+            else if (sender == btnFloorMore)
+                in_Floor.Value += 1;
+            else if (sender == btnRackLess)
+                in_Rack.Value -= 1;
+            else if (sender == btnRackMore)
+                in_Rack.Value += 1;
+            else if (sender == btnRowLess)
+                in_Row.Value -= 1;
+            else if (sender == btnRowMore)
+                in_Row.Value += 1;
+            else if (sender == btnColumnLess)
+                in_Column.Value -= 1;
+            else if (sender == btnColumnMore)
+                in_Column.Value += 1;
+
+            txtItemLocation.Text = getItemLocation();
+            txtBarcode.Focus();
+        }
+        
+        private void ChkNonRack_CheckedChanged(object sender, EventArgs e)
+        {
+            btnRowLess.Enabled = !chkNonRack.Checked;
+            in_Row.Enabled = !chkNonRack.Checked;
+            btnRowMore.Enabled = !chkNonRack.Checked;
+            btnColumnLess.Enabled = !chkNonRack.Checked;
+            in_Column.Enabled = !chkNonRack.Checked;
+            btnColumnMore.Enabled = !chkNonRack.Checked;
+
+            txtItemLocation.Text = getItemLocation();
+            txtBarcode.Focus();
+        }
+
+        private void ChkCheckListBeforeSubmit_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
+
+        private void GridDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (LIBUtil.Util.isColumnMatch(sender, e, col_gridDetail_barcode))
+                LIBUtil.Util.displayForm(null, new InventoryForm.Items_Form((Guid)LIBUtil.Util.getRowValue(gridDetail.Rows[e.RowIndex], col_gridDetail_inventory_Id)));
         }
 
         #endregion FORM METHODS
