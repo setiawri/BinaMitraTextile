@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 using LIBUtil;
 
 namespace BinaMitraTextile
@@ -36,8 +37,11 @@ namespace BinaMitraTextile
         public const string COL_BARCODE = "barcode";
 
         public const string FILTER_IncludeIgnoreSold = "IncludeIgnoreSold";
+        public const string FILTER_RescanToday = "RescanToday";
         public const string FILTER_TimestampStart = "FILTER_TimestampStart";
         public const string FILTER_TimestampEnd = "FILTER_TimestampEnd";
+        
+        public const string ARRAY_Grades_Id = "ARRAY_Grades_Id";
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -64,7 +68,7 @@ namespace BinaMitraTextile
             }
         }
 
-        public static string submitNew(string barcodeWithoutPrefix, bool isManualInput, bool ignoreSold, string itemLocation)
+        public static string submitNew(string barcodeWithoutPrefix, bool isManualInput, bool rescanToday, bool ignoreSold, string itemLocation)
         {
             if (barcodeWithoutPrefix.Length != Settings.itemBarcodeLength)
                 return barcodeWithoutPrefix + " is not a valid item barcode";
@@ -78,6 +82,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@BarcodeWithoutPrefix", SqlDbType.VarChar).Value = barcodeWithoutPrefix;
                     cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
                     cmd.Parameters.Add("@" + COL_DB_MANUALINPUT, SqlDbType.Bit).Value = isManualInput;
+                    cmd.Parameters.Add("@" + FILTER_RescanToday, SqlDbType.Bit).Value = rescanToday;
                     cmd.Parameters.Add("@" + COL_DB_IgnoreSold, SqlDbType.Bit).Value = ignoreSold;
                     cmd.Parameters.Add("@" + COL_DB_ItemLocation, SqlDbType.VarChar).Value = itemLocation;
                     SqlParameter InventoryItems_id = cmd.Parameters.Add("@InventoryItems_id", SqlDbType.UniqueIdentifier);
@@ -250,15 +255,18 @@ namespace BinaMitraTextile
             }
         }
 
-        public static DataTable getMissing(DateTime? timestampStart)
+        public static DataTable getMissing(DateTime? timestampStart, DataTable dtGrades)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "InventoryItemCheck_getMissing",
-                    new SqlQueryParameter(FILTER_TimestampStart, SqlDbType.DateTime, timestampStart)
-                );
+                DBConnection.createTableParameters(
+                    new SqlQueryTableParameterGuid(ARRAY_Grades_Id, dtGrades)
+                    ),
+                new SqlQueryParameter(FILTER_TimestampStart, SqlDbType.DateTime, timestampStart)
+            );
             return result.Datatable;
         }
 

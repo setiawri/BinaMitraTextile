@@ -39,6 +39,9 @@ namespace BinaMitraTextile.InventoryForm
         {
             InventoryItemCheck.CheckCleanup();
 
+            Grade.populateInputControlCheckedListBox(iclb_Grades, false);
+
+            lblMessage.Text = "";
             in_Floor.Enabled = false;
             in_Rack.Enabled = false;
             in_Row.Enabled = false;
@@ -69,6 +72,7 @@ namespace BinaMitraTextile.InventoryForm
             gridMissingItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridMissingItems_InventoryDate.DataPropertyName = "inventory_receivedate";
             col_gridMissingItems_InventoryCode.DataPropertyName = "inventory_code";
+            col_gridMissingItems_Inventory_Id.DataPropertyName = "inventory_id";
             col_gridMissingItems_Barcode.DataPropertyName = "barcode";
             col_gridMissingItems_ColorName.DataPropertyName = "color_name";
             col_gridMissingItems_GradeName.DataPropertyName = "grade_name";
@@ -77,6 +81,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridMissingItems_ProductWidth.DataPropertyName = "product_width_name";
             col_gridMissingItems_ItemLength.DataPropertyName = "item_length";
             col_gridMissingItems_LastOpname.DataPropertyName = "last_opname";
+            col_gridMissingItems_ItemLocation.DataPropertyName = "ItemLocation";
 
             resetFilters();
 
@@ -170,7 +175,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridSummary_inventory_code.Name))
             {
-                Tools.displayForm(new InventoryForm.Items_Form((Guid)gridSummaryCheck.Rows[e.RowIndex].Cells[col_gridSummary_inventoryID.Name].Value));
+                Tools.displayForm(new InventoryForm.Items_Form((Guid)LIBUtil.Util.getClickedRowValue(sender, e, col_gridSummary_inventoryID)));
             }
         }
 
@@ -229,7 +234,8 @@ namespace BinaMitraTextile.InventoryForm
                     return;
             }
 
-            LIBUtil.Util.displayMessageBoxError(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkIgnoreSold.Checked, txtItemLocation.Text));
+            displayMessage(InventoryItemCheck.submitNew(barcodeWithoutPrefix, isManualInput, chkRescanToday.Checked, chkIgnoreSold.Checked, txtItemLocation.Text));
+            
 
             if (!chkDoNotLoadList.Checked)
             {
@@ -242,12 +248,11 @@ namespace BinaMitraTextile.InventoryForm
             txtBarcode.Focus();
         }
 
-        private string getItemLocation()
+        private void displayMessage(string message)
         {
-            if (chkNonRack.Checked)
-                return string.Format("{0}{1}", in_Floor.ValueInt, in_Rack.ValueInt);
-            else
-                return string.Format("{0}{1}{2}{3}", in_Floor.ValueInt, in_Rack.ValueInt, in_Row.ValueInt, in_Column.ValueInt);
+            lblMessage.Text = message;
+            LIBUtil.Util.displayMessageBoxError(message);
+            lblMessage.Text = "";
         }
 
         private string record(DateTime start)
@@ -266,6 +271,7 @@ namespace BinaMitraTextile.InventoryForm
             dtpEndDate1.Checked = false;
             gridDetail.DataSource = null;
             gridSummaryCheck.DataSource = null;
+            gridMissingItems.DataSource = null;
             dgvSummary.DataSource = null;
             lblTotalCounts.Text = "";
         }
@@ -279,6 +285,7 @@ namespace BinaMitraTextile.InventoryForm
         private void btnLoad1_Click(object sender, EventArgs e)
         {
             gridSummaryCheck.DataSource = null;
+            gridMissingItems.DataSource = null;
             populateGridDetail();
             txtBarcode.Focus();
         }
@@ -337,7 +344,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void TcSummary_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tcSummary.SelectedTab == tpMissingInventoryItems)
+            if(tcSummary.SelectedTab == tpMissingInventoryItems && gridMissingItems.RowCount == 0)
                 populateMissingInventoryItems();
             txtBarcode.Focus();
         }
@@ -349,7 +356,7 @@ namespace BinaMitraTextile.InventoryForm
         
         private void populateMissingInventoryItems()
         {
-            gridMissingItems.DataSource = InventoryItemCheck.getMissing(Tools.getDate(dtpStartDate1, false));
+            gridMissingItems.DataSource = InventoryItemCheck.getMissing(Tools.getDate(dtpStartDate1, false), iclb_Grades.getCheckedItemsInArrayTable(Grade.COL_DB_ID));
         }
 
         private void ChkDoNotLoadList_CheckedChanged(object sender, EventArgs e)
@@ -360,33 +367,51 @@ namespace BinaMitraTextile.InventoryForm
         private void BtnItemLocation_Click(object sender, EventArgs e)
         {
             if (sender == btnFloorLess)
-                in_Floor.Value -= 1;
+                updateLocation(in_Floor, false);
             else if (sender == btnFloorMore)
-                in_Floor.Value += 1;
+                updateLocation(in_Floor, true);
             else if (sender == btnRackLess)
-                in_Rack.Value -= 1;
+                updateLocation(in_Rack, false);
             else if (sender == btnRackMore)
-                in_Rack.Value += 1;
+                updateLocation(in_Rack, true);
             else if (sender == btnRowLess)
-                in_Row.Value -= 1;
+                updateLocation(in_Row, false);
             else if (sender == btnRowMore)
-                in_Row.Value += 1;
+                updateLocation(in_Row, true);
             else if (sender == btnColumnLess)
-                in_Column.Value -= 1;
+                updateLocation(in_Column, false);
             else if (sender == btnColumnMore)
-                in_Column.Value += 1;
+                updateLocation(in_Column, true);
 
             txtItemLocation.Text = getItemLocation();
             txtBarcode.Focus();
         }
-        
+
+        private void updateLocation(LIBUtil.Desktop.UserControls.InputControl_Numeric input, bool isIncrease)
+        {
+            if (input.Value == 9 && isIncrease)
+                input.Value = 1;
+            else if (input.Value == 1 && !isIncrease)
+                input.Value = 9;
+            else if (isIncrease)
+                input.Value += 1;
+            else
+                input.Value -= 1;
+        }
+
+        private string getItemLocation()
+        {
+            if (chkNonRack.Checked)
+                return string.Format("{0}{1}", in_Floor.ValueInt, in_Rack.ValueInt);
+            else
+                return string.Format("{0}{1}{2}{3}", in_Floor.ValueInt, in_Rack.ValueInt, in_Row.ValueInt, in_Column.ValueInt);
+        }
+
         private void ChkNonRack_CheckedChanged(object sender, EventArgs e)
         {
             btnRowLess.Enabled = !chkNonRack.Checked;
-            in_Row.Enabled = !chkNonRack.Checked;
             btnRowMore.Enabled = !chkNonRack.Checked;
             btnColumnLess.Enabled = !chkNonRack.Checked;
-            in_Column.Enabled = !chkNonRack.Checked;
             btnColumnMore.Enabled = !chkNonRack.Checked;
 
             txtItemLocation.Text = getItemLocation();
@@ -402,6 +427,24 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (LIBUtil.Util.isColumnMatch(sender, e, col_gridDetail_barcode))
                 LIBUtil.Util.displayForm(null, new InventoryForm.Items_Form((Guid)LIBUtil.Util.getRowValue(gridDetail.Rows[e.RowIndex], col_gridDetail_inventory_Id)));
+        }
+
+        private void ChkRescanToday_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
+        }
+
+        private void GridMissingItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridMissingItems_InventoryCode.Name))
+            {                
+                Tools.displayForm(new InventoryForm.Items_Form((Guid)LIBUtil.Util.getClickedRowValue(sender, e, col_gridMissingItems_Inventory_Id)));
+            }
+        }
+
+        private void Iclb_Grades_Item_Checked(object sender, EventArgs e)
+        {
+            populateMissingInventoryItems();
         }
 
         #endregion FORM METHODS

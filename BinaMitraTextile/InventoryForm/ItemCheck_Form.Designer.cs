@@ -38,6 +38,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,8 +47,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -78,6 +78,16 @@
             this.btnReset1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.gridDetail = new System.Windows.Forms.DataGridView();
+            this.col_gridDetail_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_gridDetail_barcode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridItemsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridDetail_ItemLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridDetail_manual = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_gridDetails_itemsellprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridDetails_inventoryItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridDetail_inventory_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpStartDate1 = new System.Windows.Forms.DateTimePicker();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.btnCompareToInventory = new System.Windows.Forms.Button();
@@ -115,25 +125,12 @@
             this.btnRackMore = new System.Windows.Forms.Button();
             this.btnColumnLess = new System.Windows.Forms.Button();
             this.btnColumnMore = new System.Windows.Forms.Button();
-            this.in_Column = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.in_Row = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.in_Rack = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.in_Floor = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.chkNonRack = new System.Windows.Forms.CheckBox();
             this.txtItemLocation = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.col_gridDetail_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_gridDetail_barcode = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridItemsCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridDetail_ItemLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridDetail_manual = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_gridDetails_itemsellprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridDetails_inventoryItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridDetail_inventory_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.chkRescanToday = new System.Windows.Forms.CheckBox();
             this.col_gridMissingItems_InventoryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridMissingItems_InventoryCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_InventoryCode = new System.Windows.Forms.DataGridViewLinkColumn();
             this.col_gridMissingItems_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_GradeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_ProductWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +139,14 @@
             this.col_gridMissingItems_ItemLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMissingItems_LastOpname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_ItemLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridMissingItems_Inventory_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.in_Column = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.iclb_Grades = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.in_Row = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_Rack = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_Floor = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummaryCheck)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).BeginInit();
@@ -166,7 +171,7 @@
             this.gridSummaryCheck.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -195,7 +200,7 @@
             this.gridSummaryCheck.ReadOnly = true;
             this.gridSummaryCheck.RowHeadersVisible = false;
             this.gridSummaryCheck.RowTemplate.Height = 24;
-            this.gridSummaryCheck.Size = new System.Drawing.Size(610, 502);
+            this.gridSummaryCheck.Size = new System.Drawing.Size(492, 502);
             this.gridSummaryCheck.TabIndex = 109;
             this.gridSummaryCheck.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary1_CellContentClick);
             this.gridSummaryCheck.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
@@ -366,9 +371,9 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.gridDetail);
             this.groupBox2.Controls.Add(this.dtpStartDate1);
-            this.groupBox2.Location = new System.Drawing.Point(3, 43);
+            this.groupBox2.Location = new System.Drawing.Point(3, 88);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(407, 518);
+            this.groupBox2.Size = new System.Drawing.Size(386, 473);
             this.groupBox2.TabIndex = 110;
             this.groupBox2.TabStop = false;
             // 
@@ -376,7 +381,7 @@
             // 
             this.lblSoldItemsExcluded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSoldItemsExcluded.AutoSize = true;
-            this.lblSoldItemsExcluded.Location = new System.Drawing.Point(330, 65);
+            this.lblSoldItemsExcluded.Location = new System.Drawing.Point(309, 65);
             this.lblSoldItemsExcluded.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSoldItemsExcluded.Name = "lblSoldItemsExcluded";
             this.lblSoldItemsExcluded.Size = new System.Drawing.Size(76, 13);
@@ -386,7 +391,7 @@
             // chkAllUsers
             // 
             this.chkAllUsers.AutoSize = true;
-            this.chkAllUsers.Location = new System.Drawing.Point(257, 11);
+            this.chkAllUsers.Location = new System.Drawing.Point(273, 11);
             this.chkAllUsers.Name = "chkAllUsers";
             this.chkAllUsers.Size = new System.Drawing.Size(64, 17);
             this.chkAllUsers.TabIndex = 112;
@@ -408,7 +413,8 @@
             // 
             // btnLoad1
             // 
-            this.btnLoad1.Location = new System.Drawing.Point(256, 28);
+            this.btnLoad1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoad1.Location = new System.Drawing.Point(272, 28);
             this.btnLoad1.Name = "btnLoad1";
             this.btnLoad1.Size = new System.Drawing.Size(58, 29);
             this.btnLoad1.TabIndex = 1;
@@ -434,15 +440,16 @@
             this.dtpEndDate1.Margin = new System.Windows.Forms.Padding(2);
             this.dtpEndDate1.Name = "dtpEndDate1";
             this.dtpEndDate1.ShowCheckBox = true;
-            this.dtpEndDate1.Size = new System.Drawing.Size(149, 20);
+            this.dtpEndDate1.Size = new System.Drawing.Size(145, 20);
             this.dtpEndDate1.TabIndex = 105;
             this.dtpEndDate1.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             // 
             // btnReset1
             // 
-            this.btnReset1.Location = new System.Drawing.Point(180, 11);
+            this.btnReset1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset1.Location = new System.Drawing.Point(179, 11);
             this.btnReset1.Name = "btnReset1";
-            this.btnReset1.Size = new System.Drawing.Size(77, 46);
+            this.btnReset1.Size = new System.Drawing.Size(89, 46);
             this.btnReset1.TabIndex = 0;
             this.btnReset1.Text = "RESET";
             this.btnReset1.UseVisualStyleBackColor = true;
@@ -468,14 +475,6 @@
             this.gridDetail.BackgroundColor = System.Drawing.Color.White;
             this.gridDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridDetail.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.gridDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridDetail_OpnameMarker,
@@ -495,10 +494,112 @@
             this.gridDetail.ReadOnly = true;
             this.gridDetail.RowHeadersVisible = false;
             this.gridDetail.RowTemplate.Height = 24;
-            this.gridDetail.Size = new System.Drawing.Size(407, 426);
+            this.gridDetail.Size = new System.Drawing.Size(386, 381);
             this.gridDetail.TabIndex = 102;
             this.gridDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridDetail_CellContentClick);
             this.gridDetail.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
+            // 
+            // col_gridDetail_OpnameMarker
+            // 
+            this.col_gridDetail_OpnameMarker.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridDetail_OpnameMarker.HeaderText = "OP";
+            this.col_gridDetail_OpnameMarker.MinimumWidth = 30;
+            this.col_gridDetail_OpnameMarker.Name = "col_gridDetail_OpnameMarker";
+            this.col_gridDetail_OpnameMarker.ReadOnly = true;
+            this.col_gridDetail_OpnameMarker.Width = 30;
+            // 
+            // col_gridDetail_barcode
+            // 
+            this.col_gridDetail_barcode.ActiveLinkColor = System.Drawing.Color.Lime;
+            this.col_gridDetail_barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridDetail_barcode.DataPropertyName = "barcode";
+            this.col_gridDetail_barcode.HeaderText = "Barcode";
+            this.col_gridDetail_barcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridDetail_barcode.LinkColor = System.Drawing.Color.Lime;
+            this.col_gridDetail_barcode.MinimumWidth = 50;
+            this.col_gridDetail_barcode.Name = "col_gridDetail_barcode";
+            this.col_gridDetail_barcode.ReadOnly = true;
+            this.col_gridDetail_barcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridDetail_barcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridDetail_barcode.VisitedLinkColor = System.Drawing.Color.Lime;
+            this.col_gridDetail_barcode.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "item_length";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Length";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 50;
+            // 
+            // gridItemsCode
+            // 
+            this.gridItemsCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.gridItemsCode.DataPropertyName = "inventory_code";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.gridItemsCode.DefaultCellStyle = dataGridViewCellStyle10;
+            this.gridItemsCode.HeaderText = "Code";
+            this.gridItemsCode.MinimumWidth = 30;
+            this.gridItemsCode.Name = "gridItemsCode";
+            this.gridItemsCode.ReadOnly = true;
+            this.gridItemsCode.Width = 30;
+            // 
+            // col_gridDetail_ItemLocation
+            // 
+            this.col_gridDetail_ItemLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridDetail_ItemLocation.HeaderText = "Loc";
+            this.col_gridDetail_ItemLocation.MinimumWidth = 30;
+            this.col_gridDetail_ItemLocation.Name = "col_gridDetail_ItemLocation";
+            this.col_gridDetail_ItemLocation.ReadOnly = true;
+            this.col_gridDetail_ItemLocation.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "time_stamp";
+            dataGridViewCellStyle11.Format = "dd/MM HH:mm:ss";
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Last Check";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // col_gridDetail_manual
+            // 
+            this.col_gridDetail_manual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridDetail_manual.DataPropertyName = "manual_input";
+            this.col_gridDetail_manual.HeaderText = "";
+            this.col_gridDetail_manual.MinimumWidth = 30;
+            this.col_gridDetail_manual.Name = "col_gridDetail_manual";
+            this.col_gridDetail_manual.ReadOnly = true;
+            this.col_gridDetail_manual.Width = 30;
+            // 
+            // col_gridDetails_itemsellprice
+            // 
+            this.col_gridDetails_itemsellprice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            this.col_gridDetails_itemsellprice.DefaultCellStyle = dataGridViewCellStyle12;
+            this.col_gridDetails_itemsellprice.HeaderText = "Price";
+            this.col_gridDetails_itemsellprice.MinimumWidth = 40;
+            this.col_gridDetails_itemsellprice.Name = "col_gridDetails_itemsellprice";
+            this.col_gridDetails_itemsellprice.ReadOnly = true;
+            this.col_gridDetails_itemsellprice.Width = 40;
+            // 
+            // col_gridDetails_inventoryItemID
+            // 
+            this.col_gridDetails_inventoryItemID.HeaderText = "Inventory Item ID";
+            this.col_gridDetails_inventoryItemID.Name = "col_gridDetails_inventoryItemID";
+            this.col_gridDetails_inventoryItemID.ReadOnly = true;
+            this.col_gridDetails_inventoryItemID.Visible = false;
+            // 
+            // col_gridDetail_inventory_Id
+            // 
+            this.col_gridDetail_inventory_Id.HeaderText = "Inventory ID";
+            this.col_gridDetail_inventory_Id.Name = "col_gridDetail_inventory_Id";
+            this.col_gridDetail_inventory_Id.ReadOnly = true;
+            this.col_gridDetail_inventory_Id.Visible = false;
             // 
             // dtpStartDate1
             // 
@@ -507,17 +608,18 @@
             this.dtpStartDate1.Location = new System.Drawing.Point(30, 12);
             this.dtpStartDate1.Margin = new System.Windows.Forms.Padding(2);
             this.dtpStartDate1.Name = "dtpStartDate1";
-            this.dtpStartDate1.Size = new System.Drawing.Size(149, 20);
+            this.dtpStartDate1.Size = new System.Drawing.Size(145, 20);
             this.dtpStartDate1.TabIndex = 0;
             this.dtpStartDate1.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             this.dtpStartDate1.ValueChanged += new System.EventHandler(this.dtpStartDate1_ValueChanged);
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(54, 28);
+            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Location = new System.Drawing.Point(183, 65);
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(73, 20);
+            this.txtBarcode.Size = new System.Drawing.Size(88, 26);
             this.txtBarcode.TabIndex = 0;
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
             // 
@@ -552,10 +654,10 @@
             this.tcSummary.Controls.Add(this.tpSummary);
             this.tcSummary.Controls.Add(this.tpCheckSummary);
             this.tcSummary.Controls.Add(this.tpMissingInventoryItems);
-            this.tcSummary.Location = new System.Drawing.Point(412, 0);
+            this.tcSummary.Location = new System.Drawing.Point(393, 0);
             this.tcSummary.Name = "tcSummary";
             this.tcSummary.SelectedIndex = 0;
-            this.tcSummary.Size = new System.Drawing.Size(624, 561);
+            this.tcSummary.Size = new System.Drawing.Size(506, 561);
             this.tcSummary.TabIndex = 115;
             this.tcSummary.SelectedIndexChanged += new System.EventHandler(this.TcSummary_SelectedIndexChanged);
             // 
@@ -566,7 +668,7 @@
             this.tpSummary.Location = new System.Drawing.Point(4, 22);
             this.tpSummary.Name = "tpSummary";
             this.tpSummary.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSummary.Size = new System.Drawing.Size(616, 535);
+            this.tpSummary.Size = new System.Drawing.Size(498, 535);
             this.tpSummary.TabIndex = 1;
             this.tpSummary.Text = "Summary";
             this.tpSummary.UseVisualStyleBackColor = true;
@@ -581,7 +683,7 @@
             this.dgvSummary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -605,7 +707,7 @@
             this.dgvSummary.ReadOnly = true;
             this.dgvSummary.RowHeadersVisible = false;
             this.dgvSummary.RowTemplate.Height = 24;
-            this.dgvSummary.Size = new System.Drawing.Size(610, 502);
+            this.dgvSummary.Size = new System.Drawing.Size(492, 502);
             this.dgvSummary.TabIndex = 109;
             // 
             // col_dgvSummary_code
@@ -699,14 +801,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(3, 505);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(610, 27);
+            this.panel2.Size = new System.Drawing.Size(492, 27);
             this.panel2.TabIndex = 0;
             // 
             // chkShowDeleteTodayData
             // 
             this.chkShowDeleteTodayData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowDeleteTodayData.AutoSize = true;
-            this.chkShowDeleteTodayData.Location = new System.Drawing.Point(471, 9);
+            this.chkShowDeleteTodayData.Location = new System.Drawing.Point(353, 9);
             this.chkShowDeleteTodayData.Name = "chkShowDeleteTodayData";
             this.chkShowDeleteTodayData.Size = new System.Drawing.Size(15, 14);
             this.chkShowDeleteTodayData.TabIndex = 113;
@@ -716,7 +818,7 @@
             // btnDeleteIgnoreSold
             // 
             this.btnDeleteIgnoreSold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteIgnoreSold.Location = new System.Drawing.Point(492, 3);
+            this.btnDeleteIgnoreSold.Location = new System.Drawing.Point(374, 3);
             this.btnDeleteIgnoreSold.Name = "btnDeleteIgnoreSold";
             this.btnDeleteIgnoreSold.Size = new System.Drawing.Size(113, 23);
             this.btnDeleteIgnoreSold.TabIndex = 112;
@@ -727,7 +829,7 @@
             // btnDeleteTodayData
             // 
             this.btnDeleteTodayData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteTodayData.Location = new System.Drawing.Point(302, 3);
+            this.btnDeleteTodayData.Location = new System.Drawing.Point(184, 3);
             this.btnDeleteTodayData.Name = "btnDeleteTodayData";
             this.btnDeleteTodayData.Size = new System.Drawing.Size(163, 23);
             this.btnDeleteTodayData.TabIndex = 111;
@@ -753,7 +855,7 @@
             this.tpCheckSummary.Location = new System.Drawing.Point(4, 22);
             this.tpCheckSummary.Name = "tpCheckSummary";
             this.tpCheckSummary.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCheckSummary.Size = new System.Drawing.Size(616, 535);
+            this.tpCheckSummary.Size = new System.Drawing.Size(498, 535);
             this.tpCheckSummary.TabIndex = 0;
             this.tpCheckSummary.Text = "Check";
             this.tpCheckSummary.UseVisualStyleBackColor = true;
@@ -765,7 +867,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(3, 505);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(610, 27);
+            this.panel1.Size = new System.Drawing.Size(492, 27);
             this.panel1.TabIndex = 115;
             // 
             // tpMissingInventoryItems
@@ -775,7 +877,7 @@
             this.tpMissingInventoryItems.Location = new System.Drawing.Point(4, 22);
             this.tpMissingInventoryItems.Name = "tpMissingInventoryItems";
             this.tpMissingInventoryItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMissingInventoryItems.Size = new System.Drawing.Size(616, 535);
+            this.tpMissingInventoryItems.Size = new System.Drawing.Size(498, 535);
             this.tpMissingInventoryItems.TabIndex = 2;
             this.tpMissingInventoryItems.Text = "Missing";
             this.tpMissingInventoryItems.UseVisualStyleBackColor = true;
@@ -790,7 +892,7 @@
             this.gridMissingItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -807,31 +909,35 @@
             this.col_gridMissingItems_Barcode,
             this.col_gridMissingItems_ItemLength,
             this.col_gridMissingItems_UnitName,
-            this.col_gridMissingItems_LastOpname});
+            this.col_gridMissingItems_LastOpname,
+            this.col_gridMissingItems_ItemLocation,
+            this.col_gridMissingItems_Inventory_Id});
             this.gridMissingItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridMissingItems.Location = new System.Drawing.Point(3, 33);
+            this.gridMissingItems.Location = new System.Drawing.Point(3, 60);
             this.gridMissingItems.Margin = new System.Windows.Forms.Padding(2);
             this.gridMissingItems.MultiSelect = false;
             this.gridMissingItems.Name = "gridMissingItems";
             this.gridMissingItems.ReadOnly = true;
             this.gridMissingItems.RowHeadersVisible = false;
             this.gridMissingItems.RowTemplate.Height = 24;
-            this.gridMissingItems.Size = new System.Drawing.Size(610, 499);
+            this.gridMissingItems.Size = new System.Drawing.Size(492, 472);
             this.gridMissingItems.TabIndex = 110;
+            this.gridMissingItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridMissingItems_CellContentClick);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.iclb_Grades);
             this.panel3.Controls.Add(this.btnRefreshMissingInventoryItems);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(610, 30);
+            this.panel3.Size = new System.Drawing.Size(492, 57);
             this.panel3.TabIndex = 117;
             // 
             // btnRefreshMissingInventoryItems
             // 
-            this.btnRefreshMissingInventoryItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefreshMissingInventoryItems.Location = new System.Drawing.Point(521, 4);
+            this.btnRefreshMissingInventoryItems.Location = new System.Drawing.Point(5, 32);
             this.btnRefreshMissingInventoryItems.Name = "btnRefreshMissingInventoryItems";
             this.btnRefreshMissingInventoryItems.Size = new System.Drawing.Size(84, 22);
             this.btnRefreshMissingInventoryItems.TabIndex = 116;
@@ -842,9 +948,10 @@
             // chkIgnoreSold
             // 
             this.chkIgnoreSold.AutoSize = true;
-            this.chkIgnoreSold.Location = new System.Drawing.Point(130, 30);
+            this.chkIgnoreSold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIgnoreSold.Location = new System.Drawing.Point(276, 57);
             this.chkIgnoreSold.Name = "chkIgnoreSold";
-            this.chkIgnoreSold.Size = new System.Drawing.Size(77, 17);
+            this.chkIgnoreSold.Size = new System.Drawing.Size(94, 20);
             this.chkIgnoreSold.TabIndex = 116;
             this.chkIgnoreSold.Text = "ignore sold";
             this.chkIgnoreSold.UseVisualStyleBackColor = true;
@@ -853,9 +960,10 @@
             // chkCheckListBeforeSubmit
             // 
             this.chkCheckListBeforeSubmit.AutoSize = true;
-            this.chkCheckListBeforeSubmit.Location = new System.Drawing.Point(204, 30);
+            this.chkCheckListBeforeSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCheckListBeforeSubmit.Location = new System.Drawing.Point(276, 74);
             this.chkCheckListBeforeSubmit.Name = "chkCheckListBeforeSubmit";
-            this.chkCheckListBeforeSubmit.Size = new System.Drawing.Size(71, 17);
+            this.chkCheckListBeforeSubmit.Size = new System.Drawing.Size(82, 20);
             this.chkCheckListBeforeSubmit.TabIndex = 117;
             this.chkCheckListBeforeSubmit.Text = "check list";
             this.chkCheckListBeforeSubmit.UseVisualStyleBackColor = true;
@@ -864,9 +972,10 @@
             // chkDoNotLoadList
             // 
             this.chkDoNotLoadList.AutoSize = true;
-            this.chkDoNotLoadList.Location = new System.Drawing.Point(271, 30);
+            this.chkDoNotLoadList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDoNotLoadList.Location = new System.Drawing.Point(276, 25);
             this.chkDoNotLoadList.Name = "chkDoNotLoadList";
-            this.chkDoNotLoadList.Size = new System.Drawing.Size(94, 17);
+            this.chkDoNotLoadList.Size = new System.Drawing.Size(113, 20);
             this.chkDoNotLoadList.TabIndex = 118;
             this.chkDoNotLoadList.Text = "do not load list";
             this.chkDoNotLoadList.UseVisualStyleBackColor = true;
@@ -874,351 +983,140 @@
             // 
             // btnFloorMore
             // 
-            this.btnFloorMore.Location = new System.Drawing.Point(79, 3);
+            this.btnFloorMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFloorMore.Location = new System.Drawing.Point(3, 27);
             this.btnFloorMore.Name = "btnFloorMore";
-            this.btnFloorMore.Size = new System.Drawing.Size(25, 23);
+            this.btnFloorMore.Size = new System.Drawing.Size(44, 23);
             this.btnFloorMore.TabIndex = 111;
-            this.btnFloorMore.Text = ">";
+            this.btnFloorMore.Text = "+";
             this.btnFloorMore.UseVisualStyleBackColor = true;
             this.btnFloorMore.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnFloorLess
             // 
-            this.btnFloorLess.Location = new System.Drawing.Point(27, 3);
+            this.btnFloorLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFloorLess.Location = new System.Drawing.Point(3, 69);
             this.btnFloorLess.Name = "btnFloorLess";
-            this.btnFloorLess.Size = new System.Drawing.Size(25, 23);
+            this.btnFloorLess.Size = new System.Drawing.Size(44, 23);
             this.btnFloorLess.TabIndex = 112;
-            this.btnFloorLess.Text = "<";
+            this.btnFloorLess.Text = "-";
             this.btnFloorLess.UseVisualStyleBackColor = true;
             this.btnFloorLess.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnRowLess
             // 
-            this.btnRowLess.Location = new System.Drawing.Point(181, 3);
+            this.btnRowLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRowLess.Location = new System.Drawing.Point(91, 69);
             this.btnRowLess.Name = "btnRowLess";
-            this.btnRowLess.Size = new System.Drawing.Size(25, 23);
+            this.btnRowLess.Size = new System.Drawing.Size(44, 23);
             this.btnRowLess.TabIndex = 119;
-            this.btnRowLess.Text = "<";
+            this.btnRowLess.Text = "-";
             this.btnRowLess.UseVisualStyleBackColor = true;
             this.btnRowLess.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnRowMore
             // 
-            this.btnRowMore.Location = new System.Drawing.Point(233, 3);
+            this.btnRowMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRowMore.Location = new System.Drawing.Point(91, 27);
             this.btnRowMore.Name = "btnRowMore";
-            this.btnRowMore.Size = new System.Drawing.Size(25, 23);
+            this.btnRowMore.Size = new System.Drawing.Size(44, 23);
             this.btnRowMore.TabIndex = 118;
-            this.btnRowMore.Text = ">";
+            this.btnRowMore.Text = "+";
             this.btnRowMore.UseVisualStyleBackColor = true;
             this.btnRowMore.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnRackLess
             // 
-            this.btnRackLess.Location = new System.Drawing.Point(104, 3);
+            this.btnRackLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRackLess.Location = new System.Drawing.Point(47, 69);
             this.btnRackLess.Name = "btnRackLess";
-            this.btnRackLess.Size = new System.Drawing.Size(25, 23);
+            this.btnRackLess.Size = new System.Drawing.Size(44, 23);
             this.btnRackLess.TabIndex = 123;
-            this.btnRackLess.Text = "<";
+            this.btnRackLess.Text = "-";
             this.btnRackLess.UseVisualStyleBackColor = true;
             this.btnRackLess.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnRackMore
             // 
-            this.btnRackMore.Location = new System.Drawing.Point(156, 3);
+            this.btnRackMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRackMore.Location = new System.Drawing.Point(47, 27);
             this.btnRackMore.Name = "btnRackMore";
-            this.btnRackMore.Size = new System.Drawing.Size(25, 23);
+            this.btnRackMore.Size = new System.Drawing.Size(44, 23);
             this.btnRackMore.TabIndex = 122;
-            this.btnRackMore.Text = ">";
+            this.btnRackMore.Text = "+";
             this.btnRackMore.UseVisualStyleBackColor = true;
             this.btnRackMore.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnColumnLess
             // 
-            this.btnColumnLess.Location = new System.Drawing.Point(258, 3);
+            this.btnColumnLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnColumnLess.Location = new System.Drawing.Point(135, 69);
             this.btnColumnLess.Name = "btnColumnLess";
-            this.btnColumnLess.Size = new System.Drawing.Size(25, 23);
+            this.btnColumnLess.Size = new System.Drawing.Size(44, 23);
             this.btnColumnLess.TabIndex = 127;
-            this.btnColumnLess.Text = "<";
+            this.btnColumnLess.Text = "-";
             this.btnColumnLess.UseVisualStyleBackColor = true;
             this.btnColumnLess.Click += new System.EventHandler(this.BtnItemLocation_Click);
             // 
             // btnColumnMore
             // 
-            this.btnColumnMore.Location = new System.Drawing.Point(316, 3);
+            this.btnColumnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnColumnMore.Location = new System.Drawing.Point(135, 27);
             this.btnColumnMore.Name = "btnColumnMore";
-            this.btnColumnMore.Size = new System.Drawing.Size(25, 23);
+            this.btnColumnMore.Size = new System.Drawing.Size(44, 23);
             this.btnColumnMore.TabIndex = 126;
-            this.btnColumnMore.Text = ">";
+            this.btnColumnMore.Text = "+";
             this.btnColumnMore.UseVisualStyleBackColor = true;
             this.btnColumnMore.Click += new System.EventHandler(this.BtnItemLocation_Click);
-            // 
-            // in_Column
-            // 
-            this.in_Column.Checked = false;
-            this.in_Column.DecimalPlaces = 0;
-            this.in_Column.HideUpDown = true;
-            this.in_Column.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Column.LabelText = "numeric";
-            this.in_Column.Location = new System.Drawing.Point(283, 2);
-            this.in_Column.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_Column.MinimumValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Column.Name = "in_Column";
-            this.in_Column.ShowAllowDecimalCheckbox = false;
-            this.in_Column.ShowCheckbox = false;
-            this.in_Column.ShowTextboxOnly = true;
-            this.in_Column.Size = new System.Drawing.Size(33, 24);
-            this.in_Column.TabIndex = 125;
-            this.in_Column.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // in_Row
-            // 
-            this.in_Row.Checked = false;
-            this.in_Row.DecimalPlaces = 0;
-            this.in_Row.HideUpDown = true;
-            this.in_Row.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Row.LabelText = "numeric";
-            this.in_Row.Location = new System.Drawing.Point(206, 2);
-            this.in_Row.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_Row.MinimumValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Row.Name = "in_Row";
-            this.in_Row.ShowAllowDecimalCheckbox = false;
-            this.in_Row.ShowCheckbox = false;
-            this.in_Row.ShowTextboxOnly = true;
-            this.in_Row.Size = new System.Drawing.Size(27, 24);
-            this.in_Row.TabIndex = 117;
-            this.in_Row.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // in_Rack
-            // 
-            this.in_Rack.Checked = false;
-            this.in_Rack.DecimalPlaces = 0;
-            this.in_Rack.HideUpDown = true;
-            this.in_Rack.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Rack.LabelText = "numeric";
-            this.in_Rack.Location = new System.Drawing.Point(129, 2);
-            this.in_Rack.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_Rack.MinimumValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Rack.Name = "in_Rack";
-            this.in_Rack.ShowAllowDecimalCheckbox = false;
-            this.in_Rack.ShowCheckbox = false;
-            this.in_Rack.ShowTextboxOnly = true;
-            this.in_Rack.Size = new System.Drawing.Size(27, 24);
-            this.in_Rack.TabIndex = 121;
-            this.in_Rack.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // in_Floor
-            // 
-            this.in_Floor.Checked = false;
-            this.in_Floor.DecimalPlaces = 0;
-            this.in_Floor.HideUpDown = true;
-            this.in_Floor.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Floor.LabelText = "numeric";
-            this.in_Floor.Location = new System.Drawing.Point(52, 2);
-            this.in_Floor.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_Floor.MinimumValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Floor.Name = "in_Floor";
-            this.in_Floor.ShowAllowDecimalCheckbox = false;
-            this.in_Floor.ShowCheckbox = false;
-            this.in_Floor.ShowTextboxOnly = true;
-            this.in_Floor.Size = new System.Drawing.Size(27, 24);
-            this.in_Floor.TabIndex = 110;
-            this.in_Floor.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // chkNonRack
             // 
             this.chkNonRack.AutoSize = true;
-            this.chkNonRack.Location = new System.Drawing.Point(344, 7);
+            this.chkNonRack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNonRack.Location = new System.Drawing.Point(23, 1);
             this.chkNonRack.Name = "chkNonRack";
-            this.chkNonRack.Size = new System.Drawing.Size(67, 17);
+            this.chkNonRack.Size = new System.Drawing.Size(115, 28);
             this.chkNonRack.TabIndex = 128;
-            this.chkNonRack.Text = "non-Rak";
+            this.chkNonRack.Text = "NON RAK";
             this.chkNonRack.UseVisualStyleBackColor = true;
             this.chkNonRack.CheckedChanged += new System.EventHandler(this.ChkNonRack_CheckedChanged);
             // 
             // txtItemLocation
             // 
             this.txtItemLocation.Enabled = false;
-            this.txtItemLocation.Location = new System.Drawing.Point(3, 28);
+            this.txtItemLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemLocation.Location = new System.Drawing.Point(183, 28);
             this.txtItemLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemLocation.Name = "txtItemLocation";
-            this.txtItemLocation.Size = new System.Drawing.Size(47, 20);
+            this.txtItemLocation.Size = new System.Drawing.Size(88, 35);
             this.txtItemLocation.TabIndex = 129;
             this.txtItemLocation.TabStop = false;
+            this.txtItemLocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label2
+            // lblMessage
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 8);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 116;
-            this.label2.Text = "LOC";
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblMessage.Location = new System.Drawing.Point(132, 4);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(89, 20);
+            this.lblMessage.TabIndex = 116;
+            this.lblMessage.Text = "lblMessage";
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // col_gridDetail_OpnameMarker
+            // chkRescanToday
             // 
-            this.col_gridDetail_OpnameMarker.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridDetail_OpnameMarker.HeaderText = "OP";
-            this.col_gridDetail_OpnameMarker.MinimumWidth = 30;
-            this.col_gridDetail_OpnameMarker.Name = "col_gridDetail_OpnameMarker";
-            this.col_gridDetail_OpnameMarker.ReadOnly = true;
-            this.col_gridDetail_OpnameMarker.Width = 30;
-            // 
-            // col_gridDetail_barcode
-            // 
-            this.col_gridDetail_barcode.ActiveLinkColor = System.Drawing.Color.Lime;
-            this.col_gridDetail_barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridDetail_barcode.DataPropertyName = "barcode";
-            this.col_gridDetail_barcode.HeaderText = "Barcode";
-            this.col_gridDetail_barcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridDetail_barcode.LinkColor = System.Drawing.Color.Lime;
-            this.col_gridDetail_barcode.MinimumWidth = 50;
-            this.col_gridDetail_barcode.Name = "col_gridDetail_barcode";
-            this.col_gridDetail_barcode.ReadOnly = true;
-            this.col_gridDetail_barcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridDetail_barcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridDetail_barcode.VisitedLinkColor = System.Drawing.Color.Lime;
-            this.col_gridDetail_barcode.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "item_length";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Length";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 50;
-            // 
-            // gridItemsCode
-            // 
-            this.gridItemsCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.gridItemsCode.DataPropertyName = "inventory_code";
-            this.gridItemsCode.HeaderText = "Code";
-            this.gridItemsCode.MinimumWidth = 40;
-            this.gridItemsCode.Name = "gridItemsCode";
-            this.gridItemsCode.ReadOnly = true;
-            this.gridItemsCode.Width = 40;
-            // 
-            // col_gridDetail_ItemLocation
-            // 
-            this.col_gridDetail_ItemLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridDetail_ItemLocation.HeaderText = "Loc";
-            this.col_gridDetail_ItemLocation.MinimumWidth = 30;
-            this.col_gridDetail_ItemLocation.Name = "col_gridDetail_ItemLocation";
-            this.col_gridDetail_ItemLocation.ReadOnly = true;
-            this.col_gridDetail_ItemLocation.Width = 30;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "time_stamp";
-            dataGridViewCellStyle11.Format = "dd/MM HH:mm:ss";
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Last Check";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // col_gridDetail_manual
-            // 
-            this.col_gridDetail_manual.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridDetail_manual.DataPropertyName = "manual_input";
-            this.col_gridDetail_manual.HeaderText = "";
-            this.col_gridDetail_manual.MinimumWidth = 30;
-            this.col_gridDetail_manual.Name = "col_gridDetail_manual";
-            this.col_gridDetail_manual.ReadOnly = true;
-            this.col_gridDetail_manual.Width = 30;
-            // 
-            // col_gridDetails_itemsellprice
-            // 
-            this.col_gridDetails_itemsellprice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N0";
-            this.col_gridDetails_itemsellprice.DefaultCellStyle = dataGridViewCellStyle12;
-            this.col_gridDetails_itemsellprice.HeaderText = "Price";
-            this.col_gridDetails_itemsellprice.MinimumWidth = 40;
-            this.col_gridDetails_itemsellprice.Name = "col_gridDetails_itemsellprice";
-            this.col_gridDetails_itemsellprice.ReadOnly = true;
-            this.col_gridDetails_itemsellprice.Width = 40;
-            // 
-            // col_gridDetails_inventoryItemID
-            // 
-            this.col_gridDetails_inventoryItemID.HeaderText = "Inventory Item ID";
-            this.col_gridDetails_inventoryItemID.Name = "col_gridDetails_inventoryItemID";
-            this.col_gridDetails_inventoryItemID.ReadOnly = true;
-            this.col_gridDetails_inventoryItemID.Visible = false;
-            // 
-            // col_gridDetail_inventory_Id
-            // 
-            this.col_gridDetail_inventory_Id.HeaderText = "Inventory ID";
-            this.col_gridDetail_inventory_Id.Name = "col_gridDetail_inventory_Id";
-            this.col_gridDetail_inventory_Id.ReadOnly = true;
-            this.col_gridDetail_inventory_Id.Visible = false;
+            this.chkRescanToday.AutoSize = true;
+            this.chkRescanToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRescanToday.Location = new System.Drawing.Point(276, 41);
+            this.chkRescanToday.Name = "chkRescanToday";
+            this.chkRescanToday.Size = new System.Drawing.Size(72, 20);
+            this.chkRescanToday.TabIndex = 130;
+            this.chkRescanToday.Text = "re-scan";
+            this.chkRescanToday.UseVisualStyleBackColor = true;
+            this.chkRescanToday.CheckedChanged += new System.EventHandler(this.ChkRescanToday_CheckedChanged);
             // 
             // col_gridMissingItems_InventoryDate
             // 
@@ -1233,15 +1131,20 @@
             // 
             // col_gridMissingItems_InventoryCode
             // 
+            this.col_gridMissingItems_InventoryCode.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.col_gridMissingItems_InventoryCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.col_gridMissingItems_InventoryCode.DefaultCellStyle = dataGridViewCellStyle21;
             this.col_gridMissingItems_InventoryCode.HeaderText = "Code";
-            this.col_gridMissingItems_InventoryCode.MinimumWidth = 50;
+            this.col_gridMissingItems_InventoryCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridMissingItems_InventoryCode.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.col_gridMissingItems_InventoryCode.MinimumWidth = 40;
             this.col_gridMissingItems_InventoryCode.Name = "col_gridMissingItems_InventoryCode";
             this.col_gridMissingItems_InventoryCode.ReadOnly = true;
             this.col_gridMissingItems_InventoryCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridMissingItems_InventoryCode.Width = 50;
+            this.col_gridMissingItems_InventoryCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridMissingItems_InventoryCode.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.col_gridMissingItems_InventoryCode.Width = 40;
             // 
             // col_gridMissingItems_ProductName
             // 
@@ -1324,20 +1227,200 @@
             this.col_gridMissingItems_LastOpname.ReadOnly = true;
             this.col_gridMissingItems_LastOpname.Width = 40;
             // 
+            // col_gridMissingItems_ItemLocation
+            // 
+            this.col_gridMissingItems_ItemLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridMissingItems_ItemLocation.HeaderText = "Loc";
+            this.col_gridMissingItems_ItemLocation.MinimumWidth = 30;
+            this.col_gridMissingItems_ItemLocation.Name = "col_gridMissingItems_ItemLocation";
+            this.col_gridMissingItems_ItemLocation.ReadOnly = true;
+            this.col_gridMissingItems_ItemLocation.Width = 30;
+            // 
+            // col_gridMissingItems_Inventory_Id
+            // 
+            this.col_gridMissingItems_Inventory_Id.HeaderText = "InventoryId";
+            this.col_gridMissingItems_Inventory_Id.Name = "col_gridMissingItems_Inventory_Id";
+            this.col_gridMissingItems_Inventory_Id.ReadOnly = true;
+            this.col_gridMissingItems_Inventory_Id.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 3);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.TabIndex = 118;
+            this.label2.Text = "EXCLUDE";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // in_Column
+            // 
+            this.in_Column.Checked = false;
+            this.in_Column.DecimalPlaces = 0;
+            this.in_Column.HideUpDown = true;
+            this.in_Column.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Column.LabelText = "numeric";
+            this.in_Column.Location = new System.Drawing.Point(136, 41);
+            this.in_Column.Margin = new System.Windows.Forms.Padding(4);
+            this.in_Column.MaximumValue = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.in_Column.MinimumValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Column.Name = "in_Column";
+            this.in_Column.ShowAllowDecimalCheckbox = false;
+            this.in_Column.ShowCheckbox = false;
+            this.in_Column.ShowTextboxOnly = true;
+            this.in_Column.Size = new System.Drawing.Size(42, 30);
+            this.in_Column.TabIndex = 125;
+            this.in_Column.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // iclb_Grades
+            // 
+            this.iclb_Grades.LabelText = "Grades";
+            this.iclb_Grades.Location = new System.Drawing.Point(93, 4);
+            this.iclb_Grades.Name = "iclb_Grades";
+            this.iclb_Grades.ShowListOnly = true;
+            this.iclb_Grades.Size = new System.Drawing.Size(79, 50);
+            this.iclb_Grades.TabIndex = 156;
+            this.iclb_Grades.Item_Checked += new System.EventHandler(this.Iclb_Grades_Item_Checked);
+            // 
+            // in_Row
+            // 
+            this.in_Row.Checked = false;
+            this.in_Row.DecimalPlaces = 0;
+            this.in_Row.HideUpDown = true;
+            this.in_Row.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Row.LabelText = "numeric";
+            this.in_Row.Location = new System.Drawing.Point(92, 41);
+            this.in_Row.Margin = new System.Windows.Forms.Padding(4);
+            this.in_Row.MaximumValue = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.in_Row.MinimumValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Row.Name = "in_Row";
+            this.in_Row.ShowAllowDecimalCheckbox = false;
+            this.in_Row.ShowCheckbox = false;
+            this.in_Row.ShowTextboxOnly = true;
+            this.in_Row.Size = new System.Drawing.Size(42, 30);
+            this.in_Row.TabIndex = 117;
+            this.in_Row.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // in_Rack
+            // 
+            this.in_Rack.Checked = false;
+            this.in_Rack.DecimalPlaces = 0;
+            this.in_Rack.HideUpDown = true;
+            this.in_Rack.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Rack.LabelText = "numeric";
+            this.in_Rack.Location = new System.Drawing.Point(48, 41);
+            this.in_Rack.Margin = new System.Windows.Forms.Padding(4);
+            this.in_Rack.MaximumValue = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.in_Rack.MinimumValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Rack.Name = "in_Rack";
+            this.in_Rack.ShowAllowDecimalCheckbox = false;
+            this.in_Rack.ShowCheckbox = false;
+            this.in_Rack.ShowTextboxOnly = true;
+            this.in_Rack.Size = new System.Drawing.Size(42, 30);
+            this.in_Rack.TabIndex = 121;
+            this.in_Rack.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // in_Floor
+            // 
+            this.in_Floor.Checked = false;
+            this.in_Floor.DecimalPlaces = 0;
+            this.in_Floor.HideUpDown = true;
+            this.in_Floor.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Floor.LabelText = "numeric";
+            this.in_Floor.Location = new System.Drawing.Point(4, 41);
+            this.in_Floor.Margin = new System.Windows.Forms.Padding(4);
+            this.in_Floor.MaximumValue = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.in_Floor.MinimumValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Floor.Name = "in_Floor";
+            this.in_Floor.ShowAllowDecimalCheckbox = false;
+            this.in_Floor.ShowCheckbox = false;
+            this.in_Floor.ShowTextboxOnly = true;
+            this.in_Floor.Size = new System.Drawing.Size(42, 30);
+            this.in_Floor.TabIndex = 110;
+            this.in_Floor.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // ItemCheck_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1036, 561);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(891, 561);
+            this.Controls.Add(this.chkIgnoreSold);
+            this.Controls.Add(this.chkRescanToday);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.btnFloorLess);
+            this.Controls.Add(this.btnFloorMore);
             this.Controls.Add(this.txtItemLocation);
-            this.Controls.Add(this.chkNonRack);
             this.Controls.Add(this.btnColumnLess);
             this.Controls.Add(this.btnColumnMore);
             this.Controls.Add(this.chkDoNotLoadList);
             this.Controls.Add(this.in_Column);
             this.Controls.Add(this.chkCheckListBeforeSubmit);
-            this.Controls.Add(this.chkIgnoreSold);
             this.Controls.Add(this.tcSummary);
             this.Controls.Add(this.btnRowLess);
             this.Controls.Add(this.btnRowMore);
@@ -1348,8 +1431,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.in_Rack);
             this.Controls.Add(this.in_Floor);
-            this.Controls.Add(this.btnFloorMore);
-            this.Controls.Add(this.btnFloorLess);
+            this.Controls.Add(this.chkNonRack);
             this.Name = "ItemCheck_Form";
             this.Text = "STOCK OPNAME";
             this.Load += new System.EventHandler(this.ItemCheck_Submit_Form_Load);
@@ -1368,6 +1450,7 @@
             this.tpMissingInventoryItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridMissingItems)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1442,7 +1525,8 @@
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Column;
         private System.Windows.Forms.CheckBox chkNonRack;
         private System.Windows.Forms.TextBox txtItemLocation;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.CheckBox chkRescanToday;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridDetail_OpnameMarker;
         private System.Windows.Forms.DataGridViewLinkColumn col_gridDetail_barcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
@@ -1454,7 +1538,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridDetails_inventoryItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridDetail_inventory_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_InventoryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_InventoryCode;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridMissingItems_InventoryCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_GradeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ProductWidth;
@@ -1463,5 +1547,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ItemLength;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_UnitName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_LastOpname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_ItemLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMissingItems_Inventory_Id;
+        private System.Windows.Forms.Label label2;
+        private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_Grades;
     }
 }

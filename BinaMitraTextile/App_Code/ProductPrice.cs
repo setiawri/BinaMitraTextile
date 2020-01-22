@@ -267,7 +267,7 @@ namespace BinaMitraTextile
                     ),
                 new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, sellPrice)
             );
-
+            
             if (result.IsSuccessful)
                 foreach(Guid? id in ProductPrices_Ids)
                     ActivityLog.submit((Guid)id, String.Format("Updated Price: {0:c2}", sellPrice));
