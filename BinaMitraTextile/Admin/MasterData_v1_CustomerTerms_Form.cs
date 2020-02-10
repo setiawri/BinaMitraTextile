@@ -98,12 +98,12 @@ namespace BinaMitraTextile.Admin
 
         protected override void update()
         {
-            CustomerTerm.update(selectedRowID(), in_DebtLimit.Value, in_TermDays.ValueInt, itxt_Notes.ValueText);
+            CustomerTerm.update(selectedRowID(), in_DebtLimit.ValueDecimal, in_TermDays.ValueInt, itxt_Notes.ValueText);
         }
 
         protected override void add()
         {
-            CustomerTerm.add((Guid)iddl_Customers.SelectedValue, in_DebtLimit.Value, in_TermDays.ValueInt, itxt_Notes.ValueText);
+            CustomerTerm.add((Guid)iddl_Customers.SelectedValue, in_DebtLimit.ValueDecimal, in_TermDays.ValueInt, itxt_Notes.ValueText);
         }
 
         protected override Boolean isInputFieldsValid()

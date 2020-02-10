@@ -52,6 +52,7 @@ namespace BinaMitraTextile.Sales
             col_gridmaster_returnedamount.DataPropertyName = Sale.COL_RETURNEDAMOUNT;
             col_gridmaster_taxno.DataPropertyName = Sale.COL_DB_TAXNO;
             col_gridMaster_isManualAdjustment.DataPropertyName = Sale.COL_isManualAdjustment;
+            col_gridmaster_SaleCommission_Users_Name.DataPropertyName = Sale.COL_SaleCommission_Users_Name;
 
             gridDetail.AutoGenerateColumns = false;
             col_gridDetail_id.DataPropertyName = SaleItem.COL_INVENTORY_ITEM_ID;
@@ -62,6 +63,8 @@ namespace BinaMitraTextile.Sales
             col_gridSummary_profit.DataPropertyName = SaleItem.COL_PROFIT;
             col_gridSummary_profitpercent.DataPropertyName = SaleItem.COL_PROFITPERCENT;
             col_gridSummary_isManualAdjustment.DataPropertyName = SaleItem.COL_DB_isManualAdjustment;
+            col_gridSummary_CommissionAmount.DataPropertyName = SaleItem.COL_TotalCommissionAmount;
+            col_gridSummary_CommissionPercent.DataPropertyName = SaleItem.COL_DB_CommissionPercent;
 
             if (GlobalData.UserAccount.role != Roles.Super)
             {
@@ -71,6 +74,7 @@ namespace BinaMitraTextile.Sales
                 col_gridmaster_isReported.Visible = false;
                 col_gridmaster_taxno.Visible = false;
                 col_gridMaster_isManualAdjustment.Visible = false;
+                col_gridmaster_SaleCommission_Users_Name.Visible = false;
                 
                 col_gridSummary_isManualAdjustment.Visible = false;
 
@@ -254,7 +258,7 @@ namespace BinaMitraTextile.Sales
 
                 decimal sales = Tools.getSum((DataTable)gridMaster.DataSource, Sale.COL_SALEAMOUNT, "");
                 decimal returns = Tools.getSum((DataTable)gridMaster.DataSource, Sale.COL_RETURNEDAMOUNT, "");
-                decimal commission = (sales - returns)/100;
+                decimal commission = Tools.getSum((DataTable)gridMaster.DataSource, Sale.COL_CommissionAmount, "");
 
                 if (iddl_UserAccounts.hasSelectedValue())
                     info = LIBUtil.Util.append(info, string.Format("Sales: {0}", iddl_UserAccounts.getSelectedValue<string>(UserAccount.COL_DB_NAME)), Environment.NewLine);
@@ -341,6 +345,8 @@ namespace BinaMitraTextile.Sales
                 gridMaster.Rows[_lastSelectedRow].DefaultCellStyle.BackColor = _defaultMasterRowBackColor;
 
             //show details and summary
+            if(!pnlSummaryAndDetails.Visible)
+                ptSummaryAndDetails.toggle();
             populateDetails(new Guid(gridMaster.Rows[e.RowIndex].Cells[col_gridmaster_saleid.Name].Value.ToString()));
 
             _lastSelectedRow = e.RowIndex; //save current row index for resetting the row back color later
@@ -395,6 +401,11 @@ namespace BinaMitraTextile.Sales
         protected Guid selectedRowID()
         {
             return (Guid)gridMaster.SelectedRows[0].Cells[col_gridmaster_saleid.Name].Value;
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            ptSummaryAndDetails.toggle();
         }
 
         #endregion FORM METHODS

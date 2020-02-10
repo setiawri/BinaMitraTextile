@@ -457,7 +457,7 @@ namespace BinaMitraTextile.Sales
 
         private void BtnUpdateSaleOrderItemQty_Click(object sender, EventArgs e)
         {
-            SaleOrderItem.updateQty(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.Value);
+            SaleOrderItem.updateQty(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal);
             in_SaleOrderItemQty.Value = 0;
             pnlUpdateSaleOrderItemQty.Visible = false;
             populateGridSaleOrderItems();

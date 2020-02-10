@@ -30,14 +30,15 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.label1 = new System.Windows.Forms.Label();
+            this.col_grid_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,9 +63,9 @@
             this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.User,
-            this.description});
+            this.col_grid_Timestamp,
+            this.col_grid_Username,
+            this.col_grid_Description});
             this.grid.Enabled = false;
             this.grid.Location = new System.Drawing.Point(11, 37);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
@@ -75,32 +76,6 @@
             this.grid.RowTemplate.Height = 24;
             this.grid.Size = new System.Drawing.Size(650, 353);
             this.grid.TabIndex = 4;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "time_stamp";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
-            this.ID.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ID.HeaderText = "Timestamp";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // User
-            // 
-            this.User.DataPropertyName = "username";
-            this.User.HeaderText = "User";
-            this.User.Name = "User";
-            this.User.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
             // 
             // txtDescription
             // 
@@ -148,6 +123,37 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Search";
             // 
+            // col_grid_Timestamp
+            // 
+            this.col_grid_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
+            this.col_grid_Timestamp.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_grid_Timestamp.HeaderText = "Timestamp";
+            this.col_grid_Timestamp.MinimumWidth = 60;
+            this.col_grid_Timestamp.Name = "col_grid_Timestamp";
+            this.col_grid_Timestamp.ReadOnly = true;
+            this.col_grid_Timestamp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_Timestamp.Width = 60;
+            // 
+            // col_grid_Username
+            // 
+            this.col_grid_Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_Username.HeaderText = "User";
+            this.col_grid_Username.MinimumWidth = 30;
+            this.col_grid_Username.Name = "col_grid_Username";
+            this.col_grid_Username.ReadOnly = true;
+            this.col_grid_Username.Width = 30;
+            // 
+            // col_grid_Description
+            // 
+            this.col_grid_Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_Description.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_grid_Description.HeaderText = "Description";
+            this.col_grid_Description.Name = "col_grid_Description";
+            this.col_grid_Description.ReadOnly = true;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,12 +176,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnAdd;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_QuickSearch;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Timestamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Description;
     }
 }

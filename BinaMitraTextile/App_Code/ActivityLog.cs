@@ -17,6 +17,7 @@ namespace BinaMitraTextile
         public const string COL_DB_UserId = "userID";
         public const string COL_DB_NotifyRoleEnumId = "notify_role_enum_id";
 
+        public const string COL_Username = "username";
         public static DataTable getAll(Guid AssociatedID)
         {
             DataTable dataTable = new DataTable();

@@ -134,12 +134,11 @@ namespace BinaMitraTextile.InventoryForm
         
         private void txtProductName_Click(object sender, EventArgs e)
         {
-            MasterData.Products_Form form = new MasterData.Products_Form(FormMode.Browse);
+            Admin.MasterData_v1_Products_Form form = new Admin.MasterData_v1_Products_Form(LIBUtil.FormModes.Browse);
             Tools.displayForm(form);
             if (form.DialogResult == DialogResult.OK)
             {
-                _browsedProductID = form.browseItemSelection;
-                Product obj = new Product((Guid)_browsedProductID);
+                Product obj = new Product(form.BrowsedItemSelectionId);
                 populateProductName(obj.StoreName, obj.NameVendor);
 
                 chkPOItem.Checked = false;
@@ -149,7 +148,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new MasterData.Products_Form(FormMode.New));
+            Tools.displayForm(new Admin.MasterData_v1_Products_Form(LIBUtil.FormModes.Add));
             _browsedProductID = null;
             txtProductName.Text = "";
         }

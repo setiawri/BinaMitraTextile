@@ -1,1 +1,485 @@
 ﻿
+
+
+
+
+RUN 10/2/2020 successfully
+
+
+
+
+
+ALTER TABLE Users ADD PercentCommission decimal(5,2) DEFAULT 0 NOT NULL
+GO
+
+ALTER PROCEDURE [dbo].[users_new]
+
+	@id uniqueidentifier,
+	@username varchar(30),
+	@hashed_password varchar(50),
+	@role smallint,
+	@PercentCommission decimal(5,2),
+	@notes varchar(MAX)
+
+AS
+
+BEGIN
+
+	INSERT INTO Users(id,username,hashed_password,role,PercentCommission,notes) VALUES(@id,@username,@hashed_password,@role,@PercentCommission,@notes)
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[users_update]
+
+	@id uniqueidentifier,
+	@username varchar(30),
+	@hashed_password varchar(50),
+	@role smallint,
+	@PercentCommission decimal(5,2),
+	@notes varchar(1000)
+
+AS
+
+BEGIN
+
+IF @hashed_password IS NULL
+	BEGIN
+	
+		UPDATE Users 
+		SET username = @username, 
+			role = @role,
+			PercentCommission = @PercentCommission,
+			notes = @notes
+		WHERE id=@id
+
+	END
+ELSE
+	BEGIN
+	
+		UPDATE Users 
+		SET username = @username, 
+			hashed_password = @hashed_password,
+			role = @role,
+			PercentCommission = @PercentCommission,
+			notes = @notes
+		WHERE id=@id
+
+	END
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[users_getall]
+
+	@include_inactive bit
+
+AS
+
+BEGIN
+
+	SELECT Users.*
+	FROM Users 
+	WHERE @include_inactive = 1 OR (@include_inactive = 0 AND active = 1) 
+	ORDER BY username ASC
+
+END
+GO
+
+
+ALTER TABLE Products ADD PercentageOfPercentCommission decimal (5,2) NOT NULL DEFAULT 100 
+GO
+
+ALTER TABLE Products ADD MaxCommissionAmount decimal (10,0)  
+GO
+
+ALTER PROCEDURE [dbo].[product_new]
+
+	@id uniqueidentifier,
+	@name_vendor varchar(20),
+	@vendor_id uniqueidentifier,
+	@PercentageOfPercentCommission decimal(5,2),
+	@MaxCommissionAmount decimal(10,2) = NULL,
+	@notes varchar(MAX),
+	@store_name_id uniqueidentifier
+
+AS
+
+BEGIN
+
+	INSERT INTO Products(id,name_vendor,vendor_id,notes,PercentageOfPercentCommission,MaxCommissionAmount,store_name_id) 
+	VALUES(@id,@name_vendor,@vendor_id,@notes,@PercentageOfPercentCommission,@MaxCommissionAmount,@store_name_id)
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[product_update]
+
+	@id uniqueidentifier,
+	@name_vendor varchar(20),
+	@vendor_id uniqueidentifier,
+	@notes varchar(MAX),
+	@PercentageOfPercentCommission decimal(5,2),
+	@MaxCommissionAmount decimal(10,2) = NULL,
+	@store_name_id uniqueidentifier
+
+AS
+
+BEGIN
+
+	UPDATE Products 
+	SET name_vendor = @name_vendor, 
+		vendor_id = @vendor_id, 
+		notes = @notes, 
+		store_name_id = @store_name_id, 
+		PercentageOfPercentCommission=@PercentageOfPercentCommission,
+		MaxCommissionAmount = @MaxCommissionAmount
+	WHERE id=@id
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[product_get]
+
+	@id uniqueidentifier
+
+AS
+
+BEGIN
+
+	SELECT Products.*, 
+			ProductStoreNames.name + ': ' + Products.name_vendor AS name_full,
+			Vendors.vendor_name AS vendor_name,
+			ProductStoreNames.name AS store_name
+	FROM Products 
+			LEFT OUTER JOIN Vendors ON Vendors.id = Products.vendor_id
+			LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+	WHERE Products.id = @id
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[product_get_byFilter]
+
+	@include_inactive bit, 
+	@name_vendor varchar(20) = NULL,
+	@vendor_id uniqueidentifier = NULL,
+	@store_name_id uniqueidentifier = NULL
+
+AS
+
+BEGIN
+
+	SELECT Products.*, 
+			ProductStoreNames.name + ': ' + Products.name_vendor AS name_full,
+			Vendors.vendor_name AS vendor_name,
+			ProductStoreNames.name AS store_name
+	FROM Products 
+			LEFT OUTER JOIN Vendors ON Vendors.id = Products.vendor_id 
+			LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+	WHERE 1=1
+		AND (@include_inactive = 1 OR (@include_inactive = 0 AND Products.active = 1))
+		AND (@name_vendor IS NULL OR Products.name_vendor LIKE '%' + @name_vendor + '%')
+		AND (@vendor_id IS NULL OR Products.vendor_id = @vendor_id)
+		AND (@store_name_id IS NULL OR Products.store_name_id = @store_name_id)
+	ORDER BY ProductStoreNames.name ASC
+
+END
+GO
+
+ALTER TABLE SaleItems ADD CommissionAmount decimal(10) DEFAULT 0 NOT NULL
+GO
+
+ALTER TABLE SaleItems ADD CommissionPercent decimal(5,2) DEFAULT 0 NOT NULL
+GO
+
+ALTER PROCEDURE [dbo].[saleitem_new]
+
+	@id uniqueidentifier,
+	@sale_id uniqueidentifier,
+	@inventory_item_id uniqueidentifier,
+	@sell_price decimal(12,2),
+	@adjustment decimal(12,2),
+	@isManualAdjustment bit,
+	@user_id uniqueidentifier
+
+AS
+
+BEGIN
+
+	DECLARE @Qty decimal(10,2) = 0;
+	DECLARE @User_PercentCommission decimal(5,2) = 0;
+	DECLARE @Product_PercentageOfPercentCommission decimal(5,2) = 0;
+	DECLARE @CommissionPercent decimal(5,2) = 0;
+	DECLARE @CommissionAmount decimal(10,0) = 0;
+
+	SELECT @User_PercentCommission = Users.PercentCommission
+	FROM Users
+	WHERE Users.id = @user_id
+
+	SELECT 
+		@Qty = InventoryItems.item_length, 
+		@Product_PercentageOfPercentCommission = Products.PercentageOfPercentCommission
+	FROM InventoryItems 
+		LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id 
+		LEFT OUTER JOIN Products ON Products.id = Inventory.product_id
+	WHERE InventoryItems.id = @inventory_item_id
+
+	SET @CommissionPercent = @User_PercentCommission * @Product_PercentageOfPercentCommission/100
+	SET @CommissionAmount = @CommissionPercent/100 * (@sell_price-@adjustment) * @Qty
+
+	INSERT INTO SaleItems(id,sale_id,inventory_item_id,sell_price,adjustment,isManualAdjustment, CommissionPercent, CommissionAmount) 
+					VALUES(@id,@sale_id,@inventory_item_id,@sell_price,@adjustment,@isManualAdjustment,@CommissionPercent, @CommissionAmount)
+
+END
+GO
+
+
+ALTER PROCEDURE [dbo].[saleitem_get_summary_by_sale_id]
+
+	@sale_id uniqueidentifier 
+
+AS
+
+BEGIN
+
+	SELECT Inventory.id, 
+			Inventory.code AS inventory_code,
+			ProductStoreNames.name AS product_store_name,
+			ProductWidths.product_width_name AS product_width_name,
+			LengthUnits.length_unit_name AS length_unit_name,
+			Grades.grade_name AS grade_name,
+			Colors.color_name AS color_name, Colors.color_name AS inventory_color_name, 
+			CalculatedSaleItems.qty AS qty,
+			CalculatedSaleItems.item_length AS item_length,
+			COALESCE(CalculatedSaleItems.subtotal / CalculatedSaleItems.item_length, 0) AS adjusted_price,
+			COALESCE(Inventory.buy_price, 0) AS buy_price,
+			COALESCE(CalculatedSaleItems.subtotal, 0) - COALESCE(Inventory.buy_price * CalculatedSaleItems.item_length, 0) AS profit,
+			IIF(COALESCE(CalculatedSaleItems.item_length,0) = 0, 0, IIF(COALESCE(Inventory.buy_price,0) = 0,1, (COALESCE(CalculatedSaleItems.subtotal / CalculatedSaleItems.item_length, 0) - COALESCE(Inventory.buy_price, 0)) / (COALESCE(Inventory.buy_price, 0)))) * 100 AS profit_percent,
+			CalculatedSaleItems.subtotal AS subtotal,
+			(CASE WHEN AdjustedSaleItems.inventory_id IS NOT NULL THEN 1 ELSE 0 END) AS isManualAdjustment,
+			CalculatedSaleItems.TotalCommissionAmount,
+			CalculatedSaleItems.CommissionPercent
+	FROM Inventory 
+		LEFT OUTER JOIN 
+			(SELECT InventoryItems.inventory_id AS inventory_id,
+					COUNT(InventoryItems.item_length) AS qty,
+					SUM(InventoryItems.item_length) AS item_length,
+					SUM(InventoryItems.item_length * (sell_price + adjustment)) AS subtotal,
+					SUM(FilteredSaleItems.CommissionAmount) AS TotalCommissionAmount,
+					MIN(FilteredSaleItems.CommissionPercent) AS CommissionPercent
+			FROM (SELECT * FROM SaleItems WHERE SaleItems.sale_id = @sale_id) FilteredSaleItems
+				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = FilteredSaleItems.inventory_item_id
+			GROUP BY InventoryItems.inventory_id 
+			) CalculatedSaleItems ON CalculatedSaleItems.inventory_id = Inventory.id
+		LEFT OUTER JOIN (
+			SELECT DISTINCT(InventoryItems.inventory_id)
+			FROM SaleItems
+				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
+			WHERE SaleItems.sale_id = @sale_id 
+				AND SaleItems.isManualAdjustment = 1
+			) AdjustedSaleItems ON AdjustedSaleItems.inventory_id = Inventory.id
+		LEFT OUTER JOIN Products ON Products.id = Inventory.product_id
+		LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+		LEFT OUTER JOIN ProductWidths ON ProductWidths.id = Inventory.product_width_id
+		LEFT OUTER JOIN LengthUnits ON LengthUnits.id = Inventory.length_unit_id
+		LEFT OUTER JOIN Grades ON Grades.id = Inventory.grade_id
+		LEFT OUTER JOIN Colors ON Colors.id = Inventory.color_id
+	WHERE Inventory.id IN (SELECT DISTINCT(inventory_id) 
+							FROM InventoryItems 
+							WHERE InventoryItems.id IN (SELECT inventory_item_id 
+														FROM SaleItems 
+														WHERE SaleItems.sale_id = @sale_id
+														)
+							)
+
+		
+
+END
+GO
+
+
+ALTER TABLE Sales ADD SaleCommission_Users_Id uniqueidentifier
+GO
+
+
+ALTER PROCEDURE [dbo].[sale_new]
+
+	@id uniqueidentifier, 
+	@time_stamp datetime,
+	@voided bit,
+	@customer_id uniqueidentifier,
+	@customer_info varchar(1000),
+	@user_id uniqueidentifier,
+	@notes varchar(MAX) = NULL,
+	@transport_id uniqueidentifier = NULL,
+	@shipping_cost decimal, 
+	@return_value int OUTPUT
+AS
+
+BEGIN
+
+	-- INCREMENT LAST HEX NUMBER
+	DECLARE @HexLength int = 5, @LastHex_String varchar(5), @NewNo varchar(5)
+	SELECT @LastHex_String = ISNULL(MAX(hexbarcode),'') From Sales	
+	EXEC UTIL_IncrementHex @HexLength, @LastHex_String, @NewNo OUTPUT
+
+	INSERT INTO Sales(id,hexbarcode,time_stamp,voided,customer_id,customer_info,user_id,notes,transport_id, shipping_cost, SaleCommission_Users_Id) 
+					VALUES(@id,@NewNo,@time_stamp,@voided,@customer_id,@customer_info,@user_id,@notes,@transport_id, @shipping_cost, (SELECT Customers.sales_user_id FROM Customers WHERE Customers.id=@customer_id))
+    SET @return_value=SCOPE_IDENTITY()
+END
+GO
+
+
+ALTER PROCEDURE [dbo].[sale_getall]
+	
+	@date_start datetime = NULL, 
+	@date_end datetime = NULL,
+	@inventory_item_id uniqueidentifier = NULL, 
+	@customer_id uniqueidentifier = NULL,
+	@sale_id uniqueidentifier = NULL,
+	@only_has_receivable bit,
+	@only_loss_profit bit,
+	@include_special_user_only bit,
+	@returned_to_supplier bit,
+	@SaleCommission_Users_Id uniqueidentifier = NULL,	
+	@productstorename_id_list AS Array READONLY,
+	@color_id_list AS Array READONLY,
+	@FILTER_OnlyNotCompleted bit = 0,
+	@FILTER_Inventory_Code varchar(MAX) = NULL,
+	@FILTER_OnlyManualAdjustment bit = 0
+
+AS
+
+BEGIN
+ 
+	SELECT Sales.*, RIGHT(CONVERT(NVARCHAR(10), CONVERT(VARBINARY(8), Sales.barcode), 1),5) AS hexbarcode,
+			Customers.customer_name AS customer_name,
+			CustomerTerms.DebtLimit AS CustomerTerms_DebtLimit,
+			CustomerTerms.TermDays AS CustomerTerms_TermDays,
+			CustomerTerms.TermDays - DATEDIFF(day, time_stamp, CURRENT_TIMESTAMP) AS RemainingTermDays,
+			Transports.name AS transport_name,
+			SaleItems.sale_amount AS sale_amount,
+			SaleItems.sale_qty AS sale_qty,
+			SaleItems.sale_length AS sale_length,
+			COALESCE(SaleItems.sale_amount,0) - COALESCE(SaleItems.buy_amount,0) AS profit,
+			IIF(COALESCE(SaleItems.buy_amount,0) = 0,1,(COALESCE(SaleItems.sale_amount,0) - COALESCE(SaleItems.buy_amount,0)) / COALESCE(SaleItems.buy_amount,0)) * 100 AS profit_percent,
+			COALESCE(CompiledPayments.payment_amount,0) AS payment_amount,
+			IIF(Sales.returned_to_supplier=1,0,COALESCE(SaleItems.sale_amount,0) - COALESCE(CompiledPayments.payment_amount,0) + COALESCE(Sales.shipping_cost, 0)) AS receivable_amount,
+			DATEDIFF(day, time_stamp, CURRENT_TIMESTAMP) AS days_elapsed,
+			COALESCE(ReturnedItems.amount,0) AS returned_amount,
+			(CASE WHEN AdjustedSaleItems.sale_id IS NOT NULL THEN 1 ELSE 0 END) AS isManualAdjustment,
+			SaleCommission.username AS SaleCommission_Users_Name,
+			COALESCE(SaleItems.CommissionAmount,0) AS CommissionAmount
+	FROM Sales 
+		LEFT OUTER JOIN Customers ON Customers.id = Sales.customer_id
+		LEFT OUTER JOIN CustomerTerms ON CustomerTerms.Customers_Id = Customers.id
+		LEFT OUTER JOIN Users SaleCommission ON SaleCommission.id = Sales.SaleCommission_Users_Id
+		LEFT OUTER JOIN Transports ON Transports.id = Sales.transport_id
+		LEFT OUTER JOIN (
+			SELECT SaleItems.sale_id,
+					SUM(Inventory.buy_price * InventoryItems.item_length) AS buy_amount,
+					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS sale_amount,
+					COUNT(InventoryItems.item_length) AS sale_qty,
+					SUM(InventoryItems.item_length) AS sale_length,
+					SUM(ISNULL(SaleItems.CommissionAmount,0)) AS CommissionAmount 
+			FROM SaleItems
+				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
+				LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+			GROUP BY SaleItems.sale_id
+			) SaleItems ON SaleItems.sale_id = Sales.id
+		LEFT OUTER JOIN (
+			SELECT DISTINCT(SaleItems.sale_id)
+			FROM SaleItems
+			WHERE SaleItems.isManualAdjustment = 1
+			) AdjustedSaleItems ON AdjustedSaleItems.sale_id = Sales.id
+		LEFT OUTER JOIN (
+			SELECT SaleItems.sale_id,
+					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS amount,
+					COUNT(InventoryItems.item_length) AS qty,
+					SUM(InventoryItems.item_length) AS length
+			FROM SaleItems
+				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
+				LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+			WHERE SaleItems.return_id IS NOT NULL
+			GROUP BY SaleItems.sale_id
+			) ReturnedItems ON ReturnedItems.sale_id = Sales.id
+		LEFT OUTER JOIN (SELECT Payments.ReferenceId, 
+								SUM(Payments.Amount) AS payment_amount 
+							FROM Payments GROUP BY Payments.ReferenceId) CompiledPayments 
+		ON CompiledPayments.ReferenceId = Sales.id
+	WHERE 1=1
+		AND (@date_start IS NULL OR time_stamp > @date_start)
+		AND (@date_end IS NULL OR time_stamp < @date_end)
+		AND (@inventory_item_id IS NULL OR Sales.id IN (SELECT sale_id FROM SaleItems WHERE inventory_item_id = @inventory_item_id))
+		AND (@customer_id IS NULL OR customer_id = @customer_id)
+		AND (@sale_id IS NULL OR Sales.id = @sale_id)
+		AND (@only_has_receivable = 0 OR (COALESCE(SaleItems.sale_amount,0) + COALESCE(Sales.shipping_cost, 0) - COALESCE(CompiledPayments.payment_amount,0) > 0 AND returned_to_supplier = 0))
+		AND (@only_loss_profit = 0 OR (COALESCE(SaleItems.sale_amount,0) - COALESCE(SaleItems.buy_amount,0) <= 0 AND returned_to_supplier = 0))
+		AND (@include_special_user_only = 1 OR (@include_special_user_only = 0 AND special_user_only = 0))
+		AND (@FILTER_OnlyNotCompleted = 0 OR Sales.completed = 0)
+		AND (@FILTER_OnlyManualAdjustment = 0 OR AdjustedSaleItems.sale_id IS NOT NULL)
+		AND (@FILTER_Inventory_Code IS NULL OR Sales.id IN (
+					SELECT DISTINCT(SaleItems.sale_id)
+					FROM SaleItems
+					WHERE SaleItems.inventory_item_id IN (
+							SELECT InventoryItems.id
+							FROM InventoryItems 
+								LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+							WHERE Inventory.code = CONVERT(INT, @FILTER_Inventory_Code)
+						)
+				)
+			)
+		AND (@returned_to_supplier = 0  OR returned_to_supplier = @returned_to_supplier)
+		AND (@SaleCommission_Users_Id IS NULL OR Sales.SaleCommission_Users_Id = @SaleCommission_Users_Id)
+		AND ((SELECT COUNT(value_str) FROM @productstorename_id_list) = 0 
+				OR Sales.id in (
+					SELECT DISTINCT(SaleItems.sale_id) 
+					FROM SaleItems 
+						LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
+						LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+						LEFT OUTER JOIN Products ON Products.id = Inventory.product_id
+						LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
+					WHERE ProductStoreNames.id IN (SELECT value_str FROM @productstorename_id_list)
+						AND (@date_start IS NULL OR time_stamp > @date_start)
+						AND (@date_end IS NULL OR time_stamp < @date_end)
+				))
+		AND ((SELECT COUNT(value_str) FROM @color_id_list) = 0 
+				OR Sales.id in (
+					SELECT DISTINCT(SaleItems.sale_id) 
+					FROM SaleItems 
+						LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
+						LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+					WHERE Inventory.color_id IN (SELECT value_str FROM @color_id_list)
+						AND (@date_start IS NULL OR time_stamp > @date_start)
+						AND (@date_end IS NULL OR time_stamp < @date_end)
+				))
+END
+GO
+
+UPDATE Sales SET SaleCommission_Users_Id=(SELECT Customers.sales_user_id FROM Customers WHERE Customers.id=Sales.customer_id)
+GO
+
+update Users set PercentCommission=1 where id='779A65D5-1C85-4A67-AC50-9A78C58D1DA0'
+GO
+update Users set PercentCommission=1 where id='DAD671A4-F667-47D2-9847-D84296F5CC1A'
+GO
+update Users set PercentCommission=1 where id='EA4718C8-5420-4B0F-AB40-34D3775720E9'
+GO
+
+
+update SaleItems SET CommissionPercent=1, 
+CommissionAmount=sell_price
+*(SELECT InventoryItems.item_length FROM InventoryItems where InventoryItems.id=SaleItems.inventory_item_id)
+/100
+
+
+UPDATE Customers SET sales_user_id=NULL WHERE Customers.id IN (
+SELECT Customers.id FROM Customers LEFT OUTER JOIN Users ON Users.id = Customers.sales_user_id
+where Customers.sales_user_id NOT IN ('779A65D5-1C85-4A67-AC50-9A78C58D1DA0','DAD671A4-F667-47D2-9847-D84296F5CC1A'))
+GO
+
+update Users set PercentCommission=2 where id='DAD671A4-F667-47D2-9847-D84296F5CC1A' or id='EA4718C8-5420-4B0F-AB40-34D3775720E9'
+GO
+
+

@@ -381,7 +381,7 @@ namespace BinaMitraTextile.Admin
         
         private void lnkUpdateProducts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Tools.displayForm(new MasterData.Products_Form(FormMode.New));
+            Tools.displayForm(new Admin.MasterData_v1_Products_Form(FormModes.Add));
             Product.populateDropDownList(_inputDDLProducts.Dropdownlist, false, true, null);
         }
 

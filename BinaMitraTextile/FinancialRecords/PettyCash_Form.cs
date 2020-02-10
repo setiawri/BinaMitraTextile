@@ -121,9 +121,9 @@ namespace BinaMitraTextile.FinancialRecords
             if(isInputValid())
             {
                 if(_formMode == FormMode.New)
-                    PettyCashRecord.add((Guid)dropCategories.SelectedValue, in_Amount.Value, txtNotes.Text);
+                    PettyCashRecord.add((Guid)dropCategories.SelectedValue, in_Amount.ValueDecimal, txtNotes.Text);
                 else
-                    PettyCashRecord.update(_idToUpdate, (Guid)dropCategories.SelectedValue, in_Amount.Value, txtNotes.Text);
+                    PettyCashRecord.update(_idToUpdate, (Guid)dropCategories.SelectedValue, in_Amount.ValueDecimal, txtNotes.Text);
 
                 resetInput();
                 populateData();

@@ -124,7 +124,7 @@ namespace BinaMitraTextile.Admin
             CustomerSaleAdjustment.update(selectedRowID(), (Guid)iddl_Customers.SelectedValue, (Guid)iddl_Grades.SelectedValue, 
                 (Guid)iddl_ProductStoreNames.SelectedValue, (Guid)iddl_ProductWidths.SelectedValue,
                 (Guid)iddl_LengthUnits.SelectedValue, (Guid?)iddl_FabricColors.SelectedValue, 
-                in_Adjustment.Value, itxt_Notes.ValueText);
+                in_Adjustment.ValueDecimal, itxt_Notes.ValueText);
         }
 
         protected override void add()
@@ -132,7 +132,7 @@ namespace BinaMitraTextile.Admin
             CustomerSaleAdjustment.add((Guid)iddl_Customers.SelectedValue, (Guid)iddl_Grades.SelectedValue,
                 (Guid)iddl_ProductStoreNames.SelectedValue, (Guid)iddl_ProductWidths.SelectedValue,
                 (Guid)iddl_LengthUnits.SelectedValue, (Guid?)iddl_FabricColors.SelectedValue,
-                in_Adjustment.Value, itxt_Notes.ValueText);
+                in_Adjustment.ValueDecimal, itxt_Notes.ValueText);
         }
 
         protected override Boolean isInputFieldsValid()

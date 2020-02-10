@@ -145,7 +145,7 @@ namespace BinaMitraTextile.Invoices
             if (cbPaymentMethods.SelectedIndex == -1)
                 return Tools.inputError<ComboBox>(cbPaymentMethods, "Please select a payment method from the dropdownlist");
 
-            decimal paymentAmount = in_PaymentAmount.Value;
+            decimal paymentAmount = in_PaymentAmount.ValueDecimal;
 
             if (paymentAmount <= 0)
                 return in_PaymentAmount.isValueError("Invalid Payment Amount");
@@ -188,7 +188,7 @@ namespace BinaMitraTextile.Invoices
         {
             if (isInputFieldsValid())
             {
-                decimal paymentAmount = in_PaymentAmount.Value;
+                decimal paymentAmount = in_PaymentAmount.ValueDecimal;
                 if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Cash && paymentAmount > _payableAmount)
                 {
                     Tools.displayForm(new SharedForms.Verify_Form("KEMBALI", string.Format("Rp. {0:N0}", paymentAmount - _payableAmount), SharedForms.VerifyFormFontSize.Medium));

@@ -33,13 +33,14 @@ namespace BinaMitraTextile
         public const string COL_DB_ISREPORTED = "is_reported";
         public const string COL_DB_TAXNO = "tax_no";
         public const string COL_DB_Notes = "notes";
+        public const string COL_DB_SaleCommission_Users_Id = "SaleCommission_Users_Id";
 
         public const string COL_TRANSPORTNAME = "transport_name";
         public const string COL_COMPLETED = "completed";
         public const string COL_PROFIT = "profit";
         public const string COL_PROFITPERCENT = "profit_percent";
-        public const string COL_SALESMANID = "salesman_id";
-        public const string COL_SALESMANNAME = "salesman_name";
+        public const string COL_SaleCommission_Users_Name = "SaleCommission_Users_Name";
+        public const string COL_CommissionAmount = "CommissionAmount";
         public const string COL_RETURNEDAMOUNT = "returned_amount";
         public const string COL_isManualAdjustment = "isManualAdjustment";
 
@@ -114,6 +115,7 @@ namespace BinaMitraTextile
         public decimal ShippingCost = 0;
         public string TaxNo;
         public bool ReturnedToSupplier = false;
+        public Guid? SaleCommission_Users_Id;
 
         public string TransportName = "";
 
@@ -156,6 +158,7 @@ namespace BinaMitraTextile
                 ShippingCost = DBUtil.parseData<decimal>(row, COL_DB_SHIPPINGCOST);
                 TaxNo = DBUtil.parseData<string>(row, COL_DB_TAXNO);
                 ReturnedToSupplier = LIBUtil.Util.wrapNullable<bool>(row, COL_DB_RETURNEDTOSUPPLIER);
+                SaleCommission_Users_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleCommission_Users_Id);
 
                 TransportName = DBUtil.parseData<string>(row, COL_TRANSPORTNAME);
 
@@ -346,9 +349,9 @@ namespace BinaMitraTextile
                 if (onlyWithCommission)
                 {
                     if (salesUserAccountID == null)
-                        cmd.Parameters.Add("@" + Sale.COL_SALESMANID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+                        cmd.Parameters.Add("@" + Sale.COL_DB_SaleCommission_Users_Id, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
                     else
-                        cmd.Parameters.Add("@" + Sale.COL_SALESMANID, SqlDbType.UniqueIdentifier).Value = salesUserAccountID;
+                        cmd.Parameters.Add("@" + Sale.COL_DB_SaleCommission_Users_Id, SqlDbType.UniqueIdentifier).Value = salesUserAccountID;
                 }
                 DBUtil.addListParameter(cmd, "@productstorename_id_list", dtProductStoreNameID);
                 DBUtil.addListParameter(cmd, "@color_id_list", dtColorID);

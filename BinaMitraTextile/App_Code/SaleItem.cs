@@ -26,6 +26,8 @@ namespace BinaMitraTextile
         public const string COL_CUSTOMERNAME = "customer_name";
         public const string COL_DB_isManualAdjustment = "isManualAdjustment";
         public const string COL_DB_sale_id = "sale_id";
+        public const string COL_DB_CommissionPercent = "CommissionPercent";
+        public const string COL_DB_CommissionAmount = "CommissionAmount";
 
         public const string COL_QTY = "qty";
         public const string COL_SUBTOTAL = "subtotal";
@@ -43,6 +45,7 @@ namespace BinaMitraTextile
         public const string COL_SaleOrderItems_Id = "SaleOrderItems_Id";
         public const string COL_Sales_Barcode = "Sales_Barcode";
         public const string COL_Sales_Timestamp = "Sales_Timestamp";
+        public const string COL_TotalCommissionAmount = "TotalCommissionAmount";
 
         public Guid id;
         public Guid sale_id;
@@ -99,6 +102,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@sell_price", SqlDbType.Decimal).Value = item.sell_price;
                     cmd.Parameters.Add("@adjustment", SqlDbType.Decimal).Value = item.adjustment;
                     cmd.Parameters.Add("@" + COL_DB_isManualAdjustment, SqlDbType.Bit).Value = item.isManualAdjustment;
+                    cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
 
                     cmd.ExecuteNonQuery();
 

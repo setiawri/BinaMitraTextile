@@ -164,7 +164,7 @@ namespace BinaMitraTextile
 
         private void menu_admin_products_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new MasterData.Products_Form(FormMode.Search));
+            Util.displayMDIChild(new Admin.MasterData_v1_Products_Form(FormModes.Search));
         }
 
         private void menu_admin_prices_Click(object sender, EventArgs e)

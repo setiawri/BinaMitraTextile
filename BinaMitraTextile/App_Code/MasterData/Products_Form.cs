@@ -26,6 +26,7 @@ namespace BinaMitraTextile.MasterData
         private InputDropdownlist _inputDDLStoreNames;
         private InputTextbox _inputTxtNameVendor;
         private InputDropdownlist _inputDDLVendors;
+        private InputTextbox _inputTxtPercentageOfPercentCommission;
         private InputTextbox _inputTxtNotes;
 
         #endregion PRIVATE VARIABLES
@@ -71,6 +72,10 @@ namespace BinaMitraTextile.MasterData
             _inputDDLVendors.UpdateLink.LinkClicked += new LinkLabelLinkClickedEventHandler(lnkUpdateVendors_LinkClicked); //add event handler for update link
             Vendor.populateDropDownList(_inputDDLVendors.Dropdownlist, false, true); //populate
 
+            //Field Percentage of Percent Commission - textbox
+            _inputTxtPercentageOfPercentCommission = (InputTextbox)setupInputControl(new InputTextbox(), 0, "% Of %", Product.COL_DB_PercentageOfPercentCommission, 50, true, true, "N2");
+            _inputTxtPercentageOfPercentCommission.setMaxLength(5); //set max length
+
             //Field Notes - textbox
             _inputTxtNotes = (InputTextbox)setupInputControl(new InputTextbox(), 1, "Notes", Product.COL_DB_NOTES, 100, true, true, null);
             _inputTxtNotes.setToMultiline(4);
@@ -93,7 +98,7 @@ namespace BinaMitraTextile.MasterData
 
         protected override System.Data.DataView loadGridviewDataSource()
         {
-            return Product.getByFilter(chkIncludeInactive.Checked, _inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, _inputDDLVendors.SelectedValue).DefaultView;
+            return Product.get(chkIncludeInactive.Checked, _inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, _inputDDLVendors.SelectedValue).DefaultView;
         }
         
         protected override void populateInputFields()
@@ -102,17 +107,18 @@ namespace BinaMitraTextile.MasterData
             _inputDDLStoreNames.SelectedValue = obj.StoreNameID;
             _inputTxtNameVendor.TextValue = obj.NameVendor;
             _inputDDLVendors.SelectedValue = obj.VendorID;
+            _inputTxtPercentageOfPercentCommission.TextValue = obj.PercentageOfPercentCommission.ToString("N2");
             _inputTxtNotes.TextValue = obj.Notes;
         }
 
         protected override void update()
         {
-            Product.update(selectedRowID(), (Guid)_inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, (Guid)_inputDDLVendors.SelectedValue, _inputTxtNotes.TextValue);
+            Product.update(selectedRowID(), (Guid)_inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, (Guid)_inputDDLVendors.SelectedValue, LIBUtil.Util.zeroNonNumericString(_inputTxtPercentageOfPercentCommission.TextValue), null, _inputTxtNotes.TextValue);
         }
 
         protected override void add()
         {
-            Product.add((Guid)_inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, (Guid)_inputDDLVendors.SelectedValue, _inputTxtNotes.TextValue);
+            Product.add((Guid)_inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, (Guid)_inputDDLVendors.SelectedValue, LIBUtil.Util.zeroNonNumericString(_inputTxtPercentageOfPercentCommission.TextValue), null, _inputTxtNotes.TextValue);
         }
 
         protected override Boolean isInputFieldsValid()
@@ -126,8 +132,8 @@ namespace BinaMitraTextile.MasterData
             else if ((Mode != FormMode.Update && Product.isNameCombinationExist((Guid)_inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, (Guid)_inputDDLVendors.SelectedValue, null))
                 || (Mode == FormMode.Update && Product.isNameCombinationExist((Guid)_inputDDLStoreNames.SelectedValue, _inputTxtNameVendor.TextValue, (Guid)_inputDDLVendors.SelectedValue, selectedRowID())))
                 return _inputDDLStoreNames.SelectedValueError("Name (store) combination with name (vendor) is already in the list");
-            else if (_inputDDLVendors.SelectedValue == null)
-                return _inputDDLVendors.SelectedValueError("Please select a vendor listed in the drop down list");
+            else if (_inputTxtPercentageOfPercentCommission.isEmpty() || !LIBUtil.Util.isNumeric(_inputTxtPercentageOfPercentCommission.TextValue))
+                return _inputTxtPercentageOfPercentCommission.TextError("Invalid number");
 
             return true;
         }

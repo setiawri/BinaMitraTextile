@@ -44,7 +44,7 @@ namespace BinaMitraTextile.Sales
         {
             if(isInputValid())
             {
-                NewInventoryItemId = _inventoryItem.split(in_splitQty.Value);
+                NewInventoryItemId = _inventoryItem.split(in_splitQty.ValueDecimal);
                 this.Close();
             }
         }

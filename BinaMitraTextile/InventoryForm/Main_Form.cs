@@ -472,7 +472,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnUpdateBuyPrice_Click(object sender, EventArgs e)
         {
-            Inventory.updateBuyPrice(_clickedInventoryID, in_BuyPrice.Value);
+            Inventory.updateBuyPrice(_clickedInventoryID, in_BuyPrice.ValueDecimal);
             in_BuyPrice.Value = 0;
             pnlUpdateBuyPrice.Visible = false;
             populateGridview(true);

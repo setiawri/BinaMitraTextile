@@ -382,7 +382,7 @@ namespace BinaMitraTextile.Admin
                 }
             }
 
-            ProductPrice.update(ProductPrice_Ids, in_Price.Value);
+            ProductPrice.update(ProductPrice_Ids, in_Price.ValueDecimal);
 
             resetSelections();
         }

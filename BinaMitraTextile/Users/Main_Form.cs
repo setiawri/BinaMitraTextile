@@ -136,6 +136,7 @@ namespace BinaMitraTextile.Users
             _hiddenID = id.ToString();
             txtName.Text = obj.name;
             cbRoles.SelectedItem = obj.role;
+            in_PercentCommission.Value = obj.percentCommission;
             txtNotes.Text = obj.notes;
             txtCurrentPassword.Enabled = true;
         }
@@ -148,7 +149,7 @@ namespace BinaMitraTextile.Users
                     {
                         if (isInputFieldsValid(false))
                         {
-                            UserAccount obj = new UserAccount(txtName.Text, txtNewPassword.Text, (Roles)cbRoles.SelectedValue, txtNotes.Text);
+                            UserAccount obj = new UserAccount(txtName.Text, txtNewPassword.Text, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, txtNotes.Text);
                             if (!Tools.hasMessage(obj.submitNew()))
                             {
                                 Tools.hasMessage("The new data has been added");
@@ -163,7 +164,7 @@ namespace BinaMitraTextile.Users
                     {
                         if (isInputFieldsValid(true))
                         {
-                            UserAccount obj = new UserAccount(txtName.Text, null, (Roles)cbRoles.SelectedValue, txtNotes.Text);
+                            UserAccount obj = new UserAccount(txtName.Text, null, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, txtNotes.Text);
                             if (!string.IsNullOrEmpty(txtNewPassword.Text))
                                 obj.HashedPassword = txtNewPassword.Text;
 
@@ -254,6 +255,7 @@ namespace BinaMitraTextile.Users
         private void clearForm()
         {
             txtName.Text = "";
+            in_PercentCommission.reset();
             txtNotes.Text = "";
             txtNewPassword.Text = "";
             txtConfirmNewPassword.Text = "";

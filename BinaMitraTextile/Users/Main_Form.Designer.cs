@@ -52,8 +52,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.in_PercentCommission = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtPercentCommission = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -313,8 +313,8 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.in_PercentCommission);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtPercentCommission);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.label7);
@@ -336,6 +336,40 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // in_PercentCommission
+            // 
+            this.in_PercentCommission.Checked = false;
+            this.in_PercentCommission.DecimalPlaces = 2;
+            this.in_PercentCommission.HideUpDown = false;
+            this.in_PercentCommission.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.in_PercentCommission.LabelText = "numeric";
+            this.in_PercentCommission.Location = new System.Drawing.Point(47, 114);
+            this.in_PercentCommission.MaximumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.in_PercentCommission.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_PercentCommission.Name = "in_PercentCommission";
+            this.in_PercentCommission.ShowAllowDecimalCheckbox = false;
+            this.in_PercentCommission.ShowCheckbox = false;
+            this.in_PercentCommission.ShowTextboxOnly = true;
+            this.in_PercentCommission.Size = new System.Drawing.Size(64, 22);
+            this.in_PercentCommission.TabIndex = 109;
+            this.in_PercentCommission.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -345,15 +379,6 @@
             this.label8.Size = new System.Drawing.Size(15, 13);
             this.label8.TabIndex = 108;
             this.label8.Text = "%";
-            // 
-            // txtPercentCommission
-            // 
-            this.txtPercentCommission.Location = new System.Drawing.Point(47, 115);
-            this.txtPercentCommission.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPercentCommission.MaxLength = 30;
-            this.txtPercentCommission.Name = "txtPercentCommission";
-            this.txtPercentCommission.Size = new System.Drawing.Size(138, 20);
-            this.txtPercentCommission.TabIndex = 107;
             // 
             // Main_Form
             // 
@@ -401,6 +426,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_role;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_PercentCommission;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtPercentCommission;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PercentCommission;
     }
 }
