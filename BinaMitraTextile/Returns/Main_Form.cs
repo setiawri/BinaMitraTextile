@@ -8,16 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using LIBUtil;
+
 namespace BinaMitraTextile.Returns
 {
     public partial class Main_Form : Form
     {
+        FormModes _startingMode = FormModes.Normal;
+        Guid? _BrowsingForFakturPajak_Customers_Id = null;
+        public Guid BrowsedItemSelectionId;
+
         /*******************************************************************************************************/
         #region INITIALIZATION
 
         public Main_Form()
         {
             InitializeComponent();
+        }
+        
+        public Main_Form(FormModes startingMode, Guid BrowsingForFakturPajak_Customers_Id) : this()
+        {
+            _startingMode = startingMode;
+            _BrowsingForFakturPajak_Customers_Id = BrowsingForFakturPajak_Customers_Id;
+
+            if (_startingMode == FormModes.Browse)
+            {
+                pnlFilterAndButtons.Visible = false;
+            }
         }
 
         private void btnReturnSale_Click(object sender, EventArgs e)
@@ -98,19 +115,34 @@ namespace BinaMitraTextile.Returns
                 }
             }
 
-            LIBUtil.Util.setGridviewDataSource(grid, true, true, SaleReturn.getAll(Tools.getDate(dtStart, false), Tools.getDate(dtEnd, true), inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false));
+            if(_startingMode == FormModes.Browse)
+                Util.setGridviewDataSource(grid, true, true, SaleReturn.get_by_BrowsingForFakturPajak_Customers_Id((Guid)_BrowsingForFakturPajak_Customers_Id));
+            else
+                Util.setGridviewDataSource(grid, true, true, SaleReturn.getAll(Tools.getDate(dtStart, false), Tools.getDate(dtEnd, true), inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false, null, null));
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), hexbarcode.Name))
+            if (Util.isColumnMatch(sender, e, hexbarcode))
             {
-                Tools.displayForm(new Returns.Print_Form(new Guid(grid.Rows[e.RowIndex].Cells[col_grid_id.Name].Value.ToString())));
+                Util.displayForm(null, new Returns.Print_Form((Guid)Util.getSelectedRowValue(sender, col_grid_id)));
             }
-            else if(LIBUtil.Util.isColumnMatch(sender, e, col_grid_Checked))
+            else if(Util.isColumnMatch(sender, e, col_grid_Checked))
             {
                 SaleReturn.updateCheckedStatus(LIBUtil.Util.getSelectedRowID(grid, col_grid_id), !LIBUtil.Util.getCheckboxValue(sender, e));
                 populateGrid();
+            }
+        }
+
+        private void Grid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return; //header row
+
+            if (_startingMode == FormModes.Browse)
+            {
+                BrowsedItemSelectionId = (Guid)Util.getSelectedRowValue(sender, col_grid_id);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 

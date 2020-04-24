@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using LIBUtil;
+
 namespace BinaMitraTextile.Sales
 {
     public partial class Main_Form : Form
@@ -17,6 +19,10 @@ namespace BinaMitraTextile.Sales
             
         int _lastSelectedRow = -1;
         Color _defaultMasterRowBackColor;
+
+        FormModes _startingMode = FormModes.Normal;
+        Guid? _BrowsingForFakturPajak_Customers_Id = null;
+        public Guid BrowsedItemSelectionId;
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -86,12 +92,26 @@ namespace BinaMitraTextile.Sales
 
                 //Tools.clearWhenSelected(gridMaster);
             }
+
         }
         public Main_Form(bool hasReceivablesOnly) : this()
         {
             chkOnlyHasReceivable.Checked = true;
             dtStart.Checked = false;
             dtEnd.Checked = false;
+        }
+
+        public Main_Form(FormModes startingMode, Guid BrowsingForFakturPajak_Customers_Id) : this()
+        {
+            _startingMode = startingMode;
+            _BrowsingForFakturPajak_Customers_Id = BrowsingForFakturPajak_Customers_Id;
+
+            if (_startingMode == FormModes.Browse)
+            {
+                scMain.Panel1Collapsed = true;
+                ptFilterAndButtons.Visible = false;
+
+            }
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -211,24 +231,34 @@ namespace BinaMitraTextile.Sales
                 }
             }
 
-            Tools.setGridviewDataSource(gridMaster, true, true, 
-                Sale.getAll(
-                    Tools.getDate(dtStart, false), 
-                    Tools.getDate(dtEnd, true), 
-                    inventoryItemID, 
-                    (Guid?)iddl_Customers.SelectedValue, 
-                    saleID, 
-                    chkOnlyHasReceivable.Checked, 
-                    chkOnlyLossProfit.Checked, 
-                    chkReturnedToSupplier.Checked, 
-                    chkOnlyWithCommission.Checked, 
-                    (Guid?)iddl_UserAccounts.SelectedValue,
-                    iclb_ProductStoreNames.getCheckedItemsInArrayTable(ProductStoreName.COL_DB_ID),
-                    iclb_Colors.getCheckedItemsInArrayTable(FabricColor.COL_DB_ID),
-                    chkOnlyNotCompleted.Checked,
-                    chkOnlyManualAdjustment.Checked,
-                    itxt_InventoryCode.ValueText)
-                );
+            if (_startingMode == FormModes.Browse)
+            {
+                Tools.setGridviewDataSource(gridMaster, true, true, Sale.get_by_BrowsingForFakturPajak_Customers_Id((Guid)_BrowsingForFakturPajak_Customers_Id));
+            }
+            else
+            {
+                Tools.setGridviewDataSource(gridMaster, true, true,
+                    Sale.getAll(
+                        Tools.getDate(dtStart, false),
+                        Tools.getDate(dtEnd, true),
+                        inventoryItemID,
+                        (Guid?)iddl_Customers.SelectedValue,
+                        saleID,
+                        chkOnlyHasReceivable.Checked,
+                        chkOnlyLossProfit.Checked,
+                        chkReturnedToSupplier.Checked,
+                        chkOnlyWithCommission.Checked,
+                        (Guid?)iddl_UserAccounts.SelectedValue,
+                        iclb_ProductStoreNames.getCheckedItemsInArrayTable(ProductStoreName.COL_DB_ID),
+                        iclb_Colors.getCheckedItemsInArrayTable(FabricColor.COL_DB_ID),
+                        chkOnlyNotCompleted.Checked,
+                        chkOnlyManualAdjustment.Checked,
+                        itxt_InventoryCode.ValueText,
+                        null,
+                        null,
+                        null)
+                    );
+            }
 
             showCommissionInfo();
 
@@ -340,18 +370,27 @@ namespace BinaMitraTextile.Sales
         {
             if (e.RowIndex == -1) return; //header row
 
-            //reset previous row back color
-            if (_lastSelectedRow > -1)
-                gridMaster.Rows[_lastSelectedRow].DefaultCellStyle.BackColor = _defaultMasterRowBackColor;
+            if(_startingMode == FormModes.Browse)
+            {
+                BrowsedItemSelectionId = (Guid)Util.getSelectedRowValue(sender, col_gridmaster_saleid);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                //reset previous row back color
+                if (_lastSelectedRow > -1)
+                    gridMaster.Rows[_lastSelectedRow].DefaultCellStyle.BackColor = _defaultMasterRowBackColor;
 
-            //show details and summary
-            if(!pnlSummaryAndDetails.Visible)
-                ptSummaryAndDetails.toggle();
-            populateDetails(new Guid(gridMaster.Rows[e.RowIndex].Cells[col_gridmaster_saleid.Name].Value.ToString()));
+                //show details and summary
+                if (!pnlSummaryAndDetails.Visible)
+                    ptSummaryAndDetails.toggle();
+                populateDetails(new Guid(gridMaster.Rows[e.RowIndex].Cells[col_gridmaster_saleid.Name].Value.ToString()));
 
-            _lastSelectedRow = e.RowIndex; //save current row index for resetting the row back color later
-            _defaultMasterRowBackColor = gridMaster.Rows[e.RowIndex].DefaultCellStyle.BackColor; //save original row back color
-            gridMaster.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightBlue; //change row back color
+                _lastSelectedRow = e.RowIndex; //save current row index for resetting the row back color later
+                _defaultMasterRowBackColor = gridMaster.Rows[e.RowIndex].DefaultCellStyle.BackColor; //save original row back color
+                gridMaster.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightBlue; //change row back color
+            }
         }
 
         private void gridDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)

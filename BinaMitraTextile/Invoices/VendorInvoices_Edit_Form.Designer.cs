@@ -28,65 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblDPP = new System.Windows.Forms.Label();
-            this.txtDPP = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.txtNotes = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTaxNo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtTOP = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblActualValue = new System.Windows.Forms.Label();
-            this.chkSetorTunai = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.in_TOP = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.itxt_InvoiceNo = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.idtp_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.SuspendLayout();
-            // 
-            // lblDPP
-            // 
-            this.lblDPP.AutoSize = true;
-            this.lblDPP.Location = new System.Drawing.Point(94, 88);
-            this.lblDPP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDPP.Name = "lblDPP";
-            this.lblDPP.Size = new System.Drawing.Size(29, 13);
-            this.lblDPP.TabIndex = 1005;
-            this.lblDPP.Text = "DPP";
-            // 
-            // txtDPP
-            // 
-            this.txtDPP.Location = new System.Drawing.Point(127, 85);
-            this.txtDPP.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDPP.Name = "txtDPP";
-            this.txtDPP.Size = new System.Drawing.Size(141, 20);
-            this.txtDPP.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 1007;
-            this.label1.Text = "No Faktur";
-            // 
-            // txtInvoiceNo
-            // 
-            this.txtInvoiceNo.Location = new System.Drawing.Point(127, 37);
-            this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtInvoiceNo.MaxLength = 50;
-            this.txtInvoiceNo.Name = "txtInvoiceNo";
-            this.txtInvoiceNo.Size = new System.Drawing.Size(141, 20);
-            this.txtInvoiceNo.TabIndex = 0;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(112, 211);
+            this.btnSubmit.Location = new System.Drawing.Point(68, 297);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(88, 28);
@@ -95,146 +48,150 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // txtNotes
+            // in_TOP
             // 
-            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNotes.Location = new System.Drawing.Point(127, 153);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNotes.MaxLength = 500;
-            this.txtNotes.Multiline = true;
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(141, 46);
-            this.txtNotes.TabIndex = 3;
+            this.in_TOP.Checked = false;
+            this.in_TOP.DecimalPlaces = 0;
+            this.in_TOP.HideUpDown = false;
+            this.in_TOP.Increment = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.in_TOP.LabelText = "TOP";
+            this.in_TOP.Location = new System.Drawing.Point(32, 106);
+            this.in_TOP.MaximumValue = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            this.in_TOP.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_TOP.Name = "in_TOP";
+            this.in_TOP.ShowAllowDecimalCheckbox = false;
+            this.in_TOP.ShowCheckbox = false;
+            this.in_TOP.ShowTextboxOnly = false;
+            this.in_TOP.Size = new System.Drawing.Size(161, 40);
+            this.in_TOP.TabIndex = 2;
+            this.in_TOP.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
-            // label5
+            // in_Amount
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 153);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 1010;
-            this.label5.Text = "Notes";
+            this.in_Amount.Checked = false;
+            this.in_Amount.DecimalPlaces = 2;
+            this.in_Amount.HideUpDown = false;
+            this.in_Amount.Increment = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.in_Amount.LabelText = "Total Amount";
+            this.in_Amount.Location = new System.Drawing.Point(32, 152);
+            this.in_Amount.MaximumValue = new decimal(new int[] {
+            1410065408,
+            2,
+            0,
+            0});
+            this.in_Amount.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_Amount.Name = "in_Amount";
+            this.in_Amount.ShowAllowDecimalCheckbox = false;
+            this.in_Amount.ShowCheckbox = false;
+            this.in_Amount.ShowTextboxOnly = false;
+            this.in_Amount.Size = new System.Drawing.Size(161, 40);
+            this.in_Amount.TabIndex = 3;
+            this.in_Amount.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
-            // label2
+            // itxt_InvoiceNo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(81, 64);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 1012;
-            this.label2.Text = "Tax No";
+            this.itxt_InvoiceNo.IsBrowseMode = false;
+            this.itxt_InvoiceNo.LabelText = "Invoice No";
+            this.itxt_InvoiceNo.Location = new System.Drawing.Point(32, 59);
+            this.itxt_InvoiceNo.MaxLength = 32767;
+            this.itxt_InvoiceNo.MultiLine = false;
+            this.itxt_InvoiceNo.Name = "itxt_InvoiceNo";
+            this.itxt_InvoiceNo.PasswordChar = '\0';
+            this.itxt_InvoiceNo.RowCount = 1;
+            this.itxt_InvoiceNo.ShowDeleteButton = false;
+            this.itxt_InvoiceNo.ShowFilter = false;
+            this.itxt_InvoiceNo.ShowTextboxOnly = false;
+            this.itxt_InvoiceNo.Size = new System.Drawing.Size(161, 41);
+            this.itxt_InvoiceNo.TabIndex = 1;
+            this.itxt_InvoiceNo.ValueText = "";
             // 
-            // txtTaxNo
+            // itxt_Notes
             // 
-            this.txtTaxNo.Location = new System.Drawing.Point(127, 61);
-            this.txtTaxNo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTaxNo.Name = "txtTaxNo";
-            this.txtTaxNo.Size = new System.Drawing.Size(141, 20);
-            this.txtTaxNo.TabIndex = 1;
+            this.itxt_Notes.IsBrowseMode = false;
+            this.itxt_Notes.LabelText = "Notes";
+            this.itxt_Notes.Location = new System.Drawing.Point(32, 198);
+            this.itxt_Notes.MaxLength = 32767;
+            this.itxt_Notes.MultiLine = true;
+            this.itxt_Notes.Name = "itxt_Notes";
+            this.itxt_Notes.PasswordChar = '\0';
+            this.itxt_Notes.RowCount = 4;
+            this.itxt_Notes.ShowDeleteButton = false;
+            this.itxt_Notes.ShowFilter = false;
+            this.itxt_Notes.ShowTextboxOnly = false;
+            this.itxt_Notes.Size = new System.Drawing.Size(161, 86);
+            this.itxt_Notes.TabIndex = 4;
+            this.itxt_Notes.ValueText = "";
             // 
-            // label3
+            // idtp_Timestamp
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(94, 112);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 1014;
-            this.label3.Text = "TOP";
-            // 
-            // txtTOP
-            // 
-            this.txtTOP.Location = new System.Drawing.Point(127, 109);
-            this.txtTOP.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTOP.Name = "txtTOP";
-            this.txtTOP.Size = new System.Drawing.Size(141, 20);
-            this.txtTOP.TabIndex = 1013;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 18);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 1015;
-            this.label4.Text = "Actual Amount";
-            // 
-            // lblActualValue
-            // 
-            this.lblActualValue.AutoSize = true;
-            this.lblActualValue.Location = new System.Drawing.Point(124, 18);
-            this.lblActualValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblActualValue.Name = "lblActualValue";
-            this.lblActualValue.Size = new System.Drawing.Size(25, 13);
-            this.lblActualValue.TabIndex = 1016;
-            this.lblActualValue.Text = "000";
-            // 
-            // chkSetorTunai
-            // 
-            this.chkSetorTunai.AutoSize = true;
-            this.chkSetorTunai.Location = new System.Drawing.Point(127, 134);
-            this.chkSetorTunai.Name = "chkSetorTunai";
-            this.chkSetorTunai.Size = new System.Drawing.Size(15, 14);
-            this.chkSetorTunai.TabIndex = 1017;
-            this.chkSetorTunai.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(61, 134);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 1018;
-            this.label6.Text = "Setor Tunai";
+            this.idtp_Timestamp.Checked = true;
+            this.idtp_Timestamp.CustomFormat = "dd/MM/yyyy";
+            this.idtp_Timestamp.DefaultCheckedValue = false;
+            this.idtp_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_Timestamp.LabelText = "Date";
+            this.idtp_Timestamp.Location = new System.Drawing.Point(32, 12);
+            this.idtp_Timestamp.Name = "idtp_Timestamp";
+            this.idtp_Timestamp.ShowCheckBox = false;
+            this.idtp_Timestamp.ShowDateTimePickerOnly = false;
+            this.idtp_Timestamp.ShowUpAndDown = false;
+            this.idtp_Timestamp.Size = new System.Drawing.Size(161, 41);
+            this.idtp_Timestamp.TabIndex = 0;
+            this.idtp_Timestamp.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.idtp_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
             // 
             // VendorInvoices_Edit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 256);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.chkSetorTunai);
-            this.Controls.Add(this.lblActualValue);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtTOP);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtTaxNo);
-            this.Controls.Add(this.txtNotes);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(224, 336);
+            this.Controls.Add(this.idtp_Timestamp);
+            this.Controls.Add(this.itxt_Notes);
+            this.Controls.Add(this.itxt_InvoiceNo);
+            this.Controls.Add(this.in_Amount);
+            this.Controls.Add(this.in_TOP);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtInvoiceNo);
-            this.Controls.Add(this.lblDPP);
-            this.Controls.Add(this.txtDPP);
             this.Name = "VendorInvoices_Edit_Form";
-            this.Text = "VENDOR INVOICES";
+            this.Text = "INVOICE";
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblDPP;
-        private System.Windows.Forms.TextBox txtDPP;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtInvoiceNo;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.TextBox txtNotes;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTaxNo;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtTOP;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblActualValue;
-        private System.Windows.Forms.CheckBox chkSetorTunai;
-        private System.Windows.Forms.Label label6;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_TOP;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Amount;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_InvoiceNo;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Notes;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp;
     }
 }

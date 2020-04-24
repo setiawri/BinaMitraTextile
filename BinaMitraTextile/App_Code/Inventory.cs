@@ -238,7 +238,28 @@ namespace BinaMitraTextile
         public static DataTable get(bool includeInactive, bool last3Months, int? code, DataTable dtProductStoreNameID, DataTable dtGradeID, DataTable dtProductWidthID, DataTable dtLengthUnitID, 
             DataTable dtColorID, Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly)
         {
-            //Tools.startProgressDisplay("Donwloading data...");
+
+            //ERROR INVALID ARRAY SIZE
+            //SqlQueryResult result = DBConnection.query(
+            //    true,
+            //    DBUtil.ActiveSqlConnection,
+            //    QueryTypes.FillByAdapter,
+            //    "inventory_getall",
+            //        DBConnection.createTableParameters(
+            //            new SqlQueryTableParameterGuid("grade_id_list", dtGradeID),
+            //            new SqlQueryTableParameterGuid("productstorename_id_list", dtProductStoreNameID),
+            //            new SqlQueryTableParameterGuid("productwidth_id_list", dtProductWidthID),
+            //            new SqlQueryTableParameterGuid("lengthunit_id_list", dtLengthUnitID),
+            //            new SqlQueryTableParameterGuid("color_id_list", dtColorID)
+            //        ),
+            //    new SqlQueryParameter("include_inactive", SqlDbType.Bit, includeInactive),
+            //    new SqlQueryParameter("last3Months", SqlDbType.Bit, last3Months),
+            //    new SqlQueryParameter("code", SqlDbType.VarChar, code),
+            //    new SqlQueryParameter("FILTER_ShowNotBookedOnly", SqlDbType.Bit, showNotBookedOnly),
+            //    new SqlQueryParameter(COL_VENDORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(vendorID)),
+            //    new SqlQueryParameter(COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(vendorInvoiceID))
+            //    );
+            //return result.Datatable;
 
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand("inventory_getall", DBUtil.ActiveSqlConnection))
@@ -249,6 +270,8 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@last3Months", SqlDbType.Bit).Value = last3Months;
                 cmd.Parameters.Add("@code", SqlDbType.VarChar).Value = code;
                 cmd.Parameters.Add("@FILTER_ShowNotBookedOnly", SqlDbType.Bit).Value = showNotBookedOnly;
+                cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
+                cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorInvoiceID);
 
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
                 DBUtil.addListParameter(cmd, "@productstorename_id_list", dtProductStoreNameID);
@@ -256,18 +279,9 @@ namespace BinaMitraTextile
                 DBUtil.addListParameter(cmd, "@lengthunit_id_list", dtLengthUnitID);
                 DBUtil.addListParameter(cmd, "@color_id_list", dtColorID);
 
-                //cmd.Parameters.Add("@grade_id", SqlDbType.UniqueIdentifier).Value = (object)gradeID ?? DBNull.Value;
-                //cmd.Parameters.Add("@product_id", SqlDbType.UniqueIdentifier).Value = (object)productID ?? DBNull.Value;
-                //cmd.Parameters.Add("@product_width_id", SqlDbType.UniqueIdentifier).Value = (object)productWidthID ?? DBNull.Value;
-                //cmd.Parameters.Add("@length_unit_id", SqlDbType.UniqueIdentifier).Value = (object)lengthUnitID ?? DBNull.Value;
-                //cmd.Parameters.Add("@color_id", SqlDbType.UniqueIdentifier).Value = (object)colorID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
-                cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorInvoiceID);
-
                 adapter.SelectCommand = cmd;
                 adapter.Fill(dataTable);
             }
-            //Tools.stopProgressDisplay();
 
             return dataTable;
         }

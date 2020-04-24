@@ -138,6 +138,7 @@ namespace BinaMitraTextile.InventoryForm
             Tools.displayForm(form);
             if (form.DialogResult == DialogResult.OK)
             {
+                _browsedProductID = form.BrowsedItemSelectionId;
                 Product obj = new Product(form.BrowsedItemSelectionId);
                 populateProductName(obj.StoreName, obj.NameVendor);
 

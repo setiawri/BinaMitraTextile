@@ -195,6 +195,16 @@ namespace BinaMitraTextile
             itxt_Password.focus();
         }
 
+        private void Login_Form_Shown(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Settings.autologinusername))
+            {
+                itxt_Username.ValueText = Settings.autologinusername;
+                if (isConnectedToServer())
+                    authenticate();
+            }
+        }
+
         #endregion
         /*******************************************************************************************************/
 

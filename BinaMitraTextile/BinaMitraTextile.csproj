@@ -87,6 +87,12 @@
     <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments.Designer.cs">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales\MasterData_v1_FakturPajaks_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\MasterData_v1_FakturPajaks_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_FakturPajaks_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\MasterData_v1_Products_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,7 @@
     <Compile Include="Admin\Samples1_Form.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="App_Code\FakturPajak.cs" />
     <Compile Include="App_Code\Payment.cs" />
     <Compile Include="App_Code\CustomerTerm.cs" />
     <Compile Include="App_Code\SaleOrder.cs" />
@@ -564,6 +571,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\MasterData_v1_CustomerSaleAdjustments.resx">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales\MasterData_v1_FakturPajaks_Form.resx">
+      <DependentUpon>MasterData_v1_FakturPajaks_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_Products_Form.resx">
       <DependentUpon>MasterData_v1_Products_Form.cs</DependentUpon>

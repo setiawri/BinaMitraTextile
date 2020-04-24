@@ -15,11 +15,28 @@ namespace BinaMitraTextile
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
-        #region INITIALIZATION
+        #region CONSTRUCTOR
 
         public Container_Form()
         {
             InitializeComponent();
+        }
+
+        #endregion INITIALIZATION
+        /*******************************************************************************************************/
+        #region CLASS METHODS
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            setupControls();
+            populatePageData();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            if (lnkSummary.Visible)
+                Util.displayMDIChild(new Main_Form());
+            //Util.displayMDIChild(new Invoices.VendorInvoices_Form());
         }
 
         private void setupControls()
@@ -36,39 +53,23 @@ namespace BinaMitraTextile
         {
             if (GlobalData.UserAccount.role != Roles.Super)
             {
-                menu_users.Visible = false;
+                if (GlobalData.UserAccount.role != Roles.Assistant)
+                {
+                    Sales_FakturPajakKeluaran.Visible = false;
+                    Sales_Kontrabon.Visible = false;
 
-                menu_test.Visible = false;
+                    Sales_Divider_Penagihan.Visible = false;
+                    Inventory_VendorInvoices.Visible = false;
+                    Inventory_FakturPajakMasukan.Visible = false;
+                }
 
-                menu_inventory_printbarcodes.Visible = false;
-                menu_inventory_invoices.Visible = false;
+                Inventory_Barcodes.Visible = false;
 
-                menu_reports_financial.Visible = false;
-                menu_reports_tax.Visible = false;
+                Admin_PettyCashCategories.Visible = false;
 
-                menu_admin_vendorinvoices.Visible = false;
+                Internal.Visible = false;
 
-                menu_account_log.Visible = false;
-            }
-
-            if (GlobalData.UserAccount.role == Roles.Assistant)
-            {
-                menu_sales.Visible = false;
-                menu_inventory.Visible = false;
-                menu_returns.Visible = false;
-                menu_customercredit.Visible = false;
-                menu_admin.Visible = false;
-                menu_users.Visible = false;
-                menu_reports.Visible = false;
-                menu_test.Visible = false;
-                menu_account_salescomission.Visible = false;
-                menu_account_log.Visible = false;
-
-                lnkCreateSales.Visible = false;
-                lnkSales.Visible = false;
-                lnkShipping.Visible = false;
-                lnkPettyCash.Visible = false;
-                lnkSummary.Visible = false;
+                Account_Log.Visible = false;
             }
         }
 
@@ -76,252 +77,9 @@ namespace BinaMitraTextile
         {
         }
 
-        #endregion INITIALIZATION
+        #endregion CLASS METHODS
         /*******************************************************************************************************/
-        #region MENU - INVENTORY
-
-        private void menu_inventory_samples_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.Samples1_Form(FormMode.New));
-        }
-
-        private void menu_inventory_stock_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new InventoryForm.Main_Form());
-        }
-
-        private void menu_inventory_opname_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
-        }
-
-        private void menu_inventory_printbarcodes_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new InventoryForm.BarcodePrint_Form());
-        }
-
-        private void menu_inventory_po_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new POs.Main_Form());
-        }
-
-        private void menu_inventory_stocklevel_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.StockLevel_Form(FormMode.New));
-        }
-
-        private void menu_inventory_invoices_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Invoices.VendorInvoices_Form());
-        }
-
-        #endregion MENU - INVENTORY
-        /*******************************************************************************************************/
-        #region RETURNS
-
-        private void menu_returns_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Returns.Main_Form());
-        }
-
-        #endregion RETURNS
-        /*******************************************************************************************************/
-        #region MENU - CUSTOMER CREDIT
-
-        private void menu_customercredit_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new CustomerCredits.Main_Form());
-        }
-
-        #endregion MENU - CUSTOMER CREDIT
-        /*******************************************************************************************************/
-        #region MENU - ADMIN
-
-        private void menu_admin_vendorinvoices_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Invoices.VendorInvoices_Form());
-        }
-
-        private void menu_admin_vendors_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.Vendors_Form(FormMode.Search));
-        }
-
-        private void menu_admin_length_units_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.LengthUnits_Form(FormMode.Search));
-        }
-
-        private void menu_admin_customers_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.Customers_Form(FormMode.Search));
-        }
-
-        private void menu_admin_cities_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.Cities_Form(FormMode.Search));
-        }
-
-        private void menu_admin_products_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.MasterData_v1_Products_Form(FormModes.Search));
-        }
-
-        private void menu_admin_prices_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.ProductPrices_Form());
-        }
-
-        private void menu_admin_widths_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.ProductWidths_Form(FormMode.Search));
-        }
-
-        private void menu_admin_colors_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.FabricColors_Form(FormMode.Search));
-        }
-
-        private void menu_admin_grades_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.Grades_Form(FormMode.Search));
-        }
-
-        private void menu_admin_states_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.States_Form(FormMode.Search));
-        }
-
-        private void menu_admin_productstorenames_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.ProductStoreNames_Form(FormMode.Search));
-        }
-
-        private void menu_admin_angkutan_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.Transports_Form(FormMode.Search));
-        }
-
-        private void menu_admin_customersaleadjustments_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.MasterData_v1_CustomerSaleAdjustments(FormModes.Add));
-        }
-
-        private void menu_admin_pettycash_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new FinancialRecords.PettyCash_Form());
-        }
-
-        private void menu_admin_pettycashcategories_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.PettyCashRecordsCategories_Form(FormMode.New));
-        }
-
-        private void menu_admin_customerterms_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.MasterData_v1_CustomerTerms_Form());
-        }
-
-        #endregion MENU - ADMIN
-        /*******************************************************************************************************/
-        #region MENU - USERS
-
-        private void menu_users_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Users.Main_Form());
-        }
-
-        #endregion MENU - USERS
-        /*******************************************************************************************************/
-        #region MENU - TEST
-
-        private void menu_test_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Test.Main_Form());
-        }
-
-        #endregion MENU - TEST
-        /*******************************************************************************************************/
-        #region MENU - QUIT
-
-        private void menu_quit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        #endregion MENU - QUIT
-        /*******************************************************************************************************/
-        #region MENU - REPORTS
-
-        private void menu_reports_financial_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Reports.Financial_Overview_Form());
-        }
-
-        private void menu_reports_sales_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Reports.Sales_Form());
-        }
-
-        private void menu_reports_tax_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Reports.Taxes_Form());
-        }
-
-        #endregion MENU - REPORTS
-        /*******************************************************************************************************/
-        #region MENU - ACCOUNT
-            
-        private void menu_account_password_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Users.PasswordChange_Form());
-        }
-
-        private void menu_account_salescomission_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Users.SalesComission_Form());
-        }
-
-        private void menu_account_log_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Logs.Main_Form(GlobalData.UserAccount.id));
-        }
-
-        #endregion
-        /*******************************************************************************************************/
-        #region MENU - SALES
-
-        private void menu_sales_list_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Sales.Main_Form());
-        }
-
-        private void menu_sales_saleorders_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Sales.SaleOrders_Form());
-        }
-
-        #endregion
-        /*******************************************************************************************************/
-        #region MENU - TO DO LIST
-
-        private void menu_todolist_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.MasterData_v1_ToDoList_Form(LIBUtil.FormModes.Add));
-        }
-
-        #endregion
-        /*******************************************************************************************************/
-        #region CLASS METHODS
-
-        private void Form_Load(object sender, EventArgs e)
-        {
-            setupControls();
-            populatePageData();
-
-            if(lnkSummary.Visible)
-                Util.displayMDIChild(new Main_Form());
-        }
+        #region SHORTCUT LINKS
 
         private void LnkCreateSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -343,11 +101,6 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Main_Form());
         }
 
-        private void BtnOpname_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
-        }
-
         private void LnlSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new Sales.Main_Form());
@@ -363,26 +116,237 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Sales.SaleOrders_Form());
         }
 
-        private void Container_Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DBUtil.terminateActiveSqlConnection();
-        }
-
         private void LnkSamples_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new Admin.Samples1_Form(FormMode.New));
         }
 
-        private void Menu_admin_kontrabon_Click(object sender, EventArgs e)
+        private void BtnOpname_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
+        }
+
+        #endregion SHORTCUT LINKS
+        /*******************************************************************************************************/
+        #region MENU - INVENTORY
+
+        private void Inventory_Samples_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.Samples1_Form(FormMode.New));
+        }
+
+        private void Inventory_Opname_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
+        }
+
+        private void Inventory_Barcodes_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.BarcodePrint_Form());
+        }
+
+        private void Inventory_StockLevel_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.StockLevel_Form(FormMode.New));
+        }
+
+        private void Inventory_Daftar_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.Main_Form());
+        }
+
+        private void Inventory_Products_Daftar_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_Products_Form(FormModes.Search));
+        }
+
+        private void Inventory_Products_Grades_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.Grades_Form(FormMode.Search));
+        }
+
+        private void Inventory_Products_Units_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.LengthUnits_Form(FormMode.Search));
+        }
+
+        private void Inventory_Products_Prices_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.ProductPrices_Form());
+        }
+
+        private void Inventory_Products_StoreNames_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.ProductStoreNames_Form(FormMode.Search));
+        }
+
+        private void Inventory_Products_Widths_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.ProductWidths_Form(FormMode.Search));
+        }
+
+        private void Inventory_Products_Vendors_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.Vendors_Form(FormMode.Search));
+        }
+
+        private void Inventory_Products_Colors_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.FabricColors_Form(FormMode.Search));
+        }
+
+        private void Inventory_VendorInvoices_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Invoices.VendorInvoices_Form());
+        }
+
+        private void Inventory_PurchaseOrders_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new POs.Main_Form());
+        }
+
+        private void Inventory_FakturPajakMasukan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion MENU - INVENTORY
+        /*******************************************************************************************************/
+        #region MENU - ADMIN
+            
+        private void Admin_Angkutan_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.Transports_Form(FormMode.Search));
+        }
+
+        private void Admin_Cities_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.Cities_Form(FormMode.Search));
+        }
+
+        private void Admin_States_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.States_Form(FormMode.Search));
+        }
+
+        private void Admin_Todolist_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_ToDoList_Form(FormModes.Add));
+        }
+
+        private void Admin_PettyCash_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new FinancialRecords.PettyCash_Form());
+        }
+
+        private void Admin_PettyCashCategories_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.PettyCashRecordsCategories_Form(FormMode.New));
+        }
+
+        #endregion MENU - ADMIN
+        /*******************************************************************************************************/
+        #region MENU - ACCOUNT
+
+        private void Account_Log_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Logs.Main_Form(GlobalData.UserAccount.id));
+        }
+
+        private void Account_Peraturan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Account_Komisi_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Users.SalesComission_Form());
+        }
+
+        private void Account_Password_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Users.PasswordChange_Form());
+        }
+
+        #endregion
+        /*******************************************************************************************************/
+        #region MENU - SALES
+
+        private void Sales_SaleOrders_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Sales.SaleOrders_Form());
+        }
+
+        private void Sales_Daftar_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Sales.Main_Form());
+        }
+
+        private void Sales_FakturPajakKeluaran_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
+        }
+
+        private void Sales_Returns_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Returns.Main_Form());
+        }
+
+        private void Sales_Customers_Credits_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new CustomerCredits.Main_Form());
+        }
+
+        private void Sales_Kontrabon_Click(object sender, EventArgs e)
         {
             Util.displayMDIChild(new Sales.Kontrabon_Form());
         }
 
-        #endregion CLASS METHODS
-        /*******************************************************************************************************/
-        #region ----
+        private void Sales_Customers_Daftar_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new MasterData.Customers_Form(FormMode.Search));
+        }
+
+        private void Sales_Customers_Discounts_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_CustomerSaleAdjustments(FormModes.Add));
+        }
+
+        private void Sales_Customers_DebLimits_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_CustomerTerms_Form());
+        }
 
         #endregion
+        /*******************************************************************************************************/
+        #region MENU - INTERNAL
+
+        private void Internal_Test_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Test.Main_Form());
+        }
+
+        private void Internal_UserAccounts_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Users.Main_Form());
+        }
+
+        private void Internal_Reports_Taxes_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Reports.Taxes_Form());
+        }
+
+        private void Internal_Reports_Sales_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Reports.Sales_Form());
+        }
+
+        private void Internal_Reports_Financial_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Reports.Financial_Overview_Form());
+        }
+
+        #endregion MENU - INTERNAL
         /*******************************************************************************************************/
     }
 }

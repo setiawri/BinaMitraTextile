@@ -89,7 +89,7 @@ namespace BinaMitraTextile
 
         #region DATABASE METHODS
         
-        public static void submitItems(List<SaleItem> SaleItems, string SaleBarcode)
+        public static void submitItems(List<SaleItem> SaleItems, string SaleBarcode, Guid Customers_Id)
         {
             foreach (SaleItem item in SaleItems)
             {
@@ -102,7 +102,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@sell_price", SqlDbType.Decimal).Value = item.sell_price;
                     cmd.Parameters.Add("@adjustment", SqlDbType.Decimal).Value = item.adjustment;
                     cmd.Parameters.Add("@" + COL_DB_isManualAdjustment, SqlDbType.Bit).Value = item.isManualAdjustment;
-                    cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+                    cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = Customers_Id;
 
                     cmd.ExecuteNonQuery();
 

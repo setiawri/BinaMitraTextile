@@ -31,7 +31,7 @@ namespace BinaMitraTextile.Invoices
         {
             if(isInputValid())
             {
-                VendorInvoice.add(txtInvoiceNo.Text);
+                VendorInvoice.add(itxt_VendorInvoices_No.ValueText, (Guid)iddl_Vendors.SelectedValue);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -39,14 +39,24 @@ namespace BinaMitraTextile.Invoices
 
         private bool isInputValid()
         {
-            DBUtil.sanitize(txtInvoiceNo);
-
-            if (string.IsNullOrWhiteSpace(txtInvoiceNo.Text))
-                return Tools.inputError<TextBox>(txtInvoiceNo, "Invalid Invoice number");
-            else if (VendorInvoice.isInvoiceNoExist(null, txtInvoiceNo.Text))
-                return Tools.inputError<TextBox>(txtInvoiceNo, "Invoice number already exists");
+            if (itxt_VendorInvoices_No.isEmpty())
+                return itxt_VendorInvoices_No.isValueError("Invalid Invoice number");
+            else if (!iddl_Vendors.isValidSelectedValue())
+                return iddl_Vendors.SelectedValueError("Invalid Vendor");
+            else if (VendorInvoice.isInvoiceNoExist(null, itxt_VendorInvoices_No.ValueText))
+                return itxt_VendorInvoices_No.isValueError("Invoice number already exists");
 
             return true;
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            Vendor.populateInputControlDropDownList(iddl_Vendors, true);
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            itxt_VendorInvoices_No.focus();
         }
     }
 }

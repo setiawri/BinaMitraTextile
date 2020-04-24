@@ -28,6 +28,7 @@ namespace BinaMitraTextile
         static void runApplication()
         {
             Application.Run(new Login_Form());
+            DBUtil.terminateActiveSqlConnection();
         }
     }
 }

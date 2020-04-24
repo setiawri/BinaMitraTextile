@@ -34,8 +34,10 @@ namespace BinaMitraTextile
         public const string COL_DB_TAXNO = "tax_no";
         public const string COL_DB_Notes = "notes";
         public const string COL_DB_SaleCommission_Users_Id = "SaleCommission_Users_Id";
+        public const string COL_DB_FakturPajaks_Id = "FakturPajaks_Id";
 
         public const string COL_TRANSPORTNAME = "transport_name";
+        public const string COL_FakturPajaks_No = "FakturPajaks_No";
         public const string COL_COMPLETED = "completed";
         public const string COL_PROFIT = "profit";
         public const string COL_PROFITPERCENT = "profit_percent";
@@ -58,6 +60,9 @@ namespace BinaMitraTextile
         public const string FILTER_OnlyManualAdjustment = "FILTER_OnlyManualAdjustment";
 
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
+        public const string FILTER_BrowsingForFakturPajak_Customers_Id = "FILTER_BrowsingForFakturPajak_Customers_Id";
+
+        public const string FILTER_VendorInvoices_Id = "FILTER_VendorInvoices_Id";
 
         //Charting ****************************************************************
         public const string COL_CHART_SALEYEARMONTH = "sale_year_month";
@@ -116,8 +121,10 @@ namespace BinaMitraTextile
         public string TaxNo;
         public bool ReturnedToSupplier = false;
         public Guid? SaleCommission_Users_Id;
+        public Guid? FakturPajaks_Id;
 
         public string TransportName = "";
+        public string FakturPajaks_No;
 
         public DataTable sale_items;
         public DataTable datatable;
@@ -159,14 +166,16 @@ namespace BinaMitraTextile
                 TaxNo = DBUtil.parseData<string>(row, COL_DB_TAXNO);
                 ReturnedToSupplier = LIBUtil.Util.wrapNullable<bool>(row, COL_DB_RETURNEDTOSUPPLIER);
                 SaleCommission_Users_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleCommission_Users_Id);
+                FakturPajaks_Id = DBUtil.parseData<Guid?>(row, COL_DB_FakturPajaks_Id);
 
                 TransportName = DBUtil.parseData<string>(row, COL_TRANSPORTNAME);
+                FakturPajaks_No = DBUtil.parseData<string>(row, COL_FakturPajaks_No);
 
                 sale_items = SaleItem.getItems(id);
             }
         }
 
-        public Sale(Guid CustomerID, Guid? transportID, decimal shippingCost, string Notes)
+        public Sale(Guid CustomerID, Guid? transportID, decimal shippingCost, bool returnedToSupplier, string Notes)
         {
             id = Guid.NewGuid();
             time_stamp = DateTime.Now;
@@ -179,6 +188,7 @@ namespace BinaMitraTextile
             if(transportID != null)
                 TransportName = (new Transport((Guid)transportID)).Name;
             ShippingCost = shippingCost;
+            ReturnedToSupplier = returnedToSupplier;
         }
 
         #endregion CONSTRUCTORS
@@ -196,6 +206,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
                     cmd.Parameters.Add("@voided", SqlDbType.Bit).Value = voided;
+                    cmd.Parameters.Add("@" + COL_DB_RETURNEDTOSUPPLIER, SqlDbType.Bit).Value = ReturnedToSupplier;
                     cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = customer_id;
                     cmd.Parameters.Add("@customer_info", SqlDbType.VarChar).Value = customer_info;
                     cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = user_id;
@@ -212,13 +223,43 @@ namespace BinaMitraTextile
                 }
 
                 //submit sale items
-                SaleItem.submitItems(getListOfSaleItems(SaleItems), barcode);
+                SaleItem.submitItems(getListOfSaleItems(SaleItems), barcode, customer_id);
             }
             catch (Exception ex) { return ex.Message; }
 
             return string.Empty;
         }
 
+
+        public static void update(Guid Id, Guid? FakturPajaks_Id)
+        {
+            Sale objOld = new Sale(Id);
+            string log = "";
+            log = ActivityLog.appendChange(log, objOld.FakturPajaks_No, new FakturPajak(FakturPajaks_Id).No, "Faktur Pajak: '{0}' to '{1}'");
+            
+            if (string.IsNullOrEmpty(log))
+                Util.displayMessageBoxError("No changes to record");
+            else
+            {
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBUtil.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "sale_update_FakturPajaks_Id",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
+                    new SqlQueryParameter(COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier, FakturPajaks_Id)
+                );
+
+                if (result.IsSuccessful)
+                    ActivityLog.submit(Id, String.Format("Updated: {0}", log));
+
+                //update faktur pajak log
+                if (FakturPajaks_Id == null)
+                    ActivityLog.submit((Guid)objOld.FakturPajaks_Id, String.Format("Removed: {0}", objOld.barcode));
+                else
+                    ActivityLog.submit((Guid)FakturPajaks_Id, String.Format("Added: {0}", objOld.barcode));
+            }
+        }
 
         public static string update(Guid saleID, DataTable saleItems, Guid? transportID, decimal shippingCost, string notes)
         {
@@ -325,9 +366,26 @@ namespace BinaMitraTextile
             }
         }
 
+        public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
+        {
+            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null);
+        }
+        public static DataTable get_by_BrowsingForFakturPajak_Customers_Id(Guid BrowsingForFakturPajak_Customers_Id)
+        {
+            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, null);
+        }
+        public static DataTable get_by_VendorInvoices_Id(Guid VendorInvoices_Id)
+        {
+            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, VendorInvoices_Id);
+        }
+        public static DataTable get()
+        {
+            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, null);
+        }
         public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleID, 
             bool onlyHasReceivable, bool onlyLossProfit, bool onlyReturnedToSupplier, bool onlyWithCommission, Guid? salesUserAccountID, 
-            DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode)
+            DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode,
+            Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, Guid? VendorInvoices_Id)
         {
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sale_getall", DBUtil.ActiveSqlConnection))
@@ -344,8 +402,11 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@include_special_user_only", SqlDbType.Bit).Value = GlobalData.UserAccount.role == Roles.Super;
                 cmd.Parameters.Add("@" + Sale.COL_DB_RETURNEDTOSUPPLIER, SqlDbType.Bit).Value = onlyReturnedToSupplier;
                 cmd.Parameters.Add("@" + FILTER_OnlyNotCompleted, SqlDbType.Bit).Value = onlyNotCompleted;
-                cmd.Parameters.Add("@" + FILTER_Inventory_Code, SqlDbType.VarChar).Value = LIBUtil.Util.wrapNullable<string>(inventoryCode);
+                cmd.Parameters.Add("@" + FILTER_Inventory_Code, SqlDbType.VarChar).Value = Util.wrapNullable<string>(inventoryCode);
                 cmd.Parameters.Add("@" + FILTER_OnlyManualAdjustment, SqlDbType.Bit).Value = onlyManualAdjustment;
+                cmd.Parameters.Add("@" + COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(FakturPajaks_Id);
+                cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Customers_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Customers_Id);
+                cmd.Parameters.Add("@" + FILTER_VendorInvoices_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(VendorInvoices_Id);
                 if (onlyWithCommission)
                 {
                     if (salesUserAccountID == null)

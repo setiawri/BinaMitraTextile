@@ -43,8 +43,6 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupFields()
         {
-            disableFieldActive();
-
             setColumnsDataPropertyNames(CustomerSaleAdjustment.COL_DB_ID, null, null, null, null, null);
 
             Customer.populateInputControlDropDownList(iddl_Customers, false);

@@ -113,7 +113,7 @@ namespace BinaMitraTextile.Test
 
         private void btnAddCustomerInfoToSalesTable_Click(object sender, EventArgs e)
         {
-            foreach (DataRow sale in Sale.getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null).Rows)
+            foreach (DataRow sale in Sale.get().Rows)
             {
                 string sql = String.Format(@"UPDATE Sales SET customer_info = '{0}' WHERE id='{1}'", new Customer((Guid)sale[Sale.COL_CUSTOMER_ID]).compileData(), (Guid)sale[Sale.COL_ID]);
                 using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
@@ -129,7 +129,7 @@ namespace BinaMitraTextile.Test
         #region Tab4
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (DataRow obj in Sale.getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null).Rows)
+            foreach (DataRow obj in Sale.get().Rows)
             {
                 Guid id = (Guid)obj[Sale.COL_ID];
                 decimal saleAmount = Convert.ToDecimal(obj[Sale.COL_SALEAMOUNT]);

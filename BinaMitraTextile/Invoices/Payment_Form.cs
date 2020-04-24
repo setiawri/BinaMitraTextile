@@ -99,9 +99,9 @@ namespace BinaMitraTextile.Invoices
             if (_paymentMode == PaymentMode.VendorInvoice)
             {
                 referenceId = _vendorInvoice.ID;
-                startingBalance = _vendorInvoice.TotalActualValue;
+                startingBalance = _vendorInvoice.CalculatedAmount;
                 
-                _creditBalance = VendorDebit.getBalance(_vendorInvoice.VendorId);
+                _creditBalance = VendorDebit.getBalance(_vendorInvoice.Vendors_Id);
                 lblCreditBalance.Text = String.Format("Credit {0}: Rp.{1:N2}", _vendorInvoice.VendorName, _creditBalance);
             }
             else if (_paymentMode == PaymentMode.SaleInvoice)
@@ -225,7 +225,7 @@ namespace BinaMitraTextile.Invoices
         private void btnAddCredit_Click(object sender, EventArgs e)
         {
             if (_paymentMode == PaymentMode.VendorInvoice)
-                Tools.displayForm(new Invoices.VendorDebits_Form(_vendorInvoice.VendorId));
+                Tools.displayForm(new Invoices.VendorDebits_Form(_vendorInvoice.Vendors_Id));
             else if (_paymentMode == PaymentMode.SaleInvoice)
                 Tools.displayForm(new CustomerCredits.Main_Form(_sale.customer_id));
         }

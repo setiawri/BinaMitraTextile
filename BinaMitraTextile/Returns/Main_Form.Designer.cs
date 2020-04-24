@@ -29,21 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnReturnSale = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.DateTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sale_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sale_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_Checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,8 +50,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.pnlFilterAndButtons = new System.Windows.Forms.Panel();
+            this.DateTimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_Checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.pnlFilterAndButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReturnSale
@@ -66,7 +69,7 @@
             this.btnReturnSale.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
             this.btnReturnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturnSale.ForeColor = System.Drawing.Color.Orange;
-            this.btnReturnSale.Location = new System.Drawing.Point(7, 8);
+            this.btnReturnSale.Location = new System.Drawing.Point(9, 7);
             this.btnReturnSale.Margin = new System.Windows.Forms.Padding(2);
             this.btnReturnSale.Name = "btnReturnSale";
             this.btnReturnSale.Size = new System.Drawing.Size(200, 60);
@@ -80,9 +83,6 @@
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
             this.grid.AllowUserToResizeRows = false;
-            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -104,99 +104,20 @@
             this.sale_amount,
             this.col_grid_id,
             this.col_grid_Checked});
-            this.grid.Location = new System.Drawing.Point(215, 0);
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(219, 0);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.grid.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.grid.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(621, 265);
+            this.grid.Size = new System.Drawing.Size(617, 265);
             this.grid.TabIndex = 2;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
-            // 
-            // DateTimeStamp
-            // 
-            this.DateTimeStamp.DataPropertyName = "time_stamp";
-            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
-            this.DateTimeStamp.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DateTimeStamp.HeaderText = "Date";
-            this.DateTimeStamp.Name = "DateTimeStamp";
-            this.DateTimeStamp.ReadOnly = true;
-            // 
-            // hexbarcode
-            // 
-            this.hexbarcode.ActiveLinkColor = System.Drawing.Color.Orange;
-            this.hexbarcode.DataPropertyName = "hexbarcode";
-            this.hexbarcode.HeaderText = "Return ID";
-            this.hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.hexbarcode.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.hexbarcode.Name = "hexbarcode";
-            this.hexbarcode.ReadOnly = true;
-            this.hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.hexbarcode.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.hexbarcode.Width = 70;
-            // 
-            // customer_name
-            // 
-            this.customer_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.customer_name.DataPropertyName = "customer_name";
-            this.customer_name.HeaderText = "Customer";
-            this.customer_name.Name = "customer_name";
-            this.customer_name.ReadOnly = true;
-            this.customer_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.customer_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // sale_qty
-            // 
-            this.sale_qty.DataPropertyName = "sale_qty";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.sale_qty.DefaultCellStyle = dataGridViewCellStyle3;
-            this.sale_qty.HeaderText = "Pcs";
-            this.sale_qty.Name = "sale_qty";
-            this.sale_qty.ReadOnly = true;
-            this.sale_qty.Width = 50;
-            // 
-            // sale_length
-            // 
-            this.sale_length.DataPropertyName = "sale_length";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.sale_length.DefaultCellStyle = dataGridViewCellStyle4;
-            this.sale_length.HeaderText = "Qty";
-            this.sale_length.Name = "sale_length";
-            this.sale_length.ReadOnly = true;
-            this.sale_length.Width = 60;
-            // 
-            // sale_amount
-            // 
-            this.sale_amount.DataPropertyName = "sale_amount";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.sale_amount.DefaultCellStyle = dataGridViewCellStyle5;
-            this.sale_amount.HeaderText = "Amount";
-            this.sale_amount.Name = "sale_amount";
-            this.sale_amount.ReadOnly = true;
-            // 
-            // col_grid_id
-            // 
-            this.col_grid_id.DataPropertyName = "id";
-            this.col_grid_id.HeaderText = "id";
-            this.col_grid_id.Name = "col_grid_id";
-            this.col_grid_id.ReadOnly = true;
-            this.col_grid_id.Visible = false;
-            // 
-            // col_grid_Checked
-            // 
-            this.col_grid_Checked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_Checked.HeaderText = "OK";
-            this.col_grid_Checked.MinimumWidth = 30;
-            this.col_grid_Checked.Name = "col_grid_Checked";
-            this.col_grid_Checked.ReadOnly = true;
-            this.col_grid_Checked.Width = 30;
+            this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellContentDoubleClick);
             // 
             // groupBox1
             // 
@@ -212,7 +133,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Location = new System.Drawing.Point(7, 74);
+            this.groupBox1.Location = new System.Drawing.Point(9, 73);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -335,20 +256,126 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // pnlFilterAndButtons
+            // 
+            this.pnlFilterAndButtons.Controls.Add(this.btnReturnSale);
+            this.pnlFilterAndButtons.Controls.Add(this.groupBox1);
+            this.pnlFilterAndButtons.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlFilterAndButtons.Location = new System.Drawing.Point(0, 0);
+            this.pnlFilterAndButtons.Name = "pnlFilterAndButtons";
+            this.pnlFilterAndButtons.Size = new System.Drawing.Size(219, 265);
+            this.pnlFilterAndButtons.TabIndex = 3;
+            // 
+            // DateTimeStamp
+            // 
+            this.DateTimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.DateTimeStamp.DataPropertyName = "time_stamp";
+            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
+            this.DateTimeStamp.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DateTimeStamp.HeaderText = "Date";
+            this.DateTimeStamp.MinimumWidth = 30;
+            this.DateTimeStamp.Name = "DateTimeStamp";
+            this.DateTimeStamp.ReadOnly = true;
+            this.DateTimeStamp.Width = 30;
+            // 
+            // hexbarcode
+            // 
+            this.hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.hexbarcode.DataPropertyName = "hexbarcode";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hexbarcode.DefaultCellStyle = dataGridViewCellStyle3;
+            this.hexbarcode.HeaderText = "No";
+            this.hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
+            this.hexbarcode.MinimumWidth = 30;
+            this.hexbarcode.Name = "hexbarcode";
+            this.hexbarcode.ReadOnly = true;
+            this.hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.hexbarcode.Width = 30;
+            // 
+            // customer_name
+            // 
+            this.customer_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.customer_name.DataPropertyName = "customer_name";
+            this.customer_name.HeaderText = "Customer";
+            this.customer_name.MinimumWidth = 50;
+            this.customer_name.Name = "customer_name";
+            this.customer_name.ReadOnly = true;
+            this.customer_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.customer_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // sale_qty
+            // 
+            this.sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sale_qty.DataPropertyName = "sale_qty";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.sale_qty.DefaultCellStyle = dataGridViewCellStyle4;
+            this.sale_qty.HeaderText = "Pcs";
+            this.sale_qty.MinimumWidth = 30;
+            this.sale_qty.Name = "sale_qty";
+            this.sale_qty.ReadOnly = true;
+            this.sale_qty.Width = 30;
+            // 
+            // sale_length
+            // 
+            this.sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sale_length.DataPropertyName = "sale_length";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.sale_length.DefaultCellStyle = dataGridViewCellStyle5;
+            this.sale_length.HeaderText = "Qty";
+            this.sale_length.MinimumWidth = 30;
+            this.sale_length.Name = "sale_length";
+            this.sale_length.ReadOnly = true;
+            this.sale_length.Width = 30;
+            // 
+            // sale_amount
+            // 
+            this.sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sale_amount.DataPropertyName = "sale_amount";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.sale_amount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.sale_amount.HeaderText = "Amount";
+            this.sale_amount.MinimumWidth = 50;
+            this.sale_amount.Name = "sale_amount";
+            this.sale_amount.ReadOnly = true;
+            this.sale_amount.Width = 50;
+            // 
+            // col_grid_id
+            // 
+            this.col_grid_id.DataPropertyName = "id";
+            this.col_grid_id.HeaderText = "id";
+            this.col_grid_id.Name = "col_grid_id";
+            this.col_grid_id.ReadOnly = true;
+            this.col_grid_id.Visible = false;
+            // 
+            // col_grid_Checked
+            // 
+            this.col_grid_Checked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_Checked.HeaderText = "OK";
+            this.col_grid_Checked.MinimumWidth = 30;
+            this.col_grid_Checked.Name = "col_grid_Checked";
+            this.col_grid_Checked.ReadOnly = true;
+            this.col_grid_Checked.Width = 30;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 265);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grid);
-            this.Controls.Add(this.btnReturnSale);
+            this.Controls.Add(this.pnlFilterAndButtons);
             this.Name = "Main_Form";
             this.Text = "SALES RETURNS";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pnlFilterAndButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -370,6 +397,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Panel pnlFilterAndButtons;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTimeStamp;
         private System.Windows.Forms.DataGridViewLinkColumn hexbarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;

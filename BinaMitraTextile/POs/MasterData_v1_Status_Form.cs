@@ -49,7 +49,6 @@ namespace BinaMitraTextile.POs
 
         protected override void setupFields()
         {
-            disableFieldActive();
             enableFieldStatus<POItemStatus>();
             
             setColumnsDataPropertyNames(POItem.COL_DB_ID, null, POItem.COL_STATUSNAME, POItem.COL_DB_STATUSENUMID, null, null);

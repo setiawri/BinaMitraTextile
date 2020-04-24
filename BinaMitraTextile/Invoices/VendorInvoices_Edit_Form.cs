@@ -19,8 +19,6 @@ namespace BinaMitraTextile.Invoices
             InitializeComponent();
 
             _id = id;
-            setupControls();
-            populatePageData();
         }
 
         private void setupControls()
@@ -32,38 +30,41 @@ namespace BinaMitraTextile.Invoices
         private void populatePageData()
         {
             VendorInvoice obj = new VendorInvoice(_id);
-            lblActualValue.Text = obj.TotalActualValue.ToString("N2");
-            txtInvoiceNo.Text = obj.InvoiceNo;
-            txtTaxNo.Text = obj.TaxNo;
-            txtDPP.Text = obj.TaxDPP.ToString("N2");
-            txtTOP.Text = obj.TOP.ToString("N2");
-            txtNotes.Text = obj.Notes;
+            idtp_Timestamp.Value = obj.Timestamp;
+            itxt_InvoiceNo.ValueText = obj.InvoiceNo;
+            in_TOP.Value = obj.TOP;
+            in_Amount.Value = obj.Amount;
+            itxt_Notes.ValueText = obj.Notes;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if(isInputValid())
             {
-                VendorInvoice.update(_id, txtInvoiceNo.Text, txtTaxNo.Text, Tools.zeroNonNumericString(txtDPP.Text), 
-                    Convert.ToInt32(txtTOP.Text), chkSetorTunai.Checked, txtNotes.Text);
+                VendorInvoice.update(_id, (DateTime)idtp_Timestamp.ValueAsStartDateFilter, itxt_InvoiceNo.ValueText, in_Amount.ValueDecimal, in_TOP.ValueInt, itxt_Notes.ValueText);
                 this.Close();
             }
         }
 
         private bool isInputValid()
         {
-            DBUtil.sanitize(txtInvoiceNo, txtTaxNo, txtDPP, txtTOP, txtNotes);
-
-            if (string.IsNullOrWhiteSpace(txtInvoiceNo.Text))
-                return Tools.inputError<TextBox>(txtInvoiceNo, "Invalid Invoice number");
-            else if (VendorInvoice.isInvoiceNoExist(_id, txtInvoiceNo.Text))
-                return Tools.inputError<TextBox>(txtInvoiceNo, "Invoice number already exists");
-            else if (!Tools.isNumeric(txtDPP.Text))
-                return Tools.inputError<TextBox>(txtDPP, "Invalid DPP");
-            else if (string.IsNullOrWhiteSpace(txtTOP.Text) || !Tools.isNumeric(txtTOP.Text))
-                return Tools.inputError<TextBox>(txtDPP, "Invalid TOP");
+            if (itxt_InvoiceNo.isEmpty())
+                return itxt_InvoiceNo.isValueError("Invalid Invoice No");
+            else if (VendorInvoice.isInvoiceNoExist(_id, itxt_InvoiceNo.ValueText))
+                return itxt_InvoiceNo.isValueError("Invalid Invoice No already exists");
 
             return true;
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            setupControls();
+            populatePageData();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }

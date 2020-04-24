@@ -180,7 +180,7 @@ namespace BinaMitraTextile.Sales
             {
                 if (isSaleValid())
                 {
-                    Sale obj = new Sale((Guid)cbCustomers.SelectedValue, (Guid?)cbTransports.SelectedValue, Tools.wrapDBNullValue<decimal>(txtShippingCost.Text), Tools.wrapDBNullValue<string>(txtNotes.Text));
+                    Sale obj = new Sale((Guid)cbCustomers.SelectedValue, (Guid?)cbTransports.SelectedValue, Tools.wrapDBNullValue<decimal>(txtShippingCost.Text), chkReturnToSupplier.Checked, Tools.wrapDBNullValue<string>(txtNotes.Text));
                     var form = new Sales.Invoice_Form(obj, (DataTable)grid.DataSource, true);
                     Tools.displayForm(form);
                     if(form.isGenerated == true)

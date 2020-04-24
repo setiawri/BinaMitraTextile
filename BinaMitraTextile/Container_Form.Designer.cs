@@ -29,64 +29,75 @@
         private void InitializeComponent()
         {
             this.mainMenu = new System.Windows.Forms.MenuStrip();
-            this.menu_sales = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_sales_list = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_sales_saleorders = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_stock = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_stocklevel = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_invoices = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_opname = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_po = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_printbarcodes = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_inventory_samples = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_returns = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_customercredit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin = new System.Windows.Forms.ToolStripMenuItem();
-            this.angkutanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_cities = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_colors = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_customers = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_customersaleadjustments = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_customerterms = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_grades = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_length_units = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_pettycashcategories = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_pettycash = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_prices = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_products = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_productstorenames = new System.Windows.Forms.ToolStripMenuItem();
-            this.statesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_vendors = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_vendorinvoices = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_widths = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_users = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_reports = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_reports_financial = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_reports_sales = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_reports_tax = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_todolist = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_test = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_account = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_account_password = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_account_salescomission = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_account_rules = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_account_log = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Daftar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Returns = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_SaleOrders = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Chart = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Divider_Customer = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Customers = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Customers_Daftar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Customers_Credits = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Customers_Discounts = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Customers_DebLimits = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Divider_Penagihan = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_FakturPajakKeluaran = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_Kontrabon = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Daftar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_StockLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Samples = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Opname = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Barcodes = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Daftar = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Colors = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Grades = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Units = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Prices = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_StoreNames = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Widths = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_Products_Vendors = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_PurchaseOrders = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_VendorInvoices = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_FakturPajakMasukan = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_Todolist = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_PettyCash = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_PettyCashCategories = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_Angkutan = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_Cities = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_States = new System.Windows.Forms.ToolStripMenuItem();
+            this.Account = new System.Windows.Forms.ToolStripMenuItem();
+            this.Account_Password = new System.Windows.Forms.ToolStripMenuItem();
+            this.Account_Komisi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Account_Peraturan = new System.Windows.Forms.ToolStripMenuItem();
+            this.Account_Log = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_UserAccounts = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Reports = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Reports_Financial = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Reports_Sales = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
             this.btnOpname = new System.Windows.Forms.Button();
             this.gbShortcuts = new System.Windows.Forms.GroupBox();
             this.flpShortcuts = new System.Windows.Forms.FlowLayoutPanel();
+            this.lnkInventory = new System.Windows.Forms.LinkLabel();
             this.lnkCreateSales = new System.Windows.Forms.LinkLabel();
             this.lnkSales = new System.Windows.Forms.LinkLabel();
-            this.lnkShipping = new System.Windows.Forms.LinkLabel();
-            this.lnkInventory = new System.Windows.Forms.LinkLabel();
-            this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
             this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
+            this.lnkShipping = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.kontrabonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_admin_kontrabon = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcuts.SuspendLayout();
@@ -98,16 +109,11 @@
             this.mainMenu.Font = new System.Drawing.Font("Calibri Light", 9F);
             this.mainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_sales,
-            this.menu_inventory,
-            this.menu_returns,
-            this.menu_customercredit,
-            this.menu_admin,
-            this.menu_users,
-            this.menu_reports,
-            this.menu_todolist,
-            this.menu_test,
-            this.menu_account});
+            this.Sales,
+            this.Inventory,
+            this.Admin,
+            this.Account,
+            this.Internal});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -115,358 +121,440 @@
             this.mainMenu.TabIndex = 3;
             this.mainMenu.Text = "mainMenu";
             // 
-            // menu_sales
-            // 
-            this.menu_sales.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_sales_list,
-            this.menu_sales_saleorders});
-            this.menu_sales.Name = "menu_sales";
-            this.menu_sales.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.menu_sales.Size = new System.Drawing.Size(44, 20);
-            this.menu_sales.Text = "Sales";
-            // 
-            // menu_sales_list
-            // 
-            this.menu_sales_list.Name = "menu_sales_list";
-            this.menu_sales_list.Size = new System.Drawing.Size(132, 22);
-            this.menu_sales_list.Text = "Daftar Sales";
-            this.menu_sales_list.Click += new System.EventHandler(this.menu_sales_list_Click);
-            // 
-            // menu_sales_saleorders
-            // 
-            this.menu_sales_saleorders.Name = "menu_sales_saleorders";
-            this.menu_sales_saleorders.Size = new System.Drawing.Size(132, 22);
-            this.menu_sales_saleorders.Text = "Sale Orders";
-            this.menu_sales_saleorders.Click += new System.EventHandler(this.menu_sales_saleorders_Click);
-            // 
-            // menu_inventory
-            // 
-            this.menu_inventory.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_inventory_stock,
-            this.menu_inventory_stocklevel,
-            this.menu_inventory_invoices,
-            this.menu_inventory_opname,
-            this.menu_inventory_po,
-            this.menu_inventory_printbarcodes,
-            this.menu_inventory_samples});
-            this.menu_inventory.Name = "menu_inventory";
-            this.menu_inventory.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.menu_inventory.Size = new System.Drawing.Size(64, 20);
-            this.menu_inventory.Text = "Inventory";
-            // 
-            // menu_inventory_stock
-            // 
-            this.menu_inventory_stock.Name = "menu_inventory_stock";
-            this.menu_inventory_stock.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.menu_inventory_stock.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_stock.Text = "Stock";
-            this.menu_inventory_stock.Click += new System.EventHandler(this.menu_inventory_stock_Click);
-            // 
-            // menu_inventory_stocklevel
-            // 
-            this.menu_inventory_stocklevel.Name = "menu_inventory_stocklevel";
-            this.menu_inventory_stocklevel.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_stocklevel.Text = "Stock Level";
-            this.menu_inventory_stocklevel.Click += new System.EventHandler(this.menu_inventory_stocklevel_Click);
-            // 
-            // menu_inventory_invoices
-            // 
-            this.menu_inventory_invoices.Name = "menu_inventory_invoices";
-            this.menu_inventory_invoices.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.menu_inventory_invoices.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_invoices.Text = "Invoices";
-            this.menu_inventory_invoices.Click += new System.EventHandler(this.menu_inventory_invoices_Click);
-            // 
-            // menu_inventory_opname
-            // 
-            this.menu_inventory_opname.Name = "menu_inventory_opname";
-            this.menu_inventory_opname.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.menu_inventory_opname.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_opname.Text = "Opname";
-            this.menu_inventory_opname.Click += new System.EventHandler(this.menu_inventory_opname_Click);
-            // 
-            // menu_inventory_po
-            // 
-            this.menu_inventory_po.Name = "menu_inventory_po";
-            this.menu_inventory_po.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.menu_inventory_po.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_po.Text = "PO";
-            this.menu_inventory_po.Click += new System.EventHandler(this.menu_inventory_po_Click);
-            // 
-            // menu_inventory_printbarcodes
-            // 
-            this.menu_inventory_printbarcodes.Name = "menu_inventory_printbarcodes";
-            this.menu_inventory_printbarcodes.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_printbarcodes.Text = "Print Barcodes";
-            this.menu_inventory_printbarcodes.Click += new System.EventHandler(this.menu_inventory_printbarcodes_Click);
-            // 
-            // menu_inventory_samples
-            // 
-            this.menu_inventory_samples.Name = "menu_inventory_samples";
-            this.menu_inventory_samples.Size = new System.Drawing.Size(151, 22);
-            this.menu_inventory_samples.Text = "Samples";
-            this.menu_inventory_samples.Click += new System.EventHandler(this.menu_inventory_samples_Click);
-            // 
-            // menu_returns
-            // 
-            this.menu_returns.Name = "menu_returns";
-            this.menu_returns.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.menu_returns.Size = new System.Drawing.Size(56, 20);
-            this.menu_returns.Text = "Returns";
-            this.menu_returns.Click += new System.EventHandler(this.menu_returns_Click);
-            // 
-            // menu_customercredit
-            // 
-            this.menu_customercredit.Name = "menu_customercredit";
-            this.menu_customercredit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.menu_customercredit.Size = new System.Drawing.Size(53, 20);
-            this.menu_customercredit.Text = "Credits";
-            this.menu_customercredit.Click += new System.EventHandler(this.menu_customercredit_Click);
-            // 
-            // menu_admin
-            // 
-            this.menu_admin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.angkutanToolStripMenuItem,
-            this.menu_admin_cities,
-            this.menu_admin_colors,
-            this.menu_admin_customers,
-            this.menu_admin_customersaleadjustments,
-            this.menu_admin_customerterms,
-            this.menu_admin_grades,
-            this.menu_admin_kontrabon,
-            this.menu_admin_length_units,
-            this.menu_admin_pettycashcategories,
-            this.menu_admin_pettycash,
-            this.menu_admin_prices,
-            this.menu_admin_products,
-            this.kontrabonToolStripMenuItem,
-            this.menu_admin_productstorenames,
-            this.statesToolStripMenuItem,
-            this.menu_admin_vendors,
-            this.menu_admin_vendorinvoices,
-            this.menu_admin_widths});
-            this.menu_admin.Name = "menu_admin";
-            this.menu_admin.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.menu_admin.Size = new System.Drawing.Size(51, 20);
-            this.menu_admin.Text = "Admin";
-            // 
-            // angkutanToolStripMenuItem
-            // 
-            this.angkutanToolStripMenuItem.Name = "angkutanToolStripMenuItem";
-            this.angkutanToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.angkutanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.angkutanToolStripMenuItem.Text = "Angkutan";
-            this.angkutanToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_angkutan_Click);
-            // 
-            // menu_admin_cities
-            // 
-            this.menu_admin_cities.Name = "menu_admin_cities";
-            this.menu_admin_cities.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.menu_admin_cities.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_cities.Text = "Cities";
-            this.menu_admin_cities.Click += new System.EventHandler(this.menu_admin_cities_Click);
-            // 
-            // menu_admin_colors
-            // 
-            this.menu_admin_colors.Name = "menu_admin_colors";
-            this.menu_admin_colors.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_colors.Text = "Colors";
-            this.menu_admin_colors.Click += new System.EventHandler(this.menu_admin_colors_Click);
-            // 
-            // menu_admin_customers
-            // 
-            this.menu_admin_customers.Name = "menu_admin_customers";
-            this.menu_admin_customers.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_customers.Text = "Customers";
-            this.menu_admin_customers.Click += new System.EventHandler(this.menu_admin_customers_Click);
-            // 
-            // menu_admin_customersaleadjustments
-            // 
-            this.menu_admin_customersaleadjustments.Name = "menu_admin_customersaleadjustments";
-            this.menu_admin_customersaleadjustments.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_customersaleadjustments.Text = "Customer Discounts";
-            this.menu_admin_customersaleadjustments.Click += new System.EventHandler(this.menu_admin_customersaleadjustments_Click);
-            // 
-            // menu_admin_customerterms
-            // 
-            this.menu_admin_customerterms.Name = "menu_admin_customerterms";
-            this.menu_admin_customerterms.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_customerterms.Text = "Debt Limits";
-            this.menu_admin_customerterms.Click += new System.EventHandler(this.menu_admin_customerterms_Click);
-            // 
-            // menu_admin_grades
-            // 
-            this.menu_admin_grades.Name = "menu_admin_grades";
-            this.menu_admin_grades.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.G)));
-            this.menu_admin_grades.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_grades.Text = "Grades";
-            this.menu_admin_grades.Click += new System.EventHandler(this.menu_admin_grades_Click);
-            // 
-            // menu_admin_length_units
-            // 
-            this.menu_admin_length_units.Name = "menu_admin_length_units";
-            this.menu_admin_length_units.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
-            this.menu_admin_length_units.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_length_units.Text = "Length Units";
-            this.menu_admin_length_units.Click += new System.EventHandler(this.menu_admin_length_units_Click);
-            // 
-            // menu_admin_pettycashcategories
-            // 
-            this.menu_admin_pettycashcategories.Name = "menu_admin_pettycashcategories";
-            this.menu_admin_pettycashcategories.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_pettycashcategories.Text = "Petty Cash Categories";
-            this.menu_admin_pettycashcategories.Click += new System.EventHandler(this.menu_admin_pettycashcategories_Click);
-            // 
-            // menu_admin_pettycash
-            // 
-            this.menu_admin_pettycash.Name = "menu_admin_pettycash";
-            this.menu_admin_pettycash.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_pettycash.Text = "Petty Cash";
-            this.menu_admin_pettycash.Click += new System.EventHandler(this.menu_admin_pettycash_Click);
-            // 
-            // menu_admin_prices
-            // 
-            this.menu_admin_prices.Name = "menu_admin_prices";
-            this.menu_admin_prices.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.menu_admin_prices.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_prices.Text = "Prices";
-            this.menu_admin_prices.Click += new System.EventHandler(this.menu_admin_prices_Click);
-            // 
-            // menu_admin_products
-            // 
-            this.menu_admin_products.Name = "menu_admin_products";
-            this.menu_admin_products.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_products.Text = "Products";
-            this.menu_admin_products.Click += new System.EventHandler(this.menu_admin_products_Click);
-            // 
-            // menu_admin_productstorenames
-            // 
-            this.menu_admin_productstorenames.Name = "menu_admin_productstorenames";
-            this.menu_admin_productstorenames.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_productstorenames.Text = "Product Store Names";
-            this.menu_admin_productstorenames.Click += new System.EventHandler(this.menu_admin_productstorenames_Click);
-            // 
-            // statesToolStripMenuItem
-            // 
-            this.statesToolStripMenuItem.Name = "statesToolStripMenuItem";
-            this.statesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.statesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.statesToolStripMenuItem.Text = "States";
-            this.statesToolStripMenuItem.Click += new System.EventHandler(this.menu_admin_states_Click);
-            // 
-            // menu_admin_vendors
-            // 
-            this.menu_admin_vendors.Name = "menu_admin_vendors";
-            this.menu_admin_vendors.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
-            this.menu_admin_vendors.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_vendors.Text = "Vendors";
-            this.menu_admin_vendors.Click += new System.EventHandler(this.menu_admin_vendors_Click);
-            // 
-            // menu_admin_vendorinvoices
-            // 
-            this.menu_admin_vendorinvoices.Name = "menu_admin_vendorinvoices";
-            this.menu_admin_vendorinvoices.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_vendorinvoices.Text = "Vendor Invoices";
-            this.menu_admin_vendorinvoices.Click += new System.EventHandler(this.menu_admin_vendorinvoices_Click);
-            // 
-            // menu_admin_widths
-            // 
-            this.menu_admin_widths.Name = "menu_admin_widths";
-            this.menu_admin_widths.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.menu_admin_widths.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_widths.Text = "Widths";
-            this.menu_admin_widths.Click += new System.EventHandler(this.menu_admin_widths_Click);
-            // 
-            // menu_users
-            // 
-            this.menu_users.Name = "menu_users";
-            this.menu_users.Size = new System.Drawing.Size(47, 20);
-            this.menu_users.Text = "Users";
-            this.menu_users.Click += new System.EventHandler(this.menu_users_Click);
-            // 
-            // menu_reports
-            // 
-            this.menu_reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_reports_financial,
-            this.menu_reports_sales,
-            this.menu_reports_tax});
-            this.menu_reports.Name = "menu_reports";
-            this.menu_reports.Size = new System.Drawing.Size(56, 20);
-            this.menu_reports.Text = "Reports";
-            // 
-            // menu_reports_financial
-            // 
-            this.menu_reports_financial.Name = "menu_reports_financial";
-            this.menu_reports_financial.Size = new System.Drawing.Size(118, 22);
-            this.menu_reports_financial.Text = "Financial";
-            this.menu_reports_financial.Click += new System.EventHandler(this.menu_reports_financial_Click);
-            // 
-            // menu_reports_sales
-            // 
-            this.menu_reports_sales.Name = "menu_reports_sales";
-            this.menu_reports_sales.Size = new System.Drawing.Size(118, 22);
-            this.menu_reports_sales.Text = "Sales";
-            this.menu_reports_sales.Click += new System.EventHandler(this.menu_reports_sales_Click);
-            // 
-            // menu_reports_tax
-            // 
-            this.menu_reports_tax.Name = "menu_reports_tax";
-            this.menu_reports_tax.Size = new System.Drawing.Size(118, 22);
-            this.menu_reports_tax.Text = "Tax";
-            this.menu_reports_tax.Click += new System.EventHandler(this.menu_reports_tax_Click);
-            // 
-            // menu_todolist
-            // 
-            this.menu_todolist.Name = "menu_todolist";
-            this.menu_todolist.Size = new System.Drawing.Size(66, 20);
-            this.menu_todolist.Text = "To Do List";
-            this.menu_todolist.Click += new System.EventHandler(this.menu_todolist_Click);
-            // 
-            // menu_test
-            // 
-            this.menu_test.Name = "menu_test";
-            this.menu_test.Size = new System.Drawing.Size(39, 20);
-            this.menu_test.Text = "Test";
-            this.menu_test.Click += new System.EventHandler(this.menu_test_Click);
-            // 
-            // menu_account
-            // 
-            this.menu_account.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_account_password,
-            this.menu_account_salescomission,
-            this.menu_account_rules,
-            this.menu_account_log});
-            this.menu_account.Name = "menu_account";
-            this.menu_account.Size = new System.Drawing.Size(58, 20);
-            this.menu_account.Text = "Account";
-            // 
-            // menu_account_password
-            // 
-            this.menu_account_password.Name = "menu_account_password";
-            this.menu_account_password.Size = new System.Drawing.Size(122, 22);
-            this.menu_account_password.Text = "Password";
-            this.menu_account_password.Click += new System.EventHandler(this.menu_account_password_Click);
-            // 
-            // menu_account_salescomission
-            // 
-            this.menu_account_salescomission.Name = "menu_account_salescomission";
-            this.menu_account_salescomission.Size = new System.Drawing.Size(122, 22);
-            this.menu_account_salescomission.Text = "Komisi";
-            this.menu_account_salescomission.Click += new System.EventHandler(this.menu_account_salescomission_Click);
-            // 
-            // menu_account_rules
-            // 
-            this.menu_account_rules.Name = "menu_account_rules";
-            this.menu_account_rules.Size = new System.Drawing.Size(122, 22);
-            this.menu_account_rules.Text = "Peraturan";
-            this.menu_account_rules.Visible = false;
-            // 
-            // menu_account_log
-            // 
-            this.menu_account_log.Name = "menu_account_log";
-            this.menu_account_log.Size = new System.Drawing.Size(122, 22);
-            this.menu_account_log.Text = "Log";
-            this.menu_account_log.Click += new System.EventHandler(this.menu_account_log_Click);
+            // Sales
+            // 
+            this.Sales.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Sales_Daftar,
+            this.Sales_Returns,
+            this.Sales_SaleOrders,
+            this.Sales_Chart,
+            this.Sales_Divider_Customer,
+            this.Sales_Customers,
+            this.Sales_Divider_Penagihan,
+            this.Sales_FakturPajakKeluaran,
+            this.Sales_Kontrabon});
+            this.Sales.Name = "Sales";
+            this.Sales.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+            this.Sales.Size = new System.Drawing.Size(44, 20);
+            this.Sales.Text = "Sales";
+            // 
+            // Sales_Daftar
+            // 
+            this.Sales_Daftar.Name = "Sales_Daftar";
+            this.Sales_Daftar.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Daftar.Text = "Daftar";
+            this.Sales_Daftar.Click += new System.EventHandler(this.Sales_Daftar_Click);
+            // 
+            // Sales_Returns
+            // 
+            this.Sales_Returns.Name = "Sales_Returns";
+            this.Sales_Returns.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Returns.Text = "Returns";
+            this.Sales_Returns.Click += new System.EventHandler(this.Sales_Returns_Click);
+            // 
+            // Sales_SaleOrders
+            // 
+            this.Sales_SaleOrders.Name = "Sales_SaleOrders";
+            this.Sales_SaleOrders.Size = new System.Drawing.Size(182, 22);
+            this.Sales_SaleOrders.Text = "Sale Orders (SO)";
+            this.Sales_SaleOrders.Click += new System.EventHandler(this.Sales_SaleOrders_Click);
+            // 
+            // Sales_Chart
+            // 
+            this.Sales_Chart.Name = "Sales_Chart";
+            this.Sales_Chart.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Chart.Text = "Chart";
+            this.Sales_Chart.Click += new System.EventHandler(this.Internal_Reports_Sales_Click);
+            // 
+            // Sales_Divider_Customer
+            // 
+            this.Sales_Divider_Customer.ForeColor = System.Drawing.SystemColors.Control;
+            this.Sales_Divider_Customer.Name = "Sales_Divider_Customer";
+            this.Sales_Divider_Customer.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Divider_Customer.Text = "---------------------------";
+            // 
+            // Sales_Customers
+            // 
+            this.Sales_Customers.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Sales_Customers_Daftar,
+            this.Sales_Customers_Credits,
+            this.Sales_Customers_Discounts,
+            this.Sales_Customers_DebLimits});
+            this.Sales_Customers.Name = "Sales_Customers";
+            this.Sales_Customers.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Customers.Text = "Customers";
+            // 
+            // Sales_Customers_Daftar
+            // 
+            this.Sales_Customers_Daftar.Name = "Sales_Customers_Daftar";
+            this.Sales_Customers_Daftar.Size = new System.Drawing.Size(130, 22);
+            this.Sales_Customers_Daftar.Text = "Daftar";
+            this.Sales_Customers_Daftar.Click += new System.EventHandler(this.Sales_Customers_Daftar_Click);
+            // 
+            // Sales_Customers_Credits
+            // 
+            this.Sales_Customers_Credits.Name = "Sales_Customers_Credits";
+            this.Sales_Customers_Credits.Size = new System.Drawing.Size(130, 22);
+            this.Sales_Customers_Credits.Text = "Credits";
+            this.Sales_Customers_Credits.Click += new System.EventHandler(this.Sales_Customers_Credits_Click);
+            // 
+            // Sales_Customers_Discounts
+            // 
+            this.Sales_Customers_Discounts.Name = "Sales_Customers_Discounts";
+            this.Sales_Customers_Discounts.Size = new System.Drawing.Size(130, 22);
+            this.Sales_Customers_Discounts.Text = "Discounts";
+            this.Sales_Customers_Discounts.Click += new System.EventHandler(this.Sales_Customers_Discounts_Click);
+            // 
+            // Sales_Customers_DebLimits
+            // 
+            this.Sales_Customers_DebLimits.Name = "Sales_Customers_DebLimits";
+            this.Sales_Customers_DebLimits.Size = new System.Drawing.Size(130, 22);
+            this.Sales_Customers_DebLimits.Text = "Debt Limits";
+            this.Sales_Customers_DebLimits.Click += new System.EventHandler(this.Sales_Customers_DebLimits_Click);
+            // 
+            // Sales_Divider_Penagihan
+            // 
+            this.Sales_Divider_Penagihan.ForeColor = System.Drawing.SystemColors.Control;
+            this.Sales_Divider_Penagihan.Name = "Sales_Divider_Penagihan";
+            this.Sales_Divider_Penagihan.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Divider_Penagihan.Text = "---------------------------";
+            // 
+            // Sales_FakturPajakKeluaran
+            // 
+            this.Sales_FakturPajakKeluaran.Name = "Sales_FakturPajakKeluaran";
+            this.Sales_FakturPajakKeluaran.Size = new System.Drawing.Size(182, 22);
+            this.Sales_FakturPajakKeluaran.Text = "Faktur Pajak Keluaran";
+            this.Sales_FakturPajakKeluaran.Click += new System.EventHandler(this.Sales_FakturPajakKeluaran_Click);
+            // 
+            // Sales_Kontrabon
+            // 
+            this.Sales_Kontrabon.Name = "Sales_Kontrabon";
+            this.Sales_Kontrabon.Size = new System.Drawing.Size(182, 22);
+            this.Sales_Kontrabon.Text = "Kontrabon";
+            this.Sales_Kontrabon.Click += new System.EventHandler(this.Sales_Kontrabon_Click);
+            // 
+            // Inventory
+            // 
+            this.Inventory.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Inventory_Daftar,
+            this.Inventory_StockLevel,
+            this.Inventory_Samples,
+            this.Inventory_Opname,
+            this.Inventory_Barcodes,
+            this.toolStripMenuItem5,
+            this.Inventory_Products,
+            this.toolStripMenuItem2,
+            this.Inventory_PurchaseOrders,
+            this.Inventory_VendorInvoices,
+            this.Inventory_FakturPajakMasukan});
+            this.Inventory.Name = "Inventory";
+            this.Inventory.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
+            this.Inventory.Size = new System.Drawing.Size(64, 20);
+            this.Inventory.Text = "Inventory";
+            // 
+            // Inventory_Daftar
+            // 
+            this.Inventory_Daftar.Name = "Inventory_Daftar";
+            this.Inventory_Daftar.ShowShortcutKeys = false;
+            this.Inventory_Daftar.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_Daftar.Text = "Daftar";
+            this.Inventory_Daftar.Click += new System.EventHandler(this.Inventory_Daftar_Click);
+            // 
+            // Inventory_StockLevel
+            // 
+            this.Inventory_StockLevel.Name = "Inventory_StockLevel";
+            this.Inventory_StockLevel.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_StockLevel.Text = "Stock Level";
+            this.Inventory_StockLevel.Click += new System.EventHandler(this.Inventory_StockLevel_Click);
+            // 
+            // Inventory_Samples
+            // 
+            this.Inventory_Samples.Name = "Inventory_Samples";
+            this.Inventory_Samples.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_Samples.Text = "Samples";
+            this.Inventory_Samples.Click += new System.EventHandler(this.Inventory_Samples_Click);
+            // 
+            // Inventory_Opname
+            // 
+            this.Inventory_Opname.Name = "Inventory_Opname";
+            this.Inventory_Opname.ShowShortcutKeys = false;
+            this.Inventory_Opname.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_Opname.Text = "Opname";
+            this.Inventory_Opname.Click += new System.EventHandler(this.Inventory_Opname_Click);
+            // 
+            // Inventory_Barcodes
+            // 
+            this.Inventory_Barcodes.Name = "Inventory_Barcodes";
+            this.Inventory_Barcodes.ShowShortcutKeys = false;
+            this.Inventory_Barcodes.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_Barcodes.Text = "Barcodes";
+            this.Inventory_Barcodes.Click += new System.EventHandler(this.Inventory_Barcodes_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(186, 22);
+            this.toolStripMenuItem5.Text = "----------------------------";
+            // 
+            // Inventory_Products
+            // 
+            this.Inventory_Products.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Inventory_Products_Daftar,
+            this.Inventory_Products_Colors,
+            this.Inventory_Products_Grades,
+            this.Inventory_Products_Units,
+            this.Inventory_Products_Prices,
+            this.Inventory_Products_StoreNames,
+            this.Inventory_Products_Widths,
+            this.Inventory_Products_Vendors});
+            this.Inventory_Products.Name = "Inventory_Products";
+            this.Inventory_Products.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_Products.Text = "Products";
+            // 
+            // Inventory_Products_Daftar
+            // 
+            this.Inventory_Products_Daftar.Name = "Inventory_Products_Daftar";
+            this.Inventory_Products_Daftar.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Daftar.Text = "Daftar";
+            this.Inventory_Products_Daftar.Click += new System.EventHandler(this.Inventory_Products_Daftar_Click);
+            // 
+            // Inventory_Products_Colors
+            // 
+            this.Inventory_Products_Colors.Name = "Inventory_Products_Colors";
+            this.Inventory_Products_Colors.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Colors.Text = "Colors";
+            this.Inventory_Products_Colors.Click += new System.EventHandler(this.Inventory_Products_Colors_Click);
+            // 
+            // Inventory_Products_Grades
+            // 
+            this.Inventory_Products_Grades.Name = "Inventory_Products_Grades";
+            this.Inventory_Products_Grades.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Grades.Text = "Grades";
+            this.Inventory_Products_Grades.Click += new System.EventHandler(this.Inventory_Products_Grades_Click);
+            // 
+            // Inventory_Products_Units
+            // 
+            this.Inventory_Products_Units.Name = "Inventory_Products_Units";
+            this.Inventory_Products_Units.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Units.Text = "Units";
+            this.Inventory_Products_Units.Click += new System.EventHandler(this.Inventory_Products_Units_Click);
+            // 
+            // Inventory_Products_Prices
+            // 
+            this.Inventory_Products_Prices.Name = "Inventory_Products_Prices";
+            this.Inventory_Products_Prices.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Prices.Text = "Prices";
+            this.Inventory_Products_Prices.Click += new System.EventHandler(this.Inventory_Products_Prices_Click);
+            // 
+            // Inventory_Products_StoreNames
+            // 
+            this.Inventory_Products_StoreNames.Name = "Inventory_Products_StoreNames";
+            this.Inventory_Products_StoreNames.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_StoreNames.Text = "Store Names";
+            this.Inventory_Products_StoreNames.Click += new System.EventHandler(this.Inventory_Products_StoreNames_Click);
+            // 
+            // Inventory_Products_Widths
+            // 
+            this.Inventory_Products_Widths.Name = "Inventory_Products_Widths";
+            this.Inventory_Products_Widths.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Widths.Text = "Widths";
+            this.Inventory_Products_Widths.Click += new System.EventHandler(this.Inventory_Products_Widths_Click);
+            // 
+            // Inventory_Products_Vendors
+            // 
+            this.Inventory_Products_Vendors.Name = "Inventory_Products_Vendors";
+            this.Inventory_Products_Vendors.Size = new System.Drawing.Size(137, 22);
+            this.Inventory_Products_Vendors.Text = "Vendors";
+            this.Inventory_Products_Vendors.Click += new System.EventHandler(this.Inventory_Products_Vendors_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(186, 22);
+            this.toolStripMenuItem2.Text = "----------------------------";
+            // 
+            // Inventory_PurchaseOrders
+            // 
+            this.Inventory_PurchaseOrders.Name = "Inventory_PurchaseOrders";
+            this.Inventory_PurchaseOrders.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_PurchaseOrders.Text = "Purchase Orders (PO)";
+            this.Inventory_PurchaseOrders.Click += new System.EventHandler(this.Inventory_PurchaseOrders_Click);
+            // 
+            // Inventory_VendorInvoices
+            // 
+            this.Inventory_VendorInvoices.Name = "Inventory_VendorInvoices";
+            this.Inventory_VendorInvoices.ShowShortcutKeys = false;
+            this.Inventory_VendorInvoices.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_VendorInvoices.Text = "Vendor Invoices";
+            this.Inventory_VendorInvoices.Click += new System.EventHandler(this.Inventory_VendorInvoices_Click);
+            // 
+            // Inventory_FakturPajakMasukan
+            // 
+            this.Inventory_FakturPajakMasukan.Name = "Inventory_FakturPajakMasukan";
+            this.Inventory_FakturPajakMasukan.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_FakturPajakMasukan.Text = "Faktur Pajak Masukan";
+            this.Inventory_FakturPajakMasukan.Click += new System.EventHandler(this.Inventory_FakturPajakMasukan_Click);
+            // 
+            // Admin
+            // 
+            this.Admin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Admin_Todolist,
+            this.Admin_PettyCash,
+            this.Admin_PettyCashCategories,
+            this.toolStripMenuItem6,
+            this.Admin_Angkutan,
+            this.Admin_Cities,
+            this.Admin_States});
+            this.Admin.Name = "Admin";
+            this.Admin.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
+            this.Admin.Size = new System.Drawing.Size(51, 20);
+            this.Admin.Text = "Admin";
+            // 
+            // Admin_Todolist
+            // 
+            this.Admin_Todolist.Name = "Admin_Todolist";
+            this.Admin_Todolist.Size = new System.Drawing.Size(182, 22);
+            this.Admin_Todolist.Text = "To Do List";
+            this.Admin_Todolist.Click += new System.EventHandler(this.Admin_Todolist_Click);
+            // 
+            // Admin_PettyCash
+            // 
+            this.Admin_PettyCash.Name = "Admin_PettyCash";
+            this.Admin_PettyCash.Size = new System.Drawing.Size(182, 22);
+            this.Admin_PettyCash.Text = "Petty Cash";
+            this.Admin_PettyCash.Click += new System.EventHandler(this.Admin_PettyCash_Click);
+            // 
+            // Admin_PettyCashCategories
+            // 
+            this.Admin_PettyCashCategories.Name = "Admin_PettyCashCategories";
+            this.Admin_PettyCashCategories.Size = new System.Drawing.Size(182, 22);
+            this.Admin_PettyCashCategories.Text = "Petty Cash Categories";
+            this.Admin_PettyCashCategories.Click += new System.EventHandler(this.Admin_PettyCashCategories_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(182, 22);
+            this.toolStripMenuItem6.Text = "---------------------------";
+            // 
+            // Admin_Angkutan
+            // 
+            this.Admin_Angkutan.Name = "Admin_Angkutan";
+            this.Admin_Angkutan.Size = new System.Drawing.Size(182, 22);
+            this.Admin_Angkutan.Text = "Angkutan";
+            this.Admin_Angkutan.Click += new System.EventHandler(this.Admin_Angkutan_Click);
+            // 
+            // Admin_Cities
+            // 
+            this.Admin_Cities.Name = "Admin_Cities";
+            this.Admin_Cities.Size = new System.Drawing.Size(182, 22);
+            this.Admin_Cities.Text = "Cities";
+            this.Admin_Cities.Click += new System.EventHandler(this.Admin_Cities_Click);
+            // 
+            // Admin_States
+            // 
+            this.Admin_States.Name = "Admin_States";
+            this.Admin_States.Size = new System.Drawing.Size(182, 22);
+            this.Admin_States.Text = "States";
+            this.Admin_States.Click += new System.EventHandler(this.Admin_States_Click);
+            // 
+            // Account
+            // 
+            this.Account.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Account_Password,
+            this.Account_Komisi,
+            this.Account_Peraturan,
+            this.Account_Log});
+            this.Account.Name = "Account";
+            this.Account.Size = new System.Drawing.Size(58, 20);
+            this.Account.Text = "Account";
+            // 
+            // Account_Password
+            // 
+            this.Account_Password.Name = "Account_Password";
+            this.Account_Password.Size = new System.Drawing.Size(122, 22);
+            this.Account_Password.Text = "Password";
+            this.Account_Password.Click += new System.EventHandler(this.Account_Password_Click);
+            // 
+            // Account_Komisi
+            // 
+            this.Account_Komisi.Name = "Account_Komisi";
+            this.Account_Komisi.Size = new System.Drawing.Size(122, 22);
+            this.Account_Komisi.Text = "Komisi";
+            this.Account_Komisi.Click += new System.EventHandler(this.Account_Komisi_Click);
+            // 
+            // Account_Peraturan
+            // 
+            this.Account_Peraturan.Name = "Account_Peraturan";
+            this.Account_Peraturan.Size = new System.Drawing.Size(122, 22);
+            this.Account_Peraturan.Text = "Peraturan";
+            this.Account_Peraturan.Visible = false;
+            this.Account_Peraturan.Click += new System.EventHandler(this.Account_Peraturan_Click);
+            // 
+            // Account_Log
+            // 
+            this.Account_Log.Name = "Account_Log";
+            this.Account_Log.Size = new System.Drawing.Size(122, 22);
+            this.Account_Log.Text = "Log";
+            this.Account_Log.Click += new System.EventHandler(this.Account_Log_Click);
+            // 
+            // Internal
+            // 
+            this.Internal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Internal_UserAccounts,
+            this.Internal_Reports,
+            this.Internal_Test});
+            this.Internal.Name = "Internal";
+            this.Internal.Size = new System.Drawing.Size(57, 20);
+            this.Internal.Text = "Internal";
+            // 
+            // Internal_UserAccounts
+            // 
+            this.Internal_UserAccounts.Name = "Internal_UserAccounts";
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(144, 22);
+            this.Internal_UserAccounts.Text = "User Accounts";
+            this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
+            // 
+            // Internal_Reports
+            // 
+            this.Internal_Reports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Internal_Reports_Financial,
+            this.Internal_Reports_Sales,
+            this.Internal_Reports_Taxes});
+            this.Internal_Reports.Name = "Internal_Reports";
+            this.Internal_Reports.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Reports.Text = "Reports";
+            // 
+            // Internal_Reports_Financial
+            // 
+            this.Internal_Reports_Financial.Name = "Internal_Reports_Financial";
+            this.Internal_Reports_Financial.Size = new System.Drawing.Size(118, 22);
+            this.Internal_Reports_Financial.Text = "Financial";
+            this.Internal_Reports_Financial.Click += new System.EventHandler(this.Internal_Reports_Financial_Click);
+            // 
+            // Internal_Reports_Sales
+            // 
+            this.Internal_Reports_Sales.Name = "Internal_Reports_Sales";
+            this.Internal_Reports_Sales.Size = new System.Drawing.Size(118, 22);
+            this.Internal_Reports_Sales.Text = "Sales";
+            this.Internal_Reports_Sales.Click += new System.EventHandler(this.Internal_Reports_Sales_Click);
+            // 
+            // Internal_Reports_Taxes
+            // 
+            this.Internal_Reports_Taxes.Name = "Internal_Reports_Taxes";
+            this.Internal_Reports_Taxes.Size = new System.Drawing.Size(118, 22);
+            this.Internal_Reports_Taxes.Text = "Taxes";
+            this.Internal_Reports_Taxes.Click += new System.EventHandler(this.Internal_Reports_Taxes_Click);
+            // 
+            // Internal_Test
+            // 
+            this.Internal_Test.Name = "Internal_Test";
+            this.Internal_Test.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Test.Text = "Test";
+            this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
             // pnlShortcuts
             // 
@@ -499,7 +587,7 @@
             this.gbShortcuts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcuts.Location = new System.Drawing.Point(5, 5);
             this.gbShortcuts.Name = "gbShortcuts";
-            this.gbShortcuts.Size = new System.Drawing.Size(135, 229);
+            this.gbShortcuts.Size = new System.Drawing.Size(135, 259);
             this.gbShortcuts.TabIndex = 14;
             this.gbShortcuts.TabStop = false;
             // 
@@ -507,12 +595,14 @@
             // 
             this.flpShortcuts.AutoSize = true;
             this.flpShortcuts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpShortcuts.Controls.Add(this.lnkInventory);
             this.flpShortcuts.Controls.Add(this.lnkCreateSales);
             this.flpShortcuts.Controls.Add(this.lnkSales);
-            this.flpShortcuts.Controls.Add(this.lnkShipping);
-            this.flpShortcuts.Controls.Add(this.lnkInventory);
-            this.flpShortcuts.Controls.Add(this.lnkPettyCash);
             this.flpShortcuts.Controls.Add(this.lnkSaleOrders);
+            this.flpShortcuts.Controls.Add(this.lnkShipping);
+            this.flpShortcuts.Controls.Add(this.label2);
+            this.flpShortcuts.Controls.Add(this.lnkPettyCash);
+            this.flpShortcuts.Controls.Add(this.label1);
             this.flpShortcuts.Controls.Add(this.lnkSamples);
             this.flpShortcuts.Controls.Add(this.lnkSummary);
             this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -521,8 +611,25 @@
             this.flpShortcuts.Location = new System.Drawing.Point(3, 16);
             this.flpShortcuts.Name = "flpShortcuts";
             this.flpShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpShortcuts.Size = new System.Drawing.Size(129, 210);
+            this.flpShortcuts.Size = new System.Drawing.Size(129, 240);
             this.flpShortcuts.TabIndex = 17;
+            // 
+            // lnkInventory
+            // 
+            this.lnkInventory.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory.AutoSize = true;
+            this.lnkInventory.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkInventory.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory.Location = new System.Drawing.Point(3, 5);
+            this.lnkInventory.Name = "lnkInventory";
+            this.lnkInventory.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkInventory.Size = new System.Drawing.Size(61, 25);
+            this.lnkInventory.TabIndex = 21;
+            this.lnkInventory.TabStop = true;
+            this.lnkInventory.Text = "INVENTORY";
+            this.lnkInventory.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkInventory_LinkClicked);
             // 
             // lnkCreateSales
             // 
@@ -531,7 +638,7 @@
             this.lnkCreateSales.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCreateSales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkCreateSales.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCreateSales.Location = new System.Drawing.Point(3, 5);
+            this.lnkCreateSales.Location = new System.Drawing.Point(3, 30);
             this.lnkCreateSales.Name = "lnkCreateSales";
             this.lnkCreateSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkCreateSales.Size = new System.Drawing.Size(73, 25);
@@ -548,15 +655,32 @@
             this.lnkSales.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSales.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSales.Location = new System.Drawing.Point(3, 30);
+            this.lnkSales.Location = new System.Drawing.Point(3, 55);
             this.lnkSales.Name = "lnkSales";
             this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSales.Size = new System.Drawing.Size(38, 25);
+            this.lnkSales.Size = new System.Drawing.Size(80, 25);
             this.lnkSales.TabIndex = 26;
             this.lnkSales.TabStop = true;
-            this.lnkSales.Text = "SALES";
+            this.lnkSales.Text = "DAFTAR SALES";
             this.lnkSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnlSales_LinkClicked);
+            // 
+            // lnkSaleOrders
+            // 
+            this.lnkSaleOrders.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.AutoSize = true;
+            this.lnkSaleOrders.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSaleOrders.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.Location = new System.Drawing.Point(3, 80);
+            this.lnkSaleOrders.Name = "lnkSaleOrders";
+            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSaleOrders.Size = new System.Drawing.Size(97, 25);
+            this.lnkSaleOrders.TabIndex = 28;
+            this.lnkSaleOrders.TabStop = true;
+            this.lnkSaleOrders.Text = "SALE ORDERS (SO)";
+            this.lnkSaleOrders.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleOrders_LinkClicked);
             // 
             // lnkShipping
             // 
@@ -565,7 +689,7 @@
             this.lnkShipping.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkShipping.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkShipping.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkShipping.Location = new System.Drawing.Point(3, 55);
+            this.lnkShipping.Location = new System.Drawing.Point(3, 105);
             this.lnkShipping.Name = "lnkShipping";
             this.lnkShipping.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkShipping.Size = new System.Drawing.Size(52, 25);
@@ -575,22 +699,15 @@
             this.lnkShipping.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkShipping.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkShipping_LinkClicked);
             // 
-            // lnkInventory
+            // label2
             // 
-            this.lnkInventory.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.AutoSize = true;
-            this.lnkInventory.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkInventory.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.Location = new System.Drawing.Point(3, 80);
-            this.lnkInventory.Name = "lnkInventory";
-            this.lnkInventory.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkInventory.Size = new System.Drawing.Size(61, 25);
-            this.lnkInventory.TabIndex = 21;
-            this.lnkInventory.TabStop = true;
-            this.lnkInventory.Text = "INVENTORY";
-            this.lnkInventory.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkInventory_LinkClicked);
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(3, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 15);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "--------------------------------------";
             // 
             // lnkPettyCash
             // 
@@ -599,32 +716,25 @@
             this.lnkPettyCash.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkPettyCash.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkPettyCash.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.Location = new System.Drawing.Point(3, 105);
+            this.lnkPettyCash.Location = new System.Drawing.Point(3, 145);
             this.lnkPettyCash.Name = "lnkPettyCash";
             this.lnkPettyCash.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkPettyCash.Size = new System.Drawing.Size(34, 25);
+            this.lnkPettyCash.Size = new System.Drawing.Size(65, 25);
             this.lnkPettyCash.TabIndex = 23;
             this.lnkPettyCash.TabStop = true;
-            this.lnkPettyCash.Text = "CASH";
+            this.lnkPettyCash.Text = "PETTY CASH";
             this.lnkPettyCash.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkPettyCash.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkPettyCash_LinkClicked);
             // 
-            // lnkSaleOrders
+            // label1
             // 
-            this.lnkSaleOrders.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.AutoSize = true;
-            this.lnkSaleOrders.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkSaleOrders.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.Location = new System.Drawing.Point(3, 130);
-            this.lnkSaleOrders.Name = "lnkSaleOrders";
-            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSaleOrders.Size = new System.Drawing.Size(75, 25);
-            this.lnkSaleOrders.TabIndex = 28;
-            this.lnkSaleOrders.TabStop = true;
-            this.lnkSaleOrders.Text = "SALE ORDERS";
-            this.lnkSaleOrders.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleOrders_LinkClicked);
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(3, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 15);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "--------------------------------------";
             // 
             // lnkSamples
             // 
@@ -633,7 +743,7 @@
             this.lnkSamples.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSamples.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSamples.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.Location = new System.Drawing.Point(3, 155);
+            this.lnkSamples.Location = new System.Drawing.Point(3, 185);
             this.lnkSamples.Name = "lnkSamples";
             this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSamples.Size = new System.Drawing.Size(52, 25);
@@ -650,7 +760,7 @@
             this.lnkSummary.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.Location = new System.Drawing.Point(3, 180);
+            this.lnkSummary.Location = new System.Drawing.Point(3, 210);
             this.lnkSummary.Name = "lnkSummary";
             this.lnkSummary.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSummary.Size = new System.Drawing.Size(56, 25);
@@ -663,6 +773,8 @@
             // expandCollapseToggle1
             // 
             this.expandCollapseToggle1.AdjustLocationOnClick = true;
+            this.expandCollapseToggle1.ContainerPanel = null;
+            this.expandCollapseToggle1.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.expandCollapseToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Left;
             this.expandCollapseToggle1.Location = new System.Drawing.Point(145, 24);
             this.expandCollapseToggle1.Margin = new System.Windows.Forms.Padding(4);
@@ -670,19 +782,6 @@
             this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
-            // 
-            // kontrabonToolStripMenuItem
-            // 
-            this.kontrabonToolStripMenuItem.Name = "kontrabonToolStripMenuItem";
-            this.kontrabonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kontrabonToolStripMenuItem.Text = "Kontrabon";
-            // 
-            // menu_admin_kontrabon
-            // 
-            this.menu_admin_kontrabon.Name = "menu_admin_kontrabon";
-            this.menu_admin_kontrabon.Size = new System.Drawing.Size(180, 22);
-            this.menu_admin_kontrabon.Text = "Kontrabon";
-            this.menu_admin_kontrabon.Click += new System.EventHandler(this.Menu_admin_kontrabon_Click);
             // 
             // Container_Form
             // 
@@ -694,9 +793,9 @@
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
             this.Name = "Container_Form";
-            this.Text = "BINA MITRA TEXTILE APP";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Container_Form_FormClosing);
+            this.Text = "CV. BINA MITRA TEXTILE";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.pnlShortcuts.ResumeLayout(false);
@@ -713,49 +812,28 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip mainMenu;
-        private System.Windows.Forms.ToolStripMenuItem menu_sales;
-        private System.Windows.Forms.ToolStripMenuItem menu_sales_list;
-        private System.Windows.Forms.ToolStripMenuItem menu_sales_saleorders;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_stock;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_stocklevel;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_invoices;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_opname;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_po;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_printbarcodes;
-        private System.Windows.Forms.ToolStripMenuItem menu_inventory_samples;
-        private System.Windows.Forms.ToolStripMenuItem menu_returns;
-        private System.Windows.Forms.ToolStripMenuItem menu_customercredit;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin;
-        private System.Windows.Forms.ToolStripMenuItem angkutanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_cities;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_colors;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_customers;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_customersaleadjustments;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_customerterms;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_grades;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_length_units;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_pettycashcategories;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_pettycash;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_prices;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_products;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_productstorenames;
-        private System.Windows.Forms.ToolStripMenuItem statesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_vendors;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_vendorinvoices;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_widths;
-        private System.Windows.Forms.ToolStripMenuItem menu_users;
-        private System.Windows.Forms.ToolStripMenuItem menu_reports;
-        private System.Windows.Forms.ToolStripMenuItem menu_reports_financial;
-        private System.Windows.Forms.ToolStripMenuItem menu_reports_sales;
-        private System.Windows.Forms.ToolStripMenuItem menu_reports_tax;
-        private System.Windows.Forms.ToolStripMenuItem menu_todolist;
-        private System.Windows.Forms.ToolStripMenuItem menu_test;
-        private System.Windows.Forms.ToolStripMenuItem menu_account;
-        private System.Windows.Forms.ToolStripMenuItem menu_account_password;
-        private System.Windows.Forms.ToolStripMenuItem menu_account_salescomission;
-        private System.Windows.Forms.ToolStripMenuItem menu_account_rules;
-        private System.Windows.Forms.ToolStripMenuItem menu_account_log;
+        private System.Windows.Forms.ToolStripMenuItem Sales;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Daftar;
+        private System.Windows.Forms.ToolStripMenuItem Sales_SaleOrders;
+        private System.Windows.Forms.ToolStripMenuItem Inventory;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Daftar;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_StockLevel;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_VendorInvoices;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Opname;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_PurchaseOrders;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Barcodes;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Samples;
+        private System.Windows.Forms.ToolStripMenuItem Admin;
+        private System.Windows.Forms.ToolStripMenuItem Admin_Angkutan;
+        private System.Windows.Forms.ToolStripMenuItem Admin_Cities;
+        private System.Windows.Forms.ToolStripMenuItem Admin_PettyCashCategories;
+        private System.Windows.Forms.ToolStripMenuItem Admin_PettyCash;
+        private System.Windows.Forms.ToolStripMenuItem Admin_States;
+        private System.Windows.Forms.ToolStripMenuItem Account;
+        private System.Windows.Forms.ToolStripMenuItem Account_Password;
+        private System.Windows.Forms.ToolStripMenuItem Account_Komisi;
+        private System.Windows.Forms.ToolStripMenuItem Account_Peraturan;
+        private System.Windows.Forms.ToolStripMenuItem Account_Log;
         private LIBUtil.Desktop.UserControls.PanelToggle expandCollapseToggle1;
         private System.Windows.Forms.Panel pnlShortcuts;
         private System.Windows.Forms.GroupBox gbShortcuts;
@@ -769,7 +847,39 @@
         private System.Windows.Forms.LinkLabel lnkShipping;
         private System.Windows.Forms.LinkLabel lnkSaleOrders;
         private System.Windows.Forms.LinkLabel lnkSamples;
-        private System.Windows.Forms.ToolStripMenuItem menu_admin_kontrabon;
-        private System.Windows.Forms.ToolStripMenuItem kontrabonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Sales_FakturPajakKeluaran;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Returns;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Divider_Penagihan;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_FakturPajakMasukan;
+        private System.Windows.Forms.ToolStripMenuItem Internal;
+        private System.Windows.Forms.ToolStripMenuItem Internal_UserAccounts;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Reports;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Test;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Reports_Financial;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Reports_Sales;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Reports_Taxes;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Kontrabon;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Divider_Customer;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Customers;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Customers_Daftar;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Customers_Credits;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Customers_Discounts;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Customers_DebLimits;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem Admin_Todolist;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Colors;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Daftar;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Grades;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Units;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Prices;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_StoreNames;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Widths;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_Products_Vendors;
+        private System.Windows.Forms.ToolStripMenuItem Sales_Chart;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

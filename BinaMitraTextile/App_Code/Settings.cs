@@ -9,6 +9,8 @@ namespace BinaMitraTextile
 {
     class Settings
     {
+        public static string autologinusername = "";
+
         /*******************************************************************************************************/
         #region PRIVATE VARIABLES
 
@@ -94,7 +96,13 @@ namespace BinaMitraTextile
                 if (string.IsNullOrEmpty(value))
                     return DateTime.Now.AddDays(-1);
                 else
+                {
+                    //System.Globalization.DateTimeFormatInfo usCinfo = new System.Globalization.CultureInfo(System.Globalization.CultureInfo.CurrentCulture.Name, false).DateTimeFormat;
+                    //DateTime fromDate = Convert.ToDateTime(value, usCinfo);
+
+
                     return Convert.ToDateTime(value);
+                }
             }
             set { update(GUID_LastOpnameCleanupDate, null, value.ToString()); }
         }
