@@ -486,6 +486,7 @@
             this.gridvendorinvoice.Size = new System.Drawing.Size(984, 322);
             this.gridvendorinvoice.TabIndex = 6;
             this.gridvendorinvoice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridvendorinvoice_CellContentClick);
+            this.gridvendorinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridvendorinvoice_CellDoubleClick);
             this.gridvendorinvoice.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseDown);
             this.gridvendorinvoice.SelectionChanged += new System.EventHandler(this.gridvendorinvoice_SelectionChanged);
             // 
@@ -893,6 +894,7 @@
             this.Name = "VendorInvoices_Form";
             this.Text = "VENDOR INVOICES";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).EndInit();
             this.pnlFilterAndButtons.ResumeLayout(false);
             this.pnlFilterAndButtonsContent.ResumeLayout(false);

@@ -12,6 +12,28 @@ namespace BinaMitraTextile
         public static string autologinusername = "";
 
         /*******************************************************************************************************/
+        #region APP VERSION
+
+        public const string APPVERSION = "v200427";
+        private static Guid GUID_LatestAppVersion = new Guid("C1552CB9-E157-4925-897E-904180379BFE");
+
+        public static string LatestAppVersion { get { return getStringValue(GUID_LatestAppVersion); }set { update(GUID_LatestAppVersion, null, value); } }
+
+        public static bool hasLatestAppVersion()
+        {
+            if (LatestAppVersion == APPVERSION)
+                return true;
+            else if (String.Compare(LatestAppVersion, APPVERSION) < 0)
+            {
+                LatestAppVersion = APPVERSION;
+                return true;
+            }
+            else
+                return false;
+        }
+
+        #endregion APP VERSION
+        /*******************************************************************************************************/
         #region PRIVATE VARIABLES
 
         //barcode printing
@@ -59,7 +81,7 @@ namespace BinaMitraTextile
         {
             return ConfigurationManager.AppSettings["uploadStorage"];
         }
-        
+
         /// <summary><para></para></summary>
         public static string LastSheetNo
         {

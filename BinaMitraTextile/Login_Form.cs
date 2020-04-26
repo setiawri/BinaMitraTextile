@@ -25,8 +25,9 @@ namespace BinaMitraTextile
         private void setupControls()
         {
             Settings.setGeneralSettings(this);
+            this.Text += " " + Settings.APPVERSION; 
 
-            LIBUtil.DBConnection.populatePorts(iddl_Ports);
+            DBConnection.populatePorts(iddl_Ports);
 
             if (DBUtil.isSalesEnvironment)
             {
@@ -74,7 +75,6 @@ namespace BinaMitraTextile
 
         private void authenticate()
         {
-            LIBUtil.Util.sanitize(itxt_Username.textbox, itxt_Password.textbox);
             GlobalData.UserAccount = UserAccount.authenticate(itxt_Username.ValueText, itxt_Password.ValueText, _bypassLogin);
 
             if (GlobalData.UserAccount != null)
@@ -111,10 +111,15 @@ namespace BinaMitraTextile
         {
             if (e.KeyData == Keys.Enter)
             {
-                if (isConnectedToServer())
-                    authenticate();
-                else
+                if (!isConnectedToServer())
                     itxt_Password.focus();
+                else
+                {
+                    if (Settings.hasLatestAppVersion())
+                        authenticate();
+                    else
+                        Util.displayMessageBoxError("Please update app to latest version.");
+                }
             }
         }
 

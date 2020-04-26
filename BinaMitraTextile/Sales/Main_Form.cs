@@ -22,6 +22,7 @@ namespace BinaMitraTextile.Sales
 
         FormModes _startingMode = FormModes.Normal;
         Guid? _BrowsingForFakturPajak_Customers_Id = null;
+        Guid? _BrowsingForFakturPajak_Vendors_Id = null;
         public Guid BrowsedItemSelectionId;
 
         #endregion CLASS VARIABLES
@@ -51,14 +52,17 @@ namespace BinaMitraTextile.Sales
             col_gridmaster_profit.DataPropertyName = Sale.COL_PROFIT;
             col_gridmaster_profitpercent.DataPropertyName = Sale.COL_PROFITPERCENT;
             col_gridmaster_specialuseronly.DataPropertyName = Sale.COL_DB_SPECIALUSERONLY;
-            col_gridmaster_returnedToSupplier.DataPropertyName = Sale.COL_DB_RETURNEDTOSUPPLIER;
             col_gridmaster_shippingcost.DataPropertyName = Sale.COL_DB_SHIPPINGCOST;
-            col_gridmaster_isReported.DataPropertyName = Sale.COL_DB_ISREPORTED;
             col_gridmaster_taxno.DataPropertyName = Sale.COL_DB_TAXNO;
             col_gridmaster_returnedamount.DataPropertyName = Sale.COL_RETURNEDAMOUNT;
             col_gridmaster_taxno.DataPropertyName = Sale.COL_DB_TAXNO;
             col_gridMaster_isManualAdjustment.DataPropertyName = Sale.COL_isManualAdjustment;
             col_gridmaster_SaleCommission_Users_Name.DataPropertyName = Sale.COL_SaleCommission_Users_Name;
+            col_gridMaster_Vendors_Name.DataPropertyName = Sale.COL_Vendors_Name;
+            col_gridmaster_isReported.DataPropertyName = Sale.COL_DB_ISREPORTED;
+            col_gridmaster_isReported.Visible = false;
+            col_gridmaster_returnedToSupplier.DataPropertyName = Sale.COL_DB_RETURNEDTOSUPPLIER;
+            col_gridmaster_returnedToSupplier.Visible = false;
 
             gridDetail.AutoGenerateColumns = false;
             col_gridDetail_id.DataPropertyName = SaleItem.COL_INVENTORY_ITEM_ID;
@@ -101,10 +105,11 @@ namespace BinaMitraTextile.Sales
             dtEnd.Checked = false;
         }
 
-        public Main_Form(FormModes startingMode, Guid BrowsingForFakturPajak_Customers_Id) : this()
+        public Main_Form(FormModes startingMode, Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id) : this()
         {
             _startingMode = startingMode;
             _BrowsingForFakturPajak_Customers_Id = BrowsingForFakturPajak_Customers_Id;
+            _BrowsingForFakturPajak_Vendors_Id = BrowsingForFakturPajak_Vendors_Id;
 
             if (_startingMode == FormModes.Browse)
             {
@@ -233,7 +238,7 @@ namespace BinaMitraTextile.Sales
 
             if (_startingMode == FormModes.Browse)
             {
-                Tools.setGridviewDataSource(gridMaster, true, true, Sale.get_by_BrowsingForFakturPajak_Customers_Id((Guid)_BrowsingForFakturPajak_Customers_Id));
+                Tools.setGridviewDataSource(gridMaster, true, true, Sale.get_by_BrowsingForFakturPajak((Guid?)_BrowsingForFakturPajak_Customers_Id, (Guid?)_BrowsingForFakturPajak_Vendors_Id));
             }
             else
             {
@@ -243,6 +248,7 @@ namespace BinaMitraTextile.Sales
                         Tools.getDate(dtEnd, true),
                         inventoryItemID,
                         (Guid?)iddl_Customers.SelectedValue,
+                        null,
                         saleID,
                         chkOnlyHasReceivable.Checked,
                         chkOnlyLossProfit.Checked,
@@ -254,6 +260,7 @@ namespace BinaMitraTextile.Sales
                         chkOnlyNotCompleted.Checked,
                         chkOnlyManualAdjustment.Checked,
                         itxt_InventoryCode.ValueText,
+                        null,
                         null,
                         null,
                         null)

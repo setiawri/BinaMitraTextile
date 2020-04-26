@@ -61,26 +61,27 @@ namespace BinaMitraTextile
             }
         }
 
-        public Customer(Guid? id) { }
-
-        public Customer(Guid id)
+        public Customer(Guid? id)
         {
-            ID = id;
-            DataTable dt = getRow(ID);
-            Name = dt.Rows[0][COL_DB_NAME].ToString();
-            Address = dt.Rows[0][COL_DB_ADDRESS].ToString();
-            CityID = (Guid)dt.Rows[0][COL_DB_CITYID];
-            DefaultTransportID = DBUtil.parseData<Guid?>(dt.Rows[0], COL_DB_DEFAULTTRANSPORTID);
-            Phone1 = dt.Rows[0][COL_DB_PHONE1].ToString();
-            Phone2 = dt.Rows[0][COL_DB_PHONE2].ToString();
-            Active = (Boolean)dt.Rows[0][COL_DB_ACTIVE];
-            Notes = dt.Rows[0][COL_DB_NOTES].ToString();
-            SalesUserID = DBUtil.parseData<Guid>(dt.Rows[0], COL_DB_SALESUSERID);
+            if(id != null)
+            {
+                ID = (Guid)id;
+                DataTable dt = getRow(ID);
+                Name = dt.Rows[0][COL_DB_NAME].ToString();
+                Address = dt.Rows[0][COL_DB_ADDRESS].ToString();
+                CityID = (Guid)dt.Rows[0][COL_DB_CITYID];
+                DefaultTransportID = DBUtil.parseData<Guid?>(dt.Rows[0], COL_DB_DEFAULTTRANSPORTID);
+                Phone1 = dt.Rows[0][COL_DB_PHONE1].ToString();
+                Phone2 = dt.Rows[0][COL_DB_PHONE2].ToString();
+                Active = (Boolean)dt.Rows[0][COL_DB_ACTIVE];
+                Notes = dt.Rows[0][COL_DB_NOTES].ToString();
+                SalesUserID = DBUtil.parseData<Guid>(dt.Rows[0], COL_DB_SALESUSERID);
 
-            CityName = dt.Rows[0][COL_CITYNAME].ToString();
-            StateName = dt.Rows[0][COL_STATENAME].ToString();
-            DefaultTransportName = DBUtil.parseData<string>(dt.Rows[0], COL_DEFAULTTRANSPORTNAME);
-            SalesUserName = DBUtil.parseData<string>(dt.Rows[0], COL_SALESUSERNAME);
+                CityName = dt.Rows[0][COL_CITYNAME].ToString();
+                StateName = dt.Rows[0][COL_STATENAME].ToString();
+                DefaultTransportName = DBUtil.parseData<string>(dt.Rows[0], COL_DEFAULTTRANSPORTNAME);
+                SalesUserName = DBUtil.parseData<string>(dt.Rows[0], COL_SALESUSERNAME);
+            }
         }
 
         public static void add(string name, string address, Guid cityID, Guid? defaultTransportID, string phone1, string phone2, string notes)

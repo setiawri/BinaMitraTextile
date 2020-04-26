@@ -140,29 +140,25 @@ namespace BinaMitraTextile
 
         public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id)
         {
-            return get(null, null, false, null,  BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, false, null, BrowsingForFakturPajak_Customers_Id);
         }
 
-        public static DataTable get(Guid? id, string invoiceNumber, bool includeCompleted, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
+        public static DataTable get(Guid? Id, string invoiceNumber, bool includeCompleted, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("vendorinvoice_get", DBUtil.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                cmd.Parameters.Add("@" + COL_DB_InvoiceNo, SqlDbType.VarChar).Value = Tools.wrapNullable(invoiceNumber);
-                cmd.Parameters.Add("@" + COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(FakturPajaks_Id);
-                cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id);
-                cmd.Parameters.Add("@include_completed", SqlDbType.Bit).Value = includeCompleted;
-                cmd.Parameters.Add("@status_completed", SqlDbType.TinyInt).Value = VendorInvoiceStatus.PaidFull;
-                cmd.Parameters.Add("@status_cancelled", SqlDbType.TinyInt).Value = VendorInvoiceStatus.Cancelled;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return Tools.parseEnum<VendorInvoiceStatus>(dataTable, COL_StatusName, COL_DB_StatusEnumID);
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "vendorinvoice_get",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
+                new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, Util.wrapNullable(invoiceNumber)),
+                new SqlQueryParameter(COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(FakturPajaks_Id)),
+                new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
+                new SqlQueryParameter("include_completed", SqlDbType.Bit, includeCompleted),
+                new SqlQueryParameter("status_completed", SqlDbType.TinyInt, VendorInvoiceStatus.PaidFull),
+                new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, VendorInvoiceStatus.Cancelled)
+                );
+            return result.Datatable;
         }
 
         public static Guid add(string invoiceNo, Guid Vendors_Id)

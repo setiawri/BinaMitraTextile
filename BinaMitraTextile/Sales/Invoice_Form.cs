@@ -88,6 +88,7 @@ namespace BinaMitraTextile.Sales
             if (_sale.ReturnedToSupplier)
                 lblTitle.Text = "RETUR VENDOR";
 
+            lblInvoiceNo.Text = "";
             lblDate.Text = String.Format("Date: {0:dd/MM/yy hh:mm}", _sale.time_stamp);
 
             //customer info

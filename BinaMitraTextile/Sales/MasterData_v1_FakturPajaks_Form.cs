@@ -14,8 +14,6 @@ namespace BinaMitraTextile.Sales
 
         private const bool FORM_SHOWDATAONLOAD = true;
 
-        private Guid? _lastSelectedFakturPajaks_Id = null;
-
         #endregion SETTINGS
         /*******************************************************************************************************/
         #region PRIVATE VARIABLES
@@ -24,12 +22,20 @@ namespace BinaMitraTextile.Sales
         private DataGridViewColumn col_dgv_Timestamp;
         private DataGridViewColumn col_dgv_Customers_Id;
         private DataGridViewColumn col_dgv_Customers_Name;
+        private DataGridViewColumn col_dgv_Vendors_Id;
+        private DataGridViewColumn col_dgv_Vendors_Name;
         private DataGridViewColumn col_dgv_DPP;
         private DataGridViewColumn col_dgv_PPN;
         private DataGridViewColumn col_dgv_Notes;
         private DataGridViewColumn col_dgv_TotalAmount;
         private DataGridViewColumn col_dgv_AssignedAmount;
         private DataGridViewColumn col_dgv_AmountDifference;
+
+        private Guid? _lastSelectedFakturPajaks_Id = null;
+
+        private const string TABTITLE_SaleInvoices = "Sale Invoices";
+        private const string TABTITLE_VendorInvoices = "Vendor Invoices";
+        private const string TABTITLE_SaleReturns = "Sale Returns";
 
         #endregion PRIVATE VARIABLES
         /*******************************************************************************************************/
@@ -46,7 +52,8 @@ namespace BinaMitraTextile.Sales
         {
             DataTable data = Sale.get_by_FakturPajaks_Id(selectedRowID());
             Util.setGridviewDataSource(gridSaleInvoices, false, false, data);
-            tpSaleInvoices.Text = string.Format("Sale Invoices: {0:N2}", Util.compute(data, "SUM", Sale.COL_SALEAMOUNT, ""));
+
+            tpSaleInvoices.Text = string.Format("{0}: {1:N2}", TABTITLE_SaleInvoices, Util.compute(data, "SUM", Sale.COL_SALEAMOUNT, ""));
             if(repopulateGridFakturPajak)
                 populateGridViewDataSource(true);
         }
@@ -55,7 +62,7 @@ namespace BinaMitraTextile.Sales
         {
             DataTable data = SaleReturn.get_by_FakturPajaks_Id(selectedRowID());
             Util.setGridviewDataSource(gridReturns, false, false, data);
-            tpSaleReturns.Text = string.Format("Sale Returns: {0:N2}", Util.compute(data, "SUM", SaleReturn.COL_RETURNAMOUNT, ""));
+            tpSaleReturns.Text = string.Format("{0}: {1:N2}", TABTITLE_SaleReturns, -1*Util.compute(data, "SUM", SaleReturn.COL_RETURNAMOUNT, ""));
             if (repopulateGridFakturPajak)
                 populateGridViewDataSource(true);
         }
@@ -63,8 +70,8 @@ namespace BinaMitraTextile.Sales
         private void populateGridVendorInvoices(bool repopulateGridFakturPajak)
         {
             DataTable data = VendorInvoice.get_by_FakturPajaks_Id(selectedRowID());
-            Util.setGridviewDataSource(gridReturns, false, false, data);
-            tpSaleReturns.Text = string.Format("Vendor Invoices: {0:N2}", Util.compute(data, "SUM", VendorInvoice.COL_DB_Amount, ""));
+            Util.setGridviewDataSource(gridVendorInvoices, false, false, data);
+            tpVendorInvoices.Text = string.Format("{0}: {1:N2}", TABTITLE_VendorInvoices, Util.compute(data, "SUM", VendorInvoice.COL_DB_Amount, ""));
             if (repopulateGridFakturPajak)
                 populateGridViewDataSource(true);
         }
@@ -80,8 +87,10 @@ namespace BinaMitraTextile.Sales
 
             col_dgv_No = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_No", "No", FakturPajak.COL_DB_No, true, true, "", true, false, 20, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", idtp_Timestamp.LabelText, FakturPajak.COL_DB_Timestamp, true, true, "", false, false, 40, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_Customers_Id = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Id", "CustomerId", FakturPajak.COL_DB_Customers_Id, true, false, "", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_Customers_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Name", iddl_Customers.LabelText, FakturPajak.COL_Customers_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Vendors_Id = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Vendors_Id", "Vendors_Id", FakturPajak.COL_DB_Vendors_Id, true, false, "", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Vendors_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Vendors_Name", iddl_Vendors.LabelText, FakturPajak.COL_Vendors_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Customers_Id = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Id", "Customers_Id", FakturPajak.COL_DB_Customers_Id, true, false, "", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Customers_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Name", iddl_Customers.LabelText, FakturPajak.COL_Customers_Name, true, true, "", true, false, 55, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_DPP = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_DPP", in_DPP.LabelText, FakturPajak.COL_DB_DPP, true, true, "N2", false, false, 30, DataGridViewContentAlignment.MiddleRight);
             col_dgv_PPN = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_PPN", in_PPN.LabelText, FakturPajak.COL_DB_PPN, true, true, "N2", false, false, 30, DataGridViewContentAlignment.MiddleRight);
             col_dgv_TotalAmount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_TotalAmount", "Total", FakturPajak.COL_TotalAmount, true, true, "N2", false, false, 30, DataGridViewContentAlignment.MiddleRight);
@@ -90,11 +99,8 @@ namespace BinaMitraTextile.Sales
             Util.updateForeColor(col_dgv_AmountDifference, Color.Red);
             Util.updateFontStyle(col_dgv_AmountDifference, FontStyle.Bold);
 
-            col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, FakturPajak.COL_DB_No, true, true, "", true, false, 30, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, FakturPajak.COL_DB_Notes, true, true, "", true, false, 30, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            idtp_Timestamp.Value = DateTime.Now;
-            Customer.populateInputControlDropDownList(iddl_Customers, false);
 
             gridSaleInvoices.AutoGenerateColumns = false;
             gridSaleInvoices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -130,10 +136,19 @@ namespace BinaMitraTextile.Sales
             col_gridvendorinvoice_notes.DataPropertyName = VendorInvoice.COL_DB_Notes;
             col_gridvendorinvoice_notes.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
+            idtp_Timestamp.Value = DateTime.Now;
+            Customer.populateInputControlDropDownList(iddl_Customers, true);
+            Vendor.populateInputControlDropDownList(iddl_Vendors, true);
+
             idtp_StartDate.Value = DateTime.Now.AddMonths(-3);
             idtp_EndDate.Value = DateTime.Now;
             idtp_StartDate.Checked = false;
             idtp_EndDate.Checked = false;
+
+            rbVendor.Checked = true;
+            setRadioButtonEnability(rbVendor);
+
+            tcRowInfo.TabPages.Clear();
 
             InputToDisableOnAdd.Add(idtp_StartDate);
             InputToDisableOnAdd.Add(idtp_EndDate);
@@ -161,8 +176,10 @@ namespace BinaMitraTextile.Sales
             itxt_No.reset();
             idtp_Timestamp.Value = DateTime.Now;
             iddl_Customers.reset();
+            iddl_Vendors.reset();
             in_DPP.Value = 0;
             in_PPN.Value = 0;
+            itxt_Notes.reset();
         }
 
         protected override bool isValidToPopulateGridViewDataSource()
@@ -172,36 +189,54 @@ namespace BinaMitraTextile.Sales
 
         protected override System.Data.DataView loadGridviewDataSource()
         {
-            return FakturPajak.get(null, itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked).DefaultView;
+            return FakturPajak.get(null, itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked).DefaultView;
         }
 
         protected override void populateInputFields()
         {
             FakturPajak obj = new FakturPajak(selectedRowID());
             idtp_Timestamp.Value = obj.Timestamp;
-            iddl_Customers.SelectedValue = obj.Customers_Id;
             itxt_No.ValueText = obj.No;
             in_DPP.Value = obj.DPP;
             in_PPN.Value = obj.PPN;
             itxt_Notes.ValueText = obj.Notes;
+
+            iddl_Customers.SelectedValue = obj.Customers_Id;
+            iddl_Vendors.SelectedValue = obj.Vendors_Id;
+            rbVendor.Checked = (obj.Vendors_Id != null);
+            setRadioButtonEnability(rbVendor);
         }
 
         protected override void add()
         {
-            FakturPajak.add((DateTime)idtp_Timestamp.ValueAsStartDateFilter, (Guid)iddl_Customers.SelectedValue, itxt_No.ValueText, in_DPP.ValueDecimal, in_PPN.ValueDecimal, itxt_Notes.ValueText);
+            Guid? Customers_Id = null;
+            Guid? Vendors_Id = null;
+            if (rbVendor.Checked)
+                Vendors_Id = (Guid?)iddl_Vendors.SelectedValue;
+            else
+                Customers_Id = (Guid?)iddl_Customers.SelectedValue;
+            FakturPajak.add((DateTime)idtp_Timestamp.ValueAsStartDateFilter, Customers_Id, Vendors_Id, itxt_No.ValueText, in_DPP.ValueDecimal, in_PPN.ValueDecimal, itxt_Notes.ValueText);
         }
 
         protected override void update()
         {
-            FakturPajak.update(selectedRowID(), (DateTime)idtp_Timestamp.ValueAsStartDateFilter, (Guid)iddl_Customers.SelectedValue, itxt_No.ValueText, in_DPP.ValueDecimal, in_PPN.ValueDecimal, itxt_Notes.ValueText);
+            Guid? Customers_Id = null;
+            Guid? Vendors_Id = null;
+            if (rbVendor.Checked)
+                Vendors_Id = (Guid?)iddl_Vendors.SelectedValue;
+            else
+                Customers_Id = (Guid?)iddl_Customers.SelectedValue;
+            FakturPajak.update(selectedRowID(), (DateTime)idtp_Timestamp.ValueAsStartDateFilter, Customers_Id, Vendors_Id, itxt_No.ValueText, in_DPP.ValueDecimal, in_PPN.ValueDecimal, itxt_Notes.ValueText);
         }
 
         protected override Boolean isInputFieldsValid()
         {
             if (itxt_No.isEmpty())
                 return itxt_No.isValueError("Please provide No");
-            else if (!iddl_Customers.hasSelectedValue())
+            else if (rbCustomer.Checked && !iddl_Customers.hasSelectedValue())
                 return iddl_Customers.SelectedValueError("Please select Customer");
+            else if (rbVendor.Checked && !iddl_Vendors.hasSelectedValue())
+                return iddl_Vendors.SelectedValueError("Please select Vendor");
             else if ((Mode != FormModes.Update && FakturPajak.isNoExist(null, itxt_No.ValueText))
                 || (Mode == FormModes.Update && FakturPajak.isNoExist(selectedRowID(), itxt_No.ValueText)))
                 return itxt_No.isValueError("No is already in the list");
@@ -237,9 +272,24 @@ namespace BinaMitraTextile.Sales
         {
             _lastSelectedFakturPajaks_Id = (Guid)Util.getSelectedRowValue(dgv, col_dgv_Id);
             lblRowInfoHeader.Text = string.Format("Faktur Pajak No: {0}", Util.getSelectedRowValue(dgv, col_dgv_No));
-            populateGridSaleInvoices(false);
-            populateGridReturns(false);
-            populateGridVendorInvoices(false);
+
+            if (Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
+            {
+                tcRowInfo.TabPages.Clear();
+                tcRowInfo.TabPages.Add(tpVendorInvoices);
+                tcRowInfo.TabPages.Add(tpSaleInvoices);
+                populateGridSaleInvoices(false);
+                populateGridVendorInvoices(false);
+            }
+            else
+            {
+                tcRowInfo.TabPages.Clear();
+                tcRowInfo.TabPages.Add(tpSaleInvoices);
+                tcRowInfo.TabPages.Add(tpSaleReturns);
+                populateGridSaleInvoices(false);
+                populateGridReturns(false);
+            }
+
             if (!ptRowInfo.isTogglePanelVisible())
                 ptRowInfo.PerformClick();
 
@@ -252,7 +302,8 @@ namespace BinaMitraTextile.Sales
                 btnAddReturns.Enabled =
                 btnAddVendorInvoices.Enabled =
                 col_gridReturns_removeFakturPajaks_Id.Visible =
-                col_gridSaleInvoices_removeFakturPajaks_Id.Visible = value;
+                col_gridSaleInvoices_removeFakturPajaks_Id.Visible = 
+                col_gridVendorInvoices_removeFakturPajaks_Id.Visible = value;
         }
 
         private void resetRowInfo()
@@ -260,6 +311,19 @@ namespace BinaMitraTextile.Sales
             lblRowInfoHeader.Text = "";
             Util.setGridviewDataSource(gridSaleInvoices, false, false, null);
             Util.setGridviewDataSource(gridReturns, false, false, null);
+            Util.setGridviewDataSource(gridVendorInvoices, false, false, null);
+            tpSaleInvoices.Text = TABTITLE_SaleInvoices;
+            tpVendorInvoices.Text = TABTITLE_VendorInvoices;
+            tpSaleReturns.Text = TABTITLE_SaleReturns;
+            setButtonsVisibility(false);
+        }
+
+        private void setRadioButtonEnability(object sender)
+        {
+            if (sender == rbVendor)
+                rbCustomer.Checked = iddl_Customers.Enabled = !((RadioButton)sender).Checked;
+            else
+                rbVendor.Checked = iddl_Vendors.Enabled = !((RadioButton)sender).Checked;
         }
 
         #endregion METHODS
@@ -268,13 +332,14 @@ namespace BinaMitraTextile.Sales
 
         private void In_DPP_ValueChanged(object sender, EventArgs e)
         {
-            in_PPN.Value = in_DPP.ValueDecimal / 10;
+            in_PPN.Value = Math.Floor(in_DPP.ValueDecimal / 10);
         }
 
         private void MasterData_v1_FakturPajaks_Form_Shown(object sender, EventArgs e)
         {
             ptInputPanel.PerformClick();
             showRowInfo();
+            //ptRowInfo.PerformClick();
         }
 
         private void BtnAddSales_Click(object sender, EventArgs e)
@@ -283,7 +348,7 @@ namespace BinaMitraTextile.Sales
                 Util.displayMessageBoxError("Double click faktur pajak");
             else
             {
-                Sales.Main_Form form = new Sales.Main_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Customers_Id));
+                Sales.Main_Form form = new Sales.Main_Form(FormModes.Browse, Util.wrapNullable<Guid?>(Util.getSelectedRowValue(dgv, col_dgv_Customers_Id)), Util.wrapNullable<Guid?>(Util.getSelectedRowValue(dgv, col_dgv_Vendors_Id)));
                 Util.displayForm(null, form);
                 if (form.DialogResult == DialogResult.OK)
                 {
@@ -299,12 +364,15 @@ namespace BinaMitraTextile.Sales
                 Util.displayMessageBoxError("Double click faktur pajak");
             else
             {
-                Returns.Main_Form form = new Returns.Main_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Customers_Id));
-                Util.displayForm(null, form);
-                if (form.DialogResult == DialogResult.OK)
+                if (Util.selectedItemIsNotNull(dgv, col_dgv_Customers_Id))
                 {
-                    SaleReturn.update(form.BrowsedItemSelectionId, (Guid)_lastSelectedFakturPajaks_Id);
-                    populateGridReturns(true);
+                    Returns.Main_Form form = new Returns.Main_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Customers_Id));
+                    Util.displayForm(null, form);
+                    if (form.DialogResult == DialogResult.OK)
+                    {
+                        SaleReturn.update(form.BrowsedItemSelectionId, (Guid)_lastSelectedFakturPajaks_Id);
+                        populateGridReturns(true);
+                    }
                 }
             }
         }
@@ -315,12 +383,15 @@ namespace BinaMitraTextile.Sales
                 Util.displayMessageBoxError("Double click faktur pajak");
             else
             {
-                Invoices.VendorInvoices_Form form = new Invoices.VendorInvoices_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Customers_Id));
-                Util.displayForm(null, form);
-                if (form.DialogResult == DialogResult.OK)
+                if (Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
                 {
-                    VendorInvoice.update_FakturPajaks_Id(form.BrowsedItemSelectionId, _lastSelectedFakturPajaks_Id);
-                    populateGridReturns(true);
+                    Invoices.VendorInvoices_Form form = new Invoices.VendorInvoices_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Vendors_Id));
+                    Util.displayForm(null, form);
+                    if (form.DialogResult == DialogResult.OK)
+                    {
+                        VendorInvoice.update_FakturPajaks_Id(form.BrowsedItemSelectionId, _lastSelectedFakturPajaks_Id);
+                        populateGridVendorInvoices(true);
+                    }
                 }
             }
         }
@@ -366,7 +437,7 @@ namespace BinaMitraTextile.Sales
         {
             if (Util.isColumnMatch(sender, e, col_gridVendorInvoices_removeFakturPajaks_Id))
             {
-                VendorInvoice.update_FakturPajaks_Id((Guid)Util.getSelectedRowValue(sender, col_gridReturns_id), null);
+                VendorInvoice.update_FakturPajaks_Id((Guid)Util.getSelectedRowValue(sender, col_gridvendorinvoice_id), null);
                 populateGridVendorInvoices(true);
             }
         }
@@ -379,6 +450,11 @@ namespace BinaMitraTextile.Sales
         private void ChkShowCompleted_CheckedChanged(object sender, EventArgs e)
         {
             populateGridViewDataSource(true);
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            setRadioButtonEnability(sender);
         }
 
         #endregion EVENT HANDLERS

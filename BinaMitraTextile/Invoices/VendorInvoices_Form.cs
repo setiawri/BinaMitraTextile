@@ -14,6 +14,8 @@ namespace BinaMitraTextile.Invoices
         Guid? _BrowsingForFakturPajak_Vendors_Id = null;
         public Guid BrowsedItemSelectionId;
 
+        private bool isFormShown = false;
+
         #endregion
         /*******************************************************************************************************/
         #region INITIALIZATION
@@ -69,7 +71,7 @@ namespace BinaMitraTextile.Invoices
 
         private void gridvendorinvoice_SelectionChanged(object sender, EventArgs e)
         {
-            if(gridvendorinvoice.SelectedRows.Count > 0)
+            if(isFormShown && gridvendorinvoice.SelectedRows.Count > 0)
             {
                 DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false);
                 Tools.setGridviewDataSource(gridInventory, false, false, data);
@@ -197,6 +199,23 @@ namespace BinaMitraTextile.Invoices
         {
             if (Util.isColumnMatch(sender, e, col_gridinventory_code))
                 Util.displayForm(new InventoryForm.Items_Form((Guid)Util.getClickedRowValue(sender, e, col_gridinventory_id)));
+        }
+
+        private void Gridvendorinvoice_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return; //header row
+
+            if (_startingMode == FormModes.Browse)
+            {
+                BrowsedItemSelectionId = (Guid)Util.getSelectedRowValue(sender, col_gridvendorinvoice_id);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            isFormShown = true;
         }
 
         #endregion

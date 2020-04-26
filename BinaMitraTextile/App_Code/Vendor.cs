@@ -43,13 +43,11 @@ namespace BinaMitraTextile
             }
         }
 
-        public Vendor(Guid? id) { }
-
-        public Vendor(Guid id)
+        public Vendor(Guid? id)
         {
-            if(ID != null)
+            if(id != null)
             {
-                ID = id;
+                ID = (Guid)id;
                 DataTable dt = getRow(ID);
                 Name = dt.Rows[0][COL_DB_NAME].ToString();
                 Address = dt.Rows[0][COL_DB_ADDRESS].ToString();

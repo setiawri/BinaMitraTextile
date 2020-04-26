@@ -109,7 +109,7 @@ namespace BinaMitraTextile.Invoices
                 referenceId = _sale.id;
                 startingBalance = _sale.SaleAmount + _sale.ShippingCost;
                 
-                _creditBalance = CustomerCredit.getBalance(_sale.customer_id);
+                _creditBalance = CustomerCredit.getBalance((Guid)_sale.customer_id);
                 lblCreditBalance.Text = String.Format("Credit {0}: Rp.{1:N2}", new Customer(_sale.customer_id).Name, _creditBalance);
             }
 
@@ -201,7 +201,7 @@ namespace BinaMitraTextile.Invoices
                 {
                     Guid id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
                     if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
-                        CustomerCredit.submitNew(_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null);
+                        CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null);
                 }
 
                 populateData();
@@ -227,7 +227,7 @@ namespace BinaMitraTextile.Invoices
             if (_paymentMode == PaymentMode.VendorInvoice)
                 Tools.displayForm(new Invoices.VendorDebits_Form(_vendorInvoice.Vendors_Id));
             else if (_paymentMode == PaymentMode.SaleInvoice)
-                Tools.displayForm(new CustomerCredits.Main_Form(_sale.customer_id));
+                Tools.displayForm(new CustomerCredits.Main_Form((Guid)_sale.customer_id));
         }
         
         private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

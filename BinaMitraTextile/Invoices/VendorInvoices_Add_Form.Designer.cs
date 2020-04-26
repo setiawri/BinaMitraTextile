@@ -68,7 +68,7 @@
             this.iddl_Vendors.DisableTextInput = false;
             this.iddl_Vendors.HideFilter = false;
             this.iddl_Vendors.HideUpdateLink = false;
-            this.iddl_Vendors.LabelText = "dropdownlist";
+            this.iddl_Vendors.LabelText = "Vendor";
             this.iddl_Vendors.Location = new System.Drawing.Point(66, 73);
             this.iddl_Vendors.Name = "iddl_Vendors";
             this.iddl_Vendors.SelectedIndex = -1;

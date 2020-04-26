@@ -98,6 +98,7 @@
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.lnkCustomerCredits = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcuts.SuspendLayout();
@@ -587,7 +588,7 @@
             this.gbShortcuts.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcuts.Location = new System.Drawing.Point(5, 5);
             this.gbShortcuts.Name = "gbShortcuts";
-            this.gbShortcuts.Size = new System.Drawing.Size(135, 259);
+            this.gbShortcuts.Size = new System.Drawing.Size(135, 284);
             this.gbShortcuts.TabIndex = 14;
             this.gbShortcuts.TabStop = false;
             // 
@@ -601,6 +602,7 @@
             this.flpShortcuts.Controls.Add(this.lnkSaleOrders);
             this.flpShortcuts.Controls.Add(this.lnkShipping);
             this.flpShortcuts.Controls.Add(this.label2);
+            this.flpShortcuts.Controls.Add(this.lnkCustomerCredits);
             this.flpShortcuts.Controls.Add(this.lnkPettyCash);
             this.flpShortcuts.Controls.Add(this.label1);
             this.flpShortcuts.Controls.Add(this.lnkSamples);
@@ -611,7 +613,7 @@
             this.flpShortcuts.Location = new System.Drawing.Point(3, 16);
             this.flpShortcuts.Name = "flpShortcuts";
             this.flpShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpShortcuts.Size = new System.Drawing.Size(129, 240);
+            this.flpShortcuts.Size = new System.Drawing.Size(129, 265);
             this.flpShortcuts.TabIndex = 17;
             // 
             // lnkInventory
@@ -641,10 +643,10 @@
             this.lnkCreateSales.Location = new System.Drawing.Point(3, 30);
             this.lnkCreateSales.Name = "lnkCreateSales";
             this.lnkCreateSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkCreateSales.Size = new System.Drawing.Size(73, 25);
+            this.lnkCreateSales.Size = new System.Drawing.Size(98, 25);
             this.lnkCreateSales.TabIndex = 25;
             this.lnkCreateSales.TabStop = true;
-            this.lnkCreateSales.Text = "CREATE SALE";
+            this.lnkCreateSales.Text = "CREATE NEW SALE";
             this.lnkCreateSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCreateSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCreateSales_LinkClicked);
             // 
@@ -716,7 +718,7 @@
             this.lnkPettyCash.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkPettyCash.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkPettyCash.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.Location = new System.Drawing.Point(3, 145);
+            this.lnkPettyCash.Location = new System.Drawing.Point(3, 170);
             this.lnkPettyCash.Name = "lnkPettyCash";
             this.lnkPettyCash.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkPettyCash.Size = new System.Drawing.Size(65, 25);
@@ -730,7 +732,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 170);
+            this.label1.Location = new System.Drawing.Point(3, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 15);
             this.label1.TabIndex = 21;
@@ -743,7 +745,7 @@
             this.lnkSamples.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSamples.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSamples.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.Location = new System.Drawing.Point(3, 185);
+            this.lnkSamples.Location = new System.Drawing.Point(3, 210);
             this.lnkSamples.Name = "lnkSamples";
             this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSamples.Size = new System.Drawing.Size(52, 25);
@@ -760,7 +762,7 @@
             this.lnkSummary.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.Location = new System.Drawing.Point(3, 210);
+            this.lnkSummary.Location = new System.Drawing.Point(3, 235);
             this.lnkSummary.Name = "lnkSummary";
             this.lnkSummary.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSummary.Size = new System.Drawing.Size(56, 25);
@@ -782,6 +784,23 @@
             this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
+            // 
+            // lnkCustomerCredits
+            // 
+            this.lnkCustomerCredits.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.AutoSize = true;
+            this.lnkCustomerCredits.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkCustomerCredits.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.Location = new System.Drawing.Point(3, 145);
+            this.lnkCustomerCredits.Name = "lnkCustomerCredits";
+            this.lnkCustomerCredits.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkCustomerCredits.Size = new System.Drawing.Size(104, 25);
+            this.lnkCustomerCredits.TabIndex = 31;
+            this.lnkCustomerCredits.TabStop = true;
+            this.lnkCustomerCredits.Text = "CUSTOMER CREDITS";
+            this.lnkCustomerCredits.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCustomerCredits_LinkClicked);
             // 
             // Container_Form
             // 
@@ -881,5 +900,6 @@
         private System.Windows.Forms.ToolStripMenuItem Sales_Chart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel lnkCustomerCredits;
     }
 }

@@ -21,6 +21,7 @@ namespace BinaMitraTextile
         public const string COL_BARCODE = "barcode";
         public const string COL_HEXBARCODE = "hexbarcode";
         public const string COL_CUSTOMER_ID = "customer_id";
+        public const string COL_DB_Vendors_Id = "Vendors_Id";
         public const string COL_SALEAMOUNT = "sale_amount";
         public const string COL_CUSTOMERNAME = "customer_name";
         public const string COL_RECEIVABLEAMOUNT = "receivable_amount";
@@ -37,6 +38,7 @@ namespace BinaMitraTextile
         public const string COL_DB_FakturPajaks_Id = "FakturPajaks_Id";
 
         public const string COL_TRANSPORTNAME = "transport_name";
+        public const string COL_Vendors_Name = "Vendors_Name";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
         public const string COL_COMPLETED = "completed";
         public const string COL_PROFIT = "profit";
@@ -61,6 +63,7 @@ namespace BinaMitraTextile
 
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
         public const string FILTER_BrowsingForFakturPajak_Customers_Id = "FILTER_BrowsingForFakturPajak_Customers_Id";
+        public const string FILTER_BrowsingForFakturPajak_Vendors_Id = "FILTER_BrowsingForFakturPajak_Vendors_Id";
 
         public const string FILTER_VendorInvoices_Id = "FILTER_VendorInvoices_Id";
 
@@ -109,7 +112,8 @@ namespace BinaMitraTextile
 
         public Guid id;
         public DateTime time_stamp;
-        public Guid customer_id;
+        public Guid? customer_id;
+        public Guid? Vendors_Id;
         public bool voided;
         public Guid user_id;
         public string notes = "";
@@ -125,6 +129,8 @@ namespace BinaMitraTextile
 
         public string TransportName = "";
         public string FakturPajaks_No;
+        public string Vendors_Name = "";
+        public string Customers_Name = "";
 
         public DataTable sale_items;
         public DataTable datatable;
@@ -155,7 +161,8 @@ namespace BinaMitraTextile
                 DataRow row = datatable.Rows[0];
                 id = DBUtil.parseData<Guid>(row, COL_ID);
                 time_stamp = Convert.ToDateTime(row["time_stamp"]);
-                customer_id = (Guid)row[COL_CUSTOMER_ID];
+                customer_id = Util.wrapNullable<Guid?>(row, COL_CUSTOMER_ID);
+                Vendors_Id = Util.wrapNullable<Guid?>(row, COL_DB_Vendors_Id);
                 voided = (Boolean)row["voided"];
                 user_id = (Guid)row["user_id"];
                 notes = row["notes"].ToString();
@@ -164,25 +171,32 @@ namespace BinaMitraTextile
                 TransportID = DBUtil.parseData<Guid?>(row, COL_DB_TRANSPORTID);
                 ShippingCost = DBUtil.parseData<decimal>(row, COL_DB_SHIPPINGCOST);
                 TaxNo = DBUtil.parseData<string>(row, COL_DB_TAXNO);
-                ReturnedToSupplier = LIBUtil.Util.wrapNullable<bool>(row, COL_DB_RETURNEDTOSUPPLIER);
+                ReturnedToSupplier = Util.wrapNullable<bool>(row, COL_DB_RETURNEDTOSUPPLIER);
                 SaleCommission_Users_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleCommission_Users_Id);
                 FakturPajaks_Id = DBUtil.parseData<Guid?>(row, COL_DB_FakturPajaks_Id);
 
                 TransportName = DBUtil.parseData<string>(row, COL_TRANSPORTNAME);
                 FakturPajaks_No = DBUtil.parseData<string>(row, COL_FakturPajaks_No);
 
+                Customers_Name = Util.wrapNullable<string>(row, COL_CUSTOMERNAME);
+                Vendors_Name = Util.wrapNullable<string>(row, COL_Vendors_Name);
+
                 sale_items = SaleItem.getItems(id);
             }
         }
 
-        public Sale(Guid CustomerID, Guid? transportID, decimal shippingCost, bool returnedToSupplier, string Notes)
+        public Sale(Guid? CustomerID, Guid? vendors_Id, Guid? transportID, decimal shippingCost, bool returnedToSupplier, string Notes)
         {
             id = Guid.NewGuid();
             time_stamp = DateTime.Now;
-            customer_id = CustomerID;
             voided = false;
             user_id = GlobalData.UserAccount.id;
-            customer_info = new Customer(CustomerID).compileData();
+            customer_id = CustomerID;
+            Vendors_Id = vendors_Id;
+            if(customer_id != null)
+                customer_info = new Customer(CustomerID).compileData();
+            else
+                customer_info = new Vendor(Vendors_Id).Name;
             notes = Notes;
             TransportID = transportID;
             if(transportID != null)
@@ -207,7 +221,8 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
                     cmd.Parameters.Add("@voided", SqlDbType.Bit).Value = voided;
                     cmd.Parameters.Add("@" + COL_DB_RETURNEDTOSUPPLIER, SqlDbType.Bit).Value = ReturnedToSupplier;
-                    cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = customer_id;
+                    cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(customer_id);
+                    cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Vendors_Id);
                     cmd.Parameters.Add("@customer_info", SqlDbType.VarChar).Value = customer_info;
                     cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = user_id;
                     if (notes != null) cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.name, notes);
@@ -261,16 +276,19 @@ namespace BinaMitraTextile
             }
         }
 
-        public static string update(Guid saleID, DataTable saleItems, Guid? transportID, decimal shippingCost, string notes)
+        public static string update(Guid saleID, Guid? Customers_Id, Guid? Vendors_Id, DataTable saleItems, Guid? transportID, decimal shippingCost, string notes)
         {
             Sale objOld = new Sale(saleID);
             DataTable objOldItems = Tools.setDataTablePrimaryKey(SaleItem.getItems(saleID), SaleItem.COL_ID);
 
             //generate log description
-            string logDescription = "";
-            logDescription = ActivityLog.appendChange(logDescription, objOld.TransportName, new Transport(transportID).Name, "Angkutan: '{0}' to '{1}'");
-            logDescription = ActivityLog.appendChange(logDescription, objOld.ShippingCost.ToString("N2"), shippingCost.ToString("N2"), "Shipping: '{0}' to '{1}'");
-            logDescription = ActivityLog.appendChange(logDescription, objOld.notes, notes, "Notes: '{0}' to '{1}'");
+            string log = "";
+
+            log = Util.appendChange(log, objOld.Customers_Name, new Customer(Customers_Id).Name, "Customer: '{0}' to '{1}'");
+            log = Util.appendChange(log, objOld.Vendors_Name, new Vendor(Vendors_Id).Name, "Vendor: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.TransportName, new Transport(transportID).Name, "Angkutan: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.ShippingCost.ToString("N2"), shippingCost.ToString("N2"), "Shipping: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.notes, notes, "Notes: '{0}' to '{1}'");
 
             DataRow row;
             Guid id;
@@ -283,7 +301,7 @@ namespace BinaMitraTextile
                 oldAdjustment = DBUtil.parseData<decimal>(objOldItems.Rows.Find(id), SaleItem.COL_ADJUSTMENT);
                 if (oldAdjustment != newAdjustment)
                 {
-                    logDescription = ActivityLog.appendChange(logDescription, oldAdjustment, newAdjustment, "Inventory Item " + DBUtil.parseData<string>(row, SaleItem.COL_BARCODE) + " adjustment: {0:N2} to {1:N2}");
+                    log = ActivityLog.appendChange(log, oldAdjustment, newAdjustment, "Inventory Item " + DBUtil.parseData<string>(row, SaleItem.COL_BARCODE) + " adjustment: {0:N2} to {1:N2}");
                     row[SaleItem.COL_ADJUSTMENT] = newAdjustment;
                 }
                 else
@@ -293,7 +311,7 @@ namespace BinaMitraTextile
                 }
             }
 
-            if (string.IsNullOrEmpty(logDescription))
+            if (string.IsNullOrEmpty(log))
             {
                 return "No information has been changed";
             }
@@ -307,12 +325,14 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = saleID;
                         if (notes != null) 
                             cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.FirstName, notes);
+                        cmd.Parameters.Add("@" + COL_CUSTOMER_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(Customers_Id);
+                        cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(Vendors_Id);
                         cmd.Parameters.Add("@" + COL_DB_TRANSPORTID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(transportID);
                         cmd.Parameters.Add("@" + COL_DB_SHIPPINGCOST, SqlDbType.Decimal).Value = shippingCost;
                             
                         cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(saleID, "Update: " + logDescription);
+                        ActivityLog.submit(saleID, "Update: " + log);
                     }
 
                     //update sale items
@@ -368,24 +388,24 @@ namespace BinaMitraTextile
 
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null);
+            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null, null);
         }
-        public static DataTable get_by_BrowsingForFakturPajak_Customers_Id(Guid BrowsingForFakturPajak_Customers_Id)
+        public static DataTable get_by_BrowsingForFakturPajak(Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
-            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, null);
+            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, BrowsingForFakturPajak_Vendors_Id, null);
         }
         public static DataTable get_by_VendorInvoices_Id(Guid VendorInvoices_Id)
         {
-            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, VendorInvoices_Id);
+            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, null, VendorInvoices_Id);
         }
         public static DataTable get()
         {
-            return getAll(null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, null);
+            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, null, null);
         }
-        public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleID, 
+        public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? Vendors_Id, Guid? saleID, 
             bool onlyHasReceivable, bool onlyLossProfit, bool onlyReturnedToSupplier, bool onlyWithCommission, Guid? salesUserAccountID, 
             DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode,
-            Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, Guid? VendorInvoices_Id)
+            Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id, Guid? VendorInvoices_Id)
         {
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand("sale_getall", DBUtil.ActiveSqlConnection))
@@ -396,6 +416,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = (object)dateEnd ?? DBNull.Value;
                 cmd.Parameters.Add("@inventory_item_id", SqlDbType.UniqueIdentifier).Value = (object)inventoryID ?? DBNull.Value;
                 cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = (object)customerID ?? DBNull.Value;
+                cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Vendors_Id);
                 cmd.Parameters.Add("@sale_id", SqlDbType.UniqueIdentifier).Value = (object)saleID ?? DBNull.Value;
                 cmd.Parameters.Add("@only_has_receivable", SqlDbType.Bit).Value = onlyHasReceivable;
                 cmd.Parameters.Add("@only_loss_profit", SqlDbType.Bit).Value = onlyLossProfit;
@@ -406,6 +427,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@" + FILTER_OnlyManualAdjustment, SqlDbType.Bit).Value = onlyManualAdjustment;
                 cmd.Parameters.Add("@" + COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(FakturPajaks_Id);
                 cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Customers_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Customers_Id);
+                cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id);
                 cmd.Parameters.Add("@" + FILTER_VendorInvoices_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(VendorInvoices_Id);
                 if (onlyWithCommission)
                 {
@@ -419,12 +441,6 @@ namespace BinaMitraTextile
 
                 adapter.SelectCommand = cmd;
                 adapter.Fill(dataTable);
-
-                //Tools.addColumn<string>(dataTable, COL_HEXBARCODE, "");
-                //foreach (DataRow dr in dataTable.Rows)
-                //{
-                //    dr[COL_HEXBARCODE] = Tools.getHex((int)dr[COL_BARCODE], Settings.saleBarcodeLength);
-                //}
             }
 
             return dataTable;

@@ -97,11 +97,11 @@ namespace BinaMitraTextile
 
         private void populatePageData()
         {
-            DataTable dtReceivables = Sale.getAll(null, null, null, null, null, true, false, false, false, null, null, null, false, false, null, null, null, null);
+            DataTable dtReceivables = Sale.getAll(null, null, null, null, null, null, true, false, false, false, null, null, null, false, false, null, null, null, null, null);
             gridReceivables.DataSource = dtReceivables;
             gridReceivables.Sort(col_gridReceivables_RemainingTermDays, ListSortDirection.Ascending);
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));
-            
+
             populateReceivablesSummary(dtReceivables);
             populateIncompletePO();
 
@@ -111,7 +111,7 @@ namespace BinaMitraTextile
         private void populateIncompletePO()
         {
             DataTable dtPOItems = new DataTable();
-            LIBUtil.Util.setGridviewDataSource(gridPOItems, true, true, dtPOItems = POItem.getIncompleteItems());
+            Util.setGridviewDataSource(gridPOItems, true, true, dtPOItems = POItem.getIncompleteItems());
             lblTotalIncompletePO.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtPOItems, "SUM", POItem.COL_PENDINGQTYVALUE, ""));
         }
 
@@ -196,11 +196,6 @@ namespace BinaMitraTextile
                     populatePageData();
                 }
             }
-        }
-
-        private void gridReceivables_SelectionChanged(object sender, EventArgs e)
-        {
-            ((DataGridView)sender).ClearSelection(); //disable cell color change when user click on it
         }
 
         public void addStatusContextMenu(DataGridViewColumn column)

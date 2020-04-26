@@ -37,13 +37,14 @@ namespace BinaMitraTextile
             if (lnkSummary.Visible)
                 Util.displayMDIChild(new Main_Form());
             //Util.displayMDIChild(new Invoices.VendorInvoices_Form());
+            //Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
         }
 
         private void setupControls()
         {
             Util.setAsMDIParent(this);
 
-            this.Text += DBUtil.appendTitleWithInfo();
+            this.Text += " " + Settings.APPVERSION + DBUtil.appendTitleWithInfo();
             this.Icon = Settings.taskbarIcon;
 
             setupControlsBasedOnRoles();
@@ -124,6 +125,11 @@ namespace BinaMitraTextile
         private void BtnOpname_Click(object sender, EventArgs e)
         {
             Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
+        }
+
+        private void LnkCustomerCredits_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new CustomerCredits.Main_Form());
         }
 
         #endregion SHORTCUT LINKS
@@ -207,7 +213,7 @@ namespace BinaMitraTextile
 
         private void Inventory_FakturPajakMasukan_Click(object sender, EventArgs e)
         {
-
+            Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
         }
 
         #endregion MENU - INVENTORY

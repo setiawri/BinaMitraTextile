@@ -28,6 +28,7 @@ namespace BinaMitraTextile.Logs
             col_grid_Timestamp.DataPropertyName = ActivityLog.COL_DB_Timestamp;
             col_grid_Username.DataPropertyName = ActivityLog.COL_Username;
             col_grid_Description.DataPropertyName = ActivityLog.COL_DB_Description;
+            LIBUtil.Util.setGridviewColumnWordwrap(col_grid_Description, null);
         }
 
         private void populatePageData()

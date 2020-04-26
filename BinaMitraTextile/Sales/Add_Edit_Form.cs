@@ -28,6 +28,8 @@ namespace BinaMitraTextile.Sales
 
         protected CheckBox _gridSelectCheckboxHeader;
         protected CheckBox _gridSummarySelectCheckboxHeader;
+
+        private bool isFormShown = false;
         
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -47,6 +49,8 @@ namespace BinaMitraTextile.Sales
 
         private void Form_Shown(object sender, EventArgs e)
         {
+            isFormShown = true;
+
             _gridSelectCheckboxHeader = Tools.addHeaderCheckbox(grid, col_grid_select, "_gridSelectCheckboxHeader", selectGridCheckboxHeader_CheckedChanged);
             _gridSummarySelectCheckboxHeader = Tools.addHeaderCheckbox(gridSummary, col_gridSummary_select, "_gridSummarySelectCheckboxHeader", selectGridSummaryCheckboxHeader_CheckedChanged);
         }
@@ -78,21 +82,23 @@ namespace BinaMitraTextile.Sales
             btnSubmit.Enabled = false;
             btnReset.Enabled = false;
 
-            populateCbCustomers();
             Transport.populateDropDownList(cbTransports, false, true);
-            txtBarcode.Focus();
+            populateVendors();
+            populateCustomers();
+            rbCustomer.Checked = true;
+            setRadioButtonEnability(rbCustomer);
 
-            txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length + 3; //3 for split items
+            itxt_AddBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length + 3; //3 for split items
 
             populateCbTemporarySaves();
             
             if(_formMode == FormMode.Update)
             {
-                Tools.disableControls(txtBarcode, cbTemporarySaves, btnSaveSale, btnClearForm, btnRemoveSelected, txtNotes, btnAddCustomer, cbCustomers, txtCustomerSearch);
+                Tools.disableControls(itxt_AddBarcode, cbTemporarySaves, btnSaveSale, btnClearForm, btnRemoveSelected, txtNotes);
                 btnSubmit.Text = "UPDATE";
 
                 if (GlobalData.UserAccount.role != Roles.Super)
-                    Tools.disableControls(txtAdjustSelected, txtShippingCost, cbTransports, cbCustomers);
+                    Tools.disableControls(in_PriceAdjustSelected, in_ShippingCost, cbTransports, rbCustomer, rbVendor, iddl_Customers, iddl_Vendors);
             }
         }
 
@@ -106,9 +112,13 @@ namespace BinaMitraTextile.Sales
                 recalculateNumbers();
 
                 txtNotes.Text = sale.notes;
-                cbCustomers.SelectedValue = sale.customer_id;
                 if (sale.TransportID != null) cbTransports.SelectedValue = sale.TransportID;
-                txtShippingCost.Text = sale.ShippingCost.ToString();
+                in_ShippingCost.Value = sale.ShippingCost;
+
+                iddl_Customers.SelectedValue = sale.customer_id;
+                iddl_Vendors.SelectedValue = sale.Vendors_Id;                
+                rbCustomer.Checked = (sale.customer_id != null);
+                setRadioButtonEnability(rbCustomer);
             }
         }
         
@@ -121,14 +131,17 @@ namespace BinaMitraTextile.Sales
 
             //if a row has sales order, disable customer selection
             if (_formMode == FormMode.Update && GlobalData.UserAccount.role != Roles.Super)
-                cbCustomers.Enabled = false;
+                rbCustomer.Enabled = rbVendor.Enabled = iddl_Customers.Enabled = iddl_Vendors.Enabled = false;
             else if(dt != null)
             {
-                cbCustomers.Enabled = true;
+                if(rbCustomer.Checked)
+                    setRadioButtonEnability(rbCustomer);
+                else
+                    setRadioButtonEnability(rbVendor);
                 foreach (DataRow dr in dt.Rows)
                     if ((_formMode == FormMode.Update && dr[SaleItem.COL_SaleOrderItems_Id] != DBNull.Value)
                         || dr[InventoryItem.COL_DB_SaleOrderItems_Id] != DBNull.Value)
-                        cbCustomers.Enabled = false;
+                        rbCustomer.Enabled = rbVendor.Enabled = iddl_Customers.Enabled = iddl_Vendors.Enabled = false;
             }
         }
 
@@ -164,7 +177,7 @@ namespace BinaMitraTextile.Sales
         {
             if (keyData == (Keys.Alt | Keys.A))
             {
-                txtBarcode.Focus();
+                itxt_AddBarcode.focus();
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -180,7 +193,14 @@ namespace BinaMitraTextile.Sales
             {
                 if (isSaleValid())
                 {
-                    Sale obj = new Sale((Guid)cbCustomers.SelectedValue, (Guid?)cbTransports.SelectedValue, Tools.wrapDBNullValue<decimal>(txtShippingCost.Text), chkReturnToSupplier.Checked, Tools.wrapDBNullValue<string>(txtNotes.Text));
+                    Guid? Customers_Id = null;
+                    Guid? Vendors_Id = null;
+                    if (rbVendor.Checked)
+                        Vendors_Id = (Guid?)iddl_Vendors.SelectedValue;
+                    else
+                        Customers_Id = (Guid?)iddl_Customers.SelectedValue;
+
+                    Sale obj = new Sale(Customers_Id, Vendors_Id, (Guid?)cbTransports.SelectedValue, in_ShippingCost.ValueDecimal, rbVendor.Checked, Tools.wrapDBNullValue<string>(txtNotes.Text));
                     var form = new Sales.Invoice_Form(obj, (DataTable)grid.DataSource, true);
                     Tools.displayForm(form);
                     if(form.isGenerated == true)
@@ -199,23 +219,27 @@ namespace BinaMitraTextile.Sales
             }
             else if (_formMode == FormMode.Update && isSaleValidForUpdate())
             {
-                DBUtil.sanitize(txtShippingCost, txtNotes);
-                if(!Tools.hasMessage(Sale.update((Guid)_saleID, (DataTable)grid.DataSource, (Guid?)cbTransports.SelectedValue, Tools.wrapDBNullValue<decimal>(txtShippingCost.Text), txtNotes.Text)))
+                Guid? Customers_Id = null;
+                Guid? Vendors_Id = null;
+                if (rbVendor.Checked)
+                    Vendors_Id = (Guid?)iddl_Vendors.SelectedValue;
+                else
+                    Customers_Id = (Guid?)iddl_Customers.SelectedValue;
+                DBUtil.sanitize(txtNotes);
+                if(!Tools.hasMessage(Sale.update((Guid)_saleID, Customers_Id, Vendors_Id, (DataTable)grid.DataSource, (Guid?)cbTransports.SelectedValue, in_ShippingCost.ValueDecimal, txtNotes.Text)))
                     this.Close();
             }
         }
 
         private bool isSaleValid()
         {
-            DBUtil.sanitize(txtBarcode, txtShippingCost);
-
             DataTable dt = (DataTable)grid.DataSource;
             if (dt.Rows.Count == 0)
-                return Tools.inputError<TextBox>(txtBarcode, "Please add an item");
-            else if (cbCustomers.SelectedValue == null)
-                return Tools.inputError<ComboBox>(cbCustomers, "Please select a customer");
-            else if (!string.IsNullOrWhiteSpace(txtShippingCost.Text) && !Tools.isNumeric(txtShippingCost.Text))
-                return Tools.inputError<TextBox>(txtShippingCost, "Invalid Shipping Cost");
+                return itxt_AddBarcode.isValueError("Please add an item");
+            else if (rbCustomer.Checked && !iddl_Customers.isValidSelectedValue())
+                return iddl_Customers.SelectedValueError("Please select Customer");
+            else if (rbVendor.Checked && !iddl_Vendors.isValidSelectedValue())
+                return iddl_Vendors.SelectedValueError("Please select Vendor");
             else if (!allItemHasPrice())
             {
                 Tools.hasMessage("An item does not have a price. Please update by clicking the link in the 'code' column");
@@ -227,10 +251,6 @@ namespace BinaMitraTextile.Sales
 
         private bool isSaleValidForUpdate()
         {
-            DBUtil.sanitize(txtShippingCost);
-            if (!string.IsNullOrWhiteSpace(txtShippingCost.Text) && !Tools.isNumeric(txtShippingCost.Text))
-                return Tools.inputError<TextBox>(txtShippingCost, "Invalid Shipping Cost");
-
             return true;
         }
 
@@ -279,7 +299,7 @@ namespace BinaMitraTextile.Sales
                 Guid[] id_array = dt.AsEnumerable().Select(s => s.Field<Guid>(InventoryItem.COL_ID)).ToArray<Guid>();
                 decimal?[] adjustment_array = dt.AsEnumerable().Select(s => Tools.wrapDBNullValue<decimal?>(s.Field<decimal?>(InventoryItem.COL_SALE_ADJUSTMENT))).ToArray<decimal?>();
                 bool[] selection_array = dt.AsEnumerable().Select(s => s.Field<bool>(InventoryItem.COL_SALE_SELECTED)).ToArray<bool>();
-                dt = InventoryItem.getRowsForSale(id_array, DBUtil.parseData<Guid?>(cbCustomers.SelectedValue));                
+                dt = InventoryItem.getRowsForSale(id_array, DBUtil.parseData<Guid?>(iddl_Customers.SelectedValue));                
 
                 //reapply adjustments and selections
                 int idx = -1;
@@ -346,7 +366,7 @@ namespace BinaMitraTextile.Sales
         /*******************************************************************************************************/
         #region ADD/UPDATE ITEM
 
-        private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
+        private void itxt_AddBarcode_onKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
                 addBarcode();
@@ -354,35 +374,33 @@ namespace BinaMitraTextile.Sales
 
         private void addBarcode()
         {
-            if (string.IsNullOrEmpty(txtBarcode.Text))
+            if (itxt_AddBarcode.isEmpty())
                 return;
 
-            string barcodeWithoutPrefix = InventoryItem.getBarcodeWithoutPrefix(txtBarcode.Text.Trim());
+            string barcodeWithoutPrefix = InventoryItem.getBarcodeWithoutPrefix(itxt_AddBarcode.ValueText);
             InventoryItem item = new InventoryItem(barcodeWithoutPrefix);
 
             if (!InventoryItem.isBarcodeExist(barcodeWithoutPrefix))
                 Tools.hasMessage(barcodeWithoutPrefix + " is not found in database");
             else if (item.isSold)
                 Tools.hasMessage(barcodeWithoutPrefix + " has already been sold");
-            else if(item.SaleOrderItems_Id != null && cbCustomers.SelectedValue != null && item.SaleOrders_Customers_Id != (Guid?)cbCustomers.SelectedValue)
+            else if(item.SaleOrderItems_Id != null && iddl_Customers.SelectedValue != null && item.SaleOrders_Customers_Id != (Guid?)iddl_Customers.SelectedValue)
                 Tools.hasMessage(barcodeWithoutPrefix + " has sale order " + item.SaleOrderItemDescription + " for customer: " + item.SaleOrderItemCustomerName);
             else
             {
                 DataTable dt;
                 if (grid.DataSource == null)
                 {
-                    dt = InventoryItem.getRowForSale(barcodeWithoutPrefix, DBUtil.parseData<Guid?>(cbCustomers.SelectedValue));
+                    dt = InventoryItem.getRowForSale(barcodeWithoutPrefix, DBUtil.parseData<Guid?>(iddl_Customers.SelectedValue));
                     Tools.displayForm(new SharedForms.Verify_Form(dt.Rows[0][InventoryItem.COL_INVENTORY_CODE].ToString(), dt.Rows[0][InventoryItem.COL_LENGTH].ToString()));
                 }
                 else
                 {
                     dt = Tools.setDataTablePrimaryKey((DataTable)grid.DataSource, InventoryItem.COL_ID);
-                    foreach (DataRow dr in InventoryItem.getRowForSale(barcodeWithoutPrefix, DBUtil.parseData<Guid?>(cbCustomers.SelectedValue)).Rows)
+                    foreach (DataRow dr in InventoryItem.getRowForSale(barcodeWithoutPrefix, DBUtil.parseData<Guid?>(iddl_Customers.SelectedValue)).Rows)
                     {
                         if (dt.Rows.Contains(dr[InventoryItem.COL_ID]))
-                        {
                             Tools.hasMessage(dr[InventoryItem.COL_BARCODE].ToString() + " is already in the list");
-                        }
                         else
                         {
                             Tools.displayForm(new SharedForms.Verify_Form(dr[InventoryItem.COL_INVENTORY_CODE].ToString(), dr[InventoryItem.COL_LENGTH].ToString()));
@@ -391,8 +409,8 @@ namespace BinaMitraTextile.Sales
                     }
                 }
 
-                if (cbCustomers.SelectedValue == null && item.SaleOrders_Customers_Id != null)
-                    cbCustomers.SelectedValue = item.SaleOrders_Customers_Id;
+                if (iddl_Customers.SelectedValue == null && item.SaleOrders_Customers_Id != null)
+                    iddl_Customers.SelectedValue = item.SaleOrders_Customers_Id;
 
                 setGridDataSource(dt);
                 applyCustomerSaleAdjustment();
@@ -404,8 +422,8 @@ namespace BinaMitraTextile.Sales
                         row.Selected = true;
             }
 
-            txtBarcode.Text = "";
-            txtBarcode.Focus();
+            itxt_AddBarcode.reset();
+            itxt_AddBarcode.focus();
         }
 
         private void btnRemoveSelected_Click(object sender, EventArgs e)
@@ -425,52 +443,50 @@ namespace BinaMitraTextile.Sales
             dt.AcceptChanges();
             setGridDataSource(dt);
             recalculateNumbers();
-            txtBarcode.Focus();
+            itxt_AddBarcode.focus();
         }
 
         private void txtBarcode_Leave(object sender, EventArgs e)
         {
-            txtBarcode.Text = "";
+            itxt_AddBarcode.reset();
         }
 
         #endregion ADD/UPDATE ITEM
         /*******************************************************************************************************/
         #region CUSTOMER CONTROLS
 
-        private void populateCbCustomers()
+        private void populateCustomers()
         {
-            Customer.populateDropDownList(cbCustomers, false, true);
+            Customer.populateInputControlDropDownList(iddl_Customers, true);
         }
 
-        private void btnAddCustomer_Click(object sender, EventArgs e)
+        private void populateVendors()
+        {
+            Vendor.populateInputControlDropDownList(iddl_Vendors, true);
+        }
+
+        private void Iddl_Customers_UpdateLink_Click(object sender, EventArgs e)
         {
             Tools.displayForm(new MasterData.Customers_Form(FormMode.New));
-            populateCbCustomers();
+            populateCustomers();
         }
 
-        private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
+        private void Iddl_Vendors_UpdateLink_Click(object sender, EventArgs e)
         {
-            Tools.dropdownlistQuickFilter(cbCustomers, txtCustomerSearch, Customer.COL_DB_NAME);
+            Tools.displayForm(new MasterData.Vendors_Form(FormMode.New));
+            populateVendors();
         }
 
-        private void cbCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        private void Iddl_Customers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(Tools.isDropdownlistSelected(cbCustomers))
-            {
-                Guid? id = new Customer((Guid)cbCustomers.SelectedValue).DefaultTransportID;
-                if(id != null)
-                cbTransports.SelectedValue = (Guid)id;
-            }
-            else
-            {
+            if (!iddl_Customers.hasSelectedValue())
                 Tools.resetDropDownList(cbTransports);
+            else if(isFormShown)
+            {
+                Guid? id = new Customer((Guid?)iddl_Customers.SelectedValue).DefaultTransportID;
+                if (id != null)
+                    cbTransports.SelectedValue = (Guid)id;
             }
-
-            //if (cbCustomers.SelectedValue != null)
-            //{
-            //    _dtCustomerSaleAdjustment = CustomerSaleAdjustment.getAll((Guid)cbCustomers.SelectedValue, null, null, null, null, null);
-            //    resetCustomerSaleAdjustments();
-            //}
         }
 
         private void applyCustomerSaleAdjustment()
@@ -563,45 +579,38 @@ namespace BinaMitraTextile.Sales
         /*******************************************************************************************************/
         #region ADJUSTMENT CONTROL
 
-        private void txtSelectedAdjustment_Leave(object sender, EventArgs e)
+        private void In_PriceAdjustSelected_Leave(object sender, EventArgs e)
         {
-            txtAdjustSelected.Text = "";
+            in_PriceAdjustSelected.Value = 0;
         }
 
-        private void txtSelectedAdjustment_KeyDown(object sender, KeyEventArgs e)
+        private void In_PriceAdjustSelected_onKeyDown(object sender, KeyEventArgs e)
         {
-            txtAdjustSelected.Text = txtAdjustSelected.Text.Trim();
-
             if (e.KeyData == Keys.Enter)
             {
-                if (!Tools.isNumeric(txtAdjustSelected.Text))
-                    Tools.inputError<TextBox>(txtAdjustSelected, "Invalid adjustment");
-                else 
+                decimal adjustment = in_PriceAdjustSelected.ValueDecimal;
+                if(adjustment > 0)
                 {
-                    decimal adjustment = Convert.ToDecimal(txtAdjustSelected.Text);
-                    if(adjustment > 0)
-                    {
-                        MessageBox.Show("Warning: Adjustment bernilai positif. Adjustment bukan discount?");
-                    }
-
-                    DataTable dt = (DataTable)grid.DataSource;
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
-                        {
-                            dr[InventoryItem.COL_SALE_ADJUSTMENT] = txtAdjustSelected.Text;
-
-                            //only mark if a discount
-                            if(adjustment < 0)
-                                dr[InventoryItem.COL_SALE_isManualAdjustment] = true;
-                        }
-                    }
-                    txtAdjustSelected.Text = "";
-                    setGridDataSource(dt);
-
-                    recalculateNumbers();
-                    txtBarcode.Focus();
+                    MessageBox.Show("Warning: Adjustment bernilai positif. Adjustment bukan discount?");
                 }
+
+                DataTable dt = (DataTable)grid.DataSource;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
+                    {
+                        dr[InventoryItem.COL_SALE_ADJUSTMENT] = adjustment;
+
+                        //only mark if a discount
+                        if(adjustment < 0)
+                            dr[InventoryItem.COL_SALE_isManualAdjustment] = true;
+                    }
+                }
+                in_PriceAdjustSelected.Value = 0;
+                setGridDataSource(dt);
+
+                recalculateNumbers();
+                itxt_AddBarcode.focus();
             }
         }
 
@@ -633,7 +642,7 @@ namespace BinaMitraTextile.Sales
                 //populate data
                 dr[TEMPSAVE_COL_MASTER] = Tools.copyTable((DataTable)grid.DataSource);
                 dr[TEMPSAVE_COL_SUMMARY] = Tools.copyTable((DataTable)gridSummary.DataSource);
-                if(cbCustomers.SelectedIndex > -1) dr[TEMPSAVE_COL_CUSTOMER] = cbCustomers.SelectedValue;
+                if(iddl_Customers.hasSelectedValue()) dr[TEMPSAVE_COL_CUSTOMER] = iddl_Customers.SelectedValue;
                 dr[TEMPSAVE_COL_NOTES] = txtNotes.Text.Trim();
                 
                 if (isNew)
@@ -644,7 +653,7 @@ namespace BinaMitraTextile.Sales
                 Tools.hasMessage("Data has been saved");
             }
 
-            txtBarcode.Focus();
+            itxt_AddBarcode.focus();
         }
 
         private void cbTemporarySaves_SelectedIndexChanged(object sender, EventArgs e)
@@ -658,7 +667,7 @@ namespace BinaMitraTextile.Sales
                 DataRow dr = _dtTemporarySaves.Rows[cbTemporarySaves.SelectedIndex];
                 setGridDataSource(Tools.copyTable((DataTable)dr[TEMPSAVE_COL_MASTER]));
                 setGridSummaryDataSource(Tools.copyTable((DataTable)dr[TEMPSAVE_COL_SUMMARY]));
-                if(dr[TEMPSAVE_COL_CUSTOMER] != DBNull.Value) cbCustomers.SelectedValue = (Guid)dr[TEMPSAVE_COL_CUSTOMER];
+                if(dr[TEMPSAVE_COL_CUSTOMER] != DBNull.Value) iddl_Customers.SelectedValue = (Guid)dr[TEMPSAVE_COL_CUSTOMER];
                 txtNotes.Text = dr[TEMPSAVE_COL_NOTES].ToString();
 
                 recalculateNumbers();
@@ -686,10 +695,15 @@ namespace BinaMitraTextile.Sales
             cbTemporarySaves.SelectedIndex = -1;
             setGridDataSource(null);
             setGridSummaryDataSource(null);
-            cbCustomers.SelectedIndex = -1;
             Inventory.setAmount(lblTotalAmount, "0");
             Inventory.setCount(lblTotalCounts, "0", "0");
-            txtBarcode.Focus();
+
+            iddl_Customers.reset();
+            iddl_Vendors.reset();
+            rbVendor.Checked = true;
+            setRadioButtonEnability(rbVendor);
+
+            itxt_AddBarcode.focus();
         }
 
         private void btnAddTransport_Click(object sender, EventArgs e)
@@ -732,14 +746,14 @@ namespace BinaMitraTextile.Sales
                 grid.SelectedRows[0].Cells[col_grid_select.Name].Value = true; //select the original item that was split
                 btnRemoveSelected.PerformClick(); //remove from list
                                                   //add the new split item to the list
-                txtBarcode.Text = Settings.itemBarcodeMandatoryPrefix + newInventoryItemId.barcode;
+                itxt_AddBarcode.ValueText = Settings.itemBarcodeMandatoryPrefix + newInventoryItemId.barcode;
                 addBarcode();
             }
         }
 
         private void Iddl_SaleOrderItems_isBrowseMode_Clicked(object sender, EventArgs e)
         {
-            SaleOrders_Form form = new SaleOrders_Form(FormMode.Browse, (Guid?)cbCustomers.SelectedValue);
+            SaleOrders_Form form = new SaleOrders_Form(FormMode.Browse, (Guid?)iddl_Customers.SelectedValue);
             Tools.displayForm(form);
             if (form.DialogResult == DialogResult.OK)
             {
@@ -795,7 +809,7 @@ namespace BinaMitraTextile.Sales
                         dt.AcceptChanges();
                         foreach(string barcode in barcodeList)
                         {
-                            txtBarcode.Text = Settings.itemBarcodeMandatoryPrefix + barcode;
+                            itxt_AddBarcode.ValueText = Settings.itemBarcodeMandatoryPrefix + barcode;
                             addBarcode();
                         }
                         foreach (DataGridViewRow row in grid.Rows)
@@ -807,17 +821,30 @@ namespace BinaMitraTextile.Sales
                 }
 
                 if (_formMode == FormMode.Update && GlobalData.UserAccount.role != Roles.Super)
-                    cbCustomers.Enabled = false;
-                else if (cbCustomers.SelectedValue == null && itxt_SaleOrderItems.ValueGuid != null)
+                    rbCustomer.Enabled = iddl_Customers.Enabled = false;
+                else if (iddl_Customers.SelectedValue == null && itxt_SaleOrderItems.ValueGuid != null)
                 {
-                    bool isCustomerSelectionEnabled = cbCustomers.Enabled;
-                    cbCustomers.Enabled = true;
-                    cbCustomers.SelectedValue = _browseItemCustomerId;
-                    cbCustomers.Enabled = isCustomerSelectionEnabled;
+                    bool isCustomerSelectionEnabled = iddl_Customers.Enabled;
+                    rbCustomer.Enabled = iddl_Customers.Enabled = true;
+                    iddl_Customers.SelectedValue = _browseItemCustomerId;
+                    rbCustomer.Enabled = iddl_Customers.Enabled = isCustomerSelectionEnabled;
                 }
 
                 LIBUtil.Util.displayMessageBoxSuccess("Updated");
             }
+        }
+
+        private void setRadioButtonEnability(object sender)
+        {
+            if (sender == rbVendor)
+                rbCustomer.Checked = iddl_Customers.Enabled = !((RadioButton)sender).Checked;
+            else
+                rbVendor.Checked = iddl_Vendors.Enabled = !((RadioButton)sender).Checked;
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            setRadioButtonEnability(sender);
         }
 
         #endregion FORM METHODS
