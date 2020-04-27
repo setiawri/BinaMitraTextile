@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,6 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -47,6 +46,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -60,43 +60,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             this.scMain = new System.Windows.Forms.SplitContainer();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.iclb_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.iclb_Colors = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iclb_ProductWidths = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iclb_Grades = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_Colors = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnClearQtyZeroes = new System.Windows.Forms.Button();
-            this.btnUpdateItemColor = new System.Windows.Forms.Button();
-            this.btnAddItems = new System.Windows.Forms.Button();
-            this.btnRefreshPage = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSetPrice = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.ptSummary = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.pnlSummary = new System.Windows.Forms.Panel();
             this.scSummary = new System.Windows.Forms.SplitContainer();
             this.gridSummary = new System.Windows.Forms.DataGridView();
-            this.gridSummaryByColor = new System.Windows.Forms.DataGridView();
-            this.pnlUpdateBuyPrice = new System.Windows.Forms.Panel();
-            this.btnCancelUpdateBuyPrice = new System.Windows.Forms.Button();
-            this.btnUpdateBuyPrice = new System.Windows.Forms.Button();
-            this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.grid = new System.Windows.Forms.DataGridView();
-            this.pnlQuickSearch = new System.Windows.Forms.Panel();
-            this.chkShowNotBookedOnly = new System.Windows.Forms.CheckBox();
-            this.chkCalculateBuyValue = new System.Windows.Forms.CheckBox();
-            this.ptFilter = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.chkShowHidden = new System.Windows.Forms.CheckBox();
-            this.chkRearrange = new System.Windows.Forms.CheckBox();
-            this.chkLast3Months = new System.Windows.Forms.CheckBox();
-            this.lblCounts = new System.Windows.Forms.Label();
-            this.txtQuickSearch = new System.Windows.Forms.TextBox();
-            this.lnkClearQuickSearch = new System.Windows.Forms.LinkLabel();
-            this.chkIncludeInactive = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.col_gridSummary_Product_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummary_grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummary_StoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,6 +80,7 @@
             this.col_gridSummary_unitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummary_BuyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummary_SellValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridSummaryByColor = new System.Windows.Forms.DataGridView();
             this.col_gridSummaryByColor_ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummaryByColor_Grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummaryByColor_ProductStoreName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,6 +92,11 @@
             this.col_gridSummaryByColor_UnitName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummaryByColor_BuyValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSummaryByColor_SellValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlUpdateBuyPrice = new System.Windows.Forms.Panel();
+            this.btnCancelUpdateBuyPrice = new System.Windows.Forms.Button();
+            this.btnUpdateBuyPrice = new System.Windows.Forms.Button();
+            this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.grid = new System.Windows.Forms.DataGridView();
             this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_receiveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,6 +119,27 @@
             this.col_grid_isConsignment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_grid_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.extracol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlQuickSearch = new System.Windows.Forms.Panel();
+            this.ptFilter = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.chkShowNotBookedOnly = new System.Windows.Forms.CheckBox();
+            this.chkCalculateBuyValue = new System.Windows.Forms.CheckBox();
+            this.chkShowHidden = new System.Windows.Forms.CheckBox();
+            this.chkRearrange = new System.Windows.Forms.CheckBox();
+            this.chkLast3Months = new System.Windows.Forms.CheckBox();
+            this.lblCounts = new System.Windows.Forms.Label();
+            this.txtQuickSearch = new System.Windows.Forms.TextBox();
+            this.lnkClearQuickSearch = new System.Windows.Forms.LinkLabel();
+            this.chkIncludeInactive = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClearQtyZeroes = new System.Windows.Forms.Button();
+            this.btnUpdateItemColor = new System.Windows.Forms.Button();
+            this.btnAddItems = new System.Windows.Forms.Button();
+            this.btnRefreshPage = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnSetPrice = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -190,6 +190,46 @@
             this.scMain.SplitterWidth = 1;
             this.scMain.TabIndex = 0;
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(694, 58);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(64, 42);
+            this.btnReset.TabIndex = 12;
+            this.btnReset.Text = "RESET FILTERS";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // iclb_ProductStoreNames
+            // 
+            this.iclb_ProductStoreNames.LabelText = "Product (store)";
+            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(508, 2);
+            this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
+            this.iclb_ProductStoreNames.ShowListOnly = false;
+            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(180, 105);
+            this.iclb_ProductStoreNames.TabIndex = 6;
+            this.iclb_ProductStoreNames.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
+            // 
+            // iclb_LengthUnits
+            // 
+            this.iclb_LengthUnits.LabelText = "Unit";
+            this.iclb_LengthUnits.Location = new System.Drawing.Point(216, 6);
+            this.iclb_LengthUnits.Name = "iclb_LengthUnits";
+            this.iclb_LengthUnits.ShowListOnly = true;
+            this.iclb_LengthUnits.Size = new System.Drawing.Size(100, 94);
+            this.iclb_LengthUnits.TabIndex = 19;
+            this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
+            // 
+            // iclb_Colors
+            // 
+            this.iclb_Colors.LabelText = "Warna";
+            this.iclb_Colors.Location = new System.Drawing.Point(322, 2);
+            this.iclb_Colors.Name = "iclb_Colors";
+            this.iclb_Colors.ShowListOnly = false;
+            this.iclb_Colors.Size = new System.Drawing.Size(180, 104);
+            this.iclb_Colors.TabIndex = 6;
+            this.iclb_Colors.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
+            // 
             // iclb_ProductWidths
             // 
             this.iclb_ProductWidths.LabelText = "Lebar";
@@ -210,136 +250,16 @@
             this.iclb_Grades.TabIndex = 6;
             this.iclb_Grades.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
             // 
-            // iclb_LengthUnits
-            // 
-            this.iclb_LengthUnits.LabelText = "Unit";
-            this.iclb_LengthUnits.Location = new System.Drawing.Point(216, 6);
-            this.iclb_LengthUnits.Name = "iclb_LengthUnits";
-            this.iclb_LengthUnits.ShowListOnly = true;
-            this.iclb_LengthUnits.Size = new System.Drawing.Size(100, 94);
-            this.iclb_LengthUnits.TabIndex = 19;
-            this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
-            // iclb_ProductStoreNames
-            // 
-            this.iclb_ProductStoreNames.LabelText = "Product (store)";
-            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(508, 2);
-            this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
-            this.iclb_ProductStoreNames.ShowListOnly = false;
-            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(180, 105);
-            this.iclb_ProductStoreNames.TabIndex = 6;
-            this.iclb_ProductStoreNames.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
-            // iclb_Colors
-            // 
-            this.iclb_Colors.LabelText = "Warna";
-            this.iclb_Colors.Location = new System.Drawing.Point(322, 2);
-            this.iclb_Colors.Name = "iclb_Colors";
-            this.iclb_Colors.ShowListOnly = false;
-            this.iclb_Colors.Size = new System.Drawing.Size(180, 104);
-            this.iclb_Colors.TabIndex = 6;
-            this.iclb_Colors.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(694, 58);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(64, 42);
-            this.btnReset.TabIndex = 12;
-            this.btnReset.Text = "RESET FILTERS";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnClearQtyZeroes
-            // 
-            this.btnClearQtyZeroes.Location = new System.Drawing.Point(502, 3);
-            this.btnClearQtyZeroes.Name = "btnClearQtyZeroes";
-            this.btnClearQtyZeroes.Size = new System.Drawing.Size(87, 23);
-            this.btnClearQtyZeroes.TabIndex = 7;
-            this.btnClearQtyZeroes.Text = "HIDE QTY 0";
-            this.btnClearQtyZeroes.UseVisualStyleBackColor = true;
-            this.btnClearQtyZeroes.Click += new System.EventHandler(this.btnClearQtyZeroes_Click);
-            // 
-            // btnUpdateItemColor
-            // 
-            this.btnUpdateItemColor.Location = new System.Drawing.Point(316, 3);
-            this.btnUpdateItemColor.Name = "btnUpdateItemColor";
-            this.btnUpdateItemColor.Size = new System.Drawing.Size(87, 23);
-            this.btnUpdateItemColor.TabIndex = 6;
-            this.btnUpdateItemColor.Text = "WARNA";
-            this.btnUpdateItemColor.UseVisualStyleBackColor = true;
-            this.btnUpdateItemColor.Click += new System.EventHandler(this.btnUpdateItemColor_Click);
-            // 
-            // btnAddItems
-            // 
-            this.btnAddItems.Location = new System.Drawing.Point(154, 3);
-            this.btnAddItems.Name = "btnAddItems";
-            this.btnAddItems.Size = new System.Drawing.Size(63, 23);
-            this.btnAddItems.TabIndex = 1;
-            this.btnAddItems.Text = "ITEMS";
-            this.btnAddItems.UseVisualStyleBackColor = true;
-            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
-            // 
-            // btnRefreshPage
-            // 
-            this.btnRefreshPage.Location = new System.Drawing.Point(595, 3);
-            this.btnRefreshPage.Name = "btnRefreshPage";
-            this.btnRefreshPage.Size = new System.Drawing.Size(87, 23);
-            this.btnRefreshPage.TabIndex = 5;
-            this.btnRefreshPage.Text = "REFRESH PAGE";
-            this.btnRefreshPage.UseVisualStyleBackColor = true;
-            this.btnRefreshPage.Click += new System.EventHandler(this.btnRefreshPage_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(82, 3);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(66, 23);
-            this.btnUpdate.TabIndex = 3;
-            this.btnUpdate.Text = "UPDATE";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnSetPrice
-            // 
-            this.btnSetPrice.Location = new System.Drawing.Point(223, 3);
-            this.btnSetPrice.Name = "btnSetPrice";
-            this.btnSetPrice.Size = new System.Drawing.Size(87, 23);
-            this.btnSetPrice.TabIndex = 2;
-            this.btnSetPrice.Text = "SET PRICE";
-            this.btnSetPrice.UseVisualStyleBackColor = true;
-            this.btnSetPrice.Click += new System.EventHandler(this.btnSetPrice_Click);
-            // 
-            // btnLog
-            // 
-            this.btnLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLog.Location = new System.Drawing.Point(409, 3);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(87, 23);
-            this.btnLog.TabIndex = 4;
-            this.btnLog.Text = "LOG";
-            this.btnLog.UseVisualStyleBackColor = true;
-            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(73, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "ADD NEW";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // ptSummary
             // 
             this.ptSummary.AdjustLocationOnClick = true;
-            this.ptSummary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ptSummary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ptSummary.BackColor = System.Drawing.Color.White;
             this.ptSummary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptSummary.ContainerPanel = null;
+            this.ptSummary.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.ptSummary.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
-            this.ptSummary.Location = new System.Drawing.Point(1057, 308);
+            this.ptSummary.Location = new System.Drawing.Point(1057, 311);
             this.ptSummary.Name = "ptSummary";
             this.ptSummary.Size = new System.Drawing.Size(25, 25);
             this.ptSummary.TabIndex = 9;
@@ -407,326 +327,6 @@
             this.gridSummary.RowHeadersVisible = false;
             this.gridSummary.Size = new System.Drawing.Size(506, 136);
             this.gridSummary.TabIndex = 6;
-            // 
-            // gridSummaryByColor
-            // 
-            this.gridSummaryByColor.AllowUserToAddRows = false;
-            this.gridSummaryByColor.AllowUserToDeleteRows = false;
-            this.gridSummaryByColor.AllowUserToResizeRows = false;
-            this.gridSummaryByColor.BackgroundColor = System.Drawing.Color.White;
-            this.gridSummaryByColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridSummaryByColor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummaryByColor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.gridSummaryByColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSummaryByColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_gridSummaryByColor_ProductId,
-            this.col_gridSummaryByColor_Grade,
-            this.col_gridSummaryByColor_ProductStoreName,
-            this.col_gridSummaryByColor_ProductWidthName,
-            this.col_gridSummaryByColor_ColorName,
-            this.col_gridSummaryByColor_AveragePrice,
-            this.col_gridSummaryByColor_availablePcs,
-            this.col_gridSummaryByColor_AvailableQty,
-            this.col_gridSummaryByColor_UnitName,
-            this.col_gridSummaryByColor_BuyValue,
-            this.col_gridSummaryByColor_SellValue});
-            this.gridSummaryByColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSummaryByColor.Location = new System.Drawing.Point(0, 0);
-            this.gridSummaryByColor.Name = "gridSummaryByColor";
-            this.gridSummaryByColor.RowHeadersVisible = false;
-            this.gridSummaryByColor.Size = new System.Drawing.Size(570, 136);
-            this.gridSummaryByColor.TabIndex = 7;
-            // 
-            // pnlUpdateBuyPrice
-            // 
-            this.pnlUpdateBuyPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlUpdateBuyPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
-            this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
-            this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(426, 106);
-            this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
-            this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(230, 110);
-            this.pnlUpdateBuyPrice.TabIndex = 7;
-            this.pnlUpdateBuyPrice.Visible = false;
-            // 
-            // btnCancelUpdateBuyPrice
-            // 
-            this.btnCancelUpdateBuyPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelUpdateBuyPrice.Location = new System.Drawing.Point(123, 66);
-            this.btnCancelUpdateBuyPrice.Name = "btnCancelUpdateBuyPrice";
-            this.btnCancelUpdateBuyPrice.Size = new System.Drawing.Size(61, 23);
-            this.btnCancelUpdateBuyPrice.TabIndex = 2;
-            this.btnCancelUpdateBuyPrice.Text = "CANCEL";
-            this.btnCancelUpdateBuyPrice.UseVisualStyleBackColor = true;
-            this.btnCancelUpdateBuyPrice.Click += new System.EventHandler(this.btnCancelUpdateBuyPrice_Click);
-            // 
-            // btnUpdateBuyPrice
-            // 
-            this.btnUpdateBuyPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateBuyPrice.Location = new System.Drawing.Point(45, 66);
-            this.btnUpdateBuyPrice.Name = "btnUpdateBuyPrice";
-            this.btnUpdateBuyPrice.Size = new System.Drawing.Size(72, 23);
-            this.btnUpdateBuyPrice.TabIndex = 1;
-            this.btnUpdateBuyPrice.Text = "UPDATE";
-            this.btnUpdateBuyPrice.UseVisualStyleBackColor = true;
-            this.btnUpdateBuyPrice.Click += new System.EventHandler(this.btnUpdateBuyPrice_Click);
-            // 
-            // in_BuyPrice
-            // 
-            this.in_BuyPrice.Checked = false;
-            this.in_BuyPrice.DecimalPlaces = 2;
-            this.in_BuyPrice.HideUpDown = true;
-            this.in_BuyPrice.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.LabelText = "Buy";
-            this.in_BuyPrice.Location = new System.Drawing.Point(45, 19);
-            this.in_BuyPrice.MaximumValue = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.Name = "in_BuyPrice";
-            this.in_BuyPrice.ShowAllowDecimalCheckbox = false;
-            this.in_BuyPrice.ShowCheckbox = false;
-            this.in_BuyPrice.ShowTextboxOnly = false;
-            this.in_BuyPrice.Size = new System.Drawing.Size(139, 41);
-            this.in_BuyPrice.TabIndex = 0;
-            this.in_BuyPrice.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.in_BuyPrice_onKeyDown);
-            // 
-            // grid
-            // 
-            this.grid.AllowUserToAddRows = false;
-            this.grid.AllowUserToDeleteRows = false;
-            this.grid.AllowUserToResizeRows = false;
-            this.grid.BackgroundColor = System.Drawing.Color.White;
-            this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_grid_id,
-            this.col_grid_receiveDate,
-            this.col_grid_code,
-            this.col_grid_grade,
-            this.col_grid_product,
-            this.col_grid_productWidth,
-            this.col_grid_color,
-            this.col_grid_buyPrice,
-            this.col_grid_sellPrice,
-            this.col_grid_select,
-            this.col_grid_availablePcs,
-            this.col_grid_availableQty,
-            this.col_grid_unit,
-            this.col_grid_totalPcs,
-            this.col_grid_totalQty,
-            this.col_grid_PONo,
-            this.col_grid_invoiceNo,
-            this.col_grid_packingListNo,
-            this.col_grid_active,
-            this.col_grid_isConsignment,
-            this.col_grid_OpnameMarker,
-            this.extracol});
-            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 28);
-            this.grid.Name = "grid";
-            this.grid.RowHeadersVisible = false;
-            this.grid.Size = new System.Drawing.Size(1082, 307);
-            this.grid.TabIndex = 5;
-            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
-            this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
-            // 
-            // pnlQuickSearch
-            // 
-            this.pnlQuickSearch.Controls.Add(this.ptFilter);
-            this.pnlQuickSearch.Controls.Add(this.chkShowNotBookedOnly);
-            this.pnlQuickSearch.Controls.Add(this.chkCalculateBuyValue);
-            this.pnlQuickSearch.Controls.Add(this.chkShowHidden);
-            this.pnlQuickSearch.Controls.Add(this.chkRearrange);
-            this.pnlQuickSearch.Controls.Add(this.chkLast3Months);
-            this.pnlQuickSearch.Controls.Add(this.lblCounts);
-            this.pnlQuickSearch.Controls.Add(this.txtQuickSearch);
-            this.pnlQuickSearch.Controls.Add(this.lnkClearQuickSearch);
-            this.pnlQuickSearch.Controls.Add(this.chkIncludeInactive);
-            this.pnlQuickSearch.Controls.Add(this.label1);
-            this.pnlQuickSearch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlQuickSearch.Location = new System.Drawing.Point(0, 0);
-            this.pnlQuickSearch.Name = "pnlQuickSearch";
-            this.pnlQuickSearch.Size = new System.Drawing.Size(1082, 28);
-            this.pnlQuickSearch.TabIndex = 0;
-            // 
-            // chkShowNotBookedOnly
-            // 
-            this.chkShowNotBookedOnly.AutoSize = true;
-            this.chkShowNotBookedOnly.Location = new System.Drawing.Point(336, 6);
-            this.chkShowNotBookedOnly.Name = "chkShowNotBookedOnly";
-            this.chkShowNotBookedOnly.Size = new System.Drawing.Size(80, 17);
-            this.chkShowNotBookedOnly.TabIndex = 10;
-            this.chkShowNotBookedOnly.Text = "not booked";
-            this.chkShowNotBookedOnly.UseVisualStyleBackColor = true;
-            this.chkShowNotBookedOnly.CheckedChanged += new System.EventHandler(this.ChkShowNotBookedOnly_CheckedChanged);
-            // 
-            // chkCalculateBuyValue
-            // 
-            this.chkCalculateBuyValue.AutoSize = true;
-            this.chkCalculateBuyValue.Location = new System.Drawing.Point(518, 6);
-            this.chkCalculateBuyValue.Name = "chkCalculateBuyValue";
-            this.chkCalculateBuyValue.Size = new System.Drawing.Size(43, 17);
-            this.chkCalculateBuyValue.TabIndex = 18;
-            this.chkCalculateBuyValue.Text = "buy";
-            this.chkCalculateBuyValue.UseVisualStyleBackColor = true;
-            // 
-            // ptFilter
-            // 
-            this.ptFilter.AdjustLocationOnClick = false;
-            this.ptFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ptFilter.BackColor = System.Drawing.Color.White;
-            this.ptFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
-            this.ptFilter.Location = new System.Drawing.Point(1057, -1);
-            this.ptFilter.Name = "ptFilter";
-            this.ptFilter.Size = new System.Drawing.Size(25, 25);
-            this.ptFilter.TabIndex = 6;
-            this.ptFilter.TogglePanel = this.scMain.Panel1;
-            // 
-            // chkShowHidden
-            // 
-            this.chkShowHidden.AutoSize = true;
-            this.chkShowHidden.Location = new System.Drawing.Point(483, 6);
-            this.chkShowHidden.Name = "chkShowHidden";
-            this.chkShowHidden.Size = new System.Drawing.Size(33, 17);
-            this.chkShowHidden.TabIndex = 6;
-            this.chkShowHidden.Text = "X";
-            this.chkShowHidden.UseVisualStyleBackColor = true;
-            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
-            // 
-            // chkRearrange
-            // 
-            this.chkRearrange.AutoSize = true;
-            this.chkRearrange.Location = new System.Drawing.Point(416, 6);
-            this.chkRearrange.Name = "chkRearrange";
-            this.chkRearrange.Size = new System.Drawing.Size(71, 17);
-            this.chkRearrange.TabIndex = 17;
-            this.chkRearrange.TabStop = false;
-            this.chkRearrange.Text = "rearrange";
-            this.chkRearrange.UseVisualStyleBackColor = true;
-            this.chkRearrange.CheckedChanged += new System.EventHandler(this.chkRearrange_CheckedChanged);
-            // 
-            // chkLast3Months
-            // 
-            this.chkLast3Months.AutoSize = true;
-            this.chkLast3Months.Location = new System.Drawing.Point(251, 6);
-            this.chkLast3Months.Name = "chkLast3Months";
-            this.chkLast3Months.Size = new System.Drawing.Size(88, 17);
-            this.chkLast3Months.TabIndex = 15;
-            this.chkLast3Months.TabStop = false;
-            this.chkLast3Months.Text = "last 3 months";
-            this.chkLast3Months.UseVisualStyleBackColor = true;
-            this.chkLast3Months.CheckedChanged += new System.EventHandler(this.chkLast3Months_CheckedChanged);
-            // 
-            // lblCounts
-            // 
-            this.lblCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCounts.Location = new System.Drawing.Point(667, 7);
-            this.lblCounts.Name = "lblCounts";
-            this.lblCounts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCounts.Size = new System.Drawing.Size(384, 13);
-            this.lblCounts.TabIndex = 12;
-            this.lblCounts.Text = "lblCounts";
-            this.lblCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtQuickSearch
-            // 
-            this.txtQuickSearch.Location = new System.Drawing.Point(80, 4);
-            this.txtQuickSearch.Name = "txtQuickSearch";
-            this.txtQuickSearch.Size = new System.Drawing.Size(57, 20);
-            this.txtQuickSearch.TabIndex = 0;
-            this.txtQuickSearch.TextChanged += new System.EventHandler(this.txtQuickSearch_TextChanged);
-            // 
-            // lnkClearQuickSearch
-            // 
-            this.lnkClearQuickSearch.ActiveLinkColor = System.Drawing.Color.DarkOrange;
-            this.lnkClearQuickSearch.AutoSize = true;
-            this.lnkClearQuickSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkClearQuickSearch.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkClearQuickSearch.LinkColor = System.Drawing.Color.DarkOrange;
-            this.lnkClearQuickSearch.Location = new System.Drawing.Point(135, 8);
-            this.lnkClearQuickSearch.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lnkClearQuickSearch.Name = "lnkClearQuickSearch";
-            this.lnkClearQuickSearch.Size = new System.Drawing.Size(15, 13);
-            this.lnkClearQuickSearch.TabIndex = 1;
-            this.lnkClearQuickSearch.TabStop = true;
-            this.lnkClearQuickSearch.Text = "X";
-            this.lnkClearQuickSearch.VisitedLinkColor = System.Drawing.Color.DarkOrange;
-            this.lnkClearQuickSearch.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkClearQuickSearch_LinkClicked);
-            // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.AutoSize = true;
-            this.chkIncludeInactive.Location = new System.Drawing.Point(154, 6);
-            this.chkIncludeInactive.Name = "chkIncludeInactive";
-            this.chkIncludeInactive.Size = new System.Drawing.Size(91, 17);
-            this.chkIncludeInactive.TabIndex = 1;
-            this.chkIncludeInactive.TabStop = false;
-            this.chkIncludeInactive.Text = "show inactive";
-            this.chkIncludeInactive.UseVisualStyleBackColor = true;
-            this.chkIncludeInactive.CheckedChanged += new System.EventHandler(this.chkIncludeInactive_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Quick Search:";
-            // 
-            // flpButtons
-            // 
-            this.flpButtons.BackColor = System.Drawing.SystemColors.Control;
-            this.flpButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpButtons.Controls.Add(this.btnAdd);
-            this.flpButtons.Controls.Add(this.btnUpdate);
-            this.flpButtons.Controls.Add(this.btnAddItems);
-            this.flpButtons.Controls.Add(this.btnSetPrice);
-            this.flpButtons.Controls.Add(this.btnUpdateItemColor);
-            this.flpButtons.Controls.Add(this.btnLog);
-            this.flpButtons.Controls.Add(this.btnClearQtyZeroes);
-            this.flpButtons.Controls.Add(this.btnRefreshPage);
-            this.flpButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpButtons.Location = new System.Drawing.Point(0, 0);
-            this.flpButtons.Name = "flpButtons";
-            this.flpButtons.Size = new System.Drawing.Size(1084, 30);
-            this.flpButtons.TabIndex = 109;
             // 
             // col_gridSummary_Product_Id
             // 
@@ -835,6 +435,42 @@
             this.col_gridSummary_SellValue.Name = "col_gridSummary_SellValue";
             this.col_gridSummary_SellValue.ReadOnly = true;
             this.col_gridSummary_SellValue.Width = 75;
+            // 
+            // gridSummaryByColor
+            // 
+            this.gridSummaryByColor.AllowUserToAddRows = false;
+            this.gridSummaryByColor.AllowUserToDeleteRows = false;
+            this.gridSummaryByColor.AllowUserToResizeRows = false;
+            this.gridSummaryByColor.BackgroundColor = System.Drawing.Color.White;
+            this.gridSummaryByColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridSummaryByColor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummaryByColor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.gridSummaryByColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSummaryByColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridSummaryByColor_ProductId,
+            this.col_gridSummaryByColor_Grade,
+            this.col_gridSummaryByColor_ProductStoreName,
+            this.col_gridSummaryByColor_ProductWidthName,
+            this.col_gridSummaryByColor_ColorName,
+            this.col_gridSummaryByColor_AveragePrice,
+            this.col_gridSummaryByColor_availablePcs,
+            this.col_gridSummaryByColor_AvailableQty,
+            this.col_gridSummaryByColor_UnitName,
+            this.col_gridSummaryByColor_BuyValue,
+            this.col_gridSummaryByColor_SellValue});
+            this.gridSummaryByColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSummaryByColor.Location = new System.Drawing.Point(0, 0);
+            this.gridSummaryByColor.Name = "gridSummaryByColor";
+            this.gridSummaryByColor.RowHeadersVisible = false;
+            this.gridSummaryByColor.Size = new System.Drawing.Size(570, 136);
+            this.gridSummaryByColor.TabIndex = 7;
             // 
             // col_gridSummaryByColor_ProductId
             // 
@@ -951,6 +587,127 @@
             this.col_gridSummaryByColor_SellValue.Name = "col_gridSummaryByColor_SellValue";
             this.col_gridSummaryByColor_SellValue.ReadOnly = true;
             this.col_gridSummaryByColor_SellValue.Width = 75;
+            // 
+            // pnlUpdateBuyPrice
+            // 
+            this.pnlUpdateBuyPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlUpdateBuyPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
+            this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
+            this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(426, 107);
+            this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
+            this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(230, 110);
+            this.pnlUpdateBuyPrice.TabIndex = 7;
+            this.pnlUpdateBuyPrice.Visible = false;
+            // 
+            // btnCancelUpdateBuyPrice
+            // 
+            this.btnCancelUpdateBuyPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelUpdateBuyPrice.Location = new System.Drawing.Point(123, 66);
+            this.btnCancelUpdateBuyPrice.Name = "btnCancelUpdateBuyPrice";
+            this.btnCancelUpdateBuyPrice.Size = new System.Drawing.Size(61, 23);
+            this.btnCancelUpdateBuyPrice.TabIndex = 2;
+            this.btnCancelUpdateBuyPrice.Text = "CANCEL";
+            this.btnCancelUpdateBuyPrice.UseVisualStyleBackColor = true;
+            this.btnCancelUpdateBuyPrice.Click += new System.EventHandler(this.btnCancelUpdateBuyPrice_Click);
+            // 
+            // btnUpdateBuyPrice
+            // 
+            this.btnUpdateBuyPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateBuyPrice.Location = new System.Drawing.Point(45, 66);
+            this.btnUpdateBuyPrice.Name = "btnUpdateBuyPrice";
+            this.btnUpdateBuyPrice.Size = new System.Drawing.Size(72, 23);
+            this.btnUpdateBuyPrice.TabIndex = 1;
+            this.btnUpdateBuyPrice.Text = "UPDATE";
+            this.btnUpdateBuyPrice.UseVisualStyleBackColor = true;
+            this.btnUpdateBuyPrice.Click += new System.EventHandler(this.btnUpdateBuyPrice_Click);
+            // 
+            // in_BuyPrice
+            // 
+            this.in_BuyPrice.Checked = false;
+            this.in_BuyPrice.DecimalPlaces = 2;
+            this.in_BuyPrice.HideUpDown = true;
+            this.in_BuyPrice.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.LabelText = "Buy";
+            this.in_BuyPrice.Location = new System.Drawing.Point(45, 19);
+            this.in_BuyPrice.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.Name = "in_BuyPrice";
+            this.in_BuyPrice.ShowAllowDecimalCheckbox = false;
+            this.in_BuyPrice.ShowCheckbox = false;
+            this.in_BuyPrice.ShowTextboxOnly = false;
+            this.in_BuyPrice.Size = new System.Drawing.Size(139, 41);
+            this.in_BuyPrice.TabIndex = 0;
+            this.in_BuyPrice.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.in_BuyPrice_onKeyDown);
+            // 
+            // grid
+            // 
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            this.grid.AllowUserToResizeRows = false;
+            this.grid.BackgroundColor = System.Drawing.Color.White;
+            this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_grid_id,
+            this.col_grid_receiveDate,
+            this.col_grid_code,
+            this.col_grid_grade,
+            this.col_grid_product,
+            this.col_grid_productWidth,
+            this.col_grid_color,
+            this.col_grid_buyPrice,
+            this.col_grid_sellPrice,
+            this.col_grid_select,
+            this.col_grid_availablePcs,
+            this.col_grid_availableQty,
+            this.col_grid_unit,
+            this.col_grid_totalPcs,
+            this.col_grid_totalQty,
+            this.col_grid_PONo,
+            this.col_grid_invoiceNo,
+            this.col_grid_packingListNo,
+            this.col_grid_active,
+            this.col_grid_isConsignment,
+            this.col_grid_OpnameMarker,
+            this.extracol});
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 28);
+            this.grid.Name = "grid";
+            this.grid.RowHeadersVisible = false;
+            this.grid.Size = new System.Drawing.Size(1082, 307);
+            this.grid.TabIndex = 5;
+            this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
+            this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
             // 
             // col_grid_id
             // 
@@ -1175,6 +932,253 @@
             this.extracol.Name = "extracol";
             this.extracol.ReadOnly = true;
             this.extracol.Width = 5;
+            // 
+            // pnlQuickSearch
+            // 
+            this.pnlQuickSearch.Controls.Add(this.ptFilter);
+            this.pnlQuickSearch.Controls.Add(this.chkShowNotBookedOnly);
+            this.pnlQuickSearch.Controls.Add(this.chkCalculateBuyValue);
+            this.pnlQuickSearch.Controls.Add(this.chkShowHidden);
+            this.pnlQuickSearch.Controls.Add(this.chkRearrange);
+            this.pnlQuickSearch.Controls.Add(this.chkLast3Months);
+            this.pnlQuickSearch.Controls.Add(this.lblCounts);
+            this.pnlQuickSearch.Controls.Add(this.txtQuickSearch);
+            this.pnlQuickSearch.Controls.Add(this.lnkClearQuickSearch);
+            this.pnlQuickSearch.Controls.Add(this.chkIncludeInactive);
+            this.pnlQuickSearch.Controls.Add(this.label1);
+            this.pnlQuickSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlQuickSearch.Location = new System.Drawing.Point(0, 0);
+            this.pnlQuickSearch.Name = "pnlQuickSearch";
+            this.pnlQuickSearch.Size = new System.Drawing.Size(1082, 28);
+            this.pnlQuickSearch.TabIndex = 0;
+            // 
+            // ptFilter
+            // 
+            this.ptFilter.AdjustLocationOnClick = false;
+            this.ptFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ptFilter.BackColor = System.Drawing.Color.White;
+            this.ptFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptFilter.ContainerPanel = null;
+            this.ptFilter.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
+            this.ptFilter.Location = new System.Drawing.Point(1057, -1);
+            this.ptFilter.Name = "ptFilter";
+            this.ptFilter.Size = new System.Drawing.Size(25, 25);
+            this.ptFilter.TabIndex = 6;
+            this.ptFilter.TogglePanel = this.scMain.Panel1;
+            // 
+            // chkShowNotBookedOnly
+            // 
+            this.chkShowNotBookedOnly.AutoSize = true;
+            this.chkShowNotBookedOnly.Location = new System.Drawing.Point(336, 6);
+            this.chkShowNotBookedOnly.Name = "chkShowNotBookedOnly";
+            this.chkShowNotBookedOnly.Size = new System.Drawing.Size(80, 17);
+            this.chkShowNotBookedOnly.TabIndex = 10;
+            this.chkShowNotBookedOnly.Text = "not booked";
+            this.chkShowNotBookedOnly.UseVisualStyleBackColor = true;
+            this.chkShowNotBookedOnly.CheckedChanged += new System.EventHandler(this.ChkShowNotBookedOnly_CheckedChanged);
+            // 
+            // chkCalculateBuyValue
+            // 
+            this.chkCalculateBuyValue.AutoSize = true;
+            this.chkCalculateBuyValue.Location = new System.Drawing.Point(518, 6);
+            this.chkCalculateBuyValue.Name = "chkCalculateBuyValue";
+            this.chkCalculateBuyValue.Size = new System.Drawing.Size(43, 17);
+            this.chkCalculateBuyValue.TabIndex = 18;
+            this.chkCalculateBuyValue.Text = "buy";
+            this.chkCalculateBuyValue.UseVisualStyleBackColor = true;
+            // 
+            // chkShowHidden
+            // 
+            this.chkShowHidden.AutoSize = true;
+            this.chkShowHidden.Location = new System.Drawing.Point(483, 6);
+            this.chkShowHidden.Name = "chkShowHidden";
+            this.chkShowHidden.Size = new System.Drawing.Size(33, 17);
+            this.chkShowHidden.TabIndex = 6;
+            this.chkShowHidden.Text = "X";
+            this.chkShowHidden.UseVisualStyleBackColor = true;
+            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
+            // 
+            // chkRearrange
+            // 
+            this.chkRearrange.AutoSize = true;
+            this.chkRearrange.Location = new System.Drawing.Point(416, 6);
+            this.chkRearrange.Name = "chkRearrange";
+            this.chkRearrange.Size = new System.Drawing.Size(71, 17);
+            this.chkRearrange.TabIndex = 17;
+            this.chkRearrange.TabStop = false;
+            this.chkRearrange.Text = "rearrange";
+            this.chkRearrange.UseVisualStyleBackColor = true;
+            this.chkRearrange.CheckedChanged += new System.EventHandler(this.chkRearrange_CheckedChanged);
+            // 
+            // chkLast3Months
+            // 
+            this.chkLast3Months.AutoSize = true;
+            this.chkLast3Months.Location = new System.Drawing.Point(251, 6);
+            this.chkLast3Months.Name = "chkLast3Months";
+            this.chkLast3Months.Size = new System.Drawing.Size(88, 17);
+            this.chkLast3Months.TabIndex = 15;
+            this.chkLast3Months.TabStop = false;
+            this.chkLast3Months.Text = "last 3 months";
+            this.chkLast3Months.UseVisualStyleBackColor = true;
+            this.chkLast3Months.CheckedChanged += new System.EventHandler(this.chkLast3Months_CheckedChanged);
+            // 
+            // lblCounts
+            // 
+            this.lblCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCounts.Location = new System.Drawing.Point(667, 7);
+            this.lblCounts.Name = "lblCounts";
+            this.lblCounts.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCounts.Size = new System.Drawing.Size(384, 13);
+            this.lblCounts.TabIndex = 12;
+            this.lblCounts.Text = "lblCounts";
+            this.lblCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtQuickSearch
+            // 
+            this.txtQuickSearch.Location = new System.Drawing.Point(80, 4);
+            this.txtQuickSearch.Name = "txtQuickSearch";
+            this.txtQuickSearch.Size = new System.Drawing.Size(57, 20);
+            this.txtQuickSearch.TabIndex = 0;
+            this.txtQuickSearch.TextChanged += new System.EventHandler(this.txtQuickSearch_TextChanged);
+            // 
+            // lnkClearQuickSearch
+            // 
+            this.lnkClearQuickSearch.ActiveLinkColor = System.Drawing.Color.DarkOrange;
+            this.lnkClearQuickSearch.AutoSize = true;
+            this.lnkClearQuickSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkClearQuickSearch.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkClearQuickSearch.LinkColor = System.Drawing.Color.DarkOrange;
+            this.lnkClearQuickSearch.Location = new System.Drawing.Point(135, 8);
+            this.lnkClearQuickSearch.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lnkClearQuickSearch.Name = "lnkClearQuickSearch";
+            this.lnkClearQuickSearch.Size = new System.Drawing.Size(15, 13);
+            this.lnkClearQuickSearch.TabIndex = 1;
+            this.lnkClearQuickSearch.TabStop = true;
+            this.lnkClearQuickSearch.Text = "X";
+            this.lnkClearQuickSearch.VisitedLinkColor = System.Drawing.Color.DarkOrange;
+            this.lnkClearQuickSearch.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkClearQuickSearch_LinkClicked);
+            // 
+            // chkIncludeInactive
+            // 
+            this.chkIncludeInactive.AutoSize = true;
+            this.chkIncludeInactive.Location = new System.Drawing.Point(154, 6);
+            this.chkIncludeInactive.Name = "chkIncludeInactive";
+            this.chkIncludeInactive.Size = new System.Drawing.Size(91, 17);
+            this.chkIncludeInactive.TabIndex = 1;
+            this.chkIncludeInactive.TabStop = false;
+            this.chkIncludeInactive.Text = "show inactive";
+            this.chkIncludeInactive.UseVisualStyleBackColor = true;
+            this.chkIncludeInactive.CheckedChanged += new System.EventHandler(this.chkIncludeInactive_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Quick Search:";
+            // 
+            // btnClearQtyZeroes
+            // 
+            this.btnClearQtyZeroes.Location = new System.Drawing.Point(502, 3);
+            this.btnClearQtyZeroes.Name = "btnClearQtyZeroes";
+            this.btnClearQtyZeroes.Size = new System.Drawing.Size(87, 23);
+            this.btnClearQtyZeroes.TabIndex = 7;
+            this.btnClearQtyZeroes.Text = "HIDE QTY 0";
+            this.btnClearQtyZeroes.UseVisualStyleBackColor = true;
+            this.btnClearQtyZeroes.Click += new System.EventHandler(this.btnClearQtyZeroes_Click);
+            // 
+            // btnUpdateItemColor
+            // 
+            this.btnUpdateItemColor.Location = new System.Drawing.Point(316, 3);
+            this.btnUpdateItemColor.Name = "btnUpdateItemColor";
+            this.btnUpdateItemColor.Size = new System.Drawing.Size(87, 23);
+            this.btnUpdateItemColor.TabIndex = 6;
+            this.btnUpdateItemColor.Text = "WARNA";
+            this.btnUpdateItemColor.UseVisualStyleBackColor = true;
+            this.btnUpdateItemColor.Click += new System.EventHandler(this.btnUpdateItemColor_Click);
+            // 
+            // btnAddItems
+            // 
+            this.btnAddItems.Location = new System.Drawing.Point(154, 3);
+            this.btnAddItems.Name = "btnAddItems";
+            this.btnAddItems.Size = new System.Drawing.Size(63, 23);
+            this.btnAddItems.TabIndex = 1;
+            this.btnAddItems.Text = "ITEMS";
+            this.btnAddItems.UseVisualStyleBackColor = true;
+            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
+            // 
+            // btnRefreshPage
+            // 
+            this.btnRefreshPage.Location = new System.Drawing.Point(595, 3);
+            this.btnRefreshPage.Name = "btnRefreshPage";
+            this.btnRefreshPage.Size = new System.Drawing.Size(87, 23);
+            this.btnRefreshPage.TabIndex = 5;
+            this.btnRefreshPage.Text = "REFRESH PAGE";
+            this.btnRefreshPage.UseVisualStyleBackColor = true;
+            this.btnRefreshPage.Click += new System.EventHandler(this.btnRefreshPage_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(82, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(66, 23);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnSetPrice
+            // 
+            this.btnSetPrice.Location = new System.Drawing.Point(223, 3);
+            this.btnSetPrice.Name = "btnSetPrice";
+            this.btnSetPrice.Size = new System.Drawing.Size(87, 23);
+            this.btnSetPrice.TabIndex = 2;
+            this.btnSetPrice.Text = "SET PRICE";
+            this.btnSetPrice.UseVisualStyleBackColor = true;
+            this.btnSetPrice.Click += new System.EventHandler(this.btnSetPrice_Click);
+            // 
+            // btnLog
+            // 
+            this.btnLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLog.Location = new System.Drawing.Point(409, 3);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(87, 23);
+            this.btnLog.TabIndex = 4;
+            this.btnLog.Text = "LOG";
+            this.btnLog.UseVisualStyleBackColor = true;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(73, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "ADD NEW";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // flpButtons
+            // 
+            this.flpButtons.BackColor = System.Drawing.SystemColors.Control;
+            this.flpButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpButtons.Controls.Add(this.btnAdd);
+            this.flpButtons.Controls.Add(this.btnUpdate);
+            this.flpButtons.Controls.Add(this.btnAddItems);
+            this.flpButtons.Controls.Add(this.btnSetPrice);
+            this.flpButtons.Controls.Add(this.btnUpdateItemColor);
+            this.flpButtons.Controls.Add(this.btnLog);
+            this.flpButtons.Controls.Add(this.btnClearQtyZeroes);
+            this.flpButtons.Controls.Add(this.btnRefreshPage);
+            this.flpButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpButtons.Location = new System.Drawing.Point(0, 0);
+            this.flpButtons.Name = "flpButtons";
+            this.flpButtons.Size = new System.Drawing.Size(1084, 30);
+            this.flpButtons.TabIndex = 109;
             // 
             // Main_Form
             // 
