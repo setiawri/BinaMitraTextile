@@ -143,7 +143,7 @@ namespace BinaMitraTextile.Admin
 
         private void iddl_Customers_UpdateLink_Click(object sender, EventArgs e)
         {
-            Util.displayForm(null, new MasterData.Customers_Form(FormMode.New), false);
+            Util.displayForm(null, new Admin.MasterData_v1_Customers_Form(FormModes.Add), false);
             Customer.populateDropDownList(iddl_Customers.Dropdownlist.combobox, false, true);
         }
 

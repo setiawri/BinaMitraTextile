@@ -87,10 +87,28 @@
     <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments.Designer.cs">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sales\MasterData_v1_FakturPajaks_Form.cs">
+    <Compile Include="Admin\MasterData_v1_Customers_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sales\MasterData_v1_FakturPajaks_Form.Designer.cs">
+    <Compile Include="Admin\MasterData_v1_Customers_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_Customers_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MasterData_v1_Vendors_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterData_v1_Vendors_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryForm\MasterData_v1_VendorInvoicePayments_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryForm\MasterData_v1_VendorInvoicePayments_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_VendorInvoicePayments_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharedForms\MasterData_v1_FakturPajaks_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharedForms\MasterData_v1_FakturPajaks_Form.Designer.cs">
       <DependentUpon>MasterData_v1_FakturPajaks_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\MasterData_v1_Products_Form.cs">
@@ -136,10 +154,10 @@
     <Compile Include="Container_Form.Designer.cs">
       <DependentUpon>Container_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="FinancialRecords\PettyCash_Form.cs">
+    <Compile Include="Admin\PettyCash_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FinancialRecords\PettyCash_Form.Designer.cs">
+    <Compile Include="Admin\PettyCash_Form.Designer.cs">
       <DependentUpon>PettyCash_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Gorden\GordenItems_Form.cs">
@@ -221,22 +239,22 @@
     <Compile Include="Invoices\VendorDebits_Form.Designer.cs">
       <DependentUpon>VendorDebits_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoices\VendorInvoices_Add_Form.cs">
+    <Compile Include="InventoryForm\VendorInvoices_Add_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Invoices\VendorInvoices_Add_Form.Designer.cs">
+    <Compile Include="InventoryForm\VendorInvoices_Add_Form.Designer.cs">
       <DependentUpon>VendorInvoices_Add_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoices\VendorInvoices_Edit_Form.cs">
+    <Compile Include="InventoryForm\VendorInvoices_Edit_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Invoices\VendorInvoices_Edit_Form.Designer.cs">
+    <Compile Include="InventoryForm\VendorInvoices_Edit_Form.Designer.cs">
       <DependentUpon>VendorInvoices_Edit_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Invoices\VendorInvoices_Form.cs">
+    <Compile Include="InventoryForm\VendorInvoices_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Invoices\VendorInvoices_Form.Designer.cs">
+    <Compile Include="InventoryForm\VendorInvoices_Form.Designer.cs">
       <DependentUpon>VendorInvoices_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryForm\InventoryItems_Split_Form.cs">
@@ -310,9 +328,6 @@
     <Compile Include="App_Code\MasterData\Cities_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\MasterData\Customers_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="App_Code\MasterData\FabricColors_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,9 +344,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App_Code\MasterData\Products_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="App_Code\MasterData\Vendors_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="App_Code\PO.cs" />
@@ -572,7 +584,16 @@
     <EmbeddedResource Include="Admin\MasterData_v1_CustomerSaleAdjustments.resx">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sales\MasterData_v1_FakturPajaks_Form.resx">
+    <EmbeddedResource Include="Admin\MasterData_v1_Customers_Form.resx">
+      <DependentUpon>MasterData_v1_Customers_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MasterData_v1_Vendors_Form.resx">
+      <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryForm\MasterData_v1_VendorInvoicePayments_Form.resx">
+      <DependentUpon>MasterData_v1_VendorInvoicePayments_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedForms\MasterData_v1_FakturPajaks_Form.resx">
       <DependentUpon>MasterData_v1_FakturPajaks_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_Products_Form.resx">
@@ -587,7 +608,7 @@
     <EmbeddedResource Include="Container_Form.resx">
       <DependentUpon>Container_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FinancialRecords\PettyCash_Form.resx">
+    <EmbeddedResource Include="Admin\PettyCash_Form.resx">
       <DependentUpon>PettyCash_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gorden\GordenOrderDetails_Form.resx">
@@ -620,13 +641,13 @@
     <EmbeddedResource Include="Invoices\VendorDebits_Form.resx">
       <DependentUpon>VendorDebits_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Invoices\VendorInvoices_Add_Form.resx">
+    <EmbeddedResource Include="InventoryForm\VendorInvoices_Add_Form.resx">
       <DependentUpon>VendorInvoices_Add_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Invoices\VendorInvoices_Edit_Form.resx">
+    <EmbeddedResource Include="InventoryForm\VendorInvoices_Edit_Form.resx">
       <DependentUpon>VendorInvoices_Edit_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Invoices\VendorInvoices_Form.resx">
+    <EmbeddedResource Include="InventoryForm\VendorInvoices_Form.resx">
       <DependentUpon>VendorInvoices_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm\InventoryItems_Split_Form.resx">

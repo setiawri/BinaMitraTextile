@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 using LIBUtil.Desktop.UserControls;
 
-namespace BinaMitraTextile.FinancialRecords
+namespace BinaMitraTextile.Admin
 {
     public partial class PettyCash_Form : Form
     {

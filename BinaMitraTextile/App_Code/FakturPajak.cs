@@ -131,20 +131,37 @@ namespace BinaMitraTextile
                 ActivityLog.submit(Id, String.Format("Completed changed to: {0}", Value));
         }
 
-        public static void update(Guid Id, DateTime Timestamp, Guid? Customers_Id, Guid? Vendors_Id, string No, decimal DPP, decimal PPN, string Notes)
+        public static bool update(Guid Id, DateTime Timestamp, Guid? Customers_Id, Guid? Vendors_Id, string No, decimal DPP, decimal PPN, string Notes)
         {
             FakturPajak objOld = new FakturPajak(Id);
             string log = "";
             log = Util.appendChange(log, objOld.No, No, "No: '{0}' to '{1}'");
             log = Util.appendChange(log, objOld.Timestamp, Timestamp, "Date: '{0:dd/MM/yy}' to '{1:dd/MM/yy}'");
-            log = Util.appendChange(log, objOld.Customers_Name, new Customer(Customers_Id).Name, "Customer: '{0}' to '{1}'");
-            log = Util.appendChange(log, objOld.Vendors_Name, new Vendor(Vendors_Id).Name, "Vendor: '{0}' to '{1}'");
             log = Util.appendChange(log, objOld.DPP, DPP, "DPP: '{0}' to '{1}'");
             log = Util.appendChange(log, objOld.PPN, PPN, "PPN: '{0}' to '{1}'");
             log = Util.appendChange(log, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
 
+            string newCustomerName = new Customer(Customers_Id).Name;
+            if (objOld.Customers_Name != newCustomerName)
+            {
+                log = Util.appendChange(log, objOld.Customers_Name, newCustomerName, "Customer: '{0}' to '{1}'");
+                if (!Util.displayMessageBoxYesNo("Sale Invoices and Returns will be removed because customer is changed"))
+                    return false;
+            }
+
+            string newVendorName = new Vendor(Vendors_Id).Name;
+            if (objOld.Vendors_Name != newVendorName)
+            {
+                log = Util.appendChange(log, objOld.Vendors_Name, newVendorName, "Vendor: '{0}' to '{1}'");
+                if (!Util.displayMessageBoxYesNo("Vendor Invoices and Returns will be removed because vendor is changed"))
+                    return false;
+            }
+
             if (string.IsNullOrEmpty(log))
+            {
                 Util.displayMessageBoxError("No changes to record");
+                return false;
+            }
             else
             {
                 SqlQueryResult result = DBConnection.query(
@@ -162,8 +179,13 @@ namespace BinaMitraTextile
                     new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(Notes))
                 );
 
-                if (result.IsSuccessful)
+                if (!result.IsSuccessful)
+                    return false;
+                else
+                {
                     ActivityLog.submit(Id, String.Format("Updated: {0}", log));
+                    return true;
+                }
 
                 //notify supervisor role
                 //if (new UserAccount(userAccountID).UserRole != UserAccountRoles.Supervisor)

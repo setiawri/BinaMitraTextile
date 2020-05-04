@@ -183,7 +183,7 @@ namespace BinaMitraTextile.POs
 
         private void iddl_Customers_UpdateLink_Click(object sender, EventArgs e)
         {
-            Util.displayForm(null, new MasterData.Customers_Form(FormMode.New), false);
+            Util.displayForm(null, new Admin.MasterData_v1_Customers_Form(FormModes.Add), false);
             Customer.populateDropDownList(iddl_Customers.Dropdownlist.combobox, false, true);
         }
 
@@ -205,7 +205,7 @@ namespace BinaMitraTextile.POs
 
         private void Iddl_Vendor_UpdateLink_Click(object sender, EventArgs e)
         {
-            Util.displayForm(null, new MasterData.Vendors_Form(FormMode.New), false);
+            Util.displayForm(null, new Admin.MasterData_v1_Vendors_Form(FormModes.Add), false);
             Vendor.populateDropDownList(iddl_Vendor.Dropdownlist.combobox, false, true);
         }
 

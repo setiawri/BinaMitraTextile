@@ -439,6 +439,11 @@ namespace BinaMitraTextile
                 DBUtil.addListParameter(cmd, "@productstorename_id_list", dtProductStoreNameID);
                 DBUtil.addListParameter(cmd, "@color_id_list", dtColorID);
 
+
+
+
+
+
                 adapter.SelectCommand = cmd;
                 adapter.Fill(dataTable);
             }

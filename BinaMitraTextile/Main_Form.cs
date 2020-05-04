@@ -32,15 +32,15 @@ namespace BinaMitraTextile
 
             if(GlobalData.UserAccount.role == Roles.Assistant)
             {
-                //disable to be hidden in rearrange
-                btnRefresh.Enabled = false;
-                btnShowHidden.Enabled = false;
-                Tools.rearrangeButtonsInPanel(scButtonsAndReceivables.Panel1, HorizontalAlignment.Left);
+                ////disable to be hidden in rearrange
+                //btnRefresh.Enabled = false;
+                //btnShowHidden.Enabled = false;
+                //Tools.rearrangeButtonsInPanel(scButtonsAndReceivables.Panel1, HorizontalAlignment.Left);
 
-                scButtonsAndReceivables.Panel2Collapsed = true;
-                scMain.Panel2Collapsed = true;
-                this.Width = 300;
-                this.Height = 200;
+                //scButtonsAndReceivables.Panel2Collapsed = true;
+                //scMain.Panel2Collapsed = true;
+                //this.Width = 300;
+                //this.Height = 200;
             }
 
             gridPOItems.AutoGenerateColumns = false;
@@ -103,6 +103,7 @@ namespace BinaMitraTextile
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));
 
             populateReceivablesSummary(dtReceivables);
+
             populateIncompletePO();
 
             gridStockLevel.DataSource = InventoryStockLevel.getAll(null, null, null, null, null, null, true);

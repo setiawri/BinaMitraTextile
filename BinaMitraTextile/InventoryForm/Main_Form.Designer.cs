@@ -595,7 +595,7 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(426, 107);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(426, 109);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(230, 110);
             this.pnlUpdateBuyPrice.TabIndex = 7;
@@ -1190,7 +1190,7 @@
             this.Name = "Main_Form";
             this.Text = "INVENTORY";
             this.Load += new System.EventHandler(this.Form_Load);
-            this.Shown += new System.EventHandler(this.Main_Form_Shown);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             this.scMain.Panel1.ResumeLayout(false);
             this.scMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();

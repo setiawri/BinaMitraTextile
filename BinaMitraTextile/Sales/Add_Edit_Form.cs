@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.Sales
 {
@@ -236,9 +233,9 @@ namespace BinaMitraTextile.Sales
             DataTable dt = (DataTable)grid.DataSource;
             if (dt.Rows.Count == 0)
                 return itxt_AddBarcode.isValueError("Please add an item");
-            else if (rbCustomer.Checked && !iddl_Customers.isValidSelectedValue())
+            else if (rbCustomer.Checked && !iddl_Customers.hasSelectedValue())
                 return iddl_Customers.SelectedValueError("Please select Customer");
-            else if (rbVendor.Checked && !iddl_Vendors.isValidSelectedValue())
+            else if (rbVendor.Checked && !iddl_Vendors.hasSelectedValue())
                 return iddl_Vendors.SelectedValueError("Please select Vendor");
             else if (!allItemHasPrice())
             {
@@ -467,13 +464,13 @@ namespace BinaMitraTextile.Sales
 
         private void Iddl_Customers_UpdateLink_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new MasterData.Customers_Form(FormMode.New));
+            Tools.displayForm(new Admin.MasterData_v1_Customers_Form(FormModes.Add));
             populateCustomers();
         }
 
         private void Iddl_Vendors_UpdateLink_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new MasterData.Vendors_Form(FormMode.New));
+            Tools.displayForm(new Admin.MasterData_v1_Vendors_Form(FormModes.Add));
             populateVendors();
         }
 

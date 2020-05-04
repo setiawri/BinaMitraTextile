@@ -34,7 +34,7 @@ namespace BinaMitraTextile
 
         private void Form_Shown(object sender, EventArgs e)
         {
-            if (lnkSummary.Visible)
+            if (lnkSummary.Visible && GlobalData.UserAccount.role != Roles.Assistant)
                 Util.displayMDIChild(new Main_Form());
             //Util.displayMDIChild(new Invoices.VendorInvoices_Form());
             //Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
@@ -54,14 +54,21 @@ namespace BinaMitraTextile
         {
             if (GlobalData.UserAccount.role != Roles.Super)
             {
-                if (GlobalData.UserAccount.role != Roles.Assistant)
+                if (GlobalData.UserAccount.role == Roles.Assistant)
                 {
-                    Sales_FakturPajakKeluaran.Visible = false;
+                    gbShortcutsForUsers.Visible = false;
+                }
+                else
+                {
+                    Sales_FakturPajak.Visible = false;
                     Sales_Kontrabon.Visible = false;
 
                     Sales_Divider_Penagihan.Visible = false;
                     Inventory_VendorInvoices.Visible = false;
-                    Inventory_FakturPajakMasukan.Visible = false;
+                    Inventory_FakturPajak.Visible = false;
+                    Inventory_VendorInvoicePayment.Visible = false;
+
+                    gbShortcutsForAssistants.Visible = false;
                 }
 
                 Inventory_Barcodes.Visible = false;
@@ -94,7 +101,7 @@ namespace BinaMitraTextile
 
         private void LnkPettyCash_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Util.displayMDIChild(new FinancialRecords.PettyCash_Form());
+            Util.displayMDIChild(new Admin.PettyCash_Form());
         }
 
         private void LnkSummary_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -193,7 +200,7 @@ namespace BinaMitraTextile
 
         private void Inventory_Products_Vendors_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new MasterData.Vendors_Form(FormMode.Search));
+            Util.displayMDIChild(new Admin.MasterData_v1_Vendors_Form(FormModes.Search));
         }
 
         private void Inventory_Products_Colors_Click(object sender, EventArgs e)
@@ -203,7 +210,7 @@ namespace BinaMitraTextile
 
         private void Inventory_VendorInvoices_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Invoices.VendorInvoices_Form());
+            Util.displayMDIChild(new InventoryForm.VendorInvoices_Form());
         }
 
         private void Inventory_PurchaseOrders_Click(object sender, EventArgs e)
@@ -211,15 +218,20 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new POs.Main_Form());
         }
 
-        private void Inventory_FakturPajakMasukan_Click(object sender, EventArgs e)
+        private void Inventory_FakturPajak_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
+            Util.displayMDIChild(new SharedForms.MasterData_v1_FakturPajaks_Form(FormModes.Add));
+        }
+
+        private void Inventory_VendorInvoicePayment_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.MasterData_v1_VendorInvoicePayments_Form(FormModes.Search));
         }
 
         #endregion MENU - INVENTORY
         /*******************************************************************************************************/
         #region MENU - ADMIN
-            
+
         private void Admin_Angkutan_Click(object sender, EventArgs e)
         {
             Util.displayMDIChild(new MasterData.Transports_Form(FormMode.Search));
@@ -242,7 +254,7 @@ namespace BinaMitraTextile
 
         private void Admin_PettyCash_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new FinancialRecords.PettyCash_Form());
+            Util.displayMDIChild(new Admin.PettyCash_Form());
         }
 
         private void Admin_PettyCashCategories_Click(object sender, EventArgs e)
@@ -288,9 +300,9 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Sales.Main_Form());
         }
 
-        private void Sales_FakturPajakKeluaran_Click(object sender, EventArgs e)
+        private void Sales_FakturPajak_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
+            Util.displayMDIChild(new SharedForms.MasterData_v1_FakturPajaks_Form(FormModes.Add));
         }
 
         private void Sales_Returns_Click(object sender, EventArgs e)
@@ -310,7 +322,7 @@ namespace BinaMitraTextile
 
         private void Sales_Customers_Daftar_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new MasterData.Customers_Form(FormMode.Search));
+            Util.displayMDIChild(new Admin.MasterData_v1_Customers_Form(FormModes.Search));
         }
 
         private void Sales_Customers_Discounts_Click(object sender, EventArgs e)
@@ -350,6 +362,21 @@ namespace BinaMitraTextile
         private void Internal_Reports_Financial_Click(object sender, EventArgs e)
         {
             Util.displayMDIChild(new Reports.Financial_Overview_Form());
+        }
+
+        private void LnkVendorInvoices_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.VendorInvoices_Form());
+        }
+
+        private void LnkFakturPajak_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new SharedForms.MasterData_v1_FakturPajaks_Form(FormModes.Add));
+        }
+
+        private void LnkSaleReturns_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Returns.Main_Form());
         }
 
         #endregion MENU - INTERNAL

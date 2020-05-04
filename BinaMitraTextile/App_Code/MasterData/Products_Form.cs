@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Windows.Forms;
 using BinaMitraTextile.UserControls;
+using LIBUtil;
 
 namespace BinaMitraTextile.MasterData
 {
@@ -157,7 +158,7 @@ namespace BinaMitraTextile.MasterData
 
         private void lnkUpdateVendors_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Tools.displayForm(new MasterData.Vendors_Form(FormMode.New));
+            Tools.displayForm(new Admin.MasterData_v1_Vendors_Form(FormModes.Add));
             Vendor.populateDropDownList(_inputDDLVendors.Dropdownlist, false, true);
         }
 

@@ -151,14 +151,19 @@ namespace BinaMitraTextile
             catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
+        #endregion DATABASE METHODS
+        /*******************************************************************************************************/
+        #region CLASS METHODS
+
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)
         {
             Tools.populateDropDownList(dropdownlist, getByFilter(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
         }
 
-        #endregion DATABASE METHODS
-        /*******************************************************************************************************/
-        #region CLASS METHODS
+        public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool includeInactive)
+        {
+            control.populate(getByFilter(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
+        }
 
         #endregion CLASS METHODS
         /*******************************************************************************************************/

@@ -62,8 +62,13 @@ namespace BinaMitraTextile
         public const string COL_PayableAmount = "PayableAmount";
         public const string COL_VendorName = "VendorName";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
+        public const string COL_FakturPajaks_Amount = "FakturPajaks_Amount";
+        public const string COL_AmountDifferenceFromFakturPajaksAmount = "AmountDifferenceFromFakturPajaksAmount";
 
         public const string FILTER_BrowsingForFakturPajak_Vendors_Id = "FILTER_BrowsingForFakturPajak_Vendors_Id";
+        public const string FILTER_ShowOnlyIncomplete = "FILTER_ShowOnlyIncomplete";
+        public const string FILTER_ShowOnlyVendorUsesFakturPajak = "FILTER_ShowOnlyVendorUsesFakturPajak";
+        public const string FILTER_ShowOnlyLast3Months = "FILTER_ShowOnlyLast3Months";
 
         #endregion DATABASE COLUMNS
         /*******************************************************************************************************/
@@ -71,7 +76,7 @@ namespace BinaMitraTextile
 
         public VendorInvoice(Guid id)
         {
-            DataRow row = get(id, null, true, null, null).Rows[0];
+            DataRow row = get(id).Rows[0];
             ID = id;
             Timestamp = DBUtil.parseData<DateTime>(row, COL_DB_Timestamp);
             InvoiceNo = DBUtil.parseData<string>(row, COL_DB_InvoiceNo);
@@ -128,22 +133,27 @@ namespace BinaMitraTextile
             return id;
         }
 
+        public static DataTable get()
+        {
+            return get(null, null, true, false, false, null, null);
+        }
+
         public static DataTable get(Guid ID)
         {
-            return get(ID, null, true, null, null);
+            return get(ID, null, true, false, false, null, null);
         }
 
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, true, FakturPajaks_Id, null);
+            return get(null, null, true, false, false, FakturPajaks_Id, null);
         }
 
-        public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id)
+        public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, bool showOnlyLast3Months)
         {
-            return get(null, null, false, null, BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, false, false, showOnlyLast3Months, null, BrowsingForFakturPajak_Customers_Id);
         }
 
-        public static DataTable get(Guid? Id, string invoiceNumber, bool includeCompleted, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
+        public static DataTable get(Guid? Id, string invoiceNumber, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, bool showOnlyLast3Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -154,9 +164,11 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, Util.wrapNullable(invoiceNumber)),
                 new SqlQueryParameter(COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(FakturPajaks_Id)),
                 new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
-                new SqlQueryParameter("include_completed", SqlDbType.Bit, includeCompleted),
+                new SqlQueryParameter(FILTER_ShowOnlyIncomplete, SqlDbType.Bit, showOnlyIncomplete),
+                new SqlQueryParameter(FILTER_ShowOnlyLast3Months, SqlDbType.Bit, showOnlyLast3Months),
                 new SqlQueryParameter("status_completed", SqlDbType.TinyInt, VendorInvoiceStatus.PaidFull),
-                new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, VendorInvoiceStatus.Cancelled)
+                new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, VendorInvoiceStatus.Cancelled),
+                new SqlQueryParameter(FILTER_ShowOnlyVendorUsesFakturPajak, SqlDbType.Bit, showOnlyVendorUsesFakturPajak)
                 );
             return result.Datatable;
         }
@@ -214,13 +226,7 @@ namespace BinaMitraTextile
             log = ActivityLog.appendChange(log, objOld.TOP, TOP, "TOP: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
 
-            if (string.IsNullOrEmpty(log))
-            {
-                Util.displayMessageBoxError("No changes to record");
-            }
-            else
-            {
-                SqlQueryResult result = DBConnection.query(
+            SqlQueryResult result = DBConnection.query(
                 false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
@@ -233,9 +239,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(Notes))
             );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(Id, String.Format("Updated: {0}", log));
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(Id, String.Format("Updated: {0}", log));
         }
 
         public static void update_FakturPajaks_Id(Guid Id, Guid? FakturPajaks_Id)
@@ -272,7 +277,7 @@ namespace BinaMitraTextile
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist)
         {
-            Tools.populateDropDownList(dropdownlist, get(null, null, false, null, null).DefaultView, COL_DB_InvoiceNo, COL_DB_Id, false);
+            Tools.populateDropDownList(dropdownlist, get().DefaultView, COL_DB_InvoiceNo, COL_DB_Id, false);
         }
 
         #endregion CLASS METHODS

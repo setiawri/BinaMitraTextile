@@ -1,69 +1,103 @@
-﻿
-
---APPLIED 27/4/2020
-
-
-ALTER TABLE Sales ALTER COLUMN customer_id uniqueidentifier NULL
+﻿CREATE TABLE [dbo].[VendorInvoicePayments]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Timestamp] DATETIME NOT NULL, 
+    [Vendors_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [Cancelled] BIT NOT NULL DEFAULT (0),
+    [Approved] BIT NOT NULL DEFAULT (0),
+    [Notes] VARCHAR(MAX) NULL
+)
 GO
-
-ALTER TABLE FakturPajaks ADD Vendors_Id uniqueidentifier
+CREATE TABLE [dbo].[VendorInvoicePaymentItems]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [VendorInvoicePayments_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [VendorInvoices_Id] UNIQUEIDENTIFIER NOT NULL, 
+    [PaymentAmount] DECIMAL(12) NOT NULL
+)
 GO
-
-ALTER TABLE Sales ADD Vendors_Id uniqueidentifier
-GO
-
-update VendorInvoices set Vendors_Id='F311ECB7-1C25-4E12-A7A2-D0B172A0B95A' where invoice_no LIKE '%/FKT/%' or invoice_no LIKE '%/ALL/%'
-GO
-
-update Sales set Vendors_Id='F311ECB7-1C25-4E12-A7A2-D0B172A0B95A' where customer_id='53BE7632-13DC-4F6E-836C-1E2736983625' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='8720D697-B249-495E-867A-B0CA183CFCA4' where customer_id='D9136082-010C-4235-A3D1-6BBA86EEE199' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='EAC2BE2A-1E2D-40A7-8A1F-23A0FDDD8C93' where customer_id='CDC1CE36-F766-404F-A0BA-7E34F8175194' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id = null, returned_to_supplier=0 where customer_id='702A378A-535C-46DD-B795-2D9EAAB76925'
-GO
-update Sales set Vendors_Id='BFE45320-1257-40CB-B5BD-ADF95C2A126C' where customer_id='421EA111-FCA3-4558-9252-AADAD2280037' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='42AF5164-377D-4AD3-B7F1-FECFD650FEA6' where customer_id='C43E8DA1-91F0-4022-BEE8-E2223503BBEB' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='5C054136-12E9-4841-8D34-106F5E0D0DCC' where customer_id='534B5E70-086D-4E69-8456-8CBF1BA267CF' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='E0B2DAF2-E39A-47B6-BCCD-083CA24484AF' where customer_id='49900176-8632-4254-8089-2A3B02746FEE' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='B7D84BFE-0B70-458B-884E-C87134C4EE5E' where customer_id='48A25DB5-C821-4B35-8A98-D36D60611B9F' and returned_to_supplier=1
-GO
-update Sales set Vendors_Id='62542AC1-5140-4CFA-962C-B0B299EE0FE5' where customer_id='7278894E-E851-4289-BD84-BE97732A092C' and returned_to_supplier=1
-GO
-update Sales set customer_id=null where Vendors_Id IS NOT NULL and returned_to_supplier=1
-GO
-
-update VendorInvoices set status_enum_id = 3 where timestamp < '2020-01-01'
-GO
-
-
-ALTER PROCEDURE [dbo].[FakturPajaks_add]
-
-	@Id uniqueidentifier,
-	@Timestamp datetime,
-	@Customers_Id uniqueidentifier,
-	@Vendors_Id uniqueidentifier,
-	@No varchar(MAX),
-	@DPP decimal(12,2),
-	@PPN decimal(12,2),
-	@Notes varchar(MAX)
-
+ALTER PROCEDURE [dbo].[vendorinvoice_get]
+	
+	@id uniqueidentifier = NULL, 
+	@invoice_no varchar(MAX) = NULL,
+	@FakturPajaks_Id uniqueidentifier = NULL,
+	@FILTER_BrowsingForFakturPajak_Vendors_Id uniqueidentifier = NULL,
+	@FILTER_ShowOnlyIncomplete bit = 0,
+	@FILTER_ShowOnlyLast3Months bit = 0,
+	@status_completed tinyint,
+	@status_cancelled tinyint,
+	@FILTER_ShowOnlyVendorUsesFakturPajak bit = 0
+	
 AS
 
 BEGIN
 
-	INSERT INTO FakturPajaks(Id,Timestamp,Customers_Id,Vendors_Id,No,DPP,PPN,Notes) 
-	VALUES(@Id,@Timestamp,@Customers_Id,@Vendors_Id,@No,@DPP,@PPN,@Notes)
+	SELECT VendorInvoices.*,
+		Vendors.vendor_name AS VendorName,
+		FakturPajaks.No AS FakturPajaks_No,
+		FakturPajaks.DPP + FakturPajaks.PPN AS FakturPajaks_Amount,
+		VendorInvoices.Amount - (FakturPajaks.DPP + FakturPajaks.PPN) AS AmountDifferenceFromFakturPajaksAmount,
+		DATEADD(day, 3 + VendorInvoices.[TOP], VendorInvoices.timestamp) AS pastdue,
+		CAST(CASE WHEN DATEADD(day, 3 + VendorInvoices.[TOP], VendorInvoices.timestamp) < CURRENT_TIMESTAMP THEN 1 ELSE 0 END AS BIT) AS is_due,
+		CompiledInventory.Amount AS CalculatedAmount,		
+		VendorInvoices.Amount - COALESCE(CompiledInventory.Amount,0) AS AmountDifferenceFromCalculated,
+		COALESCE(ReturnedToSupplier.Amount,0) AS ReturnedValue,
+		VendorInvoices.Amount - COALESCE(ReturnedToSupplier.Amount,0) AS PayableAmount,
+		CASE
+			WHEN status_enum_id = 0 THEN 'New'
+			WHEN status_enum_id = 1 THEN 'Cancelled'
+			WHEN status_enum_id = 2 THEN 'Paid Partial'
+			WHEN status_enum_id = 3 THEN 'Paid Full'
+		END AS status_name
+	FROM VendorInvoices
+		LEFT OUTER JOIN Vendors ON Vendors.id = VendorInvoices.Vendors_Id
+		LEFT OUTER JOIN FakturPajaks ON FakturPajaks.Id = VendorInvoices.FakturPajaks_Id
+		LEFT OUTER JOIN (		
+				SELECT Inventory.vendorinvoice_id, SUM(CompiledInventoryBuyValue.Amount) AS Amount
+				FROM (
+						SELECT CompiledInventoryItems.inventory_id, CompiledInventoryItems.total_length * Inventory.buy_price AS Amount
+						FROM (
+								SELECT InventoryItems.inventory_id, SUM(InventoryItems.item_length) AS total_length
+								FROM InventoryItems
+									LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+									LEFT OUTER JOIN VendorInvoices ON VendorInvoices.id = Inventory.vendorinvoice_id
+								WHERE 1=1
+									AND (@id IS NULL OR Inventory.vendorinvoice_id = @id)
+									AND (@invoice_no IS NULL OR VendorInvoices.invoice_no LIKE '%' + @invoice_no + '%')
+									AND (@FakturPajaks_Id IS NULL OR VendorInvoices.FakturPajaks_Id = @FakturPajaks_Id)
+								GROUP BY InventoryItems.inventory_id
+							) CompiledInventoryItems
+							LEFT OUTER JOIN Inventory ON Inventory.id = CompiledInventoryItems.inventory_id
+					) CompiledInventoryBuyValue
+					LEFT OUTER JOIN Inventory ON Inventory.id = CompiledInventoryBuyValue.inventory_id
+				GROUP BY Inventory.vendorinvoice_id
+			) CompiledInventory ON CompiledInventory.vendorinvoice_id = VendorInvoices.id
+		LEFT OUTER JOIN (
+				SELECT VendorInvoices.id,
+					SUM(Inventory.buy_price * InventoryItems.item_length) AS buy_amount,
+					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS Amount,
+					COUNT(InventoryItems.item_length) AS sale_qty,
+					SUM(InventoryItems.item_length) AS sale_length
+				FROM SaleItems
+					LEFT OUTER JOIN Sales ON Sales.id = SaleItems.sale_id
+					LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
+					LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+					LEFT OUTER JOIN VendorInvoices ON VendorInvoices.id = Inventory.vendorinvoice_id
+				WHERE Sales.returned_to_supplier = 1 AND Sales.voided = 0
+				GROUP BY VendorInvoices.id
+			) ReturnedToSupplier ON ReturnedToSupplier.id = VendorInvoices.id
+	WHERE 1=1
+		AND (@id IS NULL OR VendorInvoices.id = @id)
+		AND (@invoice_no IS NULL OR VendorInvoices.invoice_no LIKE '%' + @invoice_no + '%')
+		AND (@FakturPajaks_Id IS NULL OR VendorInvoices.FakturPajaks_Id = @FakturPajaks_Id)
+		AND (@FILTER_BrowsingForFakturPajak_Vendors_Id IS NULL OR (VendorInvoices.FakturPajaks_Id IS NULL AND VendorInvoices.Vendors_Id = @FILTER_BrowsingForFakturPajak_Vendors_Id))
+		AND (@FILTER_ShowOnlyIncomplete = 0 OR (@FILTER_ShowOnlyIncomplete = 1 AND VendorInvoices.status_enum_id <> @status_cancelled AND VendorInvoices.status_enum_id <> @status_completed))
+		AND (@FILTER_ShowOnlyLast3Months = 0 OR (@FILTER_ShowOnlyLast3Months = 1 AND VendorInvoices.timestamp > DATEADD(month, -3, GETDATE())))
+		AND (@FILTER_ShowOnlyVendorUsesFakturPajak = 0 OR (@FILTER_ShowOnlyVendorUsesFakturPajak = 1 AND Vendors.usesFakturPajak = 1))
+	ORDER BY VendorInvoices.invoice_no DESC
 
 END
 GO
-
-
 ALTER PROCEDURE [dbo].[FakturPajaks_get]
 
 	@Id uniqueidentifier = NULL,
@@ -123,423 +157,7 @@ BEGIN
 		AND (@FILTER_StartDate IS NULL OR FakturPajaks.Timestamp >= @FILTER_StartDate)
 		AND (@FILTER_EndDate IS NULL OR FakturPajaks.Timestamp < @FILTER_EndDate)
 		AND (@FILTER_ShowCompleted = 1 OR (@FILTER_ShowCompleted = 0 AND FakturPajaks.Completed = 0)) 
+	ORDER BY FakturPajaks.Timestamp DESC, FakturPajaks.No DESC
 
 END
 GO
-
-
-ALTER PROCEDURE [dbo].[FakturPajaks_update]
-
-	@Id uniqueidentifier,
-	@Timestamp datetime,
-	@Customers_Id uniqueidentifier = NULL,
-	@Vendors_Id uniqueidentifier = NULL,
-	@No varchar(MAX),
-	@DPP decimal(12,2),
-	@PPN decimal(12,2),
-	@Notes varchar(MAX)
-
-AS
-
-BEGIN
-
-	IF (SELECT Customers_Id FROM FakturPajaks WHERE FakturPajaks.Id = @Id) <> @Customers_Id OR 
-		(SELECT Vendors_Id FROM FakturPajaks WHERE FakturPajaks.Id = @Id) <> @Vendors_Id
-	BEGIN
-		UPDATE Sales SET FakturPajaks_Id = NULL WHERE FakturPajaks_Id = @Id
-		UPDATE SaleReturns SET FakturPajaks_Id = NULL WHERE FakturPajaks_Id = @Id
-		UPDATE VendorInvoices SET FakturPajaks_Id = NULL WHERE FakturPajaks_Id = @Id
-	END
-
-	UPDATE FakturPajaks 
-	SET Timestamp = @Timestamp, 
-		Customers_Id = @Customers_Id,
-		Vendors_Id = @Vendors_Id,
-		No = @No,
-		DPP = @DPP, 
-		PPN = @PPN, 
-		Notes = @Notes
-	WHERE FakturPajaks.Id=@Id
-		
-END
-GO
-
-
-ALTER PROCEDURE [dbo].[saleitem_new]
-
-	@id uniqueidentifier,
-	@sale_id uniqueidentifier,
-	@inventory_item_id uniqueidentifier,
-	@sell_price decimal(12,2),
-	@adjustment decimal(12,2),
-	@isManualAdjustment bit,
-	@customer_id uniqueidentifier = NULL
-
-AS
-
-BEGIN
-
-	DECLARE @Qty decimal(10,2) = 0;
-	DECLARE @User_PercentCommission decimal(5,2) = 0;
-	DECLARE @Product_PercentageOfPercentCommission decimal(5,2) = 0;
-	DECLARE @CommissionPercent decimal(5,2) = 0;
-	DECLARE @CommissionAmount decimal(10,0) = 0;
-
-	SELECT @User_PercentCommission = Users.PercentCommission
-	FROM Users
-	WHERE Users.id = (SELECT Customers.sales_user_id FROM Customers WHERE Customers.id=@customer_id)
-
-	SELECT 
-		@Qty = InventoryItems.item_length, 
-		@Product_PercentageOfPercentCommission = Products.PercentageOfPercentCommission
-	FROM InventoryItems 
-		LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id 
-		LEFT OUTER JOIN Products ON Products.id = Inventory.product_id
-	WHERE InventoryItems.id = @inventory_item_id
-
-	SET @CommissionPercent = @User_PercentCommission * @Product_PercentageOfPercentCommission/100
-	SET @CommissionAmount = @CommissionPercent/100 * (@sell_price+@adjustment) * @Qty
-
-	INSERT INTO SaleItems(id,sale_id,inventory_item_id,sell_price,adjustment,isManualAdjustment, CommissionPercent, CommissionAmount) 
-					VALUES(@id,@sale_id,@inventory_item_id,@sell_price,@adjustment,@isManualAdjustment,@CommissionPercent, @CommissionAmount)
-
-END
-GO
-
-
-
-ALTER PROCEDURE [dbo].[sale_new]
-
-	@id uniqueidentifier, 
-	@time_stamp datetime,
-	@voided bit,
-	@customer_id uniqueidentifier = NULL,
-	@Vendors_Id uniqueidentifier = NULL,
-	@customer_info varchar(MAX),
-	@user_id uniqueidentifier,
-	@notes varchar(MAX) = NULL,
-	@transport_id uniqueidentifier = NULL,
-	@shipping_cost decimal, 
-	@returned_to_supplier bit,
-	@return_value int OUTPUT
-AS
-
-BEGIN
-
-	-- INCREMENT LAST HEX NUMBER
-	DECLARE @HexLength int = 5, @LastHex_String varchar(5), @NewNo varchar(5)
-	SELECT @LastHex_String = ISNULL(MAX(hexbarcode),'') From Sales	
-	EXEC UTIL_IncrementHex @HexLength, @LastHex_String, @NewNo OUTPUT
-
-	INSERT INTO Sales(id,hexbarcode,time_stamp,voided,customer_id,Vendors_Id,customer_info,user_id,notes,transport_id, shipping_cost, SaleCommission_Users_Id,returned_to_supplier) 
-					VALUES(@id,@NewNo,@time_stamp,@voided,@customer_id,@Vendors_Id,@customer_info,@user_id,@notes,@transport_id, @shipping_cost, (SELECT Customers.sales_user_id FROM Customers WHERE Customers.id=@customer_id),@returned_to_supplier)
-    SET @return_value=SCOPE_IDENTITY()
-END
-GO
-
-ALTER PROCEDURE [dbo].[sale_getall]
-	
-	@date_start datetime = NULL, 
-	@date_end datetime = NULL,
-	@inventory_item_id uniqueidentifier = NULL, 
-	@customer_id uniqueidentifier = NULL,
-	@Vendors_Id uniqueidentifier = NULL,
-	@sale_id uniqueidentifier = NULL,
-	@FakturPajaks_Id uniqueidentifier = NULL,
-	@only_has_receivable bit,
-	@only_loss_profit bit,
-	@include_special_user_only bit,
-	@returned_to_supplier bit,
-	@SaleCommission_Users_Id uniqueidentifier = NULL,	
-	@productstorename_id_list AS Array READONLY,
-	@color_id_list AS Array READONLY,
-	@FILTER_OnlyNotCompleted bit = 0,
-	@FILTER_Inventory_Code varchar(MAX) = NULL,
-	@FILTER_OnlyManualAdjustment bit = 0,
-	@FILTER_BrowsingForFakturPajak_Customers_Id uniqueidentifier = NULL,
-	@FILTER_BrowsingForFakturPajak_Vendors_Id uniqueidentifier = NULL,
-	@FILTER_VendorInvoices_Id uniqueidentifier = NULL
-
-AS
-
-BEGIN
- 
-	SELECT Sales.*, RIGHT(CONVERT(NVARCHAR(10), CONVERT(VARBINARY(8), Sales.barcode), 1),5) AS hexbarcode,
-			Vendors.vendor_name AS Vendors_Name,
-			Customers.customer_name AS customer_name,
-			CustomerTerms.DebtLimit AS CustomerTerms_DebtLimit,
-			CustomerTerms.TermDays AS CustomerTerms_TermDays,
-			CustomerTerms.TermDays - DATEDIFF(day, time_stamp, CURRENT_TIMESTAMP) AS RemainingTermDays,
-			Transports.name AS transport_name,
-			FakturPajaks.Id AS FakturPajaks_Id,
-			FakturPajaks.No AS FakturPajaks_No,
-			SaleItems.sale_amount AS sale_amount,
-			SaleItems.sale_qty AS sale_qty,
-			SaleItems.sale_length AS sale_length,
-			COALESCE(SaleItems.sale_amount,0) - COALESCE(SaleItems.buy_amount,0) AS profit,
-			IIF(COALESCE(SaleItems.buy_amount,0) = 0,1,(COALESCE(SaleItems.sale_amount,0) - COALESCE(SaleItems.buy_amount,0)) / COALESCE(SaleItems.buy_amount,0)) * 100 AS profit_percent,
-			COALESCE(CompiledPayments.payment_amount,0) AS payment_amount,
-			IIF(Sales.returned_to_supplier=1,0,COALESCE(SaleItems.sale_amount,0) - COALESCE(CompiledPayments.payment_amount,0) + COALESCE(Sales.shipping_cost, 0)) AS receivable_amount,
-			DATEDIFF(day, time_stamp, CURRENT_TIMESTAMP) AS days_elapsed,
-			COALESCE(ReturnedItems.amount,0) AS returned_amount,
-			(CASE WHEN AdjustedSaleItems.sale_id IS NOT NULL THEN 1 ELSE 0 END) AS isManualAdjustment,
-			SaleCommission.username AS SaleCommission_Users_Name,
-			COALESCE(SaleItems.CommissionAmount,0) AS CommissionAmount
-	FROM Sales 
-		LEFT OUTER JOIN Vendors ON Vendors.id = Sales.Vendors_Id
-		LEFT OUTER JOIN Customers ON Customers.id = Sales.customer_id
-		LEFT OUTER JOIN CustomerTerms ON CustomerTerms.Customers_Id = Customers.id
-		LEFT OUTER JOIN Users SaleCommission ON SaleCommission.id = Sales.SaleCommission_Users_Id
-		LEFT OUTER JOIN Transports ON Transports.id = Sales.transport_id
-		LEFT OUTER JOIN FakturPajaks ON FakturPajaks.Id = Sales.FakturPajaks_Id
-		LEFT OUTER JOIN (
-			SELECT SaleItems.sale_id,
-					SUM(Inventory.buy_price * InventoryItems.item_length) AS buy_amount,
-					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS sale_amount,
-					COUNT(InventoryItems.item_length) AS sale_qty,
-					SUM(InventoryItems.item_length) AS sale_length,
-					SUM(ISNULL(SaleItems.CommissionAmount,0)) AS CommissionAmount 
-			FROM SaleItems
-				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
-				LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-			WHERE 1=1			
-				AND (@FILTER_VendorInvoices_Id IS NULL OR (Inventory.id IN (SELECT Inventory.id FROM Inventory WHERE Inventory.vendorinvoice_id = @FILTER_VendorInvoices_Id)))
-			GROUP BY SaleItems.sale_id
-			) SaleItems ON SaleItems.sale_id = Sales.id
-		LEFT OUTER JOIN (
-			SELECT DISTINCT(SaleItems.sale_id)
-			FROM SaleItems
-			WHERE SaleItems.isManualAdjustment = 1
-			) AdjustedSaleItems ON AdjustedSaleItems.sale_id = Sales.id
-		LEFT OUTER JOIN (
-			SELECT SaleItems.sale_id,
-					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS amount,
-					COUNT(InventoryItems.item_length) AS qty,
-					SUM(InventoryItems.item_length) AS length
-			FROM SaleItems
-				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
-				LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-			WHERE SaleItems.return_id IS NOT NULL
-			GROUP BY SaleItems.sale_id
-			) ReturnedItems ON ReturnedItems.sale_id = Sales.id
-		LEFT OUTER JOIN (SELECT Payments.ReferenceId, 
-								SUM(Payments.Amount) AS payment_amount 
-							FROM Payments GROUP BY Payments.ReferenceId) CompiledPayments 
-		ON CompiledPayments.ReferenceId = Sales.id
-	WHERE 1=1
-		AND (@date_start IS NULL OR time_stamp > @date_start)
-		AND (@date_end IS NULL OR time_stamp < @date_end)
-		AND (@inventory_item_id IS NULL OR Sales.id IN (SELECT sale_id FROM SaleItems WHERE inventory_item_id = @inventory_item_id))
-		AND (@customer_id IS NULL OR customer_id = @customer_id)
-		AND (@Vendors_Id IS NULL OR Sales.Vendors_Id = @Vendors_Id)
-		AND (@sale_id IS NULL OR Sales.id = @sale_id)
-		AND (@only_has_receivable = 0 OR (COALESCE(SaleItems.sale_amount,0) + COALESCE(Sales.shipping_cost, 0) - COALESCE(CompiledPayments.payment_amount,0) > 0 AND returned_to_supplier = 0))
-		AND (@only_loss_profit = 0 OR (COALESCE(SaleItems.sale_amount,0) - COALESCE(SaleItems.buy_amount,0) <= 0 AND returned_to_supplier = 0))
-		AND (@include_special_user_only = 1 OR (@include_special_user_only = 0 AND special_user_only = 0))
-		AND (@FILTER_OnlyNotCompleted = 0 OR Sales.completed = 0)
-		AND (@FILTER_OnlyManualAdjustment = 0 OR AdjustedSaleItems.sale_id IS NOT NULL)
-		AND (@FILTER_Inventory_Code IS NULL OR Sales.id IN (
-					SELECT DISTINCT(SaleItems.sale_id)
-					FROM SaleItems
-					WHERE SaleItems.inventory_item_id IN (
-							SELECT InventoryItems.id
-							FROM InventoryItems 
-								LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-							WHERE Inventory.code = CONVERT(INT, @FILTER_Inventory_Code)
-						)
-				)
-			)
-		AND (@returned_to_supplier = 0  OR returned_to_supplier = @returned_to_supplier)
-		AND (@SaleCommission_Users_Id IS NULL OR Sales.SaleCommission_Users_Id = @SaleCommission_Users_Id)
-		AND ((SELECT COUNT(value_str) FROM @productstorename_id_list) = 0 
-				OR Sales.id in (
-					SELECT DISTINCT(SaleItems.sale_id) 
-					FROM SaleItems 
-						LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
-						LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-						LEFT OUTER JOIN Products ON Products.id = Inventory.product_id
-						LEFT OUTER JOIN ProductStoreNames ON ProductStoreNames.id = Products.store_name_id
-					WHERE ProductStoreNames.id IN (SELECT value_str FROM @productstorename_id_list)
-						AND (@date_start IS NULL OR time_stamp > @date_start)
-						AND (@date_end IS NULL OR time_stamp < @date_end)
-				))
-		AND ((SELECT COUNT(value_str) FROM @color_id_list) = 0 
-				OR Sales.id in (
-					SELECT DISTINCT(SaleItems.sale_id) 
-					FROM SaleItems 
-						LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
-						LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-					WHERE Inventory.color_id IN (SELECT value_str FROM @color_id_list)
-						AND (@date_start IS NULL OR time_stamp > @date_start)
-						AND (@date_end IS NULL OR time_stamp < @date_end)
-				))
-		AND (@FakturPajaks_Id IS NULL OR (Sales.FakturPajaks_Id = @FakturPajaks_Id))
-		AND (@FILTER_BrowsingForFakturPajak_Customers_Id IS NULL OR (Sales.FakturPajaks_Id IS NULL AND Sales.customer_id = @FILTER_BrowsingForFakturPajak_Customers_Id))
-		AND (@FILTER_BrowsingForFakturPajak_Vendors_Id IS NULL OR (Sales.FakturPajaks_Id IS NULL AND Sales.Vendors_Id = @FILTER_BrowsingForFakturPajak_Vendors_Id))
-		AND (@FILTER_VendorInvoices_Id IS NULL OR (
-				Sales.returned_to_supplier = 1
-				AND Sales.Vendors_Id = @FILTER_VendorInvoices_Id
-			))
-
-END
-GO
-
-ALTER PROCEDURE [dbo].[sale_update]
-
-	@id uniqueidentifier,
-	@notes varchar(MAX),
-	@customer_id uniqueidentifier = NULL,
-	@Vendors_Id uniqueidentifier = NULL,
-	@transport_id uniqueidentifier,
-	@shipping_cost decimal(10,2)
-
-AS
-
-BEGIN
-
-	UPDATE Sales 
-	SET	
-		notes=@notes, 
-		customer_id = @customer_id,
-		Vendors_Id = @Vendors_Id,
-		transport_id=@transport_id, 
-		shipping_cost=@shipping_cost 
-	WHERE id=@id
-
-END
-GO
-
-
-ALTER PROCEDURE [dbo].[sale_get]
-
-	@id uniqueidentifier = NULL,
-	@hexbarcode varchar(MAX) = NULL
-
-AS
-
-BEGIN
-
-	SELECT Sales.*,
-		Transports.name AS transport_name,
-		Customers.customer_name AS customer_name,
-		Vendors.vendor_name AS Vendors_Name,
-		SaleItems.sale_qty AS sale_qty,
-		SaleItems.sale_length AS sale_length,
-		FakturPajaks.No AS FakturPajaks_No
-	FROM Sales 
-		LEFT OUTER JOIN Vendors ON Vendors.id = Sales.Vendors_Id
-		LEFT OUTER JOIN Transports ON Transports.id = Sales.transport_id
-		LEFT OUTER JOIN Customers ON Customers.id = Sales.customer_id
-		LEFT OUTER JOIN FakturPajaks ON FakturPajaks.Id = Sales.FakturPajaks_Id
-		LEFT OUTER JOIN (
-			SELECT SaleItems.sale_id,
-					SUM(Inventory.buy_price * InventoryItems.item_length) AS buy_amount,
-					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS sale_amount,
-					COUNT(InventoryItems.item_length) AS sale_qty,
-					SUM(InventoryItems.item_length) AS sale_length
-			FROM SaleItems
-				LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
-				LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-			GROUP BY SaleItems.sale_id
-			) SaleItems ON SaleItems.sale_id = Sales.id
-	WHERE 1=1
-		AND (@id IS NULL OR Sales.id = @id)
-		AND (@hexbarcode IS NULL OR Sales.hexbarcode = @hexbarcode)
-
-END
-GO
-
-ALTER PROCEDURE [dbo].[vendorinvoice_get]
-	
-	@id uniqueidentifier = NULL, 
-	@invoice_no varchar(MAX) = NULL,
-	@FakturPajaks_Id uniqueidentifier = NULL,
-	@FILTER_BrowsingForFakturPajak_Vendors_Id uniqueidentifier = NULL,
-	@include_completed bit = 1,
-	@status_completed tinyint,
-	@status_cancelled tinyint  
-	
-AS
-
-BEGIN
-
-	SELECT VendorInvoices.*,
-		Vendors.vendor_name AS VendorName,
-		FakturPajaks.No AS FakturPajaks_No,
-		DATEADD(day, 3 + VendorInvoices.[TOP], VendorInvoices.timestamp) AS pastdue,
-		CAST(CASE WHEN DATEADD(day, 3 + VendorInvoices.[TOP], VendorInvoices.timestamp) < CURRENT_TIMESTAMP THEN 1 ELSE 0 END AS BIT) AS is_due,
-		CompiledInventory.Amount AS CalculatedAmount,		
-		VendorInvoices.Amount - COALESCE(CompiledInventory.Amount,0) AS AmountDifferenceFromCalculated,
-		ReturnedToSupplier.Amount AS ReturnedValue,
-		VendorInvoices.Amount - COALESCE(ReturnedToSupplier.Amount,0) AS PayableAmount,
-		CASE
-			WHEN status_enum_id = 0 THEN 'New'
-			WHEN status_enum_id = 1 THEN 'Cancelled'
-			WHEN status_enum_id = 2 THEN 'Paid Partial'
-			WHEN status_enum_id = 3 THEN 'Paid Full'
-		END AS status_name
-	FROM VendorInvoices
-		LEFT OUTER JOIN Vendors ON Vendors.id = VendorInvoices.Vendors_Id
-		LEFT OUTER JOIN FakturPajaks ON FakturPajaks.Id = VendorInvoices.FakturPajaks_Id
-		LEFT OUTER JOIN (		
-				SELECT Inventory.vendorinvoice_id, SUM(CompiledInventoryBuyValue.Amount) AS Amount
-				FROM (
-						SELECT CompiledInventoryItems.inventory_id, CompiledInventoryItems.total_length * Inventory.buy_price AS Amount
-						FROM (
-								SELECT InventoryItems.inventory_id, SUM(InventoryItems.item_length) AS total_length
-								FROM InventoryItems
-									LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-									LEFT OUTER JOIN VendorInvoices ON VendorInvoices.id = Inventory.vendorinvoice_id
-								WHERE 1=1
-									AND (@id IS NULL OR Inventory.vendorinvoice_id = @id)
-									AND (@invoice_no IS NULL OR VendorInvoices.invoice_no LIKE '%' + @invoice_no + '%')
-									AND (@FakturPajaks_Id IS NULL OR VendorInvoices.FakturPajaks_Id = @FakturPajaks_Id)
-								GROUP BY InventoryItems.inventory_id
-							) CompiledInventoryItems
-							LEFT OUTER JOIN Inventory ON Inventory.id = CompiledInventoryItems.inventory_id
-					) CompiledInventoryBuyValue
-					LEFT OUTER JOIN Inventory ON Inventory.id = CompiledInventoryBuyValue.inventory_id
-				GROUP BY Inventory.vendorinvoice_id
-			) CompiledInventory ON CompiledInventory.vendorinvoice_id = VendorInvoices.id
-		LEFT OUTER JOIN (
-				SELECT VendorInvoices.id,
-					SUM(Inventory.buy_price * InventoryItems.item_length) AS buy_amount,
-					SUM((SaleItems.sell_price + SaleItems.adjustment) * InventoryItems.item_length) AS Amount,
-					COUNT(InventoryItems.item_length) AS sale_qty,
-					SUM(InventoryItems.item_length) AS sale_length
-				FROM SaleItems
-					LEFT OUTER JOIN Sales ON Sales.id = SaleItems.sale_id
-					LEFT OUTER JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
-					LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
-					LEFT OUTER JOIN VendorInvoices ON VendorInvoices.id = Inventory.vendorinvoice_id
-				WHERE Sales.returned_to_supplier = 1 AND Sales.voided = 0
-				GROUP BY VendorInvoices.id
-			) ReturnedToSupplier ON ReturnedToSupplier.id = VendorInvoices.id
-	WHERE 1=1
-		AND (@id IS NULL OR VendorInvoices.id = @id)
-		AND (@invoice_no IS NULL OR VendorInvoices.invoice_no LIKE '%' + @invoice_no + '%')
-		AND (@FakturPajaks_Id IS NULL OR VendorInvoices.FakturPajaks_Id = @FakturPajaks_Id)
-		AND (@FILTER_BrowsingForFakturPajak_Vendors_Id IS NULL OR (VendorInvoices.FakturPajaks_Id IS NULL AND VendorInvoices.Vendors_Id = @FILTER_BrowsingForFakturPajak_Vendors_Id))
-		AND (@include_completed = 1 OR (@include_completed = 0 AND VendorInvoices.status_enum_id <> @status_cancelled AND VendorInvoices.status_enum_id <> @status_completed))
-	ORDER BY VendorInvoices.timestamp DESC
-
-END
-GO
-
-
-ALTER PROCEDURE [dbo].[VendorInvoices_update_FakturPajaks_Id]
-
-	@id uniqueidentifier, 
-	@FakturPajaks_Id uniqueidentifier = NULL
-
-AS
-
-BEGIN
-
-	UPDATE VendorInvoices SET 
-		FakturPajaks_Id = @FakturPajaks_Id
-	WHERE id=@id
-
-END
-GO
-

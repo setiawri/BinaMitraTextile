@@ -5,9 +5,9 @@ using System.Drawing;
 
 using LIBUtil;
 
-namespace BinaMitraTextile.Sales
+namespace BinaMitraTextile.InventoryForm
 {
-    public partial class MasterData_v1_FakturPajaks_Form : LIBUtil.Desktop.Forms.MasterData_v1_Form
+    public partial class MasterData_v1_VendorInvoicePayments_Form : LIBUtil.Desktop.Forms.MasterData_v1_Form
     {
         /*******************************************************************************************************/
         #region SETTINGS
@@ -41,8 +41,8 @@ namespace BinaMitraTextile.Sales
         /*******************************************************************************************************/
         #region CONSTRUCTOR METHODS
 
-        public MasterData_v1_FakturPajaks_Form() : this(FormModes.Add) { }
-        public MasterData_v1_FakturPajaks_Form(FormModes startingMode) : base(startingMode, FORM_SHOWDATAONLOAD) { InitializeComponent(); }
+        public MasterData_v1_VendorInvoicePayments_Form() : this(FormModes.Add) { }
+        public MasterData_v1_VendorInvoicePayments_Form(FormModes startingMode) : base(startingMode, FORM_SHOWDATAONLOAD) { InitializeComponent(); }
 
         #endregion CONSTRUCTOR METHODS
         /*******************************************************************************************************/
@@ -226,6 +226,7 @@ namespace BinaMitraTextile.Sales
                 Vendors_Id = (Guid?)iddl_Vendors.SelectedValue;
             else
                 Customers_Id = (Guid?)iddl_Customers.SelectedValue;
+
             FakturPajak.update(selectedRowID(), (DateTime)idtp_Timestamp.ValueAsStartDateFilter, Customers_Id, Vendors_Id, itxt_No.ValueText, in_DPP.ValueDecimal, in_PPN.ValueDecimal, itxt_Notes.ValueText);
         }
 
@@ -335,7 +336,7 @@ namespace BinaMitraTextile.Sales
             in_PPN.Value = Math.Floor(in_DPP.ValueDecimal / 10);
         }
 
-        private void MasterData_v1_FakturPajaks_Form_Shown(object sender, EventArgs e)
+        private void MasterData_v1_VendorInvoicePayments_Form_Shown(object sender, EventArgs e)
         {
             ptInputPanel.PerformClick();
             showRowInfo();
@@ -385,7 +386,7 @@ namespace BinaMitraTextile.Sales
             {
                 if (Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
                 {
-                    Invoices.VendorInvoices_Form form = new Invoices.VendorInvoices_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Vendors_Id));
+                    InventoryForm.VendorInvoices_Form form = new InventoryForm.VendorInvoices_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Vendors_Id));
                     Util.displayForm(null, form);
                     if (form.DialogResult == DialogResult.OK)
                     {

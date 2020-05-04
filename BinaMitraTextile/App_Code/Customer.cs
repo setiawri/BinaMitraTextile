@@ -22,6 +22,7 @@ namespace BinaMitraTextile
         public const string COL_DB_NOTES = "notes";
         public const string COL_DB_DEFAULTTRANSPORTID = "default_transport_id";
         public const string COL_DB_SALESUSERID = "sales_user_id";
+        public const string COL_DB_usesFakturPajak = "usesFakturPajak";
 
         public const string COL_CITYNAME = "city_name";
         public const string COL_STATENAME = "state_name";
@@ -38,6 +39,7 @@ namespace BinaMitraTextile
         public Boolean Active = true;
         public string Notes = "";
         public Guid SalesUserID;
+        public bool UsesFakturPajak = false;
 
         public string CityName = "";
         public string StateName = "";
@@ -66,21 +68,22 @@ namespace BinaMitraTextile
             if(id != null)
             {
                 ID = (Guid)id;
-                DataTable dt = getRow(ID);
-                Name = dt.Rows[0][COL_DB_NAME].ToString();
-                Address = dt.Rows[0][COL_DB_ADDRESS].ToString();
-                CityID = (Guid)dt.Rows[0][COL_DB_CITYID];
-                DefaultTransportID = DBUtil.parseData<Guid?>(dt.Rows[0], COL_DB_DEFAULTTRANSPORTID);
-                Phone1 = dt.Rows[0][COL_DB_PHONE1].ToString();
-                Phone2 = dt.Rows[0][COL_DB_PHONE2].ToString();
-                Active = (Boolean)dt.Rows[0][COL_DB_ACTIVE];
-                Notes = dt.Rows[0][COL_DB_NOTES].ToString();
-                SalesUserID = DBUtil.parseData<Guid>(dt.Rows[0], COL_DB_SALESUSERID);
+                DataRow row = Util.getFirstRow(get(ID, true, null, null, null));
+                Name = row[COL_DB_NAME].ToString();
+                Address = row[COL_DB_ADDRESS].ToString();
+                CityID = (Guid)row[COL_DB_CITYID];
+                DefaultTransportID = DBUtil.parseData<Guid?>(row, COL_DB_DEFAULTTRANSPORTID);
+                Phone1 = row[COL_DB_PHONE1].ToString();
+                Phone2 = row[COL_DB_PHONE2].ToString();
+                Active = (Boolean)row[COL_DB_ACTIVE];
+                Notes = row[COL_DB_NOTES].ToString();
+                SalesUserID = DBUtil.parseData<Guid>(row, COL_DB_SALESUSERID);
+                UsesFakturPajak = Util.wrapNullable<bool>(row, COL_DB_usesFakturPajak);
 
-                CityName = dt.Rows[0][COL_CITYNAME].ToString();
-                StateName = dt.Rows[0][COL_STATENAME].ToString();
-                DefaultTransportName = DBUtil.parseData<string>(dt.Rows[0], COL_DEFAULTTRANSPORTNAME);
-                SalesUserName = DBUtil.parseData<string>(dt.Rows[0], COL_SALESUSERNAME);
+                CityName = row[COL_CITYNAME].ToString();
+                StateName = row[COL_STATENAME].ToString();
+                DefaultTransportName = DBUtil.parseData<string>(row, COL_DEFAULTTRANSPORTNAME);
+                SalesUserName = DBUtil.parseData<string>(row, COL_SALESUSERNAME);
             }
         }
 
@@ -145,33 +148,25 @@ namespace BinaMitraTextile
             }
         }
         
-        public static DataTable getRow(Guid ID)
+        public static DataTable get(bool includeInactive)
         {
-            return DBUtil.getRows("customer_get", ID);
+            return get(null, includeInactive, null, null, null);
         }
 
-        public static DataTable getByFilter(bool includeInactive)
+        public static DataTable get(Guid? Id, bool includeInactive, string nameFilter, Guid? cityID, Guid? transportID)
         {
-            return getByFilter(includeInactive, null, null, null);
-        }
-
-        public static DataTable getByFilter(bool includeInactive, string nameFilter, Guid? cityID, Guid? transportID)
-        {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("customer_get_byFilter", DBUtil.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Tools.wrapNullable(nameFilter);
-                cmd.Parameters.Add("@" + COL_DB_CITYID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(cityID);
-                cmd.Parameters.Add("@" + COL_DB_DEFAULTTRANSPORTID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(transportID);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "customer_get",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
+                new SqlQueryParameter("include_inactive", SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(nameFilter)),
+                new SqlQueryParameter(COL_DB_CITYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(cityID)),
+                new SqlQueryParameter(COL_DB_DEFAULTTRANSPORTID, SqlDbType.UniqueIdentifier, Util.wrapNullable(transportID))
+                );
+            return result.Datatable;
         }
 
         public static void update(Guid id, string name, string address, Guid cityID, Guid? defaultTransportID, string phone1, string phone2, string notes, Guid? salesUserID)
@@ -225,6 +220,21 @@ namespace BinaMitraTextile
             return DBUtil.updateActiveStatus("customer_update_active", id, activeStatus);
         }
 
+        public static void update_UsesFakturPajak(Guid Id, bool Value)
+        {
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "customer_update_usesFakturPajak",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_usesFakturPajak, SqlDbType.Bit, Value)
+            );
+
+            if (result.IsSuccessful)
+                ActivityLog.submit(Id, String.Format("Uses Faktur Pajak to: {0}", Value));
+        }
+
         public static decimal getCreditBalance(Guid customerID)
         {
             return CustomerCredit.getBalance(customerID);
@@ -232,17 +242,17 @@ namespace BinaMitraTextile
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)
         {
-            Tools.populateDropDownList(dropdownlist, getByFilter(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
+            Tools.populateDropDownList(dropdownlist, get(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, showDefault);
         }
 
         public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool includeInactive)
         {
-            control.populate(getByFilter(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
+            control.populate(get(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID, null);
         }
 
         public static void populateInputControlCheckedListBox(LIBUtil.Desktop.UserControls.InputControl_CheckedListBox checkedlistbox, bool includeInactive)
         {
-            checkedlistbox.populate(getByFilter(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID);
+            checkedlistbox.populate(get(includeInactive).DefaultView, COL_DB_NAME, COL_DB_ID);
         }
     }
 }

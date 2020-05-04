@@ -30,8 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,6 +38,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbProductStoreNames = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,13 +61,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAddPO = new System.Windows.Forms.Button();
             this.gridPO = new System.Windows.Forms.DataGridView();
-            this.col_gridPO_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridPO_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridPO_po_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridPO_vendorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridPO_vendor_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridPO_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridPO_notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.scMain = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLog = new System.Windows.Forms.Button();
@@ -86,6 +79,13 @@
             this.col_gridPOItems_status_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridPOItems_statusEnumID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_SaleOrderItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_po_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_vendorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_vendor_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridPO_notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -357,61 +357,6 @@
             this.gridPO.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gridPO_DataBindingComplete);
             this.gridPO.SelectionChanged += new System.EventHandler(this.gridPO_SelectionChanged);
             // 
-            // col_gridPO_id
-            // 
-            this.col_gridPO_id.HeaderText = "ID";
-            this.col_gridPO_id.Name = "col_gridPO_id";
-            this.col_gridPO_id.ReadOnly = true;
-            this.col_gridPO_id.Visible = false;
-            // 
-            // col_gridPO_timestamp
-            // 
-            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
-            this.col_gridPO_timestamp.DefaultCellStyle = dataGridViewCellStyle2;
-            this.col_gridPO_timestamp.HeaderText = "Date";
-            this.col_gridPO_timestamp.Name = "col_gridPO_timestamp";
-            this.col_gridPO_timestamp.ReadOnly = true;
-            // 
-            // col_gridPO_po_no
-            // 
-            this.col_gridPO_po_no.HeaderText = "PO";
-            this.col_gridPO_po_no.Name = "col_gridPO_po_no";
-            this.col_gridPO_po_no.ReadOnly = true;
-            this.col_gridPO_po_no.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridPO_po_no.Width = 70;
-            // 
-            // col_gridPO_vendorID
-            // 
-            this.col_gridPO_vendorID.HeaderText = "Vendor ID";
-            this.col_gridPO_vendorID.Name = "col_gridPO_vendorID";
-            this.col_gridPO_vendorID.ReadOnly = true;
-            this.col_gridPO_vendorID.Visible = false;
-            // 
-            // col_gridPO_vendor_name
-            // 
-            this.col_gridPO_vendor_name.HeaderText = "Vendor";
-            this.col_gridPO_vendor_name.Name = "col_gridPO_vendor_name";
-            this.col_gridPO_vendor_name.ReadOnly = true;
-            this.col_gridPO_vendor_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridPO_vendor_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // col_gridPO_amount
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            this.col_gridPO_amount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.col_gridPO_amount.HeaderText = "Amount";
-            this.col_gridPO_amount.Name = "col_gridPO_amount";
-            this.col_gridPO_amount.ReadOnly = true;
-            this.col_gridPO_amount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // col_gridPO_notes
-            // 
-            this.col_gridPO_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_gridPO_notes.HeaderText = "Notes";
-            this.col_gridPO_notes.Name = "col_gridPO_notes";
-            this.col_gridPO_notes.ReadOnly = true;
-            // 
             // scMain
             // 
             this.scMain.Dock = System.Windows.Forms.DockStyle.Top;
@@ -584,10 +529,10 @@
             dataGridViewCellStyle9.Format = "N2";
             this.col_gridPOItems_receivedQty.DefaultCellStyle = dataGridViewCellStyle9;
             this.col_gridPOItems_receivedQty.HeaderText = "Received";
-            this.col_gridPOItems_receivedQty.MinimumWidth = 30;
+            this.col_gridPOItems_receivedQty.MinimumWidth = 50;
             this.col_gridPOItems_receivedQty.Name = "col_gridPOItems_receivedQty";
             this.col_gridPOItems_receivedQty.ReadOnly = true;
-            this.col_gridPOItems_receivedQty.Width = 30;
+            this.col_gridPOItems_receivedQty.Width = 50;
             // 
             // col_gridPOItems_pricePerUnit
             // 
@@ -595,7 +540,7 @@
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle10.Format = "N2";
             this.col_gridPOItems_pricePerUnit.DefaultCellStyle = dataGridViewCellStyle10;
-            this.col_gridPOItems_pricePerUnit.HeaderText = "Price/Unit";
+            this.col_gridPOItems_pricePerUnit.HeaderText = "Price";
             this.col_gridPOItems_pricePerUnit.MinimumWidth = 50;
             this.col_gridPOItems_pricePerUnit.Name = "col_gridPOItems_pricePerUnit";
             this.col_gridPOItems_pricePerUnit.ReadOnly = true;
@@ -609,10 +554,10 @@
             dataGridViewCellStyle11.NullValue = null;
             this.col_gridPOItems_subtotal.DefaultCellStyle = dataGridViewCellStyle11;
             this.col_gridPOItems_subtotal.HeaderText = "Subtotal";
-            this.col_gridPOItems_subtotal.MinimumWidth = 40;
+            this.col_gridPOItems_subtotal.MinimumWidth = 50;
             this.col_gridPOItems_subtotal.Name = "col_gridPOItems_subtotal";
             this.col_gridPOItems_subtotal.ReadOnly = true;
-            this.col_gridPOItems_subtotal.Width = 40;
+            this.col_gridPOItems_subtotal.Width = 50;
             // 
             // col_gridPOItems_status_name
             // 
@@ -620,10 +565,10 @@
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.col_gridPOItems_status_name.DefaultCellStyle = dataGridViewCellStyle12;
             this.col_gridPOItems_status_name.HeaderText = "Status";
-            this.col_gridPOItems_status_name.MinimumWidth = 30;
+            this.col_gridPOItems_status_name.MinimumWidth = 40;
             this.col_gridPOItems_status_name.Name = "col_gridPOItems_status_name";
             this.col_gridPOItems_status_name.ReadOnly = true;
-            this.col_gridPOItems_status_name.Width = 30;
+            this.col_gridPOItems_status_name.Width = 40;
             // 
             // col_gridPOItems_statusEnumID
             // 
@@ -640,6 +585,73 @@
             this.col_grid_SaleOrderItemDescription.Name = "col_grid_SaleOrderItemDescription";
             this.col_grid_SaleOrderItemDescription.ReadOnly = true;
             this.col_grid_SaleOrderItemDescription.Width = 30;
+            // 
+            // col_gridPO_id
+            // 
+            this.col_gridPO_id.HeaderText = "ID";
+            this.col_gridPO_id.Name = "col_gridPO_id";
+            this.col_gridPO_id.ReadOnly = true;
+            this.col_gridPO_id.Visible = false;
+            // 
+            // col_gridPO_timestamp
+            // 
+            this.col_gridPO_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
+            this.col_gridPO_timestamp.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_gridPO_timestamp.HeaderText = "Date";
+            this.col_gridPO_timestamp.MinimumWidth = 40;
+            this.col_gridPO_timestamp.Name = "col_gridPO_timestamp";
+            this.col_gridPO_timestamp.ReadOnly = true;
+            this.col_gridPO_timestamp.Width = 40;
+            // 
+            // col_gridPO_po_no
+            // 
+            this.col_gridPO_po_no.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridPO_po_no.HeaderText = "PO";
+            this.col_gridPO_po_no.MinimumWidth = 30;
+            this.col_gridPO_po_no.Name = "col_gridPO_po_no";
+            this.col_gridPO_po_no.ReadOnly = true;
+            this.col_gridPO_po_no.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridPO_po_no.Width = 30;
+            // 
+            // col_gridPO_vendorID
+            // 
+            this.col_gridPO_vendorID.HeaderText = "Vendor ID";
+            this.col_gridPO_vendorID.Name = "col_gridPO_vendorID";
+            this.col_gridPO_vendorID.ReadOnly = true;
+            this.col_gridPO_vendorID.Visible = false;
+            // 
+            // col_gridPO_vendor_name
+            // 
+            this.col_gridPO_vendor_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridPO_vendor_name.HeaderText = "Vendor";
+            this.col_gridPO_vendor_name.MinimumWidth = 50;
+            this.col_gridPO_vendor_name.Name = "col_gridPO_vendor_name";
+            this.col_gridPO_vendor_name.ReadOnly = true;
+            this.col_gridPO_vendor_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridPO_vendor_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_gridPO_vendor_name.Width = 50;
+            // 
+            // col_gridPO_amount
+            // 
+            this.col_gridPO_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            this.col_gridPO_amount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_gridPO_amount.HeaderText = "Amount";
+            this.col_gridPO_amount.MinimumWidth = 50;
+            this.col_gridPO_amount.Name = "col_gridPO_amount";
+            this.col_gridPO_amount.ReadOnly = true;
+            this.col_gridPO_amount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridPO_amount.Width = 50;
+            // 
+            // col_gridPO_notes
+            // 
+            this.col_gridPO_notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridPO_notes.HeaderText = "Notes";
+            this.col_gridPO_notes.MinimumWidth = 50;
+            this.col_gridPO_notes.Name = "col_gridPO_notes";
+            this.col_gridPO_notes.ReadOnly = true;
             // 
             // Main_Form
             // 

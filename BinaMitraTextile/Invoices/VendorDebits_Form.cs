@@ -15,8 +15,6 @@ namespace BinaMitraTextile.Invoices
         /*******************************************************************************************************/
         #region SETTINGS
 
-        private const string FORMTITLE = "";
-
         #endregion SETTINGS
         /*******************************************************************************************************/
         #region PUBLIC VARIABLES
@@ -48,8 +46,6 @@ namespace BinaMitraTextile.Invoices
 
         private void setupControls()
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Text = FORMTITLE + DBUtil.appendTitleWithInfo();
             setupControlsBasedOnRoles();
             
             Tools.populateDropDownList(cbPaymentMethods, typeof(PaymentMethod));
@@ -69,7 +65,6 @@ namespace BinaMitraTextile.Invoices
             gridDetail.Columns[col_griddetail_amount.Name].DataPropertyName = VendorDebit.COL_DB_Amount;
             gridDetail.Columns[col_griddetail_method.Name].DataPropertyName = VendorDebit.COL_PaymentType_name;
             gridDetail.Columns[col_griddetail_balance.Name].DataPropertyName = VendorDebit.COL_Balance;
-            Tools.clearWhenSelected(gridDetail);
         }
 
         private void setupControlsBasedOnRoles()
@@ -130,6 +125,10 @@ namespace BinaMitraTextile.Invoices
         private void Form_Load(object sender, EventArgs e)
         {
             setupControls();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
             populateData();
             cbVendors.Focus();
         }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BinaMitraTextile.Invoices
+namespace BinaMitraTextile.InventoryForm
 {
     public partial class VendorInvoices_Add_Form : Form
     {

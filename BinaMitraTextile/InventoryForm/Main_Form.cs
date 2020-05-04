@@ -12,9 +12,6 @@ namespace BinaMitraTextile.InventoryForm
         /*******************************************************************************************************/
         #region CLASS VARIABLES
 
-        private const string BTNCOLLAPSEFILTER_EXPAND = ">>";
-        private const string BTNCOLLAPSEFILTER_COLLAPSE = "<<";
-
         private string[] fieldNamesForQuickSearch = { Inventory.COL_DB_CODE, Inventory.COL_COLOR_NAME, Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_DB_PACKINGLISTNO, Inventory.COL_VENDORINVOICENO };
         private FormMode _formMode = FormMode.Search;
         private Guid? _vendorID;
@@ -44,19 +41,19 @@ namespace BinaMitraTextile.InventoryForm
         private void Form_Load(object sender, EventArgs e)
         {
             setupControls();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            _isFormShown = true;
+
+            _selectCheckboxHeader = Tools.addHeaderCheckbox(grid, col_grid_select, "_selectCheckboxHeader", selectCheckboxHeader_CheckedChanged);
             populatePageData();
 
             this.Activate();
-            txtQuickSearch.Select();
-        }
-
-
-        private void Main_Form_Shown(object sender, EventArgs e)
-        {
             ptFilter.toggle();
             ptSummary.toggle();
-            _selectCheckboxHeader = Tools.addHeaderCheckbox(grid, col_grid_select, "_selectCheckboxHeader", selectCheckboxHeader_CheckedChanged);
-            _isFormShown = true;
+            txtQuickSearch.Select();
         }
 
         private void setupControls()
@@ -248,31 +245,24 @@ namespace BinaMitraTextile.InventoryForm
             if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_select.Name))
             {
                 Util.clickDataGridViewCheckbox(sender, e);
-
-                //set the value because when this event triggered, value of cell is not yet set
-                //if (grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
-                //    grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
-                //else
-                //    grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = !(bool)grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-
                 calculateSelections();
             }
             else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_OpnameMarker.Name))
             {
                 Inventory.updateOpnameMarker((Guid)Util.getClickedRowValue(sender, e, col_grid_id), Util.clickDataGridViewCheckbox(sender, e));
-                populateGridview(true, ((DataGridView)sender).FirstDisplayedScrollingRowIndex);
+                populateGridview(true);
             }
             else if (GlobalData.UserAccount.role != Roles.User)
             {
                 if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
                 {
                     Inventory.updateActiveStatus(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
-                    populateGridview(true, ((DataGridView)sender).FirstDisplayedScrollingRowIndex);
+                    populateGridview(true);
                 }
                 else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_isConsignment.Name))
                 {
                     Inventory.updateIsConsignment(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
-                    populateGridview(true, ((DataGridView)sender).FirstDisplayedScrollingRowIndex);
+                    populateGridview(true);
                 }
             }
         }
@@ -316,8 +306,7 @@ namespace BinaMitraTextile.InventoryForm
             }
         }
         
-        private void populateGridview(bool reloadFromDB) { populateGridview(reloadFromDB, 0); }
-        private void populateGridview(bool reloadFromDB, int topRowIndex)
+        private void populateGridview(bool reloadFromDB)
         {
             DataView dvw;
             if (!reloadFromDB)
@@ -337,7 +326,7 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             dvw.RowFilter = compileQuickSearchFilter();
-            setGridviewDataSource(dvw, topRowIndex);
+            setGridviewDataSource(dvw);
             populateGridSummary();
 
             lblCounts.Visible = false;
@@ -355,26 +344,14 @@ namespace BinaMitraTextile.InventoryForm
             return filter;
         }
 
-        private void setGridviewDataSource(DataView dvw, int topRowIndex)
+        private void setGridviewDataSource(DataView dvw)
         {
             //detach event handlers to avoid triggering events
             grid.CellContentClick -= new System.Windows.Forms.DataGridViewCellEventHandler(grid_CellContentClick);
 
             Tools.saveGridviewKey(grid, col_grid_id.Name);
 
-            Tools.setGridviewDataSource(grid, true, true, dvw);
-
-            ////save sorting
-            //DataGridViewColumn sortColumn = grid.SortedColumn;
-            //ListSortDirection sortOrder = ListSortDirection.Ascending;
-            //if(grid.SortOrder == SortOrder.Descending) sortOrder = ListSortDirection.Descending;
-
-            //grid.DataSource = dvw;
-            //Tools.setFirstDisplayedScrollingRowIndex(grid, topRowIndex, -1);
-
-            ////reapply sorting
-            //if (sortColumn != null)
-            //    grid.Sort(sortColumn, sortOrder);
+            Util.setGridviewDataSource(true, 0, grid, true, true, dvw);
 
             Tools.selectGridviewPreviousKey(grid, col_grid_id.Name);
 

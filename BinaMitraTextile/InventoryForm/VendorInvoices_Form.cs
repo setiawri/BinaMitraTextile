@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Data;
 using LIBUtil;
 
-namespace BinaMitraTextile.Invoices
+namespace BinaMitraTextile.InventoryForm
 {
     public partial class VendorInvoices_Form : Form
     {
@@ -15,6 +15,7 @@ namespace BinaMitraTextile.Invoices
         public Guid BrowsedItemSelectionId;
 
         private bool isFormShown = false;
+        private bool _createVendorInvoicePayment = false;
 
         #endregion
         /*******************************************************************************************************/
@@ -33,74 +34,11 @@ namespace BinaMitraTextile.Invoices
             if (_startingMode == FormModes.Browse)
             {
                 pnlFilterAndButtons.Visible = false;
+                chkShowOnlyIncomplete.Visible = false;
+                chkShowOnlyVendorUsesFakturPajak.Visible = false;
             }
         }
         
-        #endregion
-        /*******************************************************************************************************/
-        #region EVENT HANDLERS
-        
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            Util.displayForm(new VendorInvoices_Edit_Form(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
-            populatePageData();
-        }
-
-        private void btnLog_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Logs.Main_Form(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
-        }
-
-        private void grid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Tools.displayContextMenu(sender, e);
-        }
-
-        public void addStatusContextMenu(DataGridViewColumn column)
-        {
-            column.ContextMenuStrip = new ContextMenuStrip();
-            foreach (VendorInvoiceStatus status in Tools.GetEnumItems<VendorInvoiceStatus>())
-                column.ContextMenuStrip.Items.Add(new ToolStripMenuItem(Tools.GetEnumDescription(status), null, changeStatus_Click));
-        }
-
-        public void changeStatus_Click(object sender, EventArgs args)
-        {
-            VendorInvoice.updateStatus(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), Tools.parseEnum<VendorInvoiceStatus>(sender.ToString()));
-            populateGridVendorInvoice();
-        }
-
-        private void gridvendorinvoice_SelectionChanged(object sender, EventArgs e)
-        {
-            if(isFormShown && gridvendorinvoice.SelectedRows.Count > 0)
-            {
-                DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false);
-                Tools.setGridviewDataSource(gridInventory, false, false, data);
-                lblSaleInvoices.Text = string.Format("Sale Invoices: {0:N2}", Util.compute(data, "SUM", Inventory.COL_BUYVALUE, ""));
-
-                data = Sale.get_by_VendorInvoices_Id(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id));
-                Util.setGridviewDataSource(gridSaleInvoices, false, false, data);
-                lblReturns.Text = string.Format("Returns: {0:N2}", Util.compute(data, "SUM", Sale.COL_SALEAMOUNT, ""));
-            }
-        }
-
-        private void btnSupplierDebits_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(this, new Invoices.VendorDebits_Form());
-        }
-
-        private void gridvendorinvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridvendorinvoice_PayableAmount.Name))
-            {
-                var form = new Invoices.Payment_Form(typeof(VendorInvoice), new Guid(gridvendorinvoice.Rows[e.RowIndex].Cells[col_gridvendorinvoice_id.Name].Value.ToString()));
-                Tools.displayForm(form);
-                if (form.DialogResult == DialogResult.OK)
-                {
-                    populatePageData();
-                }
-            }
-        }
-
         #endregion
         /*******************************************************************************************************/
         #region FORM METHODS
@@ -108,11 +46,18 @@ namespace BinaMitraTextile.Invoices
         private void Form_Load(object sender, EventArgs e)
         {
             setupControls();
-            populatePageData();
+        }
+
+        private void Form_Shown(object sender, EventArgs e)
+        {
+            isFormShown = true;
+            populateGridVendorInvoices();
         }
 
         public void setupControls()
         {
+            Vendor.populateInputControlDropDownList(iddl_Vendors, true);
+
             gridvendorinvoice.AutoGenerateColumns = false;
             gridvendorinvoice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridvendorinvoice_id.DataPropertyName = VendorInvoice.COL_DB_Id;
@@ -130,6 +75,8 @@ namespace BinaMitraTextile.Invoices
             col_gridvendorinvoice_Amount.DataPropertyName = VendorInvoice.COL_DB_Amount;
             col_gridVendorInvoice_FakturPajaks_Id.DataPropertyName = VendorInvoice.COL_DB_FakturPajaks_Id;
             col_gridVendorInvoice_FakturPajaks_No.DataPropertyName = VendorInvoice.COL_FakturPajaks_No;
+            col_gridvendorinvoice_FakturPajaks_Amount.DataPropertyName = VendorInvoice.COL_FakturPajaks_Amount;
+            col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.DataPropertyName = VendorInvoice.COL_AmountDifferenceFromFakturPajaksAmount;
             col_gridvendorinvoice_notes.DataPropertyName = VendorInvoice.COL_DB_Notes;
             col_gridvendorinvoice_notes.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
@@ -165,9 +112,14 @@ namespace BinaMitraTextile.Invoices
 
         }
 
-        public void populatePageData()
+        public void populateGridVendorInvoices()
         {
-            populateGridVendorInvoice();
+            if (_startingMode == FormModes.Browse)
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast3Months.Checked));
+            else if(_createVendorInvoicePayment)
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, true, false, false, null, null));
+            else
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast3Months.Checked, null, null));
 
             if (gridvendorinvoice.Rows.Count > 0)
             {
@@ -181,12 +133,70 @@ namespace BinaMitraTextile.Invoices
             }
         }
 
-        private void populateGridVendorInvoice()
+
+        #endregion
+        /*******************************************************************************************************/
+        #region EVENT HANDLERS
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (_startingMode == FormModes.Browse)
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id));
-            else
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, true, null, null));
+            Util.displayForm(new VendorInvoices_Edit_Form(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
+            populateGridVendorInvoices();
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new Logs.Main_Form(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
+        }
+
+        private void grid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Tools.displayContextMenu(sender, e);
+        }
+
+        public void addStatusContextMenu(DataGridViewColumn column)
+        {
+            column.ContextMenuStrip = new ContextMenuStrip();
+            foreach (VendorInvoiceStatus status in Tools.GetEnumItems<VendorInvoiceStatus>())
+                column.ContextMenuStrip.Items.Add(new ToolStripMenuItem(Tools.GetEnumDescription(status), null, changeStatus_Click));
+        }
+
+        public void changeStatus_Click(object sender, EventArgs args)
+        {
+            VendorInvoice.updateStatus(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), Tools.parseEnum<VendorInvoiceStatus>(sender.ToString()));
+            populateGridVendorInvoices();
+        }
+
+        private void gridvendorinvoice_SelectionChanged(object sender, EventArgs e)
+        {
+            if (isFormShown && gridvendorinvoice.SelectedRows.Count > 0)
+            {
+                DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false);
+                Tools.setGridviewDataSource(gridInventory, false, false, data);
+                lblSaleInvoices.Text = string.Format("Sale Invoices: {0:N2}", Util.compute(data, "SUM", Inventory.COL_BUYVALUE, ""));
+
+                data = Sale.get_by_VendorInvoices_Id(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id));
+                Util.setGridviewDataSource(gridSaleInvoices, false, false, data);
+                lblReturns.Text = string.Format("Returns: {0:N2}", Util.compute(data, "SUM", Sale.COL_SALEAMOUNT, ""));
+            }
+        }
+
+        private void btnSupplierDebits_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(this, new Invoices.VendorDebits_Form());
+        }
+
+        private void gridvendorinvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_gridvendorinvoice_PayableAmount.Name))
+            {
+                var form = new Invoices.Payment_Form(typeof(VendorInvoice), new Guid(gridvendorinvoice.Rows[e.RowIndex].Cells[col_gridvendorinvoice_id.Name].Value.ToString()));
+                Tools.displayForm(form);
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    populateGridVendorInvoices();
+                }
+            }
         }
 
         private void GridSaleInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -213,9 +223,50 @@ namespace BinaMitraTextile.Invoices
             }
         }
 
-        private void Form_Shown(object sender, EventArgs e)
+        private void ChkShowOnlyIncomplete_CheckedChanged(object sender, EventArgs e)
         {
-            isFormShown = true;
+            populateGridVendorInvoices();
+        }
+
+        private void ChkShowOnlyVendorUsesFakturPajak_CheckedChanged(object sender, EventArgs e)
+        {
+            populateGridVendorInvoices();
+        }
+
+        private void ChkShowOnlyLast3Months_CheckedChanged(object sender, EventArgs e)
+        {
+            populateGridVendorInvoices();
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            populateGridVendorInvoices();
+        }
+
+        private void BtnStartVendorPayments_Click(object sender, EventArgs e)
+        {
+            if (!iddl_Vendors.hasSelectedValue())
+                iddl_Vendors.SelectedValueError("Select a vendor");
+            else
+                createVendorInvoicePaymentMode(true);
+        }
+
+        private void BtnSubmitVendorPayments_Click(object sender, EventArgs e)
+        {
+            createVendorInvoicePaymentMode(false);
+        }
+
+        private void BtnCancelVendorPayments_Click(object sender, EventArgs e)
+        {
+            createVendorInvoicePaymentMode(false);
+        }
+
+        private void createVendorInvoicePaymentMode(bool value)
+        {
+            _createVendorInvoicePayment = value;
+
+            if(true)
+                populateGridVendorInvoices();
         }
 
         #endregion

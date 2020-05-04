@@ -1,4 +1,4 @@
-﻿namespace BinaMitraTextile.Invoices
+﻿namespace BinaMitraTextile.InventoryForm
 {
     partial class VendorInvoices_Add_Form
     {

@@ -180,7 +180,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnAddVendorInvoice_Click(object sender, EventArgs e)
         {
-            if(Tools.displayForm(new Invoices.VendorInvoices_Add_Form()))
+            if(Tools.displayForm(new InventoryForm.VendorInvoices_Add_Form()))
             {
                 VendorInvoice.populateDropDownList(cbVendorInvoices);
                 cbVendorInvoices.SelectedIndex = 0;

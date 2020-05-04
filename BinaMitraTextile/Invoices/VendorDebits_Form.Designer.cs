@@ -345,8 +345,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAmount);
             this.Name = "VendorDebits_Form";
-            this.Text = "Supplier Debits";
+            this.Text = "VENDOR DEBITS";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Shown += new System.EventHandler(this.Form_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).EndInit();
             this.ResumeLayout(false);

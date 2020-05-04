@@ -1,4 +1,4 @@
-﻿namespace BinaMitraTextile.FinancialRecords
+﻿namespace BinaMitraTextile.Admin
 {
     partial class PettyCash_Form
     {

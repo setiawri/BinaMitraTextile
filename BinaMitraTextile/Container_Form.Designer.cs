@@ -41,7 +41,7 @@
             this.Sales_Customers_Discounts = new System.Windows.Forms.ToolStripMenuItem();
             this.Sales_Customers_DebLimits = new System.Windows.Forms.ToolStripMenuItem();
             this.Sales_Divider_Penagihan = new System.Windows.Forms.ToolStripMenuItem();
-            this.Sales_FakturPajakKeluaran = new System.Windows.Forms.ToolStripMenuItem();
+            this.Sales_FakturPajak = new System.Windows.Forms.ToolStripMenuItem();
             this.Sales_Kontrabon = new System.Windows.Forms.ToolStripMenuItem();
             this.Inventory = new System.Windows.Forms.ToolStripMenuItem();
             this.Inventory_Daftar = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +62,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Inventory_PurchaseOrders = new System.Windows.Forms.ToolStripMenuItem();
             this.Inventory_VendorInvoices = new System.Windows.Forms.ToolStripMenuItem();
-            this.Inventory_FakturPajakMasukan = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_FakturPajak = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Todolist = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_PettyCash = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,8 +84,15 @@
             this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
+            this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lnkVendorInvoices = new System.Windows.Forms.LinkLabel();
+            this.lnkSales2 = new System.Windows.Forms.LinkLabel();
+            this.lnkSaleReturns = new System.Windows.Forms.LinkLabel();
+            this.lnkFakturPajak = new System.Windows.Forms.LinkLabel();
+            this.lnkInventory2 = new System.Windows.Forms.LinkLabel();
             this.btnOpname = new System.Windows.Forms.Button();
-            this.gbShortcuts = new System.Windows.Forms.GroupBox();
+            this.gbShortcutsForUsers = new System.Windows.Forms.GroupBox();
             this.flpShortcuts = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkInventory = new System.Windows.Forms.LinkLabel();
             this.lnkCreateSales = new System.Windows.Forms.LinkLabel();
@@ -93,15 +100,18 @@
             this.lnkSaleOrders = new System.Windows.Forms.LinkLabel();
             this.lnkShipping = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lnkCustomerCredits = new System.Windows.Forms.LinkLabel();
             this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lnkCustomerCredits = new System.Windows.Forms.LinkLabel();
+            this.Inventory_VendorInvoicePayment = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
-            this.gbShortcuts.SuspendLayout();
+            this.gbShortcutsForAssistants.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.gbShortcutsForUsers.SuspendLayout();
             this.flpShortcuts.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,7 +142,7 @@
             this.Sales_Divider_Customer,
             this.Sales_Customers,
             this.Sales_Divider_Penagihan,
-            this.Sales_FakturPajakKeluaran,
+            this.Sales_FakturPajak,
             this.Sales_Kontrabon});
             this.Sales.Name = "Sales";
             this.Sales.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
@@ -220,12 +230,12 @@
             this.Sales_Divider_Penagihan.Size = new System.Drawing.Size(182, 22);
             this.Sales_Divider_Penagihan.Text = "---------------------------";
             // 
-            // Sales_FakturPajakKeluaran
+            // Sales_FakturPajak
             // 
-            this.Sales_FakturPajakKeluaran.Name = "Sales_FakturPajakKeluaran";
-            this.Sales_FakturPajakKeluaran.Size = new System.Drawing.Size(182, 22);
-            this.Sales_FakturPajakKeluaran.Text = "Faktur Pajak Keluaran";
-            this.Sales_FakturPajakKeluaran.Click += new System.EventHandler(this.Sales_FakturPajakKeluaran_Click);
+            this.Sales_FakturPajak.Name = "Sales_FakturPajak";
+            this.Sales_FakturPajak.Size = new System.Drawing.Size(182, 22);
+            this.Sales_FakturPajak.Text = "Faktur Pajak";
+            this.Sales_FakturPajak.Click += new System.EventHandler(this.Sales_FakturPajak_Click);
             // 
             // Sales_Kontrabon
             // 
@@ -247,7 +257,8 @@
             this.toolStripMenuItem2,
             this.Inventory_PurchaseOrders,
             this.Inventory_VendorInvoices,
-            this.Inventory_FakturPajakMasukan});
+            this.Inventory_FakturPajak,
+            this.Inventory_VendorInvoicePayment});
             this.Inventory.Name = "Inventory";
             this.Inventory.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
             this.Inventory.Size = new System.Drawing.Size(64, 20);
@@ -391,12 +402,12 @@
             this.Inventory_VendorInvoices.Text = "Vendor Invoices";
             this.Inventory_VendorInvoices.Click += new System.EventHandler(this.Inventory_VendorInvoices_Click);
             // 
-            // Inventory_FakturPajakMasukan
+            // Inventory_FakturPajak
             // 
-            this.Inventory_FakturPajakMasukan.Name = "Inventory_FakturPajakMasukan";
-            this.Inventory_FakturPajakMasukan.Size = new System.Drawing.Size(186, 22);
-            this.Inventory_FakturPajakMasukan.Text = "Faktur Pajak Masukan";
-            this.Inventory_FakturPajakMasukan.Click += new System.EventHandler(this.Inventory_FakturPajakMasukan_Click);
+            this.Inventory_FakturPajak.Name = "Inventory_FakturPajak";
+            this.Inventory_FakturPajak.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_FakturPajak.Text = "Faktur Pajak";
+            this.Inventory_FakturPajak.Click += new System.EventHandler(this.Inventory_FakturPajak_Click);
             // 
             // Admin
             // 
@@ -560,19 +571,135 @@
             // pnlShortcuts
             // 
             this.pnlShortcuts.BackColor = System.Drawing.Color.White;
+            this.pnlShortcuts.Controls.Add(this.gbShortcutsForAssistants);
             this.pnlShortcuts.Controls.Add(this.btnOpname);
-            this.pnlShortcuts.Controls.Add(this.gbShortcuts);
+            this.pnlShortcuts.Controls.Add(this.gbShortcutsForUsers);
             this.pnlShortcuts.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlShortcuts.Location = new System.Drawing.Point(0, 24);
             this.pnlShortcuts.Name = "pnlShortcuts";
             this.pnlShortcuts.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlShortcuts.Size = new System.Drawing.Size(145, 426);
+            this.pnlShortcuts.Size = new System.Drawing.Size(145, 542);
             this.pnlShortcuts.TabIndex = 18;
+            // 
+            // gbShortcutsForAssistants
+            // 
+            this.gbShortcutsForAssistants.AutoSize = true;
+            this.gbShortcutsForAssistants.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbShortcutsForAssistants.Controls.Add(this.flowLayoutPanel1);
+            this.gbShortcutsForAssistants.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbShortcutsForAssistants.Location = new System.Drawing.Point(5, 289);
+            this.gbShortcutsForAssistants.Name = "gbShortcutsForAssistants";
+            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(135, 154);
+            this.gbShortcutsForAssistants.TabIndex = 22;
+            this.gbShortcutsForAssistants.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.lnkVendorInvoices);
+            this.flowLayoutPanel1.Controls.Add(this.lnkSales2);
+            this.flowLayoutPanel1.Controls.Add(this.lnkSaleReturns);
+            this.flowLayoutPanel1.Controls.Add(this.lnkFakturPajak);
+            this.flowLayoutPanel1.Controls.Add(this.lnkInventory2);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(129, 135);
+            this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // lnkVendorInvoices
+            // 
+            this.lnkVendorInvoices.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoices.AutoSize = true;
+            this.lnkVendorInvoices.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoices.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkVendorInvoices.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoices.Location = new System.Drawing.Point(3, 5);
+            this.lnkVendorInvoices.Name = "lnkVendorInvoices";
+            this.lnkVendorInvoices.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkVendorInvoices.Size = new System.Drawing.Size(95, 25);
+            this.lnkVendorInvoices.TabIndex = 31;
+            this.lnkVendorInvoices.TabStop = true;
+            this.lnkVendorInvoices.Text = "VENDOR INVOICES";
+            this.lnkVendorInvoices.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoices.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkVendorInvoices_LinkClicked);
+            // 
+            // lnkSales2
+            // 
+            this.lnkSales2.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales2.AutoSize = true;
+            this.lnkSales2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSales2.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales2.Location = new System.Drawing.Point(3, 30);
+            this.lnkSales2.Name = "lnkSales2";
+            this.lnkSales2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSales2.Size = new System.Drawing.Size(80, 25);
+            this.lnkSales2.TabIndex = 26;
+            this.lnkSales2.TabStop = true;
+            this.lnkSales2.Text = "SALE INVOICES";
+            this.lnkSales2.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSales2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnlSales_LinkClicked);
+            // 
+            // lnkSaleReturns
+            // 
+            this.lnkSaleReturns.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleReturns.AutoSize = true;
+            this.lnkSaleReturns.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleReturns.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSaleReturns.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleReturns.Location = new System.Drawing.Point(3, 55);
+            this.lnkSaleReturns.Name = "lnkSaleReturns";
+            this.lnkSaleReturns.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSaleReturns.Size = new System.Drawing.Size(80, 25);
+            this.lnkSaleReturns.TabIndex = 33;
+            this.lnkSaleReturns.TabStop = true;
+            this.lnkSaleReturns.Text = "SALE RETURNS";
+            this.lnkSaleReturns.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSaleReturns.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSaleReturns_LinkClicked);
+            // 
+            // lnkFakturPajak
+            // 
+            this.lnkFakturPajak.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkFakturPajak.AutoSize = true;
+            this.lnkFakturPajak.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkFakturPajak.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkFakturPajak.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkFakturPajak.Location = new System.Drawing.Point(3, 80);
+            this.lnkFakturPajak.Name = "lnkFakturPajak";
+            this.lnkFakturPajak.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkFakturPajak.Size = new System.Drawing.Size(81, 25);
+            this.lnkFakturPajak.TabIndex = 32;
+            this.lnkFakturPajak.TabStop = true;
+            this.lnkFakturPajak.Text = "FAKTUR PAJAK";
+            this.lnkFakturPajak.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkFakturPajak.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkFakturPajak_LinkClicked);
+            // 
+            // lnkInventory2
+            // 
+            this.lnkInventory2.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory2.AutoSize = true;
+            this.lnkInventory2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkInventory2.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory2.Location = new System.Drawing.Point(3, 105);
+            this.lnkInventory2.Name = "lnkInventory2";
+            this.lnkInventory2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkInventory2.Size = new System.Drawing.Size(61, 25);
+            this.lnkInventory2.TabIndex = 21;
+            this.lnkInventory2.TabStop = true;
+            this.lnkInventory2.Text = "INVENTORY";
+            this.lnkInventory2.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkInventory2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkInventory_LinkClicked);
             // 
             // btnOpname
             // 
             this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpname.Location = new System.Drawing.Point(8, 377);
+            this.btnOpname.Location = new System.Drawing.Point(8, 493);
             this.btnOpname.Name = "btnOpname";
             this.btnOpname.Size = new System.Drawing.Size(129, 41);
             this.btnOpname.TabIndex = 21;
@@ -580,17 +707,17 @@
             this.btnOpname.UseVisualStyleBackColor = true;
             this.btnOpname.Click += new System.EventHandler(this.BtnOpname_Click);
             // 
-            // gbShortcuts
+            // gbShortcutsForUsers
             // 
-            this.gbShortcuts.AutoSize = true;
-            this.gbShortcuts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbShortcuts.Controls.Add(this.flpShortcuts);
-            this.gbShortcuts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbShortcuts.Location = new System.Drawing.Point(5, 5);
-            this.gbShortcuts.Name = "gbShortcuts";
-            this.gbShortcuts.Size = new System.Drawing.Size(135, 284);
-            this.gbShortcuts.TabIndex = 14;
-            this.gbShortcuts.TabStop = false;
+            this.gbShortcutsForUsers.AutoSize = true;
+            this.gbShortcutsForUsers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbShortcutsForUsers.Controls.Add(this.flpShortcuts);
+            this.gbShortcutsForUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbShortcutsForUsers.Location = new System.Drawing.Point(5, 5);
+            this.gbShortcutsForUsers.Name = "gbShortcutsForUsers";
+            this.gbShortcutsForUsers.Size = new System.Drawing.Size(135, 284);
+            this.gbShortcutsForUsers.TabIndex = 14;
+            this.gbShortcutsForUsers.TabStop = false;
             // 
             // flpShortcuts
             // 
@@ -711,6 +838,23 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "--------------------------------------";
             // 
+            // lnkCustomerCredits
+            // 
+            this.lnkCustomerCredits.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.AutoSize = true;
+            this.lnkCustomerCredits.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkCustomerCredits.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.Location = new System.Drawing.Point(3, 145);
+            this.lnkCustomerCredits.Name = "lnkCustomerCredits";
+            this.lnkCustomerCredits.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkCustomerCredits.Size = new System.Drawing.Size(104, 25);
+            this.lnkCustomerCredits.TabIndex = 31;
+            this.lnkCustomerCredits.TabStop = true;
+            this.lnkCustomerCredits.Text = "CUSTOMER CREDITS";
+            this.lnkCustomerCredits.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkCustomerCredits.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCustomerCredits_LinkClicked);
+            // 
             // lnkPettyCash
             // 
             this.lnkPettyCash.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
@@ -785,28 +929,18 @@
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
             // 
-            // lnkCustomerCredits
+            // Inventory_VendorInvoicePayment
             // 
-            this.lnkCustomerCredits.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCustomerCredits.AutoSize = true;
-            this.lnkCustomerCredits.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCustomerCredits.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkCustomerCredits.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCustomerCredits.Location = new System.Drawing.Point(3, 145);
-            this.lnkCustomerCredits.Name = "lnkCustomerCredits";
-            this.lnkCustomerCredits.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkCustomerCredits.Size = new System.Drawing.Size(104, 25);
-            this.lnkCustomerCredits.TabIndex = 31;
-            this.lnkCustomerCredits.TabStop = true;
-            this.lnkCustomerCredits.Text = "CUSTOMER CREDITS";
-            this.lnkCustomerCredits.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCustomerCredits.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCustomerCredits_LinkClicked);
+            this.Inventory_VendorInvoicePayment.Name = "Inventory_VendorInvoicePayment";
+            this.Inventory_VendorInvoicePayment.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_VendorInvoicePayment.Text = "Vendor Payments";
+            this.Inventory_VendorInvoicePayment.Click += new System.EventHandler(this.Inventory_VendorInvoicePayment_Click);
             // 
             // Container_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 566);
             this.Controls.Add(this.expandCollapseToggle1);
             this.Controls.Add(this.pnlShortcuts);
             this.Controls.Add(this.mainMenu);
@@ -819,8 +953,12 @@
             this.mainMenu.PerformLayout();
             this.pnlShortcuts.ResumeLayout(false);
             this.pnlShortcuts.PerformLayout();
-            this.gbShortcuts.ResumeLayout(false);
-            this.gbShortcuts.PerformLayout();
+            this.gbShortcutsForAssistants.ResumeLayout(false);
+            this.gbShortcutsForAssistants.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.gbShortcutsForUsers.ResumeLayout(false);
+            this.gbShortcutsForUsers.PerformLayout();
             this.flpShortcuts.ResumeLayout(false);
             this.flpShortcuts.PerformLayout();
             this.ResumeLayout(false);
@@ -855,7 +993,7 @@
         private System.Windows.Forms.ToolStripMenuItem Account_Log;
         private LIBUtil.Desktop.UserControls.PanelToggle expandCollapseToggle1;
         private System.Windows.Forms.Panel pnlShortcuts;
-        private System.Windows.Forms.GroupBox gbShortcuts;
+        private System.Windows.Forms.GroupBox gbShortcutsForUsers;
         private System.Windows.Forms.FlowLayoutPanel flpShortcuts;
         private System.Windows.Forms.LinkLabel lnkCreateSales;
         private System.Windows.Forms.LinkLabel lnkInventory;
@@ -866,11 +1004,11 @@
         private System.Windows.Forms.LinkLabel lnkShipping;
         private System.Windows.Forms.LinkLabel lnkSaleOrders;
         private System.Windows.Forms.LinkLabel lnkSamples;
-        private System.Windows.Forms.ToolStripMenuItem Sales_FakturPajakKeluaran;
+        private System.Windows.Forms.ToolStripMenuItem Sales_FakturPajak;
         private System.Windows.Forms.ToolStripMenuItem Sales_Returns;
         private System.Windows.Forms.ToolStripMenuItem Sales_Divider_Penagihan;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem Inventory_FakturPajakMasukan;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_FakturPajak;
         private System.Windows.Forms.ToolStripMenuItem Internal;
         private System.Windows.Forms.ToolStripMenuItem Internal_UserAccounts;
         private System.Windows.Forms.ToolStripMenuItem Internal_Reports;
@@ -901,5 +1039,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel lnkCustomerCredits;
+        private System.Windows.Forms.GroupBox gbShortcutsForAssistants;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.LinkLabel lnkInventory2;
+        private System.Windows.Forms.LinkLabel lnkVendorInvoices;
+        private System.Windows.Forms.LinkLabel lnkSales2;
+        private System.Windows.Forms.LinkLabel lnkFakturPajak;
+        private System.Windows.Forms.LinkLabel lnkSaleReturns;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_VendorInvoicePayment;
     }
 }
