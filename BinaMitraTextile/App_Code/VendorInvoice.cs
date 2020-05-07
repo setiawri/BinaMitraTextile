@@ -60,6 +60,7 @@ namespace BinaMitraTextile
         public const string COL_IsDue = "is_due";
         public const string COL_PastDue = "pastdue";
         public const string COL_PayableAmount = "PayableAmount";
+        public const string COL_PaymentAmount = "PaymentAmount";
         public const string COL_VendorName = "VendorName";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
         public const string COL_FakturPajaks_Amount = "FakturPajaks_Amount";
@@ -135,25 +136,25 @@ namespace BinaMitraTextile
 
         public static DataTable get()
         {
-            return get(null, null, true, false, false, null, null);
+            return get(null, null, null, true, false, false, null, null);
         }
 
         public static DataTable get(Guid ID)
         {
-            return get(ID, null, true, false, false, null, null);
+            return get(ID, null, null, true, false, false, null, null);
         }
 
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, true, false, false, FakturPajaks_Id, null);
+            return get(null, null, null, true, false, false, FakturPajaks_Id, null);
         }
 
         public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, bool showOnlyLast3Months)
         {
-            return get(null, null, false, false, showOnlyLast3Months, null, BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, null, false, false, showOnlyLast3Months, null, BrowsingForFakturPajak_Customers_Id);
         }
 
-        public static DataTable get(Guid? Id, string invoiceNumber, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, bool showOnlyLast3Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
+        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, bool showOnlyLast3Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -163,6 +164,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
                 new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, Util.wrapNullable(invoiceNumber)),
                 new SqlQueryParameter(COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(FakturPajaks_Id)),
+                new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
                 new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
                 new SqlQueryParameter(FILTER_ShowOnlyIncomplete, SqlDbType.Bit, showOnlyIncomplete),
                 new SqlQueryParameter(FILTER_ShowOnlyLast3Months, SqlDbType.Bit, showOnlyLast3Months),

@@ -26,6 +26,11 @@ namespace BinaMitraTextile.InventoryForm
             InitializeComponent();
         }
 
+        public VendorInvoices_Form(string quickSearchText) : this()
+        {
+            itxt_QuickSearch.ValueText = quickSearchText;
+        }
+
         public VendorInvoices_Form(FormModes startingMode, Guid BrowsingForFakturPajak_Vendors_Id) : this()
         {
             _startingMode = startingMode;
@@ -58,6 +63,8 @@ namespace BinaMitraTextile.InventoryForm
         {
             Vendor.populateInputControlDropDownList(iddl_Vendors, true);
 
+            lblVendorInvoicePayment.Text = "0";
+
             gridvendorinvoice.AutoGenerateColumns = false;
             gridvendorinvoice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridvendorinvoice_id.DataPropertyName = VendorInvoice.COL_DB_Id;
@@ -72,6 +79,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridvendorinvoice_top.DataPropertyName = VendorInvoice.COL_DB_TOP;
             col_gridvendorinvoice_isdue.DataPropertyName = VendorInvoice.COL_IsDue;
             col_gridvendorinvoice_PayableAmount.DataPropertyName = VendorInvoice.COL_PayableAmount;
+            col_gridVendorInvoice_PaymentAmount.DataPropertyName = VendorInvoice.COL_PaymentAmount;
             col_gridvendorinvoice_Amount.DataPropertyName = VendorInvoice.COL_DB_Amount;
             col_gridVendorInvoice_FakturPajaks_Id.DataPropertyName = VendorInvoice.COL_DB_FakturPajaks_Id;
             col_gridVendorInvoice_FakturPajaks_No.DataPropertyName = VendorInvoice.COL_FakturPajaks_No;
@@ -117,22 +125,35 @@ namespace BinaMitraTextile.InventoryForm
             if (_startingMode == FormModes.Browse)
                 Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast3Months.Checked));
             else if(_createVendorInvoicePayment)
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, true, false, false, null, null));
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast3Months.Checked, null, null));
             else
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast3Months.Checked, null, null));
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast3Months.Checked, null, null));
 
             if (gridvendorinvoice.Rows.Count > 0)
             {
-                btnLog.Enabled = true;
+                pbLog.Enabled = true;
                 btnUpdate.Enabled = true;
             }
             else
             {
-                btnLog.Enabled = false;
+                pbLog.Enabled = false;
                 btnUpdate.Enabled = false;
             }
         }
 
+        private void createVendorInvoicePaymentMode(bool value)
+        {
+            _createVendorInvoicePayment = value;
+            chkShowOnlyIncomplete.Checked = true;
+            chkShowOnlyLast3Months.Checked = false;
+            chkShowOnlyVendorUsesFakturPajak.Checked = false;
+            col_gridVendorInvoice_PaymentAmount.Visible = value;
+
+            if (value)
+                populateGridVendorInvoices();
+            else
+                iddl_Vendors.reset();
+        }
 
         #endregion
         /*******************************************************************************************************/
@@ -146,7 +167,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new Logs.Main_Form(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
         }
 
         private void grid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -225,22 +245,24 @@ namespace BinaMitraTextile.InventoryForm
 
         private void ChkShowOnlyIncomplete_CheckedChanged(object sender, EventArgs e)
         {
-            populateGridVendorInvoices();
+            if (!_createVendorInvoicePayment)
+                populateGridVendorInvoices();
         }
 
         private void ChkShowOnlyVendorUsesFakturPajak_CheckedChanged(object sender, EventArgs e)
         {
-            populateGridVendorInvoices();
+            if (!_createVendorInvoicePayment)
+                populateGridVendorInvoices();
         }
 
         private void ChkShowOnlyLast3Months_CheckedChanged(object sender, EventArgs e)
         {
-            populateGridVendorInvoices();
+            if (!_createVendorInvoicePayment)
+                populateGridVendorInvoices();
         }
 
         private void BtnRefresh_Click(object sender, EventArgs e)
         {
-            populateGridVendorInvoices();
         }
 
         private void BtnStartVendorPayments_Click(object sender, EventArgs e)
@@ -261,12 +283,14 @@ namespace BinaMitraTextile.InventoryForm
             createVendorInvoicePaymentMode(false);
         }
 
-        private void createVendorInvoicePaymentMode(bool value)
+        private void PbRefresh_Click(object sender, EventArgs e)
         {
-            _createVendorInvoicePayment = value;
+            populateGridVendorInvoices();
+        }
 
-            if(true)
-                populateGridVendorInvoices();
+        private void PbLog_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new Logs.Main_Form(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
         }
 
         #endregion

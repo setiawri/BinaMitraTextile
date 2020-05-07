@@ -157,12 +157,7 @@ namespace BinaMitraTextile
                     return false;
             }
 
-            if (string.IsNullOrEmpty(log))
-            {
-                Util.displayMessageBoxError("No changes to record");
-                return false;
-            }
-            else
+            if (!string.IsNullOrEmpty(log))
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
@@ -179,18 +174,13 @@ namespace BinaMitraTextile
                     new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(Notes))
                 );
 
-                if (!result.IsSuccessful)
-                    return false;
-                else
-                {
+                if (result.IsSuccessful)
                     ActivityLog.submit(Id, String.Format("Updated: {0}", log));
-                    return true;
-                }
 
-                //notify supervisor role
-                //if (new UserAccount(userAccountID).UserRole != UserAccountRoles.Supervisor)
-                //  add row to Notifications table
+                return result.IsSuccessful;
             }
+
+            return true;
         }
 
         public static bool isNoExist(Guid? Id, string No)

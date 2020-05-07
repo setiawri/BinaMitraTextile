@@ -99,11 +99,13 @@
     <Compile Include="Admin\MasterData_v1_Vendors_Form.Designer.cs">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryForm\MasterData_v1_VendorInvoicePayments_Form.cs">
+    <Compile Include="App_Code\VendorInvoicePaymentItem.cs" />
+    <Compile Include="App_Code\VendorInvoicePayment.cs" />
+    <Compile Include="InventoryForm\VendorInvoicePayments_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryForm\MasterData_v1_VendorInvoicePayments_Form.Designer.cs">
-      <DependentUpon>MasterData_v1_VendorInvoicePayments_Form.cs</DependentUpon>
+    <Compile Include="InventoryForm\VendorInvoicePayments_Form.Designer.cs">
+      <DependentUpon>VendorInvoicePayments_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="SharedForms\MasterData_v1_FakturPajaks_Form.cs">
       <SubType>Form</SubType>
@@ -590,8 +592,8 @@
     <EmbeddedResource Include="Admin\MasterData_v1_Vendors_Form.resx">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryForm\MasterData_v1_VendorInvoicePayments_Form.resx">
-      <DependentUpon>MasterData_v1_VendorInvoicePayments_Form.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryForm\VendorInvoicePayments_Form.resx">
+      <DependentUpon>VendorInvoicePayments_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SharedForms\MasterData_v1_FakturPajaks_Form.resx">
       <DependentUpon>MasterData_v1_FakturPajaks_Form.cs</DependentUpon>
@@ -842,6 +844,8 @@
     <None Include="Resources\notification03.wav" />
     <Content Include="Images\Icons\handshake-512-white.ico" />
     <Content Include="Images\Icons\handshake-512.ico" />
+    <Content Include="Images\Icons\log.png" />
+    <Content Include="Images\Icons\refresh-blue.png" />
     <Content Include="Resources\Sounds\Notification.mp3" />
     <Content Include="Resources\Sounds\Notification.wav" />
     <Content Include="SqlScripts\CustomTypes.sql" />

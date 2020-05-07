@@ -52,8 +52,8 @@ namespace BinaMitraTextile.InventoryForm
 
             this.Activate();
             ptFilter.toggle();
-            ptSummary.toggle();
-            txtQuickSearch.Select();
+            ptRowInfo.toggle();
+            itxt_QuickSearch.focus();
         }
 
         private void setupControls()
@@ -63,6 +63,8 @@ namespace BinaMitraTextile.InventoryForm
                 flpButtons.Enabled = false;
                 //splitContainer1.Panel1Collapsed = true;
             }
+
+            lblRowInfoHeader.Text = "";
 
             Grade.populateInputControlCheckedListBox(iclb_Grades, false);
             ProductWidth.populateInputControlCheckedListBox(iclb_ProductWidths, false);
@@ -124,7 +126,7 @@ namespace BinaMitraTextile.InventoryForm
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkShowHidden.Visible = false;
-                btnLog.Enabled = false;
+                pbLog.Enabled = false;
                 chkRearrange.Visible = false;
                 chkCalculateBuyValue.Visible = false;
                 col_grid_isConsignment.Visible = false;
@@ -147,7 +149,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void populateGridSummary()
         {
-            if (pnlSummary.Visible && _isFormShown)
+            if (pnlRowInfo.Visible && _isFormShown)
             {
                 DataView dvw = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource), false).DefaultView;
                 dvw.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME);
@@ -199,15 +201,6 @@ namespace BinaMitraTextile.InventoryForm
             populateGridview(true);
         }
 
-        private void lnkClearQuickSearch_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            txtQuickSearch.Text = "";
-        }
-        protected void txtQuickSearch_TextChanged(object sender, EventArgs e)
-        {
-            populateGridview(false);
-        }
-
         protected void chkIncludeInactive_CheckedChanged(object sender, EventArgs e)
         {
             populateGridview(true);
@@ -221,7 +214,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new Logs.Main_Form(selectedRowID()));
         }
 
         private void btnAddItems_Click(object sender, EventArgs e)
@@ -274,7 +266,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnRefreshPage_Click(object sender, EventArgs e)
         {
-            populateGridview(true);
         }
         
         #endregion EVENT HANDLERS
@@ -291,14 +282,14 @@ namespace BinaMitraTextile.InventoryForm
             btnUpdate.Enabled = false;
             btnAddItems.Enabled = false;
             btnSetPrice.Enabled = false;
-            btnLog.Enabled = false;
+            pbLog.Enabled = false;
 
             if (grid.Rows.Count > 0 && grid.SelectedRows.Count > 0)
             {
                 if (GlobalData.UserAccount.role != Roles.User)
                 {
                     btnUpdate.Enabled = true;
-                    btnLog.Enabled = true;
+                    pbLog.Enabled = true;
                 }
 
                 btnAddItems.Enabled = true;
@@ -335,7 +326,7 @@ namespace BinaMitraTextile.InventoryForm
         private string compileQuickSearchFilter()
         {
             string filter = "";
-            filter = Tools.compileQuickSearchFilter(txtQuickSearch.Text.Trim(), fieldNamesForQuickSearch);
+            filter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNamesForQuickSearch);
             //filter = Tools.append(filter, Tools.compileRowFilterString(clbGrades, Inventory.COL_DB_GRADEID, typeof(Guid)), "AND");
             //filter = Tools.append(filter, Tools.compileRowFilterString(clbProductWidths, Inventory.COL_DB_PRODUCTWIDTHID, typeof(Guid)), "AND");
             //filter = Tools.append(filter, Tools.compileRowFilterString(clbLengthUnits, Inventory.COL_DB_LENGTHUNITID, typeof(Guid)), "AND");
@@ -475,6 +466,22 @@ namespace BinaMitraTextile.InventoryForm
         private void ChkShowNotBookedOnly_CheckedChanged(object sender, EventArgs e)
         {
             populateGridview(true);
+        }
+
+        private void PbLog_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new Logs.Main_Form(selectedRowID()));
+        }
+
+        private void PbRefresh_Click(object sender, EventArgs e)
+        {
+            populateGridview(true);
+        }
+
+        private void Itxt_QuickSearch_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                populateGridview(false);
         }
 
         #endregion FORM METHODS

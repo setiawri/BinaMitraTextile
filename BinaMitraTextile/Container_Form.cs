@@ -225,7 +225,7 @@ namespace BinaMitraTextile
 
         private void Inventory_VendorInvoicePayment_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new InventoryForm.MasterData_v1_VendorInvoicePayments_Form(FormModes.Search));
+            Util.displayMDIChild(new InventoryForm.VendorInvoicePayments_Form());
         }
 
         #endregion MENU - INVENTORY

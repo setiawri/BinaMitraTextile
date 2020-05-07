@@ -339,8 +339,7 @@ namespace BinaMitraTextile.SharedForms
         private void MasterData_v1_FakturPajaks_Form_Shown(object sender, EventArgs e)
         {
             ptInputPanel.PerformClick();
-            showRowInfo();
-            //ptRowInfo.PerformClick();
+            pnlRowInfo.Visible = true;
         }
 
         private void BtnAddSales_Click(object sender, EventArgs e)

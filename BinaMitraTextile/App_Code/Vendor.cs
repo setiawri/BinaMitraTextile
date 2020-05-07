@@ -17,7 +17,7 @@ namespace BinaMitraTextile
         public const string COL_DB_usesFakturPajak = "usesFakturPajak";
 
         public Guid ID;
-        public string Name = "";
+        public string Name = null;
         public string Address = "";
         public string Phone1 = "";
         public string Phone2 = "";
@@ -131,9 +131,7 @@ namespace BinaMitraTextile
                 if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
 
                 if (string.IsNullOrEmpty(logDescription))
-                {
                     Tools.showError("No changes to record");
-                }
                 else
                 {
                     using (SqlCommand cmd = new SqlCommand("vendor_update", DBUtil.ActiveSqlConnection))

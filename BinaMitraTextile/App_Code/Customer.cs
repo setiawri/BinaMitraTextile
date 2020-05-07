@@ -30,7 +30,7 @@ namespace BinaMitraTextile
         public const string COL_SALESUSERNAME = "sales_user_name";
          
         public Guid ID;
-        public string Name = "";
+        public string Name = null;
         public string Address = "";
         public Guid CityID;
         public Guid? DefaultTransportID;
