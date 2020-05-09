@@ -30,6 +30,7 @@ namespace BinaMitraTextile.Reports
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
         }
 
         private void populatePageData()

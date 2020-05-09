@@ -27,6 +27,7 @@ namespace BinaMitraTextile.SharedForms
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
             _id = id;
             _storedProcedureName = storedProcedureName;
         }

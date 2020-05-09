@@ -88,6 +88,7 @@ namespace BinaMitraTextile
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
             this.Size = FORM_DEFAULTSIZE;
 
             gridview.AutoGenerateColumns = false;

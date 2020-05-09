@@ -21,8 +21,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
-            
-            
+            Settings.setGeneralSettings(this);
         }
         
         private void populatePageData()
@@ -103,12 +102,11 @@ namespace BinaMitraTextile.InventoryForm
         private void Form_Load(object sender, EventArgs e)
         {
             setupControls();
-            populatePageData();
         }
 
         private void Form_Shown(object sender, EventArgs e)
         {
-
+            populatePageData();
         }
 
         private void BtnRemoveFakturPajakFromVendorInvoice_Click(object sender, EventArgs e)

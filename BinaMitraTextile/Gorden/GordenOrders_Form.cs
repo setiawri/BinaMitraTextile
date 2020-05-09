@@ -32,6 +32,8 @@ namespace BinaMitraTextile.Gorden
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Customer.populateDropDownList(dropCustomers, false, false);
 
             gridOrders.AutoGenerateColumns = false;

@@ -36,6 +36,8 @@ namespace BinaMitraTextile.Gorden
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Tools.disableResizing(this);
 
             //grid.Enabled = false;

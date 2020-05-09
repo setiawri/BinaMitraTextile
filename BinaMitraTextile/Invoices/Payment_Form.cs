@@ -66,6 +66,7 @@ namespace BinaMitraTextile.Invoices
             
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
             this.Text = FORMTITLE + DBUtil.appendTitleWithInfo();
             setupControlsBasedOnRoles();
             

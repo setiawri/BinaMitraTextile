@@ -33,6 +33,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             FabricColor.populateDropDownList(cbColors, false, true);
             Tools.resetDropDownList(cbColors);
 

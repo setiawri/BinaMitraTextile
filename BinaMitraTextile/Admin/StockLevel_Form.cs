@@ -56,6 +56,8 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             DoNotClearInputAfterSubmission = true;
 
             col_grid_name.Visible = false;

@@ -15,6 +15,8 @@ namespace BinaMitraTextile.Users
         public EmploymentRules()
         {
             InitializeComponent();
+
+            Settings.setGeneralSettings(this);
         }
     }
 }

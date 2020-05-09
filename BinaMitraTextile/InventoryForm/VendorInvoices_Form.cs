@@ -61,6 +61,8 @@ namespace BinaMitraTextile.InventoryForm
 
         public void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Vendor.populateInputControlDropDownList(iddl_Vendors, true);
 
             lblVendorInvoicePayment.Text = "0";

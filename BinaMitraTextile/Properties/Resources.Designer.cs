@@ -93,6 +93,16 @@ namespace BinaMitraTextile.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon handshake_512_black {
+            get {
+                object obj = ResourceManager.GetObject("handshake_512_black", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon handshake_512_white {
             get {
                 object obj = ResourceManager.GetObject("handshake_512_white", resourceCulture);

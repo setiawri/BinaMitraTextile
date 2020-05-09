@@ -39,6 +39,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Grade.populateDropDownList(cbGrades, false, true);
             ProductWidth.populateDropDownList(cbProductWidths, false, true);
             LengthUnit.populateDropDownList(cbLengthUnits, false, true);

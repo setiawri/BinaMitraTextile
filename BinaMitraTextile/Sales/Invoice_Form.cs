@@ -39,6 +39,8 @@ namespace BinaMitraTextile.Sales
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
+
             _sale = Sale;
             _isGenerate = IsGenerate;
             _saleItems = _dataSaleItems;

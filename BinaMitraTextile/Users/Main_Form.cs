@@ -46,7 +46,7 @@ namespace BinaMitraTextile.Users
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //Tools.adjustGridviewForVScrollbar(this,true);
+            Settings.setGeneralSettings(this);
         }
 
         #endregion INITIALIZATION

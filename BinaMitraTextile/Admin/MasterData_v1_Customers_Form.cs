@@ -44,6 +44,8 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             setColumnsDataPropertyNames(Customer.COL_DB_ID, Customer.COL_DB_ACTIVE, null, null, null, Customer.COL_DB_usesFakturPajak);
             col_dgv_Checkbox1.HeaderText = "FP";
             col_dgv_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Name", itxt_Name.LabelText, Customer.COL_DB_NAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);

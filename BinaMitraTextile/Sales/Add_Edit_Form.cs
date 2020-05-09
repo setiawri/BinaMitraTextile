@@ -60,6 +60,8 @@ namespace BinaMitraTextile.Sales
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_adjustedprice.DataPropertyName = SaleItem.COL_SALE_ADJUSTEDPRICE;

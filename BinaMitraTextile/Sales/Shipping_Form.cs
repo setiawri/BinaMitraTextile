@@ -37,7 +37,7 @@ namespace BinaMitraTextile.Sales
 
         private void setupControls()
         {
-            this.ShowIcon = false;
+            Settings.setGeneralSettings(this);
             setupControlsBasedOnRoles();
 
             lblSaleItems.Text = "Items";

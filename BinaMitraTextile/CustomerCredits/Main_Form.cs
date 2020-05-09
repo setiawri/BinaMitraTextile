@@ -38,6 +38,8 @@ namespace BinaMitraTextile.CustomerCredits
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Tools.populateDropDownList(cbPaymentMethods, typeof(PaymentMethod));
 
             gridSummary.AutoGenerateColumns = false;

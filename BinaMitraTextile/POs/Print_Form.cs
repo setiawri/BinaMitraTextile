@@ -48,8 +48,7 @@ namespace BinaMitraTextile.POs
 
         private void setupControls()
         {
-            
-            
+            Settings.setGeneralSettings(this);
 
             Tools.disableResizing(this);
 

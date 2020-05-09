@@ -35,6 +35,7 @@ namespace BinaMitraTextile.Sales
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
             _saleReturn = null;
             _sale = new Sale(SaleID);
             Tools.disableResizing(this);
@@ -44,6 +45,7 @@ namespace BinaMitraTextile.Sales
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
             _sale = null;
             _saleReturn = saleReturn;
             Tools.disableResizing(this);

@@ -15,6 +15,8 @@ namespace BinaMitraTextile.Users
         public PasswordChange_Form()
         {
             InitializeComponent();
+
+            Settings.setGeneralSettings(this);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)

@@ -15,6 +15,8 @@ namespace BinaMitraTextile.Reports
         public Taxes_Form()
         {
             InitializeComponent();
+
+            Settings.setGeneralSettings(this);
         }
     }
 }

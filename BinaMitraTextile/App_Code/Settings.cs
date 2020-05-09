@@ -62,6 +62,7 @@ namespace BinaMitraTextile
         public static System.Media.SoundPlayer opnameMarkerSound = new System.Media.SoundPlayer(Properties.Resources.Notification03);
 
         public static System.Drawing.Icon taskbarIcon = Properties.Resources.handshake_512_white;
+        //public static System.Drawing.Icon headerIcon = Properties.Resources.handshake_512_black;
 
         public const int GRIDVIEW_MINIMUM_RIGHT_MARGIN_TO_CONTAINER = 10;
 

@@ -27,6 +27,8 @@ namespace BinaMitraTextile.InventoryForm
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
+
             listBarcodeUC = new List<BarcodeUC>() { 
                 barcodeUC1, barcodeUC2, barcodeUC3, barcodeUC4, barcodeUC5,
                 barcodeUC6, barcodeUC7, barcodeUC8, barcodeUC9, barcodeUC10,

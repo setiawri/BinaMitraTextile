@@ -31,6 +31,8 @@ namespace BinaMitraTextile.Gorden
                 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             GordenItem.populateDropDownList(dropFabrics, false, GordenItemCategories.Gorden);
             GordenItem.populateDropDownList(dropVitrages, false, GordenItemCategories.Vitrage);
             GordenItem.populateDropDownList(dropRings, false, GordenItemCategories.Ring, GordenItemCategories.SmokeRing, GordenItemCategories.KawatRoda);

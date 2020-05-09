@@ -46,6 +46,8 @@ namespace BinaMitraTextile.Admin
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             ProductStoreName.populateDropDownList(cbProductStoreNames, false, false);
             Grade.populateDropDownList(cbGrades, false, false);
             ProductWidth.populateDropDownList(cbProductWidths, false, false);

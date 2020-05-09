@@ -41,6 +41,8 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             setColumnsDataPropertyNames(Product.COL_DB_ID, Product.COL_DB_ACTIVE, null, null, null, null);
             col_dgv_ProductStoreName = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_ProductStoreName", iddl_ProductStoreNames.LabelText, Product.COL_STORENAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_NameVendor = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_NameVendor", itxt_NameVendor.LabelText, Product.COL_DB_NAMEVENDOR, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);

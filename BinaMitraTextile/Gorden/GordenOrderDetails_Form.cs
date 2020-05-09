@@ -36,6 +36,7 @@ namespace BinaMitraTextile.Gorden
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
         }
 
         private void populatePageData()

@@ -46,6 +46,7 @@ namespace BinaMitraTextile.Invoices
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
             setupControlsBasedOnRoles();
             
             Tools.populateDropDownList(cbPaymentMethods, typeof(PaymentMethod));

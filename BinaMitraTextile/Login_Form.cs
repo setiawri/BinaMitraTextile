@@ -25,7 +25,7 @@ namespace BinaMitraTextile
         private void setupControls()
         {
             Settings.setGeneralSettings(this);
-            this.Text += " " + Settings.APPVERSION; 
+            this.Text += " " + Settings.APPVERSION;
 
             DBConnection.populatePorts(iddl_Ports);
 

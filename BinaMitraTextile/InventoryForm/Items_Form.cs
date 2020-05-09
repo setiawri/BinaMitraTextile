@@ -31,7 +31,9 @@ namespace BinaMitraTextile.InventoryForm
         public Items_Form(Guid inventoryID)
         {
             InitializeComponent();
-            
+
+            Settings.setGeneralSettings(this);
+
             _inventory = new Inventory(inventoryID);
             lblInventoryID.Text = String.Format("{0} - {1}", _inventory.code.ToString(), _inventory.product_store_name);
             lblLengthUnit.Text = _inventory.length_unit_name;

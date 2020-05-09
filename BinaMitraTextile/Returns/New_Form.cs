@@ -37,6 +37,8 @@ namespace BinaMitraTextile.Returns
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             grid.AutoGenerateColumns = false;
             col_grid_SaleOrderItemDescription.DataPropertyName = SaleItem.COL_SaleOrderItemDescription;
 

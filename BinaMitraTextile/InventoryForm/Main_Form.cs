@@ -58,6 +58,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             if (_formMode == FormMode.Browse)
             {
                 flpButtons.Enabled = false;

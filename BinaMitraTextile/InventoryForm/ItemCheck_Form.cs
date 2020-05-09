@@ -37,6 +37,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             InventoryItemCheck.CheckCleanup();
 
             Grade.populateInputControlCheckedListBox(iclb_Grades, false);

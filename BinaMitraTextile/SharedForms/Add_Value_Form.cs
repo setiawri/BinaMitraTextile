@@ -17,6 +17,8 @@ namespace BinaMitraTextile.SharedForms
         public Add_Value_Form()
         {
             InitializeComponent();
+
+            Settings.setGeneralSettings(this);
         }
     }
 }

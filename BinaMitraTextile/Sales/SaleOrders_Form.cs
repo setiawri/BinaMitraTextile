@@ -49,6 +49,8 @@ namespace BinaMitraTextile.Sales
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             if (_formMode == FormMode.Browse)
             {
                 pnlMain.Visible = false;

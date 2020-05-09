@@ -24,6 +24,8 @@ namespace BinaMitraTextile
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_gridPOItems_statusname.Visible = false;

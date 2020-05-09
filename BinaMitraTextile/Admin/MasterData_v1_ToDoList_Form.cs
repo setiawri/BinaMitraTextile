@@ -38,6 +38,8 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             enableFieldStatus<ToDoStatus>();
             setColumnsDataPropertyNames(ToDo.COL_DB_ID, null, ToDo.COL_STATUSNAME, ToDo.COL_DB_STATUSENUMID, null, null);
             col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", "Date", ToDo.COL_DB_TIMESTAMP, true, true, "dd/MM/yy", false, true, null, DataGridViewContentAlignment.MiddleCenter);

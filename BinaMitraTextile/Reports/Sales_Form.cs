@@ -23,6 +23,8 @@ namespace BinaMitraTextile.Reports
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Customer.populateDropDownList(cbExcludeCustomers, false, false);
             LengthUnit.populateInputControlCheckedListBox(iclb_LengthUnits, false);
             FabricColor.populateInputControlCheckedListBox(iclb_Colors, false);

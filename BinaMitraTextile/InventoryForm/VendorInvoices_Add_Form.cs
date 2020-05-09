@@ -22,6 +22,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
             this.DialogResult = DialogResult.Cancel;
         }
 

@@ -51,6 +51,8 @@ namespace BinaMitraTextile.Returns
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             Customer.populateDropDownList(cbCustomers, true, false);
 
             grid.AutoGenerateColumns = false;

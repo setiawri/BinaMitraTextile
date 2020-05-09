@@ -32,6 +32,7 @@ namespace BinaMitraTextile.SharedForms
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
             this.StartPosition = FormStartPosition.WindowsDefaultLocation;
             setLabelText();
             _timeoutText = timeoutText;

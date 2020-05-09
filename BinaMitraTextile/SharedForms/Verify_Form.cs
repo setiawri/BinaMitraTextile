@@ -25,6 +25,7 @@ namespace BinaMitraTextile.SharedForms
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
             lblCode.Text = string.Format("[{0}]", Code);
             lblLength.Text = Length;
 

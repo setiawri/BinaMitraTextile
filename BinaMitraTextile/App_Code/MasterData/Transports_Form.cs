@@ -44,6 +44,8 @@ namespace BinaMitraTextile.MasterData
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             disableFieldActive();
 
             //NOTES: must use inputColumns sequentially from the first one to the next. Otherwise calculation of the form width will be off

@@ -35,6 +35,7 @@ namespace BinaMitraTextile.SharedForms
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
             this.StartPosition = FormStartPosition.CenterScreen;
             timer1.Interval = 100; //raise event every 0.1 second
         }

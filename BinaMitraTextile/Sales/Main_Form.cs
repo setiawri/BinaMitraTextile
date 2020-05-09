@@ -32,7 +32,9 @@ namespace BinaMitraTextile.Sales
         public Main_Form()
         {
             InitializeComponent();
-                      
+
+            Settings.setGeneralSettings(this);
+
             //initialize filter fields
             dtStart.ShowCheckBox = true;
             dtEnd.ShowCheckBox = true;

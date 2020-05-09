@@ -54,6 +54,8 @@ namespace BinaMitraTextile.Gorden
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             //disableFieldActive();
             DoNotClearInputAfterSubmission = true;
 

@@ -38,6 +38,8 @@ namespace BinaMitraTextile.InventoryForm
 
         public void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             gridVendorInvoicePayments.AutoGenerateColumns = false;
             gridVendorInvoicePayments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridVendorInvoicePayments_Id.DataPropertyName = VendorInvoicePayment.COL_DB_Id;

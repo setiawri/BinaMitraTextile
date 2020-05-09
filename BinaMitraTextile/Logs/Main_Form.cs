@@ -24,6 +24,8 @@ namespace BinaMitraTextile.Logs
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             grid.AutoGenerateColumns = false;
             col_grid_Timestamp.DataPropertyName = ActivityLog.COL_DB_Timestamp;
             col_grid_Username.DataPropertyName = ActivityLog.COL_Username;

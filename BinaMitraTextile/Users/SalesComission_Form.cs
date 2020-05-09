@@ -15,6 +15,8 @@ namespace BinaMitraTextile.Users
         public SalesComission_Form()
         {
             InitializeComponent();
+
+            Settings.setGeneralSettings(this);
         }
     }
 }

@@ -40,6 +40,8 @@ namespace BinaMitraTextile.Admin
 
         private void setupControls()
         {
+            Settings.setGeneralSettings(this);
+
             //set filter to last 30 days
             idtp_FilterStart.Value = DateTime.Now.Date.AddDays(-30);
             idtp_FilterEnd.Value = DateTime.Now.Date;

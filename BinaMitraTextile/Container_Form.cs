@@ -44,9 +44,9 @@ namespace BinaMitraTextile
         {
             Util.setAsMDIParent(this);
 
+            Settings.setGeneralSettings(this);
             this.Text += " " + Settings.APPVERSION + DBUtil.appendTitleWithInfo();
-            this.Icon = Settings.taskbarIcon;
-
+            
             setupControlsBasedOnRoles();
         }
 

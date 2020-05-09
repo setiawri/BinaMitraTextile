@@ -39,6 +39,8 @@ namespace BinaMitraTextile.Admin
 
         protected override void setupFields()
         {
+            Settings.setGeneralSettings(this);
+
             setColumnsDataPropertyNames(CustomerTerm.COL_DB_ID, CustomerTerm.COL_DB_ACTIVE, null, null, null, null);
             col_dgv_Customers_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Name", iddl_Customers.LabelText, CustomerTerm.COL_CUSTOMERS_NAME, true, true, "", true, false, 100, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_DebtLimit = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_DebtLimit", in_DebtLimit.LabelText, CustomerTerm.COL_DB_DEBTLIMIT, true, true, "N0", false, false, 100, DataGridViewContentAlignment.MiddleRight);

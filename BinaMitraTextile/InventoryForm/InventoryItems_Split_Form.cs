@@ -22,6 +22,8 @@ namespace BinaMitraTextile.Sales
         {
             InitializeComponent();
 
+            Settings.setGeneralSettings(this);
+
             _inventoryItem = new InventoryItem(id);
             lblBarcode.Text = _inventoryItem.barcode;
             lblProductStoreName.Text = _inventoryItem.ProductStoreName;
