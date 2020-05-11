@@ -58,7 +58,8 @@ namespace BinaMitraTextile
         public const string COL_ReturnedValue = "ReturnedValue";
         public const string COL_AmountDifferenceFromCalculated = "AmountDifferenceFromCalculated";
         public const string COL_IsDue = "is_due";
-        public const string COL_PastDue = "pastdue";
+        public const string COL_DaysPastDue = "DaysPastDue";
+        public const string COL_PaidAmount = "PaidAmount";
         public const string COL_PayableAmount = "PayableAmount";
         public const string COL_PaymentAmount = "PaymentAmount";
         public const string COL_VendorName = "VendorName";

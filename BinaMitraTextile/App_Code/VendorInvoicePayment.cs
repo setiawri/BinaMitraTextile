@@ -70,7 +70,7 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE STATIC METHODS
 
-        public static Guid add(DateTime Timestamp, Guid Vendors_Id, string Notes, List<Guid> VendorInvoices_Id, List<decimal> Amount)
+        public static Guid add(DateTime Timestamp, Guid Vendors_Id, string Notes, Dictionary<Guid, decimal> paymentData)
         {
             Guid Id = Guid.NewGuid();
             SqlQueryResult result = DBConnection.query(
@@ -87,7 +87,7 @@ namespace BinaMitraTextile
             if (result.IsSuccessful)
             {
                 ActivityLog.submit(Id, "Created");
-                VendorInvoicePaymentItem.add(Id, VendorInvoices_Id, Amount);
+                VendorInvoicePaymentItem.add(Id, paymentData);
             }
 
             return Id;

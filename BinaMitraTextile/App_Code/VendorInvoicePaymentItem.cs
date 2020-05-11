@@ -42,9 +42,9 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE STATIC METHODS
 
-        public static void add(Guid VendorInvoicePayments_Id, List<Guid> VendorInvoices_Id, List<decimal> Amount)
+        public static void add(Guid VendorInvoicePayments_Id, Dictionary<Guid, decimal> paymentData)
         {
-            for(int i=0; i<VendorInvoices_Id.Count-1; i++)
+            foreach(KeyValuePair<Guid, decimal> item in paymentData)
             {
                 DBConnection.query(
                     false,
@@ -52,8 +52,8 @@ namespace BinaMitraTextile
                     QueryTypes.FillByAdapter,
                     "VendorInvoicePaymentItems_add",
                     new SqlQueryParameter(COL_DB_VendorInvoicePayments_Id, SqlDbType.UniqueIdentifier, VendorInvoicePayments_Id),
-                    new SqlQueryParameter(COL_DB_VendorInvoices_Id, SqlDbType.UniqueIdentifier, VendorInvoices_Id[i]),
-                    new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, Amount[i])
+                    new SqlQueryParameter(COL_DB_VendorInvoices_Id, SqlDbType.UniqueIdentifier, item.Key),
+                    new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, item.Value)
                 );
             }
         }
@@ -66,7 +66,7 @@ namespace BinaMitraTextile
                 QueryTypes.FillByAdapter,
                 "VendorInvoicePaymentItems_get",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
-                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(VendorInvoicePayments_Id))
+                new SqlQueryParameter(COL_DB_VendorInvoicePayments_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(VendorInvoicePayments_Id))
                 );
             return result.Datatable;
         }

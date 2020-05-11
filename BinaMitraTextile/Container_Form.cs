@@ -139,6 +139,11 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new CustomerCredits.Main_Form());
         }
 
+        private void LnkVendorInvoicePayments_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.VendorInvoicePayments_Form());
+        }
+
         #endregion SHORTCUT LINKS
         /*******************************************************************************************************/
         #region MENU - INVENTORY
