@@ -133,7 +133,6 @@
             this.col_gridmaster_profit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridmaster_profitpercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridmaster_specialuseronly = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_gridmaster_returnedToSupplier = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_gridmaster_isReported = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_gridmaster_taxno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridMaster_isManualAdjustment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -434,7 +433,6 @@
             this.col_gridmaster_profit,
             this.col_gridmaster_profitpercent,
             this.col_gridmaster_specialuseronly,
-            this.col_gridmaster_returnedToSupplier,
             this.col_gridmaster_isReported,
             this.col_gridmaster_taxno,
             this.col_gridMaster_isManualAdjustment});
@@ -1181,15 +1179,6 @@
             this.col_gridmaster_specialuseronly.ReadOnly = true;
             this.col_gridmaster_specialuseronly.Width = 30;
             // 
-            // col_gridmaster_returnedToSupplier
-            // 
-            this.col_gridmaster_returnedToSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridmaster_returnedToSupplier.HeaderText = "Retur";
-            this.col_gridmaster_returnedToSupplier.MinimumWidth = 30;
-            this.col_gridmaster_returnedToSupplier.Name = "col_gridmaster_returnedToSupplier";
-            this.col_gridmaster_returnedToSupplier.ReadOnly = true;
-            this.col_gridmaster_returnedToSupplier.Width = 30;
-            // 
             // col_gridmaster_isReported
             // 
             this.col_gridmaster_isReported.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -1323,7 +1312,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridmaster_profit;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridmaster_profitpercent;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridmaster_specialuseronly;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridmaster_returnedToSupplier;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridmaster_isReported;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridmaster_taxno;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridMaster_isManualAdjustment;

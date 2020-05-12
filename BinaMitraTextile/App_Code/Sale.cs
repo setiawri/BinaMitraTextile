@@ -29,7 +29,6 @@ namespace BinaMitraTextile
         public const string COL_DAYSELAPSED = "days_elapsed";
         public const string COL_DB_TRANSPORTID = "transport_id";
         public const string COL_DB_SPECIALUSERONLY = "special_user_only";
-        public const string COL_DB_RETURNEDTOSUPPLIER = "returned_to_supplier";
         public const string COL_DB_SHIPPINGCOST = "shipping_cost";
         public const string COL_DB_ISREPORTED = "is_reported";
         public const string COL_DB_TAXNO = "tax_no";
@@ -57,6 +56,7 @@ namespace BinaMitraTextile
         public const string COL_SALEQTY = "sale_qty";
         public const string COL_SALELENGTH = "sale_length";
 
+        public const string FILTER_OnlyReturnedToSupplier = "FILTER_OnlyReturnedToSupplier";
         public const string FILTER_OnlyNotCompleted = "FILTER_OnlyNotCompleted";
         public const string FILTER_Inventory_Code = "FILTER_Inventory_Code";
         public const string FILTER_OnlyManualAdjustment = "FILTER_OnlyManualAdjustment";
@@ -171,7 +171,6 @@ namespace BinaMitraTextile
                 TransportID = DBUtil.parseData<Guid?>(row, COL_DB_TRANSPORTID);
                 ShippingCost = DBUtil.parseData<decimal>(row, COL_DB_SHIPPINGCOST);
                 TaxNo = DBUtil.parseData<string>(row, COL_DB_TAXNO);
-                ReturnedToSupplier = Util.wrapNullable<bool>(row, COL_DB_RETURNEDTOSUPPLIER);
                 SaleCommission_Users_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleCommission_Users_Id);
                 FakturPajaks_Id = DBUtil.parseData<Guid?>(row, COL_DB_FakturPajaks_Id);
 
@@ -220,7 +219,6 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
                     cmd.Parameters.Add("@voided", SqlDbType.Bit).Value = voided;
-                    cmd.Parameters.Add("@" + COL_DB_RETURNEDTOSUPPLIER, SqlDbType.Bit).Value = ReturnedToSupplier;
                     cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(customer_id);
                     cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Vendors_Id);
                     cmd.Parameters.Add("@customer_info", SqlDbType.VarChar).Value = customer_info;
@@ -421,7 +419,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@only_has_receivable", SqlDbType.Bit).Value = onlyHasReceivable;
                 cmd.Parameters.Add("@only_loss_profit", SqlDbType.Bit).Value = onlyLossProfit;
                 cmd.Parameters.Add("@include_special_user_only", SqlDbType.Bit).Value = GlobalData.UserAccount.role == Roles.Super;
-                cmd.Parameters.Add("@" + Sale.COL_DB_RETURNEDTOSUPPLIER, SqlDbType.Bit).Value = onlyReturnedToSupplier;
+                cmd.Parameters.Add("@" + FILTER_OnlyReturnedToSupplier, SqlDbType.Bit).Value = onlyReturnedToSupplier;
                 cmd.Parameters.Add("@" + FILTER_OnlyNotCompleted, SqlDbType.Bit).Value = onlyNotCompleted;
                 cmd.Parameters.Add("@" + FILTER_Inventory_Code, SqlDbType.VarChar).Value = Util.wrapNullable<string>(inventoryCode);
                 cmd.Parameters.Add("@" + FILTER_OnlyManualAdjustment, SqlDbType.Bit).Value = onlyManualAdjustment;
@@ -524,26 +522,6 @@ namespace BinaMitraTextile
                     cmd.ExecuteNonQuery();
 
                     ActivityLog.submit(id, "Update report to tax to: " + value);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
-        }
-
-        public static string updateReturnedToSupplier(Guid id, bool value)
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sale_update_returnedtosupplier_by_id", DBUtil.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_RETURNEDTOSUPPLIER, SqlDbType.Bit).Value = value;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Update returned to supplier marker to: " + value);
                 }
             }
             catch (Exception ex) { return ex.Message; }

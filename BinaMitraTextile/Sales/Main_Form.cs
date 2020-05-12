@@ -63,8 +63,6 @@ namespace BinaMitraTextile.Sales
             col_gridMaster_Vendors_Name.DataPropertyName = Sale.COL_Vendors_Name;
             col_gridmaster_isReported.DataPropertyName = Sale.COL_DB_ISREPORTED;
             col_gridmaster_isReported.Visible = false;
-            col_gridmaster_returnedToSupplier.DataPropertyName = Sale.COL_DB_RETURNEDTOSUPPLIER;
-            col_gridmaster_returnedToSupplier.Visible = false;
 
             gridDetail.AutoGenerateColumns = false;
             col_gridDetail_id.DataPropertyName = SaleItem.COL_INVENTORY_ITEM_ID;
@@ -82,7 +80,6 @@ namespace BinaMitraTextile.Sales
             {
                 col_gridmaster_specialuseronly.Visible = false;
                 col_gridmaster_completed.Visible = false;
-                col_gridmaster_returnedToSupplier.Visible = false;
                 col_gridmaster_isReported.Visible = false;
                 col_gridmaster_taxno.Visible = false;
                 col_gridMaster_isManualAdjustment.Visible = false;
@@ -349,12 +346,6 @@ namespace BinaMitraTextile.Sales
             {
                 DataGridViewRow row = gridMaster.Rows[e.RowIndex];
                 Sale.updateSpecialUserOnly((Guid)row.Cells[col_gridmaster_saleid.Name].Value, !(bool)((DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex]).Value);
-                populateMasterGrid();
-            }
-            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_gridmaster_returnedToSupplier.Name))
-            {
-                DataGridViewRow row = gridMaster.Rows[e.RowIndex];
-                Sale.updateReturnedToSupplier((Guid)row.Cells[col_gridmaster_saleid.Name].Value, !(bool)((DataGridViewCheckBoxCell)row.Cells[e.ColumnIndex]).Value);
                 populateMasterGrid();
             }
             else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_gridmaster_isReported.Name))
