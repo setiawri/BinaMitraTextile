@@ -30,18 +30,19 @@
         {
             this.btnSubmit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnRemoveFakturPajakFromVendorInvoice = new System.Windows.Forms.Button();
-            this.itxt_FakturPajak_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.in_FakturPajak_PPN = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.in_FakturPajak_DPP = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.idtp_FakturPajak_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
-            this.itxt_FakturPajak_No = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.idtp_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.in_TOP = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.itxt_InvoiceNo = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDiffTotalPajakToAmount = new System.Windows.Forms.Label();
+            this.itxt_FakturPajak_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.in_FakturPajak_PPN = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_FakturPajak_DPP = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.idtp_FakturPajak_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.itxt_FakturPajak_No = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.btnRemoveFakturPajakFromVendorInvoice = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -71,152 +72,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "INVOICE";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.itxt_FakturPajak_Notes);
-            this.groupBox2.Controls.Add(this.in_FakturPajak_PPN);
-            this.groupBox2.Controls.Add(this.in_FakturPajak_DPP);
-            this.groupBox2.Controls.Add(this.idtp_FakturPajak_Timestamp);
-            this.groupBox2.Controls.Add(this.itxt_FakturPajak_No);
-            this.groupBox2.Location = new System.Drawing.Point(205, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(175, 281);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "FAKTUR PAJAK";
-            // 
-            // btnRemoveFakturPajakFromVendorInvoice
-            // 
-            this.btnRemoveFakturPajakFromVendorInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveFakturPajakFromVendorInvoice.Location = new System.Drawing.Point(188, 302);
-            this.btnRemoveFakturPajakFromVendorInvoice.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoveFakturPajakFromVendorInvoice.Name = "btnRemoveFakturPajakFromVendorInvoice";
-            this.btnRemoveFakturPajakFromVendorInvoice.Size = new System.Drawing.Size(113, 28);
-            this.btnRemoveFakturPajakFromVendorInvoice.TabIndex = 3;
-            this.btnRemoveFakturPajakFromVendorInvoice.Text = "REMOVE FP";
-            this.btnRemoveFakturPajakFromVendorInvoice.UseVisualStyleBackColor = true;
-            this.btnRemoveFakturPajakFromVendorInvoice.Click += new System.EventHandler(this.BtnRemoveFakturPajakFromVendorInvoice_Click);
-            // 
-            // itxt_FakturPajak_Notes
-            // 
-            this.itxt_FakturPajak_Notes.IsBrowseMode = false;
-            this.itxt_FakturPajak_Notes.LabelText = "Notes";
-            this.itxt_FakturPajak_Notes.Location = new System.Drawing.Point(7, 178);
-            this.itxt_FakturPajak_Notes.MaxLength = 32767;
-            this.itxt_FakturPajak_Notes.MultiLine = true;
-            this.itxt_FakturPajak_Notes.Name = "itxt_FakturPajak_Notes";
-            this.itxt_FakturPajak_Notes.PasswordChar = '\0';
-            this.itxt_FakturPajak_Notes.RowCount = 4;
-            this.itxt_FakturPajak_Notes.ShowDeleteButton = false;
-            this.itxt_FakturPajak_Notes.ShowFilter = false;
-            this.itxt_FakturPajak_Notes.ShowTextboxOnly = false;
-            this.itxt_FakturPajak_Notes.Size = new System.Drawing.Size(161, 86);
-            this.itxt_FakturPajak_Notes.TabIndex = 4;
-            this.itxt_FakturPajak_Notes.ValueText = "";
-            // 
-            // in_FakturPajak_PPN
-            // 
-            this.in_FakturPajak_PPN.Checked = false;
-            this.in_FakturPajak_PPN.DecimalPlaces = 2;
-            this.in_FakturPajak_PPN.HideUpDown = false;
-            this.in_FakturPajak_PPN.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_FakturPajak_PPN.LabelText = "PPN";
-            this.in_FakturPajak_PPN.Location = new System.Drawing.Point(7, 138);
-            this.in_FakturPajak_PPN.MaximumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            0});
-            this.in_FakturPajak_PPN.MinimumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            -2147483648});
-            this.in_FakturPajak_PPN.Name = "in_FakturPajak_PPN";
-            this.in_FakturPajak_PPN.ShowAllowDecimalCheckbox = false;
-            this.in_FakturPajak_PPN.ShowCheckbox = false;
-            this.in_FakturPajak_PPN.ShowTextboxOnly = false;
-            this.in_FakturPajak_PPN.Size = new System.Drawing.Size(161, 40);
-            this.in_FakturPajak_PPN.TabIndex = 3;
-            this.in_FakturPajak_PPN.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // in_FakturPajak_DPP
-            // 
-            this.in_FakturPajak_DPP.Checked = false;
-            this.in_FakturPajak_DPP.DecimalPlaces = 2;
-            this.in_FakturPajak_DPP.HideUpDown = false;
-            this.in_FakturPajak_DPP.Increment = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.in_FakturPajak_DPP.LabelText = "DPP";
-            this.in_FakturPajak_DPP.Location = new System.Drawing.Point(7, 98);
-            this.in_FakturPajak_DPP.MaximumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            0});
-            this.in_FakturPajak_DPP.MinimumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            -2147483648});
-            this.in_FakturPajak_DPP.Name = "in_FakturPajak_DPP";
-            this.in_FakturPajak_DPP.ShowAllowDecimalCheckbox = false;
-            this.in_FakturPajak_DPP.ShowCheckbox = false;
-            this.in_FakturPajak_DPP.ShowTextboxOnly = false;
-            this.in_FakturPajak_DPP.Size = new System.Drawing.Size(161, 40);
-            this.in_FakturPajak_DPP.TabIndex = 2;
-            this.in_FakturPajak_DPP.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_FakturPajak_DPP.ValueChanged += new System.EventHandler(this.In_FakturPajak_DPP_ValueChanged);
-            // 
-            // idtp_FakturPajak_Timestamp
-            // 
-            this.idtp_FakturPajak_Timestamp.Checked = true;
-            this.idtp_FakturPajak_Timestamp.CustomFormat = "dd/MM/yyyy";
-            this.idtp_FakturPajak_Timestamp.DefaultCheckedValue = false;
-            this.idtp_FakturPajak_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.idtp_FakturPajak_Timestamp.LabelText = "Date";
-            this.idtp_FakturPajak_Timestamp.Location = new System.Drawing.Point(7, 16);
-            this.idtp_FakturPajak_Timestamp.Name = "idtp_FakturPajak_Timestamp";
-            this.idtp_FakturPajak_Timestamp.ShowCheckBox = false;
-            this.idtp_FakturPajak_Timestamp.ShowDateTimePickerOnly = false;
-            this.idtp_FakturPajak_Timestamp.ShowUpAndDown = false;
-            this.idtp_FakturPajak_Timestamp.Size = new System.Drawing.Size(161, 41);
-            this.idtp_FakturPajak_Timestamp.TabIndex = 0;
-            this.idtp_FakturPajak_Timestamp.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.idtp_FakturPajak_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
-            // 
-            // itxt_FakturPajak_No
-            // 
-            this.itxt_FakturPajak_No.IsBrowseMode = false;
-            this.itxt_FakturPajak_No.LabelText = "Nomor FP";
-            this.itxt_FakturPajak_No.Location = new System.Drawing.Point(7, 57);
-            this.itxt_FakturPajak_No.MaxLength = 32767;
-            this.itxt_FakturPajak_No.MultiLine = false;
-            this.itxt_FakturPajak_No.Name = "itxt_FakturPajak_No";
-            this.itxt_FakturPajak_No.PasswordChar = '\0';
-            this.itxt_FakturPajak_No.RowCount = 1;
-            this.itxt_FakturPajak_No.ShowDeleteButton = true;
-            this.itxt_FakturPajak_No.ShowFilter = false;
-            this.itxt_FakturPajak_No.ShowTextboxOnly = false;
-            this.itxt_FakturPajak_No.Size = new System.Drawing.Size(161, 41);
-            this.itxt_FakturPajak_No.TabIndex = 1;
-            this.itxt_FakturPajak_No.ValueText = "";
             // 
             // idtp_Timestamp
             // 
@@ -320,6 +175,7 @@
             0,
             0,
             0});
+            this.in_Amount.ValueChanged += new System.EventHandler(this.updateDiffTotalFakturPajakToAmount);
             // 
             // itxt_InvoiceNo
             // 
@@ -337,6 +193,163 @@
             this.itxt_InvoiceNo.Size = new System.Drawing.Size(161, 41);
             this.itxt_InvoiceNo.TabIndex = 1;
             this.itxt_InvoiceNo.ValueText = "";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblDiffTotalPajakToAmount);
+            this.groupBox2.Controls.Add(this.itxt_FakturPajak_Notes);
+            this.groupBox2.Controls.Add(this.in_FakturPajak_PPN);
+            this.groupBox2.Controls.Add(this.in_FakturPajak_DPP);
+            this.groupBox2.Controls.Add(this.idtp_FakturPajak_Timestamp);
+            this.groupBox2.Controls.Add(this.itxt_FakturPajak_No);
+            this.groupBox2.Location = new System.Drawing.Point(205, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(175, 281);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "FAKTUR PAJAK";
+            // 
+            // lblDiffTotalPajakToAmount
+            // 
+            this.lblDiffTotalPajakToAmount.Location = new System.Drawing.Point(45, 182);
+            this.lblDiffTotalPajakToAmount.Name = "lblDiffTotalPajakToAmount";
+            this.lblDiffTotalPajakToAmount.Size = new System.Drawing.Size(123, 16);
+            this.lblDiffTotalPajakToAmount.TabIndex = 4;
+            this.lblDiffTotalPajakToAmount.Text = "lblDiffTotalPajakToAmount";
+            this.lblDiffTotalPajakToAmount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // itxt_FakturPajak_Notes
+            // 
+            this.itxt_FakturPajak_Notes.IsBrowseMode = false;
+            this.itxt_FakturPajak_Notes.LabelText = "Notes";
+            this.itxt_FakturPajak_Notes.Location = new System.Drawing.Point(7, 178);
+            this.itxt_FakturPajak_Notes.MaxLength = 32767;
+            this.itxt_FakturPajak_Notes.MultiLine = true;
+            this.itxt_FakturPajak_Notes.Name = "itxt_FakturPajak_Notes";
+            this.itxt_FakturPajak_Notes.PasswordChar = '\0';
+            this.itxt_FakturPajak_Notes.RowCount = 4;
+            this.itxt_FakturPajak_Notes.ShowDeleteButton = false;
+            this.itxt_FakturPajak_Notes.ShowFilter = false;
+            this.itxt_FakturPajak_Notes.ShowTextboxOnly = false;
+            this.itxt_FakturPajak_Notes.Size = new System.Drawing.Size(161, 86);
+            this.itxt_FakturPajak_Notes.TabIndex = 4;
+            this.itxt_FakturPajak_Notes.ValueText = "";
+            // 
+            // in_FakturPajak_PPN
+            // 
+            this.in_FakturPajak_PPN.Checked = false;
+            this.in_FakturPajak_PPN.DecimalPlaces = 2;
+            this.in_FakturPajak_PPN.HideUpDown = false;
+            this.in_FakturPajak_PPN.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_FakturPajak_PPN.LabelText = "PPN";
+            this.in_FakturPajak_PPN.Location = new System.Drawing.Point(7, 138);
+            this.in_FakturPajak_PPN.MaximumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            0});
+            this.in_FakturPajak_PPN.MinimumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            -2147483648});
+            this.in_FakturPajak_PPN.Name = "in_FakturPajak_PPN";
+            this.in_FakturPajak_PPN.ShowAllowDecimalCheckbox = false;
+            this.in_FakturPajak_PPN.ShowCheckbox = false;
+            this.in_FakturPajak_PPN.ShowTextboxOnly = false;
+            this.in_FakturPajak_PPN.Size = new System.Drawing.Size(161, 40);
+            this.in_FakturPajak_PPN.TabIndex = 3;
+            this.in_FakturPajak_PPN.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_FakturPajak_PPN.ValueChanged += new System.EventHandler(this.updateDiffTotalFakturPajakToAmount);
+            // 
+            // in_FakturPajak_DPP
+            // 
+            this.in_FakturPajak_DPP.Checked = false;
+            this.in_FakturPajak_DPP.DecimalPlaces = 2;
+            this.in_FakturPajak_DPP.HideUpDown = false;
+            this.in_FakturPajak_DPP.Increment = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.in_FakturPajak_DPP.LabelText = "DPP";
+            this.in_FakturPajak_DPP.Location = new System.Drawing.Point(7, 98);
+            this.in_FakturPajak_DPP.MaximumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            0});
+            this.in_FakturPajak_DPP.MinimumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            -2147483648});
+            this.in_FakturPajak_DPP.Name = "in_FakturPajak_DPP";
+            this.in_FakturPajak_DPP.ShowAllowDecimalCheckbox = false;
+            this.in_FakturPajak_DPP.ShowCheckbox = false;
+            this.in_FakturPajak_DPP.ShowTextboxOnly = false;
+            this.in_FakturPajak_DPP.Size = new System.Drawing.Size(161, 40);
+            this.in_FakturPajak_DPP.TabIndex = 2;
+            this.in_FakturPajak_DPP.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_FakturPajak_DPP.ValueChanged += new System.EventHandler(this.In_FakturPajak_DPP_ValueChanged);
+            // 
+            // idtp_FakturPajak_Timestamp
+            // 
+            this.idtp_FakturPajak_Timestamp.Checked = true;
+            this.idtp_FakturPajak_Timestamp.CustomFormat = "dd/MM/yyyy";
+            this.idtp_FakturPajak_Timestamp.DefaultCheckedValue = false;
+            this.idtp_FakturPajak_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_FakturPajak_Timestamp.LabelText = "Date";
+            this.idtp_FakturPajak_Timestamp.Location = new System.Drawing.Point(7, 16);
+            this.idtp_FakturPajak_Timestamp.Name = "idtp_FakturPajak_Timestamp";
+            this.idtp_FakturPajak_Timestamp.ShowCheckBox = false;
+            this.idtp_FakturPajak_Timestamp.ShowDateTimePickerOnly = false;
+            this.idtp_FakturPajak_Timestamp.ShowUpAndDown = false;
+            this.idtp_FakturPajak_Timestamp.Size = new System.Drawing.Size(161, 41);
+            this.idtp_FakturPajak_Timestamp.TabIndex = 0;
+            this.idtp_FakturPajak_Timestamp.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.idtp_FakturPajak_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
+            // 
+            // itxt_FakturPajak_No
+            // 
+            this.itxt_FakturPajak_No.IsBrowseMode = false;
+            this.itxt_FakturPajak_No.LabelText = "Nomor FP";
+            this.itxt_FakturPajak_No.Location = new System.Drawing.Point(7, 57);
+            this.itxt_FakturPajak_No.MaxLength = 32767;
+            this.itxt_FakturPajak_No.MultiLine = false;
+            this.itxt_FakturPajak_No.Name = "itxt_FakturPajak_No";
+            this.itxt_FakturPajak_No.PasswordChar = '\0';
+            this.itxt_FakturPajak_No.RowCount = 1;
+            this.itxt_FakturPajak_No.ShowDeleteButton = true;
+            this.itxt_FakturPajak_No.ShowFilter = false;
+            this.itxt_FakturPajak_No.ShowTextboxOnly = false;
+            this.itxt_FakturPajak_No.Size = new System.Drawing.Size(161, 41);
+            this.itxt_FakturPajak_No.TabIndex = 1;
+            this.itxt_FakturPajak_No.ValueText = "";
+            // 
+            // btnRemoveFakturPajakFromVendorInvoice
+            // 
+            this.btnRemoveFakturPajakFromVendorInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveFakturPajakFromVendorInvoice.Location = new System.Drawing.Point(188, 302);
+            this.btnRemoveFakturPajakFromVendorInvoice.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoveFakturPajakFromVendorInvoice.Name = "btnRemoveFakturPajakFromVendorInvoice";
+            this.btnRemoveFakturPajakFromVendorInvoice.Size = new System.Drawing.Size(113, 28);
+            this.btnRemoveFakturPajakFromVendorInvoice.TabIndex = 3;
+            this.btnRemoveFakturPajakFromVendorInvoice.Text = "REMOVE FP";
+            this.btnRemoveFakturPajakFromVendorInvoice.UseVisualStyleBackColor = true;
+            this.btnRemoveFakturPajakFromVendorInvoice.Click += new System.EventHandler(this.BtnRemoveFakturPajakFromVendorInvoice_Click);
             // 
             // VendorInvoices_Edit_Form
             // 
@@ -372,5 +385,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_FakturPajak_DPP;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_FakturPajak_Notes;
         private System.Windows.Forms.Button btnRemoveFakturPajakFromVendorInvoice;
+        private System.Windows.Forms.Label lblDiffTotalPajakToAmount;
     }
 }

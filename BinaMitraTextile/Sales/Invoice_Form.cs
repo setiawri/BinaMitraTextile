@@ -68,7 +68,6 @@ namespace BinaMitraTextile.Sales
             }
             else
             {
-                this.Text = "INVOICE";
                 //barcode.DataToEncode = _sale.barcode;
                 lblInvoiceNo.Text = _sale.barcode;
                 btnPackingList.Enabled = true;
@@ -88,7 +87,9 @@ namespace BinaMitraTextile.Sales
         private void populatePage()
         {
             if (_sale.ReturnedToSupplier)
-                lblTitle.Text = "RETUR VENDOR";
+                this.Text = lblTitle.Text = "RETUR VENDOR";
+            else
+                this.Text = "INVOICE";
 
             lblInvoiceNo.Text = "";
             lblDate.Text = String.Format("Date: {0:dd/MM/yy hh:mm}", _sale.time_stamp);

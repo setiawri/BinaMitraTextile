@@ -33,6 +33,12 @@ namespace BinaMitraTextile.InventoryForm
             itxt_Notes.ValueText = _vendorInvoice.Notes;
 
             populateFakturPajak();
+            calculateDiffTotalPajakToAmount();
+        }
+
+        private void calculateDiffTotalPajakToAmount()
+        {
+            lblDiffTotalPajakToAmount.Text = string.Format("diff: {0:N0}", in_Amount.Value - in_FakturPajak_DPP.Value - in_FakturPajak_PPN.Value);
         }
 
         private void populateFakturPajak()
@@ -132,6 +138,11 @@ namespace BinaMitraTextile.InventoryForm
         private void Idtp_Timestamp_ValueChanged(object sender, EventArgs e)
         {
             idtp_FakturPajak_Timestamp.Value = idtp_Timestamp.Value;
+        }
+
+        private void updateDiffTotalFakturPajakToAmount(object sender, EventArgs e)
+        {
+            calculateDiffTotalPajakToAmount();
         }
     }
 }

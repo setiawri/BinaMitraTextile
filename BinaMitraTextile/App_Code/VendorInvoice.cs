@@ -60,7 +60,7 @@ namespace BinaMitraTextile
         public const string FILTER_BrowsingForFakturPajak_Vendors_Id = "FILTER_BrowsingForFakturPajak_Vendors_Id";
         public const string FILTER_ShowOnlyIncomplete = "FILTER_ShowOnlyIncomplete";
         public const string FILTER_ShowOnlyVendorUsesFakturPajak = "FILTER_ShowOnlyVendorUsesFakturPajak";
-        public const string FILTER_ShowOnlyLast3Months = "FILTER_ShowOnlyLast3Months";
+        public const string FILTER_showOnlyLast6Months = "FILTER_showOnlyLast6Months";
 
         #endregion DATABASE COLUMNS
         /*******************************************************************************************************/
@@ -92,7 +92,7 @@ namespace BinaMitraTextile
 
         public static bool isInvoiceNoExist(Guid? id, string invoiceNo)
         {
-            using (SqlCommand cmd = new SqlCommand("vendorinvoice_isInvoiceNoExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("VendorInvoices_isExist_InvoiceNo", DBUtil.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_InvoiceNo, SqlDbType.VarChar).Value = invoiceNo;
@@ -121,25 +121,25 @@ namespace BinaMitraTextile
             return get(null, null, null, true, false, false, FakturPajaks_Id, null);
         }
 
-        public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, bool showOnlyLast3Months)
+        public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, bool showOnlyLast6Months)
         {
-            return get(null, null, null, false, false, showOnlyLast3Months, null, BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, null, false, false, showOnlyLast6Months, null, BrowsingForFakturPajak_Customers_Id);
         }
 
-        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, bool showOnlyLast3Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
+        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, bool showOnlyLast6Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
-                "vendorinvoice_get",
+                "VendorInvoices_get",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
                 new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, Util.wrapNullable(invoiceNumber)),
                 new SqlQueryParameter(COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(FakturPajaks_Id)),
                 new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
                 new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
                 new SqlQueryParameter(FILTER_ShowOnlyIncomplete, SqlDbType.Bit, showOnlyIncomplete),
-                new SqlQueryParameter(FILTER_ShowOnlyLast3Months, SqlDbType.Bit, showOnlyLast3Months),
+                new SqlQueryParameter(FILTER_showOnlyLast6Months, SqlDbType.Bit, showOnlyLast6Months),
                 new SqlQueryParameter(FILTER_ShowOnlyVendorUsesFakturPajak, SqlDbType.Bit, showOnlyVendorUsesFakturPajak)
                 );
             return result.Datatable;
@@ -150,7 +150,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("vendorinvoice_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("VendorInvoices_add", DBUtil.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -198,7 +198,7 @@ namespace BinaMitraTextile
                 false,
                 DBUtil.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
-                "vendorinvoice_update",
+                "VendorInvoices_update",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
                 new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, Timestamp),
                 new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, InvoiceNo),

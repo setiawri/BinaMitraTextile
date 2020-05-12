@@ -17,6 +17,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private bool isFormShown = false;
         private bool _createVendorInvoicePayment = false;
+        private Guid _clickedInventoryID;
 
         #endregion
         /*******************************************************************************************************/
@@ -68,6 +69,7 @@ namespace BinaMitraTextile.InventoryForm
             createVendorInvoicePaymentMode(false);
             lblVendorInvoicePayment.Text = "0";
             idtp_VendorInvoicePaymentDate.Value = DateTime.Now;
+            calculateDueAmount();
 
             gridvendorinvoice.AutoGenerateColumns = false;
             gridvendorinvoice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -127,24 +129,23 @@ namespace BinaMitraTextile.InventoryForm
         {
             gridvendorinvoice.AutoGenerateColumns = false; //the line in setupControls() is not working??
             if (_startingMode == FormModes.Browse)
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast3Months.Checked));
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast6Months.Checked));
             else if(_createVendorInvoicePayment)
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast3Months.Checked, null, null));
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null));
             else
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast3Months.Checked, null, null));
+                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null));
 
             createVendorInvoicePaymentMode(_createVendorInvoicePayment);
 
-            if (gridvendorinvoice.Rows.Count > 0)
-            {
-                pbLog.Enabled = true;
-                btnUpdate.Enabled = true;
-            }
-            else
-            {
-                pbLog.Enabled = false;
-                btnUpdate.Enabled = false;
-            }
+            pbLog.Enabled = gridvendorinvoice.Rows.Count > 0;
+        }
+
+        private void populateGridInventory()
+        {
+            DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false);
+            data = Util.sortData(data, Inventory.COL_DB_CODE, SortOrder.Ascending, null, null);
+            Tools.setGridviewDataSource(gridInventory, false, false, data);
+            lblSaleInvoices.Text = string.Format("Sale Invoices: {0:N2}", Util.compute(data, "SUM", Inventory.COL_BUYVALUE, ""));
         }
 
         private void createVendorInvoicePaymentMode(bool value)
@@ -158,12 +159,12 @@ namespace BinaMitraTextile.InventoryForm
             if(_createVendorInvoicePayment)
             {
                 chkShowOnlyIncomplete.Checked = true;
-                chkShowOnlyLast3Months.Checked = false;
+                chkShowOnlyLast6Months.Checked = false;
                 chkShowOnlyVendorUsesFakturPajak.Checked = false;
             }
 
             if (value)
-                in_MaxPayment.focus();
+                in_AvailableFund.focus();
             else
             {
                 iddl_Vendors.reset();
@@ -183,31 +184,39 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             lblVendorInvoicePayment.Text = string.Format("{0:N2}", paymentAmount);
-            if (in_MaxPayment.Value > 0)
-                lblMaxPaymentDiff.Text = string.Format("Diff: {0:N2}", in_MaxPayment.Value - paymentAmount);
+            if (in_AvailableFund.Value > 0)
+                lblAvailableFund.Text = string.Format("available: {0:N2}", in_AvailableFund.Value - paymentAmount);
             else
-                lblMaxPaymentDiff.Text = "";
+                lblAvailableFund.Text = "";
+        }
+
+        private void showEditForm()
+        {
+            Util.displayForm(new VendorInvoices_Edit_Form(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
+            populateGridVendorInvoices();
+        }
+
+        private void calculateDueAmount()
+        {
+            lblDueAmount.Text = "";
+            if (isFormShown)
+            {
+                if (iddl_Vendors.hasSelectedValue())
+                    lblDueAmount.Text = string.Format("due:{0:N0}", Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, VendorInvoice.COL_IsDue + "=1"));
+            }
         }
 
         #endregion
         /*******************************************************************************************************/
         #region EVENT HANDLERS
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            Util.displayForm(new VendorInvoices_Edit_Form(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
-            populateGridVendorInvoices();
-        }
-
         private void gridvendorinvoice_SelectionChanged(object sender, EventArgs e)
         {
             if (isFormShown && gridvendorinvoice.SelectedRows.Count > 0)
             {
-                DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false);
-                Tools.setGridviewDataSource(gridInventory, false, false, data);
-                lblSaleInvoices.Text = string.Format("Sale Invoices: {0:N2}", Util.compute(data, "SUM", Inventory.COL_BUYVALUE, ""));
+                populateGridInventory();
 
-                data = Sale.get_by_VendorInvoices_Id(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id));
+                DataTable data = Sale.get_by_VendorInvoices_Id(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id));
                 Util.setGridviewDataSource(gridSaleInvoices, false, false, data);
                 lblReturns.Text = string.Format("Returns: {0:N2}", Util.compute(data, "SUM", Sale.COL_SALEAMOUNT, ""));
             }
@@ -267,6 +276,10 @@ namespace BinaMitraTextile.InventoryForm
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            else
+            {
+                showEditForm();
+            }
         }
 
         private void ChkShowOnlyIncomplete_CheckedChanged(object sender, EventArgs e)
@@ -281,7 +294,7 @@ namespace BinaMitraTextile.InventoryForm
                 populateGridVendorInvoices();
         }
 
-        private void ChkShowOnlyLast3Months_CheckedChanged(object sender, EventArgs e)
+        private void ChkShowOnlyLast6Months_CheckedChanged(object sender, EventArgs e)
         {
             if (!_createVendorInvoicePayment)
                 populateGridVendorInvoices();
@@ -358,7 +371,48 @@ namespace BinaMitraTextile.InventoryForm
 
         private void BtnApplyMaxPayment_Click(object sender, EventArgs e)
         {
-            Util.displayMessageBoxError("Not implemented yet");
+        }
+
+        private void GridInventory_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Util.isColumnMatch(sender, e, col_gridinventory_buyprice))
+            {
+                pnlUpdateBuyPrice.Visible = true;
+                _clickedInventoryID = (Guid)Util.getClickedRowValue(sender, e, col_gridinventory_id);
+                Inventory obj = new Inventory(_clickedInventoryID);
+                in_BuyPrice.Value = obj.buy_price;
+                in_BuyPrice.focus();
+            }
+        }
+
+        private void BtnCancelUpdateBuyPrice_Click(object sender, EventArgs e)
+        {
+            in_BuyPrice.Value = 0;
+            pnlUpdateBuyPrice.Visible = false;
+        }
+
+        private void BtnUpdateBuyPrice_Click(object sender, EventArgs e)
+        {
+            Inventory.updateBuyPrice(_clickedInventoryID, in_BuyPrice.ValueDecimal);
+            in_BuyPrice.Value = 0;
+            pnlUpdateBuyPrice.Visible = false;
+            populateGridInventory();
+        }
+
+        private void In_BuyPrice_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                btnUpdateBuyPrice.PerformClick();
+        }
+
+        private void Iddl_Vendors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            calculateDueAmount();
+        }
+
+        private void In_AvailableFund_ValueChanged(object sender, EventArgs e)
+        {
+            calculateVendorInvoicePaymentAmount();
         }
 
         #endregion

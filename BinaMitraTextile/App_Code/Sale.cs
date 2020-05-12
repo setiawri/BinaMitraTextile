@@ -174,6 +174,7 @@ namespace BinaMitraTextile
                 SaleCommission_Users_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleCommission_Users_Id);
                 FakturPajaks_Id = DBUtil.parseData<Guid?>(row, COL_DB_FakturPajaks_Id);
 
+                ReturnedToSupplier = (Vendors_Id != null);
                 TransportName = DBUtil.parseData<string>(row, COL_TRANSPORTNAME);
                 FakturPajaks_No = DBUtil.parseData<string>(row, COL_FakturPajaks_No);
 
