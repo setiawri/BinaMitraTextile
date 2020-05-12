@@ -7,16 +7,6 @@ using LIBUtil;
 
 namespace BinaMitraTextile
 {
-    public enum VendorInvoiceStatus
-    {
-        New,
-        Cancelled,
-        [Description("Paid Partial")]
-        PaidPartial,
-        [Description("Paid Full")]
-        PaidFull
-    };
-
     public class VendorInvoice
     {
         /*******************************************************************************************************/
@@ -27,7 +17,6 @@ namespace BinaMitraTextile
         public string InvoiceNo;
         public decimal Amount;
         public string Notes;
-        public VendorInvoiceStatus Status;
         public int TOP;
         public Guid? FakturPajaks_Id;
         public Guid? Vendors_Id;
@@ -52,6 +41,7 @@ namespace BinaMitraTextile
         public const string COL_DB_Amount = "Amount";
         public const string COL_DB_FakturPajaks_Id = "FakturPajaks_Id";
         public const string COL_DB_Vendors_Id = "Vendors_Id";
+        public const string COL_DB_Approved = "Approved";
 
         public const string COL_StatusName = "status_name";
         public const string COL_CalculatedAmount = "CalculatedAmount";
@@ -84,7 +74,6 @@ namespace BinaMitraTextile
             InvoiceNo = DBUtil.parseData<string>(row, COL_DB_InvoiceNo);
             Amount = DBUtil.parseData<decimal>(row, COL_DB_Amount);
             Notes = DBUtil.parseData<string>(row, COL_DB_Notes);
-            Status = Tools.parseEnum<VendorInvoiceStatus>(DBUtil.parseData<Int16>(row, COL_DB_StatusEnumID));
             TOP = DBUtil.parseData<int>(row, COL_DB_TOP);
             FakturPajaks_Id = Util.wrapNullable<Guid?>(row, COL_DB_FakturPajaks_Id);
             Vendors_Id = Util.wrapNullable<Guid?>(row, COL_DB_Vendors_Id);
@@ -115,24 +104,6 @@ namespace BinaMitraTextile
 
                 return Convert.ToBoolean(return_value.Value);
             }
-        }
-
-        public static Guid? get(string invoiceNumber)
-        {
-            Guid? id;
-            using (SqlCommand cmd = new SqlCommand("vendorinvoice_get_by_invoiceNo", DBUtil.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_InvoiceNo, SqlDbType.VarChar).Value = invoiceNumber;
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.UniqueIdentifier);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                id = (Guid?)return_value.Value;
-            }
-            return id;
         }
 
         public static DataTable get()
@@ -169,8 +140,6 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
                 new SqlQueryParameter(FILTER_ShowOnlyIncomplete, SqlDbType.Bit, showOnlyIncomplete),
                 new SqlQueryParameter(FILTER_ShowOnlyLast3Months, SqlDbType.Bit, showOnlyLast3Months),
-                new SqlQueryParameter("status_completed", SqlDbType.TinyInt, VendorInvoiceStatus.PaidFull),
-                new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, VendorInvoiceStatus.Cancelled),
                 new SqlQueryParameter(FILTER_ShowOnlyVendorUsesFakturPajak, SqlDbType.Bit, showOnlyVendorUsesFakturPajak)
                 );
             return result.Datatable;
@@ -187,7 +156,6 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
                     cmd.Parameters.Add("@" + COL_DB_InvoiceNo, SqlDbType.VarChar).Value = invoiceNo;
                     cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Vendors_Id;
-                    cmd.Parameters.Add("@" + COL_DB_StatusEnumID, SqlDbType.TinyInt).Value = VendorInvoiceStatus.New;
 
                     cmd.ExecuteNonQuery();
 
@@ -199,22 +167,19 @@ namespace BinaMitraTextile
             return id;
         }
 
-        public static void updateStatus(Guid id, VendorInvoiceStatus statusEnumID)
+        public static void update_Approved(Guid Id, bool Value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("vendorinvoice_update_status", DBUtil.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_StatusEnumID, SqlDbType.TinyInt).Value = statusEnumID;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "VendorInvoices_update_Approved",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_Approved, SqlDbType.Bit, Value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Status changed to: " + statusEnumID.ToString());
-                }
-            }
-            catch (Exception ex) { Tools.showError(ex.Message); }
+            if (result.IsSuccessful)
+                ActivityLog.submit(Id, String.Format("Approved changed to: {0}", Value));
         }
 
         public static void update(Guid Id, DateTime Timestamp, string InvoiceNo, decimal Amount, int TOP, string Notes)

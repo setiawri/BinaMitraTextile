@@ -64,10 +64,26 @@ namespace BinaMitraTextile.InventoryForm
 
         public void populateGridVendorInvoicePayments()
         {
-            Util.setGridviewDataSource(gridVendorInvoicePayments, true, true, VendorInvoicePayment.get(null, itxt_QuickSearch.ValueText, chkShowOnlyLast3Months.Checked, chkShowUnapprovedOnly.Checked));
+            Util.setGridviewDataSource(gridVendorInvoicePayments, true, true, VendorInvoicePayment.get(null, itxt_QuickSearch.ValueText, itxt_VendorInvoiceNo.ValueText, chkShowOnlyLast3Months.Checked, chkShowUnapprovedOnly.Checked));
             pbLog.Enabled = (gridVendorInvoicePayments.Rows.Count > 0);
         }
 
+        public void searchVendorInvoiceNo(string VendorInvoices_No)
+        {
+            if (!ptFilterAndButtons.isTogglePanelVisible())
+                ptFilterAndButtons.toggle();
+
+            itxt_VendorInvoiceNo.ValueText = VendorInvoices_No;
+
+            this.chkShowOnlyLast3Months.CheckedChanged -= new System.EventHandler(this.ChkShowOnlyLast3Months_CheckedChanged);
+            this.chkShowUnapprovedOnly.CheckedChanged -= new System.EventHandler(this.ChkShowOnlyApproved_CheckedChanged);
+            chkShowOnlyLast3Months.Checked = false;
+            chkShowUnapprovedOnly.Checked = false;
+            this.chkShowOnlyLast3Months.CheckedChanged += new System.EventHandler(this.ChkShowOnlyLast3Months_CheckedChanged);
+            this.chkShowUnapprovedOnly.CheckedChanged += new System.EventHandler(this.ChkShowOnlyApproved_CheckedChanged);
+
+            populateGridVendorInvoicePayments();
+        }
 
         #endregion
         /*******************************************************************************************************/
@@ -113,6 +129,25 @@ namespace BinaMitraTextile.InventoryForm
         private void PbLog_Click(object sender, EventArgs e)
         {
             Util.displayForm(new Logs.Main_Form(Util.getSelectedRowID(gridVendorInvoicePayments, col_gridVendorInvoicePayments_Id)));
+        }
+
+        private void BtnApplyFilter_Click(object sender, EventArgs e)
+        {
+            populateGridVendorInvoicePayments();
+        }
+
+        private void GridVendorInvoicePayments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Util.isColumnMatch(sender, e, col_gridVendorInvoicePayments_Approved))
+            {
+                VendorInvoicePayment.update_Approved(Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id), !Util.getCheckboxValue(sender, e));
+                populateGridVendorInvoicePayments();
+            }
+            else if (Util.isColumnMatch(sender, e, col_gridVendorInvoicePayments_Cancelled))
+            {
+                VendorInvoicePayment.update_Cancelled(Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id), !Util.getCheckboxValue(sender, e));
+                populateGridVendorInvoicePayments();
+            }
         }
 
         #endregion

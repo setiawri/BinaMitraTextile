@@ -78,8 +78,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridvendorinvoice_ReturnedValue.DataPropertyName = VendorInvoice.COL_ReturnedValue;
             col_gridvendorinvoice_CalculatedAmount.DataPropertyName = VendorInvoice.COL_CalculatedAmount;
             col_gridvendorinvoice_AmountDifferenceFromCalculated.DataPropertyName = VendorInvoice.COL_AmountDifferenceFromCalculated;
-            col_gridvendorinvoice_statusenumid.DataPropertyName = VendorInvoice.COL_DB_StatusEnumID;
-            col_gridvendorinvoice_statusname.DataPropertyName = VendorInvoice.COL_StatusName;
+            col_gridVendorInvoices_Approved.DataPropertyName = VendorInvoice.COL_DB_Approved;
             col_gridvendorinvoice_top.DataPropertyName = VendorInvoice.COL_DB_TOP;
             col_gridVendorInvoice_DaysPastDue.DataPropertyName = VendorInvoice.COL_DaysPastDue;
             col_gridvendorinvoice_isdue.DataPropertyName = VendorInvoice.COL_IsDue;
@@ -156,9 +155,12 @@ namespace BinaMitraTextile.InventoryForm
             col_gridVendorInvoice_PaymentAmount.Visible = value;
             col_gridVendorInvoice_TogglePayment.Visible = value;
 
-            chkShowOnlyIncomplete.Checked = true;
-            chkShowOnlyLast3Months.Checked = false;
-            chkShowOnlyVendorUsesFakturPajak.Checked = false;
+            if(_createVendorInvoicePayment)
+            {
+                chkShowOnlyIncomplete.Checked = true;
+                chkShowOnlyLast3Months.Checked = false;
+                chkShowOnlyVendorUsesFakturPajak.Checked = false;
+            }
 
             if (value)
                 in_MaxPayment.focus();
@@ -194,19 +196,6 @@ namespace BinaMitraTextile.InventoryForm
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Util.displayForm(new VendorInvoices_Edit_Form(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
-            populateGridVendorInvoices();
-        }
-
-        public void addStatusContextMenu(DataGridViewColumn column)
-        {
-            column.ContextMenuStrip = new ContextMenuStrip();
-            foreach (VendorInvoiceStatus status in Tools.GetEnumItems<VendorInvoiceStatus>())
-                column.ContextMenuStrip.Items.Add(new ToolStripMenuItem(Tools.GetEnumDescription(status), null, changeStatus_Click));
-        }
-
-        public void changeStatus_Click(object sender, EventArgs args)
-        {
-            VendorInvoice.updateStatus(Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), Tools.parseEnum<VendorInvoiceStatus>(sender.ToString()));
             populateGridVendorInvoices();
         }
 
@@ -251,7 +240,8 @@ namespace BinaMitraTextile.InventoryForm
             }
             else if (Util.isColumnMatch(sender, e, col_gridVendorInvoice_PaidAmount))
             {
-
+                VendorInvoicePayments_Form form = (VendorInvoicePayments_Form)Util.displayMDIChild(new VendorInvoicePayments_Form());
+                form.searchVendorInvoiceNo(Util.getClickedRowValue(sender, e, col_gridvendorinvoice_invoiceno).ToString());
             }
         }
 

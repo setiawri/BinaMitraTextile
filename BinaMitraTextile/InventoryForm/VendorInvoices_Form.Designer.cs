@@ -80,9 +80,10 @@
             this.pnlFilterAndButtons = new System.Windows.Forms.Panel();
             this.pnlFilterAndButtonsContent = new System.Windows.Forms.Panel();
             this.gbVendorInvoicePayment = new System.Windows.Forms.GroupBox();
+            this.lblVendorInvoicePayment = new System.Windows.Forms.Label();
+            this.lblMaxPaymentDiff = new System.Windows.Forms.Label();
             this.btnApplyMaxPayment = new System.Windows.Forms.Button();
             this.btnClearVendorInvoicePayment = new System.Windows.Forms.Button();
-            this.lblVendorInvoicePayment = new System.Windows.Forms.Label();
             this.btnSubmitVendorPayments = new System.Windows.Forms.Button();
             this.btnCancelVendorPayments = new System.Windows.Forms.Button();
             this.in_MaxPayment = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
@@ -115,10 +116,8 @@
             this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lblMaxPaymentDiff = new System.Windows.Forms.Label();
             this.col_gridvendorinvoice_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridvendorinvoice_statusenumid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridvendorinvoice_statusname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridVendorInvoices_Approved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_gridvendorinvoice_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridvendorinvoice_invoiceno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridvendorinvoice_vendorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -408,6 +407,28 @@
             this.gbVendorInvoicePayment.TabIndex = 9;
             this.gbVendorInvoicePayment.TabStop = false;
             // 
+            // lblVendorInvoicePayment
+            // 
+            this.lblVendorInvoicePayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVendorInvoicePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVendorInvoicePayment.Location = new System.Drawing.Point(173, 26);
+            this.lblVendorInvoicePayment.Name = "lblVendorInvoicePayment";
+            this.lblVendorInvoicePayment.Size = new System.Drawing.Size(185, 23);
+            this.lblVendorInvoicePayment.TabIndex = 121;
+            this.lblVendorInvoicePayment.Text = "lblVendorInvoicePayment";
+            this.lblVendorInvoicePayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblMaxPaymentDiff
+            // 
+            this.lblMaxPaymentDiff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMaxPaymentDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaxPaymentDiff.Location = new System.Drawing.Point(173, 7);
+            this.lblMaxPaymentDiff.Name = "lblMaxPaymentDiff";
+            this.lblMaxPaymentDiff.Size = new System.Drawing.Size(185, 23);
+            this.lblMaxPaymentDiff.TabIndex = 122;
+            this.lblMaxPaymentDiff.Text = "lblMaxPaymentDiff";
+            this.lblMaxPaymentDiff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // btnApplyMaxPayment
             // 
             this.btnApplyMaxPayment.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
@@ -436,17 +457,6 @@
             this.btnClearVendorInvoicePayment.Text = "CLEAR";
             this.btnClearVendorInvoicePayment.UseVisualStyleBackColor = true;
             this.btnClearVendorInvoicePayment.Click += new System.EventHandler(this.BtnClearVendorInvoicePayment_Click);
-            // 
-            // lblVendorInvoicePayment
-            // 
-            this.lblVendorInvoicePayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVendorInvoicePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVendorInvoicePayment.Location = new System.Drawing.Point(173, 26);
-            this.lblVendorInvoicePayment.Name = "lblVendorInvoicePayment";
-            this.lblVendorInvoicePayment.Size = new System.Drawing.Size(185, 23);
-            this.lblVendorInvoicePayment.TabIndex = 121;
-            this.lblVendorInvoicePayment.Text = "lblVendorInvoicePayment";
-            this.lblVendorInvoicePayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnSubmitVendorPayments
             // 
@@ -707,8 +717,7 @@
             this.gridvendorinvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridvendorinvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridvendorinvoice_id,
-            this.col_gridvendorinvoice_statusenumid,
-            this.col_gridvendorinvoice_statusname,
+            this.col_gridVendorInvoices_Approved,
             this.col_gridvendorinvoice_timestamp,
             this.col_gridvendorinvoice_invoiceno,
             this.col_gridvendorinvoice_vendorname,
@@ -958,17 +967,6 @@
             this.ptRowInfo.TabIndex = 5;
             this.ptRowInfo.TogglePanel = null;
             // 
-            // lblMaxPaymentDiff
-            // 
-            this.lblMaxPaymentDiff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMaxPaymentDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxPaymentDiff.Location = new System.Drawing.Point(173, 7);
-            this.lblMaxPaymentDiff.Name = "lblMaxPaymentDiff";
-            this.lblMaxPaymentDiff.Size = new System.Drawing.Size(185, 23);
-            this.lblMaxPaymentDiff.TabIndex = 122;
-            this.lblMaxPaymentDiff.Text = "lblMaxPaymentDiff";
-            this.lblMaxPaymentDiff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // col_gridvendorinvoice_id
             // 
             this.col_gridvendorinvoice_id.DataPropertyName = "id";
@@ -977,21 +975,16 @@
             this.col_gridvendorinvoice_id.ReadOnly = true;
             this.col_gridvendorinvoice_id.Visible = false;
             // 
-            // col_gridvendorinvoice_statusenumid
+            // col_gridVendorInvoices_Approved
             // 
-            this.col_gridvendorinvoice_statusenumid.HeaderText = "Status Enum ID";
-            this.col_gridvendorinvoice_statusenumid.Name = "col_gridvendorinvoice_statusenumid";
-            this.col_gridvendorinvoice_statusenumid.ReadOnly = true;
-            this.col_gridvendorinvoice_statusenumid.Visible = false;
-            // 
-            // col_gridvendorinvoice_statusname
-            // 
-            this.col_gridvendorinvoice_statusname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridvendorinvoice_statusname.HeaderText = "Status";
-            this.col_gridvendorinvoice_statusname.MinimumWidth = 40;
-            this.col_gridvendorinvoice_statusname.Name = "col_gridvendorinvoice_statusname";
-            this.col_gridvendorinvoice_statusname.ReadOnly = true;
-            this.col_gridvendorinvoice_statusname.Width = 40;
+            this.col_gridVendorInvoices_Approved.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridVendorInvoices_Approved.HeaderText = "OK";
+            this.col_gridVendorInvoices_Approved.MinimumWidth = 30;
+            this.col_gridVendorInvoices_Approved.Name = "col_gridVendorInvoices_Approved";
+            this.col_gridVendorInvoices_Approved.ReadOnly = true;
+            this.col_gridVendorInvoices_Approved.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridVendorInvoices_Approved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridVendorInvoices_Approved.Width = 30;
             // 
             // col_gridvendorinvoice_timestamp
             // 
@@ -1324,8 +1317,7 @@
         private System.Windows.Forms.Button btnApplyMaxPayment;
         private System.Windows.Forms.Label lblMaxPaymentDiff;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_statusenumid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_statusname;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridVendorInvoices_Approved;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_invoiceno;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_vendorname;

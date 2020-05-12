@@ -39,6 +39,7 @@ namespace BinaMitraTextile
         public const string COL_Vendors_Name = "Vendors_Name";
         public const string COL_Amount = "Amount";
 
+        public const string FILTER_VendorInvoices_No = "FILTER_VendorInvoices_No";
         public const string FILTER_ShowOnlyLast3Months = "FILTER_ShowOnlyLast3Months";
         public const string FILTER_ShowOnlyUnapproved = "FILTER_ShowOnlyUnapproved";
 
@@ -93,9 +94,9 @@ namespace BinaMitraTextile
             return Id;
         }
 
-        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, false, false)); }
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, false, false)); }
 
-        public static DataTable get(Guid? Id, string No, bool showOnlyLast3Months, bool showOnlyUnapproved)
+        public static DataTable get(Guid? Id, string No, string VendorInvoices_No, bool showOnlyLast3Months, bool showOnlyUnapproved)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -104,6 +105,7 @@ namespace BinaMitraTextile
                 "VendorInvoicePayments_get",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
                 new SqlQueryParameter(COL_DB_No, SqlDbType.VarChar, Util.wrapNullable(No)),
+                new SqlQueryParameter(FILTER_VendorInvoices_No, SqlDbType.VarChar, Util.wrapNullable(VendorInvoices_No)),
                 new SqlQueryParameter(FILTER_ShowOnlyLast3Months, SqlDbType.Bit, showOnlyLast3Months),
                 new SqlQueryParameter(FILTER_ShowOnlyUnapproved, SqlDbType.Bit, showOnlyUnapproved)
                 );

@@ -29,14 +29,21 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorInvoicePayments_Form));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridVendorInvoicePaymentItems = new System.Windows.Forms.DataGridView();
+            this.col_gridVendorInvoicePaymentItems_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridVendorInvoicePaymentItems_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridVendorInvoicePaymentItems_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlFilterAndButtons = new System.Windows.Forms.Panel();
             this.pnlFilterAndButtonsContent = new System.Windows.Forms.Panel();
+            this.btnApplyFilter = new System.Windows.Forms.Button();
+            this.itxt_VendorInvoiceNo = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.pnlFilterAndButtonsHeader = new System.Windows.Forms.Panel();
             this.pnlQuickSearch = new System.Windows.Forms.Panel();
             this.pbLog = new System.Windows.Forms.PictureBox();
@@ -44,12 +51,8 @@
             this.chkShowOnlyLast3Months = new System.Windows.Forms.CheckBox();
             this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.chkShowUnapprovedOnly = new System.Windows.Forms.CheckBox();
-            this.ptInputPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.ptFilterAndButtons = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.gridVendorInvoicePayments = new System.Windows.Forms.DataGridView();
-            this.pnlRowInfo = new System.Windows.Forms.Panel();
-            this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
-            this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
-            this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.col_gridVendorInvoicePayments_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridVendorInvoicePayments_Cancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_gridVendorInvoicePayments_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,14 +61,14 @@
             this.col_gridVendorInvoicePayments_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridVendorInvoicePayments_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridVendorInvoicePayments_Approved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.pnlRowInfo = new System.Windows.Forms.Panel();
+            this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
+            this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.lblRowInfoHeader = new System.Windows.Forms.Label();
-            this.col_gridVendorInvoicePaymentItems_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridVendorInvoicePaymentItems_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridVendorInvoicePaymentItems_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
             ((System.ComponentModel.ISupportInitialize)(this.gridVendorInvoicePaymentItems)).BeginInit();
             this.pnlFilterAndButtons.SuspendLayout();
+            this.pnlFilterAndButtonsContent.SuspendLayout();
             this.pnlFilterAndButtonsHeader.SuspendLayout();
             this.pnlQuickSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLog)).BeginInit();
@@ -107,6 +110,49 @@
             this.gridVendorInvoicePaymentItems.TabIndex = 6;
             this.gridVendorInvoicePaymentItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVendorInvoicePaymentItems_CellContentClick);
             // 
+            // col_gridVendorInvoicePaymentItems_Id
+            // 
+            this.col_gridVendorInvoicePaymentItems_Id.HeaderText = "Id";
+            this.col_gridVendorInvoicePaymentItems_Id.Name = "col_gridVendorInvoicePaymentItems_Id";
+            this.col_gridVendorInvoicePaymentItems_Id.ReadOnly = true;
+            this.col_gridVendorInvoicePaymentItems_Id.Visible = false;
+            // 
+            // col_gridVendorInvoicePaymentItems_VendorInvoices_Id
+            // 
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.HeaderText = "VendorInvoices_Id";
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.Name = "col_gridVendorInvoicePaymentItems_VendorInvoices_Id";
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.ReadOnly = true;
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.Visible = false;
+            // 
+            // col_gridVendorInvoicePaymentItems_VendorInvoices_No
+            // 
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.HeaderText = "Invoice";
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.MinimumWidth = 50;
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.Name = "col_gridVendorInvoicePaymentItems_VendorInvoices_No";
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.ReadOnly = true;
+            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.Width = 50;
+            // 
+            // col_gridVendorInvoicePaymentItems_Amount
+            // 
+            this.col_gridVendorInvoicePaymentItems_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.col_gridVendorInvoicePaymentItems_Amount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_gridVendorInvoicePaymentItems_Amount.HeaderText = "Amount";
+            this.col_gridVendorInvoicePaymentItems_Amount.MinimumWidth = 50;
+            this.col_gridVendorInvoicePaymentItems_Amount.Name = "col_gridVendorInvoicePaymentItems_Amount";
+            this.col_gridVendorInvoicePaymentItems_Amount.ReadOnly = true;
+            this.col_gridVendorInvoicePaymentItems_Amount.Width = 50;
+            // 
+            // col_gridVendorInvoicePaymentItems_Notes
+            // 
+            this.col_gridVendorInvoicePaymentItems_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridVendorInvoicePaymentItems_Notes.HeaderText = "Notes";
+            this.col_gridVendorInvoicePaymentItems_Notes.MinimumWidth = 40;
+            this.col_gridVendorInvoicePaymentItems_Notes.Name = "col_gridVendorInvoicePaymentItems_Notes";
+            this.col_gridVendorInvoicePaymentItems_Notes.ReadOnly = true;
+            // 
             // pnlFilterAndButtons
             // 
             this.pnlFilterAndButtons.Controls.Add(this.pnlFilterAndButtonsContent);
@@ -120,17 +166,46 @@
             // pnlFilterAndButtonsContent
             // 
             this.pnlFilterAndButtonsContent.BackColor = System.Drawing.Color.White;
+            this.pnlFilterAndButtonsContent.Controls.Add(this.btnApplyFilter);
+            this.pnlFilterAndButtonsContent.Controls.Add(this.itxt_VendorInvoiceNo);
             this.pnlFilterAndButtonsContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFilterAndButtonsContent.Location = new System.Drawing.Point(0, 0);
             this.pnlFilterAndButtonsContent.Name = "pnlFilterAndButtonsContent";
             this.pnlFilterAndButtonsContent.Size = new System.Drawing.Size(685, 48);
             this.pnlFilterAndButtonsContent.TabIndex = 9;
             // 
+            // btnApplyFilter
+            // 
+            this.btnApplyFilter.Location = new System.Drawing.Point(151, 23);
+            this.btnApplyFilter.Name = "btnApplyFilter";
+            this.btnApplyFilter.Size = new System.Drawing.Size(60, 23);
+            this.btnApplyFilter.TabIndex = 1;
+            this.btnApplyFilter.Text = "FILTER";
+            this.btnApplyFilter.UseVisualStyleBackColor = true;
+            this.btnApplyFilter.Click += new System.EventHandler(this.BtnApplyFilter_Click);
+            // 
+            // itxt_VendorInvoiceNo
+            // 
+            this.itxt_VendorInvoiceNo.IsBrowseMode = false;
+            this.itxt_VendorInvoiceNo.LabelText = "Vendor Invoice No";
+            this.itxt_VendorInvoiceNo.Location = new System.Drawing.Point(3, 4);
+            this.itxt_VendorInvoiceNo.MaxLength = 32767;
+            this.itxt_VendorInvoiceNo.MultiLine = false;
+            this.itxt_VendorInvoiceNo.Name = "itxt_VendorInvoiceNo";
+            this.itxt_VendorInvoiceNo.PasswordChar = '\0';
+            this.itxt_VendorInvoiceNo.RowCount = 1;
+            this.itxt_VendorInvoiceNo.ShowDeleteButton = false;
+            this.itxt_VendorInvoiceNo.ShowFilter = false;
+            this.itxt_VendorInvoiceNo.ShowTextboxOnly = false;
+            this.itxt_VendorInvoiceNo.Size = new System.Drawing.Size(148, 41);
+            this.itxt_VendorInvoiceNo.TabIndex = 0;
+            this.itxt_VendorInvoiceNo.ValueText = "";
+            // 
             // pnlFilterAndButtonsHeader
             // 
             this.pnlFilterAndButtonsHeader.BackColor = System.Drawing.SystemColors.Control;
             this.pnlFilterAndButtonsHeader.Controls.Add(this.pnlQuickSearch);
-            this.pnlFilterAndButtonsHeader.Controls.Add(this.ptInputPanel);
+            this.pnlFilterAndButtonsHeader.Controls.Add(this.ptFilterAndButtons);
             this.pnlFilterAndButtonsHeader.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFilterAndButtonsHeader.Location = new System.Drawing.Point(0, 48);
             this.pnlFilterAndButtonsHeader.Name = "pnlFilterAndButtonsHeader";
@@ -225,19 +300,19 @@
             this.chkShowUnapprovedOnly.UseVisualStyleBackColor = true;
             this.chkShowUnapprovedOnly.CheckedChanged += new System.EventHandler(this.ChkShowOnlyApproved_CheckedChanged);
             // 
-            // ptInputPanel
+            // ptFilterAndButtons
             // 
-            this.ptInputPanel.AdjustLocationOnClick = false;
-            this.ptInputPanel.BackColor = System.Drawing.Color.White;
-            this.ptInputPanel.ContainerPanel = this.pnlFilterAndButtons;
-            this.ptInputPanel.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.ptInputPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ptInputPanel.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
-            this.ptInputPanel.Location = new System.Drawing.Point(0, 0);
-            this.ptInputPanel.Name = "ptInputPanel";
-            this.ptInputPanel.Size = new System.Drawing.Size(30, 28);
-            this.ptInputPanel.TabIndex = 96;
-            this.ptInputPanel.TogglePanel = null;
+            this.ptFilterAndButtons.AdjustLocationOnClick = false;
+            this.ptFilterAndButtons.BackColor = System.Drawing.Color.White;
+            this.ptFilterAndButtons.ContainerPanel = this.pnlFilterAndButtons;
+            this.ptFilterAndButtons.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptFilterAndButtons.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptFilterAndButtons.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
+            this.ptFilterAndButtons.Location = new System.Drawing.Point(0, 0);
+            this.ptFilterAndButtons.Name = "ptFilterAndButtons";
+            this.ptFilterAndButtons.Size = new System.Drawing.Size(30, 28);
+            this.ptFilterAndButtons.TabIndex = 96;
+            this.ptFilterAndButtons.TogglePanel = null;
             // 
             // gridVendorInvoicePayments
             // 
@@ -270,52 +345,8 @@
             this.gridVendorInvoicePayments.RowHeadersVisible = false;
             this.gridVendorInvoicePayments.Size = new System.Drawing.Size(685, 322);
             this.gridVendorInvoicePayments.TabIndex = 6;
+            this.gridVendorInvoicePayments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVendorInvoicePayments_CellContentClick);
             this.gridVendorInvoicePayments.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVendorInvoicePayments_CellDoubleClick);
-            // 
-            // pnlRowInfo
-            // 
-            this.pnlRowInfo.Controls.Add(this.gridVendorInvoicePaymentItems);
-            this.pnlRowInfo.Controls.Add(this.pnlRowInfoHeaderContainer);
-            this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 398);
-            this.pnlRowInfo.Name = "pnlRowInfo";
-            this.pnlRowInfo.Size = new System.Drawing.Size(685, 163);
-            this.pnlRowInfo.TabIndex = 8;
-            // 
-            // pnlRowInfoHeaderContainer
-            // 
-            this.pnlRowInfoHeaderContainer.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlRowInfoHeaderContainer.Controls.Add(this.pnlRowInfoHeader);
-            this.pnlRowInfoHeaderContainer.Controls.Add(this.ptRowInfo);
-            this.pnlRowInfoHeaderContainer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlRowInfoHeaderContainer.Location = new System.Drawing.Point(0, 0);
-            this.pnlRowInfoHeaderContainer.Name = "pnlRowInfoHeaderContainer";
-            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(685, 21);
-            this.pnlRowInfoHeaderContainer.TabIndex = 1;
-            // 
-            // pnlRowInfoHeader
-            // 
-            this.pnlRowInfoHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
-            this.pnlRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRowInfoHeader.Location = new System.Drawing.Point(20, 0);
-            this.pnlRowInfoHeader.Name = "pnlRowInfoHeader";
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(665, 21);
-            this.pnlRowInfoHeader.TabIndex = 6;
-            // 
-            // ptRowInfo
-            // 
-            this.ptRowInfo.AdjustLocationOnClick = true;
-            this.ptRowInfo.BackColor = System.Drawing.Color.White;
-            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
-            this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
-            this.ptRowInfo.Location = new System.Drawing.Point(0, 0);
-            this.ptRowInfo.Name = "ptRowInfo";
-            this.ptRowInfo.Size = new System.Drawing.Size(20, 21);
-            this.ptRowInfo.TabIndex = 5;
-            this.ptRowInfo.TogglePanel = null;
             // 
             // col_gridVendorInvoicePayments_Id
             // 
@@ -392,6 +423,37 @@
             this.col_gridVendorInvoicePayments_Approved.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.col_gridVendorInvoicePayments_Approved.Width = 30;
             // 
+            // pnlRowInfo
+            // 
+            this.pnlRowInfo.Controls.Add(this.gridVendorInvoicePaymentItems);
+            this.pnlRowInfo.Controls.Add(this.pnlRowInfoHeaderContainer);
+            this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlRowInfo.Location = new System.Drawing.Point(0, 398);
+            this.pnlRowInfo.Name = "pnlRowInfo";
+            this.pnlRowInfo.Size = new System.Drawing.Size(685, 163);
+            this.pnlRowInfo.TabIndex = 8;
+            // 
+            // pnlRowInfoHeaderContainer
+            // 
+            this.pnlRowInfoHeaderContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlRowInfoHeaderContainer.Controls.Add(this.pnlRowInfoHeader);
+            this.pnlRowInfoHeaderContainer.Controls.Add(this.ptRowInfo);
+            this.pnlRowInfoHeaderContainer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRowInfoHeaderContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlRowInfoHeaderContainer.Name = "pnlRowInfoHeaderContainer";
+            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(685, 21);
+            this.pnlRowInfoHeaderContainer.TabIndex = 1;
+            // 
+            // pnlRowInfoHeader
+            // 
+            this.pnlRowInfoHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
+            this.pnlRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRowInfoHeader.Location = new System.Drawing.Point(20, 0);
+            this.pnlRowInfoHeader.Name = "pnlRowInfoHeader";
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(665, 21);
+            this.pnlRowInfoHeader.TabIndex = 6;
+            // 
             // lblRowInfoHeader
             // 
             this.lblRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -402,48 +464,19 @@
             this.lblRowInfoHeader.Text = "lblRowInfoHeader";
             this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // col_gridVendorInvoicePaymentItems_Id
+            // ptRowInfo
             // 
-            this.col_gridVendorInvoicePaymentItems_Id.HeaderText = "Id";
-            this.col_gridVendorInvoicePaymentItems_Id.Name = "col_gridVendorInvoicePaymentItems_Id";
-            this.col_gridVendorInvoicePaymentItems_Id.ReadOnly = true;
-            this.col_gridVendorInvoicePaymentItems_Id.Visible = false;
-            // 
-            // col_gridVendorInvoicePaymentItems_VendorInvoices_Id
-            // 
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.HeaderText = "VendorInvoices_Id";
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.Name = "col_gridVendorInvoicePaymentItems_VendorInvoices_Id";
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.ReadOnly = true;
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_Id.Visible = false;
-            // 
-            // col_gridVendorInvoicePaymentItems_VendorInvoices_No
-            // 
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.HeaderText = "Invoice";
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.MinimumWidth = 50;
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.Name = "col_gridVendorInvoicePaymentItems_VendorInvoices_No";
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.ReadOnly = true;
-            this.col_gridVendorInvoicePaymentItems_VendorInvoices_No.Width = 50;
-            // 
-            // col_gridVendorInvoicePaymentItems_Amount
-            // 
-            this.col_gridVendorInvoicePaymentItems_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.col_gridVendorInvoicePaymentItems_Amount.DefaultCellStyle = dataGridViewCellStyle2;
-            this.col_gridVendorInvoicePaymentItems_Amount.HeaderText = "Amount";
-            this.col_gridVendorInvoicePaymentItems_Amount.MinimumWidth = 50;
-            this.col_gridVendorInvoicePaymentItems_Amount.Name = "col_gridVendorInvoicePaymentItems_Amount";
-            this.col_gridVendorInvoicePaymentItems_Amount.ReadOnly = true;
-            this.col_gridVendorInvoicePaymentItems_Amount.Width = 50;
-            // 
-            // col_gridVendorInvoicePaymentItems_Notes
-            // 
-            this.col_gridVendorInvoicePaymentItems_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_gridVendorInvoicePaymentItems_Notes.HeaderText = "Notes";
-            this.col_gridVendorInvoicePaymentItems_Notes.MinimumWidth = 40;
-            this.col_gridVendorInvoicePaymentItems_Notes.Name = "col_gridVendorInvoicePaymentItems_Notes";
-            this.col_gridVendorInvoicePaymentItems_Notes.ReadOnly = true;
+            this.ptRowInfo.AdjustLocationOnClick = true;
+            this.ptRowInfo.BackColor = System.Drawing.Color.White;
+            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
+            this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
+            this.ptRowInfo.Location = new System.Drawing.Point(0, 0);
+            this.ptRowInfo.Name = "ptRowInfo";
+            this.ptRowInfo.Size = new System.Drawing.Size(20, 21);
+            this.ptRowInfo.TabIndex = 5;
+            this.ptRowInfo.TogglePanel = null;
             // 
             // VendorInvoicePayments_Form
             // 
@@ -459,6 +492,7 @@
             this.Shown += new System.EventHandler(this.Form_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.gridVendorInvoicePaymentItems)).EndInit();
             this.pnlFilterAndButtons.ResumeLayout(false);
+            this.pnlFilterAndButtonsContent.ResumeLayout(false);
             this.pnlFilterAndButtonsHeader.ResumeLayout(false);
             this.pnlQuickSearch.ResumeLayout(false);
             this.pnlQuickSearch.PerformLayout();
@@ -478,7 +512,7 @@
         protected System.Windows.Forms.Panel pnlFilterAndButtonsHeader;
         protected System.Windows.Forms.Panel pnlQuickSearch;
         public System.Windows.Forms.CheckBox chkShowUnapprovedOnly;
-        public LIBUtil.Desktop.UserControls.PanelToggle ptInputPanel;
+        public LIBUtil.Desktop.UserControls.PanelToggle ptFilterAndButtons;
         private System.Windows.Forms.DataGridView gridVendorInvoicePayments;
         private System.Windows.Forms.Panel pnlRowInfo;
         private System.Windows.Forms.Panel pnlRowInfoHeaderContainer;
@@ -503,5 +537,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridVendorInvoicePaymentItems_VendorInvoices_No;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridVendorInvoicePaymentItems_Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridVendorInvoicePaymentItems_Notes;
+        private System.Windows.Forms.Button btnApplyFilter;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_VendorInvoiceNo;
     }
 }
