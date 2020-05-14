@@ -34,8 +34,13 @@ namespace BinaMitraTextile
 
         private void Form_Shown(object sender, EventArgs e)
         {
-            if (lnkSummary.Visible && GlobalData.UserAccount.role != Roles.Assistant)
-                Util.displayMDIChild(new Main_Form());
+            if(GlobalData.UserAccount.role == Roles.Super)
+                Util.displayMDIChild(new Summary3_Form());
+            else if (lnkSummary2.Visible && GlobalData.UserAccount.role == Roles.Assistant)
+                Util.displayMDIChild(new Summary1_Form());
+            else if (lnkSummary1.Visible && GlobalData.UserAccount.role == Roles.User)
+                Util.displayMDIChild(new Summary1_Form());
+
             //Util.displayMDIChild(new Invoices.VendorInvoices_Form());
             //Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
         }
@@ -104,9 +109,19 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Admin.PettyCash_Form());
         }
 
-        private void LnkSummary_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LnkSaleReturns_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Util.displayMDIChild(new Main_Form());
+            Util.displayMDIChild(new Returns.Main_Form());
+        }
+
+        private void LnkSummary1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Summary1_Form());
+        }
+
+        private void lnkSummary2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Summary2_Form());
         }
 
         private void LnlSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -142,6 +157,16 @@ namespace BinaMitraTextile
         private void LnkVendorInvoicePayments_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new InventoryForm.VendorInvoicePayments_Form());
+        }
+
+        private void LnkVendorInvoices_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new InventoryForm.VendorInvoices_Form());
+        }
+
+        private void LnkFakturPajak_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new SharedForms.MasterData_v1_FakturPajaks_Form(FormModes.Add));
         }
 
         #endregion SHORTCUT LINKS
@@ -369,19 +394,9 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Reports.Financial_Overview_Form());
         }
 
-        private void LnkVendorInvoices_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Internal_Summary_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new InventoryForm.VendorInvoices_Form());
-        }
-
-        private void LnkFakturPajak_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Util.displayMDIChild(new SharedForms.MasterData_v1_FakturPajaks_Form(FormModes.Add));
-        }
-
-        private void LnkSaleReturns_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Util.displayMDIChild(new Returns.Main_Form());
+            Util.displayMDIChild(new Summary3_Form());
         }
 
         #endregion MENU - INTERNAL

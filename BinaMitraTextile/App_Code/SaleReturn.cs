@@ -24,11 +24,13 @@ namespace BinaMitraTextile
         public const string COL_DB_FakturPajaks_Id = "FakturPajaks_Id";
         public const string COL_DB_Timestamp = "time_stamp";
         public const string COL_DB_Users_Id = "user_id";
+        public const string COL_DB_Notes = "notes";
 
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
         public const string COL_RETURNAMOUNT = "sale_amount";
         public const string COL_SaleQty = "sale_qty";
         public const string COL_SaleLength = "sale_length";
+        public const string COL_Customers_Id = "customer_id";
         public const string COL_Customers_Name = "customer_name";
         public const string COL_SALESMANID = "salesman_id";
         public const string COL_SALESMANNAME = "salesman_name";
@@ -56,18 +58,17 @@ namespace BinaMitraTextile
         public SaleReturn(Guid ID)
         {
             id = ID;
-            DataTable dt = getRow(ID);
-            DataRow row = dt.Rows[0];
-            time_stamp = Convert.ToDateTime(dt.Rows[0]["time_stamp"]);
-            voided = (Boolean)dt.Rows[0]["voided"];
-            user_id = (Guid)dt.Rows[0]["user_id"];
-            customer_id = (Guid)dt.Rows[0]["customer_id"];
-            notes = dt.Rows[0]["notes"].ToString();
-            customer_info = dt.Rows[0]["customer_info"].ToString();
-            barcode = dt.Rows[0]["barcode"].ToString();
-            FakturPajaks_Id = DBUtil.parseData<Guid?>(row, COL_DB_FakturPajaks_Id);
+            DataRow row = get(ID);
+            time_stamp = Util.wrapNullable<DateTime>(row, COL_DB_Timestamp);
+            voided = Util.wrapNullable<bool>(row, "voided");
+            user_id = Util.wrapNullable<Guid>(row, COL_DB_Users_Id);
+            customer_id = Util.wrapNullable<Guid>(row, COL_Customers_Id);
+            notes = Util.wrapNullable<string>(row, COL_DB_Notes);
+            customer_info = Util.wrapNullable<string>(row, "customer_info");
+            barcode = Util.wrapNullable<string>(row, "barcode");
 
-            FakturPajaks_No = DBUtil.parseData<string>(row, COL_FakturPajaks_No);
+            FakturPajaks_Id = Util.wrapNullable<Guid?>(row, COL_DB_FakturPajaks_Id);
+            FakturPajaks_No = Util.wrapNullable<string>(row, COL_FakturPajaks_No);
 
             //ReturnAmount = DBUtil.parseData<decimal>(dt.Rows[0], COL_RETURNAMOUNT);
         }
@@ -158,27 +159,27 @@ namespace BinaMitraTextile
             return string.Empty;
         }
 
-        public static DataTable getRow(Guid ID)
+        public static DataRow get(Guid Id)
         {
-            return DBUtil.getRows("salereturn_get", ID);
+            return Util.getFirstRow(get(Id, null, null, null, null, null, false, null, null));
         }
-
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return getAll(null, null, null, null, null, false, FakturPajaks_Id, null);
+            return get(null, null, null, null, null, null, false, FakturPajaks_Id, null);
         }
         public static DataTable get_by_BrowsingForFakturPajak_Customers_Id(Guid BrowsingForFakturPajak_Customers_Id)
         {
-            return getAll(null, null, null, null, null, false, null, BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, null, null, null, null, false, null, BrowsingForFakturPajak_Customers_Id);
         }
-        public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleReturnID, 
+        public static DataTable get(Guid? Id, DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleReturnID, 
             bool onlyWithCommission, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("salereturn_getall", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("SaleReturns_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Id);
                 cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = (object)dateStart ?? DBNull.Value;
                 cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = (object)dateEnd ?? DBNull.Value;
                 cmd.Parameters.Add("@inventory_item_id", SqlDbType.UniqueIdentifier).Value = (object)inventoryID ?? DBNull.Value;

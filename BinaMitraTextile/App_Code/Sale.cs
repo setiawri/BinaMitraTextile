@@ -56,6 +56,7 @@ namespace BinaMitraTextile
         public const string COL_SALEQTY = "sale_qty";
         public const string COL_SALELENGTH = "sale_length";
 
+        public const string FILTER_OnlyNoFakturPajak = "FILTER_OnlyNoFakturPajak";
         public const string FILTER_OnlyReturnedToSupplier = "FILTER_OnlyReturnedToSupplier";
         public const string FILTER_OnlyNotCompleted = "FILTER_OnlyNotCompleted";
         public const string FILTER_Inventory_Code = "FILTER_Inventory_Code";
@@ -385,29 +386,33 @@ namespace BinaMitraTextile
             }
         }
 
+        public static DataTable get_ReceivablesOnly(bool OnlyNoFakturPajak)
+        {
+            return get(null, null, null, null, null, null, true, OnlyNoFakturPajak, false, false, false, null, null, null, false, false, null, null, null, null, null);
+        }
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null, null);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null, null);
         }
         public static DataTable get_by_BrowsingForFakturPajak(Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
-            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, BrowsingForFakturPajak_Vendors_Id, null);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, BrowsingForFakturPajak_Vendors_Id, null);
         }
         public static DataTable get_by_VendorInvoices_Id(Guid VendorInvoices_Id)
         {
-            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, null, VendorInvoices_Id);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, VendorInvoices_Id);
         }
         public static DataTable get()
         {
-            return getAll(null, null, null, null, null, null, false, false, false, false, null, null, null, false, false, null, null, null, null, null);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null);
         }
-        public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? Vendors_Id, Guid? saleID, 
-            bool onlyHasReceivable, bool onlyLossProfit, bool onlyReturnedToSupplier, bool onlyWithCommission, Guid? salesUserAccountID, 
+        public static DataTable get(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? Vendors_Id, Guid? saleID, 
+            bool onlyHasReceivable, bool OnlyNoFakturPajak, bool onlyLossProfit, bool onlyReturnedToSupplier, bool onlyWithCommission, Guid? salesUserAccountID, 
             DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode,
             Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id, Guid? VendorInvoices_Id)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sale_getall", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("Sales_get", DBUtil.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure; 
@@ -420,6 +425,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@only_has_receivable", SqlDbType.Bit).Value = onlyHasReceivable;
                 cmd.Parameters.Add("@only_loss_profit", SqlDbType.Bit).Value = onlyLossProfit;
                 cmd.Parameters.Add("@include_special_user_only", SqlDbType.Bit).Value = GlobalData.UserAccount.role == Roles.Super;
+                cmd.Parameters.Add("@" + FILTER_OnlyNoFakturPajak, SqlDbType.Bit).Value = OnlyNoFakturPajak;
                 cmd.Parameters.Add("@" + FILTER_OnlyReturnedToSupplier, SqlDbType.Bit).Value = onlyReturnedToSupplier;
                 cmd.Parameters.Add("@" + FILTER_OnlyNotCompleted, SqlDbType.Bit).Value = onlyNotCompleted;
                 cmd.Parameters.Add("@" + FILTER_Inventory_Code, SqlDbType.VarChar).Value = Util.wrapNullable<string>(inventoryCode);

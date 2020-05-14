@@ -242,7 +242,7 @@ namespace BinaMitraTextile.Sales
             else
             {
                 Tools.setGridviewDataSource(gridMaster, true, true,
-                    Sale.getAll(
+                    Sale.get(
                         Tools.getDate(dtStart, false),
                         Tools.getDate(dtEnd, true),
                         inventoryItemID,
@@ -250,6 +250,7 @@ namespace BinaMitraTextile.Sales
                         null,
                         saleID,
                         chkOnlyHasReceivable.Checked,
+                        false,
                         chkOnlyLossProfit.Checked,
                         chkReturnedToSupplier.Checked,
                         chkOnlyWithCommission.Checked,

@@ -7,7 +7,7 @@ using LIBUtil;
 
 namespace BinaMitraTextile
 {
-    public partial class Main_Form : Form
+    public partial class Summary1_Form : Form
     {
         /*******************************************************************************************************/
         #region CLASS VARIABLES
@@ -17,7 +17,7 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region INITIALIZATION
 
-        public Main_Form()
+        public Summary1_Form()
         {
             InitializeComponent();
         }
@@ -99,7 +99,12 @@ namespace BinaMitraTextile
 
         private void populatePageData()
         {
-            DataTable dtReceivables = Sale.getAll(null, null, null, null, null, null, true, false, false, false, null, null, null, false, false, null, null, null, null, null);
+            DataTable dtReceivables;
+            if(GlobalData.UserAccount.role == Roles.User)
+                dtReceivables = Sale.get_ReceivablesOnly(true);
+            else
+                dtReceivables = Sale.get_ReceivablesOnly(false);
+
             gridReceivables.DataSource = dtReceivables;
             gridReceivables.Sort(col_gridReceivables_RemainingTermDays, ListSortDirection.Ascending);
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));

@@ -393,7 +393,7 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(991, 90);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(870, 90);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -588,7 +588,7 @@
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(997, 96);
+            this.gridReturns.Size = new System.Drawing.Size(876, 96);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
@@ -919,7 +919,7 @@
             this.tpSaleInvoices.Location = new System.Drawing.Point(4, 22);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
             this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(997, 121);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(876, 121);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -930,7 +930,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(991, 25);
+            this.panel4.Size = new System.Drawing.Size(870, 25);
             this.panel4.TabIndex = 132;
             // 
             // tpSaleReturns
@@ -939,7 +939,7 @@
             this.tpSaleReturns.Controls.Add(this.panel2);
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(997, 121);
+            this.tpSaleReturns.Size = new System.Drawing.Size(876, 121);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -950,7 +950,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(997, 25);
+            this.panel2.Size = new System.Drawing.Size(876, 25);
             this.panel2.TabIndex = 130;
             // 
             // iddl_Vendors

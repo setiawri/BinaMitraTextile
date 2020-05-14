@@ -366,7 +366,9 @@ namespace BinaMitraTextile.SharedForms
                 Util.displayMessageBoxError("Double click faktur pajak");
             else
             {
-                if (Util.selectedItemIsNotNull(dgv, col_dgv_Customers_Id))
+                if (!Util.selectedItemIsNotNull(dgv, col_dgv_Customers_Id))
+                    Util.displayMessageBoxError("Invalid Customer");
+                else
                 {
                     Returns.Main_Form form = new Returns.Main_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Customers_Id));
                     Util.displayForm(null, form);
@@ -385,7 +387,9 @@ namespace BinaMitraTextile.SharedForms
                 Util.displayMessageBoxError("Double click faktur pajak");
             else
             {
-                if (Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
+                if (!Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
+                    Util.displayMessageBoxError("Invalid Vendor");
+                else
                 {
                     InventoryForm.VendorInvoices_Form form = new InventoryForm.VendorInvoices_Form(FormModes.Browse, (Guid)Util.getSelectedRowValue(dgv, col_dgv_Vendors_Id));
                     Util.displayForm(null, form);

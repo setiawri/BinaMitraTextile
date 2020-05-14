@@ -383,11 +383,11 @@
     <Compile Include="Logs\Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main_Form.cs">
+    <Compile Include="Summary1_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main_Form.Designer.cs">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <Compile Include="Summary1_Form.Designer.cs">
+      <DependentUpon>Summary1_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="POs\Main_Form.cs">
       <SubType>Form</SubType>
@@ -499,11 +499,17 @@
     <Compile Include="SharedForms\ProgressDisplay.Designer.cs">
       <DependentUpon>ProgressDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template_Form.cs">
+    <Compile Include="Summary2_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Template_Form.Designer.cs">
-      <DependentUpon>Template_Form.cs</DependentUpon>
+    <Compile Include="Summary2_Form.Designer.cs">
+      <DependentUpon>Summary2_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Summary3_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Summary3_Form.Designer.cs">
+      <DependentUpon>Summary3_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Test\Main_Form.cs">
       <SubType>Form</SubType>
@@ -689,8 +695,8 @@
     <EmbeddedResource Include="Logs\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main_Form.resx">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Summary1_Form.resx">
+      <DependentUpon>Summary1_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="POs\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
@@ -756,8 +762,11 @@
     <EmbeddedResource Include="SharedForms\ProgressDisplay.resx">
       <DependentUpon>ProgressDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Template_Form.resx">
-      <DependentUpon>Template_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Summary2_Form.resx">
+      <DependentUpon>Summary2_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Summary3_Form.resx">
+      <DependentUpon>Summary3_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
@@ -831,7 +840,6 @@
   <ItemGroup>
     <Content Include="Dependencies\IDAutomation.LinearBarCode.dll" />
     <Content Include="Documentation\Documentation.txt" />
-    <Content Include="Documentation\Template - Class.txt" />
     <Content Include="Images\Icons\add-button-small.png" />
     <Content Include="Images\Icons\handshake-32.png" />
     <Content Include="Images\Icons\handshake-48.png" />

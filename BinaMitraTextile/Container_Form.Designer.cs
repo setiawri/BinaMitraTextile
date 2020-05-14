@@ -84,14 +84,17 @@
             this.Internal_Reports_Sales = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Summary = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
             this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkVendorInvoices = new System.Windows.Forms.LinkLabel();
+            this.lnkVendorInvoicePayments = new System.Windows.Forms.LinkLabel();
             this.lnkSales2 = new System.Windows.Forms.LinkLabel();
             this.lnkSaleReturns = new System.Windows.Forms.LinkLabel();
             this.lnkFakturPajak = new System.Windows.Forms.LinkLabel();
             this.lnkInventory2 = new System.Windows.Forms.LinkLabel();
+            this.lnkSummary2 = new System.Windows.Forms.LinkLabel();
             this.btnOpname = new System.Windows.Forms.Button();
             this.gbShortcutsForUsers = new System.Windows.Forms.GroupBox();
             this.flpShortcuts = new System.Windows.Forms.FlowLayoutPanel();
@@ -105,9 +108,8 @@
             this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
-            this.lnkSummary = new System.Windows.Forms.LinkLabel();
+            this.lnkSummary1 = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lnkVendorInvoicePayments = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcutsForAssistants.SuspendLayout();
@@ -524,6 +526,7 @@
             // Internal
             // 
             this.Internal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Internal_Summary,
             this.Internal_UserAccounts,
             this.Internal_Reports,
             this.Internal_Test});
@@ -534,7 +537,7 @@
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(144, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(180, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -545,7 +548,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(180, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -572,9 +575,16 @@
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(180, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
+            // 
+            // Internal_Summary
+            // 
+            this.Internal_Summary.Name = "Internal_Summary";
+            this.Internal_Summary.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Summary.Text = "Summary";
+            this.Internal_Summary.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // pnlShortcuts
             // 
@@ -597,7 +607,7 @@
             this.gbShortcutsForAssistants.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcutsForAssistants.Location = new System.Drawing.Point(5, 289);
             this.gbShortcutsForAssistants.Name = "gbShortcutsForAssistants";
-            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(135, 179);
+            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(135, 204);
             this.gbShortcutsForAssistants.TabIndex = 22;
             this.gbShortcutsForAssistants.TabStop = false;
             // 
@@ -611,13 +621,14 @@
             this.flowLayoutPanel1.Controls.Add(this.lnkSaleReturns);
             this.flowLayoutPanel1.Controls.Add(this.lnkFakturPajak);
             this.flowLayoutPanel1.Controls.Add(this.lnkInventory2);
+            this.flowLayoutPanel1.Controls.Add(this.lnkSummary2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(129, 160);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(129, 185);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // lnkVendorInvoices
@@ -636,6 +647,23 @@
             this.lnkVendorInvoices.Text = "VENDOR INVOICES";
             this.lnkVendorInvoices.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkVendorInvoices.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkVendorInvoices_LinkClicked);
+            // 
+            // lnkVendorInvoicePayments
+            // 
+            this.lnkVendorInvoicePayments.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoicePayments.AutoSize = true;
+            this.lnkVendorInvoicePayments.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoicePayments.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkVendorInvoicePayments.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoicePayments.Location = new System.Drawing.Point(3, 30);
+            this.lnkVendorInvoicePayments.Name = "lnkVendorInvoicePayments";
+            this.lnkVendorInvoicePayments.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkVendorInvoicePayments.Size = new System.Drawing.Size(101, 25);
+            this.lnkVendorInvoicePayments.TabIndex = 34;
+            this.lnkVendorInvoicePayments.TabStop = true;
+            this.lnkVendorInvoicePayments.Text = "VENDOR PAYMENTS";
+            this.lnkVendorInvoicePayments.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkVendorInvoicePayments.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkVendorInvoicePayments_LinkClicked);
             // 
             // lnkSales2
             // 
@@ -705,6 +733,23 @@
             this.lnkInventory2.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkInventory_LinkClicked);
             // 
+            // lnkSummary2
+            // 
+            this.lnkSummary2.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary2.AutoSize = true;
+            this.lnkSummary2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSummary2.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary2.Location = new System.Drawing.Point(3, 155);
+            this.lnkSummary2.Name = "lnkSummary2";
+            this.lnkSummary2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSummary2.Size = new System.Drawing.Size(56, 25);
+            this.lnkSummary2.TabIndex = 35;
+            this.lnkSummary2.TabStop = true;
+            this.lnkSummary2.Text = "SUMMARY";
+            this.lnkSummary2.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSummary2_LinkClicked);
+            // 
             // btnOpname
             // 
             this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -742,7 +787,7 @@
             this.flpShortcuts.Controls.Add(this.lnkPettyCash);
             this.flpShortcuts.Controls.Add(this.label1);
             this.flpShortcuts.Controls.Add(this.lnkSamples);
-            this.flpShortcuts.Controls.Add(this.lnkSummary);
+            this.flpShortcuts.Controls.Add(this.lnkSummary1);
             this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -908,22 +953,22 @@
             this.lnkSamples.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSamples.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSamples_LinkClicked);
             // 
-            // lnkSummary
+            // lnkSummary1
             // 
-            this.lnkSummary.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.AutoSize = true;
-            this.lnkSummary.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkSummary.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.Location = new System.Drawing.Point(3, 235);
-            this.lnkSummary.Name = "lnkSummary";
-            this.lnkSummary.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSummary.Size = new System.Drawing.Size(56, 25);
-            this.lnkSummary.TabIndex = 24;
-            this.lnkSummary.TabStop = true;
-            this.lnkSummary.Text = "SUMMARY";
-            this.lnkSummary.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSummary_LinkClicked);
+            this.lnkSummary1.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary1.AutoSize = true;
+            this.lnkSummary1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSummary1.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary1.Location = new System.Drawing.Point(3, 235);
+            this.lnkSummary1.Name = "lnkSummary1";
+            this.lnkSummary1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSummary1.Size = new System.Drawing.Size(56, 25);
+            this.lnkSummary1.TabIndex = 24;
+            this.lnkSummary1.TabStop = true;
+            this.lnkSummary1.Text = "SUMMARY";
+            this.lnkSummary1.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSummary1_LinkClicked);
             // 
             // expandCollapseToggle1
             // 
@@ -937,23 +982,6 @@
             this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
-            // 
-            // lnkVendorInvoicePayments
-            // 
-            this.lnkVendorInvoicePayments.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkVendorInvoicePayments.AutoSize = true;
-            this.lnkVendorInvoicePayments.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkVendorInvoicePayments.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkVendorInvoicePayments.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkVendorInvoicePayments.Location = new System.Drawing.Point(3, 30);
-            this.lnkVendorInvoicePayments.Name = "lnkVendorInvoicePayments";
-            this.lnkVendorInvoicePayments.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkVendorInvoicePayments.Size = new System.Drawing.Size(101, 25);
-            this.lnkVendorInvoicePayments.TabIndex = 34;
-            this.lnkVendorInvoicePayments.TabStop = true;
-            this.lnkVendorInvoicePayments.Text = "VENDOR PAYMENTS";
-            this.lnkVendorInvoicePayments.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkVendorInvoicePayments.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkVendorInvoicePayments_LinkClicked);
             // 
             // Container_Form
             // 
@@ -1017,7 +1045,7 @@
         private System.Windows.Forms.LinkLabel lnkCreateSales;
         private System.Windows.Forms.LinkLabel lnkInventory;
         private System.Windows.Forms.LinkLabel lnkPettyCash;
-        private System.Windows.Forms.LinkLabel lnkSummary;
+        private System.Windows.Forms.LinkLabel lnkSummary1;
         private System.Windows.Forms.Button btnOpname;
         private System.Windows.Forms.LinkLabel lnkSales;
         private System.Windows.Forms.LinkLabel lnkShipping;
@@ -1067,5 +1095,7 @@
         private System.Windows.Forms.LinkLabel lnkSaleReturns;
         private System.Windows.Forms.ToolStripMenuItem Inventory_VendorInvoicePayment;
         private System.Windows.Forms.LinkLabel lnkVendorInvoicePayments;
+        private System.Windows.Forms.LinkLabel lnkSummary2;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Summary;
     }
 }
