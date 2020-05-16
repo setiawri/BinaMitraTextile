@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 using LIBUtil;
+using LIBUtil.Desktop.UserControls;
 
 namespace BinaMitraTextile
 {
@@ -68,7 +69,7 @@ namespace BinaMitraTextile
             if(id != null)
             {
                 ID = (Guid)id;
-                DataRow row = Util.getFirstRow(get(ID, true, null, null, null));
+                DataRow row = get(ID);
                 Name = row[COL_DB_NAME].ToString();
                 Address = row[COL_DB_ADDRESS].ToString();
                 CityID = (Guid)row[COL_DB_CITYID];
@@ -147,7 +148,8 @@ namespace BinaMitraTextile
                 return Convert.ToBoolean(return_value.Value);
             }
         }
-        
+
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, true, null, null, null)); }
         public static DataTable get(bool includeInactive)
         {
             return get(null, includeInactive, null, null, null);

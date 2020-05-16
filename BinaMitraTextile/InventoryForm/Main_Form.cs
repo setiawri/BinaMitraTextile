@@ -344,7 +344,7 @@ namespace BinaMitraTextile.InventoryForm
 
             Tools.saveGridviewKey(grid, col_grid_id.Name);
 
-            Util.setGridviewDataSource(true, 0, grid, true, true, dvw);
+            Util.setGridviewDataSource(false, 20, grid, true, true, dvw);
 
             Tools.selectGridviewPreviousKey(grid, col_grid_id.Name);
 

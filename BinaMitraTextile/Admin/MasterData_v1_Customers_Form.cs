@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 
 using LIBUtil;
@@ -11,8 +12,8 @@ namespace BinaMitraTextile.Admin
         #region SETTINGS
 
         private const bool FORM_SHOWDATAONLOAD = true;
-        private const bool FORM_SHOWPROGRESSBARONPOPULATE = true;
-        private const int FORM_TIMERTIMEOUTSECONDS = 1;
+        private const bool FORM_SHOWPROGRESSBARONPOPULATE = false;
+        private const int FORM_TIMERTIMEOUTSECONDS = 20;
 
         #endregion SETTINGS
         /*******************************************************************************************************/
@@ -98,10 +99,13 @@ namespace BinaMitraTextile.Admin
 
         protected override System.Data.DataView loadGridviewDataSource()
         {
+            DataView dataview;
             if (Mode == FormModes.Add)
-                return Customer.get(null, chkIncludeInactive.Checked, null, null, null).DefaultView;
+                dataview = Customer.get(null, chkIncludeInactive.Checked, null, null, null).DefaultView;
             else
-                return Customer.get(null, chkIncludeInactive.Checked, itxt_Name.ValueText, (Guid?)iddl_Cities.SelectedValue, (Guid?)iddl_Transports.SelectedValue).DefaultView;
+                dataview = Customer.get(null, chkIncludeInactive.Checked, itxt_Name.ValueText, (Guid?)iddl_Cities.SelectedValue, (Guid?)iddl_Transports.SelectedValue).DefaultView;
+
+            return dataview;
         }
 
         protected override void populateInputFields()
@@ -175,6 +179,11 @@ namespace BinaMitraTextile.Admin
         {
             Tools.displayForm(new MasterData.Transports_Form(FormMode.New));
             Transport.populateInputControlDropDownList(iddl_Transports, true);
+        }
+
+        private void dp_dgv_Button_Click(object sender, EventArgs e)
+        {
+            populateGridViewDataSource(true);
         }
 
         #endregion EVENT HANDLERS
