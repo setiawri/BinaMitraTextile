@@ -150,6 +150,11 @@ namespace BinaMitraTextile
             Tools.populateDropDownList(dropdownlist, get(false, null, null).DefaultView, COL_DB_Name, COL_DB_Id, showDefault);
         }
 
+        public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool includeInactive)
+        {
+            control.populate(get(includeInactive, null, null).DefaultView, COL_DB_Name, COL_DB_Id, null);
+        }
+
         #endregion CLASS METHODS
         /*******************************************************************************************************/
     }

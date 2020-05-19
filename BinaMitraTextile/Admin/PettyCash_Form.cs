@@ -46,7 +46,7 @@ namespace BinaMitraTextile.Admin
             idtp_FilterStart.Value = DateTime.Now.Date.AddDays(-30);
             idtp_FilterEnd.Value = DateTime.Now.Date;
             
-            PettyCashRecordsCategory.populateDropDownList(dropFilterCategories, false, false);
+            PettyCashRecordsCategory.populateInputControlDropDownList(iddl_Filter_PettyCashCategories, true);
             PettyCashRecordsCategory.populateDropDownList(dropCategories, false, false);
 
             grid.AutoGenerateColumns = false;
@@ -84,16 +84,13 @@ namespace BinaMitraTextile.Admin
                     null,
                     idtp_FilterStart.ValueAsStartDateFilter,
                     idtp_FilterEnd.ValueAsEndDateFilter,
-                    (Guid?)Tools.getValue(dropFilterCategories), 
+                    (Guid?)iddl_Filter_PettyCashCategories.SelectedValue,
                     null,
                     chkOnlyNotChecked.Checked
                 )
             );
 
-            if (Tools.isDropdownlistSelected(dropFilterCategories))
-                col_grid_balance.Visible = false;
-            else
-                col_grid_balance.Visible = true;
+            setBalanceColumnVisibility();
         }
 
 		private void resetData()
@@ -106,6 +103,11 @@ namespace BinaMitraTextile.Admin
             if (!Tools.isDropdownlistSelected(dropCategories))
                 return Tools.inputError<ComboBox>(dropCategories, "Pilih Kategori");
             return true;
+        }
+
+        private void setBalanceColumnVisibility()
+        {
+            col_grid_balance.Visible = !(chkOnlyNotChecked.Checked || iddl_Filter_PettyCashCategories.hasSelectedValue());
         }
 
         #endregion METHODS
@@ -141,7 +143,7 @@ namespace BinaMitraTextile.Admin
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            col_grid_balance.Visible = !chkOnlyNotChecked.Checked;
+            setBalanceColumnVisibility();
             populateData();
         }
 

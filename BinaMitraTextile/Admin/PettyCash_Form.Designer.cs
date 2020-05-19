@@ -30,13 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dropCategories = new System.Windows.Forms.ComboBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddPettyCashRecord = new System.Windows.Forms.Button();
-            this.dropFilterCategories = new System.Windows.Forms.ComboBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.scMain = new System.Windows.Forms.SplitContainer();
@@ -92,6 +90,7 @@
             this.btnCalculator = new System.Windows.Forms.Button();
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.panelToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.iddl_Filter_PettyCashCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -100,16 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(264, 7);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
-            this.label8.TabIndex = 126;
-            this.label8.Text = "Category";
             // 
             // label2
             // 
@@ -162,15 +151,6 @@
             this.btnAddPettyCashRecord.UseVisualStyleBackColor = true;
             this.btnAddPettyCashRecord.Click += new System.EventHandler(this.btnAddPettyCashRecord_Click);
             // 
-            // dropFilterCategories
-            // 
-            this.dropFilterCategories.FormattingEnabled = true;
-            this.dropFilterCategories.Location = new System.Drawing.Point(267, 21);
-            this.dropFilterCategories.Margin = new System.Windows.Forms.Padding(2);
-            this.dropFilterCategories.Name = "dropFilterCategories";
-            this.dropFilterCategories.Size = new System.Drawing.Size(131, 21);
-            this.dropFilterCategories.TabIndex = 2;
-            // 
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,13 +183,12 @@
             // 
             // scMain.Panel1
             // 
+            this.scMain.Panel1.Controls.Add(this.btnFilter);
+            this.scMain.Panel1.Controls.Add(this.iddl_Filter_PettyCashCategories);
             this.scMain.Panel1.Controls.Add(this.idtp_FilterEnd);
             this.scMain.Panel1.Controls.Add(this.idtp_FilterStart);
             this.scMain.Panel1.Controls.Add(this.chkOnlyNotChecked);
-            this.scMain.Panel1.Controls.Add(this.label8);
             this.scMain.Panel1.Controls.Add(this.btnUpdate);
-            this.scMain.Panel1.Controls.Add(this.btnFilter);
-            this.scMain.Panel1.Controls.Add(this.dropFilterCategories);
             // 
             // scMain.Panel2
             // 
@@ -228,11 +207,12 @@
             this.idtp_FilterEnd.DefaultCheckedValue = false;
             this.idtp_FilterEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_FilterEnd.LabelText = "End";
-            this.idtp_FilterEnd.Location = new System.Drawing.Point(133, 3);
+            this.idtp_FilterEnd.Location = new System.Drawing.Point(134, 3);
             this.idtp_FilterEnd.Name = "idtp_FilterEnd";
             this.idtp_FilterEnd.ShowCheckBox = true;
+            this.idtp_FilterEnd.ShowDateTimePickerOnly = false;
             this.idtp_FilterEnd.ShowUpAndDown = false;
-            this.idtp_FilterEnd.Size = new System.Drawing.Size(130, 41);
+            this.idtp_FilterEnd.Size = new System.Drawing.Size(148, 41);
             this.idtp_FilterEnd.TabIndex = 130;
             this.idtp_FilterEnd.Value = null;
             this.idtp_FilterEnd.ValueTimeSpan = null;
@@ -247,6 +227,7 @@
             this.idtp_FilterStart.Location = new System.Drawing.Point(3, 3);
             this.idtp_FilterStart.Name = "idtp_FilterStart";
             this.idtp_FilterStart.ShowCheckBox = false;
+            this.idtp_FilterStart.ShowDateTimePickerOnly = false;
             this.idtp_FilterStart.ShowUpAndDown = false;
             this.idtp_FilterStart.Size = new System.Drawing.Size(130, 41);
             this.idtp_FilterStart.TabIndex = 7;
@@ -257,7 +238,7 @@
             // 
             this.chkOnlyNotChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkOnlyNotChecked.AutoSize = true;
-            this.chkOnlyNotChecked.Location = new System.Drawing.Point(403, 23);
+            this.chkOnlyNotChecked.Location = new System.Drawing.Point(414, 25);
             this.chkOnlyNotChecked.Name = "chkOnlyNotChecked";
             this.chkOnlyNotChecked.Size = new System.Drawing.Size(86, 17);
             this.chkOnlyNotChecked.TabIndex = 129;
@@ -303,7 +284,7 @@
             this.pnlCalculator.Controls.Add(this.in_20rb);
             this.pnlCalculator.Controls.Add(this.in_50rb);
             this.pnlCalculator.Controls.Add(this.in_100rb);
-            this.pnlCalculator.Location = new System.Drawing.Point(225, 187);
+            this.pnlCalculator.Location = new System.Drawing.Point(225, 188);
             this.pnlCalculator.Name = "pnlCalculator";
             this.pnlCalculator.Size = new System.Drawing.Size(294, 223);
             this.pnlCalculator.TabIndex = 7;
@@ -1076,12 +1057,30 @@
             // 
             this.panelToggle1.AdjustLocationOnClick = false;
             this.panelToggle1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelToggle1.ContainerPanel = null;
+            this.panelToggle1.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.panelToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
             this.panelToggle1.Location = new System.Drawing.Point(0, 0);
             this.panelToggle1.Name = "panelToggle1";
             this.panelToggle1.Size = new System.Drawing.Size(35, 35);
             this.panelToggle1.TabIndex = 123;
             this.panelToggle1.TogglePanel = this.scMain.Panel1;
+            // 
+            // iddl_Filter_PettyCashCategories
+            // 
+            this.iddl_Filter_PettyCashCategories.DisableTextInput = false;
+            this.iddl_Filter_PettyCashCategories.HideFilter = true;
+            this.iddl_Filter_PettyCashCategories.HideUpdateLink = true;
+            this.iddl_Filter_PettyCashCategories.LabelText = "Category";
+            this.iddl_Filter_PettyCashCategories.Location = new System.Drawing.Point(283, 3);
+            this.iddl_Filter_PettyCashCategories.Name = "iddl_Filter_PettyCashCategories";
+            this.iddl_Filter_PettyCashCategories.SelectedIndex = -1;
+            this.iddl_Filter_PettyCashCategories.SelectedItem = null;
+            this.iddl_Filter_PettyCashCategories.SelectedItemText = "";
+            this.iddl_Filter_PettyCashCategories.SelectedValue = null;
+            this.iddl_Filter_PettyCashCategories.ShowDropdownlistOnly = false;
+            this.iddl_Filter_PettyCashCategories.Size = new System.Drawing.Size(125, 41);
+            this.iddl_Filter_PettyCashCategories.TabIndex = 131;
             // 
             // PettyCash_Form
             // 
@@ -1108,14 +1107,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox dropCategories;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAddPettyCashRecord;
-        private System.Windows.Forms.ComboBox dropFilterCategories;
         private System.Windows.Forms.SplitContainer scMain;
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.Button btnFilter;
@@ -1171,5 +1167,6 @@
         private System.Windows.Forms.Label lbl500;
         private System.Windows.Forms.Label lbl1rb;
         private System.Windows.Forms.Label lbl2rb;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Filter_PettyCashCategories;
     }
 }
