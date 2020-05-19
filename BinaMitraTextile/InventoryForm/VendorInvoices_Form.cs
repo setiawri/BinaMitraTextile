@@ -252,6 +252,11 @@ namespace BinaMitraTextile.InventoryForm
                 VendorInvoicePayments_Form form = (VendorInvoicePayments_Form)Util.displayMDIChild(new VendorInvoicePayments_Form());
                 form.searchVendorInvoiceNo(Util.getClickedRowValue(sender, e, col_gridvendorinvoice_invoiceno).ToString());
             }
+            else if (Util.isColumnMatch(sender, e, col_gridVendorInvoices_Approved))
+            {
+                VendorInvoice.update_Approved(Util.getClickedRowValue<Guid>(sender, e, col_gridvendorinvoice_id), !Util.getCheckboxValue(sender, e));
+                populateGridVendorInvoices();
+            }
         }
 
         private void GridSaleInvoices_CellContentClick(object sender, DataGridViewCellEventArgs e)

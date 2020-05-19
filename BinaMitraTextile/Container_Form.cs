@@ -35,11 +35,11 @@ namespace BinaMitraTextile
         private void Form_Shown(object sender, EventArgs e)
         {
             if(GlobalData.UserAccount.role == Roles.Super)
-                Util.displayMDIChild(new Summary3_Form());
-            else if (lnkSummary2.Visible && GlobalData.UserAccount.role == Roles.Assistant)
-                Util.displayMDIChild(new Summary1_Form());
-            else if (lnkSummary1.Visible && GlobalData.UserAccount.role == Roles.User)
-                Util.displayMDIChild(new Summary1_Form());
+                Util.displayMDIChild(new Summary_Superuser_Form());
+            else if (lnkSummary_Assistant.Visible && GlobalData.UserAccount.role == Roles.Assistant)
+                Util.displayMDIChild(new Summary_Assistant_Form());
+            else if (lnkSummary_User.Visible && GlobalData.UserAccount.role == Roles.User)
+                Util.displayMDIChild(new Summary_User_Form());
 
             //Util.displayMDIChild(new Invoices.VendorInvoices_Form());
             //Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
@@ -116,12 +116,12 @@ namespace BinaMitraTextile
 
         private void LnkSummary1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Util.displayMDIChild(new Summary1_Form());
+            Util.displayMDIChild(new Summary_User_Form());
         }
 
         private void lnkSummary2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Util.displayMDIChild(new Summary2_Form());
+            Util.displayMDIChild(new Summary_Assistant_Form());
         }
 
         private void LnlSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -396,7 +396,7 @@ namespace BinaMitraTextile
 
         private void Internal_Summary_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Summary3_Form());
+            Util.displayMDIChild(new Summary_Superuser_Form());
         }
 
         #endregion MENU - INTERNAL

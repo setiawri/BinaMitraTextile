@@ -383,11 +383,11 @@
     <Compile Include="Logs\Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Summary1_Form.cs">
+    <Compile Include="Summary\Summary_User_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Summary1_Form.Designer.cs">
-      <DependentUpon>Summary1_Form.cs</DependentUpon>
+    <Compile Include="Summary\Summary_User_Form.Designer.cs">
+      <DependentUpon>Summary_User_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="POs\Main_Form.cs">
       <SubType>Form</SubType>
@@ -499,17 +499,17 @@
     <Compile Include="SharedForms\ProgressDisplay.Designer.cs">
       <DependentUpon>ProgressDisplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Summary2_Form.cs">
+    <Compile Include="Summary\Summary_Assistant_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Summary2_Form.Designer.cs">
-      <DependentUpon>Summary2_Form.cs</DependentUpon>
+    <Compile Include="Summary\Summary_Assistant_Form.Designer.cs">
+      <DependentUpon>Summary_Assistant_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Summary3_Form.cs">
+    <Compile Include="Summary\Summary_Superuser_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Summary3_Form.Designer.cs">
-      <DependentUpon>Summary3_Form.cs</DependentUpon>
+    <Compile Include="Summary\Summary_Superuser_Form.Designer.cs">
+      <DependentUpon>Summary_Superuser_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Test\Main_Form.cs">
       <SubType>Form</SubType>
@@ -695,8 +695,8 @@
     <EmbeddedResource Include="Logs\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Summary1_Form.resx">
-      <DependentUpon>Summary1_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Summary\Summary_User_Form.resx">
+      <DependentUpon>Summary_User_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="POs\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
@@ -762,11 +762,11 @@
     <EmbeddedResource Include="SharedForms\ProgressDisplay.resx">
       <DependentUpon>ProgressDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Summary2_Form.resx">
-      <DependentUpon>Summary2_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Summary\Summary_Assistant_Form.resx">
+      <DependentUpon>Summary_Assistant_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Summary3_Form.resx">
-      <DependentUpon>Summary3_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Summary\Summary_Superuser_Form.resx">
+      <DependentUpon>Summary_Superuser_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>

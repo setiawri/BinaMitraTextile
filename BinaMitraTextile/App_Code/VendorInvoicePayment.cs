@@ -28,6 +28,8 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE COLUMNS
 
+        public static string PROC_ADDNOTES = "VendorInvoicePayments_update_notes";
+
         public const string COL_DB_Id = "Id";
         public const string COL_DB_Timestamp = "Timestamp";
         public const string COL_DB_No = "No";

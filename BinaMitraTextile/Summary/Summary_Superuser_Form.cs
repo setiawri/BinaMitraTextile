@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BinaMitraTextile
 {
-    public partial class Summary3_Form : Form
+    public partial class Summary_Superuser_Form : Form
     {
         /*******************************************************************************************************/
         #region SETTINGS
@@ -26,8 +26,8 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CONSTRUCTOR METHODS
 
-        public Summary3_Form() : this(null) { }
-        public Summary3_Form(Guid? Id) { InitializeComponent(); }
+        public Summary_Superuser_Form() : this(null) { }
+        public Summary_Superuser_Form(Guid? Id) { InitializeComponent(); }
 
         #endregion CONSTRUCTOR METHODS
         /*******************************************************************************************************/

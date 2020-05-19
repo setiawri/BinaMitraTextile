@@ -12,6 +12,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private bool isFormShown = false;
 
+        private Guid _updateitem_Id;
+
         #endregion
         /*******************************************************************************************************/
         #region INITIALIZATION
@@ -90,8 +92,17 @@ namespace BinaMitraTextile.InventoryForm
         #region EVENT HANDLERS
 
         private void GridVendorInvoicePayments_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
+        {            
+            if (Util.isColumnMatch(sender, e, col_gridVendorInvoicePayments_Notes, col_gridVendorInvoicePayments_Timestamp))
+            {
+                pnlUpdateVendorInvoicePayment.Visible = true;
+                _updateitem_Id = Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id);
+                VendorInvoicePayment obj = new VendorInvoicePayment(_updateitem_Id);
+                idtp_Timestamp.Value = obj.Timestamp;
+                itxt_Notes.ValueText = obj.Notes;
+                idtp_Timestamp.focus();
+            }
+            else if (e.RowIndex > -1)
             {
                 DataTable data = VendorInvoicePaymentItem.get(null, Util.getSelectedRowID(sender, col_gridVendorInvoicePayments_Id));
                 Util.setGridviewDataSource(gridVendorInvoicePaymentItems, false, false, data);
@@ -148,6 +159,18 @@ namespace BinaMitraTextile.InventoryForm
                 VendorInvoicePayment.update_Cancelled(Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id), !Util.getCheckboxValue(sender, e));
                 populateGridVendorInvoicePayments();
             }
+        }
+
+        private void btnUpdateVendorInvoicePayment_Click(object sender, EventArgs e)
+        {
+            VendorInvoicePayment.update(_updateitem_Id, (DateTime)idtp_Timestamp.ValueAsStartDateFilter, itxt_Notes.ValueText);
+            pnlUpdateVendorInvoicePayment.Visible = false;
+            populateGridVendorInvoicePayments();
+        }
+
+        private void btnCancelUpdateVendorInvoicePayment_Click(object sender, EventArgs e)
+        {
+            pnlUpdateVendorInvoicePayment.Visible = false;
         }
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿namespace BinaMitraTextile
 {
-    partial class Summary2_Form
+    partial class Summary_Assistant_Form
     {
         /// <summary>
         /// Required designer variable.

@@ -7,7 +7,7 @@ using LIBUtil;
 
 namespace BinaMitraTextile
 {
-    public partial class Summary1_Form : Form
+    public partial class Summary_User_Form : Form
     {
         /*******************************************************************************************************/
         #region CLASS VARIABLES
@@ -17,7 +17,7 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region INITIALIZATION
 
-        public Summary1_Form()
+        public Summary_User_Form()
         {
             InitializeComponent();
         }

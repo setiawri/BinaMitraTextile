@@ -78,13 +78,13 @@
             this.Account_Peraturan = new System.Windows.Forms.ToolStripMenuItem();
             this.Account_Log = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Summary_Superuser = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_UserAccounts = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Financial = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Sales = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
-            this.Internal_Summary = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
             this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -94,7 +94,7 @@
             this.lnkSaleReturns = new System.Windows.Forms.LinkLabel();
             this.lnkFakturPajak = new System.Windows.Forms.LinkLabel();
             this.lnkInventory2 = new System.Windows.Forms.LinkLabel();
-            this.lnkSummary2 = new System.Windows.Forms.LinkLabel();
+            this.lnkSummary_Assistant = new System.Windows.Forms.LinkLabel();
             this.btnOpname = new System.Windows.Forms.Button();
             this.gbShortcutsForUsers = new System.Windows.Forms.GroupBox();
             this.flpShortcuts = new System.Windows.Forms.FlowLayoutPanel();
@@ -108,7 +108,7 @@
             this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
-            this.lnkSummary1 = new System.Windows.Forms.LinkLabel();
+            this.lnkSummary_User = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -526,13 +526,20 @@
             // Internal
             // 
             this.Internal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Internal_Summary,
+            this.Internal_Summary_Superuser,
             this.Internal_UserAccounts,
             this.Internal_Reports,
             this.Internal_Test});
             this.Internal.Name = "Internal";
             this.Internal.Size = new System.Drawing.Size(57, 20);
             this.Internal.Text = "Internal";
+            // 
+            // Internal_Summary_Superuser
+            // 
+            this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Summary_Superuser.Text = "Summary";
+            this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
@@ -579,13 +586,6 @@
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
-            // Internal_Summary
-            // 
-            this.Internal_Summary.Name = "Internal_Summary";
-            this.Internal_Summary.Size = new System.Drawing.Size(180, 22);
-            this.Internal_Summary.Text = "Summary";
-            this.Internal_Summary.Click += new System.EventHandler(this.Internal_Summary_Click);
-            // 
             // pnlShortcuts
             // 
             this.pnlShortcuts.BackColor = System.Drawing.Color.White;
@@ -621,7 +621,7 @@
             this.flowLayoutPanel1.Controls.Add(this.lnkSaleReturns);
             this.flowLayoutPanel1.Controls.Add(this.lnkFakturPajak);
             this.flowLayoutPanel1.Controls.Add(this.lnkInventory2);
-            this.flowLayoutPanel1.Controls.Add(this.lnkSummary2);
+            this.flowLayoutPanel1.Controls.Add(this.lnkSummary_Assistant);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -733,22 +733,22 @@
             this.lnkInventory2.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkInventory_LinkClicked);
             // 
-            // lnkSummary2
+            // lnkSummary_Assistant
             // 
-            this.lnkSummary2.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary2.AutoSize = true;
-            this.lnkSummary2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkSummary2.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary2.Location = new System.Drawing.Point(3, 155);
-            this.lnkSummary2.Name = "lnkSummary2";
-            this.lnkSummary2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSummary2.Size = new System.Drawing.Size(56, 25);
-            this.lnkSummary2.TabIndex = 35;
-            this.lnkSummary2.TabStop = true;
-            this.lnkSummary2.Text = "SUMMARY";
-            this.lnkSummary2.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSummary2_LinkClicked);
+            this.lnkSummary_Assistant.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_Assistant.AutoSize = true;
+            this.lnkSummary_Assistant.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_Assistant.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSummary_Assistant.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_Assistant.Location = new System.Drawing.Point(3, 155);
+            this.lnkSummary_Assistant.Name = "lnkSummary_Assistant";
+            this.lnkSummary_Assistant.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSummary_Assistant.Size = new System.Drawing.Size(56, 25);
+            this.lnkSummary_Assistant.TabIndex = 35;
+            this.lnkSummary_Assistant.TabStop = true;
+            this.lnkSummary_Assistant.Text = "SUMMARY";
+            this.lnkSummary_Assistant.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_Assistant.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSummary2_LinkClicked);
             // 
             // btnOpname
             // 
@@ -787,7 +787,7 @@
             this.flpShortcuts.Controls.Add(this.lnkPettyCash);
             this.flpShortcuts.Controls.Add(this.label1);
             this.flpShortcuts.Controls.Add(this.lnkSamples);
-            this.flpShortcuts.Controls.Add(this.lnkSummary1);
+            this.flpShortcuts.Controls.Add(this.lnkSummary_User);
             this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -953,22 +953,22 @@
             this.lnkSamples.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSamples.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSamples_LinkClicked);
             // 
-            // lnkSummary1
+            // lnkSummary_User
             // 
-            this.lnkSummary1.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary1.AutoSize = true;
-            this.lnkSummary1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkSummary1.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary1.Location = new System.Drawing.Point(3, 235);
-            this.lnkSummary1.Name = "lnkSummary1";
-            this.lnkSummary1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSummary1.Size = new System.Drawing.Size(56, 25);
-            this.lnkSummary1.TabIndex = 24;
-            this.lnkSummary1.TabStop = true;
-            this.lnkSummary1.Text = "SUMMARY";
-            this.lnkSummary1.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSummary1_LinkClicked);
+            this.lnkSummary_User.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_User.AutoSize = true;
+            this.lnkSummary_User.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_User.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkSummary_User.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_User.Location = new System.Drawing.Point(3, 235);
+            this.lnkSummary_User.Name = "lnkSummary_User";
+            this.lnkSummary_User.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkSummary_User.Size = new System.Drawing.Size(56, 25);
+            this.lnkSummary_User.TabIndex = 24;
+            this.lnkSummary_User.TabStop = true;
+            this.lnkSummary_User.Text = "SUMMARY";
+            this.lnkSummary_User.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkSummary_User.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkSummary1_LinkClicked);
             // 
             // expandCollapseToggle1
             // 
@@ -1045,7 +1045,7 @@
         private System.Windows.Forms.LinkLabel lnkCreateSales;
         private System.Windows.Forms.LinkLabel lnkInventory;
         private System.Windows.Forms.LinkLabel lnkPettyCash;
-        private System.Windows.Forms.LinkLabel lnkSummary1;
+        private System.Windows.Forms.LinkLabel lnkSummary_User;
         private System.Windows.Forms.Button btnOpname;
         private System.Windows.Forms.LinkLabel lnkSales;
         private System.Windows.Forms.LinkLabel lnkShipping;
@@ -1095,7 +1095,7 @@
         private System.Windows.Forms.LinkLabel lnkSaleReturns;
         private System.Windows.Forms.ToolStripMenuItem Inventory_VendorInvoicePayment;
         private System.Windows.Forms.LinkLabel lnkVendorInvoicePayments;
-        private System.Windows.Forms.LinkLabel lnkSummary2;
-        private System.Windows.Forms.ToolStripMenuItem Internal_Summary;
+        private System.Windows.Forms.LinkLabel lnkSummary_Assistant;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Summary_Superuser;
     }
 }

@@ -53,6 +53,8 @@ namespace BinaMitraTextile.Returns
         {
             Settings.setGeneralSettings(this);
 
+            idtp_StartDate.Value = DateTime.Now.AddMonths(-3);
+            idtp_EndDate.Value = DateTime.Now;
             Customer.populateDropDownList(cbCustomers, true, false);
 
             grid.AutoGenerateColumns = false;
@@ -120,7 +122,7 @@ namespace BinaMitraTextile.Returns
             if(_startingMode == FormModes.Browse)
                 Util.setGridviewDataSource(grid, true, true, SaleReturn.get_by_BrowsingForFakturPajak_Customers_Id((Guid)_BrowsingForFakturPajak_Customers_Id));
             else
-                Util.setGridviewDataSource(grid, true, true, SaleReturn.get(null, Tools.getDate(dtStart, false), Tools.getDate(dtEnd, true), inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false, null, null));
+                Util.setGridviewDataSource(grid, true, true, SaleReturn.get(null, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false, null, null));
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -165,8 +167,6 @@ namespace BinaMitraTextile.Returns
 
         private void clearForm()
         {
-            dtStart.Checked = false;
-            dtEnd.Checked = false;
             txtInventoryItemBarcode.Text = "";
             Tools.resetDropDownList(cbCustomers);
         }
