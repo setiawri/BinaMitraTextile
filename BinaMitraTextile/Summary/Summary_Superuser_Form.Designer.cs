@@ -28,28 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -58,19 +43,61 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.scMain = new System.Windows.Forms.SplitContainer();
-            this.pnlFPMasukan = new System.Windows.Forms.Panel();
-            this.lblFPMasukan = new System.Windows.Forms.Label();
-            this.pnlFPMasukanRetur = new System.Windows.Forms.Panel();
-            this.lblFPMasukanRetur = new System.Windows.Forms.Label();
-            this.pnlFPKeluaran = new System.Windows.Forms.Panel();
-            this.lblFPKeluaran = new System.Windows.Forms.Label();
-            this.pnlFPKeluaranRetur = new System.Windows.Forms.Panel();
-            this.lblFPKeluaranRetur = new System.Windows.Forms.Label();
-            this.gridReturns = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.gridFPKeluaran = new System.Windows.Forms.DataGridView();
+            this.gridFPKeluaranRetur = new System.Windows.Forms.DataGridView();
+            this.gridFPMasukan = new System.Windows.Forms.DataGridView();
+            this.tcFakturPajak = new System.Windows.Forms.TabControl();
+            this.tpFP = new System.Windows.Forms.TabPage();
+            this.tpFPMasukan = new System.Windows.Forms.TabPage();
+            this.tpFPMasukanRetur = new System.Windows.Forms.TabPage();
+            this.tpFPKeluaran = new System.Windows.Forms.TabPage();
+            this.tpFPKeluaranRetur = new System.Windows.Forms.TabPage();
+            this.tcMain = new System.Windows.Forms.TabControl();
+            this.tpFakturPajak = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gridFPMasukanRetur = new System.Windows.Forms.DataGridView();
+            this.col_gridFPKeluaran_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_gridFPKeluaran_Customers_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_sale_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_SaleAmount = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_gridFPKeluaran_shippingcost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_ReceivableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_ReturnedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_Sales_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPKeluaran_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_gridFPMasukanRetur_Vendors_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_sale_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_SaleAmount = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_gridSaleInvoices_shippingcost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_ReceivableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_returnedamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridSaleInvoices_Sales_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFPMasukanRetur_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridReturns_removeFakturPajaks_Id = new System.Windows.Forms.DataGridViewLinkColumn();
             this.col_gridReturns_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridReturns_hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -79,474 +106,36 @@
             this.col_gridReturns_sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridReturns_sale_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridReturns_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridFPMasukan = new System.Windows.Forms.DataGridView();
-            this.gridFPMasukanRetur = new System.Windows.Forms.DataGridView();
-            this.col_gridSaleInvoices_removeFakturPajaks_Id = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.col_gridSaleInvoices_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.col_gridSaleInvoices_sale_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_SaleAmount = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.col_gridSaleInvoices_shippingcost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_ReceivableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_returnedamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_Sales_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gridFPKeluaran = new System.Windows.Forms.DataGridView();
-            this.dataGridViewLinkColumn1 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewLinkColumn2 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewLinkColumn3 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridReturns_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridFPMasukan_VendorInvoices_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridFPMasukan_VendorInvoices_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridFPMasukan_VendorInvoices_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridFPMasukan_Vendors_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridFPMasukan_VendorInvoices_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
-            this.scMain.Panel1.SuspendLayout();
-            this.scMain.SuspendLayout();
-            this.pnlFPMasukan.SuspendLayout();
-            this.pnlFPMasukanRetur.SuspendLayout();
-            this.pnlFPKeluaran.SuspendLayout();
-            this.pnlFPKeluaranRetur.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridReturns)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukanRetur)).BeginInit();
+            this.col_gridFPMasukan_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridFakturPajak = new System.Windows.Forms.DataGridView();
+            this.col_gridFakturPajak_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_Vendors_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_Customers_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_AmountDiff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajak_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridFPKeluaran)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFPKeluaranRetur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukan)).BeginInit();
+            this.tcFakturPajak.SuspendLayout();
+            this.tpFP.SuspendLayout();
+            this.tpFPMasukan.SuspendLayout();
+            this.tpFPMasukanRetur.SuspendLayout();
+            this.tpFPKeluaran.SuspendLayout();
+            this.tpFPKeluaranRetur.SuspendLayout();
+            this.tcMain.SuspendLayout();
+            this.tpFakturPajak.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukanRetur)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFakturPajak)).BeginInit();
             this.SuspendLayout();
-            // 
-            // scMain
-            // 
-            this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scMain.Location = new System.Drawing.Point(0, 0);
-            this.scMain.Name = "scMain";
-            // 
-            // scMain.Panel1
-            // 
-            this.scMain.Panel1.Controls.Add(this.pnlFPKeluaran);
-            this.scMain.Panel1.Controls.Add(this.pnlFPKeluaranRetur);
-            this.scMain.Panel1.Controls.Add(this.pnlFPMasukanRetur);
-            this.scMain.Panel1.Controls.Add(this.pnlFPMasukan);
-            this.scMain.Size = new System.Drawing.Size(726, 500);
-            this.scMain.SplitterDistance = 363;
-            this.scMain.TabIndex = 0;
-            // 
-            // pnlFPMasukan
-            // 
-            this.pnlFPMasukan.Controls.Add(this.gridFPMasukan);
-            this.pnlFPMasukan.Controls.Add(this.lblFPMasukan);
-            this.pnlFPMasukan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFPMasukan.Location = new System.Drawing.Point(0, 0);
-            this.pnlFPMasukan.Name = "pnlFPMasukan";
-            this.pnlFPMasukan.Size = new System.Drawing.Size(363, 125);
-            this.pnlFPMasukan.TabIndex = 0;
-            // 
-            // lblFPMasukan
-            // 
-            this.lblFPMasukan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblFPMasukan.Location = new System.Drawing.Point(0, 0);
-            this.lblFPMasukan.Name = "lblFPMasukan";
-            this.lblFPMasukan.Size = new System.Drawing.Size(363, 23);
-            this.lblFPMasukan.TabIndex = 130;
-            this.lblFPMasukan.Text = "lblFPMasukan";
-            this.lblFPMasukan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlFPMasukanRetur
-            // 
-            this.pnlFPMasukanRetur.Controls.Add(this.gridFPMasukanRetur);
-            this.pnlFPMasukanRetur.Controls.Add(this.lblFPMasukanRetur);
-            this.pnlFPMasukanRetur.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFPMasukanRetur.Location = new System.Drawing.Point(0, 125);
-            this.pnlFPMasukanRetur.Name = "pnlFPMasukanRetur";
-            this.pnlFPMasukanRetur.Size = new System.Drawing.Size(363, 125);
-            this.pnlFPMasukanRetur.TabIndex = 1;
-            // 
-            // lblFPMasukanRetur
-            // 
-            this.lblFPMasukanRetur.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblFPMasukanRetur.Location = new System.Drawing.Point(0, 0);
-            this.lblFPMasukanRetur.Name = "lblFPMasukanRetur";
-            this.lblFPMasukanRetur.Size = new System.Drawing.Size(363, 23);
-            this.lblFPMasukanRetur.TabIndex = 130;
-            this.lblFPMasukanRetur.Text = "lblFPMasukanRetur";
-            this.lblFPMasukanRetur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlFPKeluaran
-            // 
-            this.pnlFPKeluaran.Controls.Add(this.gridFPKeluaran);
-            this.pnlFPKeluaran.Controls.Add(this.lblFPKeluaran);
-            this.pnlFPKeluaran.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFPKeluaran.Location = new System.Drawing.Point(0, 250);
-            this.pnlFPKeluaran.Name = "pnlFPKeluaran";
-            this.pnlFPKeluaran.Size = new System.Drawing.Size(363, 125);
-            this.pnlFPKeluaran.TabIndex = 2;
-            // 
-            // lblFPKeluaran
-            // 
-            this.lblFPKeluaran.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblFPKeluaran.Location = new System.Drawing.Point(0, 0);
-            this.lblFPKeluaran.Name = "lblFPKeluaran";
-            this.lblFPKeluaran.Size = new System.Drawing.Size(363, 23);
-            this.lblFPKeluaran.TabIndex = 130;
-            this.lblFPKeluaran.Text = "lblFPKeluaran";
-            this.lblFPKeluaran.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlFPKeluaranRetur
-            // 
-            this.pnlFPKeluaranRetur.Controls.Add(this.gridReturns);
-            this.pnlFPKeluaranRetur.Controls.Add(this.lblFPKeluaranRetur);
-            this.pnlFPKeluaranRetur.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFPKeluaranRetur.Location = new System.Drawing.Point(0, 375);
-            this.pnlFPKeluaranRetur.Name = "pnlFPKeluaranRetur";
-            this.pnlFPKeluaranRetur.Size = new System.Drawing.Size(363, 125);
-            this.pnlFPKeluaranRetur.TabIndex = 3;
-            // 
-            // lblFPKeluaranRetur
-            // 
-            this.lblFPKeluaranRetur.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblFPKeluaranRetur.Location = new System.Drawing.Point(0, 0);
-            this.lblFPKeluaranRetur.Name = "lblFPKeluaranRetur";
-            this.lblFPKeluaranRetur.Size = new System.Drawing.Size(363, 23);
-            this.lblFPKeluaranRetur.TabIndex = 130;
-            this.lblFPKeluaranRetur.Text = "lblFPKeluaranRetur";
-            this.lblFPKeluaranRetur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // gridReturns
-            // 
-            this.gridReturns.AllowUserToAddRows = false;
-            this.gridReturns.AllowUserToDeleteRows = false;
-            this.gridReturns.AllowUserToResizeRows = false;
-            this.gridReturns.BackgroundColor = System.Drawing.Color.White;
-            this.gridReturns.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridReturns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.gridReturns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridReturns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_gridReturns_removeFakturPajaks_Id,
-            this.col_gridReturns_Timestamp,
-            this.col_gridReturns_hexbarcode,
-            this.col_gridReturns_customer_name,
-            this.col_gridReturns_sale_qty,
-            this.col_gridReturns_sale_length,
-            this.col_gridReturns_sale_amount,
-            this.col_gridReturns_id});
-            this.gridReturns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridReturns.Location = new System.Drawing.Point(0, 23);
-            this.gridReturns.Margin = new System.Windows.Forms.Padding(2);
-            this.gridReturns.MultiSelect = false;
-            this.gridReturns.Name = "gridReturns";
-            this.gridReturns.ReadOnly = true;
-            this.gridReturns.RowHeadersVisible = false;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle19;
-            this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(363, 102);
-            this.gridReturns.TabIndex = 131;
-            // 
-            // col_gridReturns_removeFakturPajaks_Id
-            // 
-            this.col_gridReturns_removeFakturPajaks_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridReturns_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle13;
-            this.col_gridReturns_removeFakturPajaks_Id.HeaderText = "";
-            this.col_gridReturns_removeFakturPajaks_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridReturns_removeFakturPajaks_Id.LinkColor = System.Drawing.Color.Red;
-            this.col_gridReturns_removeFakturPajaks_Id.MinimumWidth = 10;
-            this.col_gridReturns_removeFakturPajaks_Id.Name = "col_gridReturns_removeFakturPajaks_Id";
-            this.col_gridReturns_removeFakturPajaks_Id.ReadOnly = true;
-            this.col_gridReturns_removeFakturPajaks_Id.Text = "X";
-            this.col_gridReturns_removeFakturPajaks_Id.UseColumnTextForLinkValue = true;
-            this.col_gridReturns_removeFakturPajaks_Id.VisitedLinkColor = System.Drawing.Color.Red;
-            this.col_gridReturns_removeFakturPajaks_Id.Width = 10;
-            // 
-            // col_gridReturns_Timestamp
-            // 
-            this.col_gridReturns_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle14.Format = "dd/MM/yy";
-            this.col_gridReturns_Timestamp.DefaultCellStyle = dataGridViewCellStyle14;
-            this.col_gridReturns_Timestamp.HeaderText = "Date";
-            this.col_gridReturns_Timestamp.MinimumWidth = 30;
-            this.col_gridReturns_Timestamp.Name = "col_gridReturns_Timestamp";
-            this.col_gridReturns_Timestamp.ReadOnly = true;
-            this.col_gridReturns_Timestamp.Width = 30;
-            // 
-            // col_gridReturns_hexbarcode
-            // 
-            this.col_gridReturns_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridReturns_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridReturns_hexbarcode.DefaultCellStyle = dataGridViewCellStyle15;
-            this.col_gridReturns_hexbarcode.HeaderText = "No";
-            this.col_gridReturns_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridReturns_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridReturns_hexbarcode.MinimumWidth = 30;
-            this.col_gridReturns_hexbarcode.Name = "col_gridReturns_hexbarcode";
-            this.col_gridReturns_hexbarcode.ReadOnly = true;
-            this.col_gridReturns_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridReturns_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridReturns_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridReturns_hexbarcode.Width = 30;
-            // 
-            // col_gridReturns_customer_name
-            // 
-            this.col_gridReturns_customer_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_gridReturns_customer_name.HeaderText = "Customer";
-            this.col_gridReturns_customer_name.MinimumWidth = 50;
-            this.col_gridReturns_customer_name.Name = "col_gridReturns_customer_name";
-            this.col_gridReturns_customer_name.ReadOnly = true;
-            this.col_gridReturns_customer_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridReturns_customer_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // col_gridReturns_sale_qty
-            // 
-            this.col_gridReturns_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_gridReturns_sale_qty.DefaultCellStyle = dataGridViewCellStyle16;
-            this.col_gridReturns_sale_qty.HeaderText = "Pcs";
-            this.col_gridReturns_sale_qty.MinimumWidth = 30;
-            this.col_gridReturns_sale_qty.Name = "col_gridReturns_sale_qty";
-            this.col_gridReturns_sale_qty.ReadOnly = true;
-            this.col_gridReturns_sale_qty.Width = 30;
-            // 
-            // col_gridReturns_sale_length
-            // 
-            this.col_gridReturns_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_gridReturns_sale_length.DefaultCellStyle = dataGridViewCellStyle17;
-            this.col_gridReturns_sale_length.HeaderText = "Qty";
-            this.col_gridReturns_sale_length.MinimumWidth = 30;
-            this.col_gridReturns_sale_length.Name = "col_gridReturns_sale_length";
-            this.col_gridReturns_sale_length.ReadOnly = true;
-            this.col_gridReturns_sale_length.Width = 30;
-            // 
-            // col_gridReturns_sale_amount
-            // 
-            this.col_gridReturns_sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N2";
-            dataGridViewCellStyle18.NullValue = null;
-            this.col_gridReturns_sale_amount.DefaultCellStyle = dataGridViewCellStyle18;
-            this.col_gridReturns_sale_amount.HeaderText = "Amount";
-            this.col_gridReturns_sale_amount.MinimumWidth = 50;
-            this.col_gridReturns_sale_amount.Name = "col_gridReturns_sale_amount";
-            this.col_gridReturns_sale_amount.ReadOnly = true;
-            this.col_gridReturns_sale_amount.Width = 50;
-            // 
-            // col_gridReturns_id
-            // 
-            this.col_gridReturns_id.HeaderText = "id";
-            this.col_gridReturns_id.Name = "col_gridReturns_id";
-            this.col_gridReturns_id.ReadOnly = true;
-            this.col_gridReturns_id.Visible = false;
-            // 
-            // gridFPMasukan
-            // 
-            this.gridFPMasukan.AllowUserToAddRows = false;
-            this.gridFPMasukan.AllowUserToDeleteRows = false;
-            this.gridFPMasukan.AllowUserToResizeRows = false;
-            this.gridFPMasukan.BackgroundColor = System.Drawing.Color.White;
-            this.gridFPMasukan.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridFPMasukan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
-            this.gridFPMasukan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridFPMasukan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_gridFPMasukan_VendorInvoices_Id,
-            this.col_gridFPMasukan_VendorInvoices_Timestamp,
-            this.col_gridFPMasukan_VendorInvoices_No,
-            this.col_gridFPMasukan_Vendors_Name,
-            this.col_gridFPMasukan_VendorInvoices_Amount});
-            this.gridFPMasukan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridFPMasukan.Location = new System.Drawing.Point(0, 23);
-            this.gridFPMasukan.Name = "gridFPMasukan";
-            this.gridFPMasukan.RowHeadersVisible = false;
-            this.gridFPMasukan.Size = new System.Drawing.Size(363, 102);
-            this.gridFPMasukan.TabIndex = 131;
-            // 
-            // gridFPMasukanRetur
-            // 
-            this.gridFPMasukanRetur.AllowUserToAddRows = false;
-            this.gridFPMasukanRetur.AllowUserToDeleteRows = false;
-            this.gridFPMasukanRetur.AllowUserToResizeRows = false;
-            this.gridFPMasukanRetur.BackgroundColor = System.Drawing.Color.White;
-            this.gridFPMasukanRetur.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridFPMasukanRetur.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
-            this.gridFPMasukanRetur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridFPMasukanRetur.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_gridSaleInvoices_removeFakturPajaks_Id,
-            this.col_gridSaleInvoices_timestamp,
-            this.col_gridSaleInvoices_hexbarcode,
-            this.col_gridSaleInvoices_sale_qty,
-            this.col_gridSaleInvoices_sale_length,
-            this.col_gridSaleInvoices_SaleAmount,
-            this.col_gridSaleInvoices_shippingcost,
-            this.col_gridSaleInvoices_ReceivableAmount,
-            this.col_gridSaleInvoices_returnedamount,
-            this.col_gridSaleInvoices_Sales_id});
-            this.gridFPMasukanRetur.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridFPMasukanRetur.Location = new System.Drawing.Point(0, 23);
-            this.gridFPMasukanRetur.Margin = new System.Windows.Forms.Padding(2);
-            this.gridFPMasukanRetur.MultiSelect = false;
-            this.gridFPMasukanRetur.Name = "gridFPMasukanRetur";
-            this.gridFPMasukanRetur.ReadOnly = true;
-            this.gridFPMasukanRetur.RowHeadersVisible = false;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridFPMasukanRetur.RowsDefaultCellStyle = dataGridViewCellStyle30;
-            this.gridFPMasukanRetur.RowTemplate.Height = 24;
-            this.gridFPMasukanRetur.Size = new System.Drawing.Size(363, 102);
-            this.gridFPMasukanRetur.TabIndex = 131;
-            // 
-            // col_gridSaleInvoices_removeFakturPajaks_Id
-            // 
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle21;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.HeaderText = "";
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.LinkColor = System.Drawing.Color.Red;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.MinimumWidth = 10;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.Name = "col_gridSaleInvoices_removeFakturPajaks_Id";
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.ReadOnly = true;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.Text = "X";
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.UseColumnTextForLinkValue = true;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.VisitedLinkColor = System.Drawing.Color.Red;
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.Width = 10;
-            // 
-            // col_gridSaleInvoices_timestamp
-            // 
-            this.col_gridSaleInvoices_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle22.Format = "dd/MM/yy";
-            this.col_gridSaleInvoices_timestamp.DefaultCellStyle = dataGridViewCellStyle22;
-            this.col_gridSaleInvoices_timestamp.HeaderText = "Date";
-            this.col_gridSaleInvoices_timestamp.MinimumWidth = 50;
-            this.col_gridSaleInvoices_timestamp.Name = "col_gridSaleInvoices_timestamp";
-            this.col_gridSaleInvoices_timestamp.ReadOnly = true;
-            this.col_gridSaleInvoices_timestamp.Width = 50;
-            // 
-            // col_gridSaleInvoices_hexbarcode
-            // 
-            this.col_gridSaleInvoices_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.col_gridSaleInvoices_hexbarcode.DefaultCellStyle = dataGridViewCellStyle23;
-            this.col_gridSaleInvoices_hexbarcode.HeaderText = "Invoice";
-            this.col_gridSaleInvoices_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridSaleInvoices_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_hexbarcode.MinimumWidth = 40;
-            this.col_gridSaleInvoices_hexbarcode.Name = "col_gridSaleInvoices_hexbarcode";
-            this.col_gridSaleInvoices_hexbarcode.ReadOnly = true;
-            this.col_gridSaleInvoices_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridSaleInvoices_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridSaleInvoices_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_hexbarcode.Width = 40;
-            // 
-            // col_gridSaleInvoices_sale_qty
-            // 
-            this.col_gridSaleInvoices_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle24.Format = "N0";
-            this.col_gridSaleInvoices_sale_qty.DefaultCellStyle = dataGridViewCellStyle24;
-            this.col_gridSaleInvoices_sale_qty.HeaderText = "Pcs";
-            this.col_gridSaleInvoices_sale_qty.MinimumWidth = 30;
-            this.col_gridSaleInvoices_sale_qty.Name = "col_gridSaleInvoices_sale_qty";
-            this.col_gridSaleInvoices_sale_qty.ReadOnly = true;
-            this.col_gridSaleInvoices_sale_qty.Width = 30;
-            // 
-            // col_gridSaleInvoices_sale_length
-            // 
-            this.col_gridSaleInvoices_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "N2";
-            this.col_gridSaleInvoices_sale_length.DefaultCellStyle = dataGridViewCellStyle25;
-            this.col_gridSaleInvoices_sale_length.HeaderText = "Qty";
-            this.col_gridSaleInvoices_sale_length.MinimumWidth = 30;
-            this.col_gridSaleInvoices_sale_length.Name = "col_gridSaleInvoices_sale_length";
-            this.col_gridSaleInvoices_sale_length.ReadOnly = true;
-            this.col_gridSaleInvoices_sale_length.Width = 30;
-            // 
-            // col_gridSaleInvoices_SaleAmount
-            // 
-            this.col_gridSaleInvoices_SaleAmount.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_SaleAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle26.Format = "N0";
-            this.col_gridSaleInvoices_SaleAmount.DefaultCellStyle = dataGridViewCellStyle26;
-            this.col_gridSaleInvoices_SaleAmount.HeaderText = "Amount";
-            this.col_gridSaleInvoices_SaleAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridSaleInvoices_SaleAmount.LinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_SaleAmount.MinimumWidth = 50;
-            this.col_gridSaleInvoices_SaleAmount.Name = "col_gridSaleInvoices_SaleAmount";
-            this.col_gridSaleInvoices_SaleAmount.ReadOnly = true;
-            this.col_gridSaleInvoices_SaleAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridSaleInvoices_SaleAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridSaleInvoices_SaleAmount.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_SaleAmount.Width = 50;
-            // 
-            // col_gridSaleInvoices_shippingcost
-            // 
-            this.col_gridSaleInvoices_shippingcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N0";
-            this.col_gridSaleInvoices_shippingcost.DefaultCellStyle = dataGridViewCellStyle27;
-            this.col_gridSaleInvoices_shippingcost.HeaderText = "Shipping";
-            this.col_gridSaleInvoices_shippingcost.MinimumWidth = 50;
-            this.col_gridSaleInvoices_shippingcost.Name = "col_gridSaleInvoices_shippingcost";
-            this.col_gridSaleInvoices_shippingcost.ReadOnly = true;
-            this.col_gridSaleInvoices_shippingcost.Width = 50;
-            // 
-            // col_gridSaleInvoices_ReceivableAmount
-            // 
-            this.col_gridSaleInvoices_ReceivableAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "N0";
-            this.col_gridSaleInvoices_ReceivableAmount.DefaultCellStyle = dataGridViewCellStyle28;
-            this.col_gridSaleInvoices_ReceivableAmount.HeaderText = "Hutang";
-            this.col_gridSaleInvoices_ReceivableAmount.MinimumWidth = 50;
-            this.col_gridSaleInvoices_ReceivableAmount.Name = "col_gridSaleInvoices_ReceivableAmount";
-            this.col_gridSaleInvoices_ReceivableAmount.ReadOnly = true;
-            this.col_gridSaleInvoices_ReceivableAmount.Width = 50;
-            // 
-            // col_gridSaleInvoices_returnedamount
-            // 
-            this.col_gridSaleInvoices_returnedamount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle29.Format = "N0";
-            this.col_gridSaleInvoices_returnedamount.DefaultCellStyle = dataGridViewCellStyle29;
-            this.col_gridSaleInvoices_returnedamount.HeaderText = "Return";
-            this.col_gridSaleInvoices_returnedamount.MinimumWidth = 50;
-            this.col_gridSaleInvoices_returnedamount.Name = "col_gridSaleInvoices_returnedamount";
-            this.col_gridSaleInvoices_returnedamount.ReadOnly = true;
-            // 
-            // col_gridSaleInvoices_Sales_id
-            // 
-            this.col_gridSaleInvoices_Sales_id.HeaderText = "id";
-            this.col_gridSaleInvoices_Sales_id.Name = "col_gridSaleInvoices_Sales_id";
-            this.col_gridSaleInvoices_Sales_id.ReadOnly = true;
-            this.col_gridSaleInvoices_Sales_id.Visible = false;
             // 
             // gridFPKeluaran
             // 
@@ -565,157 +154,604 @@
             this.gridFPKeluaran.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridFPKeluaran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridFPKeluaran.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewLinkColumn1,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewLinkColumn2,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewLinkColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
+            this.col_gridFPKeluaran_Timestamp,
+            this.col_gridFPKeluaran_hexbarcode,
+            this.col_gridFPKeluaran_Customers_Name,
+            this.col_gridFPKeluaran_sale_length,
+            this.col_gridFPKeluaran_sale_qty,
+            this.col_gridFPKeluaran_SaleAmount,
+            this.col_gridFPKeluaran_shippingcost,
+            this.col_gridFPKeluaran_ReceivableAmount,
+            this.col_gridFPKeluaran_ReturnedAmount,
+            this.col_gridFPKeluaran_Sales_id,
+            this.col_gridFPKeluaran_Notes});
             this.gridFPKeluaran.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridFPKeluaran.Location = new System.Drawing.Point(0, 23);
+            this.gridFPKeluaran.Location = new System.Drawing.Point(0, 0);
             this.gridFPKeluaran.Margin = new System.Windows.Forms.Padding(2);
             this.gridFPKeluaran.MultiSelect = false;
             this.gridFPKeluaran.Name = "gridFPKeluaran";
             this.gridFPKeluaran.ReadOnly = true;
             this.gridFPKeluaran.RowHeadersVisible = false;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridFPKeluaran.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridFPKeluaran.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.gridFPKeluaran.RowTemplate.Height = 24;
-            this.gridFPKeluaran.Size = new System.Drawing.Size(363, 102);
+            this.gridFPKeluaran.Size = new System.Drawing.Size(768, 209);
             this.gridFPKeluaran.TabIndex = 131;
             // 
-            // dataGridViewLinkColumn1
+            // gridFPKeluaranRetur
             // 
-            this.dataGridViewLinkColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewLinkColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewLinkColumn1.HeaderText = "";
-            this.dataGridViewLinkColumn1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.dataGridViewLinkColumn1.LinkColor = System.Drawing.Color.Red;
-            this.dataGridViewLinkColumn1.MinimumWidth = 10;
-            this.dataGridViewLinkColumn1.Name = "dataGridViewLinkColumn1";
-            this.dataGridViewLinkColumn1.ReadOnly = true;
-            this.dataGridViewLinkColumn1.Text = "X";
-            this.dataGridViewLinkColumn1.UseColumnTextForLinkValue = true;
-            this.dataGridViewLinkColumn1.VisitedLinkColor = System.Drawing.Color.Red;
-            this.dataGridViewLinkColumn1.Width = 10;
+            this.gridFPKeluaranRetur.AllowUserToAddRows = false;
+            this.gridFPKeluaranRetur.AllowUserToDeleteRows = false;
+            this.gridFPKeluaranRetur.AllowUserToResizeRows = false;
+            this.gridFPKeluaranRetur.BackgroundColor = System.Drawing.Color.White;
+            this.gridFPKeluaranRetur.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridFPKeluaranRetur.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.gridFPKeluaranRetur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridFPKeluaranRetur.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridReturns_removeFakturPajaks_Id,
+            this.col_gridReturns_Timestamp,
+            this.col_gridReturns_hexbarcode,
+            this.col_gridReturns_customer_name,
+            this.col_gridReturns_sale_qty,
+            this.col_gridReturns_sale_length,
+            this.col_gridReturns_sale_amount,
+            this.col_gridReturns_id,
+            this.col_gridReturns_Notes});
+            this.gridFPKeluaranRetur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridFPKeluaranRetur.Location = new System.Drawing.Point(0, 0);
+            this.gridFPKeluaranRetur.Margin = new System.Windows.Forms.Padding(2);
+            this.gridFPKeluaranRetur.MultiSelect = false;
+            this.gridFPKeluaranRetur.Name = "gridFPKeluaranRetur";
+            this.gridFPKeluaranRetur.ReadOnly = true;
+            this.gridFPKeluaranRetur.RowHeadersVisible = false;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridFPKeluaranRetur.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            this.gridFPKeluaranRetur.RowTemplate.Height = 24;
+            this.gridFPKeluaranRetur.Size = new System.Drawing.Size(768, 209);
+            this.gridFPKeluaranRetur.TabIndex = 131;
             // 
-            // dataGridViewTextBoxColumn1
+            // gridFPMasukan
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle3.Format = "dd/MM/yy";
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            this.gridFPMasukan.AllowUserToAddRows = false;
+            this.gridFPMasukan.AllowUserToDeleteRows = false;
+            this.gridFPMasukan.AllowUserToResizeRows = false;
+            this.gridFPMasukan.BackgroundColor = System.Drawing.Color.White;
+            this.gridFPMasukan.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridFPMasukan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.gridFPMasukan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridFPMasukan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridFPMasukan_VendorInvoices_Id,
+            this.col_gridFPMasukan_VendorInvoices_Timestamp,
+            this.col_gridFPMasukan_VendorInvoices_No,
+            this.col_gridFPMasukan_Vendors_Name,
+            this.col_gridFPMasukan_VendorInvoices_Amount,
+            this.col_gridFPMasukan_Notes});
+            this.gridFPMasukan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridFPMasukan.Location = new System.Drawing.Point(3, 3);
+            this.gridFPMasukan.Name = "gridFPMasukan";
+            this.gridFPMasukan.RowHeadersVisible = false;
+            this.gridFPMasukan.Size = new System.Drawing.Size(762, 203);
+            this.gridFPMasukan.TabIndex = 131;
             // 
-            // dataGridViewLinkColumn2
+            // tcFakturPajak
             // 
-            this.dataGridViewLinkColumn2.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.dataGridViewLinkColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.dataGridViewLinkColumn2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewLinkColumn2.HeaderText = "Invoice";
-            this.dataGridViewLinkColumn2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.dataGridViewLinkColumn2.LinkColor = System.Drawing.Color.SpringGreen;
-            this.dataGridViewLinkColumn2.MinimumWidth = 40;
-            this.dataGridViewLinkColumn2.Name = "dataGridViewLinkColumn2";
-            this.dataGridViewLinkColumn2.ReadOnly = true;
-            this.dataGridViewLinkColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLinkColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewLinkColumn2.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            this.dataGridViewLinkColumn2.Width = 40;
+            this.tcFakturPajak.Controls.Add(this.tpFP);
+            this.tcFakturPajak.Controls.Add(this.tpFPMasukan);
+            this.tcFakturPajak.Controls.Add(this.tpFPMasukanRetur);
+            this.tcFakturPajak.Controls.Add(this.tpFPKeluaran);
+            this.tcFakturPajak.Controls.Add(this.tpFPKeluaranRetur);
+            this.tcFakturPajak.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcFakturPajak.Location = new System.Drawing.Point(3, 3);
+            this.tcFakturPajak.Name = "tcFakturPajak";
+            this.tcFakturPajak.SelectedIndex = 0;
+            this.tcFakturPajak.Size = new System.Drawing.Size(776, 235);
+            this.tcFakturPajak.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn2
+            // tpFP
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.tpFP.Controls.Add(this.gridFakturPajak);
+            this.tpFP.Location = new System.Drawing.Point(4, 22);
+            this.tpFP.Name = "tpFP";
+            this.tpFP.Size = new System.Drawing.Size(768, 209);
+            this.tpFP.TabIndex = 4;
+            this.tpFP.Text = "Faktur Pajak";
+            this.tpFP.UseVisualStyleBackColor = true;
+            // 
+            // tpFPMasukan
+            // 
+            this.tpFPMasukan.Controls.Add(this.gridFPMasukan);
+            this.tpFPMasukan.Location = new System.Drawing.Point(4, 22);
+            this.tpFPMasukan.Name = "tpFPMasukan";
+            this.tpFPMasukan.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFPMasukan.Size = new System.Drawing.Size(768, 209);
+            this.tpFPMasukan.TabIndex = 0;
+            this.tpFPMasukan.Text = "Masukan";
+            this.tpFPMasukan.UseVisualStyleBackColor = true;
+            // 
+            // tpFPMasukanRetur
+            // 
+            this.tpFPMasukanRetur.Controls.Add(this.gridFPMasukanRetur);
+            this.tpFPMasukanRetur.Location = new System.Drawing.Point(4, 22);
+            this.tpFPMasukanRetur.Name = "tpFPMasukanRetur";
+            this.tpFPMasukanRetur.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFPMasukanRetur.Size = new System.Drawing.Size(768, 209);
+            this.tpFPMasukanRetur.TabIndex = 1;
+            this.tpFPMasukanRetur.Text = "Masukan Retur";
+            this.tpFPMasukanRetur.UseVisualStyleBackColor = true;
+            // 
+            // tpFPKeluaran
+            // 
+            this.tpFPKeluaran.Controls.Add(this.gridFPKeluaran);
+            this.tpFPKeluaran.Location = new System.Drawing.Point(4, 22);
+            this.tpFPKeluaran.Name = "tpFPKeluaran";
+            this.tpFPKeluaran.Size = new System.Drawing.Size(768, 209);
+            this.tpFPKeluaran.TabIndex = 2;
+            this.tpFPKeluaran.Text = "Keluaran";
+            this.tpFPKeluaran.UseVisualStyleBackColor = true;
+            // 
+            // tpFPKeluaranRetur
+            // 
+            this.tpFPKeluaranRetur.Controls.Add(this.gridFPKeluaranRetur);
+            this.tpFPKeluaranRetur.Location = new System.Drawing.Point(4, 22);
+            this.tpFPKeluaranRetur.Name = "tpFPKeluaranRetur";
+            this.tpFPKeluaranRetur.Size = new System.Drawing.Size(768, 209);
+            this.tpFPKeluaranRetur.TabIndex = 3;
+            this.tpFPKeluaranRetur.Text = "Keluaran Retur";
+            this.tpFPKeluaranRetur.UseVisualStyleBackColor = true;
+            // 
+            // tcMain
+            // 
+            this.tcMain.Controls.Add(this.tpFakturPajak);
+            this.tcMain.Controls.Add(this.tabPage2);
+            this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcMain.Location = new System.Drawing.Point(0, 0);
+            this.tcMain.Name = "tcMain";
+            this.tcMain.SelectedIndex = 0;
+            this.tcMain.Size = new System.Drawing.Size(790, 267);
+            this.tcMain.TabIndex = 1;
+            // 
+            // tpFakturPajak
+            // 
+            this.tpFakturPajak.Controls.Add(this.tcFakturPajak);
+            this.tpFakturPajak.Location = new System.Drawing.Point(4, 22);
+            this.tpFakturPajak.Name = "tpFakturPajak";
+            this.tpFakturPajak.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFakturPajak.Size = new System.Drawing.Size(782, 241);
+            this.tpFakturPajak.TabIndex = 0;
+            this.tpFakturPajak.Text = "Faktur Pajak";
+            this.tpFakturPajak.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(782, 241);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // gridFPMasukanRetur
+            // 
+            this.gridFPMasukanRetur.AllowUserToAddRows = false;
+            this.gridFPMasukanRetur.AllowUserToDeleteRows = false;
+            this.gridFPMasukanRetur.AllowUserToResizeRows = false;
+            this.gridFPMasukanRetur.BackgroundColor = System.Drawing.Color.White;
+            this.gridFPMasukanRetur.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridFPMasukanRetur.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            this.gridFPMasukanRetur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridFPMasukanRetur.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridSaleInvoices_timestamp,
+            this.col_gridSaleInvoices_hexbarcode,
+            this.col_gridFPMasukanRetur_Vendors_Name,
+            this.col_gridSaleInvoices_sale_qty,
+            this.col_gridSaleInvoices_sale_length,
+            this.col_gridSaleInvoices_SaleAmount,
+            this.col_gridSaleInvoices_shippingcost,
+            this.col_gridSaleInvoices_ReceivableAmount,
+            this.col_gridSaleInvoices_returnedamount,
+            this.col_gridSaleInvoices_Sales_id,
+            this.col_gridFPMasukanRetur_Notes});
+            this.gridFPMasukanRetur.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridFPMasukanRetur.Location = new System.Drawing.Point(3, 3);
+            this.gridFPMasukanRetur.Margin = new System.Windows.Forms.Padding(2);
+            this.gridFPMasukanRetur.MultiSelect = false;
+            this.gridFPMasukanRetur.Name = "gridFPMasukanRetur";
+            this.gridFPMasukanRetur.ReadOnly = true;
+            this.gridFPMasukanRetur.RowHeadersVisible = false;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridFPMasukanRetur.RowsDefaultCellStyle = dataGridViewCellStyle35;
+            this.gridFPMasukanRetur.RowTemplate.Height = 24;
+            this.gridFPMasukanRetur.Size = new System.Drawing.Size(762, 203);
+            this.gridFPMasukanRetur.TabIndex = 131;
+            // 
+            // col_gridFPKeluaran_Timestamp
+            // 
+            this.col_gridFPKeluaran_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            this.col_gridFPKeluaran_Timestamp.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_gridFPKeluaran_Timestamp.HeaderText = "Date";
+            this.col_gridFPKeluaran_Timestamp.MinimumWidth = 50;
+            this.col_gridFPKeluaran_Timestamp.Name = "col_gridFPKeluaran_Timestamp";
+            this.col_gridFPKeluaran_Timestamp.ReadOnly = true;
+            this.col_gridFPKeluaran_Timestamp.Width = 50;
+            // 
+            // col_gridFPKeluaran_hexbarcode
+            // 
+            this.col_gridFPKeluaran_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridFPKeluaran_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.col_gridFPKeluaran_hexbarcode.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_gridFPKeluaran_hexbarcode.HeaderText = "Invoice";
+            this.col_gridFPKeluaran_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridFPKeluaran_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridFPKeluaran_hexbarcode.MinimumWidth = 40;
+            this.col_gridFPKeluaran_hexbarcode.Name = "col_gridFPKeluaran_hexbarcode";
+            this.col_gridFPKeluaran_hexbarcode.ReadOnly = true;
+            this.col_gridFPKeluaran_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridFPKeluaran_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridFPKeluaran_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridFPKeluaran_hexbarcode.Width = 40;
+            // 
+            // col_gridFPKeluaran_Customers_Name
+            // 
+            this.col_gridFPKeluaran_Customers_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFPKeluaran_Customers_Name.HeaderText = "Customer";
+            this.col_gridFPKeluaran_Customers_Name.MinimumWidth = 50;
+            this.col_gridFPKeluaran_Customers_Name.Name = "col_gridFPKeluaran_Customers_Name";
+            this.col_gridFPKeluaran_Customers_Name.ReadOnly = true;
+            this.col_gridFPKeluaran_Customers_Name.Width = 50;
+            // 
+            // col_gridFPKeluaran_sale_length
+            // 
+            this.col_gridFPKeluaran_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            this.col_gridFPKeluaran_sale_length.DefaultCellStyle = dataGridViewCellStyle4;
+            this.col_gridFPKeluaran_sale_length.HeaderText = "Pcs";
+            this.col_gridFPKeluaran_sale_length.MinimumWidth = 30;
+            this.col_gridFPKeluaran_sale_length.Name = "col_gridFPKeluaran_sale_length";
+            this.col_gridFPKeluaran_sale_length.ReadOnly = true;
+            this.col_gridFPKeluaran_sale_length.Width = 30;
+            // 
+            // col_gridFPKeluaran_sale_qty
+            // 
+            this.col_gridFPKeluaran_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Pcs";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 30;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 30;
+            dataGridViewCellStyle5.Format = "N2";
+            this.col_gridFPKeluaran_sale_qty.DefaultCellStyle = dataGridViewCellStyle5;
+            this.col_gridFPKeluaran_sale_qty.HeaderText = "Qty";
+            this.col_gridFPKeluaran_sale_qty.MinimumWidth = 30;
+            this.col_gridFPKeluaran_sale_qty.Name = "col_gridFPKeluaran_sale_qty";
+            this.col_gridFPKeluaran_sale_qty.ReadOnly = true;
+            this.col_gridFPKeluaran_sale_qty.Width = 30;
             // 
-            // dataGridViewTextBoxColumn3
+            // col_gridFPKeluaran_SaleAmount
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFPKeluaran_SaleAmount.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridFPKeluaran_SaleAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Qty";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 30;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 30;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.Format = "N0";
+            this.col_gridFPKeluaran_SaleAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.col_gridFPKeluaran_SaleAmount.HeaderText = "Amount";
+            this.col_gridFPKeluaran_SaleAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridFPKeluaran_SaleAmount.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridFPKeluaran_SaleAmount.MinimumWidth = 50;
+            this.col_gridFPKeluaran_SaleAmount.Name = "col_gridFPKeluaran_SaleAmount";
+            this.col_gridFPKeluaran_SaleAmount.ReadOnly = true;
+            this.col_gridFPKeluaran_SaleAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridFPKeluaran_SaleAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridFPKeluaran_SaleAmount.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridFPKeluaran_SaleAmount.Width = 50;
             // 
-            // dataGridViewLinkColumn3
+            // col_gridFPKeluaran_shippingcost
             // 
-            this.dataGridViewLinkColumn3.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.dataGridViewLinkColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFPKeluaran_shippingcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle7.Format = "N0";
-            this.dataGridViewLinkColumn3.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewLinkColumn3.HeaderText = "Amount";
-            this.dataGridViewLinkColumn3.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.dataGridViewLinkColumn3.LinkColor = System.Drawing.Color.SpringGreen;
-            this.dataGridViewLinkColumn3.MinimumWidth = 50;
-            this.dataGridViewLinkColumn3.Name = "dataGridViewLinkColumn3";
-            this.dataGridViewLinkColumn3.ReadOnly = true;
-            this.dataGridViewLinkColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewLinkColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewLinkColumn3.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            this.dataGridViewLinkColumn3.Width = 50;
+            this.col_gridFPKeluaran_shippingcost.DefaultCellStyle = dataGridViewCellStyle7;
+            this.col_gridFPKeluaran_shippingcost.HeaderText = "Shipping";
+            this.col_gridFPKeluaran_shippingcost.MinimumWidth = 50;
+            this.col_gridFPKeluaran_shippingcost.Name = "col_gridFPKeluaran_shippingcost";
+            this.col_gridFPKeluaran_shippingcost.ReadOnly = true;
+            this.col_gridFPKeluaran_shippingcost.Width = 50;
             // 
-            // dataGridViewTextBoxColumn4
+            // col_gridFPKeluaran_ReceivableAmount
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFPKeluaran_ReceivableAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle8.Format = "N0";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Shipping";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 50;
+            this.col_gridFPKeluaran_ReceivableAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            this.col_gridFPKeluaran_ReceivableAmount.HeaderText = "Hutang";
+            this.col_gridFPKeluaran_ReceivableAmount.MinimumWidth = 50;
+            this.col_gridFPKeluaran_ReceivableAmount.Name = "col_gridFPKeluaran_ReceivableAmount";
+            this.col_gridFPKeluaran_ReceivableAmount.ReadOnly = true;
+            this.col_gridFPKeluaran_ReceivableAmount.Width = 50;
             // 
-            // dataGridViewTextBoxColumn5
+            // col_gridFPKeluaran_ReturnedAmount
             // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFPKeluaran_ReturnedAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle9.Format = "N0";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Hutang";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 50;
+            this.col_gridFPKeluaran_ReturnedAmount.DefaultCellStyle = dataGridViewCellStyle9;
+            this.col_gridFPKeluaran_ReturnedAmount.HeaderText = "Return";
+            this.col_gridFPKeluaran_ReturnedAmount.MinimumWidth = 50;
+            this.col_gridFPKeluaran_ReturnedAmount.Name = "col_gridFPKeluaran_ReturnedAmount";
+            this.col_gridFPKeluaran_ReturnedAmount.ReadOnly = true;
+            this.col_gridFPKeluaran_ReturnedAmount.Width = 50;
             // 
-            // dataGridViewTextBoxColumn6
+            // col_gridFPKeluaran_Sales_id
             // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Return";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.col_gridFPKeluaran_Sales_id.HeaderText = "id";
+            this.col_gridFPKeluaran_Sales_id.Name = "col_gridFPKeluaran_Sales_id";
+            this.col_gridFPKeluaran_Sales_id.ReadOnly = true;
+            this.col_gridFPKeluaran_Sales_id.Visible = false;
             // 
-            // dataGridViewTextBoxColumn7
+            // col_gridFPKeluaran_Notes
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "id";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Visible = false;
+            this.col_gridFPKeluaran_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridFPKeluaran_Notes.HeaderText = "Notes";
+            this.col_gridFPKeluaran_Notes.MinimumWidth = 50;
+            this.col_gridFPKeluaran_Notes.Name = "col_gridFPKeluaran_Notes";
+            this.col_gridFPKeluaran_Notes.ReadOnly = true;
+            // 
+            // col_gridSaleInvoices_timestamp
+            // 
+            this.col_gridSaleInvoices_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle27.Format = "dd/MM/yy";
+            this.col_gridSaleInvoices_timestamp.DefaultCellStyle = dataGridViewCellStyle27;
+            this.col_gridSaleInvoices_timestamp.HeaderText = "Date";
+            this.col_gridSaleInvoices_timestamp.MinimumWidth = 50;
+            this.col_gridSaleInvoices_timestamp.Name = "col_gridSaleInvoices_timestamp";
+            this.col_gridSaleInvoices_timestamp.ReadOnly = true;
+            this.col_gridSaleInvoices_timestamp.Width = 50;
+            // 
+            // col_gridSaleInvoices_hexbarcode
+            // 
+            this.col_gridSaleInvoices_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.col_gridSaleInvoices_hexbarcode.DefaultCellStyle = dataGridViewCellStyle28;
+            this.col_gridSaleInvoices_hexbarcode.HeaderText = "Invoice";
+            this.col_gridSaleInvoices_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridSaleInvoices_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_hexbarcode.MinimumWidth = 40;
+            this.col_gridSaleInvoices_hexbarcode.Name = "col_gridSaleInvoices_hexbarcode";
+            this.col_gridSaleInvoices_hexbarcode.ReadOnly = true;
+            this.col_gridSaleInvoices_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridSaleInvoices_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridSaleInvoices_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_hexbarcode.Width = 40;
+            // 
+            // col_gridFPMasukanRetur_Vendors_Name
+            // 
+            this.col_gridFPMasukanRetur_Vendors_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFPMasukanRetur_Vendors_Name.HeaderText = "Vendor";
+            this.col_gridFPMasukanRetur_Vendors_Name.MinimumWidth = 50;
+            this.col_gridFPMasukanRetur_Vendors_Name.Name = "col_gridFPMasukanRetur_Vendors_Name";
+            this.col_gridFPMasukanRetur_Vendors_Name.ReadOnly = true;
+            this.col_gridFPMasukanRetur_Vendors_Name.Width = 50;
+            // 
+            // col_gridSaleInvoices_sale_qty
+            // 
+            this.col_gridSaleInvoices_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle29.Format = "N0";
+            this.col_gridSaleInvoices_sale_qty.DefaultCellStyle = dataGridViewCellStyle29;
+            this.col_gridSaleInvoices_sale_qty.HeaderText = "Pcs";
+            this.col_gridSaleInvoices_sale_qty.MinimumWidth = 30;
+            this.col_gridSaleInvoices_sale_qty.Name = "col_gridSaleInvoices_sale_qty";
+            this.col_gridSaleInvoices_sale_qty.ReadOnly = true;
+            this.col_gridSaleInvoices_sale_qty.Width = 30;
+            // 
+            // col_gridSaleInvoices_sale_length
+            // 
+            this.col_gridSaleInvoices_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Format = "N2";
+            this.col_gridSaleInvoices_sale_length.DefaultCellStyle = dataGridViewCellStyle30;
+            this.col_gridSaleInvoices_sale_length.HeaderText = "Qty";
+            this.col_gridSaleInvoices_sale_length.MinimumWidth = 30;
+            this.col_gridSaleInvoices_sale_length.Name = "col_gridSaleInvoices_sale_length";
+            this.col_gridSaleInvoices_sale_length.ReadOnly = true;
+            this.col_gridSaleInvoices_sale_length.Width = 30;
+            // 
+            // col_gridSaleInvoices_SaleAmount
+            // 
+            this.col_gridSaleInvoices_SaleAmount.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_SaleAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle31.Format = "N0";
+            this.col_gridSaleInvoices_SaleAmount.DefaultCellStyle = dataGridViewCellStyle31;
+            this.col_gridSaleInvoices_SaleAmount.HeaderText = "Amount";
+            this.col_gridSaleInvoices_SaleAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridSaleInvoices_SaleAmount.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_SaleAmount.MinimumWidth = 50;
+            this.col_gridSaleInvoices_SaleAmount.Name = "col_gridSaleInvoices_SaleAmount";
+            this.col_gridSaleInvoices_SaleAmount.ReadOnly = true;
+            this.col_gridSaleInvoices_SaleAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridSaleInvoices_SaleAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridSaleInvoices_SaleAmount.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_SaleAmount.Width = 50;
+            // 
+            // col_gridSaleInvoices_shippingcost
+            // 
+            this.col_gridSaleInvoices_shippingcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle32.Format = "N0";
+            this.col_gridSaleInvoices_shippingcost.DefaultCellStyle = dataGridViewCellStyle32;
+            this.col_gridSaleInvoices_shippingcost.HeaderText = "Shipping";
+            this.col_gridSaleInvoices_shippingcost.MinimumWidth = 50;
+            this.col_gridSaleInvoices_shippingcost.Name = "col_gridSaleInvoices_shippingcost";
+            this.col_gridSaleInvoices_shippingcost.ReadOnly = true;
+            this.col_gridSaleInvoices_shippingcost.Width = 50;
+            // 
+            // col_gridSaleInvoices_ReceivableAmount
+            // 
+            this.col_gridSaleInvoices_ReceivableAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle33.Format = "N0";
+            this.col_gridSaleInvoices_ReceivableAmount.DefaultCellStyle = dataGridViewCellStyle33;
+            this.col_gridSaleInvoices_ReceivableAmount.HeaderText = "Hutang";
+            this.col_gridSaleInvoices_ReceivableAmount.MinimumWidth = 50;
+            this.col_gridSaleInvoices_ReceivableAmount.Name = "col_gridSaleInvoices_ReceivableAmount";
+            this.col_gridSaleInvoices_ReceivableAmount.ReadOnly = true;
+            this.col_gridSaleInvoices_ReceivableAmount.Width = 50;
+            // 
+            // col_gridSaleInvoices_returnedamount
+            // 
+            this.col_gridSaleInvoices_returnedamount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle34.Format = "N0";
+            this.col_gridSaleInvoices_returnedamount.DefaultCellStyle = dataGridViewCellStyle34;
+            this.col_gridSaleInvoices_returnedamount.HeaderText = "Return";
+            this.col_gridSaleInvoices_returnedamount.MinimumWidth = 50;
+            this.col_gridSaleInvoices_returnedamount.Name = "col_gridSaleInvoices_returnedamount";
+            this.col_gridSaleInvoices_returnedamount.ReadOnly = true;
+            this.col_gridSaleInvoices_returnedamount.Width = 50;
+            // 
+            // col_gridSaleInvoices_Sales_id
+            // 
+            this.col_gridSaleInvoices_Sales_id.HeaderText = "id";
+            this.col_gridSaleInvoices_Sales_id.Name = "col_gridSaleInvoices_Sales_id";
+            this.col_gridSaleInvoices_Sales_id.ReadOnly = true;
+            this.col_gridSaleInvoices_Sales_id.Visible = false;
+            // 
+            // col_gridFPMasukanRetur_Notes
+            // 
+            this.col_gridFPMasukanRetur_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridFPMasukanRetur_Notes.HeaderText = "Notes";
+            this.col_gridFPMasukanRetur_Notes.MinimumWidth = 50;
+            this.col_gridFPMasukanRetur_Notes.Name = "col_gridFPMasukanRetur_Notes";
+            this.col_gridFPMasukanRetur_Notes.ReadOnly = true;
+            // 
+            // col_gridReturns_removeFakturPajaks_Id
+            // 
+            this.col_gridReturns_removeFakturPajaks_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridReturns_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle12;
+            this.col_gridReturns_removeFakturPajaks_Id.HeaderText = "";
+            this.col_gridReturns_removeFakturPajaks_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridReturns_removeFakturPajaks_Id.LinkColor = System.Drawing.Color.Red;
+            this.col_gridReturns_removeFakturPajaks_Id.MinimumWidth = 10;
+            this.col_gridReturns_removeFakturPajaks_Id.Name = "col_gridReturns_removeFakturPajaks_Id";
+            this.col_gridReturns_removeFakturPajaks_Id.ReadOnly = true;
+            this.col_gridReturns_removeFakturPajaks_Id.Text = "X";
+            this.col_gridReturns_removeFakturPajaks_Id.UseColumnTextForLinkValue = true;
+            this.col_gridReturns_removeFakturPajaks_Id.VisitedLinkColor = System.Drawing.Color.Red;
+            this.col_gridReturns_removeFakturPajaks_Id.Width = 10;
+            // 
+            // col_gridReturns_Timestamp
+            // 
+            this.col_gridReturns_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle13.Format = "dd/MM/yy";
+            this.col_gridReturns_Timestamp.DefaultCellStyle = dataGridViewCellStyle13;
+            this.col_gridReturns_Timestamp.HeaderText = "Date";
+            this.col_gridReturns_Timestamp.MinimumWidth = 30;
+            this.col_gridReturns_Timestamp.Name = "col_gridReturns_Timestamp";
+            this.col_gridReturns_Timestamp.ReadOnly = true;
+            this.col_gridReturns_Timestamp.Width = 30;
+            // 
+            // col_gridReturns_hexbarcode
+            // 
+            this.col_gridReturns_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridReturns_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridReturns_hexbarcode.DefaultCellStyle = dataGridViewCellStyle14;
+            this.col_gridReturns_hexbarcode.HeaderText = "No";
+            this.col_gridReturns_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridReturns_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridReturns_hexbarcode.MinimumWidth = 30;
+            this.col_gridReturns_hexbarcode.Name = "col_gridReturns_hexbarcode";
+            this.col_gridReturns_hexbarcode.ReadOnly = true;
+            this.col_gridReturns_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridReturns_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridReturns_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridReturns_hexbarcode.Width = 30;
+            // 
+            // col_gridReturns_customer_name
+            // 
+            this.col_gridReturns_customer_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridReturns_customer_name.HeaderText = "Customer";
+            this.col_gridReturns_customer_name.MinimumWidth = 55;
+            this.col_gridReturns_customer_name.Name = "col_gridReturns_customer_name";
+            this.col_gridReturns_customer_name.ReadOnly = true;
+            this.col_gridReturns_customer_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridReturns_customer_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_gridReturns_customer_name.Width = 55;
+            // 
+            // col_gridReturns_sale_qty
+            // 
+            this.col_gridReturns_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_gridReturns_sale_qty.DefaultCellStyle = dataGridViewCellStyle15;
+            this.col_gridReturns_sale_qty.HeaderText = "Pcs";
+            this.col_gridReturns_sale_qty.MinimumWidth = 30;
+            this.col_gridReturns_sale_qty.Name = "col_gridReturns_sale_qty";
+            this.col_gridReturns_sale_qty.ReadOnly = true;
+            this.col_gridReturns_sale_qty.Width = 30;
+            // 
+            // col_gridReturns_sale_length
+            // 
+            this.col_gridReturns_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_gridReturns_sale_length.DefaultCellStyle = dataGridViewCellStyle16;
+            this.col_gridReturns_sale_length.HeaderText = "Qty";
+            this.col_gridReturns_sale_length.MinimumWidth = 30;
+            this.col_gridReturns_sale_length.Name = "col_gridReturns_sale_length";
+            this.col_gridReturns_sale_length.ReadOnly = true;
+            this.col_gridReturns_sale_length.Width = 30;
+            // 
+            // col_gridReturns_sale_amount
+            // 
+            this.col_gridReturns_sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N2";
+            dataGridViewCellStyle17.NullValue = null;
+            this.col_gridReturns_sale_amount.DefaultCellStyle = dataGridViewCellStyle17;
+            this.col_gridReturns_sale_amount.HeaderText = "Amount";
+            this.col_gridReturns_sale_amount.MinimumWidth = 50;
+            this.col_gridReturns_sale_amount.Name = "col_gridReturns_sale_amount";
+            this.col_gridReturns_sale_amount.ReadOnly = true;
+            this.col_gridReturns_sale_amount.Width = 50;
+            // 
+            // col_gridReturns_id
+            // 
+            this.col_gridReturns_id.HeaderText = "id";
+            this.col_gridReturns_id.Name = "col_gridReturns_id";
+            this.col_gridReturns_id.ReadOnly = true;
+            this.col_gridReturns_id.Visible = false;
+            // 
+            // col_gridReturns_Notes
+            // 
+            this.col_gridReturns_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridReturns_Notes.HeaderText = "Notes";
+            this.col_gridReturns_Notes.MinimumWidth = 50;
+            this.col_gridReturns_Notes.Name = "col_gridReturns_Notes";
+            this.col_gridReturns_Notes.ReadOnly = true;
             // 
             // col_gridFPMasukan_VendorInvoices_Id
             // 
@@ -728,8 +764,8 @@
             // col_gridFPMasukan_VendorInvoices_Timestamp
             // 
             this.col_gridFPMasukan_VendorInvoices_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle32.Format = "dd/MM/yy";
-            this.col_gridFPMasukan_VendorInvoices_Timestamp.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle20.Format = "dd/MM/yy";
+            this.col_gridFPMasukan_VendorInvoices_Timestamp.DefaultCellStyle = dataGridViewCellStyle20;
             this.col_gridFPMasukan_VendorInvoices_Timestamp.HeaderText = "Date";
             this.col_gridFPMasukan_VendorInvoices_Timestamp.MinimumWidth = 40;
             this.col_gridFPMasukan_VendorInvoices_Timestamp.Name = "col_gridFPMasukan_VendorInvoices_Timestamp";
@@ -756,53 +792,197 @@
             // 
             // col_gridFPMasukan_VendorInvoices_Amount
             // 
-            this.col_gridFPMasukan_VendorInvoices_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "N0";
-            this.col_gridFPMasukan_VendorInvoices_Amount.DefaultCellStyle = dataGridViewCellStyle33;
+            this.col_gridFPMasukan_VendorInvoices_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N0";
+            this.col_gridFPMasukan_VendorInvoices_Amount.DefaultCellStyle = dataGridViewCellStyle21;
             this.col_gridFPMasukan_VendorInvoices_Amount.HeaderText = "Amount";
             this.col_gridFPMasukan_VendorInvoices_Amount.MinimumWidth = 45;
             this.col_gridFPMasukan_VendorInvoices_Amount.Name = "col_gridFPMasukan_VendorInvoices_Amount";
             this.col_gridFPMasukan_VendorInvoices_Amount.ReadOnly = true;
+            this.col_gridFPMasukan_VendorInvoices_Amount.Width = 45;
             // 
-            // Summary3_Form
+            // col_gridFPMasukan_Notes
+            // 
+            this.col_gridFPMasukan_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridFPMasukan_Notes.HeaderText = "Notes";
+            this.col_gridFPMasukan_Notes.MinimumWidth = 50;
+            this.col_gridFPMasukan_Notes.Name = "col_gridFPMasukan_Notes";
+            this.col_gridFPMasukan_Notes.ReadOnly = true;
+            // 
+            // gridFakturPajak
+            // 
+            this.gridFakturPajak.AllowUserToAddRows = false;
+            this.gridFakturPajak.AllowUserToDeleteRows = false;
+            this.gridFakturPajak.AllowUserToResizeRows = false;
+            this.gridFakturPajak.BackgroundColor = System.Drawing.Color.White;
+            this.gridFakturPajak.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridFakturPajak.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.gridFakturPajak.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridFakturPajak.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridFakturPajak_Id,
+            this.col_gridFakturPajak_Timestamp,
+            this.col_gridFakturPajak_No,
+            this.col_gridFakturPajak_Vendors_Name,
+            this.col_gridFakturPajak_Customers_Name,
+            this.col_gridFakturPajak_Amount,
+            this.col_gridFakturPajak_AmountDiff,
+            this.col_gridFakturPajak_Notes});
+            this.gridFakturPajak.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridFakturPajak.Location = new System.Drawing.Point(0, 0);
+            this.gridFakturPajak.Name = "gridFakturPajak";
+            this.gridFakturPajak.RowHeadersVisible = false;
+            this.gridFakturPajak.Size = new System.Drawing.Size(768, 209);
+            this.gridFakturPajak.TabIndex = 132;
+            // 
+            // col_gridFakturPajak_Id
+            // 
+            this.col_gridFakturPajak_Id.HeaderText = "Id";
+            this.col_gridFakturPajak_Id.Name = "col_gridFakturPajak_Id";
+            this.col_gridFakturPajak_Id.ReadOnly = true;
+            this.col_gridFakturPajak_Id.Visible = false;
+            // 
+            // col_gridFakturPajak_Timestamp
+            // 
+            this.col_gridFakturPajak_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle23.Format = "dd/MM/yy";
+            this.col_gridFakturPajak_Timestamp.DefaultCellStyle = dataGridViewCellStyle23;
+            this.col_gridFakturPajak_Timestamp.HeaderText = "Date";
+            this.col_gridFakturPajak_Timestamp.MinimumWidth = 40;
+            this.col_gridFakturPajak_Timestamp.Name = "col_gridFakturPajak_Timestamp";
+            this.col_gridFakturPajak_Timestamp.ReadOnly = true;
+            this.col_gridFakturPajak_Timestamp.Width = 40;
+            // 
+            // col_gridFakturPajak_No
+            // 
+            this.col_gridFakturPajak_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFakturPajak_No.HeaderText = "No";
+            this.col_gridFakturPajak_No.MinimumWidth = 50;
+            this.col_gridFakturPajak_No.Name = "col_gridFakturPajak_No";
+            this.col_gridFakturPajak_No.ReadOnly = true;
+            this.col_gridFakturPajak_No.Width = 50;
+            // 
+            // col_gridFakturPajak_Vendors_Name
+            // 
+            this.col_gridFakturPajak_Vendors_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFakturPajak_Vendors_Name.HeaderText = "Vendor";
+            this.col_gridFakturPajak_Vendors_Name.MinimumWidth = 50;
+            this.col_gridFakturPajak_Vendors_Name.Name = "col_gridFakturPajak_Vendors_Name";
+            this.col_gridFakturPajak_Vendors_Name.ReadOnly = true;
+            this.col_gridFakturPajak_Vendors_Name.Width = 50;
+            // 
+            // col_gridFakturPajak_Customers_Name
+            // 
+            this.col_gridFakturPajak_Customers_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFakturPajak_Customers_Name.HeaderText = "Customer";
+            this.col_gridFakturPajak_Customers_Name.MinimumWidth = 55;
+            this.col_gridFakturPajak_Customers_Name.Name = "col_gridFakturPajak_Customers_Name";
+            this.col_gridFakturPajak_Customers_Name.ReadOnly = true;
+            this.col_gridFakturPajak_Customers_Name.Width = 55;
+            // 
+            // col_gridFakturPajak_Amount
+            // 
+            this.col_gridFakturPajak_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "N0";
+            this.col_gridFakturPajak_Amount.DefaultCellStyle = dataGridViewCellStyle24;
+            this.col_gridFakturPajak_Amount.HeaderText = "Amount";
+            this.col_gridFakturPajak_Amount.MinimumWidth = 45;
+            this.col_gridFakturPajak_Amount.Name = "col_gridFakturPajak_Amount";
+            this.col_gridFakturPajak_Amount.ReadOnly = true;
+            this.col_gridFakturPajak_Amount.Width = 45;
+            // 
+            // col_gridFakturPajak_AmountDiff
+            // 
+            this.col_gridFakturPajak_AmountDiff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "N0";
+            this.col_gridFakturPajak_AmountDiff.DefaultCellStyle = dataGridViewCellStyle25;
+            this.col_gridFakturPajak_AmountDiff.HeaderText = "Diff";
+            this.col_gridFakturPajak_AmountDiff.MinimumWidth = 50;
+            this.col_gridFakturPajak_AmountDiff.Name = "col_gridFakturPajak_AmountDiff";
+            this.col_gridFakturPajak_AmountDiff.ReadOnly = true;
+            this.col_gridFakturPajak_AmountDiff.Width = 50;
+            // 
+            // col_gridFakturPajak_Notes
+            // 
+            this.col_gridFakturPajak_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridFakturPajak_Notes.HeaderText = "Notes";
+            this.col_gridFakturPajak_Notes.MinimumWidth = 50;
+            this.col_gridFakturPajak_Notes.Name = "col_gridFakturPajak_Notes";
+            this.col_gridFakturPajak_Notes.ReadOnly = true;
+            // 
+            // Summary_Superuser_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 500);
-            this.Controls.Add(this.scMain);
-            this.Name = "Summary3_Form";
+            this.ClientSize = new System.Drawing.Size(790, 267);
+            this.Controls.Add(this.tcMain);
+            this.Name = "Summary_Superuser_Form";
             this.Text = "SUMMARY";
             this.Load += new System.EventHandler(this.Form_Load);
             this.Shown += new System.EventHandler(this.Form_Shown);
-            this.scMain.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
-            this.scMain.ResumeLayout(false);
-            this.pnlFPMasukan.ResumeLayout(false);
-            this.pnlFPMasukanRetur.ResumeLayout(false);
-            this.pnlFPKeluaran.ResumeLayout(false);
-            this.pnlFPKeluaranRetur.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridReturns)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukanRetur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridFPKeluaran)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFPKeluaranRetur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukan)).EndInit();
+            this.tcFakturPajak.ResumeLayout(false);
+            this.tpFP.ResumeLayout(false);
+            this.tpFPMasukan.ResumeLayout(false);
+            this.tpFPMasukanRetur.ResumeLayout(false);
+            this.tpFPKeluaran.ResumeLayout(false);
+            this.tpFPKeluaranRetur.ResumeLayout(false);
+            this.tcMain.ResumeLayout(false);
+            this.tpFakturPajak.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridFPMasukanRetur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridFakturPajak)).EndInit();
             this.ResumeLayout(false);
 
         }
 
 
         #endregion
-
-        private System.Windows.Forms.SplitContainer scMain;
-        private System.Windows.Forms.Panel pnlFPMasukan;
-        private System.Windows.Forms.Label lblFPMasukan;
-        private System.Windows.Forms.Panel pnlFPMasukanRetur;
-        private System.Windows.Forms.Label lblFPMasukanRetur;
-        private System.Windows.Forms.Panel pnlFPKeluaran;
-        private System.Windows.Forms.Label lblFPKeluaran;
-        private System.Windows.Forms.Panel pnlFPKeluaranRetur;
-        private System.Windows.Forms.Label lblFPKeluaranRetur;
-        private System.Windows.Forms.DataGridView gridReturns;
+        private System.Windows.Forms.DataGridView gridFPKeluaranRetur;
+        private System.Windows.Forms.DataGridView gridFPMasukan;
+        private System.Windows.Forms.DataGridView gridFPKeluaran;
+        private System.Windows.Forms.TabControl tcFakturPajak;
+        private System.Windows.Forms.TabPage tpFP;
+        private System.Windows.Forms.TabPage tpFPMasukan;
+        private System.Windows.Forms.TabPage tpFPMasukanRetur;
+        private System.Windows.Forms.TabPage tpFPKeluaran;
+        private System.Windows.Forms.TabPage tpFPKeluaranRetur;
+        private System.Windows.Forms.TabControl tcMain;
+        private System.Windows.Forms.TabPage tpFakturPajak;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView gridFPMasukanRetur;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_Timestamp;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridFPKeluaran_hexbarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_Customers_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_sale_length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_sale_qty;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridFPKeluaran_SaleAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_shippingcost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_ReceivableAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_ReturnedAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_Sales_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPKeluaran_Notes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_timestamp;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_hexbarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukanRetur_Vendors_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_length;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_SaleAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_shippingcost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_ReceivableAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_returnedamount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_Sales_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukanRetur_Notes;
         private System.Windows.Forms.DataGridViewLinkColumn col_gridReturns_removeFakturPajaks_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_Timestamp;
         private System.Windows.Forms.DataGridViewLinkColumn col_gridReturns_hexbarcode;
@@ -811,33 +991,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_sale_length;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_sale_amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_id;
-        private System.Windows.Forms.DataGridView gridFPMasukan;
-        private System.Windows.Forms.DataGridView gridFPKeluaran;
-        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewLinkColumn dataGridViewLinkColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridView gridFPMasukanRetur;
-        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_removeFakturPajaks_Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_timestamp;
-        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_hexbarcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_length;
-        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_SaleAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_shippingcost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_ReceivableAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_returnedamount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_Sales_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_Notes;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukan_VendorInvoices_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukan_VendorInvoices_Timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukan_VendorInvoices_No;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukan_Vendors_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukan_VendorInvoices_Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFPMasukan_Notes;
+        private System.Windows.Forms.DataGridView gridFakturPajak;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_Timestamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_Vendors_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_Customers_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_AmountDiff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajak_Notes;
     }
 }

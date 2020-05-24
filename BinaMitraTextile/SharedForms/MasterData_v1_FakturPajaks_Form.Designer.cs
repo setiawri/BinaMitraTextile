@@ -588,7 +588,7 @@
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(876, 96);
+            this.gridReturns.Size = new System.Drawing.Size(997, 96);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
@@ -939,7 +939,7 @@
             this.tpSaleReturns.Controls.Add(this.panel2);
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(876, 121);
+            this.tpSaleReturns.Size = new System.Drawing.Size(997, 121);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -950,7 +950,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(876, 25);
+            this.panel2.Size = new System.Drawing.Size(997, 25);
             this.panel2.TabIndex = 130;
             // 
             // iddl_Vendors

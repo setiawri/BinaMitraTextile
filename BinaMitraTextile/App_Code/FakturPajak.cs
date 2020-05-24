@@ -44,6 +44,7 @@ namespace BinaMitraTextile
         public const string FILTER_StartDate = "FILTER_StartDate";
         public const string FILTER_EndDate = "FILTER_EndDate";
         public const string FILTER_ShowCompleted = "FILTER_ShowCompleted";
+        public const string FILTER_ShowOnlyReminder = "FILTER_ShowOnlyReminder";
 
         #endregion PUBLIC VARIABLES
         /*******************************************************************************************************/
@@ -54,7 +55,7 @@ namespace BinaMitraTextile
             if(id != null)
             {
                 Id = (Guid)id;
-                DataRow row = Util.getFirstRow(get(Id, null, null, null, null, null, false));
+                DataRow row = Util.getFirstRow(get(Id, null, null, null, null, null, false, false));
                 No = Util.wrapNullable<string>(row, COL_DB_No);
                 Timestamp = Util.wrapNullable<DateTime>(row, COL_DB_Timestamp);
                 Customers_Id = Util.wrapNullable<Guid?>(row, COL_DB_Customers_Id);
@@ -98,7 +99,15 @@ namespace BinaMitraTextile
             return Id;
         }
 
-        public static DataTable get(Guid? Id, string No, Guid? Customers_Id, Guid? Vendors_Id, DateTime? StartDate, DateTime? EndDate, bool showCompleted)
+        public static DataTable get_Reminder()
+        {
+            return get(null, null, null, null, null, null, false, true);
+        }
+        public static DataTable get()
+        {
+            return get(null, null, null, null, null, null, false, false);
+        }
+        public static DataTable get(Guid? Id, string No, Guid? Customers_Id, Guid? Vendors_Id, DateTime? StartDate, DateTime? EndDate, bool showCompleted, bool showOnlyReminder)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -111,7 +120,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
                 new SqlQueryParameter(FILTER_StartDate, SqlDbType.DateTime, Util.wrapNullable(StartDate)),
                 new SqlQueryParameter(FILTER_EndDate, SqlDbType.DateTime, Util.wrapNullable(EndDate)),
-                new SqlQueryParameter(FILTER_ShowCompleted, SqlDbType.Bit, showCompleted)
+                new SqlQueryParameter(FILTER_ShowCompleted, SqlDbType.Bit, showCompleted),
+                new SqlQueryParameter(FILTER_ShowOnlyReminder, SqlDbType.Bit, showOnlyReminder)
                 );
             return result.Datatable;
         }

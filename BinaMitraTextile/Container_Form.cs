@@ -90,6 +90,11 @@ namespace BinaMitraTextile
         {
         }
 
+        private void updateOpenFormShortcuts()
+        {
+
+        }
+
         #endregion CLASS METHODS
         /*******************************************************************************************************/
         #region SHORTCUT LINKS

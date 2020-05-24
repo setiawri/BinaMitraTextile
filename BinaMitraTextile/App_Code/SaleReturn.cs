@@ -36,6 +36,7 @@ namespace BinaMitraTextile
         public const string COL_SALESMANNAME = "salesman_name";
 
         public const string FILTER_BrowsingForFakturPajak_Customers_Id = "FILTER_BrowsingForFakturPajak_Customers_Id";
+        public const string FILTER_ShowOnlyReminder = "FILTER_ShowOnlyReminder";
 
         public Guid id;
         public DateTime time_stamp;
@@ -159,20 +160,24 @@ namespace BinaMitraTextile
             return string.Empty;
         }
 
-        public static DataRow get(Guid Id)
-        {
-            return Util.getFirstRow(get(Id, null, null, null, null, null, false, null, null));
-        }
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, null, null, null, null, false, FakturPajaks_Id, null);
+            return get(null, null, null, null, null, null, false, FakturPajaks_Id, null, false);
         }
         public static DataTable get_by_BrowsingForFakturPajak_Customers_Id(Guid BrowsingForFakturPajak_Customers_Id)
         {
-            return get(null, null, null, null, null, null, false, null, BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, null, null, null, null, false, null, BrowsingForFakturPajak_Customers_Id, false);
+        }
+        public static DataTable get_Reminder()
+        {
+            return get(null, null, null, null, null, null, false, null, null, true);
+        }
+        public static DataRow get(Guid Id)
+        {
+            return Util.getFirstRow(get(Id, null, null, null, null, null, false, null, null, false));
         }
         public static DataTable get(Guid? Id, DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleReturnID, 
-            bool onlyWithCommission, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id)
+            bool onlyWithCommission, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, bool showOnlyReminder)
         {
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand("SaleReturns_get", DBUtil.ActiveSqlConnection))
@@ -187,6 +192,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@salereturn_id", SqlDbType.UniqueIdentifier).Value = (object)saleReturnID ?? DBNull.Value;
                 cmd.Parameters.Add("@" + COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(FakturPajaks_Id);
                 cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Customers_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Customers_Id);
+                cmd.Parameters.Add("@" + FILTER_ShowOnlyReminder, SqlDbType.Bit).Value = showOnlyReminder;
                 if (onlyWithCommission) cmd.Parameters.Add("@" + SaleReturn.COL_SALESMANID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
 
                 adapter.SelectCommand = cmd;

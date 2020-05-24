@@ -61,6 +61,7 @@ namespace BinaMitraTextile
         public const string FILTER_ShowOnlyIncomplete = "FILTER_ShowOnlyIncomplete";
         public const string FILTER_ShowOnlyVendorUsesFakturPajak = "FILTER_ShowOnlyVendorUsesFakturPajak";
         public const string FILTER_showOnlyLast6Months = "FILTER_showOnlyLast6Months";
+        public const string FILTER_ShowOnlyReminder = "FILTER_ShowOnlyReminder";
 
         #endregion DATABASE COLUMNS
         /*******************************************************************************************************/
@@ -108,25 +109,31 @@ namespace BinaMitraTextile
 
         public static DataTable get()
         {
-            return get(null, null, null, true, false, false, null, null);
+            return get(null, null, null, false, false, false, null, null, false);
         }
 
         public static DataTable get(Guid ID)
         {
-            return get(ID, null, null, true, false, false, null, null);
+            return get(ID, null, null, true, false, false, null, null, false);
+        }
+
+        public static DataTable get_Reminder()
+        {
+            return get(null, null, null, false, false, false, null, null, true);
         }
 
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, null, true, false, false, FakturPajaks_Id, null);
+            return get(null, null, null, true, false, false, FakturPajaks_Id, null, false);
         }
 
         public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, bool showOnlyLast6Months)
         {
-            return get(null, null, null, false, false, showOnlyLast6Months, null, BrowsingForFakturPajak_Customers_Id);
+            return get(null, null, null, false, false, showOnlyLast6Months, null, BrowsingForFakturPajak_Customers_Id, false);
         }
 
-        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, bool showOnlyLast6Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
+        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, 
+            bool showOnlyLast6Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id, bool showOnlyReminder)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -140,7 +147,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
                 new SqlQueryParameter(FILTER_ShowOnlyIncomplete, SqlDbType.Bit, showOnlyIncomplete),
                 new SqlQueryParameter(FILTER_showOnlyLast6Months, SqlDbType.Bit, showOnlyLast6Months),
-                new SqlQueryParameter(FILTER_ShowOnlyVendorUsesFakturPajak, SqlDbType.Bit, showOnlyVendorUsesFakturPajak)
+                new SqlQueryParameter(FILTER_ShowOnlyVendorUsesFakturPajak, SqlDbType.Bit, showOnlyVendorUsesFakturPajak),
+                new SqlQueryParameter(FILTER_ShowOnlyReminder, SqlDbType.Bit, showOnlyReminder)
                 );
             return result.Datatable;
         }

@@ -38,7 +38,8 @@ namespace BinaMitraTextile.Sales
             //initialize filter fields
             dtStart.ShowCheckBox = true;
             dtEnd.ShowCheckBox = true;
-            Customer.populateInputControlDropDownList(iddl_Customers, false);            
+            Customer.populateInputControlDropDownList(iddl_Customers, true);
+            Vendor.populateInputControlDropDownList(iddl_Vendors, true);
             UserAccount.populateInputControlDropDownList(iddl_UserAccounts, true);
             ProductStoreName.populateInputControlCheckedListBox(iclb_ProductStoreNames, true);
             FabricColor.populateInputControlCheckedListBox(iclb_Colors, true);
@@ -61,6 +62,7 @@ namespace BinaMitraTextile.Sales
             col_gridMaster_isManualAdjustment.DataPropertyName = Sale.COL_isManualAdjustment;
             col_gridmaster_SaleCommission_Users_Name.DataPropertyName = Sale.COL_SaleCommission_Users_Name;
             col_gridMaster_Vendors_Name.DataPropertyName = Sale.COL_Vendors_Name;
+            col_gridMaster_FakturPajaks_No.DataPropertyName = Sale.COL_FakturPajaks_No;
             col_gridmaster_isReported.DataPropertyName = Sale.COL_DB_ISREPORTED;
             col_gridmaster_isReported.Visible = false;
 
@@ -247,7 +249,7 @@ namespace BinaMitraTextile.Sales
                         Tools.getDate(dtEnd, true),
                         inventoryItemID,
                         (Guid?)iddl_Customers.SelectedValue,
-                        null,
+                        (Guid?)iddl_Vendors.SelectedValue,
                         saleID,
                         chkOnlyHasReceivable.Checked,
                         false,
@@ -263,7 +265,9 @@ namespace BinaMitraTextile.Sales
                         null,
                         null,
                         null,
-                        null)
+                        null,
+                        false,
+                        false)
                     );
             }
 

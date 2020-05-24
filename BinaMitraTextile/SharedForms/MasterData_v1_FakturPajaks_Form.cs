@@ -191,7 +191,7 @@ namespace BinaMitraTextile.SharedForms
 
         protected override System.Data.DataView loadGridviewDataSource()
         {
-            return FakturPajak.get(null, itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked).DefaultView;
+            return FakturPajak.get(null, itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked, false).DefaultView;
         }
 
         protected override void populateInputFields()

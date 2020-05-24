@@ -105,7 +105,7 @@ namespace BinaMitraTextile
             else
                 dtReceivables = Sale.get_ReceivablesOnly(false);
 
-            gridReceivables.DataSource = dtReceivables;
+            Util.setGridviewDataSource(gridReceivables, dtReceivables);
             gridReceivables.Sort(col_gridReceivables_RemainingTermDays, ListSortDirection.Ascending);
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));
 
@@ -113,13 +113,13 @@ namespace BinaMitraTextile
 
             populateIncompletePO();
 
-            gridStockLevel.DataSource = InventoryStockLevel.getAll(null, null, null, null, null, null, true);
+            Util.setGridviewDataSource(gridStockLevel, InventoryStockLevel.getAll(null, null, null, null, null, null, true));
         }
 
         private void populateIncompletePO()
         {
             DataTable dtPOItems = new DataTable();
-            Util.setGridviewDataSource(gridPOItems, true, true, dtPOItems = POItem.getIncompleteItems());
+            Util.setGridviewDataSource(gridPOItems, dtPOItems = POItem.getIncompleteItems());
             lblTotalIncompletePO.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtPOItems, "SUM", POItem.COL_PENDINGQTYVALUE, ""));
         }
 
@@ -153,7 +153,7 @@ namespace BinaMitraTextile
                 }
             }
 
-            dgvReceivablesSummary.DataSource = dtReceivablesSummary;
+            Util.setGridviewDataSource(dgvReceivablesSummary, dtReceivablesSummary);
         }
 
         #endregion INITIALIZATION

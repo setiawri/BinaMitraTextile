@@ -60,6 +60,7 @@ namespace BinaMitraTextile.Returns
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_Checked.DataPropertyName = SaleReturn.COL_Checked;
+            col_grid_FakturPajaks_No.DataPropertyName = SaleReturn.COL_FakturPajaks_No;
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_grid_Checked.Visible = false;
@@ -122,7 +123,7 @@ namespace BinaMitraTextile.Returns
             if(_startingMode == FormModes.Browse)
                 Util.setGridviewDataSource(grid, true, true, SaleReturn.get_by_BrowsingForFakturPajak_Customers_Id((Guid)_BrowsingForFakturPajak_Customers_Id));
             else
-                Util.setGridviewDataSource(grid, true, true, SaleReturn.get(null, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false, null, null));
+                Util.setGridviewDataSource(grid, true, true, SaleReturn.get(null, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false, null, null, false));
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)

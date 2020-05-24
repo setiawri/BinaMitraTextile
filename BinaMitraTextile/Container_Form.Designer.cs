@@ -87,7 +87,7 @@
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
             this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpAssistantShortcuts = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkVendorInvoices = new System.Windows.Forms.LinkLabel();
             this.lnkVendorInvoicePayments = new System.Windows.Forms.LinkLabel();
             this.lnkSales2 = new System.Windows.Forms.LinkLabel();
@@ -97,7 +97,7 @@
             this.lnkSummary_Assistant = new System.Windows.Forms.LinkLabel();
             this.btnOpname = new System.Windows.Forms.Button();
             this.gbShortcutsForUsers = new System.Windows.Forms.GroupBox();
-            this.flpShortcuts = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpUserShortcuts = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkInventory = new System.Windows.Forms.LinkLabel();
             this.lnkCreateSales = new System.Windows.Forms.LinkLabel();
             this.lnkSales = new System.Windows.Forms.LinkLabel();
@@ -110,12 +110,13 @@
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary_User = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcutsForAssistants.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flpAssistantShortcuts.SuspendLayout();
             this.gbShortcutsForUsers.SuspendLayout();
-            this.flpShortcuts.SuspendLayout();
+            this.flpUserShortcuts.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -127,8 +128,10 @@
             this.Inventory,
             this.Admin,
             this.Account,
-            this.Internal});
+            this.Internal,
+            this.Windows});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.MdiWindowListItem = this.Windows;
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.mainMenu.Size = new System.Drawing.Size(800, 24);
@@ -596,14 +599,14 @@
             this.pnlShortcuts.Location = new System.Drawing.Point(0, 24);
             this.pnlShortcuts.Name = "pnlShortcuts";
             this.pnlShortcuts.Padding = new System.Windows.Forms.Padding(5);
-            this.pnlShortcuts.Size = new System.Drawing.Size(145, 542);
+            this.pnlShortcuts.Size = new System.Drawing.Size(145, 621);
             this.pnlShortcuts.TabIndex = 18;
             // 
             // gbShortcutsForAssistants
             // 
             this.gbShortcutsForAssistants.AutoSize = true;
             this.gbShortcutsForAssistants.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbShortcutsForAssistants.Controls.Add(this.flowLayoutPanel1);
+            this.gbShortcutsForAssistants.Controls.Add(this.flpAssistantShortcuts);
             this.gbShortcutsForAssistants.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcutsForAssistants.Location = new System.Drawing.Point(5, 289);
             this.gbShortcutsForAssistants.Name = "gbShortcutsForAssistants";
@@ -611,25 +614,25 @@
             this.gbShortcutsForAssistants.TabIndex = 22;
             this.gbShortcutsForAssistants.TabStop = false;
             // 
-            // flowLayoutPanel1
+            // flpAssistantShortcuts
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.lnkVendorInvoices);
-            this.flowLayoutPanel1.Controls.Add(this.lnkVendorInvoicePayments);
-            this.flowLayoutPanel1.Controls.Add(this.lnkSales2);
-            this.flowLayoutPanel1.Controls.Add(this.lnkSaleReturns);
-            this.flowLayoutPanel1.Controls.Add(this.lnkFakturPajak);
-            this.flowLayoutPanel1.Controls.Add(this.lnkInventory2);
-            this.flowLayoutPanel1.Controls.Add(this.lnkSummary_Assistant);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(129, 185);
-            this.flowLayoutPanel1.TabIndex = 17;
+            this.flpAssistantShortcuts.AutoSize = true;
+            this.flpAssistantShortcuts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpAssistantShortcuts.Controls.Add(this.lnkVendorInvoices);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkVendorInvoicePayments);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkSales2);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkSaleReturns);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkFakturPajak);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkInventory2);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkSummary_Assistant);
+            this.flpAssistantShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpAssistantShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpAssistantShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flpAssistantShortcuts.Location = new System.Drawing.Point(3, 16);
+            this.flpAssistantShortcuts.Name = "flpAssistantShortcuts";
+            this.flpAssistantShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.flpAssistantShortcuts.Size = new System.Drawing.Size(129, 185);
+            this.flpAssistantShortcuts.TabIndex = 17;
             // 
             // lnkVendorInvoices
             // 
@@ -753,7 +756,7 @@
             // btnOpname
             // 
             this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpname.Location = new System.Drawing.Point(8, 493);
+            this.btnOpname.Location = new System.Drawing.Point(8, 572);
             this.btnOpname.Name = "btnOpname";
             this.btnOpname.Size = new System.Drawing.Size(129, 41);
             this.btnOpname.TabIndex = 21;
@@ -765,7 +768,7 @@
             // 
             this.gbShortcutsForUsers.AutoSize = true;
             this.gbShortcutsForUsers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbShortcutsForUsers.Controls.Add(this.flpShortcuts);
+            this.gbShortcutsForUsers.Controls.Add(this.flpUserShortcuts);
             this.gbShortcutsForUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcutsForUsers.Location = new System.Drawing.Point(5, 5);
             this.gbShortcutsForUsers.Name = "gbShortcutsForUsers";
@@ -773,29 +776,29 @@
             this.gbShortcutsForUsers.TabIndex = 14;
             this.gbShortcutsForUsers.TabStop = false;
             // 
-            // flpShortcuts
+            // flpUserShortcuts
             // 
-            this.flpShortcuts.AutoSize = true;
-            this.flpShortcuts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flpShortcuts.Controls.Add(this.lnkInventory);
-            this.flpShortcuts.Controls.Add(this.lnkCreateSales);
-            this.flpShortcuts.Controls.Add(this.lnkSales);
-            this.flpShortcuts.Controls.Add(this.lnkSaleOrders);
-            this.flpShortcuts.Controls.Add(this.lnkShipping);
-            this.flpShortcuts.Controls.Add(this.label2);
-            this.flpShortcuts.Controls.Add(this.lnkCustomerCredits);
-            this.flpShortcuts.Controls.Add(this.lnkPettyCash);
-            this.flpShortcuts.Controls.Add(this.label1);
-            this.flpShortcuts.Controls.Add(this.lnkSamples);
-            this.flpShortcuts.Controls.Add(this.lnkSummary_User);
-            this.flpShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpShortcuts.Location = new System.Drawing.Point(3, 16);
-            this.flpShortcuts.Name = "flpShortcuts";
-            this.flpShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpShortcuts.Size = new System.Drawing.Size(129, 265);
-            this.flpShortcuts.TabIndex = 17;
+            this.flpUserShortcuts.AutoSize = true;
+            this.flpUserShortcuts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpUserShortcuts.Controls.Add(this.lnkInventory);
+            this.flpUserShortcuts.Controls.Add(this.lnkCreateSales);
+            this.flpUserShortcuts.Controls.Add(this.lnkSales);
+            this.flpUserShortcuts.Controls.Add(this.lnkSaleOrders);
+            this.flpUserShortcuts.Controls.Add(this.lnkShipping);
+            this.flpUserShortcuts.Controls.Add(this.label2);
+            this.flpUserShortcuts.Controls.Add(this.lnkCustomerCredits);
+            this.flpUserShortcuts.Controls.Add(this.lnkPettyCash);
+            this.flpUserShortcuts.Controls.Add(this.label1);
+            this.flpUserShortcuts.Controls.Add(this.lnkSamples);
+            this.flpUserShortcuts.Controls.Add(this.lnkSummary_User);
+            this.flpUserShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpUserShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpUserShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flpUserShortcuts.Location = new System.Drawing.Point(3, 16);
+            this.flpUserShortcuts.Name = "flpUserShortcuts";
+            this.flpUserShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.flpUserShortcuts.Size = new System.Drawing.Size(129, 265);
+            this.flpUserShortcuts.TabIndex = 17;
             // 
             // lnkInventory
             // 
@@ -824,10 +827,10 @@
             this.lnkCreateSales.Location = new System.Drawing.Point(3, 30);
             this.lnkCreateSales.Name = "lnkCreateSales";
             this.lnkCreateSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkCreateSales.Size = new System.Drawing.Size(98, 25);
+            this.lnkCreateSales.Size = new System.Drawing.Size(73, 25);
             this.lnkCreateSales.TabIndex = 25;
             this.lnkCreateSales.TabStop = true;
-            this.lnkCreateSales.Text = "CREATE NEW SALE";
+            this.lnkCreateSales.Text = "CREATE SALE";
             this.lnkCreateSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCreateSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCreateSales_LinkClicked);
             // 
@@ -841,10 +844,10 @@
             this.lnkSales.Location = new System.Drawing.Point(3, 55);
             this.lnkSales.Name = "lnkSales";
             this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkSales.Size = new System.Drawing.Size(80, 25);
+            this.lnkSales.Size = new System.Drawing.Size(52, 25);
             this.lnkSales.TabIndex = 26;
             this.lnkSales.TabStop = true;
-            this.lnkSales.Text = "DAFTAR SALES";
+            this.lnkSales.Text = "INVOICES";
             this.lnkSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnlSales_LinkClicked);
             // 
@@ -983,11 +986,17 @@
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
             // 
+            // Windows
+            // 
+            this.Windows.Name = "Windows";
+            this.Windows.Size = new System.Drawing.Size(64, 20);
+            this.Windows.Text = "Windows";
+            // 
             // Container_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 566);
+            this.ClientSize = new System.Drawing.Size(800, 645);
             this.Controls.Add(this.expandCollapseToggle1);
             this.Controls.Add(this.pnlShortcuts);
             this.Controls.Add(this.mainMenu);
@@ -1002,12 +1011,12 @@
             this.pnlShortcuts.PerformLayout();
             this.gbShortcutsForAssistants.ResumeLayout(false);
             this.gbShortcutsForAssistants.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flpAssistantShortcuts.ResumeLayout(false);
+            this.flpAssistantShortcuts.PerformLayout();
             this.gbShortcutsForUsers.ResumeLayout(false);
             this.gbShortcutsForUsers.PerformLayout();
-            this.flpShortcuts.ResumeLayout(false);
-            this.flpShortcuts.PerformLayout();
+            this.flpUserShortcuts.ResumeLayout(false);
+            this.flpUserShortcuts.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1041,7 +1050,7 @@
         private LIBUtil.Desktop.UserControls.PanelToggle expandCollapseToggle1;
         private System.Windows.Forms.Panel pnlShortcuts;
         private System.Windows.Forms.GroupBox gbShortcutsForUsers;
-        private System.Windows.Forms.FlowLayoutPanel flpShortcuts;
+        private System.Windows.Forms.FlowLayoutPanel flpUserShortcuts;
         private System.Windows.Forms.LinkLabel lnkCreateSales;
         private System.Windows.Forms.LinkLabel lnkInventory;
         private System.Windows.Forms.LinkLabel lnkPettyCash;
@@ -1087,7 +1096,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel lnkCustomerCredits;
         private System.Windows.Forms.GroupBox gbShortcutsForAssistants;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpAssistantShortcuts;
         private System.Windows.Forms.LinkLabel lnkInventory2;
         private System.Windows.Forms.LinkLabel lnkVendorInvoices;
         private System.Windows.Forms.LinkLabel lnkSales2;
@@ -1097,5 +1106,6 @@
         private System.Windows.Forms.LinkLabel lnkVendorInvoicePayments;
         private System.Windows.Forms.LinkLabel lnkSummary_Assistant;
         private System.Windows.Forms.ToolStripMenuItem Internal_Summary_Superuser;
+        private System.Windows.Forms.ToolStripMenuItem Windows;
     }
 }

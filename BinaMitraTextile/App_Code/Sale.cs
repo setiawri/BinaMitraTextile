@@ -67,6 +67,8 @@ namespace BinaMitraTextile
         public const string FILTER_BrowsingForFakturPajak_Vendors_Id = "FILTER_BrowsingForFakturPajak_Vendors_Id";
 
         public const string FILTER_VendorInvoices_Id = "FILTER_VendorInvoices_Id";
+        public const string @FILTER_ShowOnlyReminder_MasukanRetur = "FILTER_ShowOnlyReminder_MasukanRetur";
+        public const string FILTER_ShowOnlyReminder_Keluaran = "FILTER_ShowOnlyReminder_Keluaran";
 
         //Charting ****************************************************************
         public const string COL_CHART_SALEYEARMONTH = "sale_year_month";
@@ -388,28 +390,37 @@ namespace BinaMitraTextile
 
         public static DataTable get_ReceivablesOnly(bool OnlyNoFakturPajak)
         {
-            return get(null, null, null, null, null, null, true, OnlyNoFakturPajak, false, false, false, null, null, null, false, false, null, null, null, null, null);
+            return get(null, null, null, null, null, null, true, OnlyNoFakturPajak, false, false, false, null, null, null, false, false, null, null, null, null, null, false, false);
         }
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null, null);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, FakturPajaks_Id, null, null, null, false, false);
         }
         public static DataTable get_by_BrowsingForFakturPajak(Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id)
         {
-            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, BrowsingForFakturPajak_Vendors_Id, null);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, BrowsingForFakturPajak_Customers_Id, BrowsingForFakturPajak_Vendors_Id, null, false, false);
         }
         public static DataTable get_by_VendorInvoices_Id(Guid VendorInvoices_Id)
         {
-            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, VendorInvoices_Id);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, VendorInvoices_Id, false, false);
+        }
+        public static DataTable get_Reminder_MasukanRetur()
+        {
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null, true, false);
+        }
+        public static DataTable get_Reminder_Keluaran()
+        {
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null, false, true);
         }
         public static DataTable get()
         {
-            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null);
+            return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null, false, false);
         }
         public static DataTable get(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? Vendors_Id, Guid? saleID, 
             bool onlyHasReceivable, bool OnlyNoFakturPajak, bool onlyLossProfit, bool onlyReturnedToSupplier, bool onlyWithCommission, Guid? salesUserAccountID, 
             DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode,
-            Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id, Guid? VendorInvoices_Id)
+            Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, Guid? BrowsingForFakturPajak_Vendors_Id, Guid? VendorInvoices_Id, 
+            bool showOnlyReminder_MasukanRetur, bool showOnlyReminder_Keluaran)
         {
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand("Sales_get", DBUtil.ActiveSqlConnection))
@@ -434,6 +445,8 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Customers_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Customers_Id);
                 cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id);
                 cmd.Parameters.Add("@" + FILTER_VendorInvoices_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(VendorInvoices_Id);
+                cmd.Parameters.Add("@" + FILTER_ShowOnlyReminder_MasukanRetur, SqlDbType.Bit).Value = showOnlyReminder_MasukanRetur;
+                cmd.Parameters.Add("@" + FILTER_ShowOnlyReminder_Keluaran, SqlDbType.Bit).Value = showOnlyReminder_Keluaran;
                 if (onlyWithCommission)
                 {
                     if (salesUserAccountID == null)
