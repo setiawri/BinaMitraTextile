@@ -294,7 +294,7 @@ namespace BinaMitraTextile.InventoryForm
             TextBox textbox = (TextBox)sender;
 
             int index = listManualInputTexboxes.IndexOf(textbox);
-            if (textbox.Text == ItemCheck_Form.BARCODE_RESET || isValidBarcode(textbox))
+            if (textbox.Text == StockOpname_Form.BARCODE_RESET || isValidBarcode(textbox))
             {
                 if (textbox.Text != textbox.Text.ToUpper())
                     textbox.Text = textbox.Text.ToUpper();

@@ -34,15 +34,13 @@ namespace BinaMitraTextile
 
         private void Form_Shown(object sender, EventArgs e)
         {
-            if(GlobalData.UserAccount.role == Roles.Super)
-                Util.displayMDIChild(new Summary_Superuser_Form());
-            else if (lnkSummary_Assistant.Visible && GlobalData.UserAccount.role == Roles.Assistant)
+            //if(GlobalData.UserAccount.role == Roles.Super)
+            //    Util.displayMDIChild(new Summary_Superuser_Form());
+            
+            if (lnkSummary_Assistant.Visible && GlobalData.UserAccount.role == Roles.Assistant)
                 Util.displayMDIChild(new Summary_Assistant_Form());
             else if (lnkSummary_User.Visible && GlobalData.UserAccount.role == Roles.User)
                 Util.displayMDIChild(new Summary_User_Form());
-
-            //Util.displayMDIChild(new Invoices.VendorInvoices_Form());
-            //Util.displayMDIChild(new Sales.MasterData_v1_FakturPajaks_Form(FormModes.Add));
         }
 
         private void setupControls()
@@ -99,6 +97,11 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region SHORTCUT LINKS
 
+        private void lnkKontrabon_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Sales.MasterData_v2_Kontrabons_Form());
+        }
+
         private void LnkCreateSales_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new Sales.Add_Edit_Form());
@@ -151,7 +154,7 @@ namespace BinaMitraTextile
 
         private void BtnOpname_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
+            Util.displayMDIChild(new InventoryForm.StockOpname_Form());
         }
 
         private void LnkCustomerCredits_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -185,7 +188,7 @@ namespace BinaMitraTextile
 
         private void Inventory_Opname_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new InventoryForm.ItemCheck_Form());
+            Util.displayMDIChild(new InventoryForm.StockOpname_Form());
         }
 
         private void Inventory_Barcodes_Click(object sender, EventArgs e)
@@ -352,7 +355,7 @@ namespace BinaMitraTextile
 
         private void Sales_Kontrabon_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Sales.Kontrabon_Form());
+            Util.displayMDIChild(new Sales.MasterData_v2_Kontrabons_Form());
         }
 
         private void Sales_Customers_Daftar_Click(object sender, EventArgs e)

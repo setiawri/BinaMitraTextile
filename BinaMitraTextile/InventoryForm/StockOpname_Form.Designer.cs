@@ -1,6 +1,6 @@
 ﻿namespace BinaMitraTextile.InventoryForm
 {
-    partial class ItemCheck_Form
+    partial class StockOpname_Form
     {
         /// <summary>
         /// Required designer variable.

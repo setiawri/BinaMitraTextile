@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.InventoryForm
 {
-    public partial class ItemCheck_Form : Form
+    public partial class StockOpname_Form : Form
     {
         /*******************************************************************************************************/
         #region CLASS VARIABLES        
@@ -23,7 +18,7 @@ namespace BinaMitraTextile.InventoryForm
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
         #region INITIALIZATION
-        public ItemCheck_Form()
+        public StockOpname_Form()
         {
             InitializeComponent();
         }
@@ -447,6 +442,17 @@ namespace BinaMitraTextile.InventoryForm
         private void Iclb_Grades_Item_Checked(object sender, EventArgs e)
         {
             populateMissingInventoryItems();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                if (Util.copyContentToClipboardIfGridview(this))
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         #endregion FORM METHODS

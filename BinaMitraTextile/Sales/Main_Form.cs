@@ -127,20 +127,6 @@ namespace BinaMitraTextile.Sales
 
         #endregion INITIALIZATION
         /*******************************************************************************************************/
-        #region SHORTCUT KEYS
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == (Keys.Alt | Keys.N))
-            {
-                btnAddSale.PerformClick();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        #endregion SHORTCUT KEYS
-        /*******************************************************************************************************/
         #region FILTER CONTROLS
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -450,6 +436,17 @@ namespace BinaMitraTextile.Sales
         private void Form_Shown(object sender, EventArgs e)
         {
             ptSummaryAndDetails.toggle();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                if (Util.copyContentToClipboardIfGridview(this))
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         #endregion FORM METHODS

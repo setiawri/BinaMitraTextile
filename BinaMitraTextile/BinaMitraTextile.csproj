@@ -107,6 +107,12 @@
     <Compile Include="InventoryForm\VendorInvoicePayments_Form.Designer.cs">
       <DependentUpon>VendorInvoicePayments_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales\MasterData_v2_Kontrabons_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\MasterData_v2_Kontrabons_Form.Designer.cs">
+      <DependentUpon>MasterData_v2_Kontrabons_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="SharedForms\MasterData_v1_FakturPajaks_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,11 +365,11 @@
     <Compile Include="App_Code\Tools.cs" />
     <Compile Include="App_Code\UserAccount.cs" />
     <Compile Include="App_Code\Vendor.cs" />
-    <Compile Include="InventoryForm\ItemCheck_Form.cs">
+    <Compile Include="InventoryForm\StockOpname_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryForm\ItemCheck_Form.Designer.cs">
-      <DependentUpon>ItemCheck_Form.cs</DependentUpon>
+    <Compile Include="InventoryForm\StockOpname_Form.Designer.cs">
+      <DependentUpon>StockOpname_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryForm\Items_Form.cs">
       <SubType>Form</SubType>
@@ -598,6 +604,9 @@
     <EmbeddedResource Include="InventoryForm\VendorInvoicePayments_Form.resx">
       <DependentUpon>VendorInvoicePayments_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sales\MasterData_v2_Kontrabons_Form.resx">
+      <DependentUpon>MasterData_v2_Kontrabons_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SharedForms\MasterData_v1_FakturPajaks_Form.resx">
       <DependentUpon>MasterData_v1_FakturPajaks_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -683,8 +692,8 @@
       <DependentUpon>ProductPrices_Form.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryForm\ItemCheck_Form.resx">
-      <DependentUpon>ItemCheck_Form.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryForm\StockOpname_Form.resx">
+      <DependentUpon>StockOpname_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm\Items_Form.resx">
       <DependentUpon>Items_Form.cs</DependentUpon>

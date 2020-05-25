@@ -85,6 +85,7 @@
             this.Internal_Reports_Sales = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
+            this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
             this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
             this.flpAssistantShortcuts = new System.Windows.Forms.FlowLayoutPanel();
@@ -110,7 +111,7 @@
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary_User = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.Windows = new System.Windows.Forms.ToolStripMenuItem();
+            this.lnkKontrabon = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcutsForAssistants.SuspendLayout();
@@ -540,14 +541,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(144, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(180, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(144, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -558,7 +559,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(144, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -585,9 +586,15 @@
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(144, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
+            // 
+            // Windows
+            // 
+            this.Windows.Name = "Windows";
+            this.Windows.Size = new System.Drawing.Size(64, 20);
+            this.Windows.Text = "Windows";
             // 
             // pnlShortcuts
             // 
@@ -610,7 +617,7 @@
             this.gbShortcutsForAssistants.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcutsForAssistants.Location = new System.Drawing.Point(5, 289);
             this.gbShortcutsForAssistants.Name = "gbShortcutsForAssistants";
-            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(135, 204);
+            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(135, 229);
             this.gbShortcutsForAssistants.TabIndex = 22;
             this.gbShortcutsForAssistants.TabStop = false;
             // 
@@ -623,6 +630,7 @@
             this.flpAssistantShortcuts.Controls.Add(this.lnkSales2);
             this.flpAssistantShortcuts.Controls.Add(this.lnkSaleReturns);
             this.flpAssistantShortcuts.Controls.Add(this.lnkFakturPajak);
+            this.flpAssistantShortcuts.Controls.Add(this.lnkKontrabon);
             this.flpAssistantShortcuts.Controls.Add(this.lnkInventory2);
             this.flpAssistantShortcuts.Controls.Add(this.lnkSummary_Assistant);
             this.flpAssistantShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -631,7 +639,7 @@
             this.flpAssistantShortcuts.Location = new System.Drawing.Point(3, 16);
             this.flpAssistantShortcuts.Name = "flpAssistantShortcuts";
             this.flpAssistantShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpAssistantShortcuts.Size = new System.Drawing.Size(129, 185);
+            this.flpAssistantShortcuts.Size = new System.Drawing.Size(129, 210);
             this.flpAssistantShortcuts.TabIndex = 17;
             // 
             // lnkVendorInvoices
@@ -726,7 +734,7 @@
             this.lnkInventory2.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkInventory2.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory2.Location = new System.Drawing.Point(3, 130);
+            this.lnkInventory2.Location = new System.Drawing.Point(3, 155);
             this.lnkInventory2.Name = "lnkInventory2";
             this.lnkInventory2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkInventory2.Size = new System.Drawing.Size(61, 25);
@@ -743,7 +751,7 @@
             this.lnkSummary_Assistant.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary_Assistant.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary_Assistant.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary_Assistant.Location = new System.Drawing.Point(3, 155);
+            this.lnkSummary_Assistant.Location = new System.Drawing.Point(3, 180);
             this.lnkSummary_Assistant.Name = "lnkSummary_Assistant";
             this.lnkSummary_Assistant.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lnkSummary_Assistant.Size = new System.Drawing.Size(56, 25);
@@ -986,11 +994,22 @@
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
             // 
-            // Windows
+            // lnkKontrabon
             // 
-            this.Windows.Name = "Windows";
-            this.Windows.Size = new System.Drawing.Size(64, 20);
-            this.Windows.Text = "Windows";
+            this.lnkKontrabon.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.AutoSize = true;
+            this.lnkKontrabon.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkKontrabon.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.Location = new System.Drawing.Point(3, 130);
+            this.lnkKontrabon.Name = "lnkKontrabon";
+            this.lnkKontrabon.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkKontrabon.Size = new System.Drawing.Size(68, 25);
+            this.lnkKontrabon.TabIndex = 36;
+            this.lnkKontrabon.TabStop = true;
+            this.lnkKontrabon.Text = "KONTRABON";
+            this.lnkKontrabon.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkKontrabon_LinkClicked);
             // 
             // Container_Form
             // 
@@ -1107,5 +1126,6 @@
         private System.Windows.Forms.LinkLabel lnkSummary_Assistant;
         private System.Windows.Forms.ToolStripMenuItem Internal_Summary_Superuser;
         private System.Windows.Forms.ToolStripMenuItem Windows;
+        private System.Windows.Forms.LinkLabel lnkKontrabon;
     }
 }

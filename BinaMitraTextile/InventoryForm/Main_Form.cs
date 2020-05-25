@@ -486,6 +486,17 @@ namespace BinaMitraTextile.InventoryForm
                 populateGridview(false);
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                if (Util.copyContentToClipboardIfGridview(this))
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         #endregion FORM METHODS
         /*******************************************************************************************************/
         #region SUBMISSION
