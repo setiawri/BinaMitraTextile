@@ -94,6 +94,7 @@
             this.lnkSales2 = new System.Windows.Forms.LinkLabel();
             this.lnkSaleReturns = new System.Windows.Forms.LinkLabel();
             this.lnkFakturPajak = new System.Windows.Forms.LinkLabel();
+            this.lnkKontrabon = new System.Windows.Forms.LinkLabel();
             this.lnkInventory2 = new System.Windows.Forms.LinkLabel();
             this.lnkSummary_Assistant = new System.Windows.Forms.LinkLabel();
             this.btnOpname = new System.Windows.Forms.Button();
@@ -111,7 +112,6 @@
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary_User = new System.Windows.Forms.LinkLabel();
             this.expandCollapseToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lnkKontrabon = new System.Windows.Forms.LinkLabel();
             this.mainMenu.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
             this.gbShortcutsForAssistants.SuspendLayout();
@@ -541,14 +541,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(180, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(144, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(180, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -559,7 +559,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(180, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -586,7 +586,7 @@
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(180, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
@@ -726,6 +726,23 @@
             this.lnkFakturPajak.Text = "FAKTUR PAJAK";
             this.lnkFakturPajak.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkFakturPajak.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkFakturPajak_LinkClicked);
+            // 
+            // lnkKontrabon
+            // 
+            this.lnkKontrabon.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.AutoSize = true;
+            this.lnkKontrabon.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkKontrabon.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.Location = new System.Drawing.Point(3, 130);
+            this.lnkKontrabon.Name = "lnkKontrabon";
+            this.lnkKontrabon.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lnkKontrabon.Size = new System.Drawing.Size(68, 25);
+            this.lnkKontrabon.TabIndex = 36;
+            this.lnkKontrabon.TabStop = true;
+            this.lnkKontrabon.Text = "KONTRABON";
+            this.lnkKontrabon.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkKontrabon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkKontrabon_LinkClicked);
             // 
             // lnkInventory2
             // 
@@ -987,37 +1004,21 @@
             this.expandCollapseToggle1.ContainerPanel = null;
             this.expandCollapseToggle1.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.expandCollapseToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Left;
-            this.expandCollapseToggle1.Location = new System.Drawing.Point(145, 24);
+            this.expandCollapseToggle1.Location = new System.Drawing.Point(144, 24);
             this.expandCollapseToggle1.Margin = new System.Windows.Forms.Padding(4);
+            this.expandCollapseToggle1.MinimumSplitterDistance = 100;
             this.expandCollapseToggle1.Name = "expandCollapseToggle1";
             this.expandCollapseToggle1.Size = new System.Drawing.Size(20, 20);
             this.expandCollapseToggle1.TabIndex = 19;
             this.expandCollapseToggle1.TogglePanel = this.pnlShortcuts;
-            // 
-            // lnkKontrabon
-            // 
-            this.lnkKontrabon.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkKontrabon.AutoSize = true;
-            this.lnkKontrabon.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkKontrabon.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkKontrabon.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkKontrabon.Location = new System.Drawing.Point(3, 130);
-            this.lnkKontrabon.Name = "lnkKontrabon";
-            this.lnkKontrabon.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.lnkKontrabon.Size = new System.Drawing.Size(68, 25);
-            this.lnkKontrabon.TabIndex = 36;
-            this.lnkKontrabon.TabStop = true;
-            this.lnkKontrabon.Text = "KONTRABON";
-            this.lnkKontrabon.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkKontrabon.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkKontrabon_LinkClicked);
             // 
             // Container_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 645);
-            this.Controls.Add(this.expandCollapseToggle1);
             this.Controls.Add(this.pnlShortcuts);
+            this.Controls.Add(this.expandCollapseToggle1);
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
             this.Name = "Container_Form";

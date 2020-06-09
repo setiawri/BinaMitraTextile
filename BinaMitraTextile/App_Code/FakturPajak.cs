@@ -17,9 +17,11 @@ namespace BinaMitraTextile
         public decimal DPP;
         public decimal PPN;
         public string Notes = "";
+        public Guid? Kontrabons_Id;
 
         public string Customers_Name;
         public string Vendors_Name;
+        public string Kontrabons_No;
 
         #endregion PUBLIC VARIABLES
         /*******************************************************************************************************/
@@ -34,12 +36,14 @@ namespace BinaMitraTextile
         public const string COL_DB_PPN = "PPN";
         public const string COL_DB_Notes = "Notes";
         public const string COL_DB_Completed = "Completed";
+        public const string COL_DB_Kontrabons_Id = "Kontrabons_Id";
 
         public const string COL_Customers_Name = "Customers_Name";
         public const string COL_Vendors_Name = "Vendors_Name";
         public const string COL_TotalAmount = "TotalAmount";
         public const string COL_AssignedAmount = "AssignedAmount";
         public const string COL_AmountDifference = "AmountDifference";
+        public const string COL_Kontrabons_No = "Kontrabons_No";
 
         public const string FILTER_StartDate = "FILTER_StartDate";
         public const string FILTER_EndDate = "FILTER_EndDate";
@@ -55,7 +59,7 @@ namespace BinaMitraTextile
             if(id != null)
             {
                 Id = (Guid)id;
-                DataRow row = Util.getFirstRow(get(Id, null, null, null, null, null, false, false));
+                DataRow row = get(Id);
                 No = Util.wrapNullable<string>(row, COL_DB_No);
                 Timestamp = Util.wrapNullable<DateTime>(row, COL_DB_Timestamp);
                 Customers_Id = Util.wrapNullable<Guid?>(row, COL_DB_Customers_Id);
@@ -63,9 +67,11 @@ namespace BinaMitraTextile
                 DPP = Util.wrapNullable<decimal>(row, COL_DB_DPP);
                 PPN = Util.wrapNullable<decimal>(row, COL_DB_PPN);
                 Notes = Util.wrapNullable<string>(row, COL_DB_Notes);
+                Kontrabons_Id = DBUtil.parseData<Guid?>(row, COL_DB_Kontrabons_Id);
 
                 Customers_Name = Util.wrapNullable<string>(row, COL_Customers_Name);
                 Vendors_Name = Util.wrapNullable<string>(row, COL_Vendors_Name);
+                Kontrabons_No = DBUtil.parseData<string>(row, COL_Kontrabons_No);
             }
         }
 
@@ -99,15 +105,13 @@ namespace BinaMitraTextile
             return Id;
         }
 
-        public static DataTable get_Reminder()
-        {
-            return get(null, null, null, null, null, null, false, true);
-        }
-        public static DataTable get()
-        {
-            return get(null, null, null, null, null, null, false, false);
-        }
-        public static DataTable get(Guid? Id, string No, Guid? Customers_Id, Guid? Vendors_Id, DateTime? StartDate, DateTime? EndDate, bool showCompleted, bool showOnlyReminder)
+        public static DataTable get_by_Kontrabons_Id(Guid Kontrabons_Id) { return get(null, null, null, null, null, null, false, false, Kontrabons_Id); }
+        public static DataTable get_Reminder() { return get(null, null, null, null, null, null, false, true, null); }
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null, null, null, false, false, null)); }
+        public static DataTable get() { return get(null, null, null, null, null, null, false, false, null); }
+        public static DataTable get(string No, Guid? Customers_Id, Guid? Vendors_Id, DateTime? StartDate, DateTime? EndDate, bool showCompleted)
+        { return get(null, No, Customers_Id, Vendors_Id, StartDate, EndDate, showCompleted, false, null); }
+        public static DataTable get(Guid? Id, string No, Guid? Customers_Id, Guid? Vendors_Id, DateTime? StartDate, DateTime? EndDate, bool showCompleted, bool showOnlyReminder, Guid? Kontrabons_Id)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -118,6 +122,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_No, SqlDbType.VarChar, Util.wrapNullable(No)),
                 new SqlQueryParameter(COL_DB_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id)),
                 new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
+                new SqlQueryParameter(COL_DB_Kontrabons_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Kontrabons_Id)),
                 new SqlQueryParameter(FILTER_StartDate, SqlDbType.DateTime, Util.wrapNullable(StartDate)),
                 new SqlQueryParameter(FILTER_EndDate, SqlDbType.DateTime, Util.wrapNullable(EndDate)),
                 new SqlQueryParameter(FILTER_ShowCompleted, SqlDbType.Bit, showCompleted),
@@ -205,6 +210,48 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_No, SqlDbType.VarChar, No)
                 );
             return result.ValueBoolean;
+        }
+
+        public static void update_Kontrabons_Id(Guid Id, Guid? Kontrabons_Id)
+        {
+            FakturPajak objOld = new FakturPajak(Id);
+            string log = "";
+            log = ActivityLog.appendChange(log, objOld.Kontrabons_No, new Kontrabon(Kontrabons_Id).No, "Kontrabon: '{0}' to '{1}'");
+
+            if (string.IsNullOrEmpty(log))
+                Util.displayMessageBoxError("No changes to record");
+            else
+            {
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBUtil.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "FakturPajaks_update_Kontrabons_Id",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                    new SqlQueryParameter(COL_DB_Kontrabons_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Kontrabons_Id))
+                );
+
+                if (result.IsSuccessful)
+                {
+                    ActivityLog.submit(Id, String.Format("Updated: {0}", log));
+
+                    //update faktur pajak log
+                    if (Kontrabons_Id == null)
+                        ActivityLog.submit((Guid)objOld.Kontrabons_Id, String.Format("Removed FP: {0}", objOld.No));
+                    else
+                        ActivityLog.submit((Guid)Kontrabons_Id, String.Format("Added FP: {0}", objOld.No));
+
+                    //remove sale invoices
+                    DataTable saleInvoices = Sale.get_by_FakturPajaks_Id(Id);
+                    foreach (DataRow row in saleInvoices.Rows)
+                        Sale.update_Kontrabons_Id(Util.wrapNullable<Guid>(row, Sale.COL_ID), Kontrabons_Id);
+
+                    //remove sale returns
+                    DataTable saleReturns = SaleReturn.get_by_FakturPajaks_Id(Id);
+                    foreach (DataRow row in saleReturns.Rows)
+                        SaleReturn.update_Kontrabons_Id(Util.wrapNullable<Guid>(row, SaleReturn.COL_ID), Kontrabons_Id);
+                }
+            }
         }
 
         #endregion DATABASE METHODS

@@ -75,6 +75,7 @@ namespace BinaMitraTextile
             col_gridReceivables_daysElapsed.DataPropertyName = Sale.COL_DAYSELAPSED;
             col_gridReceivables_CustomerTerms_TermDays.DataPropertyName = Sale.COL_CustomerTerms_TermDays;
             col_gridReceivables_RemainingTermDays.DataPropertyName = Sale.COL_RemainingTermDays;
+            col_gridReceivables_FakturPajaks_No.DataPropertyName = Sale.COL_FakturPajaks_No;
 
             dgvReceivablesSummary.AutoGenerateColumns = false;
             dgvReceivablesSummary.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

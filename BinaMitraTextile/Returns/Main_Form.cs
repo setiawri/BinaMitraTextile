@@ -123,7 +123,7 @@ namespace BinaMitraTextile.Returns
             if(_startingMode == FormModes.Browse)
                 Util.setGridviewDataSource(grid, true, true, SaleReturn.get_by_BrowsingForFakturPajak_Customers_Id((Guid)_BrowsingForFakturPajak_Customers_Id));
             else
-                Util.setGridviewDataSource(grid, true, true, SaleReturn.get(null, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID, false, null, null, false));
+                Util.setGridviewDataSource(grid, true, true, SaleReturn.get(idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, inventoryItemID, (Guid?)cbCustomers.SelectedValue, saleID));
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -247,13 +247,7 @@ namespace BinaMitraTextile.Sales
                         iclb_Colors.getCheckedItemsInArrayTable(FabricColor.COL_DB_ID),
                         chkOnlyNotCompleted.Checked,
                         chkOnlyManualAdjustment.Checked,
-                        itxt_InventoryCode.ValueText,
-                        null,
-                        null,
-                        null,
-                        null,
-                        false,
-                        false)
+                        itxt_InventoryCode.ValueText)
                     );
             }
 

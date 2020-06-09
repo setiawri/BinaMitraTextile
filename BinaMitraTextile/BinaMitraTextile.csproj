@@ -99,6 +99,7 @@
     <Compile Include="Admin\MasterData_v1_Vendors_Form.Designer.cs">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\Kontrabon.cs" />
     <Compile Include="App_Code\VendorInvoicePaymentItem.cs" />
     <Compile Include="App_Code\VendorInvoicePayment.cs" />
     <Compile Include="InventoryForm\VendorInvoicePayments_Form.cs">

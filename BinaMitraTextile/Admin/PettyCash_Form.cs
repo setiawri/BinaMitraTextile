@@ -74,6 +74,7 @@ namespace BinaMitraTextile.Admin
             {
                 col_grid_IsChecked.Visible = false;
                 btnUpdate.Visible = false;
+                chkOnlyNotChecked.Visible = false;
             }
         }
 		

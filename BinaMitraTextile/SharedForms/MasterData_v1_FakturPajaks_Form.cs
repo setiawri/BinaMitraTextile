@@ -16,7 +16,7 @@ namespace BinaMitraTextile.SharedForms
 
         #endregion SETTINGS
         /*******************************************************************************************************/
-        #region PRIVATE VARIABLES
+        #region CLASS VARIABLES
 
         private DataGridViewColumn col_dgv_No;
         private DataGridViewColumn col_dgv_Timestamp;
@@ -37,11 +37,23 @@ namespace BinaMitraTextile.SharedForms
         private const string TABTITLE_VendorInvoices = "Vendor Invoices";
         private const string TABTITLE_SaleReturns = "Sale Returns";
 
-        #endregion PRIVATE VARIABLES
+        FormModes _startingMode = FormModes.Normal;
+        Guid? _BrowsingForFakturPajak_Customers_Id = null;
+
+        #endregion CLASS VARIABLES
         /*******************************************************************************************************/
         #region CONSTRUCTOR METHODS
 
         public MasterData_v1_FakturPajaks_Form() : this(FormModes.Add) { }
+        public MasterData_v1_FakturPajaks_Form(FormModes startingMode, Guid BrowsingForFakturPajak_Customers_Id) : this(startingMode)
+        {
+            _startingMode = startingMode;
+            _BrowsingForFakturPajak_Customers_Id = BrowsingForFakturPajak_Customers_Id;
+            if (_startingMode == FormModes.Browse)
+            {
+                scMain.Panel1Collapsed = true;
+            }
+        }
         public MasterData_v1_FakturPajaks_Form(FormModes startingMode) : base(startingMode, FORM_SHOWDATAONLOAD) { InitializeComponent(); }
 
         #endregion CONSTRUCTOR METHODS
@@ -88,7 +100,7 @@ namespace BinaMitraTextile.SharedForms
             col_dgv_Checkbox1.HeaderText = "Lock";
 
             col_dgv_No = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_No", "No", FakturPajak.COL_DB_No, true, true, "", true, false, 20, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", idtp_Timestamp.LabelText, FakturPajak.COL_DB_Timestamp, true, true, "", false, false, 40, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", idtp_Timestamp.LabelText, FakturPajak.COL_DB_Timestamp, true, true, "dd/MM/yy", false, false, 40, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Vendors_Id = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Vendors_Id", "Vendors_Id", FakturPajak.COL_DB_Vendors_Id, true, false, "", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Vendors_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Vendors_Name", iddl_Vendors.LabelText, FakturPajak.COL_Vendors_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Customers_Id = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Id", "Customers_Id", FakturPajak.COL_DB_Customers_Id, true, false, "", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
@@ -191,7 +203,7 @@ namespace BinaMitraTextile.SharedForms
 
         protected override System.Data.DataView loadGridviewDataSource()
         {
-            return FakturPajak.get(null, itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked, false).DefaultView;
+            return FakturPajak.get(itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked).DefaultView;
         }
 
         protected override void populateInputFields()
@@ -273,30 +285,39 @@ namespace BinaMitraTextile.SharedForms
 
         protected override void dgv_CellDoubleClick()
         {
-            _lastSelectedFakturPajaks_Id = (Guid)Util.getSelectedRowValue(dgv, col_dgv_Id);
-            lblRowInfoHeader.Text = string.Format("Faktur Pajak No: {0}", Util.getSelectedRowValue(dgv, col_dgv_No));
-
-            if (Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
+            if (_startingMode == FormModes.Browse)
             {
-                tcRowInfo.TabPages.Clear();
-                tcRowInfo.TabPages.Add(tpVendorInvoices);
-                tcRowInfo.TabPages.Add(tpSaleInvoices);
-                populateGridSaleInvoices(false);
-                populateGridVendorInvoices(false);
+                BrowsedItemSelectionId = (Guid)Util.getSelectedRowValue(dgv, col_dgv_Id);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
-                tcRowInfo.TabPages.Clear();
-                tcRowInfo.TabPages.Add(tpSaleInvoices);
-                tcRowInfo.TabPages.Add(tpSaleReturns);
-                populateGridSaleInvoices(false);
-                populateGridReturns(false);
+                _lastSelectedFakturPajaks_Id = (Guid)Util.getSelectedRowValue(dgv, col_dgv_Id);
+                lblRowInfoHeader.Text = string.Format("Faktur Pajak No: {0}", Util.getSelectedRowValue(dgv, col_dgv_No));
+
+                if (Util.selectedItemIsNotNull(dgv, col_dgv_Vendors_Id))
+                {
+                    tcRowInfo.TabPages.Clear();
+                    tcRowInfo.TabPages.Add(tpVendorInvoices);
+                    tcRowInfo.TabPages.Add(tpSaleInvoices);
+                    populateGridSaleInvoices(false);
+                    populateGridVendorInvoices(false);
+                }
+                else
+                {
+                    tcRowInfo.TabPages.Clear();
+                    tcRowInfo.TabPages.Add(tpSaleInvoices);
+                    tcRowInfo.TabPages.Add(tpSaleReturns);
+                    populateGridSaleInvoices(false);
+                    populateGridReturns(false);
+                }
+
+                if (!ptRowInfo.isPanelVisible())
+                    ptRowInfo.PerformClick();
+
+                setButtonsVisibility(!(bool)Util.getSelectedRowValue(dgv, col_dgv_Checkbox1));
             }
-
-            if (!ptRowInfo.isTogglePanelVisible())
-                ptRowInfo.PerformClick();
-
-            setButtonsVisibility(!(bool)Util.getSelectedRowValue(dgv, col_dgv_Checkbox1));
         }
 
         private void setButtonsVisibility(bool value)
@@ -340,8 +361,11 @@ namespace BinaMitraTextile.SharedForms
 
         private void MasterData_v1_FakturPajaks_Form_Shown(object sender, EventArgs e)
         {
-            ptInputPanel.PerformClick();
-            pnlRowInfo.Visible = true;
+            if(_startingMode != FormModes.Browse)
+            {
+                ptInputPanel.PerformClick();
+                pnlRowInfo.Visible = true;
+            }
         }
 
         private void BtnAddSales_Click(object sender, EventArgs e)
@@ -354,7 +378,7 @@ namespace BinaMitraTextile.SharedForms
                 Util.displayForm(null, form);
                 if (form.DialogResult == DialogResult.OK)
                 {
-                    Sale.update(form.BrowsedItemSelectionId, (Guid)_lastSelectedFakturPajaks_Id);
+                    Sale.update_FakturPajaks_Id(form.BrowsedItemSelectionId, (Guid)_lastSelectedFakturPajaks_Id);
                     populateGridSaleInvoices(true);
                 }
             }
@@ -374,7 +398,7 @@ namespace BinaMitraTextile.SharedForms
                     Util.displayForm(null, form);
                     if (form.DialogResult == DialogResult.OK)
                     {
-                        SaleReturn.update(form.BrowsedItemSelectionId, (Guid)_lastSelectedFakturPajaks_Id);
+                        SaleReturn.update_FakturPajaks_Id(form.BrowsedItemSelectionId, (Guid)_lastSelectedFakturPajaks_Id);
                         populateGridReturns(true);
                     }
                 }
@@ -406,7 +430,7 @@ namespace BinaMitraTextile.SharedForms
         {
             if (Util.isColumnMatch(sender, e, col_gridSaleInvoices_removeFakturPajaks_Id))
             {
-                Sale.update((Guid)Util.getSelectedRowValue(sender, col_gridSaleInvoices_Sales_id), null);
+                Sale.update_FakturPajaks_Id((Guid)Util.getSelectedRowValue(sender, col_gridSaleInvoices_Sales_id), null);
                 populateGridSaleInvoices(true);
             }
             else if (Util.isColumnMatch(sender, e, col_gridSaleInvoices_hexbarcode))
@@ -434,7 +458,7 @@ namespace BinaMitraTextile.SharedForms
             }
             else if (Util.isColumnMatch(sender, e, col_gridReturns_removeFakturPajaks_Id))
             {
-                SaleReturn.update((Guid)Util.getSelectedRowValue(sender, col_gridReturns_id), null);
+                SaleReturn.update_FakturPajaks_Id((Guid)Util.getSelectedRowValue(sender, col_gridReturns_id), null);
                 populateGridReturns(true);
             }
         }

@@ -38,6 +38,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.scMain = new System.Windows.Forms.SplitContainer();
+            this.iddl_Filter_PettyCashCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.idtp_FilterEnd = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_FilterStart = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.chkOnlyNotChecked = new System.Windows.Forms.CheckBox();
@@ -90,7 +91,6 @@
             this.btnCalculator = new System.Windows.Forms.Button();
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.panelToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.iddl_Filter_PettyCashCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -165,7 +165,7 @@
             // btnFilter
             // 
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Location = new System.Drawing.Point(495, 4);
+            this.btnFilter.Location = new System.Drawing.Point(414, 3);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(81, 41);
             this.btnFilter.TabIndex = 125;
@@ -199,6 +199,22 @@
             this.scMain.SplitterDistance = 49;
             this.scMain.SplitterWidth = 1;
             this.scMain.TabIndex = 1;
+            // 
+            // iddl_Filter_PettyCashCategories
+            // 
+            this.iddl_Filter_PettyCashCategories.DisableTextInput = false;
+            this.iddl_Filter_PettyCashCategories.HideFilter = true;
+            this.iddl_Filter_PettyCashCategories.HideUpdateLink = true;
+            this.iddl_Filter_PettyCashCategories.LabelText = "Category";
+            this.iddl_Filter_PettyCashCategories.Location = new System.Drawing.Point(283, 3);
+            this.iddl_Filter_PettyCashCategories.Name = "iddl_Filter_PettyCashCategories";
+            this.iddl_Filter_PettyCashCategories.SelectedIndex = -1;
+            this.iddl_Filter_PettyCashCategories.SelectedItem = null;
+            this.iddl_Filter_PettyCashCategories.SelectedItemText = "";
+            this.iddl_Filter_PettyCashCategories.SelectedValue = null;
+            this.iddl_Filter_PettyCashCategories.ShowDropdownlistOnly = false;
+            this.iddl_Filter_PettyCashCategories.Size = new System.Drawing.Size(125, 41);
+            this.iddl_Filter_PettyCashCategories.TabIndex = 131;
             // 
             // idtp_FilterEnd
             // 
@@ -238,7 +254,7 @@
             // 
             this.chkOnlyNotChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkOnlyNotChecked.AutoSize = true;
-            this.chkOnlyNotChecked.Location = new System.Drawing.Point(414, 25);
+            this.chkOnlyNotChecked.Location = new System.Drawing.Point(501, 26);
             this.chkOnlyNotChecked.Name = "chkOnlyNotChecked";
             this.chkOnlyNotChecked.Size = new System.Drawing.Size(86, 17);
             this.chkOnlyNotChecked.TabIndex = 129;
@@ -284,7 +300,7 @@
             this.pnlCalculator.Controls.Add(this.in_20rb);
             this.pnlCalculator.Controls.Add(this.in_50rb);
             this.pnlCalculator.Controls.Add(this.in_100rb);
-            this.pnlCalculator.Location = new System.Drawing.Point(225, 188);
+            this.pnlCalculator.Location = new System.Drawing.Point(225, 189);
             this.pnlCalculator.Name = "pnlCalculator";
             this.pnlCalculator.Size = new System.Drawing.Size(294, 223);
             this.pnlCalculator.TabIndex = 7;
@@ -1061,26 +1077,11 @@
             this.panelToggle1.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.panelToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
             this.panelToggle1.Location = new System.Drawing.Point(0, 0);
+            this.panelToggle1.MinimumSplitterDistance = 100;
             this.panelToggle1.Name = "panelToggle1";
             this.panelToggle1.Size = new System.Drawing.Size(35, 35);
             this.panelToggle1.TabIndex = 123;
             this.panelToggle1.TogglePanel = this.scMain.Panel1;
-            // 
-            // iddl_Filter_PettyCashCategories
-            // 
-            this.iddl_Filter_PettyCashCategories.DisableTextInput = false;
-            this.iddl_Filter_PettyCashCategories.HideFilter = true;
-            this.iddl_Filter_PettyCashCategories.HideUpdateLink = true;
-            this.iddl_Filter_PettyCashCategories.LabelText = "Category";
-            this.iddl_Filter_PettyCashCategories.Location = new System.Drawing.Point(283, 3);
-            this.iddl_Filter_PettyCashCategories.Name = "iddl_Filter_PettyCashCategories";
-            this.iddl_Filter_PettyCashCategories.SelectedIndex = -1;
-            this.iddl_Filter_PettyCashCategories.SelectedItem = null;
-            this.iddl_Filter_PettyCashCategories.SelectedItemText = "";
-            this.iddl_Filter_PettyCashCategories.SelectedValue = null;
-            this.iddl_Filter_PettyCashCategories.ShowDropdownlistOnly = false;
-            this.iddl_Filter_PettyCashCategories.Size = new System.Drawing.Size(125, 41);
-            this.iddl_Filter_PettyCashCategories.TabIndex = 131;
             // 
             // PettyCash_Form
             // 

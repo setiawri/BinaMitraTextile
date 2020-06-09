@@ -72,7 +72,7 @@ namespace BinaMitraTextile.InventoryForm
 
         public void searchVendorInvoiceNo(string VendorInvoices_No)
         {
-            if (!ptFilterAndButtons.isTogglePanelVisible())
+            if (!ptFilterAndButtons.isPanelVisible())
                 ptFilterAndButtons.toggle();
 
             itxt_VendorInvoiceNo.ValueText = VendorInvoices_No;
