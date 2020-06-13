@@ -395,7 +395,7 @@ namespace BinaMitraTextile
             if (_ActiveSqlConnection != null && _ActiveSqlConnection.State == ConnectionState.Open && DateTime.Now - _LastSqlConnectionUsed > _ActiveSqlConnectionOpenTime)
                 _ActiveSqlConnection.Close();
 
-            if (_ActiveSqlConnection == null || _ActiveSqlConnection.State == ConnectionState.Closed)
+            if (SqlConnectionTimer != null && (_ActiveSqlConnection == null || _ActiveSqlConnection.State == ConnectionState.Closed))
                 SqlConnectionTimer.Stop();
         }
     }

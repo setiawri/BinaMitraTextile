@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LIBUtil;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ namespace BinaMitraTextile.Users
 
         #region CLASS VARIABLES
 
-        private string _hiddenID = "";
+        private Guid _selected_UserAcounts_Id;
 
         const string BTN_TEXT_ADDNEW = "ADD NEW";
         const string BTN_TEXT_UPDATE = "UPDATE";
@@ -109,8 +110,7 @@ namespace BinaMitraTextile.Users
                     populateGrid();
                 }
             }
-
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), LinkName.Name))
+            else if(Util.isColumnMatch(sender, e, LinkName))
             {
                 populateForm((Guid)grid.Rows[e.RowIndex].Cells[UserAccount.COL_DB_ID].Value);
             }
@@ -133,12 +133,13 @@ namespace BinaMitraTextile.Users
         {
             btnSubmit.Text = BTN_TEXT_UPDATE;
             UserAccount obj = new UserAccount(id);
-            _hiddenID = id.ToString();
+            _selected_UserAcounts_Id = id;
             txtName.Text = obj.name;
             cbRoles.SelectedItem = obj.role;
             in_PercentCommission.Value = obj.percentCommission;
             txtNotes.Text = obj.notes;
             txtCurrentPassword.Enabled = true;
+            itxt_PasswordReset.Enabled = btnResetPassword.Enabled = true;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -168,7 +169,7 @@ namespace BinaMitraTextile.Users
                             if (!string.IsNullOrEmpty(txtNewPassword.Text))
                                 obj.HashedPassword = txtNewPassword.Text;
 
-                            obj.id = new Guid(_hiddenID);
+                            obj.id = _selected_UserAcounts_Id;
                             if (!Tools.hasMessage(obj.update()))
                                 Tools.hasMessage("Data has been updated");
                             populateGrid();
@@ -227,7 +228,7 @@ namespace BinaMitraTextile.Users
         {
             if (string.IsNullOrEmpty(txtCurrentPassword.Text))
                 return Tools.inputError<TextBox>(txtCurrentPassword, "Please write current password in 'current' textbox");
-            else if (!(new UserAccount(new Guid(_hiddenID))).authenticated(txtCurrentPassword.Text))
+            else if (!(new UserAccount(_selected_UserAcounts_Id)).authenticated(txtCurrentPassword.Text))
                 return Tools.inputError<TextBox>(txtCurrentPassword, "Incorrect current password. Please try again");
 
             return true;
@@ -261,8 +262,14 @@ namespace BinaMitraTextile.Users
             txtConfirmNewPassword.Text = "";
             txtCurrentPassword.Text = "";
             txtCurrentPassword.Enabled = false;
+            itxt_PasswordReset.Enabled = btnResetPassword.Enabled = false;
 
             txtName.Focus();
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            UserAccount.update_HashedPassword(_selected_UserAcounts_Id, itxt_PasswordReset.ValueText);
         }
 
         #endregion ADD/UPDATE ITEM

@@ -215,7 +215,7 @@ namespace BinaMitraTextile.InventoryForm
             //in case opname span more than 1 day, the checkbox can be used to verify the barcode is not in the list of loaded scans from previous days
             if (chkCheckListBeforeSubmit.Checked)
             {
-                DataView list = (DataView)gridDetail.DataSource;
+                DataView list = Util.getDataTable(gridDetail.DataSource).Copy().DefaultView;                   
                 list.RowFilter = string.Format("{0} = '{1}'", InventoryItemCheck.COL_BARCODE, barcodeWithoutPrefix);
                 if (list.Count > 0)
                 {

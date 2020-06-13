@@ -290,9 +290,7 @@ namespace BinaMitraTextile
             string log = "";
             log = ActivityLog.appendChange(log, objOld.Kontrabons_No, new Kontrabon(Kontrabons_Id).No, "Kontrabon: '{0}' to '{1}'");
 
-            if (string.IsNullOrEmpty(log))
-                Util.displayMessageBoxError("No changes to record");
-            else
+            if (!string.IsNullOrEmpty(log))
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
@@ -304,13 +302,20 @@ namespace BinaMitraTextile
                 );
 
                 if (result.IsSuccessful)
+                {
                     ActivityLog.submit(Id, String.Format("Updated: {0}", log));
 
-                //update faktur pajak log
-                if (Kontrabons_Id == null)
-                    ActivityLog.submit((Guid)objOld.Kontrabons_Id, String.Format("Removed Sale Invoice: {0}", objOld.barcode));
-                else
-                    ActivityLog.submit((Guid)Kontrabons_Id, String.Format("Added Sale Invoice: {0}", objOld.barcode));
+                    //update faktur pajak log
+                    if (Kontrabons_Id == null)
+                        ActivityLog.submit((Guid)objOld.Kontrabons_Id, String.Format("Removed Sale Invoice: {0}", objOld.barcode));
+                    else
+                        ActivityLog.submit((Guid)Kontrabons_Id, String.Format("Added Sale Invoice: {0}", objOld.barcode));
+
+                    //remove faktur pajak and all items related to it
+                    Guid? FakturPajaks_Id = new Sale(Id).FakturPajaks_Id;
+                    if (FakturPajaks_Id != null)
+                        FakturPajak.update_Kontrabons_Id((Guid)FakturPajaks_Id, Kontrabons_Id);
+                }
             }
         }
 

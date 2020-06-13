@@ -90,6 +90,8 @@ namespace BinaMitraTextile.CustomerCredits
                     _customerID = selectedCustomerID;
                     gridDetail.DataSource = null; //reset firstscrollingindex
                     populateGridDetail();
+
+                    iddl_Customers.SelectedValue = _customerID;
                 }
             }
         }

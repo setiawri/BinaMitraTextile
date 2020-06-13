@@ -218,9 +218,7 @@ namespace BinaMitraTextile
             string log = "";
             log = ActivityLog.appendChange(log, objOld.Kontrabons_No, new Kontrabon(Kontrabons_Id).No, "Kontrabon: '{0}' to '{1}'");
 
-            if (string.IsNullOrEmpty(log))
-                Util.displayMessageBoxError("No changes to record");
-            else
+            if (!string.IsNullOrEmpty(log))
             {
                 SqlQueryResult result = DBConnection.query(
                     false,

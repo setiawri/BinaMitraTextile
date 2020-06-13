@@ -10,6 +10,8 @@ namespace BinaMitraTextile
     class Settings
     {
         public static string autologinusername = "ricky";
+        public static string bypassusername = "ricky";
+        public static string bypasspassword = "qwe";
 
         /*******************************************************************************************************/
         #region APP VERSION

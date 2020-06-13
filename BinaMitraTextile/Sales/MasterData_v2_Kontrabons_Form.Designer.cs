@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,11 +53,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.itxt_No = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.idtp_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
@@ -64,6 +64,14 @@
             this.tcRowInfo = new System.Windows.Forms.TabControl();
             this.tpFakturPajaks = new System.Windows.Forms.TabPage();
             this.gridFakturPajaks = new System.Windows.Forms.DataGridView();
+            this.col_gridFakturPajaks_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajaks_removeKontrabons_Id = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_gridFakturPajaks_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajaks_DPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajaks_PPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajaks_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridFakturPajaks_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnAddFakturPajak = new System.Windows.Forms.Button();
             this.tpSaleInvoices = new System.Windows.Forms.TabPage();
@@ -94,14 +102,6 @@
             this.btnAddReturns = new System.Windows.Forms.Button();
             this.idtp_ReturnDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.lblRowInfoHeader = new System.Windows.Forms.Label();
-            this.col_gridFakturPajaks_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridFakturPajaks_removeKontrabons_Id = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.col_gridFakturPajaks_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridFakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridFakturPajaks_DPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridFakturPajaks_PPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridFakturPajaks_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridFakturPajaks_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -426,6 +426,96 @@
             this.gridFakturPajaks.TabIndex = 132;
             this.gridFakturPajaks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridFakturPajaks_CellContentClick);
             // 
+            // col_gridFakturPajaks_Id
+            // 
+            this.col_gridFakturPajaks_Id.HeaderText = "Id";
+            this.col_gridFakturPajaks_Id.Name = "col_gridFakturPajaks_Id";
+            this.col_gridFakturPajaks_Id.ReadOnly = true;
+            this.col_gridFakturPajaks_Id.Visible = false;
+            // 
+            // col_gridFakturPajaks_removeKontrabons_Id
+            // 
+            this.col_gridFakturPajaks_removeKontrabons_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
+            this.col_gridFakturPajaks_removeKontrabons_Id.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_gridFakturPajaks_removeKontrabons_Id.HeaderText = "";
+            this.col_gridFakturPajaks_removeKontrabons_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridFakturPajaks_removeKontrabons_Id.LinkColor = System.Drawing.Color.Red;
+            this.col_gridFakturPajaks_removeKontrabons_Id.MinimumWidth = 10;
+            this.col_gridFakturPajaks_removeKontrabons_Id.Name = "col_gridFakturPajaks_removeKontrabons_Id";
+            this.col_gridFakturPajaks_removeKontrabons_Id.ReadOnly = true;
+            this.col_gridFakturPajaks_removeKontrabons_Id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridFakturPajaks_removeKontrabons_Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridFakturPajaks_removeKontrabons_Id.Text = "X";
+            this.col_gridFakturPajaks_removeKontrabons_Id.UseColumnTextForLinkValue = true;
+            this.col_gridFakturPajaks_removeKontrabons_Id.VisitedLinkColor = System.Drawing.Color.Red;
+            this.col_gridFakturPajaks_removeKontrabons_Id.Width = 10;
+            // 
+            // col_gridFakturPajaks_Timestamp
+            // 
+            this.col_gridFakturPajaks_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Format = "dd/MM/yy";
+            this.col_gridFakturPajaks_Timestamp.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_gridFakturPajaks_Timestamp.HeaderText = "Date";
+            this.col_gridFakturPajaks_Timestamp.MinimumWidth = 40;
+            this.col_gridFakturPajaks_Timestamp.Name = "col_gridFakturPajaks_Timestamp";
+            this.col_gridFakturPajaks_Timestamp.ReadOnly = true;
+            this.col_gridFakturPajaks_Timestamp.Width = 40;
+            // 
+            // col_gridFakturPajaks_No
+            // 
+            this.col_gridFakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridFakturPajaks_No.HeaderText = "No";
+            this.col_gridFakturPajaks_No.MinimumWidth = 50;
+            this.col_gridFakturPajaks_No.Name = "col_gridFakturPajaks_No";
+            this.col_gridFakturPajaks_No.ReadOnly = true;
+            this.col_gridFakturPajaks_No.Width = 50;
+            // 
+            // col_gridFakturPajaks_DPP
+            // 
+            this.col_gridFakturPajaks_DPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            this.col_gridFakturPajaks_DPP.DefaultCellStyle = dataGridViewCellStyle4;
+            this.col_gridFakturPajaks_DPP.HeaderText = "DPP";
+            this.col_gridFakturPajaks_DPP.MinimumWidth = 45;
+            this.col_gridFakturPajaks_DPP.Name = "col_gridFakturPajaks_DPP";
+            this.col_gridFakturPajaks_DPP.ReadOnly = true;
+            this.col_gridFakturPajaks_DPP.Width = 45;
+            // 
+            // col_gridFakturPajaks_PPN
+            // 
+            this.col_gridFakturPajaks_PPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            this.col_gridFakturPajaks_PPN.DefaultCellStyle = dataGridViewCellStyle5;
+            this.col_gridFakturPajaks_PPN.HeaderText = "PPN";
+            this.col_gridFakturPajaks_PPN.MinimumWidth = 30;
+            this.col_gridFakturPajaks_PPN.Name = "col_gridFakturPajaks_PPN";
+            this.col_gridFakturPajaks_PPN.ReadOnly = true;
+            this.col_gridFakturPajaks_PPN.Width = 30;
+            // 
+            // col_gridFakturPajaks_Amount
+            // 
+            this.col_gridFakturPajaks_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.col_gridFakturPajaks_Amount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.col_gridFakturPajaks_Amount.HeaderText = "Amount";
+            this.col_gridFakturPajaks_Amount.MinimumWidth = 45;
+            this.col_gridFakturPajaks_Amount.Name = "col_gridFakturPajaks_Amount";
+            this.col_gridFakturPajaks_Amount.ReadOnly = true;
+            this.col_gridFakturPajaks_Amount.Width = 45;
+            // 
+            // col_gridFakturPajaks_Notes
+            // 
+            this.col_gridFakturPajaks_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridFakturPajaks_Notes.HeaderText = "Notes";
+            this.col_gridFakturPajaks_Notes.MinimumWidth = 30;
+            this.col_gridFakturPajaks_Notes.Name = "col_gridFakturPajaks_Notes";
+            this.col_gridFakturPajaks_Notes.ReadOnly = true;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.btnAddFakturPajak);
@@ -452,7 +542,7 @@
             this.tpSaleInvoices.Location = new System.Drawing.Point(4, 22);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
             this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(997, 224);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(796, 173);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -495,8 +585,9 @@
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(991, 193);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(790, 142);
             this.gridSaleInvoices.TabIndex = 128;
+            this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
             // col_gridSaleInvoices_removeKontrabons_Id
             // 
@@ -633,7 +724,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(991, 25);
+            this.panel4.Size = new System.Drawing.Size(790, 25);
             this.panel4.TabIndex = 132;
             // 
             // btnAddSales
@@ -652,7 +743,7 @@
             this.tpSaleReturns.Controls.Add(this.panel2);
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(997, 224);
+            this.tpSaleReturns.Size = new System.Drawing.Size(796, 173);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -693,8 +784,9 @@
             dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(997, 199);
+            this.gridReturns.Size = new System.Drawing.Size(796, 148);
             this.gridReturns.TabIndex = 108;
+            this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
             // col_gridReturns_removeKontrabons_Id
             // 
@@ -798,7 +890,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(997, 25);
+            this.panel2.Size = new System.Drawing.Size(796, 25);
             this.panel2.TabIndex = 130;
             // 
             // btnAddReturns
@@ -837,96 +929,6 @@
             this.lblRowInfoHeader.TabIndex = 108;
             this.lblRowInfoHeader.Text = "Kontrabon: None";
             this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // col_gridFakturPajaks_Id
-            // 
-            this.col_gridFakturPajaks_Id.HeaderText = "Id";
-            this.col_gridFakturPajaks_Id.Name = "col_gridFakturPajaks_Id";
-            this.col_gridFakturPajaks_Id.ReadOnly = true;
-            this.col_gridFakturPajaks_Id.Visible = false;
-            // 
-            // col_gridFakturPajaks_removeKontrabons_Id
-            // 
-            this.col_gridFakturPajaks_removeKontrabons_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
-            this.col_gridFakturPajaks_removeKontrabons_Id.DefaultCellStyle = dataGridViewCellStyle2;
-            this.col_gridFakturPajaks_removeKontrabons_Id.HeaderText = "";
-            this.col_gridFakturPajaks_removeKontrabons_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridFakturPajaks_removeKontrabons_Id.LinkColor = System.Drawing.Color.Red;
-            this.col_gridFakturPajaks_removeKontrabons_Id.MinimumWidth = 10;
-            this.col_gridFakturPajaks_removeKontrabons_Id.Name = "col_gridFakturPajaks_removeKontrabons_Id";
-            this.col_gridFakturPajaks_removeKontrabons_Id.ReadOnly = true;
-            this.col_gridFakturPajaks_removeKontrabons_Id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridFakturPajaks_removeKontrabons_Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridFakturPajaks_removeKontrabons_Id.Text = "X";
-            this.col_gridFakturPajaks_removeKontrabons_Id.UseColumnTextForLinkValue = true;
-            this.col_gridFakturPajaks_removeKontrabons_Id.VisitedLinkColor = System.Drawing.Color.Red;
-            this.col_gridFakturPajaks_removeKontrabons_Id.Width = 10;
-            // 
-            // col_gridFakturPajaks_Timestamp
-            // 
-            this.col_gridFakturPajaks_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle3.Format = "dd/MM/yy";
-            this.col_gridFakturPajaks_Timestamp.DefaultCellStyle = dataGridViewCellStyle3;
-            this.col_gridFakturPajaks_Timestamp.HeaderText = "Date";
-            this.col_gridFakturPajaks_Timestamp.MinimumWidth = 40;
-            this.col_gridFakturPajaks_Timestamp.Name = "col_gridFakturPajaks_Timestamp";
-            this.col_gridFakturPajaks_Timestamp.ReadOnly = true;
-            this.col_gridFakturPajaks_Timestamp.Width = 40;
-            // 
-            // col_gridFakturPajaks_No
-            // 
-            this.col_gridFakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridFakturPajaks_No.HeaderText = "No";
-            this.col_gridFakturPajaks_No.MinimumWidth = 50;
-            this.col_gridFakturPajaks_No.Name = "col_gridFakturPajaks_No";
-            this.col_gridFakturPajaks_No.ReadOnly = true;
-            this.col_gridFakturPajaks_No.Width = 50;
-            // 
-            // col_gridFakturPajaks_DPP
-            // 
-            this.col_gridFakturPajaks_DPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            this.col_gridFakturPajaks_DPP.DefaultCellStyle = dataGridViewCellStyle4;
-            this.col_gridFakturPajaks_DPP.HeaderText = "DPP";
-            this.col_gridFakturPajaks_DPP.MinimumWidth = 45;
-            this.col_gridFakturPajaks_DPP.Name = "col_gridFakturPajaks_DPP";
-            this.col_gridFakturPajaks_DPP.ReadOnly = true;
-            this.col_gridFakturPajaks_DPP.Width = 45;
-            // 
-            // col_gridFakturPajaks_PPN
-            // 
-            this.col_gridFakturPajaks_PPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            this.col_gridFakturPajaks_PPN.DefaultCellStyle = dataGridViewCellStyle5;
-            this.col_gridFakturPajaks_PPN.HeaderText = "PPN";
-            this.col_gridFakturPajaks_PPN.MinimumWidth = 30;
-            this.col_gridFakturPajaks_PPN.Name = "col_gridFakturPajaks_PPN";
-            this.col_gridFakturPajaks_PPN.ReadOnly = true;
-            this.col_gridFakturPajaks_PPN.Width = 30;
-            // 
-            // col_gridFakturPajaks_Amount
-            // 
-            this.col_gridFakturPajaks_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            this.col_gridFakturPajaks_Amount.DefaultCellStyle = dataGridViewCellStyle6;
-            this.col_gridFakturPajaks_Amount.HeaderText = "Amount";
-            this.col_gridFakturPajaks_Amount.MinimumWidth = 45;
-            this.col_gridFakturPajaks_Amount.Name = "col_gridFakturPajaks_Amount";
-            this.col_gridFakturPajaks_Amount.ReadOnly = true;
-            this.col_gridFakturPajaks_Amount.Width = 45;
-            // 
-            // col_gridFakturPajaks_Notes
-            // 
-            this.col_gridFakturPajaks_Notes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_gridFakturPajaks_Notes.HeaderText = "Notes";
-            this.col_gridFakturPajaks_Notes.MinimumWidth = 30;
-            this.col_gridFakturPajaks_Notes.Name = "col_gridFakturPajaks_Notes";
-            this.col_gridFakturPajaks_Notes.ReadOnly = true;
             // 
             // MasterData_v2_Kontrabons_Form
             // 

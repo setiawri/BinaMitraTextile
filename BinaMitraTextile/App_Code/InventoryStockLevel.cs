@@ -39,7 +39,8 @@ namespace BinaMitraTextile
         public const string COL_COLOR_NAME = "color_name";
         public const string COL_VENDORID = "vendor_id";
         public const string COL_REMAININGSTOCKQTY = "remainingstock_qty";
-        public const string COL_PENDINGDELIVERYQTY = "pendingdelivery_qty"; 
+        public const string COL_PENDINGDELIVERYQTY = "pendingdelivery_qty";
+        public const string COL_BOOKEDQTY = "booked_qty";
         public const string COL_LASTORDERINVENTORYID = "last_order_inventory_id";
         public const string COL_LASTORDERTIMESTAMP = "last_order_timestamp";
         public const string COL_NEWORDER_QTY = "new_order_qty";

@@ -280,6 +280,14 @@ namespace BinaMitraTextile.Sales
             setButtonsVisibility(false);
         }
 
+        private void updateRowInfo()
+        {
+            populateGridSaleInvoices(false);
+            populateGridReturns(false);
+            populateGridFakturPajaks(false);
+            populateGridViewDataSource(true); //repopulate to recalculate numbers
+        }
+
         #endregion METHODS
         /*******************************************************************************************************/
         #region EVENT HANDLERS
@@ -338,10 +346,7 @@ namespace BinaMitraTextile.Sales
                 if (form.DialogResult == DialogResult.OK)
                 {
                     FakturPajak.update_Kontrabons_Id(form.BrowsedItemSelectionId, _lastSelectedKontrabons_Id);
-                    populateGridFakturPajaks(false);
-                    populateGridSaleInvoices(false);
-                    populateGridReturns(false);
-                    populateGridViewDataSource(true); //repopulate to recalculate numbers
+                    updateRowInfo();
                 }
             }
         }
@@ -351,9 +356,7 @@ namespace BinaMitraTextile.Sales
             if (Util.isColumnMatch(sender, e, col_gridSaleInvoices_removeKontrabons_Id))
             {
                 Sale.update_Kontrabons_Id((Guid)Util.getSelectedRowValue(sender, col_gridSaleInvoices_Sales_id), null);
-                populateGridSaleInvoices(false);
-                populateGridFakturPajaks(false);
-                populateGridViewDataSource(true); //repopulate to recalculate numbers
+                updateRowInfo();
             }
             else if (Util.isColumnMatch(sender, e, col_gridSaleInvoices_hexbarcode))
             {
@@ -381,9 +384,7 @@ namespace BinaMitraTextile.Sales
             else if (Util.isColumnMatch(sender, e, col_gridReturns_removeKontrabons_Id))
             {
                 SaleReturn.update_Kontrabons_Id((Guid)Util.getSelectedRowValue(sender, col_gridReturns_id), null);
-                populateGridReturns(false);
-                populateGridFakturPajaks(false);
-                populateGridViewDataSource(true); //repopulate to recalculate numbers
+                updateRowInfo();
             }
         }
 
@@ -392,10 +393,7 @@ namespace BinaMitraTextile.Sales
             if (Util.isColumnMatch(sender, e, col_gridFakturPajaks_removeKontrabons_Id))
             {
                 FakturPajak.update_Kontrabons_Id((Guid)Util.getSelectedRowValue(sender, col_gridFakturPajaks_Id), null);
-                populateGridFakturPajaks(false);
-                populateGridSaleInvoices(false);
-                populateGridReturns(false);
-                populateGridViewDataSource(true); //repopulate to recalculate numbers
+                updateRowInfo();
             }
         }
 

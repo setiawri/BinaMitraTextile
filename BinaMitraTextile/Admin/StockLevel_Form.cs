@@ -36,6 +36,7 @@ namespace BinaMitraTextile.Admin
         public DataGridViewColumn col_grid_newQty;
         public DataGridViewColumn col_grid_remainingQty;
         public DataGridViewColumn col_grid_orderQty;
+        public DataGridViewColumn col_grid_bookedQty;
         public DataGridViewColumn col_grid_lastOrderInventoryID;
         public DataGridViewColumn col_grid_lastOrderTimestamp;
 
@@ -138,6 +139,7 @@ namespace BinaMitraTextile.Admin
 
             //add columns
             col_grid_remainingQty = Tools.addColumn<DataGridViewTextBoxCell>(gridview, "col_grid_remainingQty", "Stock", InventoryStockLevel.COL_REMAININGSTOCKQTY, 40, true, null); //add field to gridview
+            col_grid_bookedQty = Tools.addColumn<DataGridViewTextBoxCell>(gridview, "col_grid_bookedQty", "Booked", InventoryStockLevel.COL_BOOKEDQTY, 50, true, null); //add field to gridview
             col_grid_orderQty = Tools.addColumn<DataGridViewTextBoxCell>(gridview, "col_grid_orderQty", "Pending", InventoryStockLevel.COL_PENDINGDELIVERYQTY, 50, true, null); //add field to gridview
             col_grid_newQty = Tools.addColumn<DataGridViewTextBoxCell>(gridview, "col_grid_newQty", "Order", InventoryStockLevel.COL_NEWORDER_QTY, 40, false, null); //add field to gridview
             col_grid_lastOrderInventoryID = Tools.addColumn<DataGridViewTextBoxCell>(gridview, "col_grid_referencedInventoryID", "", InventoryStockLevel.COL_LASTORDERINVENTORYID, 40, true, null); //add field to gridview

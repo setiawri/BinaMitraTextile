@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
@@ -54,6 +54,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.in_PercentCommission = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.label8 = new System.Windows.Forms.Label();
+            this.itxt_PasswordReset = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -172,14 +175,14 @@
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -313,6 +316,9 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.btnResetPassword);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.itxt_PasswordReset);
             this.groupBox1.Controls.Add(this.in_PercentCommission);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtName);
@@ -380,6 +386,44 @@
             this.label8.TabIndex = 108;
             this.label8.Text = "%";
             // 
+            // itxt_PasswordReset
+            // 
+            this.itxt_PasswordReset.IsBrowseMode = false;
+            this.itxt_PasswordReset.LabelText = "textbox";
+            this.itxt_PasswordReset.Location = new System.Drawing.Point(277, 108);
+            this.itxt_PasswordReset.MaxLength = 32767;
+            this.itxt_PasswordReset.MultiLine = false;
+            this.itxt_PasswordReset.Name = "itxt_PasswordReset";
+            this.itxt_PasswordReset.PasswordChar = '\0';
+            this.itxt_PasswordReset.RowCount = 1;
+            this.itxt_PasswordReset.ShowDeleteButton = false;
+            this.itxt_PasswordReset.ShowFilter = false;
+            this.itxt_PasswordReset.ShowTextboxOnly = true;
+            this.itxt_PasswordReset.Size = new System.Drawing.Size(75, 21);
+            this.itxt_PasswordReset.TabIndex = 110;
+            this.itxt_PasswordReset.ValueText = "qwerty";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(226, 112);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 111;
+            this.label9.Text = "Reset to";
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Location = new System.Drawing.Point(357, 107);
+            this.btnResetPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(57, 23);
+            this.btnResetPassword.TabIndex = 112;
+            this.btnResetPassword.Text = "RESET";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,5 +471,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_PercentCommission;
         private System.Windows.Forms.Label label8;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PercentCommission;
+        private System.Windows.Forms.Label label9;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_PasswordReset;
+        private System.Windows.Forms.Button btnResetPassword;
     }
 }

@@ -24,11 +24,7 @@ namespace BinaMitraTextile.Users
             DBUtil.sanitize(txtCurrentPassword, txtNewPassword, txtConfirmPassword);
             
             if(isInputValid())
-            {
-                GlobalData.UserAccount.HashedPassword = txtNewPassword.Text;
-                if(!Tools.hasMessage(GlobalData.UserAccount.update()))
-                    this.Close();
-            }
+                UserAccount.update_HashedPassword(GlobalData.UserAccount.id, txtNewPassword.Text);
         }
 
         private bool isInputValid()
