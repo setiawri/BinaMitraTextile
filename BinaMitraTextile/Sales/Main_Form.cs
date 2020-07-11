@@ -17,9 +17,6 @@ namespace BinaMitraTextile.Sales
         /*******************************************************************************************************/
         #region CLASS VARIABLES
             
-        int _lastSelectedRow = -1;
-        Color _defaultMasterRowBackColor;
-
         FormModes _startingMode = FormModes.Normal;
         Guid? _BrowsingForFakturPajak_Customers_Id = null;
         Guid? _BrowsingForFakturPajak_Vendors_Id = null;
@@ -63,6 +60,7 @@ namespace BinaMitraTextile.Sales
             col_gridmaster_SaleCommission_Users_Name.DataPropertyName = Sale.COL_SaleCommission_Users_Name;
             col_gridMaster_Vendors_Name.DataPropertyName = Sale.COL_Vendors_Name;
             col_gridMaster_FakturPajaks_No.DataPropertyName = Sale.COL_FakturPajaks_No;
+            col_gridMaster_ShippingExpense.DataPropertyName = Sale.COL_DB_ShippingExpense;            
             col_gridmaster_isReported.DataPropertyName = Sale.COL_DB_ISREPORTED;
             col_gridmaster_isReported.Visible = false;
 
@@ -94,6 +92,7 @@ namespace BinaMitraTextile.Sales
                 iddl_UserAccounts.Visible = false;
 
                 chkOnlyNotCompleted.Visible = false;
+                chkOnlyManualAdjustment.Visible = false;
 
                 //Tools.clearWhenSelected(gridMaster);
             }
@@ -115,7 +114,7 @@ namespace BinaMitraTextile.Sales
             if (_startingMode == FormModes.Browse)
             {
                 scMain.Panel1Collapsed = true;
-                ptFilterAndButtons.Visible = false;
+                ptFilter.Visible = false;
 
             }
         }
@@ -131,7 +130,6 @@ namespace BinaMitraTextile.Sales
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            _lastSelectedRow = -1;
             populateMasterGrid();
         }
 
@@ -255,14 +253,14 @@ namespace BinaMitraTextile.Sales
 
             if (gridMaster.Rows.Count > 0 && GlobalData.UserAccount.role != Roles.User)
             {
-                btnLog.Enabled = true;
+                pbLog.Enabled = true;
                 btnUpdate.Enabled = true;
                 lblTaxInfo.Visible = true;
                 lblTaxInfo.Text = string.Format("Reported: {0:N2}", Tools.getSum((DataTable)gridMaster.DataSource, Sale.COL_SALEAMOUNT, Sale.COL_DB_ISREPORTED + "=true"));
             }
             else
             {
-                btnLog.Enabled = false;
+                pbLog.Enabled = false;
                 btnUpdate.Enabled = true;
                 lblTaxInfo.Visible = false;
             }
@@ -361,20 +359,19 @@ namespace BinaMitraTextile.Sales
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            else if(Util.isColumnMatch(sender, e, col_gridMaster_ShippingExpense))
+            {
+                pnlUpdateShippingExpense.Visible = true;
+                itxt_ShippingExpenseNotes.ValueText = "";
+                in_ShippingExpense.Value = new Sale(selectedRowID()).ShippingExpense;
+                in_ShippingExpense.focus();
+            }
             else
             {
-                //reset previous row back color
-                if (_lastSelectedRow > -1)
-                    gridMaster.Rows[_lastSelectedRow].DefaultCellStyle.BackColor = _defaultMasterRowBackColor;
-
                 //show details and summary
-                if (!pnlSummaryAndDetails.Visible)
+                if (!ptSummaryAndDetails.isPanelVisible())
                     ptSummaryAndDetails.toggle();
                 populateDetails(new Guid(gridMaster.Rows[e.RowIndex].Cells[col_gridmaster_saleid.Name].Value.ToString()));
-
-                _lastSelectedRow = e.RowIndex; //save current row index for resetting the row back color later
-                _defaultMasterRowBackColor = gridMaster.Rows[e.RowIndex].DefaultCellStyle.BackColor; //save original row back color
-                gridMaster.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightBlue; //change row back color
             }
         }
 
@@ -417,19 +414,15 @@ namespace BinaMitraTextile.Sales
             populateMasterGrid();
         }
 
-        private void btnLog_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Logs.Main_Form(selectedRowID()));
-        }
-
         protected Guid selectedRowID()
         {
-            return (Guid)gridMaster.SelectedRows[0].Cells[col_gridmaster_saleid.Name].Value;
+            return Util.getSelectedRowID(gridMaster, col_gridmaster_saleid);
         }
 
         private void Form_Shown(object sender, EventArgs e)
         {
             ptSummaryAndDetails.toggle();
+            ptFilter.toggle();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -441,6 +434,40 @@ namespace BinaMitraTextile.Sales
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void pbLog_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new Logs.Main_Form(selectedRowID()));
+        }
+
+        private void pbRefresh_Click(object sender, EventArgs e)
+        {
+            populateMasterGrid();
+        }
+
+        private void btnCancelUpdateBuyPrice_Click(object sender, EventArgs e)
+        {
+            pnlUpdateShippingExpense.Visible = false;
+        }
+
+        private void btnUpdateShippingExpense_Click(object sender, EventArgs e)
+        {
+            Sale.update_ShippingExpense(selectedRowID(), in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
+            pnlUpdateShippingExpense.Visible = false;
+            populateMasterGrid();
+        }
+
+        private void in_ShippingExpense_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                btnUpdateShippingExpense.PerformClick();
+        }
+
+        private void itxt_ShippingExpenseNotes_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                btnUpdateShippingExpense.PerformClick();
         }
 
         #endregion FORM METHODS

@@ -190,7 +190,7 @@ namespace BinaMitraTextile.InventoryForm
                 lblAvailableFund.Text = "";
         }
 
-        private void showEditForm()
+        private void showEditBuyPriceForm()
         {
             Util.displayForm(new VendorInvoices_Edit_Form(Util.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id)));
             populateGridVendorInvoices();
@@ -283,7 +283,7 @@ namespace BinaMitraTextile.InventoryForm
             }
             else
             {
-                showEditForm();
+                showEditBuyPriceForm();
             }
         }
 
@@ -402,6 +402,7 @@ namespace BinaMitraTextile.InventoryForm
             in_BuyPrice.Value = 0;
             pnlUpdateBuyPrice.Visible = false;
             populateGridInventory();
+            populateGridVendorInvoices();
         }
 
         private void In_BuyPrice_onKeyDown(object sender, KeyEventArgs e)
@@ -418,6 +419,17 @@ namespace BinaMitraTextile.InventoryForm
         private void In_AvailableFund_ValueChanged(object sender, EventArgs e)
         {
             calculateVendorInvoicePaymentAmount();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                if (Util.copyContentToClipboardIfGridview(this))
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         #endregion

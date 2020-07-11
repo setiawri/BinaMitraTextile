@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PettyCash_Form));
             this.label2 = new System.Windows.Forms.Label();
             this.dropCategories = new System.Windows.Forms.ComboBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
@@ -38,6 +39,11 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.scMain = new System.Windows.Forms.SplitContainer();
+            this.pnlFilterHeaderContainer = new System.Windows.Forms.Panel();
+            this.pnlFilterHeader = new System.Windows.Forms.Panel();
+            this.pbCalculator = new System.Windows.Forms.PictureBox();
+            this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.ptFilter = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.iddl_Filter_PettyCashCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.idtp_FilterEnd = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_FilterStart = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
@@ -87,23 +93,23 @@
             this.col_grid_amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_IsChecked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCalculator = new System.Windows.Forms.Button();
-            this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.panelToggle1 = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
             this.scMain.SuspendLayout();
+            this.pnlFilterHeaderContainer.SuspendLayout();
+            this.pnlFilterHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCalculator)).BeginInit();
             this.pnlCalculator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(264, 1);
+            this.label2.Location = new System.Drawing.Point(225, 1);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
@@ -113,7 +119,7 @@
             // dropCategories
             // 
             this.dropCategories.FormattingEnabled = true;
-            this.dropCategories.Location = new System.Drawing.Point(41, 16);
+            this.dropCategories.Location = new System.Drawing.Point(43, 16);
             this.dropCategories.Margin = new System.Windows.Forms.Padding(2);
             this.dropCategories.Name = "dropCategories";
             this.dropCategories.Size = new System.Drawing.Size(107, 21);
@@ -123,17 +129,17 @@
             // 
             this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNotes.Location = new System.Drawing.Point(267, 16);
+            this.txtNotes.Location = new System.Drawing.Point(269, 16);
             this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
             this.txtNotes.MaxLength = 500;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(363, 20);
+            this.txtNotes.Size = new System.Drawing.Size(243, 20);
             this.txtNotes.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 1);
+            this.label3.Location = new System.Drawing.Point(40, 1);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
@@ -143,7 +149,7 @@
             // btnAddPettyCashRecord
             // 
             this.btnAddPettyCashRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPettyCashRecord.Location = new System.Drawing.Point(635, 15);
+            this.btnAddPettyCashRecord.Location = new System.Drawing.Point(517, 15);
             this.btnAddPettyCashRecord.Name = "btnAddPettyCashRecord";
             this.btnAddPettyCashRecord.Size = new System.Drawing.Size(56, 21);
             this.btnAddPettyCashRecord.TabIndex = 3;
@@ -154,7 +160,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(666, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(599, 9);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 41);
             this.btnUpdate.TabIndex = 125;
@@ -165,7 +171,7 @@
             // btnFilter
             // 
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Location = new System.Drawing.Point(414, 3);
+            this.btnFilter.Location = new System.Drawing.Point(410, 9);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(81, 41);
             this.btnFilter.TabIndex = 125;
@@ -183,6 +189,8 @@
             // 
             // scMain.Panel1
             // 
+            this.scMain.Panel1.BackColor = System.Drawing.Color.White;
+            this.scMain.Panel1.Controls.Add(this.pnlFilterHeaderContainer);
             this.scMain.Panel1.Controls.Add(this.btnFilter);
             this.scMain.Panel1.Controls.Add(this.iddl_Filter_PettyCashCategories);
             this.scMain.Panel1.Controls.Add(this.idtp_FilterEnd);
@@ -194,11 +202,101 @@
             // 
             this.scMain.Panel2.Controls.Add(this.pnlCalculator);
             this.scMain.Panel2.Controls.Add(this.grid);
-            this.scMain.Panel2.Controls.Add(this.panel1);
-            this.scMain.Size = new System.Drawing.Size(746, 591);
-            this.scMain.SplitterDistance = 49;
+            this.scMain.Size = new System.Drawing.Size(679, 591);
+            this.scMain.SplitterDistance = 100;
             this.scMain.SplitterWidth = 1;
             this.scMain.TabIndex = 1;
+            // 
+            // pnlFilterHeaderContainer
+            // 
+            this.pnlFilterHeaderContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlFilterHeaderContainer.Controls.Add(this.pnlFilterHeader);
+            this.pnlFilterHeaderContainer.Controls.Add(this.ptFilter);
+            this.pnlFilterHeaderContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFilterHeaderContainer.Location = new System.Drawing.Point(0, 58);
+            this.pnlFilterHeaderContainer.Name = "pnlFilterHeaderContainer";
+            this.pnlFilterHeaderContainer.Size = new System.Drawing.Size(677, 40);
+            this.pnlFilterHeaderContainer.TabIndex = 6;
+            // 
+            // pnlFilterHeader
+            // 
+            this.pnlFilterHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFilterHeader.Controls.Add(this.pbRefresh);
+            this.pnlFilterHeader.Controls.Add(this.pbCalculator);
+            this.pnlFilterHeader.Controls.Add(this.dropCategories);
+            this.pnlFilterHeader.Controls.Add(this.in_Amount);
+            this.pnlFilterHeader.Controls.Add(this.txtNotes);
+            this.pnlFilterHeader.Controls.Add(this.btnAddPettyCashRecord);
+            this.pnlFilterHeader.Controls.Add(this.label2);
+            this.pnlFilterHeader.Controls.Add(this.label3);
+            this.pnlFilterHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFilterHeader.Location = new System.Drawing.Point(39, 0);
+            this.pnlFilterHeader.Name = "pnlFilterHeader";
+            this.pnlFilterHeader.Size = new System.Drawing.Size(638, 40);
+            this.pnlFilterHeader.TabIndex = 8;
+            // 
+            // pbCalculator
+            // 
+            this.pbCalculator.BackColor = System.Drawing.Color.White;
+            this.pbCalculator.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbCalculator.BackgroundImage")));
+            this.pbCalculator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbCalculator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbCalculator.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pbCalculator.Location = new System.Drawing.Point(598, 0);
+            this.pbCalculator.Name = "pbCalculator";
+            this.pbCalculator.Size = new System.Drawing.Size(38, 38);
+            this.pbCalculator.TabIndex = 123;
+            this.pbCalculator.TabStop = false;
+            this.pbCalculator.Click += new System.EventHandler(this.pbCalculator_Click);
+            // 
+            // in_Amount
+            // 
+            this.in_Amount.Checked = false;
+            this.in_Amount.DecimalPlaces = 0;
+            this.in_Amount.HideUpDown = false;
+            this.in_Amount.Increment = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.in_Amount.LabelText = "Amount";
+            this.in_Amount.Location = new System.Drawing.Point(154, -3);
+            this.in_Amount.MaximumValue = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.in_Amount.MinimumValue = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            -2147483648});
+            this.in_Amount.Name = "in_Amount";
+            this.in_Amount.ShowAllowDecimalCheckbox = false;
+            this.in_Amount.ShowCheckbox = false;
+            this.in_Amount.ShowTextboxOnly = false;
+            this.in_Amount.Size = new System.Drawing.Size(111, 41);
+            this.in_Amount.TabIndex = 1;
+            this.in_Amount.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // ptFilter
+            // 
+            this.ptFilter.AdjustLocationOnClick = false;
+            this.ptFilter.BackColor = System.Drawing.Color.White;
+            this.ptFilter.ContainerPanel = this.scMain.Panel1;
+            this.ptFilter.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptFilter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
+            this.ptFilter.Location = new System.Drawing.Point(0, 0);
+            this.ptFilter.MinimumSplitterDistance = 50;
+            this.ptFilter.Name = "ptFilter";
+            this.ptFilter.Size = new System.Drawing.Size(39, 40);
+            this.ptFilter.TabIndex = 123;
+            this.ptFilter.TogglePanel = this.scMain.Panel1;
             // 
             // iddl_Filter_PettyCashCategories
             // 
@@ -206,7 +304,7 @@
             this.iddl_Filter_PettyCashCategories.HideFilter = true;
             this.iddl_Filter_PettyCashCategories.HideUpdateLink = true;
             this.iddl_Filter_PettyCashCategories.LabelText = "Category";
-            this.iddl_Filter_PettyCashCategories.Location = new System.Drawing.Point(283, 3);
+            this.iddl_Filter_PettyCashCategories.Location = new System.Drawing.Point(283, 8);
             this.iddl_Filter_PettyCashCategories.Name = "iddl_Filter_PettyCashCategories";
             this.iddl_Filter_PettyCashCategories.SelectedIndex = -1;
             this.iddl_Filter_PettyCashCategories.SelectedItem = null;
@@ -223,7 +321,7 @@
             this.idtp_FilterEnd.DefaultCheckedValue = false;
             this.idtp_FilterEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_FilterEnd.LabelText = "End";
-            this.idtp_FilterEnd.Location = new System.Drawing.Point(134, 3);
+            this.idtp_FilterEnd.Location = new System.Drawing.Point(134, 8);
             this.idtp_FilterEnd.Name = "idtp_FilterEnd";
             this.idtp_FilterEnd.ShowCheckBox = true;
             this.idtp_FilterEnd.ShowDateTimePickerOnly = false;
@@ -240,7 +338,7 @@
             this.idtp_FilterStart.DefaultCheckedValue = true;
             this.idtp_FilterStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_FilterStart.LabelText = "Start";
-            this.idtp_FilterStart.Location = new System.Drawing.Point(3, 3);
+            this.idtp_FilterStart.Location = new System.Drawing.Point(3, 8);
             this.idtp_FilterStart.Name = "idtp_FilterStart";
             this.idtp_FilterStart.ShowCheckBox = false;
             this.idtp_FilterStart.ShowDateTimePickerOnly = false;
@@ -252,9 +350,8 @@
             // 
             // chkOnlyNotChecked
             // 
-            this.chkOnlyNotChecked.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkOnlyNotChecked.AutoSize = true;
-            this.chkOnlyNotChecked.Location = new System.Drawing.Point(501, 26);
+            this.chkOnlyNotChecked.Location = new System.Drawing.Point(494, 33);
             this.chkOnlyNotChecked.Name = "chkOnlyNotChecked";
             this.chkOnlyNotChecked.Size = new System.Drawing.Size(86, 17);
             this.chkOnlyNotChecked.TabIndex = 129;
@@ -300,7 +397,7 @@
             this.pnlCalculator.Controls.Add(this.in_20rb);
             this.pnlCalculator.Controls.Add(this.in_50rb);
             this.pnlCalculator.Controls.Add(this.in_100rb);
-            this.pnlCalculator.Location = new System.Drawing.Point(225, 189);
+            this.pnlCalculator.Location = new System.Drawing.Point(191, 135);
             this.pnlCalculator.Name = "pnlCalculator";
             this.pnlCalculator.Size = new System.Drawing.Size(294, 223);
             this.pnlCalculator.TabIndex = 7;
@@ -922,14 +1019,14 @@
             this.col_grid_balance,
             this.col_grid_IsChecked});
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 39);
+            this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(744, 500);
+            this.grid.Size = new System.Drawing.Size(677, 488);
             this.grid.TabIndex = 5;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
@@ -1008,86 +1105,25 @@
             this.col_grid_IsChecked.ReadOnly = true;
             this.col_grid_IsChecked.Width = 30;
             // 
-            // panel1
+            // pbRefresh
             // 
-            this.panel1.Controls.Add(this.btnCalculator);
-            this.panel1.Controls.Add(this.in_Amount);
-            this.panel1.Controls.Add(this.panelToggle1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.btnAddPettyCashRecord);
-            this.panel1.Controls.Add(this.dropCategories);
-            this.panel1.Controls.Add(this.txtNotes);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 39);
-            this.panel1.TabIndex = 6;
-            // 
-            // btnCalculator
-            // 
-            this.btnCalculator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCalculator.Location = new System.Drawing.Point(697, 15);
-            this.btnCalculator.Name = "btnCalculator";
-            this.btnCalculator.Size = new System.Drawing.Size(44, 21);
-            this.btnCalculator.TabIndex = 124;
-            this.btnCalculator.Text = "CALC";
-            this.btnCalculator.UseVisualStyleBackColor = true;
-            this.btnCalculator.Click += new System.EventHandler(this.btnCalculator_Click);
-            // 
-            // in_Amount
-            // 
-            this.in_Amount.Checked = false;
-            this.in_Amount.DecimalPlaces = 0;
-            this.in_Amount.HideUpDown = false;
-            this.in_Amount.Increment = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.in_Amount.LabelText = "Amount";
-            this.in_Amount.Location = new System.Drawing.Point(152, -3);
-            this.in_Amount.MaximumValue = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.in_Amount.MinimumValue = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            -2147483648});
-            this.in_Amount.Name = "in_Amount";
-            this.in_Amount.ShowAllowDecimalCheckbox = false;
-            this.in_Amount.ShowCheckbox = false;
-            this.in_Amount.ShowTextboxOnly = false;
-            this.in_Amount.Size = new System.Drawing.Size(111, 41);
-            this.in_Amount.TabIndex = 1;
-            this.in_Amount.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // panelToggle1
-            // 
-            this.panelToggle1.AdjustLocationOnClick = false;
-            this.panelToggle1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelToggle1.ContainerPanel = null;
-            this.panelToggle1.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.panelToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
-            this.panelToggle1.Location = new System.Drawing.Point(0, 0);
-            this.panelToggle1.MinimumSplitterDistance = 100;
-            this.panelToggle1.Name = "panelToggle1";
-            this.panelToggle1.Size = new System.Drawing.Size(35, 35);
-            this.panelToggle1.TabIndex = 123;
-            this.panelToggle1.TogglePanel = this.scMain.Panel1;
+            this.pbRefresh.BackColor = System.Drawing.Color.White;
+            this.pbRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRefresh.BackgroundImage")));
+            this.pbRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbRefresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbRefresh.Location = new System.Drawing.Point(0, 0);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(38, 38);
+            this.pbRefresh.TabIndex = 124;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.pbRefresh_Click);
             // 
             // PettyCash_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 591);
+            this.ClientSize = new System.Drawing.Size(679, 591);
             this.Controls.Add(this.scMain);
             this.Name = "PettyCash_Form";
             this.Text = "PETTY CASH";
@@ -1098,11 +1134,14 @@
             this.scMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
             this.scMain.ResumeLayout(false);
+            this.pnlFilterHeaderContainer.ResumeLayout(false);
+            this.pnlFilterHeader.ResumeLayout(false);
+            this.pnlFilterHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCalculator)).EndInit();
             this.pnlCalculator.ResumeLayout(false);
             this.pnlCalculator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1125,8 +1164,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_balance;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_IsChecked;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Panel panel1;
-        private LIBUtil.Desktop.UserControls.PanelToggle panelToggle1;
+        private System.Windows.Forms.Panel pnlFilterHeaderContainer;
+        private LIBUtil.Desktop.UserControls.PanelToggle ptFilter;
         private System.Windows.Forms.CheckBox chkOnlyNotChecked;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Amount;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_FilterEnd;
@@ -1154,7 +1193,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_100rb;
         private System.Windows.Forms.Label lblCalculatorTotal;
         private System.Windows.Forms.Button btnResetCalculator;
-        private System.Windows.Forms.Button btnCalculator;
         private System.Windows.Forms.Button btnCloseCalculator;
         private System.Windows.Forms.Label lblCalculatorBalanceDiff;
         private System.Windows.Forms.Label lblCalculatorBalance;
@@ -1169,5 +1207,8 @@
         private System.Windows.Forms.Label lbl1rb;
         private System.Windows.Forms.Label lbl2rb;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Filter_PettyCashCategories;
+        private System.Windows.Forms.Panel pnlFilterHeader;
+        private System.Windows.Forms.PictureBox pbCalculator;
+        private System.Windows.Forms.PictureBox pbRefresh;
     }
 }

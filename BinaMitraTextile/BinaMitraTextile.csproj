@@ -296,6 +296,12 @@
     <Compile Include="Sales\Shipping_Form.Designer.cs">
       <DependentUpon>Shipping_Form.cs</DependentUpon>
     </Compile>
+    <None Include="SharedForms\MasterData_v2_FakturPajaks_Form.cs">
+      <SubType>Form</SubType>
+    </None>
+    <None Include="SharedForms\MasterData_v2_FakturPajaks_Form.Designer.cs">
+      <DependentUpon>MasterData_v2_FakturPajaks_Form.cs</DependentUpon>
+    </None>
     <Compile Include="SharedForms\Verify_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -680,6 +686,9 @@
     <EmbeddedResource Include="Sales\Shipping_Form.resx">
       <DependentUpon>Shipping_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SharedForms\MasterData_v2_FakturPajaks_Form.resx">
+      <DependentUpon>MasterData_v2_FakturPajaks_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SharedForms\Verify_Form.resx">
       <DependentUpon>Verify_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -851,6 +860,7 @@
     <Content Include="Dependencies\IDAutomation.LinearBarCode.dll" />
     <Content Include="Documentation\Documentation.txt" />
     <Content Include="Images\Icons\add-button-small.png" />
+    <Content Include="Images\Icons\calculator.png" />
     <Content Include="Images\Icons\handshake-32.png" />
     <Content Include="Images\Icons\handshake-48.png" />
     <None Include="Resources\expand-collapse-up.png" />

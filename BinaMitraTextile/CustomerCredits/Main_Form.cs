@@ -18,10 +18,6 @@ namespace BinaMitraTextile.CustomerCredits
         public Main_Form()
         {
             InitializeComponent();
-
-            setupControls();
-            populatePageData();
-            iddl_Customers.Focus();
         }
 
         public Main_Form(Guid customerID)
@@ -33,6 +29,7 @@ namespace BinaMitraTextile.CustomerCredits
 
         private void Form_Load(object sender, EventArgs e)
         {
+            setupControls();
             gridSummary.ClearSelection();
         }
 
@@ -72,7 +69,7 @@ namespace BinaMitraTextile.CustomerCredits
         {
             gridDetail.DataSource = null;
             _customerID = null;
-            populateGridSummary();
+            populateGridSummary(true);
             populateGridDetail();
         }
 
@@ -109,9 +106,17 @@ namespace BinaMitraTextile.CustomerCredits
             }
         }
 
-        private void populateGridSummary()
+        private void populateGridSummary(bool reloadFromDB)
         {
-            gridSummary.DataSource = CustomerCredit.getSummary(chkOnlyHasActivityLast3Months.Checked);
+            DataView dvw;
+
+            if (reloadFromDB)
+                dvw = CustomerCredit.getSummary(chkOnlyHasActivityLast3Months.Checked).DefaultView;
+            else
+                dvw = LIBUtil.Util.getDataView(gridSummary.DataSource);
+
+            dvw.RowFilter = LIBUtil.Util.compileQuickSearchFilter(LIBUtil.Util.sanitize(txtFilter.Text), new string[] { CustomerCredit.COL_SUMMARY_CUSTOMERNAME });
+            gridSummary.DataSource = dvw;
         }
 
         private void populateGridDetail()
@@ -179,18 +184,23 @@ namespace BinaMitraTextile.CustomerCredits
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            LIBUtil.Util.sanitize(txtFilter);
-            DataView dvw = LIBUtil.Util.getDataView(gridSummary.DataSource);
-            dvw.RowFilter = LIBUtil.Util.compileQuickSearchFilter(txtFilter.Text, new string[] { CustomerCredit.COL_SUMMARY_CUSTOMERNAME });
-            gridSummary.DataSource = dvw;
+            populateGridSummary(false);
 
             gridDetail.DataSource = null;
+            _customerID = null;
+            iddl_Customers.reset();
             gridSummary.ClearSelection();
         }
-        
+
         private void chkOnlyHasActivityLast3Months_CheckedChanged(object sender, EventArgs e)
         {
             populatePageData();
+        }
+
+        private void Main_Form_Shown(object sender, EventArgs e)
+        {
+            populatePageData();
+            iddl_Customers.Focus();
         }
 
         #endregion FORM METHODS

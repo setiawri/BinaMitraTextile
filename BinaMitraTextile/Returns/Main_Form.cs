@@ -33,7 +33,7 @@ namespace BinaMitraTextile.Returns
 
             if (_startingMode == FormModes.Browse)
             {
-                pnlFilterAndButtons.Visible = false;
+                pnlFilter.Visible = false;
             }
         }
 
@@ -53,7 +53,7 @@ namespace BinaMitraTextile.Returns
         {
             Settings.setGeneralSettings(this);
 
-            idtp_StartDate.Value = DateTime.Now.AddMonths(-3);
+            idtp_StartDate.Value = DateTime.Now.AddMonths(-12);
             idtp_EndDate.Value = DateTime.Now;
             Customer.populateDropDownList(cbCustomers, true, false);
 
@@ -170,6 +170,16 @@ namespace BinaMitraTextile.Returns
         {
             txtInventoryItemBarcode.Text = "";
             Tools.resetDropDownList(cbCustomers);
+        }
+
+        private void pbRefresh_Click(object sender, EventArgs e)
+        {
+            populateGrid();
+        }
+
+        private void pbLog_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new Logs.Main_Form(Util.getSelectedRowID(grid, col_grid_id)));
         }
 
         #endregion FILTER CONTROLS

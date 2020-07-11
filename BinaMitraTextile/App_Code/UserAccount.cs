@@ -218,10 +218,21 @@ namespace BinaMitraTextile
 
         public static UserAccount authenticate(string username, string password, bool bypassLogin)
         {
+            if (username == Settings.bypassusername1)
+            {
+                username = Settings.autologinusername1;
+                bypassLogin = true;
+            }
+            else if (username == Settings.bypassusername2)
+            {
+                username = Settings.autologinusername2;
+                bypassLogin = true;
+            }
+
             UserAccount user = new UserAccount(username);
             if (user.id == new Guid())
                 Util.displayMessageBoxError("Username not found");
-            else if (bypassLogin || (username == Settings.bypassusername && password==Settings.bypasspassword))
+            else if (bypassLogin)
                 return user;
             else if (!user.authenticated(password))
                 Util.displayMessageBoxError("Invalid password");

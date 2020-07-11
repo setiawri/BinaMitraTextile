@@ -9,9 +9,12 @@ namespace BinaMitraTextile
 {
     class Settings
     {
-        public static string autologinusername = "ricky";
-        public static string bypassusername = "ricky";
-        public static string bypasspassword = "qwe";
+        public static string bypassusername1 = "qwe";
+        public static string autologinusername1 = "userricky";
+        public static string bypassusername2 = "asd";
+        public static string autologinusername2 = "lixia";
+
+        public static Guid GUID_ShippingExpense_PettyCashCategories_Id = new Guid("15c8d13b-812c-4298-ba43-4edc4e6f03d9");
 
         /*******************************************************************************************************/
         #region APP VERSION

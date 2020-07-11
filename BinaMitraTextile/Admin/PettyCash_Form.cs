@@ -191,18 +191,11 @@ namespace BinaMitraTextile.Admin
 
         private void PettyCash_Form_Shown(object sender, EventArgs e)
         {
-            panelToggle1.toggle();
+            ptFilter.toggle();
         }
 
         private void chkOnlyNotChecked_CheckedChanged(object sender, EventArgs e)
         {
-        }
-
-        private void btnCalculator_Click(object sender, EventArgs e)
-        {
-            pnlCalculator.Visible = !pnlCalculator.Visible;
-            if(pnlCalculator.Visible)
-                btnResetCalculator.PerformClick();
         }
 
         private void btnResetCalculator_Click(object sender, EventArgs e)
@@ -260,6 +253,18 @@ namespace BinaMitraTextile.Admin
                 label.Text = qty + " x";
             else
                 label.Text = "ERR";
+        }
+
+        private void pbCalculator_Click(object sender, EventArgs e)
+        {
+            pnlCalculator.Visible = !pnlCalculator.Visible;
+            if (pnlCalculator.Visible)
+                btnResetCalculator.PerformClick();
+        }
+
+        private void pbRefresh_Click(object sender, EventArgs e)
+        {
+            populateData();
         }
 
         #endregion EVENT HANDLERS

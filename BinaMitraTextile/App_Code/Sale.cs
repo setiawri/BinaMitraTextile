@@ -36,6 +36,7 @@ namespace BinaMitraTextile
         public const string COL_DB_SaleCommission_Users_Id = "SaleCommission_Users_Id";
         public const string COL_DB_FakturPajaks_Id = "FakturPajaks_Id";
         public const string COL_DB_Kontrabons_Id = "Kontrabons_Id";
+        public const string COL_DB_ShippingExpense = "ShippingExpense";
 
         public const string COL_TRANSPORTNAME = "transport_name";
         public const string COL_Vendors_Name = "Vendors_Name";
@@ -132,12 +133,14 @@ namespace BinaMitraTextile
         public Guid? SaleCommission_Users_Id;
         public Guid? FakturPajaks_Id;
         public Guid? Kontrabons_Id;
+        public int ShippingExpense;
 
         public string TransportName = "";
         public string FakturPajaks_No;
         public string Kontrabons_No;
         public string Vendors_Name = "";
         public string Customers_Name = "";
+        public string PettyCashRecords_No;
 
         public DataTable sale_items;
         public DataTable datatable;
@@ -181,6 +184,7 @@ namespace BinaMitraTextile
                 SaleCommission_Users_Id = DBUtil.parseData<Guid?>(row, COL_DB_SaleCommission_Users_Id);
                 FakturPajaks_Id = DBUtil.parseData<Guid?>(row, COL_DB_FakturPajaks_Id);
                 Kontrabons_Id = DBUtil.parseData<Guid?>(row, COL_DB_Kontrabons_Id);
+                ShippingExpense = DBUtil.parseData<int>(row, COL_DB_ShippingExpense);
 
                 ReturnedToSupplier = (Vendors_Id != null);
                 TransportName = DBUtil.parseData<string>(row, COL_TRANSPORTNAME);
@@ -316,6 +320,44 @@ namespace BinaMitraTextile
                     if (FakturPajaks_Id != null)
                         FakturPajak.update_Kontrabons_Id((Guid)FakturPajaks_Id, Kontrabons_Id);
                 }
+            }
+        }
+
+        public static void update_ShippingExpense(Guid Id, int Amount, string Notes)
+        {
+            Sale objOld = new Sale(Id);
+            string log = "";
+            log = ActivityLog.appendChange(log, objOld.ShippingExpense, Amount, "Shipping Expense: '{0}' to '{1}'");
+
+            if (!string.IsNullOrEmpty(log))
+            {
+                int PettyCashRecords_Amount = -1 * Amount;
+                string PettyCashRecords_Notes = string.Format("Expense for Invoice {0}", objOld.barcode);
+
+                //if there is previous amount value, adjust amount so petty cash is still correct.
+                if (objOld.ShippingExpense > 0)
+                {
+                    PettyCashRecords_Amount += objOld.ShippingExpense;
+                    PettyCashRecords_Notes += string.Format(" (Update {0:N0} to {1:N0})", objOld.ShippingExpense, Amount);
+                }
+
+                if(!string.IsNullOrWhiteSpace(Notes))
+                    PettyCashRecords_Notes += ", " + Notes;
+
+                Guid PettyCashRecords_Id = PettyCashRecord.add(Settings.GUID_ShippingExpense_PettyCashCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);
+                log += string.Format(", Petty Cash {0} Amount: {1:N0}", new PettyCashRecord(PettyCashRecords_Id).No, PettyCashRecords_Amount);
+
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBUtil.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "Sales_update_ShippingExpense",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
+                    new SqlQueryParameter(COL_DB_ShippingExpense, SqlDbType.Int, Amount)
+                );
+
+                if (result.IsSuccessful)
+                    ActivityLog.submit(Id, String.Format("Updated: {0}", log));
             }
         }
 
@@ -462,7 +504,8 @@ namespace BinaMitraTextile
            DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode)
         {
             return get(dateStart, dateEnd, inventoryID, customerID, Vendors_Id, saleID, onlyHasReceivable, OnlyNoFakturPajak, onlyLossProfit, onlyReturnedToSupplier,
-                onlyWithCommission, salesUserAccountID, dtProductStoreNameID, dtColorID, onlyNotCompleted, onlyManualAdjustment, inventoryCode);
+                onlyWithCommission, salesUserAccountID, dtProductStoreNameID, dtColorID, onlyNotCompleted, onlyManualAdjustment, inventoryCode, 
+                null, null, null, null, false, false, null);
         }
         public static DataTable get()
         {

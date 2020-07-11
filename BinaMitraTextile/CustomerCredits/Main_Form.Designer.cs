@@ -294,11 +294,12 @@
             // btnAddPayment
             // 
             this.btnAddPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPayment.Location = new System.Drawing.Point(820, 21);
+            this.btnAddPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPayment.Location = new System.Drawing.Point(820, 9);
             this.btnAddPayment.Name = "btnAddPayment";
-            this.btnAddPayment.Size = new System.Drawing.Size(49, 23);
+            this.btnAddPayment.Size = new System.Drawing.Size(49, 35);
             this.btnAddPayment.TabIndex = 5;
-            this.btnAddPayment.Text = "Add";
+            this.btnAddPayment.Text = "ADD";
             this.btnAddPayment.UseVisualStyleBackColor = true;
             this.btnAddPayment.Click += new System.EventHandler(this.btnAddPayment_Click);
             // 
@@ -424,6 +425,7 @@
             this.Name = "Main_Form";
             this.Text = "CUSTOMER CREDITS";
             this.Load += new System.EventHandler(this.Form_Load);
+            this.Shown += new System.EventHandler(this.Main_Form_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.gridDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).EndInit();
             this.ResumeLayout(false);

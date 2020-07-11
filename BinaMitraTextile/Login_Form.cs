@@ -202,9 +202,9 @@ namespace BinaMitraTextile
 
         private void Login_Form_Shown(object sender, EventArgs e)
         {
-            if (_bypassLogin && !string.IsNullOrEmpty(Settings.autologinusername))
+            if (_bypassLogin && !string.IsNullOrEmpty(Settings.autologinusername1))
             {
-                itxt_Username.ValueText = Settings.autologinusername;
+                itxt_Username.ValueText = Settings.autologinusername1;
                 if (isConnectedToServer())
                     authenticate();
             }
