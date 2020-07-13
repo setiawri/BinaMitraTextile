@@ -10,22 +10,26 @@ namespace BinaMitraTextile
     class Settings
     {
         public static string bypassusername1 = "qwe";
-        public static string autologinusername1 = "userricky";
+        public static string autologinusername1 = "ricky";
         public static string bypassusername2 = "asd";
         public static string autologinusername2 = "lixia";
-
-        public static Guid GUID_ShippingExpense_PettyCashCategories_Id = new Guid("15c8d13b-812c-4298-ba43-4edc4e6f03d9");
+        public static string bypassusername3 = "zxc";
+        public static string autologinusername3 = "userricky";
 
         /*******************************************************************************************************/
         #region APP VERSION
 
-        public const string APPVERSION = "v200517";
+        public const string APPVERSION = "v200713";
         private static Guid GUID_LatestAppVersion = new Guid("C1552CB9-E157-4925-897E-904180379BFE");
 
-        public static string LatestAppVersion { get { return getStringValue(GUID_LatestAppVersion); }set { update(GUID_LatestAppVersion, null, value); } }
+        public static string LatestAppVersion { 
+            get { return getStringValue(GUID_LatestAppVersion); } 
+            set { update(GUID_LatestAppVersion, value); } 
+        }
 
         public static bool hasLatestAppVersion()
         {
+            return true;
             if (LatestAppVersion == APPVERSION)
                 return true;
             else if (String.Compare(LatestAppVersion, APPVERSION) < 0)
@@ -49,7 +53,7 @@ namespace BinaMitraTextile
 
         //sql connection
         private static Guid GUID_LastConnectedPortNo = new Guid("06AFBB4E-F66B-42A0-96A7-0B5705629248");
-
+        
         #endregion
         /*******************************************************************************************************/
         #region PUBLIC VARIABLES
@@ -61,6 +65,7 @@ namespace BinaMitraTextile
         public static string CONNECTIONSTRING_DEFAULTPARAMS = "Integrated Security=False;Persist Security Info=False;";
         public const string SQL_USERNAME = "binamitra";
         public const string SQL_PASSWORD = "binamitra";
+        public const string SQL_DATABASENAME = "BinaMitraTextile";
 
         public static System.Media.SoundPlayer notificationSound = new System.Media.SoundPlayer(Properties.Resources.Notification01);
         public static System.Media.SoundPlayer nonBarcodeScannerSound = new System.Media.SoundPlayer(Properties.Resources.Notification02);
@@ -92,28 +97,28 @@ namespace BinaMitraTextile
         public static string LastSheetNo
         {
             get { return getStringValue(GUID_LastSheetNo); }
-            set { update(GUID_LastSheetNo, null, value); }
+            set { update(GUID_LastSheetNo, value); }
         }
 
         /// <summary><para></para></summary>
         public static string LastStartHexNo
         {
             get { return getStringValue(GUID_LastStartHexNo); }
-            set { update(GUID_LastStartHexNo, null, value); }
+            set { update(GUID_LastStartHexNo, value); }
         }
 
         /// <summary><para></para></summary>
         public static int OffsetX
         {
             get { return getIntValue(GUID_OffsetX, 0); }
-            set { update(GUID_OffsetX, value, null); }
+            set { update(GUID_OffsetX, value); }
         }
 
         /// <summary><para></para></summary>
         public static int OffsetY
         {
             get { return getIntValue(GUID_OffsetY, 0); }
-            set { update(GUID_OffsetY, value, null); }
+            set { update(GUID_OffsetY, value); }
         }
 
         /// <summary><para></para></summary>
@@ -132,7 +137,7 @@ namespace BinaMitraTextile
                     return Convert.ToDateTime(value);
                 }
             }
-            set { update(GUID_LastOpnameCleanupDate, null, value.ToString()); }
+            set { update(GUID_LastOpnameCleanupDate, value); }
         }
 
         /// <summary><para></para></summary>
@@ -144,17 +149,18 @@ namespace BinaMitraTextile
 
         #endregion PUBLIC VARIABLES
         /*******************************************************************************************************/
-        #region DATABASE FIELDS
-
-        public const string COL_DB_Id = "Id";
-        public const string COL_DB_Value_Int = "Value_Int";
-        public const string COL_DB_Value_String = "Value_String";
-
-        #endregion DATABASE FIELDS
-        /*******************************************************************************************************/
         #region METHODS
 
-        private static int getIntValue(Guid GUID, int defaultValue)
+        public static void setGeneralSettings(Form form)
+        {
+            form.Icon = taskbarIcon;
+        }
+
+        #endregion
+
+        /*******************************************************************************************************/
+        #region METHODS
+        public static int getIntValue(Guid GUID, int defaultValue)
         {
             DataRow row = get(GUID);
             if (row == null)
@@ -163,7 +169,7 @@ namespace BinaMitraTextile
                 return Convert.ToInt32(row[COL_DB_Value_Int]);
         }
 
-        private static string getStringValue(Guid GUID)
+        public static string getStringValue(Guid GUID)
         {
             DataRow row = get(GUID);
             if (row == null)
@@ -172,67 +178,77 @@ namespace BinaMitraTextile
                 return row[COL_DB_Value_String].ToString();
         }
 
-        public static void setGeneralSettings(Form form)
+        public static Guid? getGuidValue(Guid GUID)
         {
-            form.Icon = taskbarIcon;
+            string value = getStringValue(GUID);
+            if (string.IsNullOrEmpty(value))
+                return null;
+            else
+                return new Guid(value);
         }
 
-        #endregion
+        public static bool getBoolValue(Guid GUID)
+        {
+            if (getIntValue(GUID, 0) == 0)
+                return false;
+            else
+                return true;
+        }
+
+        public static DateTime? getDateTimeValue(Guid GUID)
+        {
+            DataRow row = get(GUID);
+            if (row == null)
+                return null;
+            else
+                return Util.wrapNullable<DateTime?>(row[COL_DB_Value_DateTime]);
+        }
+
+        #endregion METHODS
+        /*******************************************************************************************************/
+        #region DATABASE FIELDS
+
+        public const string COL_DB_Id = "Id";
+        public const string COL_DB_Value_Int = "Value_Int";
+        public const string COL_DB_Value_String = "Value_String";
+        public const string COL_DB_Value_DateTime = "Value_DateTime";
+
+        #endregion DATABASE FIELDS
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
         public static DataRow get(Guid? id)
         {
-            DataTable datatable = new DataTable();
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("Settings_get", DBUtil.ActiveSqlConnection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = LIBUtil.Util.wrapNullable(id);
-
-                    adapter.SelectCommand = cmd;
-                    adapter.Fill(datatable);
-                }
-            }
-            catch (Exception ex) { LIBUtil.Util.displayMessageBoxError(ex.Message); }
-
-            return LIBUtil.Util.getFirstRow(datatable);
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "Settings_get",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id))
+                );
+            return Util.getFirstRow(result.Datatable);
         }
 
-        public static void update(Guid id, int? intValue, string stringValue)
+        public static void update(Guid id, int value) { update(id, value, null, null, null); }
+        public static void update(Guid id, string value) { update(id, null, value, null, null); }
+        public static void update(Guid id, Guid? value) { update(id, null, value.ToString(), null, null); }
+        public static void update(Guid id, bool value) { update(id, null, null, value, null); }
+        public static void update(Guid id, DateTime? value) { update(id, null, null, null, value); }
+        public static void update(Guid id, int? intValue, string stringValue, bool? boolValue, DateTime? datetimeValue)
         {
-            //Settings objOld = new Settings(connectionString, id);
-            //string log = "";
-            //if (intValue != null)
-            //    log = Util.appendChange(log, objOld.Notes, intValue.ToString(), "Notes: '{0}' to '{1}'");
-            //else
-            //    log = Util.appendChange(log, objOld.Notes, intValue.ToString(), "Notes: '{0}' to '{1}'");            
+            if (boolValue != null)
+                intValue = Util.convertToInt((bool)boolValue);
 
-            //if (string.IsNullOrEmpty(log))
-            //{
-            //    Util.displayMessageBoxError("No changes to record");
-            //}
-            //else
-            //{
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("Settings_update", DBUtil.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_Value_Int, SqlDbType.Int).Value = LIBUtil.Util.wrapNullable(intValue);
-                    cmd.Parameters.Add("@" + COL_DB_Value_String, SqlDbType.NVarChar).Value = LIBUtil.Util.wrapNullable(stringValue);
-
-                    cmd.ExecuteNonQuery();
-
-                    //ActivityLog.add(sqlConnection, userAccountID, id, String.Format("Updated: {0}", log));
-                }
-                //Util.displayMessageBoxSuccess("Changes updated");
-            }
-            catch (Exception ex) { LIBUtil.Util.displayMessageBoxError(ex.Message); }
-            //}
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Settings_update",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Value_Int, SqlDbType.Int, Util.wrapNullable(intValue)),
+                new SqlQueryParameter(COL_DB_Value_String, SqlDbType.VarChar, Util.wrapNullable(stringValue)),
+                new SqlQueryParameter(COL_DB_Value_DateTime, SqlDbType.DateTime, Util.wrapNullable(datetimeValue))
+            );
         }
 
         #endregion DATABASE METHODS

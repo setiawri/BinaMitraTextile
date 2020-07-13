@@ -23,6 +23,8 @@ namespace BinaMitraTextile
         public static bool ConnectionTestCompleted;
         public static Timer SqlConnectionTimer;
 
+        public static string ServerName = "";
+
         public static bool isServerEnvironment { get { return Util.isMachineNameEqualConfigVariable("serverComputerName"); } }
         public static bool isDevEnvironment { get { return Util.isMachineNameEqualConfigVariable("devComputerName"); } }
         public static bool isSalesEnvironment {
@@ -58,6 +60,7 @@ namespace BinaMitraTextile
             
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(_connectionString);
             string servername = builder.DataSource;
+            ServerName = servername;
             if (GlobalData.LiveConnectionServerName != "")
                 servername = GlobalData.LiveConnectionServerName;
             if(servername.IndexOf(',') > -1)

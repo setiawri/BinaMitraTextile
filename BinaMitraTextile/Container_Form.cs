@@ -407,6 +407,11 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Summary_Superuser_Form());
         }
 
+        private void Internal_Settings_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.Settings_Form());
+        }
+
         #endregion MENU - INTERNAL
         /*******************************************************************************************************/
     }

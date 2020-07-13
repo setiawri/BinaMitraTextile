@@ -18,6 +18,7 @@ namespace BinaMitraTextile.Sales
         #region CLASS VARIABLES
             
         FormModes _startingMode = FormModes.Normal;
+        private bool _isFormShown = false;
         Guid? _BrowsingForFakturPajak_Customers_Id = null;
         Guid? _BrowsingForFakturPajak_Vendors_Id = null;
         public Guid BrowsedItemSelectionId;
@@ -44,6 +45,8 @@ namespace BinaMitraTextile.Sales
             clearFilter();
             txtSaleBarcode.MaxLength = Settings.saleBarcodeLength;
             txtInventoryItemBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
+
+            PettyCashRecordsCategory.populateInputControlDropDownList(iddl_PettyCashCategories, false);
 
             gridMaster.AutoGenerateColumns = false;
             gridMaster.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -364,7 +367,7 @@ namespace BinaMitraTextile.Sales
                 pnlUpdateShippingExpense.Visible = true;
                 itxt_ShippingExpenseNotes.ValueText = "";
                 in_ShippingExpense.Value = new Sale(selectedRowID()).ShippingExpense;
-                in_ShippingExpense.focus();
+                iddl_PettyCashCategories.focus();
             }
             else
             {
@@ -421,6 +424,8 @@ namespace BinaMitraTextile.Sales
 
         private void Form_Shown(object sender, EventArgs e)
         {
+            _isFormShown = true;
+
             ptSummaryAndDetails.toggle();
             ptFilter.toggle();
         }
@@ -453,9 +458,14 @@ namespace BinaMitraTextile.Sales
 
         private void btnUpdateShippingExpense_Click(object sender, EventArgs e)
         {
-            Sale.update_ShippingExpense(selectedRowID(), in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
-            pnlUpdateShippingExpense.Visible = false;
-            populateMasterGrid();
+            if (!iddl_PettyCashCategories.hasSelectedValue())
+                iddl_PettyCashCategories.SelectedValueError("Select category");
+            else
+            {
+                Sale.update_ShippingExpense(selectedRowID(), (Guid)iddl_PettyCashCategories.SelectedValue, in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
+                pnlUpdateShippingExpense.Visible = false;
+                populateMasterGrid();
+            }
         }
 
         private void in_ShippingExpense_onKeyDown(object sender, KeyEventArgs e)

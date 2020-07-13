@@ -87,6 +87,7 @@
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcutContainer = new System.Windows.Forms.Panel();
+            this.btnOpname = new System.Windows.Forms.Button();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
             this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
             this.flpAssistantShortcuts = new System.Windows.Forms.FlowLayoutPanel();
@@ -114,7 +115,7 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.btnOpname = new System.Windows.Forms.Button();
+            this.Internal_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -538,6 +539,7 @@
             this.Internal_Summary_Superuser,
             this.Internal_UserAccounts,
             this.Internal_Reports,
+            this.Internal_Settings,
             this.Internal_Test});
             this.Internal.Name = "Internal";
             this.Internal.Size = new System.Drawing.Size(57, 20);
@@ -546,14 +548,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(180, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(144, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(180, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -564,7 +566,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(180, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -591,7 +593,7 @@
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(180, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
@@ -614,6 +616,17 @@
             this.pnlShortcutContainer.Padding = new System.Windows.Forms.Padding(5, 5, 0, 5);
             this.pnlShortcutContainer.Size = new System.Drawing.Size(145, 621);
             this.pnlShortcutContainer.TabIndex = 18;
+            // 
+            // btnOpname
+            // 
+            this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOpname.Location = new System.Drawing.Point(10, 570);
+            this.btnOpname.Name = "btnOpname";
+            this.btnOpname.Size = new System.Drawing.Size(114, 41);
+            this.btnOpname.TabIndex = 21;
+            this.btnOpname.Text = "OPNAME";
+            this.btnOpname.UseVisualStyleBackColor = true;
+            this.btnOpname.Click += new System.EventHandler(this.BtnOpname_Click);
             // 
             // pnlShortcuts
             // 
@@ -1041,16 +1054,12 @@
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
-            // btnOpname
+            // Internal_Settings
             // 
-            this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpname.Location = new System.Drawing.Point(10, 570);
-            this.btnOpname.Name = "btnOpname";
-            this.btnOpname.Size = new System.Drawing.Size(114, 41);
-            this.btnOpname.TabIndex = 21;
-            this.btnOpname.Text = "OPNAME";
-            this.btnOpname.UseVisualStyleBackColor = true;
-            this.btnOpname.Click += new System.EventHandler(this.BtnOpname_Click);
+            this.Internal_Settings.Name = "Internal_Settings";
+            this.Internal_Settings.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Settings.Text = "Settings";
+            this.Internal_Settings.Click += new System.EventHandler(this.Internal_Settings_Click);
             // 
             // Container_Form
             // 
@@ -1172,5 +1181,6 @@
         private System.Windows.Forms.Panel pnlShortcuts;
         private System.Windows.Forms.Panel pnlShortcutHeaderContainer;
         private System.Windows.Forms.Panel pnlShortcutHeader;
+        private System.Windows.Forms.ToolStripMenuItem Internal_Settings;
     }
 }

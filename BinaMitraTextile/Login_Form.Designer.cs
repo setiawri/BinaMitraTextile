@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbConnectionProperties = new System.Windows.Forms.GroupBox();
+            this.itxt_DatabaseName = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.itxt_ServerName = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.iddl_Ports = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.btnTestConnection = new System.Windows.Forms.Button();
@@ -43,6 +44,7 @@
             // 
             // gbConnectionProperties
             // 
+            this.gbConnectionProperties.Controls.Add(this.itxt_DatabaseName);
             this.gbConnectionProperties.Controls.Add(this.itxt_ServerName);
             this.gbConnectionProperties.Controls.Add(this.iddl_Ports);
             this.gbConnectionProperties.Controls.Add(this.btnTestConnection);
@@ -57,6 +59,24 @@
             this.gbConnectionProperties.TabIndex = 98;
             this.gbConnectionProperties.TabStop = false;
             // 
+            // itxt_DatabaseName
+            // 
+            this.itxt_DatabaseName.IsBrowseMode = false;
+            this.itxt_DatabaseName.LabelText = "DATABASE";
+            this.itxt_DatabaseName.Location = new System.Drawing.Point(215, 41);
+            this.itxt_DatabaseName.MaxLength = 32767;
+            this.itxt_DatabaseName.MultiLine = false;
+            this.itxt_DatabaseName.Name = "itxt_DatabaseName";
+            this.itxt_DatabaseName.PasswordChar = '\0';
+            this.itxt_DatabaseName.RowCount = 1;
+            this.itxt_DatabaseName.ShowDeleteButton = false;
+            this.itxt_DatabaseName.ShowFilter = false;
+            this.itxt_DatabaseName.ShowTextboxOnly = false;
+            this.itxt_DatabaseName.Size = new System.Drawing.Size(75, 41);
+            this.itxt_DatabaseName.TabIndex = 108;
+            this.itxt_DatabaseName.ValueText = "";
+            this.itxt_DatabaseName.Visible = false;
+            // 
             // itxt_ServerName
             // 
             this.itxt_ServerName.IsBrowseMode = false;
@@ -70,7 +90,7 @@
             this.itxt_ServerName.ShowDeleteButton = false;
             this.itxt_ServerName.ShowFilter = false;
             this.itxt_ServerName.ShowTextboxOnly = false;
-            this.itxt_ServerName.Size = new System.Drawing.Size(125, 41);
+            this.itxt_ServerName.Size = new System.Drawing.Size(75, 41);
             this.itxt_ServerName.TabIndex = 107;
             this.itxt_ServerName.ValueText = "";
             this.itxt_ServerName.Visible = false;
@@ -215,5 +235,6 @@
         private System.Windows.Forms.Button btnTestConnection;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Ports;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_ServerName;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_DatabaseName;
     }
 }

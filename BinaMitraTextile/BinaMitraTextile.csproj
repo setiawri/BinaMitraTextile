@@ -99,6 +99,12 @@
     <Compile Include="Admin\MasterData_v1_Vendors_Form.Designer.cs">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Settings_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings_Form.Designer.cs">
+      <DependentUpon>Settings_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="App_Code\Kontrabon.cs" />
     <Compile Include="App_Code\VendorInvoicePaymentItem.cs" />
     <Compile Include="App_Code\VendorInvoicePayment.cs" />
@@ -607,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_Vendors_Form.resx">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Settings_Form.resx">
+      <DependentUpon>Settings_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm\VendorInvoicePayments_Form.resx">
       <DependentUpon>VendorInvoicePayments_Form.cs</DependentUpon>

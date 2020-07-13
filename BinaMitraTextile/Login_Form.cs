@@ -27,6 +27,7 @@ namespace BinaMitraTextile
             Settings.setGeneralSettings(this);
             this.Text += " " + Settings.APPVERSION;
 
+
             DBConnection.populatePorts(iddl_Ports);
 
             if (DBUtil.isSalesEnvironment)
@@ -40,6 +41,7 @@ namespace BinaMitraTextile
                 rbDevDB.Checked = true;
                 _bypassLogin = true;
                 itxt_ServerName.Visible = true;
+                itxt_DatabaseName.Visible = true;
             }
             else if (DBUtil.isServerEnvironment)
             {
@@ -138,6 +140,12 @@ namespace BinaMitraTextile
             else
                 GlobalData.LiveConnectionServerName = "";
             DBUtil.setConnectionString();
+
+            //setup connection string in libutil
+            //itxt_ServerName.ValueText = DBUtil.ServerName;
+            //itxt_DatabaseName.ValueText = Settings.SQL_DATABASENAME;
+            //DBConnection.update(itxt_ServerName, itxt_DatabaseName);
+            //DBConnection.getConnectionString();
 
             if (DBUtil.isDBConnectionAvailable())
                 return true;

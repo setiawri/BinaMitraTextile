@@ -323,7 +323,7 @@ namespace BinaMitraTextile
             }
         }
 
-        public static void update_ShippingExpense(Guid Id, int Amount, string Notes)
+        public static void update_ShippingExpense(Guid Id, Guid PettyCashRecordsCategories_Id, int Amount, string Notes)
         {
             Sale objOld = new Sale(Id);
             string log = "";
@@ -344,7 +344,7 @@ namespace BinaMitraTextile
                 if(!string.IsNullOrWhiteSpace(Notes))
                     PettyCashRecords_Notes += ", " + Notes;
 
-                Guid PettyCashRecords_Id = PettyCashRecord.add(Settings.GUID_ShippingExpense_PettyCashCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);
+                Guid PettyCashRecords_Id = PettyCashRecord.add(PettyCashRecordsCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);
                 log += string.Format(", Petty Cash {0} Amount: {1:N0}", new PettyCashRecord(PettyCashRecords_Id).No, PettyCashRecords_Amount);
 
                 SqlQueryResult result = DBConnection.query(
