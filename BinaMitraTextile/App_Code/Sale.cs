@@ -27,6 +27,7 @@ namespace BinaMitraTextile
         public const string COL_RECEIVABLEAMOUNT = "receivable_amount";
         public const string COL_RECEIVABLEDUEDATE = "receivable_due_date";
         public const string COL_DAYSELAPSED = "days_elapsed";
+        public const string COL_DB_CUSTOMERINFO = "customer_info";
         public const string COL_DB_TRANSPORTID = "transport_id";
         public const string COL_DB_SPECIALUSERONLY = "special_user_only";
         public const string COL_DB_SHIPPINGCOST = "shipping_cost";
@@ -207,9 +208,9 @@ namespace BinaMitraTextile
             customer_id = CustomerID;
             Vendors_Id = vendors_Id;
             if(customer_id != null)
-                customer_info = new Customer(CustomerID).compileData();
+                customer_info = new Customer(CustomerID).Info;
             else
-                customer_info = new Vendor(Vendors_Id).Name;
+                customer_info = new Vendor(Vendors_Id).Info;
             notes = Notes;
             TransportID = transportID;
             if(transportID != null)
@@ -365,12 +366,29 @@ namespace BinaMitraTextile
         {
             Sale objOld = new Sale(saleID);
             DataTable objOldItems = Tools.setDataTablePrimaryKey(SaleItem.getItems(saleID), SaleItem.COL_ID);
+            string customerInfo = objOld.customer_info;
 
             //generate log description
             string log = "";
 
-            log = Util.appendChange(log, objOld.Customers_Name, new Customer(Customers_Id).Name, "Customer: '{0}' to '{1}'");
-            log = Util.appendChange(log, objOld.Vendors_Name, new Vendor(Vendors_Id).Name, "Vendor: '{0}' to '{1}'");
+            //update customer/vendor info
+            Customer newCustomer = new Customer(Customers_Id);
+            if (objOld.customer_id != newCustomer.ID)
+            {
+                log = Util.appendChange(log, objOld.Customers_Name, newCustomer.Name, "Customer: '{0}' to '{1}'");
+                log = Util.appendChange(log, objOld.customer_info, newCustomer.Info, "Info: '{0}' to '{1}'");
+            }
+            Vendor newVendor = new Vendor(Vendors_Id);
+            if(objOld.Vendors_Id != Vendors_Id)
+            {
+                log = Util.appendChange(log, objOld.Vendors_Name, newVendor.Name, "Vendor: '{0}' to '{1}'");
+                log = Util.appendChange(log, objOld.customer_info, newVendor.Info, "Info: '{0}' to '{1}'");
+            }
+            if(Customers_Id != null)
+                customerInfo = newCustomer.Info;
+            else
+                customerInfo = newVendor.Info;
+
             log = ActivityLog.appendChange(log, objOld.TransportName, new Transport(transportID).Name, "Angkutan: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.ShippingCost.ToString("N2"), shippingCost.ToString("N2"), "Shipping: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.notes, notes, "Notes: '{0}' to '{1}'");
@@ -412,6 +430,7 @@ namespace BinaMitraTextile
                             cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.FirstName, notes);
                         cmd.Parameters.Add("@" + COL_CUSTOMER_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(Customers_Id);
                         cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(Vendors_Id);
+                        cmd.Parameters.Add("@" + COL_DB_CUSTOMERINFO, SqlDbType.VarChar).Value = Tools.wrapNullable(customerInfo);
                         cmd.Parameters.Add("@" + COL_DB_TRANSPORTID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(transportID);
                         cmd.Parameters.Add("@" + COL_DB_SHIPPINGCOST, SqlDbType.Decimal).Value = shippingCost;
                             

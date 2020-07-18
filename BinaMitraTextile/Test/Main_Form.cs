@@ -115,7 +115,7 @@ namespace BinaMitraTextile.Test
         {
             foreach (DataRow sale in Sale.get().Rows)
             {
-                string sql = String.Format(@"UPDATE Sales SET customer_info = '{0}' WHERE id='{1}'", new Customer((Guid)sale[Sale.COL_CUSTOMER_ID]).compileData(), (Guid)sale[Sale.COL_ID]);
+                string sql = String.Format(@"UPDATE Sales SET customer_info = '{0}' WHERE id='{1}'", new Customer((Guid)sale[Sale.COL_CUSTOMER_ID]).Info, (Guid)sale[Sale.COL_ID]);
                 using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
                 {
                     cmd.ExecuteNonQuery();

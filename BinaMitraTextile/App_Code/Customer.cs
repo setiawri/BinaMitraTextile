@@ -56,6 +56,10 @@ namespace BinaMitraTextile
                 if (!string.IsNullOrEmpty(Address))
                     info += Environment.NewLine + Address;
 
+                string cityAndState = Tools.append(CityName, StateName, ",");
+                if (!string.IsNullOrEmpty(cityAndState))
+                    info += Environment.NewLine + cityAndState;
+
                 string phones = Tools.append(Phone1, Phone2, ",");
                 if (!string.IsNullOrEmpty(phones))
                     info += Environment.NewLine + phones;
@@ -113,24 +117,6 @@ namespace BinaMitraTextile
                 Tools.hasMessage("Item created");
             }
             catch (Exception ex) { Tools.showError(ex.Message); }
-        }
-
-        public string compileData()
-        {
-            string data = Name;
-
-            if (!string.IsNullOrEmpty(Address))
-                data += Environment.NewLine + Address;
-
-            string cityAndState = Tools.append(CityName, StateName, ",");
-            if (!string.IsNullOrEmpty(cityAndState))
-                data += Environment.NewLine + cityAndState;
-
-            string phones = Tools.append(Phone1, Phone2, ",");
-            if (!string.IsNullOrEmpty(phones))
-                data += Environment.NewLine + phones;
-
-            return data;
         }
 
         public static bool isNameExist(string name, Guid? id)

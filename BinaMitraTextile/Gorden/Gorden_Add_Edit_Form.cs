@@ -392,7 +392,7 @@ namespace BinaMitraTextile.Gorden
         {
             Guid selectedID = new Guid();
             if(Tools.isDropdownlistSelected((ComboBox)sender, ref selectedID))
-                lblCustomerInfo.Text = new Customer(selectedID).compileData();
+                lblCustomerInfo.Text = new Customer(selectedID).Info;
             else
                 lblCustomerInfo.Text = "";
         }
