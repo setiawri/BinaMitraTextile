@@ -129,11 +129,11 @@ namespace BinaMitraTextile.InventoryForm
         {
             gridvendorinvoice.AutoGenerateColumns = false; //the line in setupControls() is not working??
             if (_startingMode == FormModes.Browse)
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast6Months.Checked));
+                Util.setGridviewDataSource(gridvendorinvoice, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast6Months.Checked));
             else if(_createVendorInvoicePayment)
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false));
+                Util.setGridviewDataSource(gridvendorinvoice, VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false));
             else
-                Util.setGridviewDataSource(gridvendorinvoice, true, true, VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false));
+                Util.setGridviewDataSource(gridvendorinvoice, VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false));
 
             createVendorInvoicePaymentMode(_createVendorInvoicePayment);
 
@@ -199,10 +199,21 @@ namespace BinaMitraTextile.InventoryForm
         private void calculateDueAmount()
         {
             lblDueAmount.Text = "";
-            if (isFormShown)
+            if (isFormShown && iddl_Vendors.hasSelectedValue())
             {
-                if (iddl_Vendors.hasSelectedValue())
-                    lblDueAmount.Text = string.Format("due:{0:N0}", Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, VendorInvoice.COL_IsDue + "=1"));
+                string filter = string.Format("{0} = '{1}' AND {2}=1", VendorInvoice.COL_DB_Vendors_Id, iddl_Vendors.SelectedValue, VendorInvoice.COL_IsDue);
+                lblDueAmount.Text = string.Format("due:{0:N0}",
+                    Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, filter));
+            }
+        }
+
+        private void calculatePayableAmount()
+        {
+            lblPayableAmount.Text = "";
+            if (isFormShown && iddl_Vendors.hasSelectedValue())
+            {
+                string filter = string.Format("{0} = '{1}'", VendorInvoice.COL_DB_Vendors_Id, iddl_Vendors.SelectedValue);
+                lblPayableAmount.Text = string.Format("payable:{0:N0}", Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, filter));
             }
         }
 
@@ -414,6 +425,7 @@ namespace BinaMitraTextile.InventoryForm
         private void Iddl_Vendors_SelectedIndexChanged(object sender, EventArgs e)
         {
             calculateDueAmount();
+            calculatePayableAmount();
         }
 
         private void In_AvailableFund_ValueChanged(object sender, EventArgs e)
