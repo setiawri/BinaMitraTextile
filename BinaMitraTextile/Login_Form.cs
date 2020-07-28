@@ -142,10 +142,9 @@ namespace BinaMitraTextile
             DBUtil.setConnectionString();
 
             //setup connection string in libutil
-            //itxt_ServerName.ValueText = DBUtil.ServerName;
-            //itxt_DatabaseName.ValueText = Settings.SQL_DATABASENAME;
-            //DBConnection.update(itxt_ServerName, itxt_DatabaseName);
-            //DBConnection.getConnectionString();
+            itxt_ServerName.ValueText = DBUtil.ServerName;
+            itxt_DatabaseName.ValueText = Settings.SQL_DATABASENAME;
+            DBConnection.update(itxt_ServerName, itxt_DatabaseName);
 
             if (DBUtil.isDBConnectionAvailable())
                 return true;

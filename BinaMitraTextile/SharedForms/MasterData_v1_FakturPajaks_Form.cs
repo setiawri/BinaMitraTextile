@@ -487,6 +487,17 @@ namespace BinaMitraTextile.SharedForms
             setRadioButtonEnability(sender);
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.C))
+            {
+                if (Util.copyContentToClipboardIfGridview(this))
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         #endregion EVENT HANDLERS
         /*******************************************************************************************************/
     }
