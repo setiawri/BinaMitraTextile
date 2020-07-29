@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -76,7 +73,7 @@ namespace BinaMitraTextile
             string no = "";
             try
             {
-                using (SqlCommand cmd = new SqlCommand("gordenorder_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("gordenorder_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -108,7 +105,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? ID, int? no, Guid? customerID, string notes)
         {
             DataTable datatable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("gordenorder_get", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("gordenorder_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -131,7 +128,7 @@ namespace BinaMitraTextile
                 GordenOrderItem objOld = new GordenOrderItem(id);
                 log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
-                using (SqlCommand cmd = new SqlCommand("gordenorder_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("gordenorder_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -149,7 +146,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("gordenorder_delete", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("gordenorder_delete", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;

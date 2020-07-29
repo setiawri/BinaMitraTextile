@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -79,7 +75,7 @@ namespace BinaMitraTextile
 
         public static bool isPONoExist(string poNo)
         {
-            using (SqlCommand cmd = new SqlCommand("po_isPONoExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("po_isPONoExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_PONO, SqlDbType.VarChar).Value = poNo;
@@ -94,7 +90,7 @@ namespace BinaMitraTextile
 
         public static string getNextPONo()
         {
-            using (SqlCommand cmd = new SqlCommand("po_get_nextpono", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("po_get_nextpono", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
@@ -114,7 +110,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? id, string poNo, Guid? vendorID, DateTime? dtStart, DateTime? dtEnd, Guid? productStoreNameID, string invoiceNo, string packingListNo, bool showIncompleteOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("po_get_by_filter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("po_get_by_filter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -142,7 +138,7 @@ namespace BinaMitraTextile
             try
             {
                 //submit new sale record
-                using (SqlCommand cmd = new SqlCommand("po_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("po_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;

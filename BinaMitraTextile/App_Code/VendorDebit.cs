@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -53,7 +49,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("VendorDebits_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("VendorDebits_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
@@ -82,7 +78,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(Guid vendorId)
         {
             DataTable datatable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("VendorDebits_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -101,7 +97,7 @@ namespace BinaMitraTextile
         public static DataTable getSummary()
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_summary", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_summary", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -131,7 +127,7 @@ namespace BinaMitraTextile
                 return 0;
 
             Object obj;
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_balance", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_balance", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_SUMMARY_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;

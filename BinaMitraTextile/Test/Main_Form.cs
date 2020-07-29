@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile.Test
 {
@@ -116,7 +113,7 @@ namespace BinaMitraTextile.Test
             foreach (DataRow sale in Sale.get().Rows)
             {
                 string sql = String.Format(@"UPDATE Sales SET customer_info = '{0}' WHERE id='{1}'", new Customer((Guid)sale[Sale.COL_CUSTOMER_ID]).Info, (Guid)sale[Sale.COL_ID]);
-                using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand(sql, DBConnection.ActiveSqlConnection))
                 {
                     cmd.ExecuteNonQuery();
                 }
@@ -154,7 +151,7 @@ namespace BinaMitraTextile.Test
             {
                 try
                 {
-                    using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand(sql, DBConnection.ActiveSqlConnection))
                     {
                         cmd.ExecuteNonQuery();
                     }
@@ -272,7 +269,7 @@ namespace BinaMitraTextile.Test
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand(sql, DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand(sql, DBConnection.ActiveSqlConnection))
                 {
                     cmd.ExecuteNonQuery();
                 }

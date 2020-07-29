@@ -55,7 +55,7 @@ namespace BinaMitraTextile
 
         public static bool isSubmittedToday(string barcodeWithoutPrefix) 
         {
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_isExistToday", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_isExistToday", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@barcode", SqlDbType.VarChar).Value = barcodeWithoutPrefix;
@@ -75,7 +75,7 @@ namespace BinaMitraTextile
 
             try
             {
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
@@ -126,7 +126,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, bool isAllUsers, bool includeIgnoreSold)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_getall", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_getall", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -146,7 +146,7 @@ namespace BinaMitraTextile
         public static DataTable getSummary(DateTime? dateStart, DateTime? dateEnd, bool isAllUsers)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_get_summary", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_get_summary", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -208,7 +208,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deletetodaydata", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deletetodaydata", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
@@ -221,7 +221,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deleteignoresold", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deleteignoresold", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
@@ -248,18 +248,19 @@ namespace BinaMitraTextile
 
         public static void cleanup()
         {
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_cleanup", DBUtil.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.ExecuteNonQuery();
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "inventoryitemcheck_cleanup"
+            );
         }
 
         public static DataTable getMissing(DateTime? timestampStart, DataTable dtGrades)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "InventoryItemCheck_getMissing",
                 DBConnection.createTableParameters(

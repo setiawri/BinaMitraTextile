@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -32,7 +28,7 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("grade_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("grade_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -49,7 +45,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("grade_isNameExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("grade_isNameExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
@@ -76,7 +72,7 @@ namespace BinaMitraTextile
         public static DataTable getByFilter(bool includeInactive, string nameFilter)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("grade_get_byFilter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("grade_get_byFilter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -116,7 +112,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("grade_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("grade_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;

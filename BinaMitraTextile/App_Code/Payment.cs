@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -61,7 +57,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("Payments_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("Payments_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -83,7 +79,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid referenceId, decimal startingBalance)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("Payments_getby_ReferenceId", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("Payments_getby_ReferenceId", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -103,7 +99,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("Payments_update_Checked", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("Payments_update_Checked", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;

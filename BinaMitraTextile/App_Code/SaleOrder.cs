@@ -92,7 +92,7 @@ namespace BinaMitraTextile
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "SaleOrders_get",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
@@ -112,7 +112,7 @@ namespace BinaMitraTextile
             bool isSuccess = false;
                 SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "SaleOrders_add",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
@@ -139,7 +139,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "SaleOrders_update_TargetDate",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),

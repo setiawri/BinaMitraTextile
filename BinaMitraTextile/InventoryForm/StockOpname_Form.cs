@@ -263,8 +263,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private void resetFilters()
         {
-            dtpStartDate1.Value = DBUtil.getServerTime();
-            dtpEndDate1.Value = DBUtil.getServerTime();
+            dtpStartDate1.Value = Util.getServerTime();
+            dtpEndDate1.Value = Util.getServerTime();
             dtpEndDate1.Checked = false;
             gridDetail.DataSource = null;
             gridSummaryCheck.DataSource = null;

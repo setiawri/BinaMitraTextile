@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -55,7 +52,7 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("product_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("product_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -77,7 +74,7 @@ namespace BinaMitraTextile
 
         public static bool isNameCombinationExist(Guid storeNameID, string nameVendor, Guid vendorID, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("product_isNameCombinationExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("product_isNameCombinationExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier).Value = storeNameID;
@@ -106,7 +103,7 @@ namespace BinaMitraTextile
         public static DataTable get(bool includeInactive, Guid? storeNameID, string nameVendorFilter, Guid? vendorID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("product_get_byFilter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("product_get_byFilter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -143,7 +140,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("product_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("product_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;

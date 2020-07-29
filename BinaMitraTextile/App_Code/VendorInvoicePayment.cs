@@ -78,7 +78,7 @@ namespace BinaMitraTextile
             Guid Id = Guid.NewGuid();
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "VendorInvoicePayments_add",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
@@ -102,7 +102,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "VendorInvoicePayments_get",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
@@ -127,7 +127,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "VendorInvoicePayments_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
@@ -146,7 +146,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "VendorInvoicePayments_update_Approved",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
@@ -161,7 +161,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "VendorInvoicePayments_update_Cancelled",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),

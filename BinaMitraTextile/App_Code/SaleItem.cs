@@ -93,7 +93,7 @@ namespace BinaMitraTextile
         {
             foreach (SaleItem item in SaleItems)
             {
-                using (SqlCommand cmd = new SqlCommand("saleitem_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("saleitem_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.id;
@@ -115,7 +115,7 @@ namespace BinaMitraTextile
         {
             foreach (SaleItem item in SaleItems)
             {
-                using (SqlCommand cmd = new SqlCommand("saleitem_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("saleitem_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.id;
@@ -131,7 +131,7 @@ namespace BinaMitraTextile
         public static DataTable getItem(string InventoryItemBarcode, bool isForReturn)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_inventory_item_barcode", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_inventory_item_barcode", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -149,7 +149,7 @@ namespace BinaMitraTextile
         public static DataTable getItems(Guid SaleID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_sale_id", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_sale_id", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -167,7 +167,7 @@ namespace BinaMitraTextile
         public static DataTable getItemSummary(Guid SaleID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_sale_id", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_sale_id", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -183,7 +183,7 @@ namespace BinaMitraTextile
         public static DataTable getReturnedItemSummary(Guid SaleReturnID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_salereturn_id", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_salereturn_id", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -199,7 +199,7 @@ namespace BinaMitraTextile
         public static DataTable getReturnedItems(Guid saleReturnID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_salereturn_id", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_salereturn_id", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

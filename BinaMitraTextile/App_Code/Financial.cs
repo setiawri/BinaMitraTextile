@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -43,7 +39,7 @@ namespace BinaMitraTextile
         public static FinancialOverview getOverview()
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("financial_get_overview", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("financial_get_overview", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

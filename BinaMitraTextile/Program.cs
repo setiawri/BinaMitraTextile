@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LIBUtil;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace BinaMitraTextile
             //AutoUpdaterDotNET.AutoUpdater.ShowRemindLaterButton = false;
             //AutoUpdaterDotNET.AutoUpdater.Start(@"C:\Users\Ricky\Desktop\Update\AutoUpdaterTest.xml");
 
-            LIBUtil.DBConnection.initialize(Settings.CONNECTIONSTRING_DEFAULTPARAMS, Settings.SQL_USERNAME, Settings.SQL_PASSWORD);
+            DBConnection.initialize(Settings.SQLCONNECTION_MULTIPLEUSE, Settings.CONNECTIONSTRING_DEFAULTPARAMS, Settings.SQL_USERNAME, Settings.SQL_PASSWORD);
             //LIBUtil.Util.ensureSingleInstance(runApplication);
             runApplication();
         }
@@ -28,7 +29,7 @@ namespace BinaMitraTextile
         static void runApplication()
         {
             Application.Run(new Login_Form());
-            DBUtil.terminateActiveSqlConnection();
+            DBConnection.terminateActiveSqlConnection();
         }
     }
 }

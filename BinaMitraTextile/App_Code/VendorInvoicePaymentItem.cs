@@ -48,7 +48,7 @@ namespace BinaMitraTextile
             {
                 DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.FillByAdapter,
                     "VendorInvoicePaymentItems_add",
                     new SqlQueryParameter(COL_DB_VendorInvoicePayments_Id, SqlDbType.UniqueIdentifier, VendorInvoicePayments_Id),
@@ -62,7 +62,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "VendorInvoicePaymentItems_get",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),

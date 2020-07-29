@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -21,7 +22,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(Guid AssociatedID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("activitylog_getall", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("activitylog_getall", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -43,7 +44,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("activity_log_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("activity_log_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();

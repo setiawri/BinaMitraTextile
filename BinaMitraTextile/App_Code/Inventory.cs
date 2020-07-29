@@ -152,7 +152,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("inventory_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventory_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -178,7 +178,7 @@ namespace BinaMitraTextile
 
         public static bool isCodeExist(string Code, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("inventory_isCodeExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventory_isCodeExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@code", SqlDbType.SmallInt).Value = Code;
@@ -200,7 +200,7 @@ namespace BinaMitraTextile
         public DataTable getInfo()
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventory_get_info", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventory_get_info", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -242,7 +242,7 @@ namespace BinaMitraTextile
             //ERROR INVALID ARRAY SIZE
             //SqlQueryResult result = DBConnection.query(
             //    true,
-            //    DBUtil.ActiveSqlConnection,
+            //    DBConnection.ActiveSqlConnection,
             //    QueryTypes.FillByAdapter,
             //    "inventory_getall",
             //        DBConnection.createTableParameters(
@@ -262,7 +262,7 @@ namespace BinaMitraTextile
             //return result.Datatable;
 
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventory_getall", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventory_getall", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -291,7 +291,7 @@ namespace BinaMitraTextile
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "Inventory_get_by_SaleOrderItems_Id",
                     new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
@@ -308,7 +308,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_isConsignment",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
@@ -323,7 +323,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_OpnameMarker",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
@@ -338,7 +338,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_BuyPrice",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
@@ -353,7 +353,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "Inventory_update_DeactivateQtyZeroes",
                 new SqlQueryParameter(ActivityLog.COL_DB_UserId, SqlDbType.UniqueIdentifier, GlobalData.UserAccount.id)
@@ -388,7 +388,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("inventory_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("inventory_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -60,7 +61,7 @@ namespace BinaMitraTextile
         public static DataTable getByFilter(bool includeInactive, string nameFilter, Guid? stateID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("city_get_byFilter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("city_get_byFilter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -82,7 +83,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("city_isNameExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("city_isNameExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
@@ -101,7 +102,7 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("city_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("city_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -134,7 +135,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("city_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("city_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;

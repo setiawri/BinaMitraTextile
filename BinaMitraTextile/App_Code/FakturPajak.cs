@@ -86,7 +86,7 @@ namespace BinaMitraTextile
             Guid Id = Guid.NewGuid();
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "FakturPajaks_add",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
@@ -115,7 +115,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "FakturPajaks_get",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
@@ -135,7 +135,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "FakturPajaks_update_Completed",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
@@ -176,7 +176,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "FakturPajaks_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
@@ -202,7 +202,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 false, false, false, true, false,
                 "FakturPajaks_isExist_No",
@@ -222,7 +222,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "FakturPajaks_update_Kontrabons_Id",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),

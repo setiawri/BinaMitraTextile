@@ -76,7 +76,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -98,7 +98,7 @@ namespace BinaMitraTextile
 
         public static bool isCombinationExist(Guid? id, Guid customerID, Guid gradeID, Guid productStoreNameID, Guid productWidthID, Guid lengthUnitID, Guid? colorID)
         {
-            using (SqlCommand cmd = new SqlCommand("customersaleadjustment_isCombinationExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("customersaleadjustment_isCombinationExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
@@ -133,7 +133,7 @@ namespace BinaMitraTextile
                 if (objOld.AdjustmentPerUnit != adjustmentPerUnit) logDescription = Tools.append(logDescription, String.Format("Adjustment: '{0}' to '{1}'", objOld.AdjustmentPerUnit, adjustmentPerUnit), ",");
                 if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
 
-                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -158,7 +158,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "customersaleadjustment_update_Checked",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
@@ -185,7 +185,7 @@ namespace BinaMitraTextile
                 logDescription = Tools.append(logDescription, String.Format("Adjustment: '{0}'", obj.AdjustmentPerUnit), ",");
                 logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
 
-                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_delete", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_delete", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -210,7 +210,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("customersaleadjustment_get_byFilter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("customersaleadjustment_get_byFilter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

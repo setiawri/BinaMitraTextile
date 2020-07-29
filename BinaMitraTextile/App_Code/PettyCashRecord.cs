@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -69,7 +65,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -92,7 +88,7 @@ namespace BinaMitraTextile
             DataTable datatable = new DataTable();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_get", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_get", DBConnection.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -134,7 +130,7 @@ namespace BinaMitraTextile
                 log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
                 log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -157,7 +153,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update_IsChecked", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update_IsChecked", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;

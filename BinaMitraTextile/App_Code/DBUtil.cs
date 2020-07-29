@@ -36,54 +36,10 @@ namespace BinaMitraTextile
             }
         }
 
-        private static string connectionString
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(_connectionString))
-                    setConnectionString();
-                return _connectionString;
-            }
-        }
-        private static string _connectionString = "";
-
-        public static string setConnectionString()
-        {
-            if (GlobalData.ConnectToLocalLiveDB)
-                _connectionString = ConfigurationManager.ConnectionStrings["connDBLiveLocal"].ConnectionString;
-            else if (GlobalData.ConnectToDevDB)
-                _connectionString = ConfigurationManager.ConnectionStrings["connDBDev"].ConnectionString;
-            else if (GlobalData.ConnectAsServer)
-                _connectionString = ConfigurationManager.ConnectionStrings["connDBLiveForServer"].ConnectionString;
-            else
-                _connectionString = ConfigurationManager.ConnectionStrings["connDBLive"].ConnectionString;
-            
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(_connectionString);
-            string servername = builder.DataSource;
-            ServerName = servername;
-            if (GlobalData.LiveConnectionServerName != "")
-                servername = GlobalData.LiveConnectionServerName;
-            if(servername.IndexOf(',') > -1)
-            {
-                servername = servername.Substring(0, servername.IndexOf(','));
-            }
-
-            if(!string.IsNullOrEmpty(GlobalData.LiveConnectionPort))
-            {
-                builder.DataSource = servername + ',' + GlobalData.LiveConnectionPort;
-                _connectionString = builder.ConnectionString;
-            }
-
-            return _connectionString;
-        }
-
-        public static string connectionInfo()
-        {
-            string connectionInfo = connectionString;
-            if (connectionInfo.IndexOf(';') > 0)
-                connectionInfo = connectionInfo.Substring(0, connectionInfo.IndexOf(';'));
-            return connectionInfo;
-        }
+        public static string ServerName_Live { get { return Util.getConfigVariable("serverName_Live"); } }
+        public static string ServerName_LiveLocal { get { return Util.getConfigVariable("serverName_LiveLocal"); } }
+        public static string ServerName_LiveForServer { get { return Util.getConfigVariable("serverName_LiveForServer"); } }
+        public static string ServerName_DEV { get { return Util.getConfigVariable("serverName_DEV"); } }
 
         public static string appendTitleWithInfo()
         {
@@ -106,57 +62,12 @@ namespace BinaMitraTextile
 
         public static bool isDBConnectionAvailable()
         {
-            var form = new SharedForms.CheckDBConnection();
-            form.ShowDialog();
-            if (form.isDBConnectionAvailable)
-                return true;
-            else
-                return false;
-        }
-
-        public static void testDBConnection()
-        {
-            using (SqlConnection conn = new SqlConnection(DBUtil.setConnectionString()))
-            {
-                try { conn.Open(); conn.Close(); } catch { }                
-            }
-        }
-
-        public static Object getValue(string storedProcedure)
-        {
-            Object obj;
-            using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-            using (SqlCommand cmd = new SqlCommand(storedProcedure, conn))
-            {
-                conn.Open();
-                obj = cmd.ExecuteScalar();
-                conn.Close();
-            }
-            return obj;
-        }
-
-        public static DataTable getDataUsingStoredProcedure(string storedProcedureName)
-        {
-            DataTable datatable = new DataTable();
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand(storedProcedureName, conn))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    adapter.Fill(datatable);
-                }
-            }
-            catch (Exception ex) { Tools.showError(ex.Message); }
-
-            return datatable;
+            return DBConnection.isDBConnectionAvailable(Properties.Resources.handshake_512_white, true, true);
         }
 
         public static DataTable getData(string sql)
         {
-            return getData(new SqlCommand(sql, DBUtil.ActiveSqlConnection));
+            return getData(new SqlCommand(sql, DBConnection.ActiveSqlConnection));
         }
 
         public static DataTable getData(string sql, SqlConnection conn)
@@ -182,7 +93,7 @@ namespace BinaMitraTextile
             {
                 foreach (Guid id in IDArray)
                 {
-                    using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -245,7 +156,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -265,7 +176,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -308,7 +219,7 @@ namespace BinaMitraTextile
             try
             {
                 //submit new sale record
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -330,7 +241,6 @@ namespace BinaMitraTextile
             param.Value = data;
             param.TypeName = DBUtil.TYPE_ARRAY_NAME;
 
-
             //SqlParameter param = new SqlParameter();
             //param.SqlDbType = SqlDbType.Structured;
             //param.TypeName = DBUtil.TYPE_ARRAY_NAME;
@@ -344,7 +254,7 @@ namespace BinaMitraTextile
             DateTime timestamp = new DateTime();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("server_get_timestamp", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("server_get_timestamp", DBConnection.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -361,45 +271,5 @@ namespace BinaMitraTextile
             return timestamp;
         }
 
-        public static SqlConnection ActiveSqlConnection
-        {
-            get
-            {
-                if (_ActiveSqlConnection == null)
-                    _ActiveSqlConnection = new SqlConnection(DBUtil.connectionString);
-
-                if (_ActiveSqlConnection.State == ConnectionState.Closed)
-                    _ActiveSqlConnection.Open();
-
-                if (SqlConnectionTimer == null)
-                {
-                    SqlConnectionTimer = new Timer();
-                    SqlConnectionTimer.Tick += new EventHandler(SqlConnectionTimer_Ticked);
-                    SqlConnectionTimer.Interval = 2000;
-                    SqlConnectionTimer.Start();
-                }
-
-                _LastSqlConnectionUsed = DateTime.Now;
-
-                return _ActiveSqlConnection;
-            }
-        }
-        private static SqlConnection _ActiveSqlConnection;
-        private static DateTime _LastSqlConnectionUsed;
-
-        private static void SqlConnectionTimer_Ticked(Object myObject, EventArgs myEventArgs)
-        {
-            terminateActiveSqlConnection();
-        }
-        private static TimeSpan _ActiveSqlConnectionOpenTime = new TimeSpan(0, 0, 3);
-
-        public static void terminateActiveSqlConnection()
-        {
-            if (_ActiveSqlConnection != null && _ActiveSqlConnection.State == ConnectionState.Open && DateTime.Now - _LastSqlConnectionUsed > _ActiveSqlConnectionOpenTime)
-                _ActiveSqlConnection.Close();
-
-            if (SqlConnectionTimer != null && (_ActiveSqlConnection == null || _ActiveSqlConnection.State == ConnectionState.Closed))
-                SqlConnectionTimer.Stop();
-        }
     }
 }

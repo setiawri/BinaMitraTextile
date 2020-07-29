@@ -87,7 +87,7 @@ namespace BinaMitraTextile
             try 
             {
                 Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("productprice_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("productprice_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -115,7 +115,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("productprice_delete", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("productprice_delete", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = ID;
@@ -143,7 +143,7 @@ namespace BinaMitraTextile
 
         public static Guid? getByCombination(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? inventoryID, Guid? ColorID)
         {
-            using (SqlCommand cmd = new SqlCommand("productprice_get_by_combination", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("productprice_get_by_combination", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(inventoryID);
@@ -166,7 +166,7 @@ namespace BinaMitraTextile
 
         public static bool isCombinationExist(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? id, Guid? inventoryID, Guid? colorID)
         {
-            using (SqlCommand cmd = new SqlCommand("productprice_isCombinationExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("productprice_isCombinationExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(inventoryID);
@@ -193,7 +193,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(bool onlyNotChecked)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("productprice_getall", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("productprice_getall", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -229,7 +229,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("productprice_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("productprice_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = ID;
@@ -259,7 +259,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "productprice_update_sell_price",
                 DBConnection.createTableParameters(
@@ -278,7 +278,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "productprice_update_Checked",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),

@@ -9,13 +9,10 @@ namespace BinaMitraTextile
     {
         public static Guid AppGuid = new Guid(((System.Runtime.InteropServices.GuidAttribute)System.Reflection.Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(System.Runtime.InteropServices.GuidAttribute), false).GetValue(0)).Value.ToString());
 
-        public static bool ConnectionTestCompleted = false;
         public static bool ConnectAsServer = false;
         public static bool ConnectToDevDB = false;
         public static bool ConnectToLiveDB = false;
         public static bool ConnectToLocalLiveDB = false;
-        public static string LiveConnectionPort = "";
-        public static string LiveConnectionServerName = "";
 
         public static string TemporarySelectedGridviewValue;
 

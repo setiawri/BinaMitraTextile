@@ -228,7 +228,7 @@ namespace BinaMitraTextile
             try
             {
                 //submit new sale record
-                using (SqlCommand cmd = new SqlCommand("sale_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("sale_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -245,6 +245,7 @@ namespace BinaMitraTextile
                     return_value.Direction = ParameterDirection.Output;
 
                     cmd.ExecuteNonQuery();
+
                     barcode = Tools.getHex(Convert.ToInt32(return_value.Value), Settings.saleBarcodeLength);
 
                     ActivityLog.submit(id, "New item added");
@@ -271,7 +272,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "sale_update_FakturPajaks_Id",
                     new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
@@ -299,7 +300,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "sale_update_Kontrabons_Id",
                     new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
@@ -350,7 +351,7 @@ namespace BinaMitraTextile
 
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "Sales_update_ShippingExpense",
                     new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
@@ -422,7 +423,7 @@ namespace BinaMitraTextile
             {
                 try
                 {
-                    using (SqlCommand cmd = new SqlCommand("sale_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("sale_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = saleID;
@@ -481,7 +482,7 @@ namespace BinaMitraTextile
 
         public static Guid getIDByBarcode(string barcode)
         {
-            using (SqlCommand cmd = new SqlCommand("sale_get_id_by_barcode", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("sale_get_id_by_barcode", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@barcode", SqlDbType.Int).Value = Tools.getInt(barcode);
@@ -537,7 +538,7 @@ namespace BinaMitraTextile
             bool showOnlyReminder_MasukanRetur, bool showOnlyReminder_Keluaran, Guid? Kontrabons_Id)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("Sales_get", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("Sales_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure; 
@@ -588,7 +589,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sale_update_completed", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("sale_update_completed", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -608,7 +609,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sale_update_specialuseronly_by_id", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("sale_update_specialuseronly_by_id", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -628,7 +629,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sale_update_taxno", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("sale_update_taxno", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -648,7 +649,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("sale_update_isreported", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("sale_update_isreported", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -673,7 +674,7 @@ namespace BinaMitraTextile
             DataTable dtProductStoreNameID, DataTable dtProductWidthID, DataTable dtLengthUnitID, DataTable dtColorID, bool isReportedOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sale_charting", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("sale_charting", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -699,7 +700,7 @@ namespace BinaMitraTextile
             DataTable dtProductStoreNameID, DataTable dtProductWidthID, DataTable dtLengthUnitID, DataTable dtColorID, bool isReportedOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sale_charting_bycustomers", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("sale_charting_bycustomers", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -725,7 +726,7 @@ namespace BinaMitraTextile
             DataTable dtProductStoreNameID, DataTable dtProductWidthID, DataTable dtLengthUnitID, DataTable dtColorID, bool isReportedOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sale_charting_detailbysales", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("sale_charting_detailbysales", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -751,7 +752,7 @@ namespace BinaMitraTextile
             DataTable dtProductStoreNameID, DataTable dtProductWidthID, DataTable dtLengthUnitID, DataTable dtColorID, bool isReportedOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sale_charting_detailbyproducts", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("sale_charting_detailbyproducts", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -777,7 +778,7 @@ namespace BinaMitraTextile
             DataTable dtProductStoreNameID, DataTable dtProductWidthID, DataTable dtLengthUnitID, DataTable dtColorID, bool isReportedOnly)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sale_charting_detailbycustomers", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("sale_charting_detailbycustomers", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -804,7 +805,7 @@ namespace BinaMitraTextile
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "Sale_get_by_SaleOrderItems_Id",
                     new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
@@ -817,7 +818,7 @@ namespace BinaMitraTextile
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "sale_get",
                     new SqlQueryParameter(COL_HEXBARCODE, SqlDbType.VarChar, Tools.wrapNullable(hexbarcode))

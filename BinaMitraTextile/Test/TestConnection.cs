@@ -22,7 +22,7 @@ namespace BinaMitraTextile.Test
 
             _timeoutLength = timeoutLength;
             _connectionTime = connectionTime;
-            GlobalData.ConnectionTestCompleted = false;
+            //GlobalData.ConnectionTestCompleted = false;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -43,7 +43,7 @@ namespace BinaMitraTextile.Test
             if((DateTime.Now - _startTime).Seconds < _timeoutLength)
             {
                 MessageBox.Show("Connection successful");
-                GlobalData.ConnectionTestCompleted = true;
+                //GlobalData.ConnectionTestCompleted = true;
                 this.Close();
             }
             MessageBox.Show("Disposing BW1");
@@ -61,19 +61,19 @@ namespace BinaMitraTextile.Test
             for (int i = 0; i < 10; i++ )
             {
                 Tools.pause(Convert.ToInt16(Math.Ceiling((float)_timeoutLength/10)));
-                if (GlobalData.ConnectionTestCompleted)
-                    break;
+                //if (GlobalData.ConnectionTestCompleted)
+                //    break;
             }
         }
 
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (!GlobalData.ConnectionTestCompleted)
-            {
-                MessageBox.Show("Connection test failed");
-                this.Close();
-            }
-            MessageBox.Show("Disposing BW2");
+            //if (!GlobalData.ConnectionTestCompleted)
+            //{
+            //    MessageBox.Show("Connection test failed");
+            //    this.Close();
+            //}
+            //MessageBox.Show("Disposing BW2");
         }
     }
 }

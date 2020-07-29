@@ -129,7 +129,7 @@ namespace BinaMitraTextile
             try
             {
                 //submit new sale record
-                using (SqlCommand cmd = new SqlCommand("salereturn_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("salereturn_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -148,7 +148,7 @@ namespace BinaMitraTextile
                 //mark sale items as returned
                 foreach (DataRow row in saleReturnItems.Rows)
                 {
-                    using (SqlCommand cmd = new SqlCommand("saleitem_return", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("saleitem_return", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = (Guid)row[SaleItem.COL_ID];
@@ -194,7 +194,7 @@ namespace BinaMitraTextile
             bool onlyWithCommission, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, bool showOnlyReminder, Guid? Kontrabons_Id)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("SaleReturns_get", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("SaleReturns_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -227,7 +227,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("SaleReturns_update_Checked", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("SaleReturns_update_Checked", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -255,7 +255,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "salereturn_update_FakturPajaks_Id",
                     new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
@@ -285,7 +285,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "salereturn_update_Kontrabons_Id",
                     new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),

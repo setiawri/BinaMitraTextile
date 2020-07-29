@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -51,7 +47,7 @@ namespace BinaMitraTextile
         
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_isNameExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_isNameExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = name;
@@ -70,7 +66,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
@@ -91,7 +87,7 @@ namespace BinaMitraTextile
             DataTable datatable = new DataTable();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_get", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_get", DBConnection.ActiveSqlConnection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -126,7 +122,7 @@ namespace BinaMitraTextile
                 log = ActivityLog.appendChange(log, objOld.Name, name, "Name: '{0}' to '{1}'");
                 log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;

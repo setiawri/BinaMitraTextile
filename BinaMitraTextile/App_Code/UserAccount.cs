@@ -96,7 +96,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("users_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("users_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -118,7 +118,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string Name)
         {
-            using (SqlCommand cmd = new SqlCommand("users_isNameExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("users_isNameExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Name;
@@ -136,7 +136,7 @@ namespace BinaMitraTextile
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "users_get",
                     new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
@@ -172,7 +172,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("users_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("users_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
@@ -199,7 +199,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "users_update_HashedPassword",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),

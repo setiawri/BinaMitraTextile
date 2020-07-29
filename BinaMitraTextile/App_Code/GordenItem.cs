@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
 using System.ComponentModel;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -109,7 +106,7 @@ namespace BinaMitraTextile
             try
             {
                 Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("gordenitem_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("gordenitem_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -137,7 +134,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("gordenitem_isNameExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("gordenitem_isNameExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
@@ -167,7 +164,7 @@ namespace BinaMitraTextile
         public static DataTable get(bool includeInactive, DataTable categoryEnumIDList, Guid? ID, string nameFilter, Guid? vendorID, Guid? retailLengthUnitID, Guid? bulkLengthUnitID, Guid? productWidthID)
         {
             DataTable datatable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("gordenitem_get", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("gordenitem_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -220,7 +217,7 @@ namespace BinaMitraTextile
                 }
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("gordenitem_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("gordenitem_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;

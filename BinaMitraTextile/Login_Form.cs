@@ -27,7 +27,7 @@ namespace BinaMitraTextile
             Settings.setGeneralSettings(this);
             this.Text += " " + Settings.APPVERSION;
 
-
+            //setup connection string in libutil
             DBConnection.populatePorts(iddl_Ports);
 
             if (DBUtil.isSalesEnvironment)
@@ -35,18 +35,19 @@ namespace BinaMitraTextile
                 rbLocalDB.Checked = true;
                 rbDevDB.Visible = false;
                 rbConnectAsServer.Visible = false;
+                itxt_ServerName.ValueText = DBUtil.ServerName_LiveLocal;
             }
             else if (DBUtil.isDevEnvironment)
             {
                 rbDevDB.Checked = true;
                 _bypassLogin = true;
-                itxt_ServerName.Visible = true;
-                itxt_DatabaseName.Visible = true;
+                itxt_ServerName.ValueText = DBUtil.ServerName_DEV;
             }
             else if (DBUtil.isServerEnvironment)
             {
                 rbConnectAsServer.Checked = true;
                 rbDevDB.Visible = false;
+                itxt_ServerName.ValueText = DBUtil.ServerName_LiveForServer;
             }
             else
             {
@@ -54,9 +55,11 @@ namespace BinaMitraTextile
 
                 rbDevDB.Visible = false;
                 rbConnectAsServer.Visible = false;
+                itxt_ServerName.ValueText = DBUtil.ServerName_Live;
             }
-
+            itxt_DatabaseName.ValueText = Settings.SQL_DATABASENAME;
             setLastConnectedPortNo();
+            updateServerNameAndDatabaseName();
 
             toggleConnectionProperties();
             itxt_Username.focus();
@@ -85,7 +88,7 @@ namespace BinaMitraTextile
                     Settings.LastConnectedPortNo = (ConnectionPorts)iddl_Ports.SelectedItem;
 
                 this.Hide();
-                LIBUtil.Util.displayForm(null, new Container_Form(), true);
+                Util.displayForm(null, new Container_Form(), true);
                 this.Show();
                 this.Close();
             }
@@ -98,15 +101,47 @@ namespace BinaMitraTextile
 
         #endregion AUTHENTICATION
         /*******************************************************************************************************/
+        #region METHODS
+
+        private bool isConnectedToServer()
+        {
+            GlobalData.ConnectAsServer = rbConnectAsServer.Checked;
+            GlobalData.ConnectToDevDB = rbDevDB.Checked;
+            GlobalData.ConnectToLiveDB = rbLiveDB.Checked;
+            GlobalData.ConnectToLocalLiveDB = rbLocalDB.Checked;
+
+            updateServerNameAndDatabaseName();
+
+            return DBUtil.isDBConnectionAvailable();
+        }
+
+        private void setServerName()
+        {
+            if (rbLocalDB.Checked)
+                itxt_ServerName.ValueText = DBUtil.ServerName_LiveLocal;
+            else if (rbConnectAsServer.Checked)
+                itxt_ServerName.ValueText = DBUtil.ServerName_LiveForServer;
+            else if (rbDevDB.Checked)
+                itxt_ServerName.ValueText = DBUtil.ServerName_DEV;
+            else
+                itxt_ServerName.ValueText = DBUtil.ServerName_Live;
+        }
+
+        private void updateServerNameAndDatabaseName()
+        {
+            string servername = itxt_ServerName.ValueText;
+            if (iddl_Ports.hasSelectedValue())
+                servername += ((ConnectionPorts)iddl_Ports.SelectedItem).ToString().Replace("port", ",");
+            DBConnection.update(servername, itxt_DatabaseName.ValueText);
+        }
+
+        #endregion
+        /*******************************************************************************************************/
         #region EVENT HANDLERS
-            
+
         private void Login_Form_Load(object sender, EventArgs e)
         {
             setupControls();
-        }
-
-        private void ChkShowConnectionProperties_CheckedChanged(object sender, EventArgs e)
-        {
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -125,35 +160,9 @@ namespace BinaMitraTextile
             }
         }
 
-        private bool isConnectedToServer()
-        {
-            GlobalData.ConnectAsServer = rbConnectAsServer.Checked;
-            GlobalData.ConnectToDevDB = rbDevDB.Checked;
-            GlobalData.ConnectToLiveDB = rbLiveDB.Checked;
-            GlobalData.ConnectToLocalLiveDB = rbLocalDB.Checked;
-            if (iddl_Ports.hasSelectedValue())
-                GlobalData.LiveConnectionPort = ((ConnectionPorts)iddl_Ports.SelectedItem).ToString().Replace("port","");
-            else
-                GlobalData.LiveConnectionPort = "";
-            if (!itxt_ServerName.isEmpty())
-                GlobalData.LiveConnectionServerName = itxt_ServerName.ValueText;
-            else
-                GlobalData.LiveConnectionServerName = "";
-            DBUtil.setConnectionString();
-
-            //setup connection string in libutil
-            itxt_ServerName.ValueText = DBUtil.ServerName;
-            itxt_DatabaseName.ValueText = Settings.SQL_DATABASENAME;
-            DBConnection.update(itxt_ServerName, itxt_DatabaseName);
-
-            if (DBUtil.isDBConnectionAvailable())
-                return true;
-            else
-                return false;
-        }
-
         private void rbConnection_CheckedChanged(object sender, EventArgs e)
         {
+            setServerName();
             setLastConnectedPortNo();
             itxt_Username.focus();
         }
@@ -161,17 +170,17 @@ namespace BinaMitraTextile
         private void BtnTestConnection_Click(object sender, EventArgs e)
         {
             if (isConnectedToServer())
-                LIBUtil.Util.displayMessageBoxSuccess(DBUtil.connectionInfo());
+                Util.displayMessageBoxSuccess(DBConnection.ConnectionInfo);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Alt | Keys.C) || keyData == (Keys.Control | Keys.C))
+            if (keyData == (Keys.Control | Keys.C))
             {
                 toggleConnectionProperties();
                 iddl_Ports.focus();
             }
-            else if (keyData == (Keys.Alt | Keys.L))
+            else if (keyData == (Keys.Control | Keys.L))
             {
                 if (!gbConnectionProperties.Visible)
                     toggleConnectionProperties();
@@ -209,9 +218,9 @@ namespace BinaMitraTextile
 
         private void Login_Form_Shown(object sender, EventArgs e)
         {
-            if (_bypassLogin && !string.IsNullOrEmpty(Settings.autologinusername1))
+            if (_bypassLogin && !string.IsNullOrEmpty(Settings.autologinusername))
             {
-                itxt_Username.ValueText = Settings.autologinusername1;
+                itxt_Username.ValueText = Settings.autologinusername;
                 if (isConnectedToServer())
                     authenticate();
             }

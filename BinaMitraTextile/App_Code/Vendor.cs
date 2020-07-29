@@ -63,7 +63,7 @@ namespace BinaMitraTextile
             try 
             {
                 Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("vendor_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("vendor_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -84,7 +84,7 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("vendor_isNameExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("vendor_isNameExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
@@ -101,7 +101,7 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? Id, bool includeInactive, string nameFilter)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("vendor_get", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("vendor_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -134,7 +134,7 @@ namespace BinaMitraTextile
                     Tools.showError("No changes to record");
                 else
                 {
-                    using (SqlCommand cmd = new SqlCommand("vendor_update", DBUtil.ActiveSqlConnection))
+                    using (SqlCommand cmd = new SqlCommand("vendor_update", DBConnection.ActiveSqlConnection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -158,7 +158,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "vendor_update_usesFakturPajak",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),

@@ -58,7 +58,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("customercredit_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("customercredit_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
@@ -88,7 +88,7 @@ namespace BinaMitraTextile
         public static DataTable getAll(Guid customerID)
         {
             DataTable datatable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("customercredit_get_by_customer_id", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("customercredit_get_by_customer_id", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -108,7 +108,7 @@ namespace BinaMitraTextile
         public static DataTable getSummary(bool onlyHasActivityLast3Months)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("customercredit_get_summary", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("customercredit_get_summary", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -145,7 +145,7 @@ namespace BinaMitraTextile
         public static decimal getBalance(Guid customerID)
         {
             Object obj;
-            using (SqlCommand cmd = new SqlCommand("customercredit_get_balance", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("customercredit_get_balance", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
@@ -159,7 +159,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("customercredit_update_Confirmed", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("customercredit_update_Confirmed", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.ComponentModel;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -68,7 +64,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("todo_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("todo_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -95,7 +91,7 @@ namespace BinaMitraTextile
                 if (objOld.CustomerID != customerID) { logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}' to '{1}'", objOld.CustomerName, new Customer(customerID).Name), ","); }
                 if (objOld.VendorID != vendorID) { logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}' to '{1}'", objOld.VendorName, new Vendor(vendorID).Name), ","); }
 
-                using (SqlCommand cmd = new SqlCommand("todo_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("todo_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -121,7 +117,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("todo_get_byFilter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("todo_get_byFilter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -146,7 +142,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("todo_update_status", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("todo_update_status", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;

@@ -9,12 +9,16 @@ namespace BinaMitraTextile
 {
     class Settings
     {
+        public static string autologinusername = "userricky";
+
         public static string bypassusername1 = "qwe";
         public static string autologinusername1 = "ricky";
         public static string bypassusername2 = "asd";
         public static string autologinusername2 = "lixia";
         public static string bypassusername3 = "zxc";
         public static string autologinusername3 = "userricky";
+
+        public const bool SQLCONNECTION_MULTIPLEUSE = true;
 
         /*******************************************************************************************************/
         #region APP VERSION

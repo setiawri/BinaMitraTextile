@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.SharedForms
 {
@@ -57,7 +52,7 @@ namespace BinaMitraTextile.SharedForms
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             //Tools.pause(11);
-            DBUtil.testDBConnection();
+            DBConnection.testDBConnection();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -79,7 +74,7 @@ namespace BinaMitraTextile.SharedForms
                 isDBConnectionAvailable = false;
                 
                 MessageBox.Show("There is a problem connecting to the database. Please contact your administrator and try again."
-                    + Environment.NewLine + Environment.NewLine + DBUtil.connectionInfo());
+                    + Environment.NewLine + Environment.NewLine + DBConnection.ConnectionInfo);
                 this.Close();
             }
             else 

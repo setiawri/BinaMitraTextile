@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile
 {
@@ -95,7 +91,7 @@ namespace BinaMitraTextile
             Guid id = Guid.NewGuid();
             try
             {
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_add", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_add", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -118,7 +114,7 @@ namespace BinaMitraTextile
 
         public static bool isCombinationExist(Guid? id, Guid gradeID, Guid productID, Guid productWidthID, Guid lengthUnitID, Guid colorID)
         {
-            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_isCombinationExist", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_isCombinationExist", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
@@ -155,7 +151,7 @@ namespace BinaMitraTextile
                 if (objOld.PONotes != poNotes) logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}' to '{1}'", objOld.PONotes, poNotes), ",");
                 if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
 
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_update", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_update", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -194,7 +190,7 @@ namespace BinaMitraTextile
                 logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}'", obj.PONotes), ",");
                 logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
 
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_delete", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_delete", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -219,7 +215,7 @@ namespace BinaMitraTextile
             //Tools.startProgressDisplay("Donwloading data...");
 
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_get_byFilter", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_get_byFilter", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;

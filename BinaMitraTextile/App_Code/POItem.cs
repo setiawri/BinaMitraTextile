@@ -149,7 +149,7 @@ namespace BinaMitraTextile
         {
             foreach (POItem item in items)
             {
-                using (SqlCommand cmd = new SqlCommand("poitem_new", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("poitem_new", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.ID;
@@ -171,7 +171,7 @@ namespace BinaMitraTextile
         public static DataTable getItems(Guid POID)
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("poitem_get_by_poid", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("poitem_get_by_poid", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -191,7 +191,7 @@ namespace BinaMitraTextile
         public static DataTable getIncompleteItems()
         {
             DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("poitem_get_incomplete", DBUtil.ActiveSqlConnection))
+            using (SqlCommand cmd = new SqlCommand("poitem_get_incomplete", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -233,7 +233,7 @@ namespace BinaMitraTextile
         {
             SqlQueryResult result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "poitem_update_SaleOrderItems_Id",
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
@@ -255,7 +255,7 @@ namespace BinaMitraTextile
             SqlQueryResult result = new SqlQueryResult();
             result = DBConnection.query(
                 false,
-                DBUtil.ActiveSqlConnection,
+                DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "poitem_get_by_SaleOrderItems_Id",
                     new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
@@ -271,7 +271,7 @@ namespace BinaMitraTextile
         {
             try
             {
-                using (SqlCommand cmd = new SqlCommand("poitem_update_status", DBUtil.ActiveSqlConnection))
+                using (SqlCommand cmd = new SqlCommand("poitem_update_status", DBConnection.ActiveSqlConnection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
@@ -299,7 +299,7 @@ namespace BinaMitraTextile
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
-                    DBUtil.ActiveSqlConnection,
+                    DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
                     "poitem_update",
                     new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
