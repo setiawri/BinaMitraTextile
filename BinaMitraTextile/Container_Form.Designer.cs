@@ -84,6 +84,7 @@
             this.Internal_Reports_Financial = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Sales = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcutContainer = new System.Windows.Forms.Panel();
@@ -115,7 +116,6 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.Internal_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -548,14 +548,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(144, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(180, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(144, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -566,7 +566,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(144, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -590,10 +590,17 @@
             this.Internal_Reports_Taxes.Text = "Taxes";
             this.Internal_Reports_Taxes.Click += new System.EventHandler(this.Internal_Reports_Taxes_Click);
             // 
+            // Internal_Settings
+            // 
+            this.Internal_Settings.Name = "Internal_Settings";
+            this.Internal_Settings.Size = new System.Drawing.Size(144, 22);
+            this.Internal_Settings.Text = "Settings";
+            this.Internal_Settings.Click += new System.EventHandler(this.Internal_Settings_Click);
+            // 
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(144, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
@@ -889,10 +896,10 @@
             this.lnkSales.Location = new System.Drawing.Point(3, 47);
             this.lnkSales.Name = "lnkSales";
             this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSales.Size = new System.Drawing.Size(52, 21);
+            this.lnkSales.Size = new System.Drawing.Size(80, 21);
             this.lnkSales.TabIndex = 26;
             this.lnkSales.TabStop = true;
-            this.lnkSales.Text = "INVOICES";
+            this.lnkSales.Text = "SALE INVOICES";
             this.lnkSales.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnlSales_LinkClicked);
             // 
@@ -1053,13 +1060,6 @@
             this.tpShortcutPanel.Size = new System.Drawing.Size(15, 15);
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
-            // 
-            // Internal_Settings
-            // 
-            this.Internal_Settings.Name = "Internal_Settings";
-            this.Internal_Settings.Size = new System.Drawing.Size(180, 22);
-            this.Internal_Settings.Text = "Settings";
-            this.Internal_Settings.Click += new System.EventHandler(this.Internal_Settings_Click);
             // 
             // Container_Form
             // 

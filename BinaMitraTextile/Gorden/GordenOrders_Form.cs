@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.Gorden
 {
@@ -104,7 +98,7 @@ namespace BinaMitraTextile.Gorden
 
         private void populateGridviews()
         {
-            Tools.populateDataGridView(gridOrders, GordenOrder.get(null, Tools.wrapDBNullValue<int?>(txtOrderNo.Text), Tools.wrapDBNullValue<Guid?>(dropCustomers.SelectedValue), null));
+            Tools.populateDataGridView(gridOrders, GordenOrder.get(null, Util.wrapNullable<int?>(txtOrderNo.Text), Util.wrapNullable<Guid?>(dropCustomers.SelectedValue), null));
         }
 
         #endregion

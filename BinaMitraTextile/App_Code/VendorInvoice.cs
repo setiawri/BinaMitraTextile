@@ -93,18 +93,16 @@ namespace BinaMitraTextile
 
         public static bool isInvoiceNoExist(Guid? id, string invoiceNo)
         {
-            using (SqlCommand cmd = new SqlCommand("VendorInvoices_isExist_InvoiceNo", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_InvoiceNo, SqlDbType.VarChar).Value = invoiceNo;
-                cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "VendorInvoices_isExist_InvoiceNo",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, invoiceNo)
+                );
+            return result.ValueBoolean;
         }
 
         public static DataTable get()
@@ -153,26 +151,26 @@ namespace BinaMitraTextile
             return result.Datatable;
         }
 
-        public static Guid add(string invoiceNo, Guid Vendors_Id)
+        public static Guid? add(string invoiceNo, Guid Vendors_Id)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "VendorInvoices_add",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_InvoiceNo, SqlDbType.VarChar, invoiceNo),
+                new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Vendors_Id)
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("VendorInvoices_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_InvoiceNo, SqlDbType.VarChar).Value = invoiceNo;
-                    cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Vendors_Id;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Created");
-                }
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
-
-            return id;
         }
 
         public static void update_Approved(Guid Id, bool Value)

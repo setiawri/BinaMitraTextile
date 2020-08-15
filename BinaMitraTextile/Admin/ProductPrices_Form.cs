@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.Admin
 {
@@ -167,7 +165,7 @@ namespace BinaMitraTextile.Admin
 
                 if(btnSubmit.Text == BTN_TEXT_ADDNEW)
                 {
-                    if (!Tools.hasMessage(obj.submitNew()))
+                    if (obj.submitNew() != null)
                     {
                         clearForm();
                         setInputAvailability(true);
@@ -177,10 +175,8 @@ namespace BinaMitraTextile.Admin
                 else
                 {
                     obj.ID = _productPrice.ID;
-                    if (!Tools.hasMessage(obj.update()))
-                    {
-                        populateGrid();
-                    }
+                    obj.update();
+                    populateGrid();
                 }
             }
         }
@@ -300,11 +296,11 @@ namespace BinaMitraTextile.Admin
             if(_productPrice != null)
             {
                 if (_productPrice.InventoryID != null) chkUseInventoryID.Checked = true;
-                cbProductStoreNames.SelectedValue = Tools.wrapNullable(_productPrice.ProductStoreNameID);
-                cbGrades.SelectedValue = Tools.wrapNullable(_productPrice.GradeID);
-                cbProductWidths.SelectedValue = Tools.wrapNullable(_productPrice.ProductWidthID);
-                cbLengthUnits.SelectedValue = Tools.wrapNullable(_productPrice.LengthUnitID);
-                cbColors.SelectedValue = Tools.wrapNullable(_productPrice.ColorID);
+                cbProductStoreNames.SelectedValue = Util.wrapNullable(_productPrice.ProductStoreNameID);
+                cbGrades.SelectedValue = Util.wrapNullable(_productPrice.GradeID);
+                cbProductWidths.SelectedValue = Util.wrapNullable(_productPrice.ProductWidthID);
+                cbLengthUnits.SelectedValue = Util.wrapNullable(_productPrice.LengthUnitID);
+                cbColors.SelectedValue = Util.wrapNullable(_productPrice.ColorID);
                 txtTagPrice.Text = _productPrice.TagPrice.ToString();
                 txtNotes.Text = _productPrice.Notes;
             }

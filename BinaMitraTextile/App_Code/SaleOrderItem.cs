@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
 using System.ComponentModel;
@@ -126,10 +122,6 @@ namespace BinaMitraTextile
 
         #endregion CONSTRUCTORS
         /*******************************************************************************************************/
-        #region NON-STATIC DATABASE METHODS
-
-        #endregion DATABASE METHODS
-        /*******************************************************************************************************/
         #region STATIC DATABASE METHODS
 
         public static bool add(List<SaleOrderItem> items)
@@ -143,7 +135,7 @@ namespace BinaMitraTextile
                    "SaleOrderItems_add",
                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, item.Id),
                    new SqlQueryParameter(COL_DB_SaleOrders_Id, SqlDbType.UniqueIdentifier, item.SaleOrders_Id),
-                   new SqlQueryParameter(COL_DB_Ref_Inventory_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(item.Ref_Inventory_Id)),
+                   new SqlQueryParameter(COL_DB_Ref_Inventory_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(item.Ref_Inventory_Id)),
                    new SqlQueryParameter(COL_DB_PricePerUnit, SqlDbType.Decimal, item.PricePerUnit),
                    new SqlQueryParameter(COL_DB_ProductDescription, SqlDbType.VarChar, item.ProductDescription),
                    new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, item.Qty),

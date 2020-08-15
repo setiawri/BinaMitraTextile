@@ -67,7 +67,7 @@ namespace BinaMitraTextile.Returns
             if (isSaleReturnValid())
             {
                 SaleReturn obj = new SaleReturn(txtNotes.Text, (DataTable)grid.DataSource);
-                if (!Tools.hasMessage(obj.submitNew()))
+                if (obj.submitNew() != null)
                 {
                     CustomerCredit.submitNew((Guid)_customerID, _totalAmount, null, string.Format("Credit from Sale Return " + obj.barcode), PaymentMethod.Cash);
                     Tools.hasMessage("Credit sudah dibuat sejumlah " + lblTotalAmount.Text);

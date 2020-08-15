@@ -30,6 +30,7 @@ namespace BinaMitraTextile
         public const string COL_ROLE = "role";
         public const string COL_DB_PercentCommission = "PercentCommission";
         public const string COL_DB_HashedPassword = "hashed_password";
+        public const string COL_DB_Notes = "notes";
 
         public const string FILTER_IncludeInactive = "FILTER_IncludeInactive";
 
@@ -92,43 +93,42 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public string submitNew()
+        public Guid? submitNew()
         {
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "users_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                new SqlQueryParameter(COL_DB_HashedPassword, SqlDbType.VarChar, _hashed_password),
+                new SqlQueryParameter(COL_ROLE, SqlDbType.VarChar, role),
+                new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.VarChar, percentCommission),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("users_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                    cmd.Parameters.Add("@hashed_password", SqlDbType.VarChar).Value = _hashed_password;
-                    cmd.Parameters.Add("@" + COL_ROLE, SqlDbType.SmallInt).Value = role;
-                    cmd.Parameters.Add("@" + COL_DB_PercentCommission, SqlDbType.Decimal).Value = percentCommission;
-                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "New User added");
-                }
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
         }
 
         public static bool isNameExist(string Name)
         {
-            using (SqlCommand cmd = new SqlCommand("users_isNameExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Name;
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "users_isNameExist",
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Name)
+                );
+            return result.ValueBoolean;
         }
 
         public static DataTable get(Guid? id, string username, bool includeInactive)
@@ -147,52 +147,41 @@ namespace BinaMitraTextile
             return Tools.parseEnum<Roles>(result.Datatable, COL_ROLENAME, COL_ROLE);
         }
 
-        public static string updateActiveStatus(Guid id, Boolean activeStatus)
+        public static void updateActiveStatus(Guid id, Boolean activeStatus)
         {
-            return DBUtil.updateActiveStatus("users_update_active", id, activeStatus);
+            DBUtil.updateActiveStatus("users_update_active", id, activeStatus);
         }
 
-        public string update()
+        public void update()
         {
-            try
+            UserAccount objOld = new UserAccount(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.name, name), ",");
+            if (!string.IsNullOrEmpty(_hashed_password) && objOld._hashed_password != _hashed_password) logDescription = Tools.append(logDescription, "Password update", ",");
+            if (objOld.role != role) logDescription = Tools.append(logDescription, String.Format("Role: '{0}' to '{1}'", objOld.role, role), ",");
+            if (objOld.percentCommission != percentCommission) logDescription = Util.appendChange(logDescription, objOld.percentCommission, percentCommission, "Percent Comission: {0:N2} to {1:N2}");
+            if (objOld.notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.notes, notes), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                UserAccount objOld = new UserAccount(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "users_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                    new SqlQueryParameter(COL_DB_HashedPassword, SqlDbType.VarChar, Util.wrapNullable(_hashed_password)),
+                    new SqlQueryParameter(COL_ROLE, SqlDbType.VarChar, role),
+                    new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.VarChar, percentCommission),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.name, name), ",");
-                if (!string.IsNullOrEmpty(_hashed_password) && objOld._hashed_password != _hashed_password) logDescription = Tools.append(logDescription, "Password update", ",");
-                if (objOld.role != role) logDescription = Tools.append(logDescription, String.Format("Role: '{0}' to '{1}'", objOld.role, role), ",");
-                if (objOld.percentCommission != percentCommission) logDescription = Util.appendChange(logDescription, objOld.percentCommission, percentCommission, "Percent Comission: {0:N2} to {1:N2}");
-                if (objOld.notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.notes, notes), ",");
-
-                if (string.IsNullOrEmpty(logDescription))
-                {
-                    return "No information has been changed";
-                }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("users_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                        cmd.Parameters.Add("@hashed_password", SqlDbType.VarChar).Value = _hashed_password ?? (object)DBNull.Value;
-                        cmd.Parameters.Add("@" + COL_ROLE, SqlDbType.SmallInt).Value = role;
-                        cmd.Parameters.Add("@" + COL_DB_PercentCommission, SqlDbType.Decimal).Value = percentCommission;
-                        cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-
-                        cmd.ExecuteNonQuery();
-
-                        //submit log
-                        logDescription = "User update: " + logDescription;
-                        ActivityLog.submit(id, logDescription);
-                    }
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
         }
 
         public static void update_HashedPassword(Guid Id, string password)

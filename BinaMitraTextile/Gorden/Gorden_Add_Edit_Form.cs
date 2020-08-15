@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.Gorden
 {
@@ -278,7 +275,7 @@ namespace BinaMitraTextile.Gorden
             row[GordenOrderItem.COL_DB_QTY] = Tools.zeroNonNumericString(txtItemQty.Text);
             row[GordenOrderItem.COL_DB_SELLAMOUNTPERUNIT] = sellAmountPerUnit;
             row[GordenOrderItem.COL_SUBTOTAL] = Tools.zeroNonNumericString(txtItemQty.Text) * Tools.zeroNonNumericString(row[GordenOrderItem.COL_DB_SELLAMOUNTPERUNIT]);
-            row[GordenOrderItem.COL_DB_NOTES] = Tools.wrapNullable(txtItemNotes.Text);
+            row[GordenOrderItem.COL_DB_NOTES] = Util.wrapNullable(txtItemNotes.Text);
 
             gridmain.DataSource = _gordenOrderItems;
             resetInput();

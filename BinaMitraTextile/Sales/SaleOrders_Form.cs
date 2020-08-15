@@ -123,11 +123,11 @@ namespace BinaMitraTextile.Sales
 
             gridInventoryItems.AutoGenerateColumns = false;
             gridInventoryItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            col_gridInventoryItems_Id.DataPropertyName = InventoryItem.COL_ID;
-            col_InventoryItems_Inventory_Code.DataPropertyName = InventoryItem.COL_INVENTORY_CODE;
-            col_gridInventoryItems_barcode.DataPropertyName = InventoryItem.COL_BARCODE;
-            col_gridInventoryItems_item_length.DataPropertyName = InventoryItem.COL_LENGTH;
-            col_gridInventoryItems_Notes.DataPropertyName = InventoryItem.COL_NOTES;
+            col_gridInventoryItems_Id.DataPropertyName = InventoryItem.COL_DB_ID;
+            col_InventoryItems_Inventory_Code.DataPropertyName = InventoryItem.COL_DB_INVENTORY_CODE;
+            col_gridInventoryItems_barcode.DataPropertyName = InventoryItem.COL_DB_BARCODE;
+            col_gridInventoryItems_item_length.DataPropertyName = InventoryItem.COL_DB_LENGTH;
+            col_gridInventoryItems_Notes.DataPropertyName = InventoryItem.COL_DB_NOTES;
 
             addStatusContextMenu(col_gridSaleOrderItems_Status_Name);
 
@@ -315,7 +315,7 @@ namespace BinaMitraTextile.Sales
             else
                 lblInventoryItems.Text = "PO";
 
-            lblInventoryItems.Text += string.Format(" ({0:N2})", Util.compute(dt, "SUM", InventoryItem.COL_LENGTH, ""));
+            lblInventoryItems.Text += string.Format(" ({0:N2})", Util.compute(dt, "SUM", InventoryItem.COL_DB_LENGTH, ""));
 
             btnRemoveSOFromInventoryItems.Enabled = false;
             if (_selectCheckboxHeader != null) _selectCheckboxHeader.Checked = false;
@@ -438,7 +438,7 @@ namespace BinaMitraTextile.Sales
 
             DataTable dt = (DataTable)gridInventoryItems.DataSource;
             foreach (DataRow dr in dt.Rows)
-                InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_ID]);
+                InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_DB_ID]);
 
             InventoryItem.updateSaleOrderItem(InventoryItemIdList, null, null);
 

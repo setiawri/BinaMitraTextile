@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.Data;
-using System.Data.SqlClient;
 using LIBUtil;
 
 namespace BinaMitraTextile
@@ -19,47 +14,38 @@ namespace BinaMitraTextile
         public const string COL_DB_NotifyRoleEnumId = "notify_role_enum_id";
 
         public const string COL_Username = "username";
+
         public static DataTable getAll(Guid AssociatedID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("activitylog_getall", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@associated_id", SqlDbType.UniqueIdentifier).Value = AssociatedID;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false, 
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "activitylog_getall",
+                new SqlQueryParameter(COL_DB_AssociatedId, SqlDbType.UniqueIdentifier, AssociatedID)
+            );
+            return result.Datatable;
         }
 
-        public static string submit(Guid associatedID, string description)
+        public static void submit(Guid associatedID, string description)
         {
-            return submit(associatedID, description, null);
+            submit(associatedID, description, null);
         }
 
-        public static string submit(Guid associatedID, string description, int? notifyRoleEnum)
+        public static void submit(Guid associatedID, string description, int? notifyRoleEnum)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("activity_log_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
-                    cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = DateTime.Now;
-                    cmd.Parameters.Add("@associated_id", SqlDbType.UniqueIdentifier).Value = associatedID;
-                    cmd.Parameters.Add("@description", SqlDbType.VarChar).Value = description;
-                    cmd.Parameters.Add("@userID", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
-                    cmd.Parameters.Add("@notify_role_enum_id", SqlDbType.SmallInt).Value = Tools.wrapNullable(notifyRoleEnum);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "activity_log_new",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Guid.NewGuid()),
+                new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, DateTime.Now),
+                new SqlQueryParameter(COL_DB_AssociatedId, SqlDbType.UniqueIdentifier, associatedID),
+                new SqlQueryParameter(COL_DB_Description, SqlDbType.VarChar, description),
+                new SqlQueryParameter(COL_DB_UserId, SqlDbType.UniqueIdentifier, GlobalData.UserAccount.id),
+                new SqlQueryParameter(COL_DB_NotifyRoleEnumId, SqlDbType.SmallInt, Util.wrapNullable(notifyRoleEnum))
+            );
         }
 
         public static string appendChange(string log, object oldValue, object newValue, string logFormat)

@@ -60,25 +60,27 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public static Guid add(Guid pettyCashRecordsCategories_Id, decimal amount, string notes)
+        public static Guid? add(Guid pettyCashRecordsCategories_Id, decimal amount, string notes)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "PettyCashRecords_add",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, pettyCashRecordsCategories_Id),
+                new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, amount),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier).Value = pettyCashRecordsCategories_Id;
-                    cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Item added");
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
-            return id;
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static DataRow get(Guid id) { return Tools.getFirstRow(get(id, null, null, null, null, false)); }
@@ -92,11 +94,11 @@ namespace BinaMitraTextile
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                    cmd.Parameters.Add("@" + COL_FILTER_Timestamp_Start, SqlDbType.DateTime).Value = Tools.wrapNullable(timestamp_Start);
-                    cmd.Parameters.Add("@" + COL_FILTER_Timestamp_End, SqlDbType.DateTime).Value = Tools.wrapNullable(timestamp_End);
-                    cmd.Parameters.Add("@" + COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(pettyCashRecordsCategories_Id);
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(id);
+                    cmd.Parameters.Add("@" + COL_FILTER_Timestamp_Start, SqlDbType.DateTime).Value = Util.wrapNullable(timestamp_Start);
+                    cmd.Parameters.Add("@" + COL_FILTER_Timestamp_End, SqlDbType.DateTime).Value = Util.wrapNullable(timestamp_End);
+                    cmd.Parameters.Add("@" + COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(pettyCashRecordsCategories_Id);
+                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
                     cmd.Parameters.Add("@" + FILTER_OnlyNotChecked, SqlDbType.Bit).Value = chkOnlyNotChecked;
                     SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Decimal);
                     return_value.Direction = ParameterDirection.Output;
@@ -122,51 +124,48 @@ namespace BinaMitraTextile
 
         public static void update(Guid id, Guid pettyCashRecordsCategories_Id, decimal amount, string notes)
         {
-            try
+            PettyCashRecord objOld = new PettyCashRecord(id);
+            string log = "";
+            log = ActivityLog.appendChange(log, objOld.PettyCashRecordsCategories_Name, new PettyCashRecordsCategory(pettyCashRecordsCategories_Id).Name, "Category: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
+            log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+
+            if (!string.IsNullOrEmpty(log))
             {
-                PettyCashRecord objOld = new PettyCashRecord(id);
-                string log = "";
-                log = ActivityLog.appendChange(log, objOld.PettyCashRecordsCategories_Name, new PettyCashRecordsCategory(pettyCashRecordsCategories_Id).Name, "Category: '{0}' to '{1}'");
-                log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
-                log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "PettyCashRecords_update",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, pettyCashRecordsCategories_Id),
+                    new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, amount),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update", DBConnection.ActiveSqlConnection))
+                if (result.IsSuccessful)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier).Value = pettyCashRecordsCategories_Id;
-                    cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    if(GlobalData.UserAccount.role != Roles.Super)
+                    if (GlobalData.UserAccount.role != Roles.Super)
                         ActivityLog.submit(id, "Update: " + log, (int)Roles.Super);
                     else
                         ActivityLog.submit(id, "Update: " + log);
                 }
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
-        public static string updateCheckedStatus(Guid id, bool? isChecked)
+        public static void updateCheckedStatus(Guid id, bool? value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecords_update_IsChecked", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_IsChecked, SqlDbType.Bit).Value = isChecked ?? false;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "PettyCashRecords_update_IsChecked",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_IsChecked, SqlDbType.Bit, value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Update Is Checked to: " + isChecked);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update Checked Status to " + value);
         }
 
         #endregion DATABASE METHODS

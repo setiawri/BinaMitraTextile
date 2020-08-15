@@ -200,8 +200,8 @@ namespace BinaMitraTextile.Invoices
                     Payment.add(_vendorInvoice.ID, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
                 else if (_paymentMode == PaymentMode.SaleInvoice)
                 {
-                    Guid id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
-                    if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
+                    Guid? id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
+                    if (id != null && (PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
                         CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null);
                 }
 

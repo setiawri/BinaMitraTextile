@@ -59,73 +59,76 @@ namespace BinaMitraTextile
 
         }
 
-        public static void add(string storageName, string vendorName, string vendorInfo, string description, DateTime? priceDate, decimal? pricePerUnit, DateTime? discontinueDate, string notes, Guid? lengthUnitID, decimal? sellPricePerUnit)
+        public static Guid? add(string storageName, string vendorName, string vendorInfo, string description, DateTime? priceDate, decimal? pricePerUnit, DateTime? discontinueDate, string notes, Guid? lengthUnitID, decimal? sellPricePerUnit)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "sample_add",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_STORAGENAME, SqlDbType.VarChar, storageName),
+                new SqlQueryParameter(COL_DB_VENDORNAME, SqlDbType.VarChar, vendorName),
+                new SqlQueryParameter(COL_DB_VENDORINFO, SqlDbType.VarChar, vendorInfo),
+                new SqlQueryParameter(COL_DB_DESCRIPTION, SqlDbType.VarChar, description),
+                new SqlQueryParameter(COL_DB_PRICEDATE, SqlDbType.DateTime, Util.wrapNullable(priceDate)),
+                new SqlQueryParameter(COL_DB_PRICEPERUNIT, SqlDbType.Decimal, Util.wrapNullable(pricePerUnit)),
+                new SqlQueryParameter(COL_DB_DISCONTINUEDATE, SqlDbType.DateTime, Util.wrapNullable(discontinueDate)),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
+                new SqlQueryParameter(COL_DB_SELLPRICEPERUNIT, SqlDbType.Decimal, Util.wrapNullable(sellPricePerUnit)),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("sample_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_STORAGENAME, SqlDbType.VarChar).Value = storageName;
-                    cmd.Parameters.Add("@" + COL_DB_VENDORNAME, SqlDbType.VarChar).Value = vendorName;
-                    cmd.Parameters.Add("@" + COL_DB_VENDORINFO, SqlDbType.VarChar).Value = vendorInfo;
-                    cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = description;
-                    cmd.Parameters.Add("@" + COL_DB_PRICEDATE, SqlDbType.DateTime).Value = Tools.wrapNullable(priceDate);
-                    cmd.Parameters.Add("@" + COL_DB_PRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(pricePerUnit);
-                    cmd.Parameters.Add("@" + COL_DB_DISCONTINUEDATE, SqlDbType.DateTime).Value = Tools.wrapNullable(discontinueDate);
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-                    cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(lengthUnitID);
-                    cmd.Parameters.Add("@" + COL_DB_SELLPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellPricePerUnit);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "New item added");
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static void update(Guid id, string storageName, string vendorName, string vendorInfo, string description, DateTime? priceDate, decimal? pricePerUnit, DateTime? discontinueDate, string notes, Guid? lengthUnitID, decimal? sellPricePerUnit)
         {
-            try
+            Sample objOld = new Sample(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.StorageName != storageName) { logDescription = Tools.append(logDescription, String.Format("Storage Name: '{0}' to '{1}'", objOld.StorageName, storageName), ","); }
+            if (objOld.VendorName != vendorName) logDescription = Tools.append(logDescription, String.Format("Vendor Name: '{0}' to '{1}'", objOld.VendorName, vendorName), ",");
+            if (objOld.VendorInfo != vendorInfo) logDescription = Tools.append(logDescription, String.Format("Vendor Info: '{0}' to '{1}'", objOld.VendorInfo, vendorInfo), ",");
+            if (objOld.Description != description) logDescription = Tools.append(logDescription, String.Format("Description: '{0}' to '{1}'", objOld.Description, description), ",");
+            if (objOld.PriceDate != priceDate) { logDescription = Tools.append(logDescription, String.Format("Price Date: '{0:MM/dd/yy}' to '{1:MM/dd/yy}'", objOld.PriceDate, priceDate), ","); }
+            if (objOld.PricePerUnit != pricePerUnit) { logDescription = Tools.append(logDescription, String.Format("Price Per Unit: '{0:N2}' to '{1:N2}'", objOld.PricePerUnit, pricePerUnit), ","); }
+            if (objOld.DiscontinueDate != discontinueDate) { logDescription = Tools.append(logDescription, String.Format("Discontinue Date: '{0:MM/dd/yy}' to '{1:MM/dd/yy}'", objOld.DiscontinueDate, discontinueDate), ","); }
+            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.SellPricePerUnit, sellPricePerUnit, "Sell Price: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.LengthUnitName, new LengthUnit(lengthUnitID).Name, "Unit: '{0}' to '{1}'");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                Sample objOld = new Sample(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "sample_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_STORAGENAME, SqlDbType.VarChar, storageName),
+                    new SqlQueryParameter(COL_DB_VENDORNAME, SqlDbType.VarChar, vendorName),
+                    new SqlQueryParameter(COL_DB_VENDORINFO, SqlDbType.VarChar, vendorInfo),
+                    new SqlQueryParameter(COL_DB_DESCRIPTION, SqlDbType.VarChar, description),
+                    new SqlQueryParameter(COL_DB_PRICEDATE, SqlDbType.DateTime, Util.wrapNullable(priceDate)),
+                    new SqlQueryParameter(COL_DB_PRICEPERUNIT, SqlDbType.Decimal, Util.wrapNullable(pricePerUnit)),
+                    new SqlQueryParameter(COL_DB_DISCONTINUEDATE, SqlDbType.DateTime, Util.wrapNullable(discontinueDate)),
+                    new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
+                    new SqlQueryParameter(COL_DB_SELLPRICEPERUNIT, SqlDbType.Decimal, Util.wrapNullable(sellPricePerUnit)),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.StorageName != storageName) { logDescription = Tools.append(logDescription, String.Format("Storage Name: '{0}' to '{1}'", objOld.StorageName, storageName), ","); }
-                if (objOld.VendorName != vendorName) logDescription = Tools.append(logDescription, String.Format("Vendor Name: '{0}' to '{1}'", objOld.VendorName, vendorName), ",");
-                if (objOld.VendorInfo != vendorInfo) logDescription = Tools.append(logDescription, String.Format("Vendor Info: '{0}' to '{1}'", objOld.VendorInfo, vendorInfo), ",");
-                if (objOld.Description != description) logDescription = Tools.append(logDescription, String.Format("Description: '{0}' to '{1}'", objOld.Description, description), ",");
-                if (objOld.PriceDate != priceDate) { logDescription = Tools.append(logDescription, String.Format("Price Date: '{0:MM/dd/yy}' to '{1:MM/dd/yy}'", objOld.PriceDate, priceDate), ","); }
-                if (objOld.PricePerUnit != pricePerUnit) { logDescription = Tools.append(logDescription, String.Format("Price Per Unit: '{0:N2}' to '{1:N2}'", objOld.PricePerUnit, pricePerUnit), ","); }
-                if (objOld.DiscontinueDate != discontinueDate) { logDescription = Tools.append(logDescription, String.Format("Discontinue Date: '{0:MM/dd/yy}' to '{1:MM/dd/yy}'", objOld.DiscontinueDate, discontinueDate), ","); }
-                if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.SellPricePerUnit, sellPricePerUnit, "Sell Price: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.LengthUnitName, new LengthUnit(lengthUnitID).Name, "Unit: '{0}' to '{1}'");
-
-                using (SqlCommand cmd = new SqlCommand("sample_update", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_STORAGENAME, SqlDbType.VarChar).Value = storageName;
-                    cmd.Parameters.Add("@" + COL_DB_VENDORNAME, SqlDbType.VarChar).Value = vendorName;
-                    cmd.Parameters.Add("@" + COL_DB_VENDORINFO, SqlDbType.VarChar).Value = vendorInfo;
-                    cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = description;
-                    cmd.Parameters.Add("@" + COL_DB_PRICEDATE, SqlDbType.DateTime).Value = Tools.wrapNullable(priceDate);
-                    cmd.Parameters.Add("@" + COL_DB_PRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(pricePerUnit);
-                    cmd.Parameters.Add("@" + COL_DB_DISCONTINUEDATE, SqlDbType.DateTime).Value = Tools.wrapNullable(discontinueDate);
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-                    cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(lengthUnitID);
-                    cmd.Parameters.Add("@" + COL_DB_SELLPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellPricePerUnit);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static DataTable getRow(Guid ID)
@@ -135,24 +138,17 @@ namespace BinaMitraTextile
 
         public static DataTable get(string storageName, string vendorName, string vendorInfo, string description)
         {
-            //Tools.startProgressDisplay("Donwloading data...");
-
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("sample_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_STORAGENAME, SqlDbType.VarChar).Value = Tools.wrapNullable(storageName);
-                cmd.Parameters.Add("@" + COL_DB_VENDORNAME, SqlDbType.VarChar).Value = Tools.wrapNullable(vendorName);
-                cmd.Parameters.Add("@" + COL_DB_VENDORINFO, SqlDbType.VarChar).Value = Tools.wrapNullable(vendorInfo);
-                cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = Tools.wrapNullable(description);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-            //Tools.stopProgressDisplay();
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "sample_get_byFilter",
+                new SqlQueryParameter(COL_DB_STORAGENAME, SqlDbType.VarChar, Util.wrapNullable(storageName)),
+                new SqlQueryParameter(COL_DB_VENDORNAME, SqlDbType.VarChar, Util.wrapNullable(vendorName)),
+                new SqlQueryParameter(COL_DB_VENDORINFO, SqlDbType.VarChar, Util.wrapNullable(vendorInfo)),
+                new SqlQueryParameter(COL_DB_DESCRIPTION, SqlDbType.VarChar, Util.wrapNullable(description))
+            );
+            return result.Datatable;
         }
     }
 }

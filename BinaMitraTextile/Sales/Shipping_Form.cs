@@ -70,12 +70,12 @@ namespace BinaMitraTextile.Sales
             gridSummary.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridSummary_GradeName.DataPropertyName = InventoryItem.COL_Grades_Name;
             col_gridSummary_Color.DataPropertyName = InventoryItem.COL_INVENTORYCOLORNAME;
-            col_gridSummary_length.DataPropertyName = InventoryItem.COL_LENGTH;
+            col_gridSummary_length.DataPropertyName = InventoryItem.COL_DB_LENGTH;
             col_gridSummary_length_unit_name.DataPropertyName = InventoryItem.COL_LENGTHUNITNAME;
             col_gridSummary_product_name_store.DataPropertyName = InventoryItem.COL_ProductStoreName;
             col_gridSummary_product_width_name.DataPropertyName = InventoryItem.COL_ProductWidths_Name;
             col_gridSummary_qty.DataPropertyName = InventoryItem.COL_SALE_QTY;
-            col_gridSummary_code.DataPropertyName = InventoryItem.COL_INVENTORY_CODE;
+            col_gridSummary_code.DataPropertyName = InventoryItem.COL_DB_INVENTORY_CODE;
         }
 
         private void setupControlsBasedOnRoles()

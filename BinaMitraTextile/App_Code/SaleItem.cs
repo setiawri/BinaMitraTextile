@@ -93,21 +93,22 @@ namespace BinaMitraTextile
         {
             foreach (SaleItem item in SaleItems)
             {
-                using (SqlCommand cmd = new SqlCommand("saleitem_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.id;
-                    cmd.Parameters.Add("@sale_id", SqlDbType.UniqueIdentifier).Value = item.sale_id;
-                    cmd.Parameters.Add("@inventory_item_id", SqlDbType.UniqueIdentifier).Value = item.inventory_item_id;
-                    cmd.Parameters.Add("@sell_price", SqlDbType.Decimal).Value = item.sell_price;
-                    cmd.Parameters.Add("@adjustment", SqlDbType.Decimal).Value = item.adjustment;
-                    cmd.Parameters.Add("@" + COL_DB_isManualAdjustment, SqlDbType.Bit).Value = item.isManualAdjustment;
-                    cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Customers_Id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "saleitem_new",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, item.id),
+                    new SqlQueryParameter(COL_DB_sale_id, SqlDbType.UniqueIdentifier, item.sale_id),
+                    new SqlQueryParameter(COL_INVENTORY_ITEM_ID, SqlDbType.UniqueIdentifier, item.inventory_item_id),
+                    new SqlQueryParameter(COL_SELLPRICE, SqlDbType.Decimal, item.sell_price),
+                    new SqlQueryParameter(COL_ADJUSTMENT, SqlDbType.Decimal, item.adjustment),
+                    new SqlQueryParameter(COL_DB_isManualAdjustment, SqlDbType.Bit, item.isManualAdjustment),
+                    new SqlQueryParameter(COL_CUSTOMERID, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id))
+                );
 
-                    cmd.ExecuteNonQuery();
-
+                if (result.IsSuccessful)
                     ActivityLog.submit(item.inventory_item_id, "Sale ID: " + SaleBarcode);
-                }
             }
         }
 
@@ -115,16 +116,17 @@ namespace BinaMitraTextile
         {
             foreach (SaleItem item in SaleItems)
             {
-                using (SqlCommand cmd = new SqlCommand("saleitem_update", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.id;
-                    cmd.Parameters.Add("@adjustment", SqlDbType.Decimal).Value = item.adjustment;
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "saleitem_update",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, item.id),
+                    new SqlQueryParameter(COL_ADJUSTMENT, SqlDbType.Decimal, item.adjustment)
+                );
 
-                    cmd.ExecuteNonQuery();
-
+                if (result.IsSuccessful)
                     ActivityLog.submit(item.id, "Updated");
-                }
             }
         }
         
@@ -166,50 +168,38 @@ namespace BinaMitraTextile
 
         public static DataTable getItemSummary(Guid SaleID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_sale_id", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@sale_id", SqlDbType.UniqueIdentifier).Value = SaleID;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "saleitem_get_summary_by_sale_id",
+                new SqlQueryParameter(COL_DB_sale_id, SqlDbType.UniqueIdentifier, SaleID)
+            );
+            return result.Datatable;
         }
 
         public static DataTable getReturnedItemSummary(Guid SaleReturnID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_summary_by_salereturn_id", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@salereturn_id", SqlDbType.UniqueIdentifier).Value = SaleReturnID;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "saleitem_get_summary_by_salereturn_id",
+                new SqlQueryParameter("salereturn_id", SqlDbType.UniqueIdentifier, SaleReturnID)
+            );
+            return result.Datatable;
         }
 
-        public static DataTable getReturnedItems(Guid saleReturnID)
+        public static DataTable getReturnedItems(Guid SaleReturnID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("saleitem_get_by_salereturn_id", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@salereturn_id", SqlDbType.UniqueIdentifier).Value = saleReturnID;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "saleitem_get_by_salereturn_id",
+                new SqlQueryParameter("salereturn_id", SqlDbType.UniqueIdentifier, SaleReturnID)
+            );
+            return result.Datatable;
         }
 
         #endregion DATABASE METHODS

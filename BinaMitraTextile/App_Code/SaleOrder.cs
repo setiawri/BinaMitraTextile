@@ -77,9 +77,6 @@ namespace BinaMitraTextile
 
         #endregion CONSTRUCTORS
         /*******************************************************************************************************/
-        #region DATABASE METHODS
-        #endregion DATABASE METHODS
-        /*******************************************************************************************************/
         #region DATABASE STATIC METHODS
             
         public static DataTable get(Guid id)

@@ -113,14 +113,14 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
                     cmd.Parameters.Add("@" + COL_DB_CATEGORYENUMID, SqlDbType.TinyInt).Value = category;
                     cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(productWidthID);
+                    cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(productWidthID);
                     cmd.Parameters.Add("@" + COL_DB_RETAILLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = retailLengthUnitID;
                     cmd.Parameters.Add("@" + COL_DB_BULKLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = bulkLengthUnitID;
-                    cmd.Parameters.Add("@" + COL_DB_BUYRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(buyRetailPricePerUnit);
-                    cmd.Parameters.Add("@" + COL_DB_BUYBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(buyBulkPricePerUnit);
-                    cmd.Parameters.Add("@" + COL_DB_SELLRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellRetailPricePerUnit);
-                    cmd.Parameters.Add("@" + COL_DB_SELLBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellBulkPricePerUnit);
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                    cmd.Parameters.Add("@" + COL_DB_BUYRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(buyRetailPricePerUnit);
+                    cmd.Parameters.Add("@" + COL_DB_BUYBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(buyBulkPricePerUnit);
+                    cmd.Parameters.Add("@" + COL_DB_SELLRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(sellRetailPricePerUnit);
+                    cmd.Parameters.Add("@" + COL_DB_SELLBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(sellBulkPricePerUnit);
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                     cmd.ExecuteNonQuery();
 
@@ -138,7 +138,7 @@ namespace BinaMitraTextile
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
+                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(id);
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
                 
@@ -170,12 +170,12 @@ namespace BinaMitraTextile
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + FILTER_INCLUDEINACTIVE, SqlDbType.Bit).Value = includeInactive;
                 DBUtil.addListParameter(cmd, "@" + FILTER_CATEGORYENUMIDLIST, categoryEnumIDList);
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(ID);
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Tools.wrapNullable(nameFilter);
-                cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
-                cmd.Parameters.Add("@" + COL_DB_RETAILLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(retailLengthUnitID);
-                cmd.Parameters.Add("@" + COL_DB_BULKLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(bulkLengthUnitID);
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(productWidthID);
+                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(ID);
+                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Util.wrapNullable(nameFilter);
+                cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorID);
+                cmd.Parameters.Add("@" + COL_DB_RETAILLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(retailLengthUnitID);
+                cmd.Parameters.Add("@" + COL_DB_BULKLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(bulkLengthUnitID);
+                cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(productWidthID);
 
                 adapter.SelectCommand = cmd;
                 adapter.Fill(datatable);
@@ -224,14 +224,14 @@ namespace BinaMitraTextile
                         cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
                         cmd.Parameters.Add("@" + COL_DB_CATEGORYENUMID, SqlDbType.TinyInt).Value = category;
                         cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
-                        cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(productWidthID);
+                        cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(productWidthID);
                         cmd.Parameters.Add("@" + COL_DB_RETAILLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = retailLengthUnitID;
                         cmd.Parameters.Add("@" + COL_DB_BULKLENGTHUNITID, SqlDbType.UniqueIdentifier).Value = bulkLengthUnitID;
-                        cmd.Parameters.Add("@" + COL_DB_BUYRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(buyRetailPricePerUnit);
-                        cmd.Parameters.Add("@" + COL_DB_BUYBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(buyBulkPricePerUnit);
-                        cmd.Parameters.Add("@" + COL_DB_SELLRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellRetailPricePerUnit);
-                        cmd.Parameters.Add("@" + COL_DB_SELLBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Tools.wrapNullable(sellBulkPricePerUnit);
-                        cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                        cmd.Parameters.Add("@" + COL_DB_BUYRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(buyRetailPricePerUnit);
+                        cmd.Parameters.Add("@" + COL_DB_BUYBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(buyBulkPricePerUnit);
+                        cmd.Parameters.Add("@" + COL_DB_SELLRETAILPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(sellRetailPricePerUnit);
+                        cmd.Parameters.Add("@" + COL_DB_SELLBULKPRICEPERUNIT, SqlDbType.Decimal).Value = Util.wrapNullable(sellBulkPricePerUnit);
+                        cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                         cmd.ExecuteNonQuery();
 

@@ -19,6 +19,8 @@ namespace BinaMitraTextile
         public const string COL_VENDORNAME = "vendor_name";
         public const string COL_STORENAME = "store_name";
 
+        public const string FILTER_IncludeInactive = "include_inactive";
+
         public Guid ID;
         public Guid StoreNameID;
         public string NameVendor = "";
@@ -47,47 +49,46 @@ namespace BinaMitraTextile
             StoreName = dt.Rows[0][COL_STORENAME].ToString();
         }
 
-        public static void add(Guid storeNameID, string nameVendor, Guid vendorID, decimal percentageOfCommissionPercent, decimal? maxCommissionAmount, string notes)
+        public static Guid? add(Guid storeNameID, string nameVendor, Guid vendorID, decimal percentageOfPercentCommission, decimal? maxCommissionAmount, string notes)
         {
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "product_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier, storeNameID),
+                new SqlQueryParameter(COL_DB_NAMEVENDOR, SqlDbType.VarChar, nameVendor),
+                new SqlQueryParameter(COL_DB_VENDORID, SqlDbType.UniqueIdentifier, vendorID),
+                new SqlQueryParameter(COL_DB_PercentageOfPercentCommission, SqlDbType.Decimal, percentageOfPercentCommission),
+                new SqlQueryParameter(COL_DB_MaxCommissionAmount, SqlDbType.Decimal, Util.wrapNullable(maxCommissionAmount)),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("product_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier).Value = storeNameID;
-                    cmd.Parameters.Add("@" + COL_DB_NAMEVENDOR, SqlDbType.VarChar).Value = nameVendor;
-                    cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
-                    cmd.Parameters.Add("@" + COL_DB_PercentageOfPercentCommission, SqlDbType.Decimal).Value = percentageOfCommissionPercent;
-                    cmd.Parameters.Add("@" + COL_DB_MaxCommissionAmount, SqlDbType.Decimal).Value = LIBUtil.Util.wrapNullable(maxCommissionAmount);
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Item created");
-                }
-                Tools.hasMessage("Item created");
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static bool isNameCombinationExist(Guid storeNameID, string nameVendor, Guid vendorID, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("product_isNameCombinationExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier).Value = storeNameID;
-                cmd.Parameters.Add("@" + COL_DB_NAMEVENDOR, SqlDbType.VarChar).Value = nameVendor;
-                cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-                
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "product_isNameCombinationExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier, storeNameID),
+                new SqlQueryParameter(COL_DB_NAMEVENDOR, SqlDbType.VarChar, nameVendor),
+                new SqlQueryParameter(COL_DB_VENDORID, SqlDbType.UniqueIdentifier, vendorID)
+                );
+            return result.ValueBoolean;
         }
 
         public static DataTable getRow(Guid ID)
@@ -100,70 +101,58 @@ namespace BinaMitraTextile
             return get(includeInactive, null, null, null);
         }
 
-        public static DataTable get(bool includeInactive, Guid? storeNameID, string nameVendorFilter, Guid? vendorID)
+        public static DataTable get(bool includeInactive, Guid? storeNameID, string nameVendor, Guid? vendorID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("product_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(storeNameID);
-                cmd.Parameters.Add("@" + COL_DB_NAMEVENDOR, SqlDbType.VarChar).Value = Tools.wrapNullable(nameVendorFilter);
-                cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "product_get_byFilter",
+                new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(storeNameID)),
+                new SqlQueryParameter(COL_DB_NAMEVENDOR, SqlDbType.VarChar, Util.wrapNullable(nameVendor)),
+                new SqlQueryParameter(COL_DB_VENDORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(vendorID))
+            );
+            return result.Datatable;
         }
 
         public static void update(Guid id, Guid storeNameID, string nameVendor, Guid vendorID, decimal percentageOfPercentCommission, decimal? maxCommissionAmount, string notes)
         {
-            try
+            Product objOld = new Product(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.NameVendor != nameVendor) logDescription = Tools.append(logDescription, String.Format("Name - Vendor: '{0}' to '{1}'", objOld.NameVendor, nameVendor), ",");
+            if (objOld.StoreNameID != storeNameID) logDescription = Tools.append(logDescription, String.Format("Name - Store: '{0}' to '{1}'", objOld.StoreName, new ProductStoreName(storeNameID).Name), ",");
+            if (objOld.VendorID != vendorID) logDescription = Tools.append(logDescription, String.Format("Vendor ID: '{0}' to '{1}'", objOld.VendorName, new Vendor(vendorID).Name), ",");
+            logDescription = LIBUtil.Util.appendChange(logDescription, objOld.PercentageOfPercentCommission, percentageOfPercentCommission, "Percentage of Percent Comission: {0:N2} to {1:N2}");
+            logDescription = LIBUtil.Util.appendChange(logDescription, objOld.MaxCommissionAmount, maxCommissionAmount, "Max Comission: {0:N0} to {1:N0}");
+            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                Product objOld = new Product(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "product_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier, storeNameID),
+                    new SqlQueryParameter(COL_DB_NAMEVENDOR, SqlDbType.VarChar, nameVendor),
+                    new SqlQueryParameter(COL_DB_VENDORID, SqlDbType.UniqueIdentifier, vendorID),
+                    new SqlQueryParameter(COL_DB_PercentageOfPercentCommission, SqlDbType.Decimal, percentageOfPercentCommission),
+                    new SqlQueryParameter(COL_DB_MaxCommissionAmount, SqlDbType.Decimal, Util.wrapNullable(maxCommissionAmount)),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.NameVendor != nameVendor) logDescription = Tools.append(logDescription, String.Format("Name - Vendor: '{0}' to '{1}'", objOld.NameVendor, nameVendor), ",");
-                if (objOld.StoreNameID != storeNameID) logDescription = Tools.append(logDescription, String.Format("Name - Store: '{0}' to '{1}'", objOld.StoreName, new ProductStoreName(storeNameID).Name), ",");
-                if (objOld.VendorID != vendorID) logDescription = Tools.append(logDescription, String.Format("Vendor ID: '{0}' to '{1}'", objOld.VendorName, new Vendor(vendorID).Name), ",");
-                logDescription = LIBUtil.Util.appendChange(logDescription, objOld.PercentageOfPercentCommission, percentageOfPercentCommission, "Percentage of Percent Comission: {0:N2} to {1:N2}");
-                logDescription = LIBUtil.Util.appendChange(logDescription, objOld.MaxCommissionAmount, maxCommissionAmount, "Max Comission: {0:N0} to {1:N0}");
-                if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
-
-                if (string.IsNullOrEmpty(logDescription))
-                {
-                    Tools.showError("No changes to record");
-                }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("product_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_STORENAMEID, SqlDbType.UniqueIdentifier).Value = storeNameID;
-                        cmd.Parameters.Add("@" + COL_DB_NAMEVENDOR, SqlDbType.VarChar).Value = nameVendor;
-                        cmd.Parameters.Add("@" + COL_DB_VENDORID, SqlDbType.UniqueIdentifier).Value = vendorID;
-                        cmd.Parameters.Add("@" + COL_DB_PercentageOfPercentCommission, SqlDbType.Decimal).Value = percentageOfPercentCommission;
-                        cmd.Parameters.Add("@" + COL_DB_MaxCommissionAmount, SqlDbType.Decimal).Value = LIBUtil.Util.wrapNullable(maxCommissionAmount);
-                        cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-
-                        cmd.ExecuteNonQuery();
-
-                        ActivityLog.submit(id, "Update: " + logDescription);
-                    }
-                    Tools.hasMessage("Item updated");
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
         
-        public static string updateActiveStatus(Guid id, Boolean activeStatus)
+        public static void updateActiveStatus(Guid id, Boolean activeStatus)
         {
-            return DBUtil.updateActiveStatus("product_update_active", id, activeStatus);
+            DBUtil.updateActiveStatus("product_update_active", id, activeStatus);
         }
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault, Guid? vendorID)

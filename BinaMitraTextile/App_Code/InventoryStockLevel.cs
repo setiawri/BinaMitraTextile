@@ -61,7 +61,6 @@ namespace BinaMitraTextile
         public string Notes = "";
 
         public InventoryStockLevel() { }
-
         public InventoryStockLevel(Guid id)
         {
             ID = id;
@@ -86,123 +85,119 @@ namespace BinaMitraTextile
             ColorName = DBUtil.parseData<string>(row, COL_COLOR_NAME);
         }
 
-        public static void add(Guid gradeID, Guid productID, Guid productWidthID, Guid lengthUnitID, Guid colorID, int qty, int orderLotQty, string poNotes, string notes)
+        public static Guid? add(Guid gradeID, Guid productID, Guid productWidthID, Guid lengthUnitID, Guid colorID, int qty, int orderLotQty, string poNotes, string notes)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "inventorystocklevel_add",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, gradeID),
+                new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, productID),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, productWidthID),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, lengthUnitID),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, colorID),
+                new SqlQueryParameter(COL_DB_ORDERLOTQTY, SqlDbType.Int, orderLotQty),
+                new SqlQueryParameter(COL_DB_QTY, SqlDbType.Int, qty),
+                new SqlQueryParameter(COL_DB_PONOTES, SqlDbType.VarChar, Util.wrapNullable(poNotes)),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = gradeID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier).Value = productID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = productWidthID;
-                    cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = lengthUnitID;
-                    cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = colorID;
-                    cmd.Parameters.Add("@" + COL_DB_ORDERLOTQTY, SqlDbType.Int).Value = orderLotQty;
-                    cmd.Parameters.Add("@" + COL_DB_QTY, SqlDbType.Int).Value = qty;
-                    cmd.Parameters.Add("@" + COL_DB_PONOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(poNotes);
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "New item added");
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static bool isCombinationExist(Guid? id, Guid gradeID, Guid productID, Guid productWidthID, Guid lengthUnitID, Guid colorID)
         {
-            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_isCombinationExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = gradeID;
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier).Value = productID;
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = productWidthID;
-                cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = lengthUnitID;
-                cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = colorID;
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "inventorystocklevel_isCombinationExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, gradeID),
+                new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, productID),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, productWidthID),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, lengthUnitID),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, colorID)
+                );
+            return result.ValueBoolean;
         }
 
         public static void update(Guid id, Guid gradeID, Guid productID, Guid productWidthID, Guid lengthUnitID, Guid colorID, int qty, int orderLotQty, string poNotes, string notes)
         {
-            try
+            InventoryStockLevel objOld = new InventoryStockLevel(id);
+
+            //generate log description
+            string logDescription = "";
+            Product product = new Product(productID);
+            if (objOld.ProductStoreNameID != product.StoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.ProductStoreName, product.StoreName), ",");
+            if (objOld.GradeID != gradeID) logDescription = Tools.append(logDescription, String.Format("Grade: '{0}' to '{1}'", objOld.GradeID, new Grade(gradeID).Name), ",");
+            if (objOld.ProductWidthID != productWidthID) logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}' to '{1}'", objOld.ProductWidthName, new ProductWidth(productWidthID).Name), ",");
+            if (objOld.LengthUnitID != lengthUnitID) logDescription = Tools.append(logDescription, String.Format("Length Unit: '{0}' to '{1}'", objOld.LengthUnitID, new LengthUnit(lengthUnitID).Name), ",");
+            if (objOld.VendorName != product.VendorName) logDescription = Tools.append(logDescription, String.Format("Vendor: '{0}' to '{1}'", objOld.VendorName, product.VendorName), ",");
+            if (objOld.OrderLotQty != orderLotQty) logDescription = Tools.append(logDescription, String.Format("Lot qty: '{0}' to '{1}'", objOld.OrderLotQty, orderLotQty), ",");
+            if (objOld.Qty != qty) logDescription = Tools.append(logDescription, String.Format("Qty: '{0}' to '{1}'", objOld.Qty, qty), ",");
+            if (objOld.PONotes != poNotes) logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}' to '{1}'", objOld.PONotes, poNotes), ",");
+            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                InventoryStockLevel objOld = new InventoryStockLevel(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "inventorystocklevel_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, gradeID),
+                    new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, productID),
+                    new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, productWidthID),
+                    new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, lengthUnitID),
+                    new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, colorID),
+                    new SqlQueryParameter(COL_DB_ORDERLOTQTY, SqlDbType.Int, orderLotQty),
+                    new SqlQueryParameter(COL_DB_QTY, SqlDbType.Int, qty),
+                    new SqlQueryParameter(COL_DB_PONOTES, SqlDbType.VarChar, Util.wrapNullable(poNotes)),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                Product product = new Product(productID);
-                if (objOld.ProductStoreNameID != product.StoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.ProductStoreName, product.StoreName), ",");
-                if (objOld.GradeID != gradeID) logDescription = Tools.append(logDescription, String.Format("Grade: '{0}' to '{1}'", objOld.GradeID, new Grade(gradeID).Name), ",");
-                if (objOld.ProductWidthID != productWidthID) logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}' to '{1}'", objOld.ProductWidthName, new ProductWidth(productWidthID).Name), ",");
-                if (objOld.LengthUnitID != lengthUnitID) logDescription = Tools.append(logDescription, String.Format("Length Unit: '{0}' to '{1}'", objOld.LengthUnitID, new LengthUnit(lengthUnitID).Name), ",");
-                if (objOld.VendorName != product.VendorName) logDescription = Tools.append(logDescription, String.Format("Vendor: '{0}' to '{1}'", objOld.VendorName, product.VendorName), ",");
-                if (objOld.OrderLotQty != orderLotQty) logDescription = Tools.append(logDescription, String.Format("Lot qty: '{0}' to '{1}'", objOld.OrderLotQty, orderLotQty), ",");
-                if (objOld.Qty != qty) logDescription = Tools.append(logDescription, String.Format("Qty: '{0}' to '{1}'", objOld.Qty, qty), ",");
-                if (objOld.PONotes != poNotes) logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}' to '{1}'", objOld.PONotes, poNotes), ",");
-                if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
-
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_update", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = gradeID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier).Value = productID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = productWidthID;
-                    cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = lengthUnitID;
-                    cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = colorID;
-                    cmd.Parameters.Add("@" + COL_DB_ORDERLOTQTY, SqlDbType.Int).Value = orderLotQty;
-                    cmd.Parameters.Add("@" + COL_DB_QTY, SqlDbType.Int).Value = qty;
-                    cmd.Parameters.Add("@" + COL_DB_PONOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(poNotes);
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
-        public static string delete(Guid id)
+        public static void delete(Guid id)
         {
-            try
-            {
-                InventoryStockLevel obj = new InventoryStockLevel(id);
+            InventoryStockLevel obj = new InventoryStockLevel(id);
 
-                //generate log description
-                string logDescription = "";
-                logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}'", obj.ProductStoreName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Grade: '{0}'", obj.GradeName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}'", obj.ProductWidthName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Length Unit: '{0}'", obj.LengthUnitName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Vendor: '{0}'", obj.VendorName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Qty: '{0}'", obj.Qty), ",");
-                logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}'", obj.PONotes), ",");
-                logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
+            //generate log description
+            string logDescription = "";
+            logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}'", obj.ProductStoreName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Grade: '{0}'", obj.GradeName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}'", obj.ProductWidthName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Length Unit: '{0}'", obj.LengthUnitName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Vendor: '{0}'", obj.VendorName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Qty: '{0}'", obj.Qty), ",");
+            logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}'", obj.PONotes), ",");
+            logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
 
-                using (SqlCommand cmd = new SqlCommand("inventorystocklevel_delete", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "inventorystocklevel_delete",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, String.Format("Item deleted: {0}", logDescription));
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, String.Format("Deleted: {0}", logDescription));
         }
 
         public static DataTable getRow(Guid ID)
@@ -212,29 +207,22 @@ namespace BinaMitraTextile
 
         public static DataTable getAll(Guid? gradeID, Guid? productID, Guid? productWidthID, Guid? lengthUnitID, Guid? colorID, Guid? vendorID, bool hasNewOrderQtyOnly)
         {
-            //Tools.startProgressDisplay("Donwloading data...");
-
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventorystocklevel_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = (object)gradeID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier).Value = (object)productID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = (object)productWidthID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = (object)lengthUnitID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = (object)colorID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
-                cmd.Parameters.Add("@status_completed", SqlDbType.TinyInt).Value = POItemStatus.Completed;
-                cmd.Parameters.Add("@status_cancelled", SqlDbType.TinyInt).Value = POItemStatus.Cancelled;
-                cmd.Parameters.Add("@has_neworderqty_only", SqlDbType.Bit).Value = hasNewOrderQtyOnly;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-            //Tools.stopProgressDisplay();
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "inventorystocklevel_get_byFilter",
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(gradeID)),
+                new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productID)),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productWidthID)),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(colorID)),
+                new SqlQueryParameter(COL_VENDORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(vendorID)),
+                new SqlQueryParameter("status_completed", SqlDbType.TinyInt, POItemStatus.Completed),
+                new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, POItemStatus.Cancelled),
+                new SqlQueryParameter("has_neworderqty_only", SqlDbType.Bit, hasNewOrderQtyOnly)
+            );
+            return result.Datatable;
         }
     }
 }

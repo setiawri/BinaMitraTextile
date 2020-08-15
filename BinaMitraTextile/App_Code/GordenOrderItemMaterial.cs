@@ -74,7 +74,7 @@ namespace BinaMitraTextile
         //        {
         //            cmd.CommandType = CommandType.StoredProcedure;
         //            cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-        //            cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+        //            cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
         //            conn.Open();
         //            cmd.ExecuteNonQuery();
@@ -101,7 +101,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.UniqueIdentifier).Value = material.Description;
                     cmd.Parameters.Add("@" + COL_DB_BUYAMOUNTPERUNIT, SqlDbType.UniqueIdentifier).Value = material.BuyAmountPerUnit;
                     cmd.Parameters.Add("@" + COL_DB_QTY, SqlDbType.UniqueIdentifier).Value = material.Qty;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(material.Notes);
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(material.Notes);
 
                     cmd.ExecuteNonQuery();
 
@@ -120,8 +120,8 @@ namespace BinaMitraTextile
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(ID);
-                cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(ID);
+                cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                 adapter.SelectCommand = cmd;
                 adapter.Fill(datatable);
@@ -141,7 +141,7 @@ namespace BinaMitraTextile
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                     cmd.ExecuteNonQuery();
 

@@ -19,39 +19,6 @@ namespace BinaMitraTextile
     public class Tools
     {
         /*******************************************************************************************************/
-        #region NULL MANIPULATORS
-
-        public static T wrapDBNullValue<T>(object value)
-        {
-            object val = wrapNullable(value);
-            if (val == null || val == DBNull.Value)
-            {
-                if (typeof(T) == typeof(Guid?))
-                {
-                    object obj = null;
-                    return (T)obj;
-                }
-                else
-                    return default(T);
-            }
-            else if (typeof(T) == typeof(Guid?))
-                return (T)val;
-            else if (Nullable.GetUnderlyingType(typeof(T)) != null)
-                return (T)Convert.ChangeType(val, Nullable.GetUnderlyingType(typeof(T)));
-            else
-                return (T)Convert.ChangeType(val, typeof(T));
-        }
-
-        public static object wrapNullable(object value)
-        {
-            if (value != null && value.GetType() == typeof(string) && string.IsNullOrEmpty((string)value))
-                return DBNull.Value;
-            else
-                return value ?? DBNull.Value;
-        }
-
-        #endregion NULL MANIPULATORS
-        /*******************************************************************************************************/
         #region NUMBER MANIPULATORS
 
         public static bool isNumeric(string str)

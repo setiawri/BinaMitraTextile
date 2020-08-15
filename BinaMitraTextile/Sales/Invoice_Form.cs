@@ -104,7 +104,7 @@ namespace BinaMitraTextile.Sales
 
             //sort
             DataView dvw = _data.DefaultView;
-            dvw.Sort = InventoryItem.COL_INVENTORY_CODE + " ASC";
+            dvw.Sort = InventoryItem.COL_DB_INVENTORY_CODE + " ASC";
             _data = dvw.ToTable();
 
             //grid.DataSource = _data;
@@ -119,7 +119,7 @@ namespace BinaMitraTextile.Sales
             Inventory.setAmount(lblGrandTotal, (_totalSale + _sale.ShippingCost).ToString());
             Inventory.setCount(lblTotalCounts, 
                 _data.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_QTY), "").ToString(), 
-                _data.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), "").ToString());
+                _data.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
 
             txtNotes.Text = Tools.applyNewLines(_sale.notes);
 
@@ -339,7 +339,7 @@ namespace BinaMitraTextile.Sales
                 return iddl_PettyCashCategories.SelectedValueError("Pilih Kategori");
             else if (!iddl_PaymentMethods.hasSelectedValue())
                 return iddl_PaymentMethods.SelectedValueError("Pilih Metode Pembayaran");
-            else if (!Tools.hasMessage(_sale.submitNew(_saleItems)))
+            else if (_sale.submitNew(_saleItems) != null)
             {
                 //barcode.DataToEncode = _sale.barcode;
                 lblInvoiceNo.Text = _sale.barcode;
@@ -357,22 +357,26 @@ namespace BinaMitraTextile.Sales
                         isFullPayment = true;
                     }
 
-                    Guid paymentId = Payment.add(_sale.id, (PaymentMethod)iddl_PaymentMethods.SelectedValue, paymentAmount, null);
-                    Guid pettyCashRecordId = PettyCashRecord.add((Guid)iddl_PettyCashCategories.SelectedValue, paymentAmount, string.Format("{0}", _sale.barcode));
-
-                    if (isFullPayment)
+                    Guid? paymentId = Payment.add(_sale.id, (PaymentMethod)iddl_PaymentMethods.SelectedValue, paymentAmount, null);
+                    if(paymentId != null)
                     {
-                        Payment.updateCheckedStatus(paymentId, true);
-                        PettyCashRecord.updateCheckedStatus(pettyCashRecordId, true);
+                        Guid? pettyCashRecordId = PettyCashRecord.add((Guid)iddl_PettyCashCategories.SelectedValue, paymentAmount, string.Format("{0}", _sale.barcode));
+
+                        if (pettyCashRecordId != null && isFullPayment)
+                        {
+                            Payment.updateCheckedStatus((Guid)paymentId, true);
+                            PettyCashRecord.updateCheckedStatus((Guid)pettyCashRecordId, true);
+                        }
                     }
                 }
                 else
                 {
-                    Guid pettyCashRecordId = PettyCashRecord.add((Guid)iddl_PettyCashCategories.SelectedValue, 0, string.Format("{0} {1} {2:N0}", _sale.barcode, Tools.GetEnumDescription((PaymentMethod)iddl_PaymentMethods.SelectedValue), lblGrandTotal.Text));
-                    if (paymentMethod == PaymentMethod.Hutang || paymentMethod == PaymentMethod.Transfer || paymentMethod == PaymentMethod.EDC)
-                        PettyCashRecord.updateCheckedStatus(pettyCashRecordId, true);
+                    Guid? pettyCashRecordId = PettyCashRecord.add((Guid)iddl_PettyCashCategories.SelectedValue, 0, string.Format("{0} {1} {2:N0}", _sale.barcode, Tools.GetEnumDescription((PaymentMethod)iddl_PaymentMethods.SelectedValue), lblGrandTotal.Text));
+                    
+                    if (pettyCashRecordId != null && (paymentMethod == PaymentMethod.Hutang || paymentMethod == PaymentMethod.Transfer || paymentMethod == PaymentMethod.EDC))
+                        PettyCashRecord.updateCheckedStatus((Guid)pettyCashRecordId, true);
 
-                    Tools.hasMessage("The sale has been submitted"); //only shows this message here. Cash payments shows form kembalian
+                    //Tools.hasMessage("The sale has been submitted"); //only shows this message here. Cash payments shows form kembalian
                 }
 
 

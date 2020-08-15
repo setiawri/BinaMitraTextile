@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Specialized;
 
 namespace BinaMitraTextile
 {
@@ -55,87 +56,79 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public static void add(DateTime timestamp, Guid activityLogs_Id, int roles_EnumId)
+        public static Guid? add(DateTime timestamp, Guid activityLogs_Id, int roles_EnumId)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Notifications_add",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, timestamp),
+                new SqlQueryParameter(COL_DB_ActivityLogs_Id, SqlDbType.UniqueIdentifier, activityLogs_Id),
+                new SqlQueryParameter(COL_DB_Roles_EnumId, SqlDbType.TinyInt, roles_EnumId)
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("Notifications_add", sqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_Timestamp, SqlDbType.DateTime).Value = timestamp;
-                    cmd.Parameters.Add("@" + COL_DB_ActivityLogs_Id, SqlDbType.UniqueIdentifier).Value = activityLogs_Id;
-                    cmd.Parameters.Add("@" + COL_DB_Roles_EnumId, SqlDbType.TinyInt).Value = roles_EnumId;
-
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(sqlConnection, id, "Item added");
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static DataRow get(Guid id) { return Tools.getFirstRow(get(id, null, null, null, null)); }
 
         public static DataTable get(Guid? id, DateTime? timestamp_Start, DateTime? timestamp_End, int? roles_EnumId, bool active)
         {
-            DataTable datatable = new DataTable();
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("Notifications_get", sqlConnection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                    cmd.Parameters.Add("@" + COL_FILTER_Timestamp_Start, SqlDbType.DateTime).Value = Tools.wrapNullable(timestamp_Start);
-                    cmd.Parameters.Add("@" + COL_FILTER_Timestamp_End, SqlDbType.DateTime).Value = Tools.wrapNullable(timestamp_End);
-                    cmd.Parameters.Add("@" + COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(pettyCashRecordsCategories_Id);
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "Notifications_get",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_FILTER_Timestamp_Start, SqlDbType.DateTime, Util.wrapNullable(timestamp_Start)),
+                new SqlQueryParameter(COL_FILTER_Timestamp_End, SqlDbType.DateTime, Util.wrapNullable(timestamp_End)),
+                new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(pettyCashRecordsCategories_Id)),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
 
-                    adapter.SelectCommand = cmd;
-                    adapter.Fill(datatable);
-
-                    Tools.parseEnum<Roles>(datatable, COL_Roles_Name, COL_Roles_Name);
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
-
-            return datatable;
+            return Tools.parseEnum<Roles>(result.Datatable, COL_Roles_Name, COL_Roles_Name);
         }
 
         public static void update(Guid id, DateTime timestamp, Guid pettyCashRecordsCategories_Id, decimal amount, string notes)
         {
-            try
+            PettyCashRecord objOld = new PettyCashRecord(id);
+            string log = "";
+            log = ActivityLog.appendChange(log, objOld.Timestamp, timestamp, "Timestamp: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.PettyCashRecordsCategories_Name, new PettyCashRecordsCategory(pettyCashRecordsCategories_Id).Name, "Category: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
+            log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                PettyCashRecord objOld = new PettyCashRecord(id);
-                string log = "";
-                log = ActivityLog.appendChange(log, objOld.Timestamp, timestamp, "Timestamp: '{0}' to '{1}'");
-                log = ActivityLog.appendChange(log, objOld.PettyCashRecordsCategories_Name, new PettyCashRecordsCategory(pettyCashRecordsCategories_Id).Name, "Category: '{0}' to '{1}'");
-                log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
-                log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "Notifications_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, timestamp),
+                    new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, pettyCashRecordsCategories_Id),
+                    new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, amount),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                using (SqlConnection sqlConnection = new SqlConnection(DBUtil.connectionString))
-                using (SqlCommand cmd = new SqlCommand("Notifications_update", sqlConnection))
+                if (result.IsSuccessful)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_Timestamp, SqlDbType.DateTime).Value = timestamp;
-                    cmd.Parameters.Add("@" + COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier).Value = pettyCashRecordsCategories_Id;
-                    cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    if (sqlConnection.State != ConnectionState.Open) sqlConnection.Open();
-                    cmd.ExecuteNonQuery();
-
-                    if(GlobalData.UserAccount.role != Roles.Super)
+                    if (GlobalData.UserAccount.role != Roles.Super)
                         ActivityLog.submit(sqlConnection, id, "Update: " + log, (int)Roles.Super);
                     else
                         ActivityLog.submit(sqlConnection, id, "Update: " + log);
                 }
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         #endregion DATABASE METHODS

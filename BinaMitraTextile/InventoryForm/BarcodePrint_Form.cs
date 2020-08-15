@@ -149,7 +149,7 @@ namespace BinaMitraTextile.InventoryForm
                 {
                     if(_currentReprintIdx < _barcodeForReprint.Rows.Count)
                     {
-                        showBarcode(barcode, _prefix + _barcodeForReprint.Rows[_currentReprintIdx][InventoryItem.COL_BARCODE].ToString());
+                        showBarcode(barcode, _prefix + _barcodeForReprint.Rows[_currentReprintIdx][InventoryItem.COL_DB_BARCODE].ToString());
                         _currentReprintIdx++;
                     }
                     else
@@ -223,7 +223,7 @@ namespace BinaMitraTextile.InventoryForm
         private void setStartHexToCurrentReprintBarcode()
         {
             if (_currentReprintIdx < _barcodeForReprint.Rows.Count)
-                txtStartHex.Text = Settings.itemBarcodeMandatoryPrefix + _barcodeForReprint.Rows[_currentReprintIdx][InventoryItem.COL_BARCODE].ToString();
+                txtStartHex.Text = Settings.itemBarcodeMandatoryPrefix + _barcodeForReprint.Rows[_currentReprintIdx][InventoryItem.COL_DB_BARCODE].ToString();
             else
                 txtStartHex.Text = "";
         }
@@ -346,7 +346,7 @@ namespace BinaMitraTextile.InventoryForm
                 _barcodeForReprint = InventoryItem.getExistingBarcodesForReprinting(null,null);
                 if (_barcodeForReprint.Rows.Count > 0)
                 {
-                    txtStartHex.Text = Settings.itemBarcodeMandatoryPrefix + _barcodeForReprint.Rows[0][InventoryItem.COL_BARCODE].ToString();
+                    txtStartHex.Text = Settings.itemBarcodeMandatoryPrefix + _barcodeForReprint.Rows[0][InventoryItem.COL_DB_BARCODE].ToString();
                 }
                 else
                 {

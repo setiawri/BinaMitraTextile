@@ -85,7 +85,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = description;
                     cmd.Parameters.Add("@" + COL_DB_SELLAMOUNTPERUNIT, SqlDbType.Decimal).Value = sellAmountPerUnit;
                     cmd.Parameters.Add("@" + COL_DB_QTY, SqlDbType.Int).Value = qty;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                     cmd.ExecuteNonQuery();
 
@@ -109,10 +109,10 @@ namespace BinaMitraTextile
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + FILTER_EMPTYTABLE, SqlDbType.Bit).Value = isEmptyTable;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                cmd.Parameters.Add("@" + COL_DB_GORDENORDERID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(gordenOrderID);
-                cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = Tools.wrapNullable(description);
-                cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(id);
+                cmd.Parameters.Add("@" + COL_DB_GORDENORDERID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(gordenOrderID);
+                cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = Util.wrapNullable(description);
+                cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                 adapter.SelectCommand = cmd;
                 adapter.Fill(datatable);
@@ -138,7 +138,7 @@ namespace BinaMitraTextile
                     cmd.Parameters.Add("@" + COL_DB_DESCRIPTION, SqlDbType.VarChar).Value = description;
                     cmd.Parameters.Add("@" + COL_DB_SELLAMOUNTPERUNIT, SqlDbType.Decimal).Value = sellAmountPerUnit;
                     cmd.Parameters.Add("@" + COL_DB_QTY, SqlDbType.Int).Value = qty;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
+                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Util.wrapNullable(notes);
 
                     cmd.ExecuteNonQuery();
 

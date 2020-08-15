@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
 using LIBUtil;
@@ -124,46 +119,51 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public string submitNew()
+        public Guid? submitNew()
         {
-            try
+            //submit new sale record
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, true, false, false, false,
+                "salereturn_new",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, time_stamp),
+                new SqlQueryParameter(COL_DB_Users_Id, SqlDbType.UniqueIdentifier, user_id),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                //submit new sale record
-                using (SqlCommand cmd = new SqlCommand("salereturn_new", DBConnection.ActiveSqlConnection))
+                ActivityLog.submit(id, "Added");
+                barcode = Tools.getHex(result.ValueInt, Settings.saleBarcodeLength);
+            }
+
+            //mark sale items as returned
+            foreach (DataRow row in saleReturnItems.Rows)
+            {
+                result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "saleitem_return",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable<Guid>(row, SaleItem.COL_ID)),
+                    new SqlQueryParameter("return_id", SqlDbType.UniqueIdentifier, id)
+                );
+
+                if (!result.IsSuccessful)
+                    return null;
+                else
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
-                    cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = user_id;
-                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-                    SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Int);
-                    return_value.Direction = ParameterDirection.Output;
-
-                    cmd.ExecuteNonQuery();
-                    barcode = Tools.getHex(Convert.ToInt32(return_value.Value), Settings.saleBarcodeLength);
-
-                    ActivityLog.submit(id, "Added");
-                }
-
-                //mark sale items as returned
-                foreach (DataRow row in saleReturnItems.Rows)
-                {
-                    using (SqlCommand cmd = new SqlCommand("saleitem_return", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = (Guid)row[SaleItem.COL_ID];
-                        cmd.Parameters.Add("@return_id", SqlDbType.UniqueIdentifier).Value = id;
-
-                        cmd.ExecuteNonQuery();
-
-                        ActivityLog.submit((Guid)row[SaleItem.COL_ID], "Sale Item returned in sale return ID: " + id.ToString());
-                        ActivityLog.submit((Guid)row[SaleItem.COL_INVENTORY_ITEM_ID], "Returned in sale return ID: " + barcode);
-                    }
+                    ActivityLog.submit((Guid)row[SaleItem.COL_ID], "Sale Item returned in sale return ID: " + id.ToString());
+                    ActivityLog.submit((Guid)row[SaleItem.COL_INVENTORY_ITEM_ID], "Returned in sale return ID: " + barcode);
                 }
             }
-            catch (Exception ex) { return ex.Message; }
 
-            return string.Empty;
+            return id;
         }
 
         public static DataTable get_by_Kontrabons_Id(Guid Kontrabons_Id)
@@ -193,54 +193,43 @@ namespace BinaMitraTextile
         public static DataTable get(Guid? Id, DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? saleReturnID, 
             bool onlyWithCommission, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Customers_Id, bool showOnlyReminder, Guid? Kontrabons_Id)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("SaleReturns_get", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Id);
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = (object)dateStart ?? DBNull.Value;
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = (object)dateEnd ?? DBNull.Value;
-                cmd.Parameters.Add("@inventory_item_id", SqlDbType.UniqueIdentifier).Value = (object)inventoryID ?? DBNull.Value;
-                cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = (object)customerID ?? DBNull.Value;
-                cmd.Parameters.Add("@salereturn_id", SqlDbType.UniqueIdentifier).Value = (object)saleReturnID ?? DBNull.Value;
-                cmd.Parameters.Add("@" + COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(FakturPajaks_Id);
-                cmd.Parameters.Add("@" + COL_DB_Kontrabons_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Kontrabons_Id);
-                cmd.Parameters.Add("@" + FILTER_BrowsingForFakturPajak_Customers_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(BrowsingForFakturPajak_Customers_Id);
-                cmd.Parameters.Add("@" + FILTER_ShowOnlyReminder, SqlDbType.Bit).Value = showOnlyReminder;
-                if (onlyWithCommission) cmd.Parameters.Add("@" + SaleReturn.COL_SALESMANID, SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+            Guid? salesUserId = null;
+            if (onlyWithCommission)
+                salesUserId = GlobalData.UserAccount.id;
 
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-
-                //Tools.addColumn<string>(dataTable, COL_HEXBARCODE, "");
-                //foreach (DataRow dr in dataTable.Rows)
-                //{
-                //    dr[COL_HEXBARCODE] = Tools.getHex((int)dr[COL_BARCODE], Settings.saleBarcodeLength);
-                //}
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "SaleReturns_get",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter("date_start", SqlDbType.DateTime, Util.wrapNullable(dateStart)),
+                new SqlQueryParameter("date_end", SqlDbType.DateTime, Util.wrapNullable(dateEnd)),
+                new SqlQueryParameter("inventory_item_id", SqlDbType.UniqueIdentifier, Util.wrapNullable(inventoryID)),
+                new SqlQueryParameter(COL_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(customerID)),
+                new SqlQueryParameter("salereturn_id", SqlDbType.UniqueIdentifier, Util.wrapNullable(saleReturnID)),
+                new SqlQueryParameter(COL_DB_FakturPajaks_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(FakturPajaks_Id)),
+                new SqlQueryParameter(COL_DB_Kontrabons_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Kontrabons_Id)),
+                new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Customers_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Customers_Id)),
+                new SqlQueryParameter(FILTER_ShowOnlyReminder, SqlDbType.Bit, showOnlyReminder),
+                new SqlQueryParameter(COL_SALESMANID, SqlDbType.UniqueIdentifier, Util.wrapNullable(salesUserId))
+            );
+            return result.Datatable;
         }
 
-        public static string updateCheckedStatus(Guid id, bool value)
+        public static void updateCheckedStatus(Guid id, bool value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("SaleReturns_update_Checked", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_Checked, SqlDbType.Bit).Value = value;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "SaleReturns_update_Checked",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_Checked, SqlDbType.Bit, value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Checked status changed to: " + value.ToString().ToLower());
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update Checked Status to " + value);
         }
 
         public static void update_FakturPajaks_Id(Guid Id, Guid? FakturPajaks_Id)

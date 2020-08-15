@@ -21,7 +21,10 @@ namespace BinaMitraTextile
         public const string COL_DB_NAME = "city_name";
         public const string COL_DB_STATEID = "state_id";
         public const string COL_DB_ACTIVE = "active";
+
         public const string COL_STATENAME = "state_name";
+
+        public const string FILTER_IncludeInactive = "include_inactive";
 
         //class object variables
         public Guid ID;
@@ -60,20 +63,16 @@ namespace BinaMitraTextile
 
         public static DataTable getByFilter(bool includeInactive, string nameFilter, Guid? stateID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("city_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Tools.wrapNullable(nameFilter);
-                cmd.Parameters.Add("@" + COL_DB_STATEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(stateID);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "city_get_byFilter",
+                new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(nameFilter)),
+                new SqlQueryParameter(COL_DB_STATEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(stateID))
+            );
+            return result.Datatable;
         }
 
         public static void updateActiveStatus(Guid id, Boolean activeStatus)
@@ -83,73 +82,64 @@ namespace BinaMitraTextile
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("city_isNameExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "city_isNameExist",
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id))
+                );
+            return result.ValueBoolean;
         }
 
-        public static void add(string name, Guid stateID)
+        public static Guid? add(string name, Guid stateID)
         {
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "city_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                new SqlQueryParameter(COL_DB_STATEID, SqlDbType.UniqueIdentifier, stateID)
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("city_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                    cmd.Parameters.Add("@" + COL_DB_STATEID, SqlDbType.UniqueIdentifier).Value = stateID;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Item created");
-                }
-                Tools.hasMessage("Item created");
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static void update(Guid id, string name, Guid stateID)
         {
-            try
+            City objOld = new City(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
+            if (objOld.StateID != stateID) logDescription = Tools.append(logDescription, String.Format("State: '{0}' to '{1}'", objOld.StateName, new State(stateID).Name), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                City objOld = new City(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "city_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                    new SqlQueryParameter(COL_DB_STATEID, SqlDbType.UniqueIdentifier, stateID)
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
-                if (objOld.StateID != stateID) logDescription = Tools.append(logDescription, String.Format("State: '{0}' to '{1}'", objOld.StateName, new State(stateID).Name), ",");
-
-                if (string.IsNullOrEmpty(logDescription))
-                {
-                    Tools.showError("No changes to record");
-                }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("city_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@city_name", SqlDbType.VarChar).Value = name;
-                        cmd.Parameters.Add("@state_id", SqlDbType.UniqueIdentifier).Value = stateID;
-
-                        cmd.ExecuteNonQuery();
-
-                        ActivityLog.submit(id, "Update: " + logDescription);
-                    }
-                    Tools.hasMessage("Item updated");
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         #endregion DATABASE METHODS

@@ -16,7 +16,6 @@ namespace BinaMitraTextile
 
         public static string TemporarySelectedGridviewValue;
 
-        private static bool QuitApplication { get; set; } = false;
         public static DataTable TemporarySaleTables { get; set; } = new DataTable();
         public static UserAccount UserAccount { get; set; }
     }

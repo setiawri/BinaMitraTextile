@@ -50,6 +50,8 @@ namespace BinaMitraTextile.Sales
 
             _gridSelectCheckboxHeader = Tools.addHeaderCheckbox(grid, col_grid_select, "_gridSelectCheckboxHeader", selectGridCheckboxHeader_CheckedChanged);
             _gridSummarySelectCheckboxHeader = Tools.addHeaderCheckbox(gridSummary, col_gridSummary_select, "_gridSummarySelectCheckboxHeader", selectGridSummaryCheckboxHeader_CheckedChanged);
+
+            iddl_Customers.focus();
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -199,7 +201,7 @@ namespace BinaMitraTextile.Sales
                     else
                         Customers_Id = (Guid?)iddl_Customers.SelectedValue;
 
-                    Sale obj = new Sale(Customers_Id, Vendors_Id, (Guid?)cbTransports.SelectedValue, in_ShippingCost.ValueDecimal, rbVendor.Checked, Tools.wrapDBNullValue<string>(txtNotes.Text));
+                    Sale obj = new Sale(Customers_Id, Vendors_Id, (Guid?)cbTransports.SelectedValue, in_ShippingCost.ValueDecimal, rbVendor.Checked, Util.wrapNullable<string>(txtNotes.Text));
                     var form = new Sales.Invoice_Form(obj, (DataTable)grid.DataSource, true);
                     Tools.displayForm(form);
                     if(form.isGenerated == true)
@@ -225,7 +227,7 @@ namespace BinaMitraTextile.Sales
                 else
                     Customers_Id = (Guid?)iddl_Customers.SelectedValue;
                 DBUtil.sanitize(txtNotes);
-                if(!Tools.hasMessage(Sale.update((Guid)_saleID, Customers_Id, Vendors_Id, (DataTable)grid.DataSource, (Guid?)cbTransports.SelectedValue, in_ShippingCost.ValueDecimal, txtNotes.Text)))
+                if(Sale.update((Guid)_saleID, Customers_Id, Vendors_Id, (DataTable)grid.DataSource, (Guid?)cbTransports.SelectedValue, in_ShippingCost.ValueDecimal, txtNotes.Text))
                     this.Close();
             }
         }
@@ -274,7 +276,7 @@ namespace BinaMitraTextile.Sales
             {
                 bool isChecked = LIBUtil.Util.clickDataGridViewCheckbox(sender, e);
                 DataTable dtItems = (DataTable)grid.DataSource;
-                LIBUtil.Util.setDataTablePrimaryKey(dtItems, InventoryItem.COL_ID);
+                LIBUtil.Util.setDataTablePrimaryKey(dtItems, InventoryItem.COL_DB_ID);
                 DataRow dr = dtItems.Rows.Find(LIBUtil.Util.getSelectedRowValue(grid, col_grid_id));
                 dr[InventoryItem.COL_SALE_SELECTED] = isChecked;
                 dr.AcceptChanges();
@@ -295,8 +297,8 @@ namespace BinaMitraTextile.Sales
             {
                 DataTable dt = (DataTable)grid.DataSource;
 
-                Guid[] id_array = dt.AsEnumerable().Select(s => s.Field<Guid>(InventoryItem.COL_ID)).ToArray<Guid>();
-                decimal?[] adjustment_array = dt.AsEnumerable().Select(s => Tools.wrapDBNullValue<decimal?>(s.Field<decimal?>(InventoryItem.COL_SALE_ADJUSTMENT))).ToArray<decimal?>();
+                Guid[] id_array = dt.AsEnumerable().Select(s => s.Field<Guid>(InventoryItem.COL_DB_ID)).ToArray<Guid>();
+                decimal?[] adjustment_array = dt.AsEnumerable().Select(s => Util.wrapNullable<decimal?>(s.Field<decimal?>(InventoryItem.COL_SALE_ADJUSTMENT))).ToArray<decimal?>();
                 bool[] selection_array = dt.AsEnumerable().Select(s => s.Field<bool>(InventoryItem.COL_SALE_SELECTED)).ToArray<bool>();
                 dt = InventoryItem.getRowsForSale(id_array, DBUtil.parseData<Guid?>(iddl_Customers.SelectedValue));                
 
@@ -304,7 +306,7 @@ namespace BinaMitraTextile.Sales
                 int idx = -1;
                 foreach (DataRow dr in dt.Rows)
                 {
-                    idx = Array.IndexOf(id_array, (Guid)dr[InventoryItem.COL_ID]);
+                    idx = Array.IndexOf(id_array, (Guid)dr[InventoryItem.COL_DB_ID]);
                     dr[InventoryItem.COL_SALE_ADJUSTMENT] = adjustment_array[idx];
                     dr[InventoryItem.COL_SALE_SELECTED] = selection_array[idx];
                 }
@@ -346,7 +348,7 @@ namespace BinaMitraTextile.Sales
                 DataTable dtItems = (DataTable)grid.DataSource;
                 foreach (DataRow dr in dtItems.Rows)
                 {
-                    if(dr[InventoryItem.COL_INVENTORY_CODE].ToString() == inventoryCode)
+                    if(dr[InventoryItem.COL_DB_INVENTORY_CODE].ToString() == inventoryCode)
                         dr[InventoryItem.COL_SALE_SELECTED] = isChecked;
                 }
 
@@ -391,18 +393,18 @@ namespace BinaMitraTextile.Sales
                 if (grid.DataSource == null)
                 {
                     dt = InventoryItem.getRowForSale(barcodeWithoutPrefix, DBUtil.parseData<Guid?>(iddl_Customers.SelectedValue));
-                    Tools.displayForm(new SharedForms.Verify_Form(dt.Rows[0][InventoryItem.COL_INVENTORY_CODE].ToString(), dt.Rows[0][InventoryItem.COL_LENGTH].ToString()));
+                    Tools.displayForm(new SharedForms.Verify_Form(dt.Rows[0][InventoryItem.COL_DB_INVENTORY_CODE].ToString(), dt.Rows[0][InventoryItem.COL_DB_LENGTH].ToString()));
                 }
                 else
                 {
-                    dt = Tools.setDataTablePrimaryKey((DataTable)grid.DataSource, InventoryItem.COL_ID);
+                    dt = Tools.setDataTablePrimaryKey((DataTable)grid.DataSource, InventoryItem.COL_DB_ID);
                     foreach (DataRow dr in InventoryItem.getRowForSale(barcodeWithoutPrefix, DBUtil.parseData<Guid?>(iddl_Customers.SelectedValue)).Rows)
                     {
-                        if (dt.Rows.Contains(dr[InventoryItem.COL_ID]))
-                            Tools.hasMessage(dr[InventoryItem.COL_BARCODE].ToString() + " is already in the list");
+                        if (dt.Rows.Contains(dr[InventoryItem.COL_DB_ID]))
+                            Tools.hasMessage(dr[InventoryItem.COL_DB_BARCODE].ToString() + " is already in the list");
                         else
                         {
-                            Tools.displayForm(new SharedForms.Verify_Form(dr[InventoryItem.COL_INVENTORY_CODE].ToString(), dr[InventoryItem.COL_LENGTH].ToString()));
+                            Tools.displayForm(new SharedForms.Verify_Form(dr[InventoryItem.COL_DB_INVENTORY_CODE].ToString(), dr[InventoryItem.COL_DB_LENGTH].ToString()));
                             dt.Rows.Add(dr.ItemArray);
                         }
                     }
@@ -536,7 +538,7 @@ namespace BinaMitraTextile.Sales
                 
                 //update subtotals
                 dr[InventoryItem.COL_SALE_SUBTOTAL] = String.Format("{0}", 
-                    Convert.ToDecimal(dr[InventoryItem.COL_LENGTH]) 
+                    Convert.ToDecimal(dr[InventoryItem.COL_DB_LENGTH]) 
                     * (Tools.zeroNonNumericString(dr[InventoryItem.COL_SALE_SELLPRICE].ToString())
                     + Tools.zeroNonNumericString(dr[InventoryItem.COL_SALE_ADJUSTMENT])));
             }
@@ -545,7 +547,7 @@ namespace BinaMitraTextile.Sales
             Inventory.setAmount(lblTotalAmount, dt.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_SUBTOTAL), "").ToString());
 
             //update total counts
-            Inventory.setCount(lblTotalCounts, dt.Rows.Count.ToString(), dt.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), "").ToString());
+            Inventory.setCount(lblTotalCounts, dt.Rows.Count.ToString(), dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
 
             //update selected counts
             recalculateSelectedCounts(dt);
@@ -569,8 +571,8 @@ namespace BinaMitraTextile.Sales
         private void recalculateSelectedCounts(DataTable dt)
         {
             Inventory.setCountAndAmount(lblSelectedTotal,
-                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_LENGTH), String.Format("{0} = 1", InventoryItem.COL_SALE_SELECTED)).ToString(),
-                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), String.Format("{0} = 1", InventoryItem.COL_SALE_SELECTED)).ToString(),
+                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} = 1", InventoryItem.COL_SALE_SELECTED)).ToString(),
+                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} = 1", InventoryItem.COL_SALE_SELECTED)).ToString(),
                 dt.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_SUBTOTAL), String.Format("{0} = 1", InventoryItem.COL_SALE_SELECTED)).ToString());            
         }
 
@@ -772,7 +774,7 @@ namespace BinaMitraTextile.Sales
                     if (_formMode == FormMode.Update)
                         InventoryItemIdList.Add((Guid)dr[SaleItem.COL_INVENTORY_ITEM_ID]);
                     else
-                        InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_ID]);
+                        InventoryItemIdList.Add((Guid)dr[InventoryItem.COL_DB_ID]);
 
             if (InventoryItemIdList.Count == 0)
                 LIBUtil.Util.displayMessageBoxError("Select item to update");
@@ -801,7 +803,7 @@ namespace BinaMitraTextile.Sales
                             DataRow dr = dt.Rows[i];
                             if ((bool)dr[InventoryItem.COL_SALE_SELECTED])
                             {
-                                barcodeList.Add(dr[InventoryItem.COL_BARCODE].ToString());
+                                barcodeList.Add(dr[InventoryItem.COL_DB_BARCODE].ToString());
                                 dr.Delete();
                             }
                         }

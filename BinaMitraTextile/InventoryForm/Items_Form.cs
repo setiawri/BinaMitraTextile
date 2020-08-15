@@ -51,11 +51,11 @@ namespace BinaMitraTextile.InventoryForm
             disableForm();
 
             grid.AutoGenerateColumns = false;
-            col_grid_id.DataPropertyName = InventoryItem.COL_ID;
+            col_grid_id.DataPropertyName = InventoryItem.COL_DB_ID;
             col_grid_lastOpname.DataPropertyName = InventoryItem.COL_LASTOPNAME;
             col_grid_ItemLocation.DataPropertyName = InventoryItemCheck.COL_DB_ItemLocation;
             col_grid_colorname.DataPropertyName = InventoryItem.COL_INVENTORYITEMCOLORNAME;
-            col_grid_notes.DataPropertyName = InventoryItem.COL_NOTES;
+            col_grid_notes.DataPropertyName = InventoryItem.COL_DB_NOTES;
             col_grid_SaleOrderItemDescription.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
             populateGrid();
 
@@ -77,11 +77,11 @@ namespace BinaMitraTextile.InventoryForm
             DataTable dt = InventoryItem.getItems(_inventory.id);
             grid.DataSource = dt;
             Inventory.setCount(lblCount,
-                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_LENGTH), String.Format("{0} IS NULL", InventoryItem.COL_IS_SOLD)).ToString(),
-                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), String.Format("{0} IS NULL", InventoryItem.COL_IS_SOLD)).ToString());
+                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL", InventoryItem.COL_IS_SOLD)).ToString(),
+                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL", InventoryItem.COL_IS_SOLD)).ToString());
             Inventory.setCount(lblReceived,
-                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_LENGTH),"").ToString(),
-                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), "").ToString());
+                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH),"").ToString(),
+                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
         }
 
         private void grid_SelectionChanged(object sender, EventArgs e)
@@ -176,9 +176,8 @@ namespace BinaMitraTextile.InventoryForm
                         if (isInputFieldsValid(false))
                         {
                             InventoryItem inventoryItem = new InventoryItem(_id, _inventory.id, Convert.ToDecimal(txtLength.Text), lblBarcode.Text, (Guid?)cbColors.SelectedValue, txtNotes.Text.Trim());
-                            if (!Tools.hasMessage(inventoryItem.submitNew()))
+                            if (inventoryItem.submitNew() != null)
                             {
-                                Tools.hasMessage("Item has been added");
                                 populateGrid();
                                 disableForm();
                             }
@@ -190,7 +189,7 @@ namespace BinaMitraTextile.InventoryForm
                         if (isInputFieldsValid(true))
                         {
                             InventoryItem inventoryItem = new InventoryItem(_id, _inventory.id, Convert.ToDecimal(txtLength.Text), lblBarcode.Text, (Guid?)cbColors.SelectedValue, txtNotes.Text.Trim());
-                            if (!Tools.hasMessage(inventoryItem.update()))
+                            if (inventoryItem.update())
                             {
                                 populateGrid();
                                 disableForm();

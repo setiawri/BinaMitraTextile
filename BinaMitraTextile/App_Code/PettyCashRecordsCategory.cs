@@ -25,7 +25,7 @@ namespace BinaMitraTextile
         public const string COL_DB_Notes = "Notes";
         public const string COL_DB_Active = "Active";
 
-        public const string COL_FILTER_Include_Inactive = "Include_Inactive";
+        public const string FILTER_IncludeInactive = "Include_Inactive";
 
         #endregion PUBLIC VARIABLES
         /*******************************************************************************************************/
@@ -47,60 +47,54 @@ namespace BinaMitraTextile
         
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_isNameExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "PettyCashRecordsCategories_isNameExist",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, name)
+                );
+            return result.ValueBoolean;
         }
 
-        public static void add(string name, string notes)
+        public static Guid? add(string name, string notes)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "CustomerTerms_add",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(name)),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = Tools.wrapNullable(name);
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "New item added");
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static DataRow get(Guid id) { return Tools.getFirstRow(get(true, id, null)); }
 
         public static DataTable get(bool includeInactive, Guid? id, string name)
         {
-            DataTable datatable = new DataTable();
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_get", DBConnection.ActiveSqlConnection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_FILTER_Include_Inactive, SqlDbType.Bit).Value = includeInactive;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                    cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = Tools.wrapNullable(name);
-
-                    adapter.SelectCommand = cmd;
-                    adapter.Fill(datatable);
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
-
-            return datatable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "PettyCashRecordsCategories_get",
+                new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(name))
+            );
+            return result.Datatable;
         }
 
         public static void updateActiveStatus(Guid id, Boolean activeStatus)
@@ -115,26 +109,26 @@ namespace BinaMitraTextile
 
         public static void update(Guid id, string name, string notes)
         {
-            try
+            PettyCashRecordsCategory objOld = new PettyCashRecordsCategory(id);
+            string log = "";
+            log = ActivityLog.appendChange(log, objOld.Name, name, "Name: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+
+            if (!string.IsNullOrEmpty(log))
             {
-                PettyCashRecordsCategory objOld = new PettyCashRecordsCategory(id);
-                string log = "";
-                log = ActivityLog.appendChange(log, objOld.Name, name, "Name: '{0}' to '{1}'");
-                log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "PettyCashRecordsCategories_update",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(name)),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                using (SqlCommand cmd = new SqlCommand("PettyCashRecordsCategories_update", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_Name, SqlDbType.VarChar).Value = Tools.wrapNullable(name);
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
+                if (result.IsSuccessful)
                     ActivityLog.submit(id, "Update: " + log);
-                }
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         #endregion DATABASE METHODS

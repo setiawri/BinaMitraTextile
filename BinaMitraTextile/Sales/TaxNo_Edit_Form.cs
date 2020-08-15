@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using LIBUtil;
 
 namespace BinaMitraTextile.Sales
 {
@@ -39,7 +33,7 @@ namespace BinaMitraTextile.Sales
         {
             if(isInputValid())
             {
-                Sale.updateTaxNo(_id, Tools.wrapDBNullValue<string>(txtTaxNo.Text));
+                Sale.updateTaxNo(_id, Util.wrapNullable<string>(txtTaxNo.Text));
                 this.Close();
             }
         }

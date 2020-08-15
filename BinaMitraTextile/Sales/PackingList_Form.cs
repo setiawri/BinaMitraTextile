@@ -76,7 +76,7 @@ namespace BinaMitraTextile.Sales
             _totalPageCount = (int)Math.Ceiling((decimal)_data.Rows.Count / MAX_ITEMS_PER_PAGE);
             populateGrids();
 
-            Inventory.setCount(lblTotalCounts, _data.Rows.Count.ToString(), _data.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), "").ToString());
+            Inventory.setCount(lblTotalCounts, _data.Rows.Count.ToString(), _data.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
             lblTotalCounts.Text = "Total: " + lblTotalCounts.Text;
         }
 

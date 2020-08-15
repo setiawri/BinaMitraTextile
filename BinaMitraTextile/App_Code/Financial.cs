@@ -38,19 +38,18 @@ namespace BinaMitraTextile
 
         public static FinancialOverview getOverview()
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("financial_get_overview", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "financial_get_overview"
+            );            
+            DataRow row = Util.getFirstRow(result.Datatable);
+
+            return new FinancialOverview()
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return new FinancialOverview() {
-                InventoryBuyValue = Convert.ToDecimal(dataTable.Rows[0][COL_INVENTORYBUYVALUE]),
-                ReceivableAmount = Convert.ToDecimal(dataTable.Rows[0][COL_RECEIVABLEAMOUNT])
+                InventoryBuyValue = Util.wrapNullable<decimal>(row, COL_INVENTORYBUYVALUE),
+                ReceivableAmount = Util.wrapNullable<decimal>(row, COL_RECEIVABLEAMOUNT)
             };
         }
 

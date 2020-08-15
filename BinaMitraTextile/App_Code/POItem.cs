@@ -149,85 +149,56 @@ namespace BinaMitraTextile
         {
             foreach (POItem item in items)
             {
-                using (SqlCommand cmd = new SqlCommand("poitem_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = item.ID;
-                    cmd.Parameters.Add("@po_id", SqlDbType.UniqueIdentifier).Value = item.POID;
-                    cmd.Parameters.Add("@line_no", SqlDbType.TinyInt).Value = item.LineNo;
-                    cmd.Parameters.Add("@product_description", SqlDbType.VarChar).Value = item.ProductDescription;
-                    cmd.Parameters.Add("@qty", SqlDbType.Decimal).Value = item.Qty;
-                    cmd.Parameters.Add("@unit_name", SqlDbType.VarChar).Value = item.UnitName;
-                    cmd.Parameters.Add("@price_per_unit", SqlDbType.Decimal).Value = item.PricePerUnit;
-                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = (object)item.Notes ?? DBNull.Value;
-                    cmd.Parameters.Add("@" + COL_DB_REFERENCEDINVENTORYID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(item.ReferencedInventoryID);
-                    cmd.Parameters.Add("@" + COL_DB_STATUSENUMID, SqlDbType.TinyInt).Value = POItemStatus.New;
-
-                    cmd.ExecuteNonQuery();
-                }
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "poitem_new",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, item.ID),
+                    new SqlQueryParameter(COL_DB_POID, SqlDbType.UniqueIdentifier, item.POID),
+                    new SqlQueryParameter(COL_DB_LINENO, SqlDbType.TinyInt, item.LineNo),
+                    new SqlQueryParameter(COL_DB_PRODUCTDESCRIPTION, SqlDbType.VarChar, item.ProductDescription),
+                    new SqlQueryParameter(COL_DB_QTY, SqlDbType.Decimal, item.Qty),
+                    new SqlQueryParameter(COL_DB_UNITNAME, SqlDbType.VarChar, item.UnitName),
+                    new SqlQueryParameter(COL_DB_PRICEPERUNIT, SqlDbType.Decimal, item.PricePerUnit),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(item.Notes)),
+                    new SqlQueryParameter(COL_DB_REFERENCEDINVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(item.ReferencedInventoryID)),
+                    new SqlQueryParameter(COL_DB_STATUSENUMID, SqlDbType.TinyInt, POItemStatus.New)
+                );
             }
         }
 
         public static DataTable getItems(Guid POID)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("poitem_get_by_poid", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@po_id", SqlDbType.UniqueIdentifier).Value = POID;
-                cmd.Parameters.Add("@status_completed", SqlDbType.TinyInt).Value = POItemStatus.Completed;
-                cmd.Parameters.Add("@status_cancelled", SqlDbType.TinyInt).Value = POItemStatus.Cancelled;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            Tools.parseEnum<POItemStatus>(dataTable, COL_STATUSNAME, COL_DB_STATUSENUMID);
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "poitem_get_by_poid",
+                    new SqlQueryParameter(COL_DB_POID, SqlDbType.UniqueIdentifier, POID),
+                    new SqlQueryParameter("status_completed", SqlDbType.TinyInt, POItemStatus.Completed),
+                    new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, POItemStatus.Cancelled)
+            );
+            return Tools.parseEnum<POItemStatus>(result.Datatable, COL_STATUSNAME, COL_DB_STATUSENUMID);
         }
 
         public static DataTable getIncompleteItems()
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("poitem_get_incomplete", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@status_completed", SqlDbType.TinyInt).Value = POItemStatus.Completed;
-                cmd.Parameters.Add("@status_cancelled", SqlDbType.TinyInt).Value = POItemStatus.Cancelled;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            Tools.parseEnum<POItemStatus>(dataTable, COL_STATUSNAME, COL_DB_STATUSENUMID);
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "poitem_get_incomplete",
+                new SqlQueryParameter("status_completed", SqlDbType.TinyInt, POItemStatus.Completed),
+                new SqlQueryParameter("status_cancelled", SqlDbType.TinyInt, POItemStatus.Cancelled)
+            );
+            return Tools.parseEnum<POItemStatus>(result.Datatable, COL_STATUSNAME, COL_DB_STATUSENUMID);
         }
 
         public static DataTable getRow(Guid ID)
         {
             return DBUtil.getRows("poitem_get_byID", ID);
         }
-
-        //public static DataTable getAll(DateTime? dateStart)
-        //{
-        //    DataTable dataTable = new DataTable();
-        //    using (SqlConnection conn = new SqlConnection(DBUtil.connectionString))
-        //    using (SqlCommand cmd = new SqlCommand("sale_getall", conn))
-        //    using (SqlDataAdapter adapter = new SqlDataAdapter())
-        //    {
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = (object)dateStart ?? DBNull.Value;
-
-        //        adapter.SelectCommand = cmd;
-        //        adapter.Fill(dataTable);
-        //    }
-
-        //    return dataTable;
-        //}
 
         public static bool updateSaleOrderItem(Guid id, Guid? SaleOrderItems_Id, string description)
         {
@@ -258,7 +229,7 @@ namespace BinaMitraTextile
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "poitem_get_by_SaleOrderItems_Id",
-                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(saleOrderItems_Id))
                 );
             return result.Datatable;
         }

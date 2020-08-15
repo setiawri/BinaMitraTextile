@@ -106,13 +106,13 @@ namespace BinaMitraTextile.InventoryForm
 
         private void populateGridDetail()
         {
-            col_gridSummary_inventory_code.DataPropertyName = InventoryItem.COL_INVENTORY_CODE;
+            col_gridSummary_inventory_code.DataPropertyName = InventoryItem.COL_DB_INVENTORY_CODE;
             DataView dvwItems = InventoryItemCheck.getAll(Tools.getDateTime(dtpStartDate1, false), Tools.getDateTime(dtpEndDate1, true), chkAllUsers.Checked, chkIgnoreSold.Checked).DefaultView;
             gridDetail.DataSource = filterData(dvwItems);
             DataTable dt = dvwItems.ToTable();
-            Inventory.setCount(lblTotalCounts, dt.Rows.Count.ToString(), dt.Compute(String.Format("SUM({0})", InventoryItem.COL_LENGTH), "").ToString());
+            Inventory.setCount(lblTotalCounts, dt.Rows.Count.ToString(), dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
             if (!string.IsNullOrEmpty(lblTotalCounts.Text))
-                lblTotalCounts.Text += string.Format(" ({0:N0} manual)", dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_LENGTH), InventoryItemCheck.COL_DB_MANUALINPUT + "=1"));
+                lblTotalCounts.Text += string.Format(" ({0:N0} manual)", dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), InventoryItemCheck.COL_DB_MANUALINPUT + "=1"));
 
             //populateGridSummary();
         }

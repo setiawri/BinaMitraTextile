@@ -285,7 +285,7 @@ namespace BinaMitraTextile.Admin
 
         protected override void executeAction1()
         {
-            Tools.hasMessage(InventoryStockLevel.delete(selectedRowID()));
+            InventoryStockLevel.delete(selectedRowID());
             base.executeAction1();
         }
 
@@ -307,7 +307,7 @@ namespace BinaMitraTextile.Admin
             foreach (DataGridViewRow row in gridview.Rows)
             {
                 qty = (int)Tools.zeroNonNumericString(row.Cells[col_grid_newQty.Name].Value);
-                id = Tools.wrapDBNullValue<Guid>(row.Cells[col_grid_lastOrderInventoryID.Name].Value);
+                id = Util.wrapNullable<Guid>(row.Cells[col_grid_lastOrderInventoryID.Name].Value);
                 if (id != emptyGuid && qty > 0)
                     items.Add(new POItemToOrder() { InventoryID = id, Qty = qty, PONotes = DBUtil.parseData<string>(row.Cells[InventoryStockLevel.COL_DB_PONOTES].Value) });
             }

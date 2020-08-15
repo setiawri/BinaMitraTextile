@@ -16,6 +16,8 @@ namespace BinaMitraTextile
         public const string COL_DB_NOTES = "notes";
         public const string COL_DB_usesFakturPajak = "usesFakturPajak";
 
+        public const string FILTER_IncludeInactive = "include_inactive";
+
         public Guid ID;
         public string Name = null;
         public string Address = "";
@@ -58,100 +60,89 @@ namespace BinaMitraTextile
             }
         }
 
-        public static void add(string name, string address, string phone1, string phone2, string notes)
+        public static Guid? add(string name, string address, string phone1, string phone2, string notes)
         {
-            try 
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "vendor_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                new SqlQueryParameter(COL_DB_ADDRESS, SqlDbType.VarChar, address),
+                new SqlQueryParameter(COL_DB_PHONE1, SqlDbType.VarChar, phone1),
+                new SqlQueryParameter(COL_DB_PHONE2, SqlDbType.VarChar, phone2),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("vendor_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                    cmd.Parameters.Add("@" + COL_DB_ADDRESS, SqlDbType.VarChar).Value = address;
-                    cmd.Parameters.Add("@" + COL_DB_PHONE1, SqlDbType.VarChar).Value = phone1;
-                    cmd.Parameters.Add("@" + COL_DB_PHONE2, SqlDbType.VarChar).Value = phone2;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Item created");
-                }
-                Tools.hasMessage("Item created");
-            }
-            catch (Exception ex) { Tools.showError(ex.Message); }
-        }
-
-        public static bool isNameExist(string name, Guid? id)
-        {
-            using (SqlCommand cmd = new SqlCommand("vendor_isNameExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-                
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
         }
 
-        public static DataTable get(Guid? Id, bool includeInactive, string nameFilter)
+        public static bool isNameExist(string Name, Guid? id)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("vendor_get", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Id);
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Util.wrapNullable(nameFilter);
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "vendor_isNameExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Name)
+                );
+            return result.ValueBoolean;
+        }
 
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+        public static DataTable get(Guid? Id, bool includeInactive, string name)
+        {
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "vendor_get",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
+                new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(name))
+            );
+            return result.Datatable;
         }
         
         public static void update(Guid id, string name, string address, string phone1, string phone2, string notes)
         {
-            try
+            Vendor objOld = new Vendor(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
+            if (objOld.Address != address) logDescription = Tools.append(logDescription, String.Format("Address: '{0}' to '{1}'", objOld.Address, address), ",");
+            if (objOld.Phone1 != phone1) logDescription = Tools.append(logDescription, String.Format("Phone 1: '{0}' to '{1}'", objOld.Phone1, phone1), ",");
+            if (objOld.Phone2 != phone2) logDescription = Tools.append(logDescription, String.Format("Phone 2: '{0}' to '{1}'", objOld.Phone2, phone2), ",");
+            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                Vendor objOld = new Vendor(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "vendor_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                    new SqlQueryParameter(COL_DB_ADDRESS, SqlDbType.VarChar, address),
+                    new SqlQueryParameter(COL_DB_PHONE1, SqlDbType.VarChar, phone1),
+                    new SqlQueryParameter(COL_DB_PHONE2, SqlDbType.VarChar, phone2),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
-                if (objOld.Address != address) logDescription = Tools.append(logDescription, String.Format("Address: '{0}' to '{1}'", objOld.Address, address), ",");
-                if (objOld.Phone1 != phone1) logDescription = Tools.append(logDescription, String.Format("Phone 1: '{0}' to '{1}'", objOld.Phone1, phone1), ",");
-                if (objOld.Phone2 != phone2) logDescription = Tools.append(logDescription, String.Format("Phone 2: '{0}' to '{1}'", objOld.Phone2, phone2), ",");
-                if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
-
-                if (string.IsNullOrEmpty(logDescription))
-                    Tools.showError("No changes to record");
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("vendor_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                        cmd.Parameters.Add("@" + COL_DB_ADDRESS, SqlDbType.VarChar).Value = address;
-                        cmd.Parameters.Add("@" + COL_DB_PHONE1, SqlDbType.VarChar).Value = phone1;
-                        cmd.Parameters.Add("@" + COL_DB_PHONE2, SqlDbType.VarChar).Value = phone2;
-                        cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-
-                        cmd.ExecuteNonQuery();
-
-                        ActivityLog.submit(id, "Update: " + logDescription);
-                    }
-                    Tools.hasMessage("Item updated");
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static void update_UsesFakturPajak(Guid Id, bool Value)
@@ -169,9 +160,9 @@ namespace BinaMitraTextile
                 ActivityLog.submit(Id, String.Format("Uses Faktur Pajak to: {0}", Value));
         }
 
-        public static string updateActiveStatus(Guid id, Boolean activeStatus)
+        public static void updateActiveStatus(Guid id, Boolean activeStatus)
         {
-            return DBUtil.updateActiveStatus("vendor_update_active", id, activeStatus);
+            DBUtil.updateActiveStatus("vendor_update_active", id, activeStatus);
         }
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)

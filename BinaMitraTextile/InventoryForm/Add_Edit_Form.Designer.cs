@@ -88,7 +88,7 @@
             // lblBuyPrice
             // 
             this.lblBuyPrice.AutoSize = true;
-            this.lblBuyPrice.Location = new System.Drawing.Point(47, 322);
+            this.lblBuyPrice.Location = new System.Drawing.Point(47, 328);
             this.lblBuyPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBuyPrice.Name = "lblBuyPrice";
             this.lblBuyPrice.Size = new System.Drawing.Size(52, 13);
@@ -97,7 +97,7 @@
             // 
             // txtBuyPrice
             // 
-            this.txtBuyPrice.Location = new System.Drawing.Point(103, 319);
+            this.txtBuyPrice.Location = new System.Drawing.Point(103, 325);
             this.txtBuyPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuyPrice.Name = "txtBuyPrice";
             this.txtBuyPrice.Size = new System.Drawing.Size(76, 20);
@@ -283,7 +283,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSubmit.Location = new System.Drawing.Point(105, 381);
+            this.btnSubmit.Location = new System.Drawing.Point(105, 389);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(77, 19);
@@ -295,7 +295,7 @@
             // btnReset
             // 
             this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReset.Location = new System.Drawing.Point(184, 381);
+            this.btnReset.Location = new System.Drawing.Point(184, 389);
             this.btnReset.Margin = new System.Windows.Forms.Padding(2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(56, 19);
@@ -410,7 +410,7 @@
             // 
             this.chkPOItem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkPOItem.AutoSize = true;
-            this.chkPOItem.Location = new System.Drawing.Point(106, 359);
+            this.chkPOItem.Location = new System.Drawing.Point(106, 367);
             this.chkPOItem.Name = "chkPOItem";
             this.chkPOItem.Size = new System.Drawing.Size(63, 17);
             this.chkPOItem.TabIndex = 1005;
@@ -440,7 +440,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(102, 343);
+            this.label10.Location = new System.Drawing.Point(102, 351);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(182, 13);
             this.label10.TabIndex = 1007;
@@ -450,7 +450,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 421);
+            this.ClientSize = new System.Drawing.Size(345, 429);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.itxt_POItemID);
             this.Controls.Add(this.chkPOItem);

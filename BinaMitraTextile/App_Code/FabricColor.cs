@@ -11,7 +11,9 @@ namespace BinaMitraTextile
         public const string COL_DB_NAME = "color_name";
         public const string COL_DB_ACTIVE = "active";
         public const string COL_DB_ALLOW2NDCOLOR = "allow_2nd_color";
-        
+
+        public const string FILTER_IncludeInactive = "include_inactive";
+
         public Guid ID;
         public string Name = "";
         public bool Active = true;
@@ -29,40 +31,36 @@ namespace BinaMitraTextile
             }
         }
 
-        public static void add(string name)
+        public static Guid add(string name)
         {
-            try
-            {
-                Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("color_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "color_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name)
+            );
 
-                    cmd.ExecuteNonQuery();
+            if (result.IsSuccessful)
+                ActivityLog.submit(Id, "Added");
 
-                    ActivityLog.submit(id, "Item created");
-                }
-                Tools.hasMessage("Item created");
-            }
-            catch (Exception ex) { Tools.showError(ex.Message); }
+            return Id;
         }
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("color_isNameExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-                
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "color_isNameExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name)
+                );
+            return result.ValueBoolean;
         }
 
         public static DataTable getRow(Guid ID)
@@ -77,19 +75,15 @@ namespace BinaMitraTextile
 
         public static DataTable getByFilter(bool includeInactive, string nameFilter)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("color_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Tools.wrapNullable(nameFilter);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "color_get_byFilter",
+                new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(nameFilter))
+            );
+            return result.Datatable;
         }
 
         public static void updateActiveStatus(Guid id, Boolean activeStatus)
@@ -102,50 +96,43 @@ namespace BinaMitraTextile
             DBUtil.updateDefaultRow("color_update_default", id, "Set as new default item");
         }
 
-        public static void updateAllow2ndColor(Guid id, bool newValue)
+        public static void updateAllow2ndColor(Guid Id, bool newValue)
         {
-            using (SqlCommand cmd = new SqlCommand("color_update_allow2ndcolor", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                cmd.Parameters.Add("@new_value", SqlDbType.Bit).Value = newValue;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "color_update_allow2ndcolor",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter("new_value", SqlDbType.Bit, newValue)
+            );
 
-                cmd.ExecuteNonQuery();
-
-                ActivityLog.submit(id, "Allow 2nd color changed to: " + newValue.ToString().ToLower());
-            }
+            if (result.IsSuccessful)
+                ActivityLog.submit(Id, "Allow 2nd color changed to: " + newValue.ToString().ToLower());
         }
 
-        public static void update(Guid id, string name)
+        public static void update(Guid Id, string name)
         {
-            try
+            FabricColor objOld = new FabricColor(Id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                FabricColor objOld = new FabricColor(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "color_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                    new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name)
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
-
-                if (string.IsNullOrEmpty(logDescription))
-                {
-                    Tools.showError("No changes to record");
-                }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("color_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-
-                        cmd.ExecuteNonQuery();
-
-                        ActivityLog.submit(id, "Update: " + logDescription);
-                    }
-                    Tools.hasMessage("Item updated");
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(Id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)

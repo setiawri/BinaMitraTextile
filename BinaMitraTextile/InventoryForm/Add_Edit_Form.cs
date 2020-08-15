@@ -215,18 +215,15 @@ namespace BinaMitraTextile.InventoryForm
                 switch (_formMode)
                 {
                     case FormMode.New:
-                        if (!Tools.hasMessage(inventory.submitNew()))
+                        if (inventory.submitNew() != null)
                         {
                             //Tools.hasMessage("The new data has been added"); 
                             this.Close();
                         }
                         break;
                     case FormMode.Update:
-                        if (!Tools.hasMessage(inventory.update()))
-                        {
-                            //Tools.hasMessage("Data has been updated");
+                        if (inventory.update())
                             this.Close();
-                        }
                         break;
                 }
             }

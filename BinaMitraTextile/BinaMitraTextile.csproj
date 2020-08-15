@@ -374,7 +374,6 @@
     <Compile Include="App_Code\SaleReturn.cs" />
     <Compile Include="App_Code\Settings.cs" />
     <Compile Include="App_Code\State.cs" />
-    <Compile Include="App_Code\Template.cs" />
     <Compile Include="App_Code\Tools.cs" />
     <Compile Include="App_Code\UserAccount.cs" />
     <Compile Include="App_Code\Vendor.cs" />

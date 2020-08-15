@@ -70,11 +70,6 @@ namespace BinaMitraTextile
             return getData(new SqlCommand(sql, DBConnection.ActiveSqlConnection));
         }
 
-        public static DataTable getData(string sql, SqlConnection conn)
-        {
-            return getData(new SqlCommand(sql, conn));
-        }
-
         public static DataTable getData(SqlCommand cmd)
         {
             DataTable datatable = new DataTable();
@@ -144,56 +139,38 @@ namespace BinaMitraTextile
                 return text;
         }
 
-        public static void updateDB(string sql, SqlConnection conn)
+        public static void updateActiveStatus(string storedProcedure, Guid id, Boolean activeStatus)
         {
-            using (SqlCommand cmd = new SqlCommand(sql, conn))
-            {
-                cmd.ExecuteNonQuery();
-            }
-        }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                storedProcedure,
+                new SqlQueryParameter("id", SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter("new_active", SqlDbType.Bit, activeStatus)
+            );
 
-        public static string updateActiveStatus(string storedProcedure, Guid id, Boolean activeStatus)
-        {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@new_active", SqlDbType.Bit).Value = activeStatus;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Active status changed to: " + activeStatus.ToString().ToLower());
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Active status changed to: " + activeStatus.ToString().ToLower());
         }
         
-        public static string updateDefaultRow(string storedProcedure, Guid id, string logDescription)
+        public static void updateDefaultRow(string storedProcedure, Guid id, string logDescription)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                storedProcedure,
+                new SqlQueryParameter("id", SqlDbType.UniqueIdentifier, id)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, logDescription);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, logDescription);
         }
 
         public static T parseData<T>(object value)
         {
-            return Tools.wrapDBNullValue<T>(value);
+            return Util.wrapNullable<T>(value);
         }
 
         public static T parseData<T>(DataRow row, string columnName)
@@ -201,7 +178,7 @@ namespace BinaMitraTextile
             object obj = null;
             if(row != null)
                 obj = row[columnName];
-            return Tools.wrapDBNullValue<T>(obj);
+            return Util.wrapNullable<T>(obj);
             //if (obj == DBNull.Value)
             //    return default(T);
 
@@ -214,25 +191,18 @@ namespace BinaMitraTextile
             //return (T)obj;
         }
 
-        public static string addNotes(string storedProcedure, Guid id, string notes)
+        public static void addNotes(string storedProcedure, Guid id, string notes)
         {
-            try
-            {
-                //submit new sale record
-                using (SqlCommand cmd = new SqlCommand(storedProcedure, DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@timestamp", SqlDbType.VarChar).Value = string.Format("{0:dd/MM/yy}", DateTime.Now);
-                    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = GlobalData.UserAccount.name;
-                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                storedProcedure,
+                new SqlQueryParameter("id", SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter("timestamp", SqlDbType.VarChar, string.Format("{0:dd/MM/yy}", DateTime.Now)),
+                new SqlQueryParameter("username", SqlDbType.VarChar, GlobalData.UserAccount.name),
+                new SqlQueryParameter("notes", SqlDbType.VarChar, notes)
+            );
         }
 
         public static void addListParameter(SqlCommand cmd, string name, DataTable data)
@@ -247,28 +217,6 @@ namespace BinaMitraTextile
             //param.ParameterName = name;
             //param.Value = data;
             //cmd.Parameters.Add(param);
-        }
-
-        public static DateTime getServerTime()
-        {
-            DateTime timestamp = new DateTime();
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("server_get_timestamp", DBConnection.ActiveSqlConnection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    SqlParameter return_value = cmd.Parameters.Add("@timestamp", SqlDbType.DateTime);
-                    return_value.Direction = ParameterDirection.Output;
-
-                    cmd.ExecuteNonQuery();
-
-                    timestamp = Convert.ToDateTime(return_value.Value);
-                }
-            }
-            catch { }
-
-            return timestamp;
         }
 
     }

@@ -40,7 +40,9 @@ namespace BinaMitraTextile
         public const string FILTER_RescanToday = "RescanToday";
         public const string FILTER_TimestampStart = "FILTER_TimestampStart";
         public const string FILTER_TimestampEnd = "FILTER_TimestampEnd";
-        
+        public const string FILTER_DateStart = "date_start";
+        public const string FILTER_DateEnd = "date_end";
+
         public const string ARRAY_Grades_Id = "ARRAY_Grades_Id";
 
         #endregion CLASS VARIABLES
@@ -53,19 +55,17 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public static bool isSubmittedToday(string barcodeWithoutPrefix) 
+        public static bool isSubmittedToday(string barcodeWithoutPrefix)
         {
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_isExistToday", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@barcode", SqlDbType.VarChar).Value = barcodeWithoutPrefix;
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-                
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "inventoryitemcheck_isExistToday",
+                new SqlQueryParameter(COL_BARCODE, SqlDbType.VarChar, barcodeWithoutPrefix)
+                );
+            return result.ValueBoolean;
         }
 
         public static string submitNew(string barcodeWithoutPrefix, bool isManualInput, bool rescanToday, bool ignoreSold, string itemLocation)
@@ -125,41 +125,39 @@ namespace BinaMitraTextile
 
         public static DataTable getAll(DateTime? dateStart, DateTime? dateEnd, bool isAllUsers, bool includeIgnoreSold)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_getall", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = (object)dateStart ?? DBNull.Value;
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = (object)dateEnd ?? DBNull.Value;
-                cmd.Parameters.Add("@" + FILTER_IncludeIgnoreSold, SqlDbType.Bit).Value = includeIgnoreSold;
-                if (!isAllUsers)
-                    cmd.Parameters.Add("@Users_Id", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+            Guid? userfilter = GlobalData.UserAccount.id;
+            if (isAllUsers)
+                userfilter = null;
 
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "inventoryitemcheck_getall",
+                new SqlQueryParameter(FILTER_DateStart, SqlDbType.DateTime, Util.wrapNullable(dateStart)),
+                new SqlQueryParameter(FILTER_DateEnd, SqlDbType.DateTime, Util.wrapNullable(dateEnd)),
+                new SqlQueryParameter(FILTER_IncludeIgnoreSold, SqlDbType.Bit, includeIgnoreSold),
+                new SqlQueryParameter("Users_Id", SqlDbType.UniqueIdentifier, Util.wrapNullable(userfilter))
+            );
+            return result.Datatable;
         }
 
         public static DataTable getSummary(DateTime? dateStart, DateTime? dateEnd, bool isAllUsers)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_get_summary", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = (object)dateStart ?? DBNull.Value;
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = (object)dateEnd ?? DBNull.Value;
-                if (!isAllUsers)
-                    cmd.Parameters.Add("@Users_Id", SqlDbType.UniqueIdentifier).Value = GlobalData.UserAccount.id;
+            Guid? userfilter = GlobalData.UserAccount.id;
+            if (isAllUsers)
+                userfilter = null;
 
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "inventoryitemcheck_get_summary",
+                new SqlQueryParameter(FILTER_DateStart, SqlDbType.DateTime, Util.wrapNullable(dateStart)),
+                new SqlQueryParameter(FILTER_DateEnd, SqlDbType.DateTime, Util.wrapNullable(dateEnd)),
+                new SqlQueryParameter("Users_Id", SqlDbType.UniqueIdentifier, Util.wrapNullable(userfilter))
+            );
+            return result.Datatable;
         }
 
         public static DataTable compileSummaryData(DataTable dt)
@@ -169,7 +167,7 @@ namespace BinaMitraTextile
             foreach (DataRow dr in dtCompilation.Rows)
             {
                 dr[COL_COUNT_DIFF_QTY] = Convert.ToInt16(dr[InventoryItem.COL_SALE_QTY]) - Convert.ToInt16(dr[COL_COUNT_AVAILABLE_QTY]);
-                dr[COL_COUNT_DIFF_LENGTH] = Convert.ToDecimal(dr[InventoryItem.COL_LENGTH]) - Convert.ToDecimal(dr[COL_COUNT_AVAILABLE_ITEM_LENGTH]);
+                dr[COL_COUNT_DIFF_LENGTH] = Convert.ToDecimal(dr[InventoryItem.COL_DB_LENGTH]) - Convert.ToDecimal(dr[COL_COUNT_AVAILABLE_ITEM_LENGTH]);
             }
 
             return dtCompilation;
@@ -206,28 +204,22 @@ namespace BinaMitraTextile
 
         public static void deleteTodayData()
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deletetodaydata", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch { }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "inventoryitemcheck_deletetodaydata"
+            );
         }
 
         public static void deleteIgnoreSold()
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("inventoryitemcheck_deleteignoresold", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch { }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "inventoryitemcheck_deleteignoresold"
+            );
         }
 
         /// <summary><para></para></summary>

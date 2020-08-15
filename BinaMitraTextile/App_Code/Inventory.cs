@@ -148,48 +148,48 @@ namespace BinaMitraTextile
             VendorInvoiceNo = DBUtil.parseData<string>(dt.Rows[0], COL_VENDORINVOICENO);
         }
 
-        public string submitNew()
+        public Guid? submitNew()
         {
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "inventory_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_BUYPRICE, SqlDbType.Decimal, buy_price),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, grade_id),
+                new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, product_id),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, product_width_id),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, length_unit_id),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, color_id),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes)),
+                new SqlQueryParameter(COL_DB_POITEMID, SqlDbType.UniqueIdentifier, Util.wrapNullable(POItemID)),
+                new SqlQueryParameter(COL_DB_PACKINGLISTNO, SqlDbType.VarChar, PackingListNo),
+                new SqlQueryParameter(COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(VendorInvoiceID))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("inventory_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@buy_price", SqlDbType.Decimal).Value = buy_price;
-                    cmd.Parameters.Add("@grade_id", SqlDbType.UniqueIdentifier).Value = grade_id;
-                    cmd.Parameters.Add("@product_id", SqlDbType.UniqueIdentifier).Value = product_id;
-                    cmd.Parameters.Add("@product_width_id", SqlDbType.UniqueIdentifier).Value = product_width_id;
-                    cmd.Parameters.Add("@length_unit_id", SqlDbType.UniqueIdentifier).Value = length_unit_id;
-                    cmd.Parameters.Add("@color_id", SqlDbType.UniqueIdentifier).Value = color_id;
-                    cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-                    cmd.Parameters.Add("@" + COL_DB_POITEMID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(POItemID);
-                    cmd.Parameters.Add("@" + COL_DB_PACKINGLISTNO, SqlDbType.VarChar).Value = PackingListNo;
-                    cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(VendorInvoiceID);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "New Inventory added");
-                }
-            } catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static bool isCodeExist(string Code, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("inventory_isCodeExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@code", SqlDbType.SmallInt).Value = Code;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "inventory_isCodeExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_CODE, SqlDbType.SmallInt, Code)
+                );
+            return result.ValueBoolean;
         }
 
         public static DataTable getRow(Guid ID)
@@ -199,23 +199,19 @@ namespace BinaMitraTextile
 
         public DataTable getInfo()
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("inventory_get_info", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@grade_id", SqlDbType.UniqueIdentifier).Value = grade_id;
-                cmd.Parameters.Add("@product_id", SqlDbType.UniqueIdentifier).Value = product_id;
-                cmd.Parameters.Add("@product_width_id", SqlDbType.UniqueIdentifier).Value = product_width_id;
-                cmd.Parameters.Add("@length_unit_id", SqlDbType.UniqueIdentifier).Value = length_unit_id;
-                cmd.Parameters.Add("@color_id", SqlDbType.UniqueIdentifier).Value = color_id; ;
-                cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = VendorInvoiceID;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "inventory_get_info",
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, grade_id),
+                new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, product_id),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, product_width_id),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, length_unit_id),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, color_id),
+                new SqlQueryParameter(COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier, VendorInvoiceID)
+            );
+            return result.Datatable;
         }
 
         public static DataTable getAll(bool includeInactive)
@@ -270,8 +266,8 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@last3Months", SqlDbType.Bit).Value = last3Months;
                 cmd.Parameters.Add("@code", SqlDbType.VarChar).Value = code;
                 cmd.Parameters.Add("@FILTER_ShowNotBookedOnly", SqlDbType.Bit).Value = showNotBookedOnly;
-                cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorID);
-                cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(vendorInvoiceID);
+                cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorID);
+                cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorInvoiceID);
 
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
                 DBUtil.addListParameter(cmd, "@productstorename_id_list", dtProductStoreNameID);
@@ -288,20 +284,19 @@ namespace BinaMitraTextile
 
         public static DataTable get_by_SaleOrderItems_Id(Guid? saleOrderItems_Id)
         {
-            SqlQueryResult result = new SqlQueryResult();
-            result = DBConnection.query(
+            SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "Inventory_get_by_SaleOrderItems_Id",
-                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(saleOrderItems_Id))
                 );
             return result.Datatable;
         }
 
-        public static string updateActiveStatus(Guid id, Boolean activeStatus)
+        public static void updateActiveStatus(Guid id, Boolean activeStatus)
         {
-            return DBUtil.updateActiveStatus("inventory_update_active", id, activeStatus);
+            DBUtil.updateActiveStatus("inventory_update_active", id, activeStatus);
         }
         
         public static void updateIsConsignment(Guid id, bool value)
@@ -360,60 +355,55 @@ namespace BinaMitraTextile
             );
         }
 
-        public string update()
+        public bool update()
         {
-            try
+            Inventory objOld = new Inventory(id);
+
+            //generate log description
+            string logDescription = "";
+            logDescription = ActivityLog.appendChange(logDescription, objOld.code, code, "Code: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.buy_price, buy_price, "Buy Price: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.sell_price, sell_price, "Tag Price: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.grade_name, grade_name, "Grade: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.product_store_name, product_store_name, "Product Store Name: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.product_name_vendor, product_name_vendor, "Product Vendor Name: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.product_width_name, product_width_name, "Width: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.length_unit_name, length_unit_name, "Length Unit: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.color_name, color_name, "Color: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.notes, notes, "Notes: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.PONo, PONo, "PO Item: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.PackingListNo, PackingListNo, "Packing List No: '{0}' to '{1}'");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.VendorInvoiceNo, VendorInvoiceNo, "Vendor Invoice No: '{0}' to '{1}'");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                Inventory objOld = new Inventory(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "inventory_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_CODE, SqlDbType.VarChar, code),
+                    new SqlQueryParameter(COL_DB_BUYPRICE, SqlDbType.Decimal, buy_price),
+                    new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, grade_id),
+                    new SqlQueryParameter(COL_DB_PRODUCTID, SqlDbType.UniqueIdentifier, product_id),
+                    new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, product_width_id),
+                    new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, length_unit_id),
+                    new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, color_id),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes)),
+                    new SqlQueryParameter(COL_DB_POITEMID, SqlDbType.UniqueIdentifier, Util.wrapNullable(POItemID)),
+                    new SqlQueryParameter(COL_DB_PACKINGLISTNO, SqlDbType.VarChar, PackingListNo),
+                    new SqlQueryParameter(COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(VendorInvoiceID))
+                );
 
-                //generate log description
-                string logDescription = "";
-                logDescription = ActivityLog.appendChange(logDescription, objOld.code, code, "Code: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.buy_price, buy_price, "Buy Price: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.sell_price, sell_price, "Tag Price: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.grade_name, grade_name, "Grade: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.product_store_name, product_store_name, "Product Store Name: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.product_name_vendor, product_name_vendor, "Product Vendor Name: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.product_width_name, product_width_name, "Width: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.length_unit_name, length_unit_name, "Length Unit: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.color_name, color_name, "Color: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.notes, notes, "Notes: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.PONo, PONo, "PO Item: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.PackingListNo, PackingListNo, "Packing List No: '{0}' to '{1}'");
-                logDescription = ActivityLog.appendChange(logDescription, objOld.VendorInvoiceNo, VendorInvoiceNo, "Vendor Invoice No: '{0}' to '{1}'");
-
-                if (string.IsNullOrEmpty(logDescription))
+                if (result.IsSuccessful)
                 {
-                    return "No information has been changed";
+                    ActivityLog.submit(id, "Update: " + logDescription);
+                    return true;
                 }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("inventory_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@code", SqlDbType.VarChar).Value = code;
-                        cmd.Parameters.Add("@buy_price", SqlDbType.Decimal).Value = buy_price;
-                        cmd.Parameters.Add("@grade_id", SqlDbType.UniqueIdentifier).Value = grade_id;
-                        cmd.Parameters.Add("@product_id", SqlDbType.UniqueIdentifier).Value = product_id;
-                        cmd.Parameters.Add("@product_width_id", SqlDbType.UniqueIdentifier).Value = product_width_id;
-                        cmd.Parameters.Add("@length_unit_id", SqlDbType.UniqueIdentifier).Value = length_unit_id;
-                        cmd.Parameters.Add("@color_id", SqlDbType.UniqueIdentifier).Value = color_id;
-                        cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = notes;
-                        cmd.Parameters.Add("@" + COL_DB_POITEMID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(POItemID);
-                        cmd.Parameters.Add("@" + COL_DB_PACKINGLISTNO, SqlDbType.VarChar).Value = PackingListNo;
-                        cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(VendorInvoiceID);
+            }
 
-                        cmd.ExecuteNonQuery();
-
-                        //submit log
-                        logDescription = "Inventory update: " + logDescription;
-                        ActivityLog.submit(id, logDescription);
-                    }
-                }
-            } catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            return false;
         }
 
         public static void setAmount(Label lbl, string total)

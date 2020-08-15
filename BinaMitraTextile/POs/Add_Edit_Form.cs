@@ -135,9 +135,12 @@ namespace BinaMitraTextile.POs
                 gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_pricePerUnit.Name].Value = inventory.buy_price;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_referencedInventoryID.Name].Value = inventory.id;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_qty.Name].Value = qty;
-            gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_notes.Name].Value = notes ?? string.Empty;
-            if (inventory.id != null)
-                gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_notes.Name].Value += string.Format(" Last:{0:dd/MM/yy}", inventory.receive_date);
+            if(iddl_Vendor.Enabled)
+            {
+                gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_notes.Name].Value = notes ?? string.Empty;
+                if (inventory.id != null)
+                    gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_notes.Name].Value += string.Format(" Last:{0:dd/MM/yy}", inventory.receive_date);
+            }
             addNewRowIfNeeded(rowIndex);
         }
 
@@ -267,7 +270,7 @@ namespace BinaMitraTextile.POs
                                 Convert.ToDecimal(row.Cells[col_gridPOItems_qty.Name].Value),
                                 row.Cells[col_gridPOItems_unitName.Name].Value.ToString(),
                                 Convert.ToDecimal(row.Cells[col_gridPOItems_pricePerUnit.Name].Value),
-                                Tools.wrapDBNullValue<string>(row.Cells[col_gridPOItems_notes.Name].Value),
+                                Util.wrapNullable<string>(row.Cells[col_gridPOItems_notes.Name].Value),
                                 referencedInventoryID));
                         else
                             saleOrderItems.Add(new SaleOrderItem(
@@ -278,11 +281,11 @@ namespace BinaMitraTextile.POs
                                 Convert.ToDecimal(row.Cells[col_gridPOItems_qty.Name].Value),
                                 row.Cells[col_gridPOItems_unitName.Name].Value.ToString(),
                                 Convert.ToDecimal(row.Cells[col_gridPOItems_pricePerUnit.Name].Value),
-                                Tools.wrapDBNullValue<string>(row.Cells[col_gridPOItems_notes.Name].Value),
+                                Util.wrapNullable<string>(row.Cells[col_gridPOItems_notes.Name].Value),
                                 referencedInventoryID));
                     }
                 }
-                if (iddl_Vendor.Enabled && !Tools.hasMessage(PO.submitNew(poID, (Guid)iddl_Vendor.SelectedValue, lblInfo.Text, POItems, txtNotes.Text.Trim(), dtpTarget.Value, txtPONo.Text)))
+                if (iddl_Vendor.Enabled && PO.submitNew(poID, (Guid)iddl_Vendor.SelectedValue, lblInfo.Text, POItems, txtNotes.Text.Trim(), dtpTarget.Value, txtPONo.Text) != null)
                 {
                     Tools.displayForm(new POs.Print_Form(poID));
                     this.Close();

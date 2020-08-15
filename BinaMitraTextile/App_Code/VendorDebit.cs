@@ -45,26 +45,29 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE STATIC METHODS
 
-        public static void add(Guid vendorId, decimal amount, Guid? salePaymentID, string notes, PaymentMethod? paymentMethod)
+        public static Guid? add(Guid vendorId, decimal amount, Guid? salePaymentID, string notes, PaymentMethod? paymentMethod)
         {
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "VendorDebits_add",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, vendorId),
+                new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, amount),
+                new SqlQueryParameter(COL_DB_sale_payment_id, SqlDbType.UniqueIdentifier, Util.wrapNullable(salePaymentID)),
+                new SqlQueryParameter(COL_DB_Type_enumid, SqlDbType.TinyInt, Util.wrapNullable(paymentMethod)),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("VendorDebits_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_Id, SqlDbType.UniqueIdentifier).Value = Guid.NewGuid();
-                    cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;
-                    cmd.Parameters.Add("@" + COL_DB_Amount, SqlDbType.Decimal).Value = amount;
-                    cmd.Parameters.Add("@" + COL_DB_Notes, SqlDbType.VarChar).Value = notes;
-                    cmd.Parameters.Add("@" + COL_DB_sale_payment_id, SqlDbType.UniqueIdentifier).Value = (object)salePaymentID ?? DBNull.Value;
-                    cmd.Parameters.Add("@" + COL_DB_Type_enumid, SqlDbType.TinyInt).Value = Tools.wrapNullable(paymentMethod);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(vendorId, "Debit: Rp." + amount.ToString("N2"));
-                }
+                ActivityLog.submit(vendorId, "Debit: Rp." + amount.ToString("N2"));
+                return Id;
             }
-            catch (Exception ex) { Tools.hasMessage(ex.Message); }
         }
 
         public static DataTable getAll(Guid? customerID)
@@ -77,36 +80,27 @@ namespace BinaMitraTextile
 
         public static DataTable getAll(Guid vendorId)
         {
-            DataTable datatable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_SUMMARY_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "VendorDebits_get",
+                new SqlQueryParameter(COL_SUMMARY_Vendors_Id, SqlDbType.UniqueIdentifier, vendorId)
+            );
 
-                adapter.SelectCommand = cmd;
-                adapter.Fill(datatable);
-            }
-
-            Tools.parseEnum<PaymentMethod>(datatable, COL_PaymentType_name, COL_PaymentType_enumid);
-            datatable = computeBalances(datatable);
-
-            return datatable;
+            Tools.parseEnum<PaymentMethod>(result.Datatable, COL_PaymentType_name, COL_PaymentType_enumid);
+            return computeBalances(result.Datatable);
         }
 
         public static DataTable getSummary()
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_summary", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "VendorDebits_get_summary"
+            );
+            return result.Datatable;
         }
 
         private static DataTable computeBalances(DataTable dataTable)
@@ -126,15 +120,15 @@ namespace BinaMitraTextile
             if (vendorId == null)
                 return 0;
 
-            Object obj;
-            using (SqlCommand cmd = new SqlCommand("VendorDebits_get_balance", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_SUMMARY_Vendors_Id, SqlDbType.UniqueIdentifier).Value = vendorId;
-
-                obj = cmd.ExecuteScalar();
-            }
-            return Convert.ToDecimal(obj);
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, true, false, false,
+                "VendorDebits_get_balance",
+                new SqlQueryParameter(COL_SUMMARY_Vendors_Id, SqlDbType.UniqueIdentifier, vendorId)
+                );
+            return result.ValueDecimal;
         }
 
         #endregion DATABASE STATIC METHODS

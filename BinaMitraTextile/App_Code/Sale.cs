@@ -38,6 +38,8 @@ namespace BinaMitraTextile
         public const string COL_DB_FakturPajaks_Id = "FakturPajaks_Id";
         public const string COL_DB_Kontrabons_Id = "Kontrabons_Id";
         public const string COL_DB_ShippingExpense = "ShippingExpense";
+        public const string COL_DB_Voided = "voided";
+        public const string COL_DB_UserId = "user_id";
 
         public const string COL_TRANSPORTNAME = "transport_name";
         public const string COL_Vendors_Name = "Vendors_Name";
@@ -223,40 +225,43 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE METHODS
 
-        public string submitNew(DataTable SaleItems)
+        public Guid? submitNew(DataTable SaleItems)
         {
-            try
+            //format notes
+            if (string.IsNullOrWhiteSpace(notes))
+                notes = null;
+            else
+                notes = string.Format("{0:MM/dd/yy}-{1}: {2}", DateTime.Now, GlobalData.UserAccount.name, notes);
+
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                true, false, false, false, false,
+                "sale_new",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, time_stamp),
+                new SqlQueryParameter(COL_DB_Voided, SqlDbType.Bit, voided),
+                new SqlQueryParameter(COL_CUSTOMER_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(customer_id)),
+                new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
+                new SqlQueryParameter(COL_DB_CUSTOMERINFO, SqlDbType.VarChar, customer_info),
+                new SqlQueryParameter(COL_DB_UserId, SqlDbType.UniqueIdentifier, user_id),
+                new SqlQueryParameter(COL_DB_TRANSPORTID, SqlDbType.UniqueIdentifier, Util.wrapNullable(TransportID)),
+                new SqlQueryParameter(COL_DB_SHIPPINGCOST, SqlDbType.Decimal, ShippingCost),
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                //submit new sale record
-                using (SqlCommand cmd = new SqlCommand("sale_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@time_stamp", SqlDbType.DateTime).Value = time_stamp;
-                    cmd.Parameters.Add("@voided", SqlDbType.Bit).Value = voided;
-                    cmd.Parameters.Add("@customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(customer_id);
-                    cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(Vendors_Id);
-                    cmd.Parameters.Add("@customer_info", SqlDbType.VarChar).Value = customer_info;
-                    cmd.Parameters.Add("@user_id", SqlDbType.UniqueIdentifier).Value = user_id;
-                    if (notes != null) cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.name, notes);
-                    cmd.Parameters.Add("@" + COL_DB_TRANSPORTID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(TransportID);
-                    cmd.Parameters.Add("@" + COL_DB_SHIPPINGCOST, SqlDbType.Decimal).Value = ShippingCost;
-                    SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Int);
-                    return_value.Direction = ParameterDirection.Output;
+                ActivityLog.submit(id, "Added");
 
-                    cmd.ExecuteNonQuery();
-
-                    barcode = Tools.getHex(Convert.ToInt32(return_value.Value), Settings.saleBarcodeLength);
-
-                    ActivityLog.submit(id, "New item added");
-                }
-
-                //submit sale items
+                barcode = result.ValueString;
                 SaleItem.submitItems(getListOfSaleItems(SaleItems), barcode, customer_id);
-            }
-            catch (Exception ex) { return ex.Message; }
 
-            return string.Empty;
+                return id;
+            }
         }
 
 
@@ -346,24 +351,27 @@ namespace BinaMitraTextile
                 if(!string.IsNullOrWhiteSpace(Notes))
                     PettyCashRecords_Notes += ", " + Notes;
 
-                Guid PettyCashRecords_Id = PettyCashRecord.add(PettyCashRecordsCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);
-                log += string.Format(", Petty Cash {0} Amount: {1:N0}", new PettyCashRecord(PettyCashRecords_Id).No, PettyCashRecords_Amount);
+                Guid? PettyCashRecords_Id = PettyCashRecord.add(PettyCashRecordsCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);
+                if(PettyCashRecords_Id != null)
+                {
+                    log += string.Format(", Petty Cash {0} Amount: {1:N0}", new PettyCashRecord((Guid)PettyCashRecords_Id).No, PettyCashRecords_Amount);
 
-                SqlQueryResult result = DBConnection.query(
-                    false,
-                    DBConnection.ActiveSqlConnection,
-                    QueryTypes.ExecuteNonQuery,
-                    "Sales_update_ShippingExpense",
-                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
-                    new SqlQueryParameter(COL_DB_ShippingExpense, SqlDbType.Int, Amount)
-                );
+                    SqlQueryResult result = DBConnection.query(
+                        false,
+                        DBConnection.ActiveSqlConnection,
+                        QueryTypes.ExecuteNonQuery,
+                        "Sales_update_ShippingExpense",
+                        new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
+                        new SqlQueryParameter(COL_DB_ShippingExpense, SqlDbType.Int, Amount)
+                    );
 
-                if (result.IsSuccessful)
-                    ActivityLog.submit(Id, String.Format("Updated: {0}", log));
+                    if (result.IsSuccessful)
+                        ActivityLog.submit(Id, String.Format("Updated: {0}", log));
+                }
             }
         }
 
-        public static string update(Guid saleID, Guid? Customers_Id, Guid? Vendors_Id, DataTable saleItems, Guid? transportID, decimal shippingCost, string notes)
+        public static bool update(Guid saleID, Guid? Customers_Id, Guid? Vendors_Id, DataTable saleItems, Guid? transportID, decimal shippingCost, string notes)
         {
             Sale objOld = new Sale(saleID);
             DataTable objOldItems = Tools.setDataTablePrimaryKey(SaleItem.getItems(saleID), SaleItem.COL_ID);
@@ -415,41 +423,40 @@ namespace BinaMitraTextile
                 }
             }
 
-            if (string.IsNullOrEmpty(log))
+            if (!string.IsNullOrEmpty(log))
             {
-                return "No information has been changed";
-            }
-            else
-            {
-                try
+                //format notes
+                if (string.IsNullOrWhiteSpace(notes))
+                    notes = null;
+                else
+                    notes = string.Format("{0:MM/dd/yy}-{1}: {2}", DateTime.Now, GlobalData.UserAccount.name, notes);
+
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "sale_update",
+                    new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, saleID),
+                    new SqlQueryParameter(COL_CUSTOMER_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(Customers_Id)),
+                    new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
+                    new SqlQueryParameter(COL_DB_CUSTOMERINFO, SqlDbType.VarChar, Util.wrapNullable(customerInfo)),
+                    new SqlQueryParameter(COL_DB_TRANSPORTID, SqlDbType.UniqueIdentifier, Util.wrapNullable(transportID)),
+                    new SqlQueryParameter(COL_DB_SHIPPINGCOST, SqlDbType.Decimal, shippingCost),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
+
+                if (!result.IsSuccessful)
+                    return false;
+                else
                 {
-                    using (SqlCommand cmd = new SqlCommand("sale_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = saleID;
-                        if (notes != null) 
-                            cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = string.Format("{0:MM/dd/yy HH:mm} - {1}: {2}", DateTime.Now, GlobalData.UserAccount.FirstName, notes);
-                        cmd.Parameters.Add("@" + COL_CUSTOMER_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(Customers_Id);
-                        cmd.Parameters.Add("@" + COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(Vendors_Id);
-                        cmd.Parameters.Add("@" + COL_DB_CUSTOMERINFO, SqlDbType.VarChar).Value = Tools.wrapNullable(customerInfo);
-                        cmd.Parameters.Add("@" + COL_DB_TRANSPORTID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(transportID);
-                        cmd.Parameters.Add("@" + COL_DB_SHIPPINGCOST, SqlDbType.Decimal).Value = shippingCost;
-                            
-                        cmd.ExecuteNonQuery();
+                    ActivityLog.submit(saleID, "Update: " + log);
 
-                        ActivityLog.submit(saleID, "Update: " + log);
-                    }
-
-                    //update sale items
-                    if(saleItems.Rows.Count > 0)
+                    if (saleItems.Rows.Count > 0)
                         SaleItem.updateItems(getListOfSaleItemsForUpdate(saleID, saleItems));
-
-                    Tools.hasMessage("Item updated");
                 }
-                catch (Exception ex) { return ex.Message; }
             }
 
-            return string.Empty;
+            return true;
         }
 
         private List<SaleItem> getListOfSaleItems(DataTable dt)
@@ -459,7 +466,7 @@ namespace BinaMitraTextile
                    {
                        id = Guid.NewGuid(),
                        sale_id = id,
-                       inventory_item_id = row.Field<Guid>(InventoryItem.COL_ID),
+                       inventory_item_id = row.Field<Guid>(InventoryItem.COL_DB_ID),
                        sell_price = Tools.zeroNonNumericString(row.Field<decimal?>(InventoryItem.COL_SALE_SELLPRICE)),
                        adjustment = Tools.zeroNonNumericString(row.Field<decimal?>(InventoryItem.COL_SALE_ADJUSTMENT)),
                        isManualAdjustment = row.Field<bool>(InventoryItem.COL_SALE_isManualAdjustment)
@@ -473,7 +480,7 @@ namespace BinaMitraTextile
                    {
                        id = row.Field<Guid>(SaleItem.COL_ID),
                        sale_id = SaleID,
-                       inventory_item_id = row.Field<Guid>(InventoryItem.COL_ID),
+                       inventory_item_id = row.Field<Guid>(InventoryItem.COL_DB_ID),
                        sell_price = Tools.zeroNonNumericString(row.Field<decimal?>(InventoryItem.COL_SALE_SELLPRICE)),
                        adjustment = Tools.zeroNonNumericString(row.Field<decimal?>(InventoryItem.COL_SALE_ADJUSTMENT)),
                        isManualAdjustment = row.Field<bool>(InventoryItem.COL_SALE_isManualAdjustment)
@@ -585,84 +592,64 @@ namespace BinaMitraTextile
             return dataTable;
         }
 
-        public static string updateCompleted(Guid id, bool completed)
+        public static void updateCompleted(Guid id, bool value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sale_update_completed", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@id", SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@completed", SqlDbType.Bit).Value = completed;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "sale_update_completed",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_COMPLETED, SqlDbType.Bit, value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Update completed to: " + completed);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update Completed to " + value);
         }
 
-        public static string updateSpecialUserOnly(Guid id, bool value)
+        public static void updateSpecialUserOnly(Guid id, bool value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sale_update_specialuseronly_by_id", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_SPECIALUSERONLY, SqlDbType.Bit).Value = value;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "sale_update_specialuseronly_by_id",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_SPECIALUSERONLY, SqlDbType.Bit, value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Update special user only marker to: " + value);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update special user only marker to: " + value);
         }
 
-        public static string updateTaxNo(Guid id, string value)
+        public static void updateTaxNo(Guid id, string value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sale_update_taxno", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_TAXNO, SqlDbType.VarChar).Value = value;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "sale_update_taxno",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_TAXNO, SqlDbType.Bit, value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Update tax no to: " + value);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update tax no to: " + value);
         }
 
-        public static string updateIsReported(Guid id, bool value)
+        public static void updateIsReported(Guid id, bool value)
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("sale_update_isreported", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_ISREPORTED, SqlDbType.Bit).Value = value;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "sale_update_isreported",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, id),
+                new SqlQueryParameter(COL_DB_ISREPORTED, SqlDbType.Bit, value)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Update report to tax to: " + value);
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, "Update report to tax to: " + value);
         }
 
         public static DataTable getRow(Guid ID)
@@ -678,9 +665,9 @@ namespace BinaMitraTextile
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(dateStart);
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(dateEnd);
-                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(excludeCustomerID);
+                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Util.wrapNullable(dateStart);
+                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Util.wrapNullable(dateEnd);
+                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(excludeCustomerID);
                 cmd.Parameters.Add("@is_reported_only", SqlDbType.Bit).Value = isReportedOnly;
                 DBUtil.addListParameter(cmd, "@customer_id_list", dtCustomersID);
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
@@ -704,9 +691,9 @@ namespace BinaMitraTextile
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(dateStart);
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(dateEnd);
-                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(excludeCustomerID);
+                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Util.wrapNullable(dateStart);
+                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Util.wrapNullable(dateEnd);
+                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(excludeCustomerID);
                 cmd.Parameters.Add("@is_reported_only", SqlDbType.Bit).Value = isReportedOnly;
                 DBUtil.addListParameter(cmd, "@customer_id_list", dtCustomersID);
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
@@ -730,9 +717,9 @@ namespace BinaMitraTextile
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(dateStart);
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(dateEnd);
-                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(excludeCustomerID);
+                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Util.wrapNullable(dateStart);
+                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Util.wrapNullable(dateEnd);
+                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(excludeCustomerID);
                 cmd.Parameters.Add("@is_reported_only", SqlDbType.Bit).Value = isReportedOnly;
                 DBUtil.addListParameter(cmd, "@customer_id_list", dtCustomersID);
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
@@ -756,9 +743,9 @@ namespace BinaMitraTextile
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(dateStart);
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(dateEnd);
-                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(excludeCustomerID);
+                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Util.wrapNullable(dateStart);
+                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Util.wrapNullable(dateEnd);
+                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(excludeCustomerID);
                 cmd.Parameters.Add("@is_reported_only", SqlDbType.Bit).Value = isReportedOnly;
                 DBUtil.addListParameter(cmd, "@customer_id_list", dtCustomersID);
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
@@ -782,9 +769,9 @@ namespace BinaMitraTextile
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Tools.wrapNullable(dateStart);
-                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Tools.wrapNullable(dateEnd);
-                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(excludeCustomerID);
+                cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = Util.wrapNullable(dateStart);
+                cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = Util.wrapNullable(dateEnd);
+                cmd.Parameters.Add("@exclude_customer_id", SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(excludeCustomerID);
                 cmd.Parameters.Add("@is_reported_only", SqlDbType.Bit).Value = isReportedOnly;
                 DBUtil.addListParameter(cmd, "@customer_id_list", dtCustomersID);
                 DBUtil.addListParameter(cmd, "@grade_id_list", dtGradeID);
@@ -808,7 +795,7 @@ namespace BinaMitraTextile
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "Sale_get_by_SaleOrderItems_Id",
-                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Tools.wrapNullable(saleOrderItems_Id))
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(saleOrderItems_Id))
                 );
             return result.Datatable;
         }
@@ -821,7 +808,7 @@ namespace BinaMitraTextile
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "sale_get",
-                    new SqlQueryParameter(COL_HEXBARCODE, SqlDbType.VarChar, Tools.wrapNullable(hexbarcode))
+                    new SqlQueryParameter(COL_HEXBARCODE, SqlDbType.VarChar, Util.wrapNullable(hexbarcode))
                 );
             return result.Datatable;
         }
@@ -833,24 +820,24 @@ namespace BinaMitraTextile
         public static DataTable compileSummaryData(DataTable dt)
         {
             DataTable dtSummary = dt.Clone();
-            Tools.setDataTablePrimaryKey(dtSummary, InventoryItem.COL_INVENTORY_ID);
+            Tools.setDataTablePrimaryKey(dtSummary, InventoryItem.COL_DB_INVENTORY_ID);
 
             DataRow tempRow;
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
-                if (dtSummary.Rows.Contains(dr[InventoryItem.COL_INVENTORY_ID]))
+                if (dtSummary.Rows.Contains(dr[InventoryItem.COL_DB_INVENTORY_ID]))
                 {
-                    tempRow = dtSummary.Rows.Find(dr[InventoryItem.COL_INVENTORY_ID]);
+                    tempRow = dtSummary.Rows.Find(dr[InventoryItem.COL_DB_INVENTORY_ID]);
                     tempRow[InventoryItem.COL_SALE_QTY] = Tools.zeroNonNumericString(tempRow[InventoryItem.COL_SALE_QTY]) + Tools.zeroNonNumericString(dr[InventoryItem.COL_SALE_QTY]);
-                    tempRow[InventoryItem.COL_LENGTH] = Tools.zeroNonNumericString(tempRow[InventoryItem.COL_LENGTH]) + Tools.zeroNonNumericString(dr[InventoryItem.COL_LENGTH]);
+                    tempRow[InventoryItem.COL_DB_LENGTH] = Tools.zeroNonNumericString(tempRow[InventoryItem.COL_DB_LENGTH]) + Tools.zeroNonNumericString(dr[InventoryItem.COL_DB_LENGTH]);
                     tempRow[InventoryItem.COL_SALE_SUBTOTAL] = Tools.zeroNonNumericString(tempRow[InventoryItem.COL_SALE_SUBTOTAL]) + Tools.zeroNonNumericString(dr[InventoryItem.COL_SALE_SUBTOTAL]);
-                    tempRow[InventoryItem.COL_SALE_ADJUSTEDPRICE] = Tools.zeroNonNumericString(tempRow[InventoryItem.COL_SALE_SUBTOTAL]) / Tools.zeroNonNumericString(tempRow[InventoryItem.COL_LENGTH]);
+                    tempRow[InventoryItem.COL_SALE_ADJUSTEDPRICE] = Tools.zeroNonNumericString(tempRow[InventoryItem.COL_SALE_SUBTOTAL]) / Tools.zeroNonNumericString(tempRow[InventoryItem.COL_DB_LENGTH]);
                     dtSummary.AcceptChanges();
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(dr[InventoryItem.COL_INVENTORY_ID].ToString()))
+                    if (!string.IsNullOrEmpty(dr[InventoryItem.COL_DB_INVENTORY_ID].ToString()))
                         dtSummary.Rows.Add(dr.ItemArray);
                 }
                 i++;

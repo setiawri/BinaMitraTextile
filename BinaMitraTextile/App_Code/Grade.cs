@@ -13,34 +13,35 @@ namespace BinaMitraTextile
         
         public Guid ID;
         public string Name = "";
-        public Boolean Active = true;
+        public bool Active = true;
 
         public Grade(Guid id)
         {
             ID = id;
             DataTable dt = getRow(ID);
             Name = dt.Rows[0][COL_DB_NAME].ToString();
-            Active = (Boolean)dt.Rows[0][COL_DB_ACTIVE];
+            Active = (bool)dt.Rows[0][COL_DB_ACTIVE];
         }
 
-        public static void add(string name)
+        public static Guid? add(string name)
         {
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "grade_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name)
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("grade_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "Item created");
-                }
-                Tools.hasMessage("Item created");
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static bool isNameExist(string name, Guid? id)
@@ -49,7 +50,7 @@ namespace BinaMitraTextile
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
+                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(id);
                 SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
                 return_value.Direction = ParameterDirection.ReturnValue;
 
@@ -77,7 +78,7 @@ namespace BinaMitraTextile
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Tools.wrapNullable(nameFilter);
+                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Util.wrapNullable(nameFilter);
 
                 adapter.SelectCommand = cmd;
                 adapter.Fill(dataTable);
@@ -106,11 +107,7 @@ namespace BinaMitraTextile
                 string logDescription = "";
                 if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
 
-                if (string.IsNullOrEmpty(logDescription))
-                {
-                    Tools.showError("No changes to record");
-                }
-                else
+                if (!string.IsNullOrEmpty(logDescription))
                 {
                     using (SqlCommand cmd = new SqlCommand("grade_update", DBConnection.ActiveSqlConnection))
                     {

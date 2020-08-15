@@ -11,7 +11,9 @@ namespace BinaMitraTextile
         public const string COL_DB_NAME = "name";
         public const string COL_DB_ACTIVE = "active";
         public const string COL_DB_NOTES = "notes";
-        
+
+        public const string FILTER_IncludeInactive = "include_inactive";
+
         public Guid ID;
         public string Name = "";
         public string Notes = "";
@@ -26,41 +28,40 @@ namespace BinaMitraTextile
             Active = (Boolean)dt.Rows[0][COL_DB_ACTIVE];
         }
 
-        public static void add(string name, string notes)
+        public static Guid? add(string name, string notes)
         {
-            try
-            {
-                Guid id = Guid.NewGuid();
-                using (SqlCommand cmd = new SqlCommand("productstorename_new", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-                    
-                    cmd.ExecuteNonQuery();
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "productstorename_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
 
-                    ActivityLog.submit(id, "Item created");
-                }
-                Tools.hasMessage("Item created");
+            if (!result.IsSuccessful)
+                return null;
+            else
+            {
+                ActivityLog.submit(Id, "Added");
+                return Id;
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static bool isNameExist(string name, Guid? id)
         {
-            using (SqlCommand cmd = new SqlCommand("productstorename_isNameExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "productstorename_isNameExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name)
+                );
+            return result.ValueBoolean;
         }
 
         public static DataTable getRow(Guid ID)
@@ -73,21 +74,17 @@ namespace BinaMitraTextile
             return getByFilter(includeInactive, null);
         }
 
-        public static DataTable getByFilter(bool includeInactive, string nameFilter)
+        public static DataTable getByFilter(bool includeInactive, string name)
         {
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("productstorename_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@include_inactive", SqlDbType.Bit).Value = includeInactive;
-                cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = Tools.wrapNullable(nameFilter);
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "productstorename_get_byFilter",
+                new SqlQueryParameter(FILTER_IncludeInactive, SqlDbType.Bit, includeInactive),
+                new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, Util.wrapNullable(name))
+            );
+            return result.Datatable;        
         }
 
         public static void updateActiveStatus(Guid id, Boolean activeStatus)
@@ -97,37 +94,28 @@ namespace BinaMitraTextile
 
         public static void update(Guid id, string name, string notes)
         {
-            try
+            ProductStoreName objOld = new ProductStoreName(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
+            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                ProductStoreName objOld = new ProductStoreName(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "productstorename_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
-                if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
-
-
-                if (string.IsNullOrEmpty(logDescription))
-                {
-                    Tools.showError("No changes to record");
-                }
-                else
-                {
-                    using (SqlCommand cmd = new SqlCommand("productstorename_update", DBConnection.ActiveSqlConnection))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                        cmd.Parameters.Add("@" + COL_DB_NAME, SqlDbType.VarChar).Value = name;
-                        cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = notes;
-
-                        cmd.ExecuteNonQuery();
-
-                        ActivityLog.submit(id, "Update: " + logDescription);
-                    }
-                    Tools.hasMessage("Item updated");
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool includeInactive, bool showDefault)

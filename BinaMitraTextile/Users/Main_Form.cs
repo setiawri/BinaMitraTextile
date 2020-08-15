@@ -151,7 +151,7 @@ namespace BinaMitraTextile.Users
                         if (isInputFieldsValid(false))
                         {
                             UserAccount obj = new UserAccount(txtName.Text, txtNewPassword.Text, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, txtNotes.Text);
-                            if (!Tools.hasMessage(obj.submitNew()))
+                            if (obj.submitNew() != null)
                             {
                                 Tools.hasMessage("The new data has been added");
                                 clearForm();
@@ -170,8 +170,7 @@ namespace BinaMitraTextile.Users
                                 obj.HashedPassword = txtNewPassword.Text;
 
                             obj.id = _selected_UserAcounts_Id;
-                            if (!Tools.hasMessage(obj.update()))
-                                Tools.hasMessage("Data has been updated");
+                            obj.update();
                             populateGrid();
                             showNewForm();
                         }

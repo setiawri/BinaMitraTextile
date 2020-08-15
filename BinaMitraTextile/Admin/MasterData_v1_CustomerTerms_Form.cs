@@ -134,7 +134,7 @@ namespace BinaMitraTextile.Admin
         {
             if (Util.isColumnMatch(sender, e, col_dgv_Checked))
             {
-                CustomerTerm.updateCheckedStatus(GlobalData.UserAccount.id, (Guid)Util.getSelectedRowValue(sender, col_dgv_Id), !Util.getCheckboxValue(sender, e));
+                CustomerTerm.updateCheckedStatus((Guid)Util.getSelectedRowValue(sender, col_dgv_Id), !Util.getCheckboxValue(sender, e));
                 populateGridViewDataSource(true);
             }
         }

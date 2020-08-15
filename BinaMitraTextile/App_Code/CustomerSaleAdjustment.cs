@@ -71,87 +71,88 @@ namespace BinaMitraTextile
             ColorName = DBUtil.parseData<string>(row, COL_COLOR_NAME);
         }
 
-        public static void add(Guid customerID, Guid gradeID, Guid productStoreNameID, Guid productWidthID, Guid lengthUnitID, Guid? colorID, decimal adjustmentPerUnit, string notes)
+        public static Guid? add(Guid customerID, Guid gradeID, Guid productStoreNameID, Guid productWidthID, Guid lengthUnitID, Guid? colorID, decimal adjustmentPerUnit, string notes)
         {
-            Guid id = Guid.NewGuid();
-            try
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "customersaleadjustment_add",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier, customerID),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, gradeID),
+                new SqlQueryParameter(COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier, productStoreNameID),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, productWidthID),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, lengthUnitID),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(colorID)),
+                new SqlQueryParameter(COL_DB_ADJUSTMENTPERUNIT, SqlDbType.Decimal, adjustmentPerUnit),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
             {
-                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_add", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
-                    cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = gradeID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier).Value = productStoreNameID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = productWidthID;
-                    cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = lengthUnitID;
-                    cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(colorID);
-                    cmd.Parameters.Add("@" + COL_DB_ADJUSTMENTPERUNIT, SqlDbType.Decimal).Value = adjustmentPerUnit;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, "New item added");
-                }
-            } catch (Exception ex) { Tools.showError(ex.Message); }
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
         }
 
         public static bool isCombinationExist(Guid? id, Guid customerID, Guid gradeID, Guid productStoreNameID, Guid productWidthID, Guid lengthUnitID, Guid? colorID)
         {
-            using (SqlCommand cmd = new SqlCommand("customersaleadjustment_isCombinationExist", DBConnection.ActiveSqlConnection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(id);
-                cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
-                cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = gradeID;
-                cmd.Parameters.Add("@" + COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier).Value = productStoreNameID;
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = productWidthID;
-                cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = lengthUnitID;
-                cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(colorID);
-                SqlParameter return_value = cmd.Parameters.Add("@return_value", SqlDbType.Bit);
-                return_value.Direction = ParameterDirection.ReturnValue;
-
-                cmd.ExecuteNonQuery();
-
-                return Convert.ToBoolean(return_value.Value);
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, true, false,
+                "customersaleadjustment_isCombinationExist",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
+                new SqlQueryParameter(COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier, customerID),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, gradeID),
+                new SqlQueryParameter(COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier, productStoreNameID),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, productWidthID),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, lengthUnitID),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(colorID))
+                );
+            return result.ValueBoolean;
         }
 
         public static void update(Guid id, Guid customerID, Guid gradeID, Guid productStoreNameID, Guid productWidthID, Guid lengthUnitID, Guid? colorID, decimal adjustmentPerUnit, string notes)
         {
-            try
+            CustomerSaleAdjustment objOld = new CustomerSaleAdjustment(id);
+
+            //generate log description
+            string logDescription = "";
+            if (objOld.CustomerID != customerID) { Customer customer = new Customer(customerID); logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}' to '{1}'", objOld.CustomerName, customer.Name), ","); }
+            if (objOld.ProductStoreNameID != productStoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.ProductStoreName, new ProductStoreName(productStoreNameID).Name), ",");
+            if (objOld.GradeID != gradeID) logDescription = Tools.append(logDescription, String.Format("Grade: '{0}' to '{1}'", objOld.GradeID, new Grade(gradeID).Name), ",");
+            if (objOld.ProductWidthID != productWidthID) logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}' to '{1}'", objOld.ProductWidthName, new ProductWidth(productWidthID).Name), ",");
+            if (objOld.LengthUnitID != lengthUnitID) logDescription = Tools.append(logDescription, String.Format("Length Unit: '{0}' to '{1}'", objOld.LengthUnitID, new LengthUnit(lengthUnitID).Name), ",");
+            if (objOld.AdjustmentPerUnit != adjustmentPerUnit) logDescription = Tools.append(logDescription, String.Format("Adjustment: '{0}' to '{1}'", objOld.AdjustmentPerUnit, adjustmentPerUnit), ",");
+            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+
+            if (!string.IsNullOrEmpty(logDescription))
             {
-                CustomerSaleAdjustment objOld = new CustomerSaleAdjustment(id);
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "customersaleadjustment_update",
+                    new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier, customerID),
+                    new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, gradeID),
+                    new SqlQueryParameter(COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier, productStoreNameID),
+                    new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, productWidthID),
+                    new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, lengthUnitID),
+                    new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(colorID)),
+                    new SqlQueryParameter(COL_DB_ADJUSTMENTPERUNIT, SqlDbType.Decimal, adjustmentPerUnit),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(notes))
+                );
 
-                //generate log description
-                string logDescription = "";
-                if (objOld.CustomerID != customerID) { Customer customer = new Customer(customerID); logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}' to '{1}'", objOld.CustomerName, customer.Name), ","); }
-                if (objOld.ProductStoreNameID != productStoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.ProductStoreName, new ProductStoreName(productStoreNameID).Name), ",");
-                if (objOld.GradeID != gradeID) logDescription = Tools.append(logDescription, String.Format("Grade: '{0}' to '{1}'", objOld.GradeID, new Grade(gradeID).Name), ",");
-                if (objOld.ProductWidthID != productWidthID) logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}' to '{1}'", objOld.ProductWidthName, new ProductWidth(productWidthID).Name), ",");
-                if (objOld.LengthUnitID != lengthUnitID) logDescription = Tools.append(logDescription, String.Format("Length Unit: '{0}' to '{1}'", objOld.LengthUnitID, new LengthUnit(lengthUnitID).Name), ",");
-                if (objOld.AdjustmentPerUnit != adjustmentPerUnit) logDescription = Tools.append(logDescription, String.Format("Adjustment: '{0}' to '{1}'", objOld.AdjustmentPerUnit, adjustmentPerUnit), ",");
-                if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
-
-                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_update", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
-                    cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = customerID;
-                    cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = gradeID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier).Value = productStoreNameID;
-                    cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = productWidthID;
-                    cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = lengthUnitID;
-                    cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(colorID);
-                    cmd.Parameters.Add("@" + COL_DB_ADJUSTMENTPERUNIT, SqlDbType.Decimal).Value = adjustmentPerUnit;
-                    cmd.Parameters.Add("@" + COL_DB_NOTES, SqlDbType.VarChar).Value = Tools.wrapNullable(notes);
-
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, String.Format("Item updated: {0}", logDescription));
-                }
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, "Update: " + logDescription);
             }
-            catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
         public static void updateCheckedStatus(Guid userAccountID, Guid id, bool value)
@@ -169,35 +170,30 @@ namespace BinaMitraTextile
                 ActivityLog.submit(id, "Update Checked Status to " + value);
         }
 
-        public static string delete(Guid id)
+        public static void delete(Guid id)
         {
-            try
-            {
-                CustomerSaleAdjustment obj = new CustomerSaleAdjustment(id);
+            CustomerSaleAdjustment obj = new CustomerSaleAdjustment(id);
 
-                //generate log description
-                string logDescription = "";
-                logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}'", obj.CustomerName), ","); 
-                logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}'", obj.ProductStoreName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Grade: '{0}'", obj.GradeName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}'", obj.ProductWidthName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Unit: '{0}'", obj.LengthUnitName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Adjustment: '{0}'", obj.AdjustmentPerUnit), ",");
-                logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
+            //generate log description
+            string logDescription = "";
+            logDescription = Tools.append(logDescription, String.Format("Customer Name: '{0}'", obj.CustomerName), ","); 
+            logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}'", obj.ProductStoreName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Grade: '{0}'", obj.GradeName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Product Width: '{0}'", obj.ProductWidthName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Unit: '{0}'", obj.LengthUnitName), ",");
+            logDescription = Tools.append(logDescription, String.Format("Adjustment: '{0}'", obj.AdjustmentPerUnit), ",");
+            logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", obj.Notes), ",");
 
-                using (SqlCommand cmd = new SqlCommand("customersaleadjustment_delete", DBConnection.ActiveSqlConnection))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@" + COL_DB_ID, SqlDbType.UniqueIdentifier).Value = id;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "customersaleadjustment_delete",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id)
+            );
 
-                    cmd.ExecuteNonQuery();
-
-                    ActivityLog.submit(id, String.Format("Item deleted: {0}", logDescription));
-                }
-            }
-            catch (Exception ex) { return ex.Message; }
-
-            return string.Empty;
+            if (result.IsSuccessful)
+                ActivityLog.submit(id, String.Format("Item deleted: {0}", logDescription));
         }
 
         public static DataTable getRow(Guid ID)
@@ -205,29 +201,22 @@ namespace BinaMitraTextile
             return DBUtil.getRows("customersaleadjustment_get", ID);
         }
 
-        public static DataTable getAll(Guid? customerID, Guid? gradeID, Guid? productID, Guid? productWidthID, Guid? lengthUnitID, Guid? colorID, bool onlyNotChecked)
+        public static DataTable getAll(Guid? customerID, Guid? gradeID, Guid? productStoreNameID, Guid? productWidthID, Guid? lengthUnitID, Guid? colorID, bool onlyNotChecked)
         {
-            //Tools.startProgressDisplay("Donwloading data...");
-
-            DataTable dataTable = new DataTable();
-            using (SqlCommand cmd = new SqlCommand("customersaleadjustment_get_byFilter", DBConnection.ActiveSqlConnection))
-            using (SqlDataAdapter adapter = new SqlDataAdapter())
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@" + COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(customerID);
-                cmd.Parameters.Add("@" + COL_DB_GRADEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(gradeID);
-                cmd.Parameters.Add("@" + COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(productID);
-                cmd.Parameters.Add("@" + COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(productWidthID);
-                cmd.Parameters.Add("@" + COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(lengthUnitID);
-                cmd.Parameters.Add("@" + COL_DB_COLORID, SqlDbType.UniqueIdentifier).Value = Tools.wrapNullable(colorID);
-                cmd.Parameters.Add("@" + FILTER_OnlyNotChecked, SqlDbType.Bit).Value = onlyNotChecked;
-
-                adapter.SelectCommand = cmd;
-                adapter.Fill(dataTable);
-            }
-            //Tools.stopProgressDisplay();
-
-            return dataTable;
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.FillByAdapter,
+                "customersaleadjustment_get_byFilter",
+                new SqlQueryParameter(COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier, Util.wrapNullable(customerID)),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(gradeID)),
+                new SqlQueryParameter(COL_DB_PRODUCSTORENAMEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productStoreNameID)),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productWidthID)),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(colorID)),
+                new SqlQueryParameter(FILTER_OnlyNotChecked, SqlDbType.Bit, onlyNotChecked)
+                );
+            return result.Datatable;
         }
     }
 }
