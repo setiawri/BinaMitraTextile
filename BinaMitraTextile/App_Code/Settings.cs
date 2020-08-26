@@ -9,7 +9,7 @@ namespace BinaMitraTextile
 {
     class Settings
     {
-        public static string autologinusername = "ricky";
+        public static string autologinusername = "";
 
         public static string bypassusername1 = "qwe";
         public static string autologinusername1 = "ricky";

@@ -54,6 +54,7 @@ namespace BinaMitraTextile
         public const string COL_PaymentAmount = "PaymentAmount";
         public const string COL_VendorName = "VendorName";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
+        public const string COL_FakturPajaks_DPP = "FakturPajaks_DPP";
         public const string COL_FakturPajaks_Amount = "FakturPajaks_Amount";
         public const string COL_AmountDifferenceFromFakturPajaksAmount = "AmountDifferenceFromFakturPajaksAmount";
 

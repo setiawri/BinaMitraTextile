@@ -348,7 +348,11 @@ namespace BinaMitraTextile
                     PettyCashRecords_Notes += string.Format(" (Update {0:N0} to {1:N0})", objOld.ShippingExpense, Amount);
                 }
 
-                if(!string.IsNullOrWhiteSpace(Notes))
+                //transport information
+                if(objOld.TransportName != null)
+                    PettyCashRecords_Notes += string.Format(", Angkutan {0}", objOld.TransportName);
+
+                if (!string.IsNullOrWhiteSpace(Notes))
                     PettyCashRecords_Notes += ", " + Notes;
 
                 Guid? PettyCashRecords_Id = PettyCashRecord.add(PettyCashRecordsCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);

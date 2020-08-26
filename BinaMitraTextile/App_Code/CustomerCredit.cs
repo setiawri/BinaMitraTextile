@@ -87,7 +87,7 @@ namespace BinaMitraTextile
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "customercredit_get_by_customer_id",
-                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, customerID),
+                new SqlQueryParameter(COL_DB_CUSTOMERID, SqlDbType.UniqueIdentifier, customerID),
                 new SqlQueryParameter("hex_length", SqlDbType.TinyInt, Settings.saleBarcodeLength)
                 );
 

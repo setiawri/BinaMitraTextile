@@ -154,10 +154,12 @@ namespace BinaMitraTextile.SharedForms
             Customer.populateInputControlDropDownList(iddl_Customers, true);
             Vendor.populateInputControlDropDownList(iddl_Vendors, true);
 
-            idtp_StartDate.Value = DateTime.Now.AddMonths(-3);
-            idtp_EndDate.Value = DateTime.Now;
-            idtp_StartDate.Checked = false;
+            idtp_EndDate.ResetValue = idtp_EndDate.getLastDateOfLastMonth();
             idtp_EndDate.Checked = false;
+            idtp_EndDate.reset();
+            idtp_StartDate.ResetValue = idtp_StartDate.getFirstDateOfLastMonth();
+            idtp_StartDate.Checked = false;
+            idtp_StartDate.reset();
 
             rbVendor.Checked = true;
             setRadioButtonEnability(rbVendor);

@@ -90,6 +90,8 @@ namespace BinaMitraTextile.InventoryForm
             col_gridvendorinvoice_Amount.DataPropertyName = VendorInvoice.COL_DB_Amount;
             col_gridVendorInvoice_FakturPajaks_Id.DataPropertyName = VendorInvoice.COL_DB_FakturPajaks_Id;
             col_gridVendorInvoice_FakturPajaks_No.DataPropertyName = VendorInvoice.COL_FakturPajaks_No;
+            col_gridvendorinvoice_timestamp2.DataPropertyName = VendorInvoice.COL_DB_Timestamp; col_gridvendorinvoice_timestamp2.Visible = false;
+            col_gridvendorinvoice_DPP.DataPropertyName = VendorInvoice.COL_FakturPajaks_DPP; col_gridvendorinvoice_DPP.Visible = false;
             col_gridvendorinvoice_FakturPajaks_Amount.DataPropertyName = VendorInvoice.COL_FakturPajaks_Amount;
             col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.DataPropertyName = VendorInvoice.COL_AmountDifferenceFromFakturPajaksAmount;
             col_gridvendorinvoice_notes.DataPropertyName = VendorInvoice.COL_DB_Notes;
