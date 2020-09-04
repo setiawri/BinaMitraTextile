@@ -165,7 +165,7 @@ namespace BinaMitraTextile
                 QueryTypes.ExecuteNonQuery,
                 "VendorInvoicePayments_update_Cancelled",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
-                new SqlQueryParameter(COL_DB_Approved, SqlDbType.Bit, Value)
+                new SqlQueryParameter(COL_DB_Cancelled, SqlDbType.Bit, Value)
             );
 
             if (result.IsSuccessful)

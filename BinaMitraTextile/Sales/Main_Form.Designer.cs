@@ -132,13 +132,6 @@
             this.pnlFilterHeader = new System.Windows.Forms.Panel();
             this.pbLog = new System.Windows.Forms.PictureBox();
             this.pbRefresh = new System.Windows.Forms.PictureBox();
-            this.pnlUpdateShippingExpense = new System.Windows.Forms.Panel();
-            this.btnCancelUpdateShippingExpense = new System.Windows.Forms.Button();
-            this.btnUpdateShippingExpense = new System.Windows.Forms.Button();
-            this.pnlSummaryAndDetails = new System.Windows.Forms.Panel();
-            this.scSummaryAndDetails = new System.Windows.Forms.SplitContainer();
-            this.pnlRowInfoContainer = new System.Windows.Forms.Panel();
-            this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.ptFilter = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_UserAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
@@ -146,9 +139,16 @@
             this.itxt_InventoryCode = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.pnlUpdateShippingExpense = new System.Windows.Forms.Panel();
             this.iddl_PettyCashCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.itxt_ShippingExpenseNotes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.btnCancelUpdateShippingExpense = new System.Windows.Forms.Button();
+            this.btnUpdateShippingExpense = new System.Windows.Forms.Button();
             this.in_ShippingExpense = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.pnlSummaryAndDetails = new System.Windows.Forms.Panel();
+            this.scSummaryAndDetails = new System.Windows.Forms.SplitContainer();
+            this.pnlRowInfoContainer = new System.Windows.Forms.Panel();
+            this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.ptSummaryAndDetails = new LIBUtil.Desktop.UserControls.PanelToggle();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridMaster)).BeginInit();
@@ -319,7 +319,6 @@
             this.col_gridsummary_buyprice.Name = "col_gridsummary_buyprice";
             this.col_gridsummary_buyprice.ReadOnly = true;
             this.col_gridsummary_buyprice.Visible = false;
-            this.col_gridsummary_buyprice.Width = 30;
             // 
             // col_gridsummary_priceperunit
             // 
@@ -358,7 +357,6 @@
             this.col_gridSummary_profit.Name = "col_gridSummary_profit";
             this.col_gridSummary_profit.ReadOnly = true;
             this.col_gridSummary_profit.Visible = false;
-            this.col_gridSummary_profit.Width = 40;
             // 
             // col_gridSummary_profitpercent
             // 
@@ -371,7 +369,6 @@
             this.col_gridSummary_profitpercent.Name = "col_gridSummary_profitpercent";
             this.col_gridSummary_profitpercent.ReadOnly = true;
             this.col_gridSummary_profitpercent.Visible = false;
-            this.col_gridSummary_profitpercent.Width = 30;
             // 
             // col_gridSummary_isManualAdjustment
             // 
@@ -661,7 +658,6 @@
             this.col_gridmaster_profit.Name = "col_gridmaster_profit";
             this.col_gridmaster_profit.ReadOnly = true;
             this.col_gridmaster_profit.Visible = false;
-            this.col_gridmaster_profit.Width = 30;
             // 
             // col_gridmaster_profitpercent
             // 
@@ -674,7 +670,6 @@
             this.col_gridmaster_profitpercent.Name = "col_gridmaster_profitpercent";
             this.col_gridmaster_profitpercent.ReadOnly = true;
             this.col_gridmaster_profitpercent.Visible = false;
-            this.col_gridmaster_profitpercent.Width = 30;
             // 
             // col_gridmaster_specialuseronly
             // 
@@ -929,7 +924,7 @@
             // chkOnlyWithCommission
             // 
             this.chkOnlyWithCommission.AutoSize = true;
-            this.chkOnlyWithCommission.Location = new System.Drawing.Point(589, 28);
+            this.chkOnlyWithCommission.Location = new System.Drawing.Point(589, 5);
             this.chkOnlyWithCommission.Name = "chkOnlyWithCommission";
             this.chkOnlyWithCommission.Size = new System.Drawing.Size(71, 17);
             this.chkOnlyWithCommission.TabIndex = 8;
@@ -979,7 +974,7 @@
             // chkOnlyHasReceivable
             // 
             this.chkOnlyHasReceivable.AutoSize = true;
-            this.chkOnlyHasReceivable.Location = new System.Drawing.Point(589, 5);
+            this.chkOnlyHasReceivable.Location = new System.Drawing.Point(589, 28);
             this.chkOnlyHasReceivable.Name = "chkOnlyHasReceivable";
             this.chkOnlyHasReceivable.Size = new System.Drawing.Size(81, 17);
             this.chkOnlyHasReceivable.TabIndex = 6;
@@ -1134,94 +1129,6 @@
             this.pbRefresh.TabStop = false;
             this.pbRefresh.Click += new System.EventHandler(this.pbRefresh_Click);
             // 
-            // pnlUpdateShippingExpense
-            // 
-            this.pnlUpdateShippingExpense.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlUpdateShippingExpense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUpdateShippingExpense.Controls.Add(this.iddl_PettyCashCategories);
-            this.pnlUpdateShippingExpense.Controls.Add(this.itxt_ShippingExpenseNotes);
-            this.pnlUpdateShippingExpense.Controls.Add(this.btnCancelUpdateShippingExpense);
-            this.pnlUpdateShippingExpense.Controls.Add(this.btnUpdateShippingExpense);
-            this.pnlUpdateShippingExpense.Controls.Add(this.in_ShippingExpense);
-            this.pnlUpdateShippingExpense.Location = new System.Drawing.Point(372, 32);
-            this.pnlUpdateShippingExpense.Name = "pnlUpdateShippingExpense";
-            this.pnlUpdateShippingExpense.Size = new System.Drawing.Size(230, 177);
-            this.pnlUpdateShippingExpense.TabIndex = 108;
-            this.pnlUpdateShippingExpense.Visible = false;
-            // 
-            // btnCancelUpdateShippingExpense
-            // 
-            this.btnCancelUpdateShippingExpense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelUpdateShippingExpense.Location = new System.Drawing.Point(123, 139);
-            this.btnCancelUpdateShippingExpense.Name = "btnCancelUpdateShippingExpense";
-            this.btnCancelUpdateShippingExpense.Size = new System.Drawing.Size(61, 23);
-            this.btnCancelUpdateShippingExpense.TabIndex = 4;
-            this.btnCancelUpdateShippingExpense.Text = "CANCEL";
-            this.btnCancelUpdateShippingExpense.UseVisualStyleBackColor = true;
-            this.btnCancelUpdateShippingExpense.Click += new System.EventHandler(this.btnCancelUpdateBuyPrice_Click);
-            // 
-            // btnUpdateShippingExpense
-            // 
-            this.btnUpdateShippingExpense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateShippingExpense.Location = new System.Drawing.Point(45, 139);
-            this.btnUpdateShippingExpense.Name = "btnUpdateShippingExpense";
-            this.btnUpdateShippingExpense.Size = new System.Drawing.Size(72, 23);
-            this.btnUpdateShippingExpense.TabIndex = 3;
-            this.btnUpdateShippingExpense.Text = "UPDATE";
-            this.btnUpdateShippingExpense.UseVisualStyleBackColor = true;
-            this.btnUpdateShippingExpense.Click += new System.EventHandler(this.btnUpdateShippingExpense_Click);
-            // 
-            // pnlSummaryAndDetails
-            // 
-            this.pnlSummaryAndDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSummaryAndDetails.Controls.Add(this.scSummaryAndDetails);
-            this.pnlSummaryAndDetails.Controls.Add(this.pnlRowInfoContainer);
-            this.pnlSummaryAndDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSummaryAndDetails.Location = new System.Drawing.Point(0, 191);
-            this.pnlSummaryAndDetails.Name = "pnlSummaryAndDetails";
-            this.pnlSummaryAndDetails.Size = new System.Drawing.Size(974, 162);
-            this.pnlSummaryAndDetails.TabIndex = 96;
-            // 
-            // scSummaryAndDetails
-            // 
-            this.scSummaryAndDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scSummaryAndDetails.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.scSummaryAndDetails.IsSplitterFixed = true;
-            this.scSummaryAndDetails.Location = new System.Drawing.Point(0, 25);
-            this.scSummaryAndDetails.Name = "scSummaryAndDetails";
-            // 
-            // scSummaryAndDetails.Panel1
-            // 
-            this.scSummaryAndDetails.Panel1.Controls.Add(this.gridSummary);
-            // 
-            // scSummaryAndDetails.Panel2
-            // 
-            this.scSummaryAndDetails.Panel2.Controls.Add(this.gridDetail);
-            this.scSummaryAndDetails.Size = new System.Drawing.Size(972, 135);
-            this.scSummaryAndDetails.SplitterDistance = 772;
-            this.scSummaryAndDetails.TabIndex = 0;
-            // 
-            // pnlRowInfoContainer
-            // 
-            this.pnlRowInfoContainer.Controls.Add(this.pnlRowInfoHeader);
-            this.pnlRowInfoContainer.Controls.Add(this.ptSummaryAndDetails);
-            this.pnlRowInfoContainer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlRowInfoContainer.Location = new System.Drawing.Point(0, 0);
-            this.pnlRowInfoContainer.Name = "pnlRowInfoContainer";
-            this.pnlRowInfoContainer.Size = new System.Drawing.Size(972, 25);
-            this.pnlRowInfoContainer.TabIndex = 98;
-            // 
-            // pnlRowInfoHeader
-            // 
-            this.pnlRowInfoHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRowInfoHeader.Location = new System.Drawing.Point(25, 0);
-            this.pnlRowInfoHeader.Name = "pnlRowInfoHeader";
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(947, 25);
-            this.pnlRowInfoHeader.TabIndex = 99;
-            // 
             // ptFilter
             // 
             this.ptFilter.AdjustLocationOnClick = false;
@@ -1259,7 +1166,7 @@
             this.iddl_UserAccounts.HideFilter = true;
             this.iddl_UserAccounts.HideUpdateLink = true;
             this.iddl_UserAccounts.LabelText = "Sales";
-            this.iddl_UserAccounts.Location = new System.Drawing.Point(660, 22);
+            this.iddl_UserAccounts.Location = new System.Drawing.Point(660, 1);
             this.iddl_UserAccounts.Name = "iddl_UserAccounts";
             this.iddl_UserAccounts.SelectedIndex = -1;
             this.iddl_UserAccounts.SelectedItem = null;
@@ -1320,6 +1227,21 @@
             this.iddl_Customers.Size = new System.Drawing.Size(130, 41);
             this.iddl_Customers.TabIndex = 4;
             // 
+            // pnlUpdateShippingExpense
+            // 
+            this.pnlUpdateShippingExpense.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlUpdateShippingExpense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdateShippingExpense.Controls.Add(this.iddl_PettyCashCategories);
+            this.pnlUpdateShippingExpense.Controls.Add(this.itxt_ShippingExpenseNotes);
+            this.pnlUpdateShippingExpense.Controls.Add(this.btnCancelUpdateShippingExpense);
+            this.pnlUpdateShippingExpense.Controls.Add(this.btnUpdateShippingExpense);
+            this.pnlUpdateShippingExpense.Controls.Add(this.in_ShippingExpense);
+            this.pnlUpdateShippingExpense.Location = new System.Drawing.Point(372, 33);
+            this.pnlUpdateShippingExpense.Name = "pnlUpdateShippingExpense";
+            this.pnlUpdateShippingExpense.Size = new System.Drawing.Size(230, 177);
+            this.pnlUpdateShippingExpense.TabIndex = 108;
+            this.pnlUpdateShippingExpense.Visible = false;
+            // 
             // iddl_PettyCashCategories
             // 
             this.iddl_PettyCashCategories.DisableTextInput = false;
@@ -1353,6 +1275,30 @@
             this.itxt_ShippingExpenseNotes.TabIndex = 2;
             this.itxt_ShippingExpenseNotes.ValueText = "";
             this.itxt_ShippingExpenseNotes.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.itxt_ShippingExpenseNotes_onKeyDown);
+            // 
+            // btnCancelUpdateShippingExpense
+            // 
+            this.btnCancelUpdateShippingExpense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelUpdateShippingExpense.Location = new System.Drawing.Point(123, 139);
+            this.btnCancelUpdateShippingExpense.Name = "btnCancelUpdateShippingExpense";
+            this.btnCancelUpdateShippingExpense.Size = new System.Drawing.Size(61, 23);
+            this.btnCancelUpdateShippingExpense.TabIndex = 4;
+            this.btnCancelUpdateShippingExpense.Text = "CANCEL";
+            this.btnCancelUpdateShippingExpense.UseVisualStyleBackColor = true;
+            this.btnCancelUpdateShippingExpense.Click += new System.EventHandler(this.btnCancelUpdateBuyPrice_Click);
+            // 
+            // btnUpdateShippingExpense
+            // 
+            this.btnUpdateShippingExpense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateShippingExpense.Location = new System.Drawing.Point(45, 139);
+            this.btnUpdateShippingExpense.Name = "btnUpdateShippingExpense";
+            this.btnUpdateShippingExpense.Size = new System.Drawing.Size(72, 23);
+            this.btnUpdateShippingExpense.TabIndex = 3;
+            this.btnUpdateShippingExpense.Text = "UPDATE";
+            this.btnUpdateShippingExpense.UseVisualStyleBackColor = true;
+            this.btnUpdateShippingExpense.Click += new System.EventHandler(this.btnUpdateShippingExpense_Click);
             // 
             // in_ShippingExpense
             // 
@@ -1388,6 +1334,55 @@
             0,
             0});
             this.in_ShippingExpense.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.in_ShippingExpense_onKeyDown);
+            // 
+            // pnlSummaryAndDetails
+            // 
+            this.pnlSummaryAndDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSummaryAndDetails.Controls.Add(this.scSummaryAndDetails);
+            this.pnlSummaryAndDetails.Controls.Add(this.pnlRowInfoContainer);
+            this.pnlSummaryAndDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlSummaryAndDetails.Location = new System.Drawing.Point(0, 191);
+            this.pnlSummaryAndDetails.Name = "pnlSummaryAndDetails";
+            this.pnlSummaryAndDetails.Size = new System.Drawing.Size(974, 162);
+            this.pnlSummaryAndDetails.TabIndex = 96;
+            // 
+            // scSummaryAndDetails
+            // 
+            this.scSummaryAndDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scSummaryAndDetails.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.scSummaryAndDetails.IsSplitterFixed = true;
+            this.scSummaryAndDetails.Location = new System.Drawing.Point(0, 25);
+            this.scSummaryAndDetails.Name = "scSummaryAndDetails";
+            // 
+            // scSummaryAndDetails.Panel1
+            // 
+            this.scSummaryAndDetails.Panel1.Controls.Add(this.gridSummary);
+            // 
+            // scSummaryAndDetails.Panel2
+            // 
+            this.scSummaryAndDetails.Panel2.Controls.Add(this.gridDetail);
+            this.scSummaryAndDetails.Size = new System.Drawing.Size(972, 135);
+            this.scSummaryAndDetails.SplitterDistance = 772;
+            this.scSummaryAndDetails.TabIndex = 0;
+            // 
+            // pnlRowInfoContainer
+            // 
+            this.pnlRowInfoContainer.Controls.Add(this.pnlRowInfoHeader);
+            this.pnlRowInfoContainer.Controls.Add(this.ptSummaryAndDetails);
+            this.pnlRowInfoContainer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRowInfoContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlRowInfoContainer.Name = "pnlRowInfoContainer";
+            this.pnlRowInfoContainer.Size = new System.Drawing.Size(972, 25);
+            this.pnlRowInfoContainer.TabIndex = 98;
+            // 
+            // pnlRowInfoHeader
+            // 
+            this.pnlRowInfoHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRowInfoHeader.Location = new System.Drawing.Point(25, 0);
+            this.pnlRowInfoHeader.Name = "pnlRowInfoHeader";
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(947, 25);
+            this.pnlRowInfoHeader.TabIndex = 99;
             // 
             // ptSummaryAndDetails
             // 

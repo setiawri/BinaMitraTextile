@@ -76,6 +76,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridvendorinvoice_id.DataPropertyName = VendorInvoice.COL_DB_Id;
             col_gridvendorinvoice_timestamp.DataPropertyName = VendorInvoice.COL_DB_Timestamp;
             col_gridvendorinvoice_invoiceno.DataPropertyName = VendorInvoice.COL_DB_InvoiceNo;
+            col_gridvendorinvoice_Vendors_Id.DataPropertyName = VendorInvoice.COL_DB_Vendors_Id;
             col_gridvendorinvoice_vendorname.DataPropertyName = VendorInvoice.COL_VendorName;
             col_gridvendorinvoice_ReturnedValue.DataPropertyName = VendorInvoice.COL_ReturnedValue;
             col_gridvendorinvoice_CalculatedAmount.DataPropertyName = VendorInvoice.COL_CalculatedAmount;
@@ -129,13 +130,19 @@ namespace BinaMitraTextile.InventoryForm
 
         public void populateGridVendorInvoices()
         {
+            DataView dvw;
+
             gridvendorinvoice.AutoGenerateColumns = false; //the line in setupControls() is not working??
             if (_startingMode == FormModes.Browse)
-                Util.setGridviewDataSource(gridvendorinvoice, VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast6Months.Checked));
+                dvw = VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast6Months.Checked).DefaultView;
             else if(_createVendorInvoicePayment)
-                Util.setGridviewDataSource(gridvendorinvoice, VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false));
+                dvw = VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false).DefaultView;
             else
-                Util.setGridviewDataSource(gridvendorinvoice, VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false));
+                dvw = VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false).DefaultView;
+
+            string[] fieldNames = { VendorInvoice.COL_VendorName, VendorInvoice.COL_VendorName };
+            dvw.RowFilter = Util.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNames);
+            Util.setGridviewDataSource(gridvendorinvoice, dvw);
 
             createVendorInvoicePaymentMode(_createVendorInvoicePayment);
 
@@ -153,6 +160,7 @@ namespace BinaMitraTextile.InventoryForm
         private void createVendorInvoicePaymentMode(bool value)
         {
             _createVendorInvoicePayment = value;
+            iddl_Vendors.Enabled = !value;
             btnStartVendorPayments.Enabled = !value;
             gbVendorInvoicePayment.Enabled = value;
             col_gridVendorInvoice_PaymentAmount.Visible = value;
@@ -323,18 +331,43 @@ namespace BinaMitraTextile.InventoryForm
             if (!iddl_Vendors.hasSelectedValue())
                 iddl_Vendors.SelectedValueError("Select a vendor");
             else
+            {
+                autoSetPaymentBasedOnSelectedVendor();
                 createVendorInvoicePaymentMode(true);
+            }
+        }
+
+        private void autoSetPaymentBasedOnSelectedVendor()
+        {
+            //detach event handler
+            this.gridvendorinvoice.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridvendorinvoice_CellValueChanged);
+
+            string VendorId = iddl_Vendors.SelectedValue.ToString();
+            foreach (DataGridViewRow row in gridvendorinvoice.Rows)
+            {
+                if (Util.getRowValue(row, col_gridvendorinvoice_Vendors_Id).ToString() != VendorId)
+                    Util.setRowValue(row, col_gridVendorInvoice_PaymentAmount, 0);
+                else
+                    Util.setRowValue(row, col_gridVendorInvoice_PaymentAmount, Util.getRowValue(row, col_gridvendorinvoice_PayableAmount));
+            }
+
+            //reattach event handler
+            this.gridvendorinvoice.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridvendorinvoice_CellValueChanged);
         }
 
         private void BtnSubmitVendorPayments_Click(object sender, EventArgs e)
         {
             decimal paymentAmount;
             Dictionary<Guid, decimal> paymentData = new Dictionary<Guid, decimal>();
+            string VendorId = iddl_Vendors.SelectedValue.ToString();
             foreach (DataGridViewRow row in gridvendorinvoice.Rows)
             {
-                paymentAmount = Util.wrapNullable<decimal>(Util.getRowValue(row, col_gridVendorInvoice_PaymentAmount));
-                if (paymentAmount != 0)
-                    paymentData.Add(Util.wrapNullable<Guid>(Util.getRowValue(row, col_gridvendorinvoice_id)), paymentAmount);
+                if (Util.getRowValue(row, col_gridvendorinvoice_Vendors_Id).ToString() == VendorId)
+                {
+                    paymentAmount = Util.wrapNullable<decimal>(Util.getRowValue(row, col_gridVendorInvoice_PaymentAmount));
+                    if (paymentAmount != 0)
+                        paymentData.Add(Util.wrapNullable<Guid>(Util.getRowValue(row, col_gridvendorinvoice_id)), paymentAmount);
+                }
             }
             VendorInvoicePayment.add((DateTime)idtp_VendorInvoicePaymentDate.ValueAsStartDateFilter, (Guid)iddl_Vendors.SelectedValue, null, paymentData);
 
@@ -444,6 +477,12 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void itxt_QuickSearch_onKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+                populateGridVendorInvoices();
         }
 
         #endregion

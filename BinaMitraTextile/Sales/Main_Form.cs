@@ -96,6 +96,8 @@ namespace BinaMitraTextile.Sales
 
                 chkOnlyNotCompleted.Visible = false;
                 chkOnlyManualAdjustment.Visible = false;
+                chkOnlyWithCommission.Visible = false;
+                iddl_UserAccounts.Visible = false;
 
                 //Tools.clearWhenSelected(gridMaster);
             }

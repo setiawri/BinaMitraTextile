@@ -127,6 +127,7 @@
             this.col_gridVendorInvoices_Approved = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_gridvendorinvoice_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridvendorinvoice_invoiceno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_gridvendorinvoice_Vendors_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridvendorinvoice_vendorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridvendorinvoice_Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridvendorinvoice_CalculatedAmount = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -527,7 +528,7 @@
             this.idtp_VendorInvoicePaymentDate.ShowUpAndDown = false;
             this.idtp_VendorInvoicePaymentDate.Size = new System.Drawing.Size(99, 41);
             this.idtp_VendorInvoicePaymentDate.TabIndex = 2;
-            this.idtp_VendorInvoicePaymentDate.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.idtp_VendorInvoicePaymentDate.Value = new System.DateTime(2020, 9, 4, 0, 0, 0, 0);
             this.idtp_VendorInvoicePaymentDate.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
             // 
             // btnStartVendorPayments
@@ -655,6 +656,7 @@
             this.itxt_QuickSearch.Size = new System.Drawing.Size(118, 21);
             this.itxt_QuickSearch.TabIndex = 14;
             this.itxt_QuickSearch.ValueText = "";
+            this.itxt_QuickSearch.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.itxt_QuickSearch_onKeyDown);
             // 
             // chkShowOnlyVendorUsesFakturPajak
             // 
@@ -718,6 +720,7 @@
             this.col_gridVendorInvoices_Approved,
             this.col_gridvendorinvoice_timestamp,
             this.col_gridvendorinvoice_invoiceno,
+            this.col_gridvendorinvoice_Vendors_Id,
             this.col_gridvendorinvoice_vendorname,
             this.col_gridvendorinvoice_Amount,
             this.col_gridvendorinvoice_CalculatedAmount,
@@ -1088,6 +1091,12 @@
             this.col_gridvendorinvoice_invoiceno.ReadOnly = true;
             this.col_gridvendorinvoice_invoiceno.Width = 50;
             // 
+            // col_gridvendorinvoice_Vendors_Id
+            // 
+            this.col_gridvendorinvoice_Vendors_Id.HeaderText = "Vendor Id";
+            this.col_gridvendorinvoice_Vendors_Id.Name = "col_gridvendorinvoice_Vendors_Id";
+            this.col_gridvendorinvoice_Vendors_Id.Visible = false;
+            // 
             // col_gridvendorinvoice_vendorname
             // 
             this.col_gridvendorinvoice_vendorname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -1429,6 +1438,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridVendorInvoices_Approved;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_invoiceno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_Vendors_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_vendorname;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_Amount;
         private System.Windows.Forms.DataGridViewLinkColumn col_gridvendorinvoice_CalculatedAmount;

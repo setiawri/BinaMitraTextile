@@ -369,15 +369,15 @@ namespace BinaMitraTextile.Sales
                         }
                     }
                 }
-                else
-                {
-                    Guid? pettyCashRecordId = PettyCashRecord.add((Guid)iddl_PettyCashCategories.SelectedValue, 0, string.Format("{0} {1} {2:N0}", _sale.barcode, Tools.GetEnumDescription((PaymentMethod)iddl_PaymentMethods.SelectedValue), lblGrandTotal.Text));
-                    
-                    if (pettyCashRecordId != null && (paymentMethod == PaymentMethod.Hutang || paymentMethod == PaymentMethod.Transfer || paymentMethod == PaymentMethod.EDC))
-                        PettyCashRecord.updateCheckedStatus((Guid)pettyCashRecordId, true);
 
-                    //Tools.hasMessage("The sale has been submitted"); //only shows this message here. Cash payments shows form kembalian
-                }
+                //do not submit petty cash if amount is 0 and non-cash
+                //else
+                //{
+                //    Guid? pettyCashRecordId = PettyCashRecord.add((Guid)iddl_PettyCashCategories.SelectedValue, 0, string.Format("{0} {1} {2:N0}", _sale.barcode, Tools.GetEnumDescription((PaymentMethod)iddl_PaymentMethods.SelectedValue), lblGrandTotal.Text));
+                    
+                //    if (pettyCashRecordId != null && (paymentMethod == PaymentMethod.Hutang || paymentMethod == PaymentMethod.Transfer || paymentMethod == PaymentMethod.EDC))
+                //        PettyCashRecord.updateCheckedStatus((Guid)pettyCashRecordId, true);
+                //}
 
 
                 return true;
