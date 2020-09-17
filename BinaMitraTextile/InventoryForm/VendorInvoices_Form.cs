@@ -145,6 +145,7 @@ namespace BinaMitraTextile.InventoryForm
             Util.setGridviewDataSource(gridvendorinvoice, dvw);
 
             createVendorInvoicePaymentMode(_createVendorInvoicePayment);
+            calculateGrandTotalPayableAmount();
 
             pbLog.Enabled = gridvendorinvoice.Rows.Count > 0;
         }
@@ -225,6 +226,12 @@ namespace BinaMitraTextile.InventoryForm
                 string filter = string.Format("{0} = '{1}'", VendorInvoice.COL_DB_Vendors_Id, iddl_Vendors.SelectedValue);
                 lblPayableAmount.Text = string.Format("payable:{0:N0}", Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, filter));
             }
+        }
+
+        private void calculateGrandTotalPayableAmount()
+        {
+            if (isFormShown)
+                lblGrandTotalPayable.Text = string.Format("Total Payable:{0:N0}", Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, ""));
         }
 
         #endregion
@@ -347,7 +354,7 @@ namespace BinaMitraTextile.InventoryForm
             {
                 if (Util.getRowValue(row, col_gridvendorinvoice_Vendors_Id).ToString() != VendorId)
                     Util.setRowValue(row, col_gridVendorInvoice_PaymentAmount, 0);
-                else
+                else if((bool)Util.getRowValue(row, col_gridvendorinvoice_isdue))
                     Util.setRowValue(row, col_gridVendorInvoice_PaymentAmount, Util.getRowValue(row, col_gridvendorinvoice_PayableAmount));
             }
 

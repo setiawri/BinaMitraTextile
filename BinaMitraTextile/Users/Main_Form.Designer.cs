@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -40,11 +42,6 @@
             this.chkShowInactive = new System.Windows.Forms.CheckBox();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.LinkName = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.col_grid_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_PercentCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtConfirmNewPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
@@ -52,11 +49,18 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnResetPassword = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.itxt_PasswordReset = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.in_PercentCommission = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.label8 = new System.Windows.Forms.Label();
-            this.itxt_PasswordReset = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnResetPassword = new System.Windows.Forms.Button();
+            this.in_GlobalPercentComission = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.LinkName = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_grid_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_PercentCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_GlobalPercentCommission = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -175,21 +179,22 @@
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.active,
             this.LinkName,
             this.col_grid_role,
-            this.col_grid_PercentCommission});
+            this.col_grid_PercentCommission,
+            this.col_grid_GlobalPercentCommission});
             this.grid.Location = new System.Drawing.Point(11, 199);
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MultiSelect = false;
@@ -201,58 +206,6 @@
             this.grid.TabIndex = 98;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "id";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // active
-            // 
-            this.active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.active.DataPropertyName = "active";
-            this.active.HeaderText = "Active";
-            this.active.MinimumWidth = 40;
-            this.active.Name = "active";
-            this.active.ReadOnly = true;
-            this.active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.active.Width = 40;
-            // 
-            // LinkName
-            // 
-            this.LinkName.ActiveLinkColor = System.Drawing.Color.Orange;
-            this.LinkName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LinkName.DataPropertyName = "username";
-            this.LinkName.HeaderText = "Name";
-            this.LinkName.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.LinkName.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.LinkName.MinimumWidth = 100;
-            this.LinkName.Name = "LinkName";
-            this.LinkName.ReadOnly = true;
-            this.LinkName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.LinkName.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            // 
-            // col_grid_role
-            // 
-            this.col_grid_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_role.DataPropertyName = "rolename";
-            this.col_grid_role.HeaderText = "Role";
-            this.col_grid_role.MinimumWidth = 50;
-            this.col_grid_role.Name = "col_grid_role";
-            this.col_grid_role.ReadOnly = true;
-            this.col_grid_role.Width = 50;
-            // 
-            // col_grid_PercentCommission
-            // 
-            this.col_grid_PercentCommission.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_PercentCommission.HeaderText = "%";
-            this.col_grid_PercentCommission.MinimumWidth = 30;
-            this.col_grid_PercentCommission.Name = "col_grid_PercentCommission";
-            this.col_grid_PercentCommission.ReadOnly = true;
-            this.col_grid_PercentCommission.Width = 30;
             // 
             // txtConfirmNewPassword
             // 
@@ -316,6 +269,7 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.in_GlobalPercentComission);
             this.groupBox1.Controls.Add(this.btnResetPassword);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.itxt_PasswordReset);
@@ -341,6 +295,44 @@
             this.groupBox1.Size = new System.Drawing.Size(430, 168);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Location = new System.Drawing.Point(357, 107);
+            this.btnResetPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(57, 23);
+            this.btnResetPassword.TabIndex = 112;
+            this.btnResetPassword.Text = "RESET";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(226, 112);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 111;
+            this.label9.Text = "Reset to";
+            // 
+            // itxt_PasswordReset
+            // 
+            this.itxt_PasswordReset.IsBrowseMode = false;
+            this.itxt_PasswordReset.LabelText = "textbox";
+            this.itxt_PasswordReset.Location = new System.Drawing.Point(277, 108);
+            this.itxt_PasswordReset.MaxLength = 32767;
+            this.itxt_PasswordReset.MultiLine = false;
+            this.itxt_PasswordReset.Name = "itxt_PasswordReset";
+            this.itxt_PasswordReset.PasswordChar = '\0';
+            this.itxt_PasswordReset.RowCount = 1;
+            this.itxt_PasswordReset.ShowDeleteButton = false;
+            this.itxt_PasswordReset.ShowFilter = false;
+            this.itxt_PasswordReset.ShowTextboxOnly = true;
+            this.itxt_PasswordReset.Size = new System.Drawing.Size(75, 21);
+            this.itxt_PasswordReset.TabIndex = 110;
+            this.itxt_PasswordReset.ValueText = "qwerty";
             // 
             // in_PercentCommission
             // 
@@ -368,7 +360,7 @@
             this.in_PercentCommission.ShowAllowDecimalCheckbox = false;
             this.in_PercentCommission.ShowCheckbox = false;
             this.in_PercentCommission.ShowTextboxOnly = true;
-            this.in_PercentCommission.Size = new System.Drawing.Size(64, 22);
+            this.in_PercentCommission.Size = new System.Drawing.Size(53, 22);
             this.in_PercentCommission.TabIndex = 109;
             this.in_PercentCommission.Value = new decimal(new int[] {
             0,
@@ -386,43 +378,104 @@
             this.label8.TabIndex = 108;
             this.label8.Text = "%";
             // 
-            // itxt_PasswordReset
+            // in_GlobalPercentComission
             // 
-            this.itxt_PasswordReset.IsBrowseMode = false;
-            this.itxt_PasswordReset.LabelText = "textbox";
-            this.itxt_PasswordReset.Location = new System.Drawing.Point(277, 108);
-            this.itxt_PasswordReset.MaxLength = 32767;
-            this.itxt_PasswordReset.MultiLine = false;
-            this.itxt_PasswordReset.Name = "itxt_PasswordReset";
-            this.itxt_PasswordReset.PasswordChar = '\0';
-            this.itxt_PasswordReset.RowCount = 1;
-            this.itxt_PasswordReset.ShowDeleteButton = false;
-            this.itxt_PasswordReset.ShowFilter = false;
-            this.itxt_PasswordReset.ShowTextboxOnly = true;
-            this.itxt_PasswordReset.Size = new System.Drawing.Size(75, 21);
-            this.itxt_PasswordReset.TabIndex = 110;
-            this.itxt_PasswordReset.ValueText = "qwerty";
+            this.in_GlobalPercentComission.Checked = false;
+            this.in_GlobalPercentComission.DecimalPlaces = 2;
+            this.in_GlobalPercentComission.HideUpDown = false;
+            this.in_GlobalPercentComission.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.in_GlobalPercentComission.LabelText = "numeric";
+            this.in_GlobalPercentComission.Location = new System.Drawing.Point(106, 114);
+            this.in_GlobalPercentComission.MaximumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.in_GlobalPercentComission.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_GlobalPercentComission.Name = "in_GlobalPercentComission";
+            this.in_GlobalPercentComission.ShowAllowDecimalCheckbox = false;
+            this.in_GlobalPercentComission.ShowCheckbox = false;
+            this.in_GlobalPercentComission.ShowTextboxOnly = true;
+            this.in_GlobalPercentComission.Size = new System.Drawing.Size(78, 22);
+            this.in_GlobalPercentComission.TabIndex = 113;
+            this.in_GlobalPercentComission.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
-            // label9
+            // ID
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(226, 112);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 111;
-            this.label9.Text = "Reset to";
+            this.ID.DataPropertyName = "id";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
             // 
-            // btnResetPassword
+            // active
             // 
-            this.btnResetPassword.Location = new System.Drawing.Point(357, 107);
-            this.btnResetPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(57, 23);
-            this.btnResetPassword.TabIndex = 112;
-            this.btnResetPassword.Text = "RESET";
-            this.btnResetPassword.UseVisualStyleBackColor = true;
-            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            this.active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.active.DataPropertyName = "active";
+            this.active.HeaderText = "Active";
+            this.active.MinimumWidth = 40;
+            this.active.Name = "active";
+            this.active.ReadOnly = true;
+            this.active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.active.Width = 40;
+            // 
+            // LinkName
+            // 
+            this.LinkName.ActiveLinkColor = System.Drawing.Color.Orange;
+            this.LinkName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LinkName.DataPropertyName = "username";
+            this.LinkName.HeaderText = "Name";
+            this.LinkName.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.LinkName.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.LinkName.MinimumWidth = 100;
+            this.LinkName.Name = "LinkName";
+            this.LinkName.ReadOnly = true;
+            this.LinkName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.LinkName.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            // 
+            // col_grid_role
+            // 
+            this.col_grid_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_role.DataPropertyName = "rolename";
+            this.col_grid_role.HeaderText = "Role";
+            this.col_grid_role.MinimumWidth = 50;
+            this.col_grid_role.Name = "col_grid_role";
+            this.col_grid_role.ReadOnly = true;
+            this.col_grid_role.Width = 50;
+            // 
+            // col_grid_PercentCommission
+            // 
+            this.col_grid_PercentCommission.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_PercentCommission.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_grid_PercentCommission.HeaderText = "%";
+            this.col_grid_PercentCommission.MinimumWidth = 30;
+            this.col_grid_PercentCommission.Name = "col_grid_PercentCommission";
+            this.col_grid_PercentCommission.ReadOnly = true;
+            this.col_grid_PercentCommission.Width = 30;
+            // 
+            // col_grid_GlobalPercentCommission
+            // 
+            this.col_grid_GlobalPercentCommission.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_GlobalPercentCommission.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_grid_GlobalPercentCommission.HeaderText = "% Global";
+            this.col_grid_GlobalPercentCommission.MinimumWidth = 50;
+            this.col_grid_GlobalPercentCommission.Name = "col_grid_GlobalPercentCommission";
+            this.col_grid_GlobalPercentCommission.ReadOnly = true;
+            this.col_grid_GlobalPercentCommission.Width = 50;
             // 
             // Main_Form
             // 
@@ -464,15 +517,17 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn active;
-        private System.Windows.Forms.DataGridViewLinkColumn LinkName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_role;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_PercentCommission;
         private System.Windows.Forms.Label label8;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PercentCommission;
         private System.Windows.Forms.Label label9;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_PasswordReset;
         private System.Windows.Forms.Button btnResetPassword;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_GlobalPercentComission;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn active;
+        private System.Windows.Forms.DataGridViewLinkColumn LinkName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_role;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_PercentCommission;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_GlobalPercentCommission;
     }
 }

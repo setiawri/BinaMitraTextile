@@ -105,6 +105,7 @@
     <Compile Include="Admin\Settings_Form.Designer.cs">
       <DependentUpon>Settings_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\SaleComission.cs" />
     <Compile Include="App_Code\Kontrabon.cs" />
     <Compile Include="App_Code\VendorInvoicePaymentItem.cs" />
     <Compile Include="App_Code\VendorInvoicePayment.cs" />
@@ -598,11 +599,11 @@
     <Compile Include="Users\PasswordChange_Form.Designer.cs">
       <DependentUpon>PasswordChange_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\SalesComission_Form.cs">
+    <Compile Include="Users\SaleComissions_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Users\SalesComission_Form.Designer.cs">
-      <DependentUpon>SalesComission_Form.cs</DependentUpon>
+    <Compile Include="Users\SaleComissions_Form.Designer.cs">
+      <DependentUpon>SaleComissions_Form.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Admin\MasterData_v1_CustomerSaleAdjustments.resx">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
@@ -828,8 +829,8 @@
     <EmbeddedResource Include="Users\PasswordChange_Form.resx">
       <DependentUpon>PasswordChange_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\SalesComission_Form.resx">
-      <DependentUpon>SalesComission_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Users\SaleComissions_Form.resx">
+      <DependentUpon>SaleComissions_Form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

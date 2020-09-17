@@ -316,7 +316,7 @@ namespace BinaMitraTextile
 
         private void Account_Komisi_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Users.SalesComission_Form());
+            Util.displayMDIChild(new Users.SaleComissions_Form());
         }
 
         private void Account_Password_Click(object sender, EventArgs e)
@@ -410,6 +410,11 @@ namespace BinaMitraTextile
         private void Internal_Settings_Click(object sender, EventArgs e)
         {
             Util.displayMDIChild(new Admin.Settings_Form());
+        }
+
+        private void Internal_SalesComissions_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Users.SaleComissions_Form());
         }
 
         #endregion MENU - INTERNAL

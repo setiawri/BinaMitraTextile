@@ -472,7 +472,8 @@ namespace BinaMitraTextile.InventoryForm
 
         private void PbLog_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new Logs.Main_Form(selectedRowID()));
+            if(grid.Rows.Count > 0)
+                Tools.displayForm(new Logs.Main_Form(selectedRowID()));
         }
 
         private void PbRefresh_Click(object sender, EventArgs e)

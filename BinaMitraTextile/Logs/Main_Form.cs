@@ -15,11 +15,14 @@ namespace BinaMitraTextile.Logs
         private Guid _id;
         private List<string> FieldnamesForQuickSearch = new List<string>() { ActivityLog.COL_DB_Description };
 
-        public Main_Form(Guid associatedID)
+        public Main_Form(Guid? associatedID)
         {
             InitializeComponent();
 
-            _id = associatedID;
+            if (_id == null)
+                this.Close();
+            else
+                _id = (Guid)associatedID;
         }
 
         private void setupControls()

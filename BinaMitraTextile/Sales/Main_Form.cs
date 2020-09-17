@@ -89,6 +89,8 @@ namespace BinaMitraTextile.Sales
                 col_gridmaster_SaleCommission_Users_Name.Visible = false;
                 
                 col_gridSummary_isManualAdjustment.Visible = false;
+                col_gridSummary_CommissionAmount.Visible = false;
+                col_gridSummary_CommissionPercent.Visible = false;
 
                 chkOnlyLossProfit.Visible = false;
                 btnShowHidden.Visible = false;

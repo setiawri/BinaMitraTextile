@@ -29,6 +29,7 @@ namespace BinaMitraTextile
         public const string COL_ROLENAME = "rolename";
         public const string COL_ROLE = "role";
         public const string COL_DB_PercentCommission = "PercentCommission";
+        public const string COL_DB_GlobalPercentComission = "GlobalPercentComission";
         public const string COL_DB_HashedPassword = "hashed_password";
         public const string COL_DB_Notes = "notes";
 
@@ -43,6 +44,7 @@ namespace BinaMitraTextile
         public string name = "";
         public Roles role;
         public decimal percentCommission = 0;
+        public decimal GlobalPercentComission = 0;
         public string notes = "";
 
         private string _hashed_password = null;
@@ -74,18 +76,20 @@ namespace BinaMitraTextile
                     _hashed_password = row["hashed_password"].ToString();
                     role = Tools.parseEnum<Roles>(row[COL_ROLE]);
                     percentCommission = Util.wrapNullable<decimal>(row, COL_DB_PercentCommission);
+                    GlobalPercentComission = Util.wrapNullable<decimal>(row, COL_DB_GlobalPercentComission);
                     notes = row["notes"].ToString();
                 }
             }
         }
 
-        public UserAccount(string Name, string Password, Roles Role, decimal PercentComission, string Notes)
+        public UserAccount(string Name, string Password, Roles Role, decimal PercentComission, decimal globalPercentComission, string Notes)
         {
             id = Guid.NewGuid();
             name = Name;
             if (!string.IsNullOrEmpty(Password)) HashedPassword = Password;
             role = Role;
             percentCommission = PercentComission;
+            GlobalPercentComission = globalPercentComission;
             notes = Notes;
         }
 
@@ -106,6 +110,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_HashedPassword, SqlDbType.VarChar, _hashed_password),
                 new SqlQueryParameter(COL_ROLE, SqlDbType.VarChar, role),
                 new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.VarChar, percentCommission),
+                new SqlQueryParameter(COL_DB_GlobalPercentComission, SqlDbType.VarChar, GlobalPercentComission),
                 new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
             );
 
@@ -161,7 +166,8 @@ namespace BinaMitraTextile
             if (objOld.name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.name, name), ",");
             if (!string.IsNullOrEmpty(_hashed_password) && objOld._hashed_password != _hashed_password) logDescription = Tools.append(logDescription, "Password update", ",");
             if (objOld.role != role) logDescription = Tools.append(logDescription, String.Format("Role: '{0}' to '{1}'", objOld.role, role), ",");
-            if (objOld.percentCommission != percentCommission) logDescription = Util.appendChange(logDescription, objOld.percentCommission, percentCommission, "Percent Comission: {0:N2} to {1:N2}");
+            if (objOld.percentCommission != percentCommission) logDescription = Util.appendChange(logDescription, objOld.percentCommission, percentCommission, "% Comission: {0:N2} to {1:N2}");
+            if (objOld.GlobalPercentComission != GlobalPercentComission) logDescription = Util.appendChange(logDescription, objOld.GlobalPercentComission, GlobalPercentComission, "Global % Comission: {0} to {1}");
             if (objOld.notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.notes, notes), ",");
 
             if (!string.IsNullOrEmpty(logDescription))
@@ -174,8 +180,9 @@ namespace BinaMitraTextile
                     new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
                     new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
                     new SqlQueryParameter(COL_DB_HashedPassword, SqlDbType.VarChar, Util.wrapNullable(_hashed_password)),
-                    new SqlQueryParameter(COL_ROLE, SqlDbType.VarChar, role),
-                    new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.VarChar, percentCommission),
+                    new SqlQueryParameter(COL_ROLE, SqlDbType.TinyInt, (int)role),
+                    new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.Decimal, percentCommission),
+                    new SqlQueryParameter(COL_DB_GlobalPercentComission, SqlDbType.Decimal, GlobalPercentComission),
                     new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
                 );
 

@@ -34,6 +34,7 @@ namespace BinaMitraTextile.Users
 
             grid.AutoGenerateColumns = false;
             col_grid_PercentCommission.DataPropertyName = UserAccount.COL_DB_PercentCommission;
+            col_grid_GlobalPercentCommission.DataPropertyName = UserAccount.COL_DB_GlobalPercentComission;
             populateGrid();
 
             showNewForm();
@@ -150,7 +151,7 @@ namespace BinaMitraTextile.Users
                     {
                         if (isInputFieldsValid(false))
                         {
-                            UserAccount obj = new UserAccount(txtName.Text, txtNewPassword.Text, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, txtNotes.Text);
+                            UserAccount obj = new UserAccount(txtName.Text, txtNewPassword.Text, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, in_GlobalPercentComission.ValueDecimal, txtNotes.Text);
                             if (obj.submitNew() != null)
                             {
                                 Tools.hasMessage("The new data has been added");
@@ -165,7 +166,7 @@ namespace BinaMitraTextile.Users
                     {
                         if (isInputFieldsValid(true))
                         {
-                            UserAccount obj = new UserAccount(txtName.Text, null, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, txtNotes.Text);
+                            UserAccount obj = new UserAccount(txtName.Text, null, (Roles)cbRoles.SelectedValue, in_PercentCommission.ValueDecimal, in_GlobalPercentComission.ValueDecimal, txtNotes.Text);
                             if (!string.IsNullOrEmpty(txtNewPassword.Text))
                                 obj.HashedPassword = txtNewPassword.Text;
 
@@ -256,6 +257,7 @@ namespace BinaMitraTextile.Users
         {
             txtName.Text = "";
             in_PercentCommission.reset();
+            in_GlobalPercentComission.reset();
             txtNotes.Text = "";
             txtNewPassword.Text = "";
             txtConfirmNewPassword.Text = "";
