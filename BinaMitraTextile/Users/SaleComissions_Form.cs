@@ -67,7 +67,7 @@ namespace BinaMitraTextile.Users
             col_grid_Amount.DataPropertyName = SaleComission.COL_DB_Amount;
             col_grid_CorrectionAmount.DataPropertyName = SaleComission.COL_DB_CorrectionAmount;
             col_grid_CorrectionNotes.DataPropertyName = SaleComission.COL_DB_CorrectionNotes;
-            col_grid_TotalAmount.DataPropertyName = SaleComission.COL_DB_Amount;
+            col_grid_TotalAmount.DataPropertyName = SaleComission.COL_DB_TotalAmount;
             col_grid_PaymentDate.DataPropertyName = SaleComission.COL_DB_PaymentDate;
         }
 

