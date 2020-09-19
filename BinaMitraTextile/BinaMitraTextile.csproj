@@ -303,12 +303,6 @@
     <Compile Include="Sales\Shipping_Form.Designer.cs">
       <DependentUpon>Shipping_Form.cs</DependentUpon>
     </Compile>
-    <None Include="SharedForms\MasterData_v2_FakturPajaks_Form.cs">
-      <SubType>Form</SubType>
-    </None>
-    <None Include="SharedForms\MasterData_v2_FakturPajaks_Form.Designer.cs">
-      <DependentUpon>MasterData_v2_FakturPajaks_Form.cs</DependentUpon>
-    </None>
     <Compile Include="SharedForms\Verify_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -694,9 +688,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sales\Shipping_Form.resx">
       <DependentUpon>Shipping_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SharedForms\MasterData_v2_FakturPajaks_Form.resx">
-      <DependentUpon>MasterData_v2_FakturPajaks_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SharedForms\Verify_Form.resx">
       <DependentUpon>Verify_Form.cs</DependentUpon>

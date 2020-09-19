@@ -154,23 +154,18 @@ namespace BinaMitraTextile.SharedForms
             Customer.populateInputControlDropDownList(iddl_Customers, true);
             Vendor.populateInputControlDropDownList(iddl_Vendors, true);
 
-            idtp_EndDate.ResetValue = idtp_EndDate.getLastDateOfLastMonth();
-            idtp_EndDate.Checked = false;
-            idtp_EndDate.reset();
-            idtp_StartDate.ResetValue = idtp_StartDate.getFirstDateOfLastMonth();
-            idtp_StartDate.Checked = false;
-            idtp_StartDate.reset();
+            idtp_MonthFilter.ResetValue = idtp_MonthFilter.getFirstDateOfLastMonth();
+            idtp_MonthFilter.Checked = false;
+            idtp_MonthFilter.reset();
 
             rbVendor.Checked = true;
             setRadioButtonEnability(rbVendor);
 
             tcRowInfo.TabPages.Clear();
 
-            InputToDisableOnAdd.Add(idtp_StartDate);
-            InputToDisableOnAdd.Add(idtp_EndDate);
+            InputToDisableOnAdd.Add(idtp_MonthFilter);
 
-            InputToDisableOnUpdate.Add(idtp_StartDate);
-            InputToDisableOnUpdate.Add(idtp_EndDate);
+            InputToDisableOnUpdate.Add(idtp_MonthFilter);
 
             InputToDisableOnSearch.Add(idtp_Timestamp);
             InputToDisableOnSearch.Add(in_PPN);
@@ -203,9 +198,17 @@ namespace BinaMitraTextile.SharedForms
             return true;
         }
 
-        protected override System.Data.DataView loadGridviewDataSource()
+        protected override DataView loadGridviewDataSource()
         {
-            return FakturPajak.get(itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, idtp_StartDate.ValueAsStartDateFilter, idtp_EndDate.ValueAsEndDateFilter, chkShowCompleted.Checked).DefaultView;
+            return FakturPajak.get(itxt_No.ValueText, (Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Vendors.SelectedValue, 
+                idtp_MonthFilter.getFirstDayOfSelectedMonth(), idtp_MonthFilter.getLastDayOfSelectedMonth(), chkShowCompleted.Checked).DefaultView;
+        }
+
+        protected override void populateGridViewDataSource(bool reloadFromDB)
+        {
+            base.populateGridViewDataSource(reloadFromDB);
+
+            lblGridRowCount.Text = string.Format("Rows: {0}", dgv.Rows.Count);
         }
 
         protected override void populateInputFields()
@@ -498,6 +501,11 @@ namespace BinaMitraTextile.SharedForms
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void idtp_StartDate_ValueChanged(object sender, EventArgs e)
+        {
+            string x = "";
         }
 
         #endregion EVENT HANDLERS

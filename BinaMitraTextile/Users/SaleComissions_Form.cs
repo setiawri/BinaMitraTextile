@@ -109,7 +109,7 @@ namespace BinaMitraTextile.Users
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            SaleComission.generate(idtp_GeneratePeriod.getFirstDayOfSelectedMonth());
+            SaleComission.generate((DateTime)idtp_GeneratePeriod.getFirstDayOfSelectedMonth());
             populateGrid();
         }
 
