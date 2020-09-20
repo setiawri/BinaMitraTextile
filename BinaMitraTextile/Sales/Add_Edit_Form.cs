@@ -603,8 +603,7 @@ namespace BinaMitraTextile.Sales
                         dr[InventoryItem.COL_SALE_ADJUSTMENT] = adjustment;
 
                         //only mark if a discount
-                        if(adjustment < 0)
-                            dr[InventoryItem.COL_SALE_isManualAdjustment] = true;
+                        dr[InventoryItem.COL_SALE_isManualAdjustment] = adjustment < 0;
                     }
                 }
                 in_PriceAdjustSelected.Value = 0;

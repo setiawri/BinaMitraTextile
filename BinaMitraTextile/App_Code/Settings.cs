@@ -24,7 +24,7 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region APP VERSION
 
-        public const string APPVERSION = "v200713";
+        public const string APPVERSION = "v200920";
         private static Guid GUID_LatestAppVersion = new Guid("C1552CB9-E157-4925-897E-904180379BFE");
 
         public static string LatestAppVersion { 
@@ -34,8 +34,10 @@ namespace BinaMitraTextile
 
         public static bool hasLatestAppVersion()
         {
-            return true;
-            if (LatestAppVersion == APPVERSION)
+            return true; //disable so sales pc doesn't need to have the latest version
+
+            string latestVersion = LatestAppVersion;
+            if (latestVersion == APPVERSION)
                 return true;
             else if (String.Compare(LatestAppVersion, APPVERSION) < 0)
             {
@@ -43,7 +45,7 @@ namespace BinaMitraTextile
                 return true;
             }
             else
-                return false;
+                return Util.displayMessageBoxError("Please update app version to " + latestVersion);
         }
 
         #endregion APP VERSION

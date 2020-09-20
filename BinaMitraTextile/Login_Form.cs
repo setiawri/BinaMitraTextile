@@ -154,8 +154,6 @@ namespace BinaMitraTextile
                 {
                     if (Settings.hasLatestAppVersion())
                         authenticate();
-                    else
-                        Util.displayMessageBoxError("Please update app to latest version.");
                 }
             }
         }

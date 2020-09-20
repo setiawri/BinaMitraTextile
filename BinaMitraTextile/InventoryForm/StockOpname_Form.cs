@@ -189,7 +189,19 @@ namespace BinaMitraTextile.InventoryForm
 
             if (e.KeyData == Keys.Enter)
             {
-                addBarcode(!isScanner);
+                txtBarcode.Text = txtBarcode.Text.Trim();
+                if (!chkRequestBarcode.Checked)
+                    addBarcode(!isScanner);
+                else
+                {
+                    string request = string.Format("Barcode request at {0}: {1}", txtItemLocation.Text, InventoryItem.getBarcodeWithoutPrefix(txtBarcode.Text));
+                    ToDo.add(request, null, null);
+                    chkRequestBarcode.Checked = false;
+                    lblMessage.Text = request;
+                    txtBarcode.Text = "";
+                    txtBarcode.Focus();
+                }
+
                 isScanner = false;
             }
 
@@ -198,7 +210,6 @@ namespace BinaMitraTextile.InventoryForm
 
         private void addBarcode(bool isManualInput)
         {
-            txtBarcode.Text = txtBarcode.Text.Trim();
             string barcodeInput = txtBarcode.Text;
             if (string.IsNullOrEmpty(barcodeInput))
                 return;
@@ -453,6 +464,11 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void chkRequestBarcode_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBarcode.Focus();
         }
 
         #endregion FORM METHODS
