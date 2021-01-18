@@ -116,6 +116,11 @@ namespace BinaMitraTextile
             return get(ID, null, null, true, false, false, null, null, false);
         }
 
+        public static DataTable get(bool showOnlyIncomplete)
+        {
+            return get(null, null, null, showOnlyIncomplete, false, false, null, null, false);
+        }
+
         public static DataTable get_Reminder()
         {
             return get(null, null, null, false, false, false, null, null, true);
@@ -250,9 +255,9 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CLASS METHODS
 
-        public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist)
+        public static void populateDropDownList(System.Windows.Forms.ComboBox dropdownlist, bool showOnlyIncomplete)
         {
-            Tools.populateDropDownList(dropdownlist, get().DefaultView, COL_DB_InvoiceNo, COL_DB_Id, false);
+            Tools.populateDropDownList(dropdownlist, get(showOnlyIncomplete).DefaultView, COL_DB_InvoiceNo, COL_DB_Id, false);
         }
 
         #endregion CLASS METHODS

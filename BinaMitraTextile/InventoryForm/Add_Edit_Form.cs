@@ -45,7 +45,7 @@ namespace BinaMitraTextile.InventoryForm
             ProductWidth.populateDropDownList(cbProductWidths, false, true);
             LengthUnit.populateDropDownList(cbLengthUnits, false, true);
             FabricColor.populateDropDownList(cbColors, false, true);
-            VendorInvoice.populateDropDownList(cbVendorInvoices);
+            VendorInvoice.populateDropDownList(cbVendorInvoices, true);
 
             //set window title
             switch(_formMode)
@@ -184,7 +184,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             if(Tools.displayForm(new InventoryForm.VendorInvoices_Add_Form()))
             {
-                VendorInvoice.populateDropDownList(cbVendorInvoices);
+                VendorInvoice.populateDropDownList(cbVendorInvoices, true);
                 cbVendorInvoices.SelectedIndex = 0;
             }
         }

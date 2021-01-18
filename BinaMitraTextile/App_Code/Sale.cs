@@ -180,7 +180,7 @@ namespace BinaMitraTextile
                 user_id = (Guid)row["user_id"];
                 notes = row["notes"].ToString();
                 customer_info = row["customer_info"].ToString();
-                barcode = Tools.getHex(Convert.ToInt32(row["barcode"]), Settings.saleBarcodeLength);
+                barcode = Util.wrapNullable<string>(row["hexbarcode"]);
                 TransportID = DBUtil.parseData<Guid?>(row, COL_DB_TRANSPORTID);
                 ShippingCost = DBUtil.parseData<decimal>(row, COL_DB_SHIPPINGCOST);
                 TaxNo = DBUtil.parseData<string>(row, COL_DB_TAXNO);

@@ -66,7 +66,7 @@ namespace BinaMitraTextile
                 false,
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
-                "CustomerTerms_add",
+                "PettyCashRecordsCategories_add",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
                 new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(name)),
                 new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))

@@ -34,8 +34,7 @@ namespace BinaMitraTextile
 
         private void Form_Shown(object sender, EventArgs e)
         {
-            //if(GlobalData.UserAccount.role == Roles.Super)
-            //    Util.displayMDIChild(new Summary_Superuser_Form());
+            //Util.displayMDIChild(new Admin.MasterData_v1_ProductPrices());
             
             if (lnkSummary_Assistant.Visible && GlobalData.UserAccount.role == Roles.Assistant)
                 Util.displayMDIChild(new Summary_Assistant_Form());
@@ -223,6 +222,7 @@ namespace BinaMitraTextile
 
         private void Inventory_Products_Prices_Click(object sender, EventArgs e)
         {
+            //Util.displayMDIChild(new Admin.MasterData_v1_ProductPrices());
             Util.displayMDIChild(new Admin.ProductPrices_Form());
         }
 

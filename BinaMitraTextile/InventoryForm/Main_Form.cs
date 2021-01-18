@@ -210,6 +210,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnSetPrice_Click(object sender, EventArgs e)
         {
+            //Util.displayForm(new Admin.MasterData_v1_ProductPrices(selectedRowID()));
             Tools.displayForm(new Admin.ProductPrices_Form(selectedRowID()));
             populateGridview(true);
         }

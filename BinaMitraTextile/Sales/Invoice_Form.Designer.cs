@@ -307,10 +307,10 @@
             // lblPayment
             // 
             this.lblPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblPayment.Location = new System.Drawing.Point(519, 489);
+            this.lblPayment.Location = new System.Drawing.Point(591, 489);
             this.lblPayment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(201, 15);
+            this.lblPayment.Size = new System.Drawing.Size(129, 15);
             this.lblPayment.TabIndex = 160;
             this.lblPayment.Text = "lblPayment";
             this.lblPayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -319,10 +319,10 @@
             // lblShippingCost
             // 
             this.lblShippingCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblShippingCost.Location = new System.Drawing.Point(519, 452);
+            this.lblShippingCost.Location = new System.Drawing.Point(591, 452);
             this.lblShippingCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblShippingCost.Name = "lblShippingCost";
-            this.lblShippingCost.Size = new System.Drawing.Size(201, 15);
+            this.lblShippingCost.Size = new System.Drawing.Size(129, 15);
             this.lblShippingCost.TabIndex = 159;
             this.lblShippingCost.Text = "lblShippingCost";
             this.lblShippingCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -330,10 +330,10 @@
             // lblGrandTotal
             // 
             this.lblGrandTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblGrandTotal.Location = new System.Drawing.Point(519, 467);
+            this.lblGrandTotal.Location = new System.Drawing.Point(553, 467);
             this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(201, 24);
+            this.lblGrandTotal.Size = new System.Drawing.Size(167, 24);
             this.lblGrandTotal.TabIndex = 158;
             this.lblGrandTotal.Text = "lblGrandTotal";
             this.lblGrandTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -452,10 +452,10 @@
             // lblTotalSale
             // 
             this.lblTotalSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalSale.Location = new System.Drawing.Point(519, 437);
+            this.lblTotalSale.Location = new System.Drawing.Point(591, 437);
             this.lblTotalSale.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalSale.Name = "lblTotalSale";
-            this.lblTotalSale.Size = new System.Drawing.Size(201, 15);
+            this.lblTotalSale.Size = new System.Drawing.Size(129, 15);
             this.lblTotalSale.TabIndex = 115;
             this.lblTotalSale.Text = "lblTotalSale";
             this.lblTotalSale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

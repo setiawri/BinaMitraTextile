@@ -22,9 +22,14 @@ namespace BinaMitraTextile
         public const string COL_DB_NOTES = "notes";
         public const string COL_DB_INVENTORYID = "inventory_id";
         public const string COL_DB_Checked = "Checked";
+        public const string COL_DB_BuyPrice = "BuyPrice";
 
+        public const string COL_Grades_Name = "grade_name";
         public const string COL_PRODUCTSTORENAME = "product_store_name";
         public const string COL_COLORNAME = "color_name";
+        public const string COL_ProductWidths_Name = "width_name";
+        public const string COL_LengthUnits_Name = "length_unit_name";
+        public const string COL_Inventory_Code = "inventory_code";
 
         public const string FILTER_OnlyNotChecked = "FILTER_OnlyNotChecked";
         public const string ARRAY_ProductPrices_Id = "ARRAY_ProductPrices_Id";
@@ -40,10 +45,13 @@ namespace BinaMitraTextile
         public string StoreName;
         public Guid? InventoryID;
         public bool Checked;
+        public decimal? BuyPrice;
 
         public string ColorName = "";
+        public int? Inventory_Code;
 
-        public ProductPrice(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, decimal tagPrice, string notes, Guid? inventoryID, Guid? colorID)
+        public ProductPrice(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, decimal tagPrice, string notes, 
+            Guid? inventoryID, Guid? colorID, decimal? buyPrice)
         {
             ID = Guid.NewGuid();
             ProductStoreNameID = productStoreNameID;
@@ -51,6 +59,7 @@ namespace BinaMitraTextile
             ProductWidthID = productWidthID;
             LengthUnitID = lengthUnitID;
             TagPrice = tagPrice;
+            BuyPrice = buyPrice;
             Notes = notes;
             if(productStoreNameID != null) 
                 StoreName = new ProductStoreName((Guid)productStoreNameID).Name;
@@ -67,19 +76,21 @@ namespace BinaMitraTextile
         public ProductPrice(Guid id)
         {
             ID = id;
-            DataRow row = getRow(ID).Rows[0];
-            ProductStoreNameID = DBUtil.parseData<Guid>(row, COL_DB_PRODUCTSTORENAMEID);
-            GradeID = DBUtil.parseData<Guid?>(row, COL_DB_GRADEID);
-            ProductWidthID = DBUtil.parseData<Guid?>(row, COL_DB_PRODUCTWIDTHID);
-            LengthUnitID = DBUtil.parseData<Guid?>(row, COL_DB_LENGTHUNITID);
-            InventoryID = DBUtil.parseData<Guid?>(row, COL_DB_INVENTORYID);
-            ColorID = DBUtil.parseData<Guid?>(row, COL_DB_COLORID);
-            TagPrice = Tools.zeroNonNumericString(DBUtil.parseData<Decimal>(row, COL_DB_SELLPRICE));
-            Notes = DBUtil.parseData<string>(row, COL_DB_NOTES);
-            StoreName = DBUtil.parseData<string>(row, COL_PRODUCTSTORENAME);
-            Checked = DBUtil.parseData<bool>(row, COL_DB_Checked);
+            DataRow row = get(ID);
+            ProductStoreNameID = Util.wrapNullable<Guid>(row, COL_DB_PRODUCTSTORENAMEID);
+            GradeID = Util.wrapNullable<Guid?>(row, COL_DB_GRADEID);
+            ProductWidthID = Util.wrapNullable<Guid?>(row, COL_DB_PRODUCTWIDTHID);
+            LengthUnitID = Util.wrapNullable<Guid?>(row, COL_DB_LENGTHUNITID);
+            InventoryID = Util.wrapNullable<Guid?>(row, COL_DB_INVENTORYID);
+            ColorID = Util.wrapNullable<Guid?>(row, COL_DB_COLORID);
+            TagPrice = Util.wrapNullable<decimal>(row, COL_DB_SELLPRICE);
+            Notes = Util.wrapNullable<string>(row, COL_DB_NOTES);
+            StoreName = Util.wrapNullable<string>(row, COL_PRODUCTSTORENAME);
+            Checked = Util.wrapNullable<bool>(row, COL_DB_Checked);
+            BuyPrice = Util.wrapNullable<decimal?>(row, COL_DB_BuyPrice);
 
-            ColorName = DBUtil.parseData<string>(row, COL_COLORNAME);
+            ColorName = Util.wrapNullable<string>(row, COL_COLORNAME);
+            Inventory_Code = Util.wrapNullable<int?>(row, COL_Inventory_Code);
         }
 
         public Guid? submitNew()
@@ -98,6 +109,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(InventoryID)),
                 new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
                 new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, TagPrice),
+                new SqlQueryParameter(COL_DB_BuyPrice, SqlDbType.Decimal, Util.wrapNullable(BuyPrice)),
                 new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes))
             );
 
@@ -110,49 +122,46 @@ namespace BinaMitraTextile
             }
         }
 
-        public void delete()
+        public static Guid? add(Guid? ProductStoreNameID, Guid? GradeID, Guid? ProductWidthID, Guid? LengthUnitID, decimal TagPrice, string Notes,
+            Guid? InventoryID, Guid? ColorID, decimal? BuyPrice)
+        {
+            Guid Id = Guid.NewGuid();
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "productprice_new",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_PRODUCTSTORENAMEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ProductStoreNameID)),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(GradeID)),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ProductWidthID)),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(LengthUnitID)),
+                new SqlQueryParameter(COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(InventoryID)),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
+                new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, TagPrice),
+                new SqlQueryParameter(COL_DB_BuyPrice, SqlDbType.Decimal, Util.wrapNullable(BuyPrice)),
+                new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes))
+            );
+
+            if (!result.IsSuccessful)
+                return null;
+            else
+            {
+                ActivityLog.submit(Id, "Added");
+                return Id;
+            }
+        }
+
+        public void delete() { delete(ID); }
+        public static void delete(Guid Id)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.ExecuteNonQuery,
                 "productprice_delete",
-                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, ID)
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Id)
             );
-
-            if (result.IsSuccessful)
-            {
-                //generate log description
-                string logDescription = "";
-                logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}'", StoreName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Grade ID: '{0}'", GradeID), ",");
-                logDescription = Tools.append(logDescription, String.Format("Product Width ID: '{0}'", ProductWidthID), ",");
-                logDescription = Tools.append(logDescription, String.Format("Length Unit ID: '{0}'", LengthUnitID), ",");
-                logDescription = Tools.append(logDescription, String.Format("Tag Price: '{0}'", TagPrice), ",");
-                logDescription = Tools.append(logDescription, String.Format("Inventory ID: '{0}'", InventoryID), ",");
-                logDescription = Tools.append(logDescription, String.Format("Color: '{0}'", ColorName), ",");
-                logDescription = Tools.append(logDescription, String.Format("Notes: '{0}'", Notes), ",");
-
-                ActivityLog.submit(ID, String.Format("Product Price deleted: {0}", logDescription));
-            }
-        }
-
-        public static Guid? getByCombination(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? inventoryID, Guid? ColorID)
-        {
-            SqlQueryResult result = DBConnection.query(
-                false,
-                DBConnection.ActiveSqlConnection,
-                QueryTypes.ExecuteNonQuery,
-                false, false, false, false, true,
-                "productprice_get_by_combination",
-                new SqlQueryParameter(COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(inventoryID)),
-                new SqlQueryParameter(COL_DB_PRODUCTSTORENAMEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productStoreNameID)),
-                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(gradeID)),
-                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productWidthID)),
-                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
-                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID))
-                );
-            return Util.wrapNullable<Guid?>(result.ValueGuid);
         }
 
         public static bool isCombinationExist(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? id, Guid? inventoryID, Guid? colorID)
@@ -174,36 +183,60 @@ namespace BinaMitraTextile
             return result.ValueBoolean;
         }
 
-        public static DataTable getRow(Guid ID)
-        {
-            return DBUtil.getRows("productprice_get", ID);
-        }
-
-        public static DataTable getAll(bool onlyNotChecked)
+        public static DataTable get(bool onlyNotChecked) { return get(null, null, null, null, null, null, null, onlyNotChecked); }
+        public static DataRow get(Guid ID) { return Util.getFirstRow(get(ID, null, null, null, null, null, null, false)); }
+        public static DataTable get(Guid? ID, Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? inventoryID, Guid? ColorID, bool onlyNotChecked)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
-                "productprice_getall",
+                "productprice_get",
+                new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ID)),
+                new SqlQueryParameter(COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(inventoryID)),
+                new SqlQueryParameter(COL_DB_PRODUCTSTORENAMEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productStoreNameID)),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(gradeID)),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productWidthID)),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
                 new SqlQueryParameter(FILTER_OnlyNotChecked, SqlDbType.Bit, onlyNotChecked)
             );
             return result.Datatable;
         }
 
-        public void update()
+        public static Guid? getByCombination(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? inventoryID, Guid? ColorID)
+        {
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                false, false, false, false, true,
+                "productprice_get_by_combination",
+                new SqlQueryParameter(COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(inventoryID)),
+                new SqlQueryParameter(COL_DB_PRODUCTSTORENAMEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productStoreNameID)),
+                new SqlQueryParameter(COL_DB_GRADEID, SqlDbType.UniqueIdentifier, Util.wrapNullable(gradeID)),
+                new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, Util.wrapNullable(productWidthID)),
+                new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, Util.wrapNullable(lengthUnitID)),
+                new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID))
+                );
+            return Util.wrapNullable<Guid?>(result.ValueGuid);
+        }
+
+        public static void update(Guid ID, Guid? ProductStoreNameID, Guid? GradeID, Guid? ProductWidthID, Guid? LengthUnitID, decimal TagPrice, string Notes,
+            Guid? InventoryID, Guid? ColorID, decimal? BuyPrice)
         {
             ProductPrice objOld = new ProductPrice(ID);
 
             //generate log description
             string logDescription = "";
-            if (objOld.ProductStoreNameID != ProductStoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.StoreName, StoreName), ",");
+            if (objOld.ProductStoreNameID != ProductStoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.StoreName, new ProductStoreName((Guid)ProductStoreNameID).Name), ",");
             if (objOld.GradeID != GradeID) logDescription = Tools.append(logDescription, String.Format("Grade ID: '{0}' to '{1}'", objOld.GradeID, GradeID), ",");
             if (objOld.ProductWidthID != ProductWidthID) logDescription = Tools.append(logDescription, String.Format("Product Width ID: '{0}' to '{1}'", objOld.ProductWidthID, ProductWidthID), ",");
             if (objOld.LengthUnitID != LengthUnitID) logDescription = Tools.append(logDescription, String.Format("Length Unit ID: '{0}' to '{1}'", objOld.LengthUnitID, LengthUnitID), ",");
-            if (objOld.InventoryID != InventoryID) logDescription = Tools.append(logDescription, String.Format("Inventory ID: '{0}' to '{1}'", objOld.InventoryID, InventoryID), ",");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.Inventory_Code, new Inventory((Guid)InventoryID).code, "Inventory Code: '{0}' to '{1}'");
             if (objOld.TagPrice != TagPrice) logDescription = Tools.append(logDescription, String.Format("Tag Price: '{0}' to '{1}'", objOld.TagPrice, TagPrice), ",");
-            logDescription = ActivityLog.appendChange(logDescription, objOld.ColorName, ColorName, "Color: '{0}' to '{1}'");
+            logDescription = Util.appendChange(logDescription, objOld.BuyPrice, BuyPrice, "Buy Price: {0} to {1}");
+            logDescription = ActivityLog.appendChange(logDescription, objOld.ColorName, new FabricColor(ColorID).Name, "Color: '{0}' to '{1}'");
             logDescription = ActivityLog.appendChange(logDescription, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
@@ -221,6 +254,7 @@ namespace BinaMitraTextile
                     new SqlQueryParameter(COL_DB_INVENTORYID, SqlDbType.UniqueIdentifier, Util.wrapNullable(InventoryID)),
                     new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
                     new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, TagPrice),
+                    new SqlQueryParameter(COL_DB_BuyPrice, SqlDbType.Decimal, Util.wrapNullable(BuyPrice)),
                     new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes))
                 );
 

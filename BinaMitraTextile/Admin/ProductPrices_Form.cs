@@ -56,11 +56,15 @@ namespace BinaMitraTextile.Admin
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_colorname.DataPropertyName = ProductPrice.COL_COLORNAME;
             col_grid_Checked.DataPropertyName = ProductPrice.COL_DB_Checked;
+            col_grid_BuyPrice.DataPropertyName = ProductPrice.COL_DB_BuyPrice;
 
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_grid_Checked.Visible = false;
                 chkOnlyNotOK.Visible = false;
+                in_BuyPrice.Visible = false;
+                col_grid_BuyPrice.Visible = false;
+                btnDelete.Enabled = false;
             }
         }
 
@@ -102,23 +106,23 @@ namespace BinaMitraTextile.Admin
 
         private void populateGrid()
         {
-            DataView dvw = ProductPrice.getAll(chkOnlyNotOK.Checked).DefaultView;
+            DataView dvw = ProductPrice.get(chkOnlyNotOK.Checked).DefaultView;
             dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText.Trim(), new string[] { ProductPrice.COL_PRODUCTSTORENAME, ProductPrice.COL_COLORNAME, ProductPrice.COL_DB_SELLPRICE } );
 
-            LIBUtil.Util.setGridviewDataSource(grid, true, true, dvw);
+            Util.setGridviewDataSource(grid, true, true, dvw);
         }
         
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(LIBUtil.Util.isColumnMatch(sender, e, col_grid_Checked))
+            if(Util.isColumnMatch(sender, e, col_grid_Checked))
             {
-                ProductPrice.update_Checked((Guid)LIBUtil.Util.getSelectedRowValue(grid, col_grid_id), !LIBUtil.Util.getCheckboxValue(sender, e));
+                ProductPrice.update_Checked((Guid)Util.getSelectedRowValue(grid, col_grid_id), !Util.getCheckboxValue(sender, e));
                 populateGrid();
             }
             else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_grid_productStoreName.Name))
             {
                 clearForm();
-                _productPrice = new ProductPrice((Guid)grid.Rows[e.RowIndex].Cells[col_grid_id.Name].Value);
+                _productPrice = new ProductPrice(Util.getClickedRowValue<Guid>(sender, e, col_grid_id));
                 if (_productPrice.InventoryID != null)
                     _inventory = new Inventory((Guid)_productPrice.InventoryID);
                 else
@@ -126,11 +130,11 @@ namespace BinaMitraTextile.Admin
 
                 setMode();
             }
-            else if(LIBUtil.Util.isColumnMatch(sender, e, col_grid_IsSelected))
+            else if(Util.isColumnMatch(sender, e, col_grid_IsSelected))
             {
                 gbNonSelectionPanel.Visible = false;
                 gbSelectionPanel.Visible = true;
-                LIBUtil.Util.clickDataGridViewCheckbox(sender, e);
+                Util.clickDataGridViewCheckbox(sender, e);
             }
         }
 
@@ -159,9 +163,9 @@ namespace BinaMitraTextile.Admin
             if (isInputFieldsValid(btnSubmit.Text == BTN_TEXT_UPDATE))
             {
                 if (chkUseInventoryID.Checked)
-                    obj = new ProductPrice(null, null, null, null, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, _inventory.id, null);
+                    obj = new ProductPrice(null, null, null, null, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, _inventory.id, null, in_BuyPrice.Value);
                 else
-                    obj = new ProductPrice((Guid)cbProductStoreNames.SelectedValue, (Guid)cbGrades.SelectedValue, (Guid)cbProductWidths.SelectedValue, (Guid)cbLengthUnits.SelectedValue, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, null, (Guid?)cbColors.SelectedValue);
+                    obj = new ProductPrice((Guid)cbProductStoreNames.SelectedValue, (Guid)cbGrades.SelectedValue, (Guid)cbProductWidths.SelectedValue, (Guid)cbLengthUnits.SelectedValue, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, null, (Guid?)cbColors.SelectedValue, in_BuyPrice.Value);
 
                 if(btnSubmit.Text == BTN_TEXT_ADDNEW)
                 {
@@ -175,7 +179,7 @@ namespace BinaMitraTextile.Admin
                 else
                 {
                     obj.ID = _productPrice.ID;
-                    obj.update();
+                    ProductPrice.update(obj.ID, obj.ProductStoreNameID, obj.GradeID, obj.ProductWidthID, obj.LengthUnitID, obj.TagPrice, obj.Notes, obj.InventoryID, obj.ColorID, obj.BuyPrice);
                     populateGrid();
                 }
             }
@@ -227,6 +231,7 @@ namespace BinaMitraTextile.Admin
             txtInventoryCode.Text = "";
             chkUseInventoryID.Enabled = false;
             txtTagPrice.Text = "";
+            in_BuyPrice.reset();
             txtNotes.Text = "";
 
             Tools.resetDropDownList(cbGrades);
@@ -302,6 +307,7 @@ namespace BinaMitraTextile.Admin
                 cbLengthUnits.SelectedValue = Util.wrapNullable(_productPrice.LengthUnitID);
                 cbColors.SelectedValue = Util.wrapNullable(_productPrice.ColorID);
                 txtTagPrice.Text = _productPrice.TagPrice.ToString();
+                in_BuyPrice.Value = _productPrice.BuyPrice;
                 txtNotes.Text = _productPrice.Notes;
             }
             if(_inventory != null)
@@ -372,11 +378,11 @@ namespace BinaMitraTextile.Admin
             List<Guid?> ProductPrice_Ids = new List<Guid?>();
             foreach(DataGridViewRow row in grid.Rows)
             {
-                if(LIBUtil.Util.getCheckboxValue(row, col_grid_IsSelected.Index))
+                if(Util.getCheckboxValue(row, col_grid_IsSelected.Index))
                 {
                     grid.ClearSelection();
                     row.Selected = true;
-                    ProductPrice_Ids.Add((Guid)LIBUtil.Util.getSelectedRowValue(grid, col_grid_id));
+                    ProductPrice_Ids.Add((Guid)Util.getSelectedRowValue(grid, col_grid_id));
                 }
             }
 
