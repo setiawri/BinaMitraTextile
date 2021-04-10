@@ -228,18 +228,18 @@ namespace BinaMitraTextile
             ProductPrice objOld = new ProductPrice(ID);
 
             //generate log description
-            string logDescription = "";
-            if (objOld.ProductStoreNameID != ProductStoreNameID) logDescription = Tools.append(logDescription, String.Format("Product Store Name: '{0}' to '{1}'", objOld.StoreName, new ProductStoreName((Guid)ProductStoreNameID).Name), ",");
-            if (objOld.GradeID != GradeID) logDescription = Tools.append(logDescription, String.Format("Grade ID: '{0}' to '{1}'", objOld.GradeID, GradeID), ",");
-            if (objOld.ProductWidthID != ProductWidthID) logDescription = Tools.append(logDescription, String.Format("Product Width ID: '{0}' to '{1}'", objOld.ProductWidthID, ProductWidthID), ",");
-            if (objOld.LengthUnitID != LengthUnitID) logDescription = Tools.append(logDescription, String.Format("Length Unit ID: '{0}' to '{1}'", objOld.LengthUnitID, LengthUnitID), ",");
-            logDescription = ActivityLog.appendChange(logDescription, objOld.Inventory_Code, new Inventory((Guid)InventoryID).code, "Inventory Code: '{0}' to '{1}'");
-            if (objOld.TagPrice != TagPrice) logDescription = Tools.append(logDescription, String.Format("Tag Price: '{0}' to '{1}'", objOld.TagPrice, TagPrice), ",");
-            logDescription = Util.appendChange(logDescription, objOld.BuyPrice, BuyPrice, "Buy Price: {0} to {1}");
-            logDescription = ActivityLog.appendChange(logDescription, objOld.ColorName, new FabricColor(ColorID).Name, "Color: '{0}' to '{1}'");
-            logDescription = ActivityLog.appendChange(logDescription, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
+            string log = "";
+            log = ActivityLog.appendChange<ProductStoreName>(log, objOld.ProductStoreNameID, ProductStoreNameID, "Product Store Name: '{0}' to '{1}'");
+            log = ActivityLog.appendChange<Grade>(log, objOld.GradeID, GradeID, "Grade: '{0}' to '{1}'");
+            log = ActivityLog.appendChange<ProductWidth>(log, objOld.ProductWidthID, ProductWidthID, "Product Width ID: '{0}' to '{1}'");
+            log = ActivityLog.appendChange<LengthUnit>(log, objOld.LengthUnitID, LengthUnitID, "Length Unit ID: '{0}' to '{1}'");
+            log = ActivityLog.appendChange<Inventory>(log, objOld.InventoryID, InventoryID, "Inventory Code: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.TagPrice, TagPrice, "Sell Price: '{0:N2}' to '{1:N2}'");
+            log = ActivityLog.appendChange(log, objOld.BuyPrice, BuyPrice, "Buy Price: {0:N2} to {1:N2}");
+            log = ActivityLog.appendChange<FabricColor>(log, objOld.ColorID, ColorID, "Color: '{0}' to '{1}'");
+            log = ActivityLog.appendChange(log, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
 
-            if (!string.IsNullOrEmpty(logDescription))
+            if (!string.IsNullOrEmpty(log))
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
@@ -259,7 +259,7 @@ namespace BinaMitraTextile
                 );
 
                 if (result.IsSuccessful)
-                    ActivityLog.submit(ID, "Update: " + logDescription);
+                    ActivityLog.submit(ID, "Update:" + Environment.NewLine + log);
             }
         }
 

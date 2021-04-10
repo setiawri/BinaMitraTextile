@@ -50,13 +50,32 @@ namespace BinaMitraTextile
 
         public static string appendChange(string log, object oldValue, object newValue, string logFormat)
         {
-            string oldV = "";
-            string newV = "";
-            if(oldValue != null) oldV = oldValue.ToString();
-            if(newValue != null) newV = newValue.ToString();
-
-            if (oldV != newV) return Tools.append(log, String.Format(logFormat, oldV, newV), ",");
-            return log;
+            return Util.appendChange(log, oldValue, newValue, logFormat);
         }
+
+        public static string appendChange<T>(string log, Guid? oldId, Guid? newId, string logFormat)
+        {
+            if (oldId != newId)
+                return appendChange(log, getDefaultValue<T>(oldId), getDefaultValue<T>(newId), logFormat);
+            else
+                return log;
+        }
+
+        public static string getDefaultValue<T>(Guid? Id)
+        {
+            if (Id == null)
+                return string.Empty;
+            else if (typeof(T) == typeof(Inventory))
+                return new Inventory((Guid)Id).code.ToString();
+            else if (typeof(T) == typeof(ProductStoreName))
+                return new ProductStoreName((Guid)Id).Name;
+            else if (typeof(T) == typeof(Grade))
+                return new Grade((Guid)Id).Name;
+            else if (typeof(T) == typeof(FabricColor))
+                return new FabricColor((Guid)Id).Name;
+            else
+                return string.Empty;
+        }
+
     }
 }

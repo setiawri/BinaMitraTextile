@@ -89,35 +89,35 @@ namespace BinaMitraTextile
         public Inventory(Guid ID)
         {
             id = ID;
-            DataTable dt = getRow(ID);
-            code = Convert.ToInt16(dt.Rows[0][COL_DB_CODE]);
-            qty = Convert.ToInt16(dt.Rows[0][COL_QTY]);
-            item_length = Convert.ToDecimal(dt.Rows[0][COL_ITEMLENGTH]);
-            buy_price = Convert.ToDecimal(dt.Rows[0][COL_DB_BUYPRICE]);
-            product_id = (Guid)dt.Rows[0][COL_DB_PRODUCTID];
-            product_width_id = (Guid)dt.Rows[0][COL_DB_PRODUCTWIDTHID];
-            grade_name = dt.Rows[0][COL_GRADE_NAME].ToString();
-            length_unit_name = dt.Rows[0][COL_LENGTH_UNIT_NAME].ToString();
-            product_width_name = dt.Rows[0][COL_PRODUCT_WIDTH_NAME].ToString();
-            color_name = dt.Rows[0][COL_COLOR_NAME].ToString();
-            product_store_name_id = (Guid)dt.Rows[0][COL_PRODUCTSTORENAMEID];
-            product_store_name = dt.Rows[0][COL_PRODUCTSTORENAME].ToString();
-            product_name_vendor = DBUtil.parseData<string>(dt.Rows[0], COL_PRODUCTNAMEVENDOR);
-            grade_id = (Guid)dt.Rows[0][COL_DB_GRADEID];
-            length_unit_id = (Guid)dt.Rows[0][COL_DB_LENGTHUNITID];
-            color_id = (Guid)dt.Rows[0][COL_DB_COLORID];
-            active = Convert.ToBoolean(dt.Rows[0][COL_DB_ACTIVE]);
-            isConsignment = Convert.ToBoolean(dt.Rows[0][COL_DB_IsConsignment]);
-            OpnameMarker = Convert.ToBoolean(dt.Rows[0][COL_DB_OpnameMarker]);
-            notes = dt.Rows[0][COL_DB_NOTES].ToString();
-            if (dt.Rows[0][COL_DB_RECEIVEDATE] != DBNull.Value) receive_date = Convert.ToDateTime(dt.Rows[0][COL_DB_RECEIVEDATE]);
-            if (dt.Rows[0][COL_DB_POITEMID] != DBNull.Value) POItemID = (Guid)dt.Rows[0][COL_DB_POITEMID];
-            POItemDescription = dt.Rows[0][COL_POITEMDESCRIPTION].ToString();
-            PONo = dt.Rows[0][COL_PONo].ToString();
-            PackingListNo = dt.Rows[0][COL_DB_PACKINGLISTNO].ToString();
-            if (dt.Rows[0][COL_DB_VENDORINVOICEID] != DBNull.Value) VendorInvoiceID = (Guid)dt.Rows[0][COL_DB_VENDORINVOICEID];
-            VendorInvoiceNo = dt.Rows[0][COL_VENDORINVOICENO].ToString();
-            VendorID = DBUtil.parseData<Guid>(dt.Rows[0], COL_VENDORID);
+            DataRow row = getRow(ID).Rows[0];
+            code = Util.wrapNullable<int>(row, COL_DB_CODE);
+            qty = Util.wrapNullable<int>(row, COL_QTY);
+            item_length = Util.wrapNullable<decimal>(row, COL_QTY);
+            buy_price = Util.wrapNullable<decimal>(row, COL_DB_BUYPRICE);
+            product_id = Util.wrapNullable<Guid>(row, COL_DB_PRODUCTID);
+            product_width_id = Util.wrapNullable<Guid>(row, COL_DB_PRODUCTWIDTHID);
+            grade_name = Util.wrapNullable<string>(row, COL_GRADE_NAME);
+            length_unit_name = Util.wrapNullable<string>(row, COL_LENGTH_UNIT_NAME);
+            product_width_name = Util.wrapNullable<string>(row, COL_PRODUCT_WIDTH_NAME);
+            color_name = Util.wrapNullable<string>(row, COL_COLOR_NAME);
+            product_store_name_id = Util.wrapNullable<Guid>(row, COL_PRODUCTSTORENAMEID);
+            product_store_name = Util.wrapNullable<string>(row, COL_PRODUCTSTORENAME);
+            product_name_vendor = Util.wrapNullable<string>(row, COL_PRODUCTNAMEVENDOR);
+            grade_id = Util.wrapNullable<Guid>(row, COL_DB_GRADEID);
+            length_unit_id = Util.wrapNullable<Guid>(row, COL_DB_LENGTHUNITID);
+            color_id = Util.wrapNullable<Guid>(row, COL_DB_COLORID);
+            active = Util.wrapNullable<bool>(row, COL_DB_ACTIVE);
+            isConsignment = Util.wrapNullable<bool>(row, COL_DB_IsConsignment);
+            OpnameMarker = Util.wrapNullable<bool>(row, COL_DB_OpnameMarker);
+            notes = Util.wrapNullable<string>(row, COL_DB_NOTES);
+            receive_date = Util.wrapNullable<DateTime>(row, COL_DB_RECEIVEDATE);
+            POItemID = Util.wrapNullable<Guid>(row, COL_DB_POITEMID);
+            POItemDescription = Util.wrapNullable<string>(row, COL_POITEMDESCRIPTION);
+            PONo = Util.wrapNullable<string>(row, COL_PONo);
+            PackingListNo = Util.wrapNullable<string>(row, COL_DB_PACKINGLISTNO);
+            VendorInvoiceID = Util.wrapNullable<Guid>(row, COL_DB_VENDORINVOICEID);
+            VendorInvoiceNo = Util.wrapNullable<string>(row, COL_VENDORINVOICENO);
+            VendorID = Util.wrapNullable<Guid>(row, COL_VENDORID);
         }
 
         public Inventory(decimal BuyPrice, Guid GradeID, Guid ProductID, Guid ProductWidthID, Guid LengthUnitID, Guid ColorID, string Notes, Guid? poItemID, string packingListNo, Guid? vendorInvoiceID, int Code)

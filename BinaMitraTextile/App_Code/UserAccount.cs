@@ -233,6 +233,10 @@ namespace BinaMitraTextile
             {
                 bypassLogin = true;
             }
+            else if(bypassLogin)
+            {
+                username = Settings.autologinusername1;
+            }
 
             UserAccount user = new UserAccount(username);
             if (user.id == new Guid())

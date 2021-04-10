@@ -79,7 +79,7 @@ namespace BinaMitraTextile.Admin
                 if (productPriceID != null)
                 {
                     _productPrice = new ProductPrice((Guid)productPriceID);
-                    chkUseInventoryID.Checked = true;
+                    setChkUseInventoryID(true);
                 }
                 else
                 {
@@ -140,7 +140,8 @@ namespace BinaMitraTextile.Admin
 
         private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Tools.displayForm(new Logs.Main_Form((Guid)((DataGridView)sender).Rows[e.RowIndex].Cells[col_grid_id.Name].Value));
+            if (GlobalData.UserAccount.role == Roles.Super)
+                Tools.displayForm(new Logs.Main_Form((Guid)((DataGridView)sender).Rows[e.RowIndex].Cells[col_grid_id.Name].Value));
         }
 
         #endregion LIST
@@ -227,7 +228,7 @@ namespace BinaMitraTextile.Admin
         {
             _inventory = null;
             _productPrice = null;
-            chkUseInventoryID.Checked = false;
+            setChkUseInventoryID(false);
             txtInventoryCode.Text = "";
             chkUseInventoryID.Enabled = false;
             txtTagPrice.Text = "";
@@ -257,7 +258,8 @@ namespace BinaMitraTextile.Admin
         {
             btnSubmit.Text = BTN_TEXT_UPDATE;
             btnSubmit.ForeColor = Color.Orange;
-            btnDelete.Enabled = true;
+            if(GlobalData.UserAccount.role == Roles.Super)
+                btnDelete.Enabled = true;
             setInputAvailability(false);
         }
 
@@ -300,7 +302,7 @@ namespace BinaMitraTextile.Admin
             txtNotes.Text = "";
             if(_productPrice != null)
             {
-                if (_productPrice.InventoryID != null) chkUseInventoryID.Checked = true;
+                if (_productPrice.InventoryID != null) setChkUseInventoryID(true);
                 cbProductStoreNames.SelectedValue = Util.wrapNullable(_productPrice.ProductStoreNameID);
                 cbGrades.SelectedValue = Util.wrapNullable(_productPrice.GradeID);
                 cbProductWidths.SelectedValue = Util.wrapNullable(_productPrice.ProductWidthID);
@@ -317,7 +319,10 @@ namespace BinaMitraTextile.Admin
                 cbGrades.SelectedValue = _inventory.grade_id;
                 cbProductWidths.SelectedValue = _inventory.product_width_id;
                 cbLengthUnits.SelectedValue = _inventory.length_unit_id;
-                cbColors.SelectedValue = _inventory.color_id;
+                if (_productPrice == null)
+                {
+                    cbColors.SelectedValue = _inventory.color_id;
+                }
             }
 
             if (chkUseInventoryID.Checked)
@@ -346,6 +351,13 @@ namespace BinaMitraTextile.Admin
                         setNewMode();
                 }
             }
+        }
+
+        private void setChkUseInventoryID(bool value)
+        {
+            chkUseInventoryID.CheckedChanged -= new EventHandler(chkUseInventoryID_CheckedChanged);
+            chkUseInventoryID.Checked = value;
+            chkUseInventoryID.CheckedChanged += new EventHandler(chkUseInventoryID_CheckedChanged);
         }
 
         private void chkUseInventoryID_CheckedChanged(object sender, EventArgs e)
