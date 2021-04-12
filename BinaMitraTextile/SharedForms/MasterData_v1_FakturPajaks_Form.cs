@@ -505,7 +505,6 @@ namespace BinaMitraTextile.SharedForms
 
         private void idtp_StartDate_ValueChanged(object sender, EventArgs e)
         {
-            string x = "";
         }
 
         #endregion EVENT HANDLERS

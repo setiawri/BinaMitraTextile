@@ -70,13 +70,10 @@ namespace BinaMitraTextile.Test
             List<string> missingBarcodeList = new List<string>();
             DataTable dtMissing = new DataTable();
             Tools.addColumn<string>(dtMissing, "barcode", null);
-            DataRow row;
             for (int i = barcodeList.Count - 1; i > -1; i--)
             {
                 if (!dt.Rows.Contains(barcodeList[i]))
-                {
                     dtMissing.Rows.Add(barcodeList[i]);
-                }
             }
 
                 //display in gridview

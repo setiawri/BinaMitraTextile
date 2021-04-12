@@ -36,16 +36,16 @@ namespace BinaMitraTextile
         {
             return true; //disable so sales pc doesn't need to have the latest version
 
-            string latestVersion = LatestAppVersion;
-            if (latestVersion == APPVERSION)
-                return true;
-            else if (String.Compare(LatestAppVersion, APPVERSION) < 0)
-            {
-                LatestAppVersion = APPVERSION;
-                return true;
-            }
-            else
-                return Util.displayMessageBoxError("Please update app version to " + latestVersion);
+            //string latestVersion = LatestAppVersion;
+            //if (latestVersion == APPVERSION)
+            //    return true;
+            //else if (String.Compare(LatestAppVersion, APPVERSION) < 0)
+            //{
+            //    LatestAppVersion = APPVERSION;
+            //    return true;
+            //}
+            //else
+            //    return Util.displayMessageBoxError("Please update app version to " + latestVersion);
         }
 
         #endregion APP VERSION

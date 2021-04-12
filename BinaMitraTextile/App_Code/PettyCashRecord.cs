@@ -78,7 +78,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(Id, "Added");
+                ActivityLog.submitCreate(Id);
                 return Id;
             }
         }
@@ -146,9 +146,9 @@ namespace BinaMitraTextile
                 if (result.IsSuccessful)
                 {
                     if (GlobalData.UserAccount.role != Roles.Super)
-                        ActivityLog.submit(id, "Update: " + log, (int)Roles.Super);
+                        ActivityLog.submit(id, "UPDATE: " + log, (int)Roles.Super);
                     else
-                        ActivityLog.submit(id, "Update: " + log);
+                        ActivityLog.submit(id, "UPDATE: " + log);
                 }
             }
         }

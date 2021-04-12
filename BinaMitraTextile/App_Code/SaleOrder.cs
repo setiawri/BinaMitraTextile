@@ -122,7 +122,7 @@ namespace BinaMitraTextile
 
             if (result.IsSuccessful)
             {
-                ActivityLog.submit(id, "Added");
+                ActivityLog.submitCreate(id);
 
                 //submit items
                 if(SaleOrderItem.add(items))

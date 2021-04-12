@@ -174,7 +174,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(Id, "Added");
+                ActivityLog.submitCreate(Id);
                 return Id;
             }
         }

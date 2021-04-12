@@ -133,7 +133,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(id, "Added");
+                ActivityLog.submitCreate(id);
                 return id;
             }
         }
@@ -273,7 +273,7 @@ namespace BinaMitraTextile
 
                 if (result.IsSuccessful)
                 {
-                    ActivityLog.submit(id, "Update: " + logDescription);
+                    ActivityLog.submitUpdate(id, logDescription);
                     return true;
                 }
             }

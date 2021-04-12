@@ -27,6 +27,8 @@ namespace BinaMitraTextile
             return result.Datatable;
         }
 
+        public static void submitCreate(Guid associatedID) { submit(associatedID, "Created"); }
+        public static void submitUpdate(Guid associatedID, string description) { submit(associatedID, "UPDATE: " + description); }
         public static void submit(Guid associatedID, string description)
         {
             submit(associatedID, description, null);

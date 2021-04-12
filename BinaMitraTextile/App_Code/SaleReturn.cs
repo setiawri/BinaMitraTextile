@@ -138,7 +138,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(id, "Added");
+                ActivityLog.submitCreate(id);
                 barcode = Tools.getHex(result.ValueInt, Settings.saleBarcodeLength);
             }
 

@@ -138,14 +138,16 @@ namespace BinaMitraTextile
             VendorInvoiceID = vendorInvoiceID;
             code = Code;
 
-            DataTable dt = getInfo();
-            grade_name = dt.Rows[0][COL_GRADE_NAME].ToString();
-            length_unit_name = dt.Rows[0][COL_LENGTH_UNIT_NAME].ToString();
-            product_width_name = dt.Rows[0][COL_PRODUCT_WIDTH_NAME].ToString();
-            color_name = dt.Rows[0][COL_COLOR_NAME].ToString();
-            product_store_name = dt.Rows[0][COL_PRODUCTSTORENAME].ToString();
-            product_store_name_id = (Guid)dt.Rows[0][COL_PRODUCTSTORENAMEID];
-            VendorInvoiceNo = DBUtil.parseData<string>(dt.Rows[0], COL_VENDORINVOICENO);
+            DataRow row = getInfo().Rows[0];
+            grade_name = Util.wrapNullable<string>(row, COL_GRADE_NAME);
+            length_unit_name = Util.wrapNullable<string>(row, COL_LENGTH_UNIT_NAME);
+            product_width_name = Util.wrapNullable<string>(row, COL_PRODUCT_WIDTH_NAME);
+            color_name = Util.wrapNullable<string>(row, COL_COLOR_NAME);
+            product_store_name = Util.wrapNullable<string>(row, COL_PRODUCTSTORENAME);
+            product_store_name_id = Util.wrapNullable<Guid>(row, COL_PRODUCTSTORENAMEID);
+            product_name_vendor = Util.wrapNullable<string>(row, COL_PRODUCTNAMEVENDOR);
+            VendorInvoiceNo = Util.wrapNullable<string>(row, COL_VENDORINVOICENO);
+            PONo = Util.wrapNullable<string>(row, COL_PONo);
         }
 
         public Guid? submitNew()
@@ -173,7 +175,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(Id, "Added");
+                ActivityLog.submitCreate(Id);
                 return Id;
             }
         }
@@ -209,7 +211,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_PRODUCTWIDTHID, SqlDbType.UniqueIdentifier, product_width_id),
                 new SqlQueryParameter(COL_DB_LENGTHUNITID, SqlDbType.UniqueIdentifier, length_unit_id),
                 new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, color_id),
-                new SqlQueryParameter(COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier, VendorInvoiceID)
+                new SqlQueryParameter(COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier, VendorInvoiceID),
+                new SqlQueryParameter(COL_DB_POITEMID, SqlDbType.UniqueIdentifier, POItemID)
             );
             return result.Datatable;
         }
@@ -398,7 +401,7 @@ namespace BinaMitraTextile
 
                 if (result.IsSuccessful)
                 {
-                    ActivityLog.submit(id, "Update: " + logDescription);
+                    ActivityLog.submitUpdate(id, logDescription);
                     return true;
                 }
             }

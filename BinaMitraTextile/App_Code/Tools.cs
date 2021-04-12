@@ -500,7 +500,7 @@ namespace BinaMitraTextile
             DataTable datatable = createArrayTable();
             if(values != null)
                 foreach(int value in values)
-                    if (value != null) datatable.Rows.Add(null, value);
+                    datatable.Rows.Add(null, value);
             return datatable;
         }
 

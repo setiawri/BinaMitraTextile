@@ -148,7 +148,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(id, "Added");
+                ActivityLog.submitCreate(id);
 
                 //submit items
                 POItem.submitItems(items);

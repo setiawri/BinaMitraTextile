@@ -89,7 +89,7 @@ namespace BinaMitraTextile.Returns
                     {
                         saleID = Sale.getIDByBarcode(txtBarcode.Text);
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         Tools.hasMessage(String.Format("{0} does not exist in database", txtBarcode.Text));
                         return;
@@ -112,7 +112,7 @@ namespace BinaMitraTextile.Returns
                     {
                         inventoryItemID = InventoryItem.getIDByBarcode(InventoryItem.getBarcodeWithoutPrefix(txtInventoryItemBarcode.Text));
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         Tools.hasMessage(String.Format("{0} does not exist in database", txtBarcode.Text));
                         return;

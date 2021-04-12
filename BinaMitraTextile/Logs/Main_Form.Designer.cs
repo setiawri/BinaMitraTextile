@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grid = new System.Windows.Forms.DataGridView();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -126,7 +127,7 @@
             // col_grid_Timestamp
             // 
             this.col_grid_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
             this.col_grid_Timestamp.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_grid_Timestamp.HeaderText = "Timestamp";
@@ -139,6 +140,8 @@
             // col_grid_Username
             // 
             this.col_grid_Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.col_grid_Username.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_grid_Username.HeaderText = "User";
             this.col_grid_Username.MinimumWidth = 30;
             this.col_grid_Username.Name = "col_grid_Username";
@@ -148,8 +151,9 @@
             // col_grid_Description
             // 
             this.col_grid_Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_grid_Description.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_Description.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_grid_Description.HeaderText = "Description";
             this.col_grid_Description.Name = "col_grid_Description";
             this.col_grid_Description.ReadOnly = true;

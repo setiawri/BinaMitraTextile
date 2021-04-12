@@ -255,7 +255,7 @@ namespace BinaMitraTextile
                 return null;
             else
             {
-                ActivityLog.submit(id, "Added");
+                ActivityLog.submitCreate(id);
 
                 barcode = result.ValueString;
                 SaleItem.submitItems(getListOfSaleItems(SaleItems), barcode, customer_id);

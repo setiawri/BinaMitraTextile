@@ -84,7 +84,7 @@ namespace BinaMitraTextile
             );
 
             if (result.IsSuccessful)
-                ActivityLog.submit(Id, "Added");
+                ActivityLog.submitCreate(Id);
 
             return Id;
         }

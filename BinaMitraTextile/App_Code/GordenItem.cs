@@ -235,7 +235,7 @@ namespace BinaMitraTextile
 
                         cmd.ExecuteNonQuery();
 
-                        ActivityLog.submit(id, "Update: " + log);
+                        ActivityLog.submit(id, "UPDATE: " + log);
                     }
                     Tools.hasMessage("Item updated");
                 }
