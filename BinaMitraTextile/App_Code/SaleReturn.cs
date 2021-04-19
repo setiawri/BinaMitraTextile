@@ -29,6 +29,7 @@ namespace BinaMitraTextile
         public const string COL_SaleLength = "sale_length";
         public const string COL_Customers_Id = "customer_id";
         public const string COL_Customers_Name = "customer_name";
+        public const string COL_Vendors_Name = "Vendors_Name";
         public const string COL_SALESMANID = "salesman_id";
         public const string COL_SALESMANNAME = "salesman_name";
 

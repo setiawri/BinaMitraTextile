@@ -17,7 +17,7 @@ namespace BinaMitraTextile.Returns
 
         const string COL_DELETE = "DeleteRow";
 
-        private Guid? _customerID = null;
+        private Guid? _customerID = null, _Vendors_Id = null;
         private decimal _totalAmount = 0;
 
         #endregion CLASS VARIABLES
@@ -63,14 +63,16 @@ namespace BinaMitraTextile.Returns
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
             if (isSaleReturnValid())
             {
                 SaleReturn obj = new SaleReturn(txtNotes.Text, (DataTable)grid.DataSource);
                 if (obj.submitNew() != null)
                 {
-                    CustomerCredit.submitNew((Guid)_customerID, _totalAmount, null, string.Format("Credit from Sale Return " + obj.barcode), PaymentMethod.Cash);
-                    Tools.hasMessage("Credit sudah dibuat sejumlah " + lblTotalAmount.Text);
+                    if(_customerID != null)
+                    {
+                        CustomerCredit.submitNew((Guid)_customerID, _totalAmount, null, string.Format("Credit from Sale Return " + obj.barcode), PaymentMethod.Cash);
+                        Tools.hasMessage("Credit sudah dibuat sejumlah " + lblTotalAmount.Text);
+                    }
                     this.Close();
                 }
             }
@@ -109,7 +111,7 @@ namespace BinaMitraTextile.Returns
 
                 if (dt.Rows.Count == 0)
                 {
-                    _customerID = null;
+                    _customerID = _Vendors_Id = null;
                     lblCustomerName.Text = "";
                 }
             }
@@ -160,8 +162,16 @@ namespace BinaMitraTextile.Returns
                 if (grid.DataSource == null)
                 {
                     dt = SaleItem.getItemForReturn(barcode);
-                    _customerID = (Guid)dt.Rows[0][SaleItem.COL_CUSTOMERID];
-                    lblCustomerName.Text = dt.Rows[0][SaleItem.COL_CUSTOMERNAME].ToString();
+                    if(dt.Rows[0][SaleItem.COL_CUSTOMERID] != DBNull.Value)
+                    {
+                        _customerID = (Guid)dt.Rows[0][SaleItem.COL_CUSTOMERID];
+                        lblCustomerName.Text = dt.Rows[0][SaleItem.COL_CUSTOMERNAME].ToString();
+                    }
+                    else
+                    {
+                        _Vendors_Id = (Guid)dt.Rows[0][SaleItem.COL_DB_Vendors_Id];
+                        lblCustomerName.Text = dt.Rows[0][SaleItem.COL_Vendors_Name].ToString();
+                    }
                 }
                 else
                 {
@@ -170,8 +180,10 @@ namespace BinaMitraTextile.Returns
                     {
                         if (dt.Rows.Contains(dr[SaleItem.COL_ID]))
                             Tools.hasMessage(dr[SaleItem.COL_BARCODE].ToString() + " is already in the list");
-                        else if ((Guid)dr[SaleItem.COL_CUSTOMERID] != _customerID)
+                        else if (_customerID != null && (Guid)dr[SaleItem.COL_CUSTOMERID] != _customerID)
                             Tools.hasMessage(barcode.ToString() + " was sold to a different customer: " + dr[SaleItem.COL_CUSTOMERNAME].ToString());
+                        else if (_Vendors_Id != null && (Guid)dr[SaleItem.COL_DB_Vendors_Id] != _Vendors_Id)
+                            Tools.hasMessage(barcode.ToString() + " was returned to a different vendor: " + dr[SaleItem.COL_Vendors_Name].ToString());
                         else
                             dt.Rows.Add(dr.ItemArray);
                     }

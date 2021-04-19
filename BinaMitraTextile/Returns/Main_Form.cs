@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using LIBUtil;
@@ -61,6 +54,7 @@ namespace BinaMitraTextile.Returns
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_Checked.DataPropertyName = SaleReturn.COL_Checked;
             col_grid_FakturPajaks_No.DataPropertyName = SaleReturn.COL_FakturPajaks_No;
+            col_grid_Vendors_Name.DataPropertyName = SaleReturn.COL_Vendors_Name;
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 col_grid_Checked.Visible = false;

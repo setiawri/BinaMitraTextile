@@ -24,6 +24,8 @@ namespace BinaMitraTextile
         public const string COL_LENGTH = "item_length";
         public const string COL_CUSTOMERID = "customer_id";
         public const string COL_CUSTOMERNAME = "customer_name";
+        public const string COL_DB_Vendors_Id = "Vendors_Id";
+        public const string COL_Vendors_Name = "Vendors_Name";
         public const string COL_DB_isManualAdjustment = "isManualAdjustment";
         public const string COL_DB_sale_id = "sale_id";
         public const string COL_DB_CommissionPercent = "CommissionPercent";
@@ -79,7 +81,7 @@ namespace BinaMitraTextile
         {
             DataTable dataTable = getItem(InventoryItemBarcode, true);
 
-            Tools.addColumn<int>(dataTable, SaleItem.COL_QTY, 1);
+            Tools.addColumn<int>(dataTable, COL_QTY, 1);
 
             return dataTable;
         }
