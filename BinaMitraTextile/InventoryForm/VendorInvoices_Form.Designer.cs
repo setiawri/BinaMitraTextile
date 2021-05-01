@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendorInvoices_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridInventory = new System.Windows.Forms.DataGridView();
             this.col_gridinventory_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridinventory_receivedate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +81,7 @@
             this.col_gridInventory_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlFilterAndButtons = new System.Windows.Forms.Panel();
             this.pnlFilterAndButtonsContent = new System.Windows.Forms.Panel();
+            this.lblGrandTotalPayable = new System.Windows.Forms.Label();
             this.lblPayableAmount = new System.Windows.Forms.Label();
             this.gbVendorInvoicePayment = new System.Windows.Forms.GroupBox();
             this.lblVendorInvoicePayment = new System.Windows.Forms.Label();
@@ -135,19 +136,18 @@
             this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.lblSaleInvoices = new System.Windows.Forms.Label();
             this.gridSaleInvoices = new System.Windows.Forms.DataGridView();
+            this.lblReturns = new System.Windows.Forms.Label();
+            this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
+            this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
+            this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.col_gridSaleInvoices_Sales_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSaleInvoices_timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSaleInvoices_hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
             this.col_gridSaleInvoices_sale_qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSaleInvoices_sale_length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_gridSaleInvoices_SaleAmount = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_gridSaleInvoices_NonReturnedAmount = new System.Windows.Forms.DataGridViewLinkColumn();
             this.col_gridSaleInvoices_FakturPajaks_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSaleInvoices_FakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblReturns = new System.Windows.Forms.Label();
-            this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
-            this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
-            this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.lblGrandTotalPayable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             this.pnlFilterAndButtons.SuspendLayout();
             this.pnlFilterAndButtonsContent.SuspendLayout();
@@ -175,14 +175,14 @@
             this.gridInventory.BackgroundColor = System.Drawing.Color.White;
             this.gridInventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridInventory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridinventory_id,
@@ -198,14 +198,14 @@
             this.col_gridInventory_BuyValue,
             this.col_gridinventory_packinglistno,
             this.col_gridInventory_Notes});
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridInventory.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridInventory.DefaultCellStyle = dataGridViewCellStyle11;
             this.gridInventory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridInventory.Location = new System.Drawing.Point(0, 23);
             this.gridInventory.Name = "gridInventory";
@@ -225,9 +225,9 @@
             // col_gridinventory_receivedate
             // 
             this.col_gridinventory_receivedate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle38.Format = "dd/MM/yy";
-            this.col_gridinventory_receivedate.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            this.col_gridinventory_receivedate.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_gridinventory_receivedate.HeaderText = "Date";
             this.col_gridinventory_receivedate.MinimumWidth = 35;
             this.col_gridinventory_receivedate.Name = "col_gridinventory_receivedate";
@@ -238,9 +238,9 @@
             // 
             this.col_gridinventory_code.ActiveLinkColor = System.Drawing.Color.SpringGreen;
             this.col_gridinventory_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridinventory_code.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridinventory_code.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_gridinventory_code.HeaderText = "Code";
             this.col_gridinventory_code.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridinventory_code.LinkColor = System.Drawing.Color.CornflowerBlue;
@@ -255,8 +255,8 @@
             // col_gridinventory_gradename
             // 
             this.col_gridinventory_gradename.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridinventory_gradename.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridinventory_gradename.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_gridinventory_gradename.HeaderText = "Grade";
             this.col_gridinventory_gradename.MinimumWidth = 40;
             this.col_gridinventory_gradename.Name = "col_gridinventory_gradename";
@@ -275,8 +275,8 @@
             // col_gridinventory_productwidthname
             // 
             this.col_gridinventory_productwidthname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridinventory_productwidthname.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridinventory_productwidthname.DefaultCellStyle = dataGridViewCellStyle5;
             this.col_gridinventory_productwidthname.HeaderText = "Lebar";
             this.col_gridinventory_productwidthname.MinimumWidth = 35;
             this.col_gridinventory_productwidthname.Name = "col_gridinventory_productwidthname";
@@ -286,8 +286,8 @@
             // col_gridinventory_colorname
             // 
             this.col_gridinventory_colorname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridinventory_colorname.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridinventory_colorname.DefaultCellStyle = dataGridViewCellStyle6;
             this.col_gridinventory_colorname.HeaderText = "Color";
             this.col_gridinventory_colorname.MinimumWidth = 35;
             this.col_gridinventory_colorname.Name = "col_gridinventory_colorname";
@@ -297,12 +297,12 @@
             // col_gridInventory_ItemLength
             // 
             this.col_gridInventory_ItemLength.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle43.Format = "N2";
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.Red;
-            this.col_gridInventory_ItemLength.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Red;
+            this.col_gridInventory_ItemLength.DefaultCellStyle = dataGridViewCellStyle7;
             this.col_gridInventory_ItemLength.HeaderText = "Qty";
             this.col_gridInventory_ItemLength.MinimumWidth = 30;
             this.col_gridInventory_ItemLength.Name = "col_gridInventory_ItemLength";
@@ -312,8 +312,8 @@
             // col_gridinventory_unitname
             // 
             this.col_gridinventory_unitname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridinventory_unitname.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridinventory_unitname.DefaultCellStyle = dataGridViewCellStyle8;
             this.col_gridinventory_unitname.HeaderText = "Unit";
             this.col_gridinventory_unitname.MinimumWidth = 35;
             this.col_gridinventory_unitname.Name = "col_gridinventory_unitname";
@@ -323,11 +323,11 @@
             // col_gridinventory_buyprice
             // 
             this.col_gridinventory_buyprice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.Format = "N2";
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.Black;
-            this.col_gridinventory_buyprice.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.col_gridinventory_buyprice.DefaultCellStyle = dataGridViewCellStyle9;
             this.col_gridinventory_buyprice.HeaderText = "Price";
             this.col_gridinventory_buyprice.MinimumWidth = 40;
             this.col_gridinventory_buyprice.Name = "col_gridinventory_buyprice";
@@ -337,9 +337,9 @@
             // col_gridInventory_BuyValue
             // 
             this.col_gridInventory_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle46.Format = "N2";
-            this.col_gridInventory_BuyValue.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            this.col_gridInventory_BuyValue.DefaultCellStyle = dataGridViewCellStyle10;
             this.col_gridInventory_BuyValue.HeaderText = "Amount";
             this.col_gridInventory_BuyValue.MinimumWidth = 50;
             this.col_gridInventory_BuyValue.Name = "col_gridInventory_BuyValue";
@@ -386,6 +386,15 @@
             this.pnlFilterAndButtonsContent.Name = "pnlFilterAndButtonsContent";
             this.pnlFilterAndButtonsContent.Size = new System.Drawing.Size(984, 65);
             this.pnlFilterAndButtonsContent.TabIndex = 9;
+            // 
+            // lblGrandTotalPayable
+            // 
+            this.lblGrandTotalPayable.AutoSize = true;
+            this.lblGrandTotalPayable.Location = new System.Drawing.Point(3, 5);
+            this.lblGrandTotalPayable.Name = "lblGrandTotalPayable";
+            this.lblGrandTotalPayable.Size = new System.Drawing.Size(108, 13);
+            this.lblGrandTotalPayable.TabIndex = 9;
+            this.lblGrandTotalPayable.Text = "lblGrandTotalPayable";
             // 
             // lblPayableAmount
             // 
@@ -708,14 +717,14 @@
             this.gridvendorinvoice.AllowUserToResizeRows = false;
             this.gridvendorinvoice.BackgroundColor = System.Drawing.Color.White;
             this.gridvendorinvoice.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridvendorinvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridvendorinvoice.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gridvendorinvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridvendorinvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridvendorinvoice_id,
@@ -742,14 +751,14 @@
             this.col_gridvendorinvoice_FakturPajaks_Amount,
             this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount,
             this.col_gridvendorinvoice_notes});
-            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle65.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridvendorinvoice.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridvendorinvoice.DefaultCellStyle = dataGridViewCellStyle29;
             this.gridvendorinvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridvendorinvoice.Location = new System.Drawing.Point(0, 93);
             this.gridvendorinvoice.Name = "gridvendorinvoice";
@@ -784,8 +793,8 @@
             // col_gridvendorinvoice_timestamp
             // 
             this.col_gridvendorinvoice_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle49.Format = "dd/MM/yy";
-            this.col_gridvendorinvoice_timestamp.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle13.Format = "dd/MM/yy";
+            this.col_gridvendorinvoice_timestamp.DefaultCellStyle = dataGridViewCellStyle13;
             this.col_gridvendorinvoice_timestamp.HeaderText = "Date";
             this.col_gridvendorinvoice_timestamp.MinimumWidth = 40;
             this.col_gridvendorinvoice_timestamp.Name = "col_gridvendorinvoice_timestamp";
@@ -819,9 +828,9 @@
             // col_gridvendorinvoice_Amount
             // 
             this.col_gridvendorinvoice_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.Format = "N0";
-            this.col_gridvendorinvoice_Amount.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N0";
+            this.col_gridvendorinvoice_Amount.DefaultCellStyle = dataGridViewCellStyle14;
             this.col_gridvendorinvoice_Amount.HeaderText = "Amount";
             this.col_gridvendorinvoice_Amount.MinimumWidth = 45;
             this.col_gridvendorinvoice_Amount.Name = "col_gridvendorinvoice_Amount";
@@ -832,10 +841,10 @@
             // 
             this.col_gridvendorinvoice_CalculatedAmount.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.col_gridvendorinvoice_CalculatedAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle51.Format = "N0";
-            this.col_gridvendorinvoice_CalculatedAmount.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.Format = "N0";
+            this.col_gridvendorinvoice_CalculatedAmount.DefaultCellStyle = dataGridViewCellStyle15;
             this.col_gridvendorinvoice_CalculatedAmount.HeaderText = "Calculated";
             this.col_gridvendorinvoice_CalculatedAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridvendorinvoice_CalculatedAmount.LinkColor = System.Drawing.Color.CornflowerBlue;
@@ -850,12 +859,12 @@
             // col_gridvendorinvoice_AmountDifferenceFromCalculated
             // 
             this.col_gridvendorinvoice_AmountDifferenceFromCalculated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle52.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle52.Format = "N2";
-            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.Red;
-            this.col_gridvendorinvoice_AmountDifferenceFromCalculated.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Red;
+            this.col_gridvendorinvoice_AmountDifferenceFromCalculated.DefaultCellStyle = dataGridViewCellStyle16;
             this.col_gridvendorinvoice_AmountDifferenceFromCalculated.HeaderText = "Diff";
             this.col_gridvendorinvoice_AmountDifferenceFromCalculated.MinimumWidth = 40;
             this.col_gridvendorinvoice_AmountDifferenceFromCalculated.Name = "col_gridvendorinvoice_AmountDifferenceFromCalculated";
@@ -865,9 +874,9 @@
             // col_gridvendorinvoice_ReturnedValue
             // 
             this.col_gridvendorinvoice_ReturnedValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle53.Format = "N2";
-            this.col_gridvendorinvoice_ReturnedValue.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N2";
+            this.col_gridvendorinvoice_ReturnedValue.DefaultCellStyle = dataGridViewCellStyle17;
             this.col_gridvendorinvoice_ReturnedValue.HeaderText = "Returned";
             this.col_gridvendorinvoice_ReturnedValue.MinimumWidth = 50;
             this.col_gridvendorinvoice_ReturnedValue.Name = "col_gridvendorinvoice_ReturnedValue";
@@ -878,10 +887,10 @@
             // 
             this.col_gridVendorInvoice_PaidAmount.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.col_gridVendorInvoice_PaidAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle54.Format = "N0";
-            this.col_gridVendorInvoice_PaidAmount.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.Format = "N0";
+            this.col_gridVendorInvoice_PaidAmount.DefaultCellStyle = dataGridViewCellStyle18;
             this.col_gridVendorInvoice_PaidAmount.HeaderText = "Paid";
             this.col_gridVendorInvoice_PaidAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridVendorInvoice_PaidAmount.LinkColor = System.Drawing.Color.CornflowerBlue;
@@ -896,9 +905,9 @@
             // col_gridvendorinvoice_PayableAmount
             // 
             this.col_gridvendorinvoice_PayableAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle55.Format = "N0";
-            this.col_gridvendorinvoice_PayableAmount.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N0";
+            this.col_gridvendorinvoice_PayableAmount.DefaultCellStyle = dataGridViewCellStyle19;
             this.col_gridvendorinvoice_PayableAmount.HeaderText = "Payable";
             this.col_gridvendorinvoice_PayableAmount.MinimumWidth = 50;
             this.col_gridvendorinvoice_PayableAmount.Name = "col_gridvendorinvoice_PayableAmount";
@@ -908,9 +917,9 @@
             // col_gridVendorInvoice_PaymentAmount
             // 
             this.col_gridVendorInvoice_PaymentAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle56.Format = "N0";
-            this.col_gridVendorInvoice_PaymentAmount.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N0";
+            this.col_gridVendorInvoice_PaymentAmount.DefaultCellStyle = dataGridViewCellStyle20;
             this.col_gridVendorInvoice_PaymentAmount.HeaderText = "Payment";
             this.col_gridVendorInvoice_PaymentAmount.MinimumWidth = 50;
             this.col_gridVendorInvoice_PaymentAmount.Name = "col_gridVendorInvoice_PaymentAmount";
@@ -920,9 +929,9 @@
             // 
             this.col_gridVendorInvoice_TogglePayment.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.col_gridVendorInvoice_TogglePayment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridVendorInvoice_TogglePayment.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridVendorInvoice_TogglePayment.DefaultCellStyle = dataGridViewCellStyle21;
             this.col_gridVendorInvoice_TogglePayment.HeaderText = "";
             this.col_gridVendorInvoice_TogglePayment.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridVendorInvoice_TogglePayment.LinkColor = System.Drawing.Color.CornflowerBlue;
@@ -939,8 +948,8 @@
             // col_gridvendorinvoice_top
             // 
             this.col_gridvendorinvoice_top.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_gridvendorinvoice_top.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_gridvendorinvoice_top.DefaultCellStyle = dataGridViewCellStyle22;
             this.col_gridvendorinvoice_top.HeaderText = "TOP";
             this.col_gridvendorinvoice_top.MinimumWidth = 30;
             this.col_gridvendorinvoice_top.Name = "col_gridvendorinvoice_top";
@@ -950,9 +959,9 @@
             // col_gridVendorInvoice_DaysPastDue
             // 
             this.col_gridVendorInvoice_DaysPastDue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridVendorInvoice_DaysPastDue.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridVendorInvoice_DaysPastDue.DefaultCellStyle = dataGridViewCellStyle23;
             this.col_gridVendorInvoice_DaysPastDue.HeaderText = "Past";
             this.col_gridVendorInvoice_DaysPastDue.MinimumWidth = 30;
             this.col_gridVendorInvoice_DaysPastDue.Name = "col_gridVendorInvoice_DaysPastDue";
@@ -981,8 +990,8 @@
             // 
             this.col_gridVendorInvoice_FakturPajaks_No.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.col_gridVendorInvoice_FakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridVendorInvoice_FakturPajaks_No.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridVendorInvoice_FakturPajaks_No.DefaultCellStyle = dataGridViewCellStyle24;
             this.col_gridVendorInvoice_FakturPajaks_No.HeaderText = "FP";
             this.col_gridVendorInvoice_FakturPajaks_No.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridVendorInvoice_FakturPajaks_No.LinkColor = System.Drawing.Color.CornflowerBlue;
@@ -995,8 +1004,8 @@
             // col_gridvendorinvoice_timestamp2
             // 
             this.col_gridvendorinvoice_timestamp2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle61.Format = "dd/MM";
-            this.col_gridvendorinvoice_timestamp2.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle25.Format = "dd/MM";
+            this.col_gridvendorinvoice_timestamp2.DefaultCellStyle = dataGridViewCellStyle25;
             this.col_gridvendorinvoice_timestamp2.HeaderText = "Date";
             this.col_gridvendorinvoice_timestamp2.MinimumWidth = 40;
             this.col_gridvendorinvoice_timestamp2.Name = "col_gridvendorinvoice_timestamp2";
@@ -1006,9 +1015,9 @@
             // col_gridvendorinvoice_DPP
             // 
             this.col_gridvendorinvoice_DPP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle62.Format = "N0";
-            this.col_gridvendorinvoice_DPP.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "N0";
+            this.col_gridvendorinvoice_DPP.DefaultCellStyle = dataGridViewCellStyle26;
             this.col_gridvendorinvoice_DPP.HeaderText = "DPP";
             this.col_gridvendorinvoice_DPP.MinimumWidth = 30;
             this.col_gridvendorinvoice_DPP.Name = "col_gridvendorinvoice_DPP";
@@ -1018,9 +1027,9 @@
             // col_gridvendorinvoice_FakturPajaks_Amount
             // 
             this.col_gridvendorinvoice_FakturPajaks_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle63.Format = "N2";
-            this.col_gridvendorinvoice_FakturPajaks_Amount.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "N2";
+            this.col_gridvendorinvoice_FakturPajaks_Amount.DefaultCellStyle = dataGridViewCellStyle27;
             this.col_gridvendorinvoice_FakturPajaks_Amount.HeaderText = "Amount";
             this.col_gridvendorinvoice_FakturPajaks_Amount.MinimumWidth = 45;
             this.col_gridvendorinvoice_FakturPajaks_Amount.Name = "col_gridvendorinvoice_FakturPajaks_Amount";
@@ -1030,12 +1039,12 @@
             // col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount
             // 
             this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle64.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle64.Format = "N2";
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.Color.Red;
-            this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle28.Format = "N2";
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Red;
+            this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.DefaultCellStyle = dataGridViewCellStyle28;
             this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.HeaderText = "Diff";
             this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.MinimumWidth = 30;
             this.col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.Name = "col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount";
@@ -1172,14 +1181,14 @@
             this.gridSaleInvoices.BackgroundColor = System.Drawing.Color.White;
             this.gridSaleInvoices.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSaleInvoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle66.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle66.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSaleInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSaleInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.gridSaleInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSaleInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridSaleInvoices_Sales_id,
@@ -1187,7 +1196,7 @@
             this.col_gridSaleInvoices_hexbarcode,
             this.col_gridSaleInvoices_sale_qty,
             this.col_gridSaleInvoices_sale_length,
-            this.col_gridSaleInvoices_SaleAmount,
+            this.col_gridSaleInvoices_NonReturnedAmount,
             this.col_gridSaleInvoices_FakturPajaks_Id,
             this.col_gridSaleInvoices_FakturPajaks_No});
             this.gridSaleInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1197,105 +1206,12 @@
             this.gridSaleInvoices.Name = "gridSaleInvoices";
             this.gridSaleInvoices.ReadOnly = true;
             this.gridSaleInvoices.RowHeadersVisible = false;
-            dataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle36;
             this.gridSaleInvoices.RowTemplate.Height = 24;
             this.gridSaleInvoices.Size = new System.Drawing.Size(260, 119);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
-            // 
-            // col_gridSaleInvoices_Sales_id
-            // 
-            this.col_gridSaleInvoices_Sales_id.HeaderText = "id";
-            this.col_gridSaleInvoices_Sales_id.Name = "col_gridSaleInvoices_Sales_id";
-            this.col_gridSaleInvoices_Sales_id.ReadOnly = true;
-            this.col_gridSaleInvoices_Sales_id.Visible = false;
-            // 
-            // col_gridSaleInvoices_timestamp
-            // 
-            this.col_gridSaleInvoices_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle67.Format = "dd/MM/yy";
-            this.col_gridSaleInvoices_timestamp.DefaultCellStyle = dataGridViewCellStyle67;
-            this.col_gridSaleInvoices_timestamp.HeaderText = "Date";
-            this.col_gridSaleInvoices_timestamp.MinimumWidth = 50;
-            this.col_gridSaleInvoices_timestamp.Name = "col_gridSaleInvoices_timestamp";
-            this.col_gridSaleInvoices_timestamp.ReadOnly = true;
-            this.col_gridSaleInvoices_timestamp.Width = 50;
-            // 
-            // col_gridSaleInvoices_hexbarcode
-            // 
-            this.col_gridSaleInvoices_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle68.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.col_gridSaleInvoices_hexbarcode.DefaultCellStyle = dataGridViewCellStyle68;
-            this.col_gridSaleInvoices_hexbarcode.HeaderText = "No";
-            this.col_gridSaleInvoices_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridSaleInvoices_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_hexbarcode.MinimumWidth = 40;
-            this.col_gridSaleInvoices_hexbarcode.Name = "col_gridSaleInvoices_hexbarcode";
-            this.col_gridSaleInvoices_hexbarcode.ReadOnly = true;
-            this.col_gridSaleInvoices_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridSaleInvoices_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridSaleInvoices_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            // 
-            // col_gridSaleInvoices_sale_qty
-            // 
-            this.col_gridSaleInvoices_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle69.Format = "N0";
-            this.col_gridSaleInvoices_sale_qty.DefaultCellStyle = dataGridViewCellStyle69;
-            this.col_gridSaleInvoices_sale_qty.HeaderText = "Pcs";
-            this.col_gridSaleInvoices_sale_qty.MinimumWidth = 30;
-            this.col_gridSaleInvoices_sale_qty.Name = "col_gridSaleInvoices_sale_qty";
-            this.col_gridSaleInvoices_sale_qty.ReadOnly = true;
-            this.col_gridSaleInvoices_sale_qty.Width = 30;
-            // 
-            // col_gridSaleInvoices_sale_length
-            // 
-            this.col_gridSaleInvoices_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle70.Format = "N2";
-            this.col_gridSaleInvoices_sale_length.DefaultCellStyle = dataGridViewCellStyle70;
-            this.col_gridSaleInvoices_sale_length.HeaderText = "Qty";
-            this.col_gridSaleInvoices_sale_length.MinimumWidth = 30;
-            this.col_gridSaleInvoices_sale_length.Name = "col_gridSaleInvoices_sale_length";
-            this.col_gridSaleInvoices_sale_length.ReadOnly = true;
-            this.col_gridSaleInvoices_sale_length.Width = 30;
-            // 
-            // col_gridSaleInvoices_SaleAmount
-            // 
-            this.col_gridSaleInvoices_SaleAmount.ActiveLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_SaleAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle71.Format = "N0";
-            this.col_gridSaleInvoices_SaleAmount.DefaultCellStyle = dataGridViewCellStyle71;
-            this.col_gridSaleInvoices_SaleAmount.HeaderText = "Amount";
-            this.col_gridSaleInvoices_SaleAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.col_gridSaleInvoices_SaleAmount.LinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_SaleAmount.MinimumWidth = 50;
-            this.col_gridSaleInvoices_SaleAmount.Name = "col_gridSaleInvoices_SaleAmount";
-            this.col_gridSaleInvoices_SaleAmount.ReadOnly = true;
-            this.col_gridSaleInvoices_SaleAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_gridSaleInvoices_SaleAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_gridSaleInvoices_SaleAmount.VisitedLinkColor = System.Drawing.Color.SpringGreen;
-            this.col_gridSaleInvoices_SaleAmount.Width = 50;
-            // 
-            // col_gridSaleInvoices_FakturPajaks_Id
-            // 
-            this.col_gridSaleInvoices_FakturPajaks_Id.HeaderText = "FakturPajaks_Id";
-            this.col_gridSaleInvoices_FakturPajaks_Id.Name = "col_gridSaleInvoices_FakturPajaks_Id";
-            this.col_gridSaleInvoices_FakturPajaks_Id.ReadOnly = true;
-            this.col_gridSaleInvoices_FakturPajaks_Id.Visible = false;
-            // 
-            // col_gridSaleInvoices_FakturPajaks_No
-            // 
-            this.col_gridSaleInvoices_FakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_gridSaleInvoices_FakturPajaks_No.HeaderText = "FP";
-            this.col_gridSaleInvoices_FakturPajaks_No.MinimumWidth = 30;
-            this.col_gridSaleInvoices_FakturPajaks_No.Name = "col_gridSaleInvoices_FakturPajaks_No";
-            this.col_gridSaleInvoices_FakturPajaks_No.ReadOnly = true;
-            this.col_gridSaleInvoices_FakturPajaks_No.Width = 30;
             // 
             // lblReturns
             // 
@@ -1342,14 +1258,98 @@
             this.ptRowInfo.TabIndex = 5;
             this.ptRowInfo.TogglePanel = null;
             // 
-            // lblGrandTotalPayable
+            // col_gridSaleInvoices_Sales_id
             // 
-            this.lblGrandTotalPayable.AutoSize = true;
-            this.lblGrandTotalPayable.Location = new System.Drawing.Point(3, 5);
-            this.lblGrandTotalPayable.Name = "lblGrandTotalPayable";
-            this.lblGrandTotalPayable.Size = new System.Drawing.Size(108, 13);
-            this.lblGrandTotalPayable.TabIndex = 9;
-            this.lblGrandTotalPayable.Text = "lblGrandTotalPayable";
+            this.col_gridSaleInvoices_Sales_id.HeaderText = "id";
+            this.col_gridSaleInvoices_Sales_id.Name = "col_gridSaleInvoices_Sales_id";
+            this.col_gridSaleInvoices_Sales_id.ReadOnly = true;
+            this.col_gridSaleInvoices_Sales_id.Visible = false;
+            // 
+            // col_gridSaleInvoices_timestamp
+            // 
+            this.col_gridSaleInvoices_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle31.Format = "dd/MM/yy";
+            this.col_gridSaleInvoices_timestamp.DefaultCellStyle = dataGridViewCellStyle31;
+            this.col_gridSaleInvoices_timestamp.HeaderText = "Date";
+            this.col_gridSaleInvoices_timestamp.MinimumWidth = 50;
+            this.col_gridSaleInvoices_timestamp.Name = "col_gridSaleInvoices_timestamp";
+            this.col_gridSaleInvoices_timestamp.ReadOnly = true;
+            this.col_gridSaleInvoices_timestamp.Width = 50;
+            // 
+            // col_gridSaleInvoices_hexbarcode
+            // 
+            this.col_gridSaleInvoices_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.col_gridSaleInvoices_hexbarcode.DefaultCellStyle = dataGridViewCellStyle32;
+            this.col_gridSaleInvoices_hexbarcode.HeaderText = "No";
+            this.col_gridSaleInvoices_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridSaleInvoices_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_hexbarcode.MinimumWidth = 40;
+            this.col_gridSaleInvoices_hexbarcode.Name = "col_gridSaleInvoices_hexbarcode";
+            this.col_gridSaleInvoices_hexbarcode.ReadOnly = true;
+            this.col_gridSaleInvoices_hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridSaleInvoices_hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridSaleInvoices_hexbarcode.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            // 
+            // col_gridSaleInvoices_sale_qty
+            // 
+            this.col_gridSaleInvoices_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle33.Format = "N0";
+            this.col_gridSaleInvoices_sale_qty.DefaultCellStyle = dataGridViewCellStyle33;
+            this.col_gridSaleInvoices_sale_qty.HeaderText = "Pcs";
+            this.col_gridSaleInvoices_sale_qty.MinimumWidth = 30;
+            this.col_gridSaleInvoices_sale_qty.Name = "col_gridSaleInvoices_sale_qty";
+            this.col_gridSaleInvoices_sale_qty.ReadOnly = true;
+            this.col_gridSaleInvoices_sale_qty.Width = 30;
+            // 
+            // col_gridSaleInvoices_sale_length
+            // 
+            this.col_gridSaleInvoices_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle34.Format = "N2";
+            this.col_gridSaleInvoices_sale_length.DefaultCellStyle = dataGridViewCellStyle34;
+            this.col_gridSaleInvoices_sale_length.HeaderText = "Qty";
+            this.col_gridSaleInvoices_sale_length.MinimumWidth = 30;
+            this.col_gridSaleInvoices_sale_length.Name = "col_gridSaleInvoices_sale_length";
+            this.col_gridSaleInvoices_sale_length.ReadOnly = true;
+            this.col_gridSaleInvoices_sale_length.Width = 30;
+            // 
+            // col_gridSaleInvoices_NonReturnedAmount
+            // 
+            this.col_gridSaleInvoices_NonReturnedAmount.ActiveLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_NonReturnedAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle35.Format = "N0";
+            this.col_gridSaleInvoices_NonReturnedAmount.DefaultCellStyle = dataGridViewCellStyle35;
+            this.col_gridSaleInvoices_NonReturnedAmount.HeaderText = "Amount";
+            this.col_gridSaleInvoices_NonReturnedAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_gridSaleInvoices_NonReturnedAmount.LinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_NonReturnedAmount.MinimumWidth = 50;
+            this.col_gridSaleInvoices_NonReturnedAmount.Name = "col_gridSaleInvoices_NonReturnedAmount";
+            this.col_gridSaleInvoices_NonReturnedAmount.ReadOnly = true;
+            this.col_gridSaleInvoices_NonReturnedAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_gridSaleInvoices_NonReturnedAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_gridSaleInvoices_NonReturnedAmount.VisitedLinkColor = System.Drawing.Color.SpringGreen;
+            this.col_gridSaleInvoices_NonReturnedAmount.Width = 50;
+            // 
+            // col_gridSaleInvoices_FakturPajaks_Id
+            // 
+            this.col_gridSaleInvoices_FakturPajaks_Id.HeaderText = "FakturPajaks_Id";
+            this.col_gridSaleInvoices_FakturPajaks_Id.Name = "col_gridSaleInvoices_FakturPajaks_Id";
+            this.col_gridSaleInvoices_FakturPajaks_Id.ReadOnly = true;
+            this.col_gridSaleInvoices_FakturPajaks_Id.Visible = false;
+            // 
+            // col_gridSaleInvoices_FakturPajaks_No
+            // 
+            this.col_gridSaleInvoices_FakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_gridSaleInvoices_FakturPajaks_No.HeaderText = "FP";
+            this.col_gridSaleInvoices_FakturPajaks_No.MinimumWidth = 30;
+            this.col_gridSaleInvoices_FakturPajaks_No.Name = "col_gridSaleInvoices_FakturPajaks_No";
+            this.col_gridSaleInvoices_FakturPajaks_No.ReadOnly = true;
+            this.col_gridSaleInvoices_FakturPajaks_No.Width = 30;
             // 
             // VendorInvoices_Form
             // 
@@ -1404,14 +1404,6 @@
         private System.Windows.Forms.DataGridView gridSaleInvoices;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_QuickSearch;
         private System.Windows.Forms.Panel pnlFilterAndButtonsContent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_Sales_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_timestamp;
-        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_hexbarcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_length;
-        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_SaleAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_FakturPajaks_Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_FakturPajaks_No;
         public System.Windows.Forms.CheckBox chkShowOnlyVendorUsesFakturPajak;
         public System.Windows.Forms.CheckBox chkShowOnlyLast6Months;
         private System.Windows.Forms.Button btnSubmitVendorPayments;
@@ -1470,5 +1462,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_notes;
         private System.Windows.Forms.Label lblGrandTotalPayable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_Sales_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_timestamp;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_hexbarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_sale_length;
+        private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_NonReturnedAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_FakturPajaks_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_FakturPajaks_No;
     }
 }

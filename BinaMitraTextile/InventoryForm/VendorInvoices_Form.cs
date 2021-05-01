@@ -118,7 +118,7 @@ namespace BinaMitraTextile.InventoryForm
             gridSaleInvoices.AutoGenerateColumns = false;
             gridSaleInvoices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_gridSaleInvoices_hexbarcode.DataPropertyName = Sale.COL_HEXBARCODE;
-            col_gridSaleInvoices_SaleAmount.DataPropertyName = Sale.COL_SALEAMOUNT;
+            col_gridSaleInvoices_NonReturnedAmount.DataPropertyName = Sale.COL_NonReturnedAmount;
             col_gridSaleInvoices_Sales_id.DataPropertyName = Sale.COL_ID;
             col_gridSaleInvoices_sale_length.DataPropertyName = Sale.COL_SALELENGTH;
             col_gridSaleInvoices_sale_qty.DataPropertyName = Sale.COL_SALEQTY;

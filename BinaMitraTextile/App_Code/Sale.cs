@@ -61,6 +61,7 @@ namespace BinaMitraTextile
         public const string COL_totalQty = "totalQty";
         public const string COL_SALEQTY = "sale_qty";
         public const string COL_SALELENGTH = "sale_length";
+        public const string COL_NonReturnedAmount = "NonReturnedAmount";
 
         public const string FILTER_OnlyNoFakturPajak = "FILTER_OnlyNoFakturPajak";
         public const string FILTER_OnlyReturnedToSupplier = "FILTER_OnlyReturnedToSupplier";
