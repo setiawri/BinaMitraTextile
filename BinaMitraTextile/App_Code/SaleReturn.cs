@@ -66,7 +66,7 @@ namespace BinaMitraTextile
             customer_id = Util.wrapNullable<Guid>(row, COL_Customers_Id);
             notes = Util.wrapNullable<string>(row, COL_DB_Notes);
             customer_info = Util.wrapNullable<string>(row, "customer_info");
-            barcode = Util.wrapNullable<string>(row, "barcode");
+            barcode = Util.wrapNullable<string>(row, COL_HEXBARCODE);
             FakturPajaks_Id = Util.wrapNullable<Guid?>(row, COL_DB_FakturPajaks_Id);
             Kontrabons_Id = Util.wrapNullable<Guid?>(row, COL_DB_Kontrabons_Id);
 

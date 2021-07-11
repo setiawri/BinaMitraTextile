@@ -50,6 +50,7 @@ namespace BinaMitraTextile
         public const string COL_PONo = "po_no";
         public const string COL_VENDORINVOICENO = "vendorinvoice_no";
         public const string COL_PRODUCTID = "vendor_id";
+        public const string COL_FakturPajaks_No = "FakturPajaks_No";
 
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
 
@@ -83,6 +84,7 @@ namespace BinaMitraTextile
         public Guid VendorID;
         public bool isConsignment = false;
         public bool OpnameMarker = false;
+        public string FakturPajaks_No = "";
 
         public Inventory() { }
 
@@ -118,6 +120,8 @@ namespace BinaMitraTextile
             VendorInvoiceID = Util.wrapNullable<Guid>(row, COL_DB_VENDORINVOICEID);
             VendorInvoiceNo = Util.wrapNullable<string>(row, COL_VENDORINVOICENO);
             VendorID = Util.wrapNullable<Guid>(row, COL_VENDORID);
+
+            FakturPajaks_No = Util.wrapNullable<string>(row, COL_FakturPajaks_No);
         }
 
         public Inventory(decimal BuyPrice, Guid GradeID, Guid ProductID, Guid ProductWidthID, Guid LengthUnitID, Guid ColorID, string Notes, Guid? poItemID, string packingListNo, Guid? vendorInvoiceID, int Code)

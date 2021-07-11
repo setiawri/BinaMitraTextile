@@ -70,7 +70,9 @@ namespace BinaMitraTextile
 
         public VendorInvoice(Guid id)
         {
+
             DataRow row = get(id).Rows[0];
+
             ID = id;
             Timestamp = DBUtil.parseData<DateTime>(row, COL_DB_Timestamp);
             InvoiceNo = DBUtil.parseData<string>(row, COL_DB_InvoiceNo);
@@ -113,7 +115,7 @@ namespace BinaMitraTextile
 
         public static DataTable get(Guid ID)
         {
-            return get(ID, null, null, true, false, false, null, null, false);
+            return get(ID, null, null, false, false, false, null, null, false);
         }
 
         public static DataTable get(bool showOnlyIncomplete)

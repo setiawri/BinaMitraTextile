@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.ComponentModel;
 using LIBUtil;
 
 namespace BinaMitraTextile
@@ -12,7 +13,9 @@ namespace BinaMitraTextile
         Transfer,
         Credit,
         Giro,
-        Hutang
+        Hutang,
+        [Description("Lain-lain")]
+        Lainlain
     };
 
     public class Payment

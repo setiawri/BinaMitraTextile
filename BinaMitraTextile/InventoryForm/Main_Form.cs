@@ -12,7 +12,7 @@ namespace BinaMitraTextile.InventoryForm
         /*******************************************************************************************************/
         #region CLASS VARIABLES
 
-        private string[] fieldNamesForQuickSearch = { Inventory.COL_DB_CODE, Inventory.COL_COLOR_NAME, Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_DB_PACKINGLISTNO, Inventory.COL_VENDORINVOICENO };
+        private string[] fieldNamesForQuickSearch = { Inventory.COL_DB_CODE, Inventory.COL_COLOR_NAME, Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_DB_PACKINGLISTNO, Inventory.COL_VENDORINVOICENO, Inventory.COL_FakturPajaks_No };
         private FormMode _formMode = FormMode.Search;
         private Guid? _vendorID;
         private Guid _clickedInventoryID;
@@ -97,6 +97,7 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_OpnameMarker.DataPropertyName = Inventory.COL_DB_OpnameMarker;
             col_grid_code.Frozen = true;
             col_grid_buyPrice.Visible = false;
+            col_grid_FakturPajaks_No.DataPropertyName = Inventory.COL_FakturPajaks_No;
 
             gridSummary.AutoGenerateColumns = false;
             gridSummary.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
