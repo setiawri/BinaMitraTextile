@@ -81,6 +81,10 @@ namespace BinaMitraTextile
 
                 Account_Log.Visible = false;
             }
+            else
+            {
+                btnChart.Visible = true;
+            }
         }
 
         private void populatePageData()
@@ -415,6 +419,11 @@ namespace BinaMitraTextile
         private void Internal_SalesComissions_Click(object sender, EventArgs e)
         {
             Util.displayMDIChild(new Users.SaleComissions_Form());
+        }
+
+        private void btnChart_Click(object sender, EventArgs e)
+        {
+            Sales_Chart.PerformClick();
         }
 
         #endregion MENU - INTERNAL

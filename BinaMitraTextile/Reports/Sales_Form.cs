@@ -459,6 +459,12 @@ namespace BinaMitraTextile.Reports
             //default start date
             dtStart.Value = new DateTime(DateTime.Now.Year - 3, 1, 1);
             dtStart.Checked = false;
+
+            if (GlobalData.UserAccount.role == Roles.Super)
+            {
+                chkShowHidden.Checked = true;
+                btnSubmit.PerformClick();
+            }
         }
     }
 }

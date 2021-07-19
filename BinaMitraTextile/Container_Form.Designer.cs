@@ -86,6 +86,7 @@
             this.Internal_Reports_Taxes = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_SalesComissions = new System.Windows.Forms.ToolStripMenuItem();
             this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcutContainer = new System.Windows.Forms.Panel();
             this.btnOpname = new System.Windows.Forms.Button();
@@ -116,7 +117,7 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.Internal_SalesComissions = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnChart = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -508,21 +509,21 @@
             // Account_Password
             // 
             this.Account_Password.Name = "Account_Password";
-            this.Account_Password.Size = new System.Drawing.Size(180, 22);
+            this.Account_Password.Size = new System.Drawing.Size(122, 22);
             this.Account_Password.Text = "Password";
             this.Account_Password.Click += new System.EventHandler(this.Account_Password_Click);
             // 
             // Account_Komisi
             // 
             this.Account_Komisi.Name = "Account_Komisi";
-            this.Account_Komisi.Size = new System.Drawing.Size(180, 22);
+            this.Account_Komisi.Size = new System.Drawing.Size(122, 22);
             this.Account_Komisi.Text = "Komisi";
             this.Account_Komisi.Click += new System.EventHandler(this.Account_Komisi_Click);
             // 
             // Account_Peraturan
             // 
             this.Account_Peraturan.Name = "Account_Peraturan";
-            this.Account_Peraturan.Size = new System.Drawing.Size(180, 22);
+            this.Account_Peraturan.Size = new System.Drawing.Size(122, 22);
             this.Account_Peraturan.Text = "Peraturan";
             this.Account_Peraturan.Visible = false;
             this.Account_Peraturan.Click += new System.EventHandler(this.Account_Peraturan_Click);
@@ -530,7 +531,7 @@
             // Account_Log
             // 
             this.Account_Log.Name = "Account_Log";
-            this.Account_Log.Size = new System.Drawing.Size(180, 22);
+            this.Account_Log.Size = new System.Drawing.Size(122, 22);
             this.Account_Log.Text = "Log";
             this.Account_Log.Click += new System.EventHandler(this.Account_Log_Click);
             // 
@@ -550,14 +551,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(152, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(180, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(152, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -568,7 +569,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(152, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -595,16 +596,23 @@
             // Internal_Settings
             // 
             this.Internal_Settings.Name = "Internal_Settings";
-            this.Internal_Settings.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Settings.Size = new System.Drawing.Size(152, 22);
             this.Internal_Settings.Text = "Settings";
             this.Internal_Settings.Click += new System.EventHandler(this.Internal_Settings_Click);
             // 
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(180, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(152, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
+            // 
+            // Internal_SalesComissions
+            // 
+            this.Internal_SalesComissions.Name = "Internal_SalesComissions";
+            this.Internal_SalesComissions.Size = new System.Drawing.Size(152, 22);
+            this.Internal_SalesComissions.Text = "Sales Comission";
+            this.Internal_SalesComissions.Click += new System.EventHandler(this.Internal_SalesComissions_Click);
             // 
             // Windows
             // 
@@ -639,6 +647,7 @@
             // 
             // pnlShortcuts
             // 
+            this.pnlShortcuts.Controls.Add(this.btnChart);
             this.pnlShortcuts.Controls.Add(this.gbShortcutsForAssistants);
             this.pnlShortcuts.Controls.Add(this.gbShortcutsForUsers);
             this.pnlShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1063,12 +1072,17 @@
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
-            // Internal_SalesComissions
+            // btnChart
             // 
-            this.Internal_SalesComissions.Name = "Internal_SalesComissions";
-            this.Internal_SalesComissions.Size = new System.Drawing.Size(180, 22);
-            this.Internal_SalesComissions.Text = "Sales Comission";
-            this.Internal_SalesComissions.Click += new System.EventHandler(this.Internal_SalesComissions_Click);
+            this.btnChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnChart.Location = new System.Drawing.Point(5, 518);
+            this.btnChart.Name = "btnChart";
+            this.btnChart.Size = new System.Drawing.Size(114, 41);
+            this.btnChart.TabIndex = 23;
+            this.btnChart.Text = "CHART";
+            this.btnChart.UseVisualStyleBackColor = true;
+            this.btnChart.Visible = false;
+            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
             // 
             // Container_Form
             // 
@@ -1192,5 +1206,6 @@
         private System.Windows.Forms.Panel pnlShortcutHeader;
         private System.Windows.Forms.ToolStripMenuItem Internal_Settings;
         private System.Windows.Forms.ToolStripMenuItem Internal_SalesComissions;
+        private System.Windows.Forms.Button btnChart;
     }
 }
