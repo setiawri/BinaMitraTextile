@@ -223,23 +223,23 @@ namespace BinaMitraTextile
 
         public static DataTable getAll(bool includeInactive)
         {
-            return getAll(includeInactive, false, null, null, null, null, null, null, null, null, false);
+            return getAll(includeInactive, false, null, null, null, null, null, null, null, null, false, null);
         }
 
         public static DataTable getAll(bool includeInactive, Guid? vendorID)
         {
-            return getAll(includeInactive, false, null, null, null, null, null, null, vendorID, null, false);
+            return getAll(includeInactive, false, null, null, null, null, null, null, vendorID, null, false, null);
         }
 
         public static DataTable getAll(bool includeInactive, bool last3Months, int? code, Guid? productID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, Guid? colorID, 
-            Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly)
+            Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly, string keyword)
         {
             return get(includeInactive, last3Months, code, Tools.copyValuesToArrayTable(productID), Tools.copyValuesToArrayTable(gradeID), Tools.copyValuesToArrayTable(productWidthID), 
-                Tools.copyValuesToArrayTable(lengthUnitID), Tools.copyValuesToArrayTable(colorID), vendorID, vendorInvoiceID, showNotBookedOnly);
+                Tools.copyValuesToArrayTable(lengthUnitID), Tools.copyValuesToArrayTable(colorID), vendorID, vendorInvoiceID, showNotBookedOnly, keyword);
         }
 
         public static DataTable get(bool includeInactive, bool last3Months, int? code, DataTable dtProductStoreNameID, DataTable dtGradeID, DataTable dtProductWidthID, DataTable dtLengthUnitID, 
-            DataTable dtColorID, Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly)
+            DataTable dtColorID, Guid? vendorID, Guid? vendorInvoiceID, bool showNotBookedOnly, string keyword)
         {
 
             //ERROR INVALID ARRAY SIZE
@@ -273,6 +273,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@last3Months", SqlDbType.Bit).Value = last3Months;
                 cmd.Parameters.Add("@code", SqlDbType.VarChar).Value = code;
                 cmd.Parameters.Add("@FILTER_ShowNotBookedOnly", SqlDbType.Bit).Value = showNotBookedOnly;
+                cmd.Parameters.Add("@FILTER_Keyword", SqlDbType.VarChar).Value = keyword;
                 cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorID);
                 cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorInvoiceID);
 

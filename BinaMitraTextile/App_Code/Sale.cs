@@ -152,7 +152,7 @@ namespace BinaMitraTextile
         public decimal SaleAmount
         {
             get { 
-                if(sale_items == null)
+                if(sale_items == null || sale_items.Rows.Count == 0)
                     return 0;
                 else
                     return Convert.ToDecimal(sale_items.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_SUBTOTAL), "")); ; 

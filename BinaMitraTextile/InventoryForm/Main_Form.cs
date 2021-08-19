@@ -12,7 +12,6 @@ namespace BinaMitraTextile.InventoryForm
         /*******************************************************************************************************/
         #region CLASS VARIABLES
 
-        private string[] fieldNamesForQuickSearch = { Inventory.COL_DB_CODE, Inventory.COL_COLOR_NAME, Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_DB_PACKINGLISTNO, Inventory.COL_VENDORINVOICENO, Inventory.COL_FakturPajaks_No };
         private FormMode _formMode = FormMode.Search;
         private Guid? _vendorID;
         private Guid _clickedInventoryID;
@@ -147,7 +146,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void populatePageData()
         {
-            populateGridview(true);
+            populateGridview();
         }
 
         private void populateGridSummary()
@@ -195,25 +194,25 @@ namespace BinaMitraTextile.InventoryForm
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Tools.displayForm(new InventoryForm.Add_Edit_Form());
-            populateGridview(true);
+            populateGridview();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Tools.displayForm(new InventoryForm.Add_Edit_Form(selectedRowID()));
-            populateGridview(true);
+            populateGridview();
         }
 
         protected void chkIncludeInactive_CheckedChanged(object sender, EventArgs e)
         {
-            populateGridview(true);
+            populateGridview();
         }
 
         private void btnSetPrice_Click(object sender, EventArgs e)
         {
             //Util.displayForm(new Admin.MasterData_v1_ProductPrices(selectedRowID()));
             Tools.displayForm(new Admin.ProductPrices_Form(selectedRowID()));
-            populateGridview(true);
+            populateGridview();
         }
 
         private void btnLog_Click(object sender, EventArgs e)
@@ -233,7 +232,7 @@ namespace BinaMitraTextile.InventoryForm
             iclb_Grades.reset();
             iclb_ProductWidths.reset();
 
-            populateGridview(true);
+            populateGridview();
         }
 
         private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -246,26 +245,26 @@ namespace BinaMitraTextile.InventoryForm
             else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_OpnameMarker.Name))
             {
                 Inventory.updateOpnameMarker((Guid)Util.getClickedRowValue(sender, e, col_grid_id), Util.clickDataGridViewCheckbox(sender, e));
-                populateGridview(true);
+                populateGridview();
             }
             else if (GlobalData.UserAccount.role != Roles.User)
             {
                 if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
                 {
                     Inventory.updateActiveStatus(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
-                    populateGridview(true);
+                    populateGridview();
                 }
                 else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_isConsignment.Name))
                 {
                     Inventory.updateIsConsignment(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
-                    populateGridview(true);
+                    populateGridview();
                 }
             }
         }
 
         private void btnUpdateItemColor_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new InventoryForm.ItemColor_Update_Form());
+            Tools.displayForm(new ItemColor_Update_Form());
         }
 
         private void btnRefreshPage_Click(object sender, EventArgs e)
@@ -301,52 +300,35 @@ namespace BinaMitraTextile.InventoryForm
             }
         }
         
-        private void populateGridview(bool reloadFromDB)
+        private void populateGridview()
         {
-            DataView dvw;
-            if (!reloadFromDB)
-                dvw = (DataView)grid.DataSource;
-            else
-            {
-                dvw = Inventory.get(chkIncludeInactive.Checked, chkLast3Months.Checked,
-                    null,
-                    iclb_ProductStoreNames.getCheckedItemsInArrayTable(ProductStoreName.COL_DB_ID),
-                    iclb_Grades.getCheckedItemsInArrayTable(Grade.COL_DB_ID),
-                    iclb_ProductWidths.getCheckedItemsInArrayTable(ProductWidth.COL_DB_ID),
-                    iclb_LengthUnits.getCheckedItemsInArrayTable(LengthUnit.COL_DB_ID),
-                    iclb_Colors.getCheckedItemsInArrayTable(FabricColor.COL_DB_ID),
-                    _vendorID,
-                    null,
-                    chkShowNotBookedOnly.Checked).DefaultView;
-            }
+            DataTable datatable = Inventory.get(chkIncludeInactive.Checked, chkLast3Months.Checked,
+                null,
+                iclb_ProductStoreNames.getCheckedItemsInArrayTable(ProductStoreName.COL_DB_ID),
+                iclb_Grades.getCheckedItemsInArrayTable(Grade.COL_DB_ID),
+                iclb_ProductWidths.getCheckedItemsInArrayTable(ProductWidth.COL_DB_ID),
+                iclb_LengthUnits.getCheckedItemsInArrayTable(LengthUnit.COL_DB_ID),
+                iclb_Colors.getCheckedItemsInArrayTable(FabricColor.COL_DB_ID),
+                _vendorID,
+                null,
+                chkShowNotBookedOnly.Checked,
+                itxt_QuickSearch.ValueText);
 
-            dvw.RowFilter = compileQuickSearchFilter();
-            setGridviewDataSource(dvw);
+            //dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNamesForQuickSearch);
+            setGridviewDataSource(datatable);
             populateGridSummary();
 
             lblCounts.Visible = false;
         }
 
-        private string compileQuickSearchFilter()
-        {
-            string filter = "";
-            filter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNamesForQuickSearch);
-            //filter = Tools.append(filter, Tools.compileRowFilterString(clbGrades, Inventory.COL_DB_GRADEID, typeof(Guid)), "AND");
-            //filter = Tools.append(filter, Tools.compileRowFilterString(clbProductWidths, Inventory.COL_DB_PRODUCTWIDTHID, typeof(Guid)), "AND");
-            //filter = Tools.append(filter, Tools.compileRowFilterString(clbLengthUnits, Inventory.COL_DB_LENGTHUNITID, typeof(Guid)), "AND");
-            //filter = Tools.append(filter, Tools.compileRowFilterString(clbProductStoreNames, Inventory.COL_PRODUCTSTORENAMEID, typeof(Guid)), "AND");
-            //filter = Tools.append(filter, Tools.compileRowFilterString(clbColors, Inventory.COL_DB_COLORID, typeof(Guid)), "AND");
-            return filter;
-        }
-
-        private void setGridviewDataSource(DataView dvw)
+        private void setGridviewDataSource(DataTable datatable)
         {
             //detach event handlers to avoid triggering events
             grid.CellContentClick -= new System.Windows.Forms.DataGridViewCellEventHandler(grid_CellContentClick);
 
             Tools.saveGridviewKey(grid, col_grid_id.Name);
 
-            Util.setGridviewDataSource(grid, dvw);
+            Util.setGridviewDataSource(grid, datatable);
 
             Tools.selectGridviewPreviousKey(grid, col_grid_id.Name);
 
@@ -386,17 +368,17 @@ namespace BinaMitraTextile.InventoryForm
             clb.SetItemCheckState(e.Index, e.NewValue);
             clb.ItemCheck += clb_ItemCheck;
 
-            populateGridview(true);
+            populateGridview();
         }
         
         private void CheckedListBox_ItemChecked(object sender, EventArgs e)
         {
-            populateGridview(true);
+            populateGridview();
         }
 
         private void chkLast3Months_CheckedChanged(object sender, EventArgs e)
         {
-            populateGridview(true);
+            populateGridview();
         }
         
         private void chkRearrange_CheckedChanged(object sender, EventArgs e)
@@ -447,7 +429,7 @@ namespace BinaMitraTextile.InventoryForm
             Inventory.updateBuyPrice(_clickedInventoryID, in_BuyPrice.ValueDecimal);
             in_BuyPrice.Value = 0;
             pnlUpdateBuyPrice.Visible = false;
-            populateGridview(true);
+            populateGridview();
         }
 
         private void in_BuyPrice_onKeyDown(object sender, KeyEventArgs e)
@@ -459,7 +441,7 @@ namespace BinaMitraTextile.InventoryForm
         private void btnClearQtyZeroes_Click(object sender, EventArgs e)
         {
             Inventory.deactivateQtyZeroes();
-            populateGridview(true);
+            populateGridview();
         }
 
         private void PtSummary_pictureBox_ClickEvent(object sender, EventArgs e)
@@ -469,7 +451,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void ChkShowNotBookedOnly_CheckedChanged(object sender, EventArgs e)
         {
-            populateGridview(true);
+            populateGridview();
         }
 
         private void PbLog_Click(object sender, EventArgs e)
@@ -480,13 +462,13 @@ namespace BinaMitraTextile.InventoryForm
 
         private void PbRefresh_Click(object sender, EventArgs e)
         {
-            populateGridview(true);
+            populateGridview();
         }
 
         private void Itxt_QuickSearch_onKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
-                populateGridview(false);
+                populateGridview();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

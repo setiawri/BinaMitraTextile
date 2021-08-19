@@ -80,7 +80,10 @@ namespace BinaMitraTextile.Sales
         private void populatePage()
         {
             if (_sale.ReturnedToSupplier)
+            {
                 this.Text = lblTitle.Text = "RETUR VENDOR";
+                lblDisclaimer.Visible = false;
+            }
             else
                 this.Text = "INVOICE";
 
@@ -111,15 +114,23 @@ namespace BinaMitraTextile.Sales
             _totalPageCount = (int)Math.Ceiling((decimal)_data.Rows.Count / MAX_ITEMS_PER_PAGE);
             populateGrids();
 
-            _totalSale = Convert.ToDecimal(_data.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_SUBTOTAL), ""));
+
+            if(_data.Rows.Count > 0)
+                _totalSale = Convert.ToDecimal(_data.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_SUBTOTAL), ""));
 
             lblShippingCost.Text = string.Format("Angkutan {0}: {1:N0}", _sale.TransportName, _sale.ShippingCost);
 
             Inventory.setAmount(lblTotalSale, _totalSale.ToString());
             Inventory.setAmount(lblGrandTotal, (_totalSale + _sale.ShippingCost).ToString());
-            Inventory.setCount(lblTotalCounts, 
-                _data.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_QTY), "").ToString(), 
-                _data.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
+
+            string qty = "0";
+            string length = "0";
+            if (_data.Rows.Count > 0)
+            {
+                qty = _data.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_QTY), "").ToString();
+                length = _data.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString();
+            }
+            Inventory.setCount(lblTotalCounts, qty, length);
 
             txtNotes.Text = Tools.applyNewLines(_sale.notes);
 

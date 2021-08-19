@@ -462,6 +462,8 @@ namespace BinaMitraTextile.Reports
 
             if (GlobalData.UserAccount.role == Roles.Super)
             {
+                dtStart.Checked = true;
+
                 chkShowHidden.Checked = true;
                 btnSubmit.PerformClick();
             }

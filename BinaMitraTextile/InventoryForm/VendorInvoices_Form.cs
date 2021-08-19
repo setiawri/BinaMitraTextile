@@ -152,7 +152,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void populateGridInventory()
         {
-            DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false);
+            DataTable data = Inventory.getAll(true, false, null, null, null, null, null, null, null, Tools.getSelectedRowID(gridvendorinvoice, col_gridvendorinvoice_id), false, null);
             data = Util.sortData(data, Inventory.COL_DB_CODE, SortOrder.Ascending, null, null);
             Tools.setGridviewDataSource(gridInventory, false, false, data);
             lblSaleInvoices.Text = string.Format("Sale Invoices: {0:N2}", Util.compute(data, "SUM", Inventory.COL_BUYVALUE, ""));
