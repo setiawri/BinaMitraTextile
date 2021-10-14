@@ -39,6 +39,8 @@ namespace BinaMitraTextile
         public const string COL_SALE_QTY = "qty";
         public const string COL_LENGTHUNITNAME = "length_unit_name";
         public const string COL_SALE_isManualAdjustment = "isManualAdjustment";
+        public const string COL_Sales_Hexbarcode = "Sales_Hexbarcode";
+        public const string COL_Sales_Id = "Sales_Id";
 
         public const string COL_LASTOPNAME = "last_opname";
         public const string COL_OpnameMarker = Inventory.COL_DB_OpnameMarker;
@@ -70,6 +72,8 @@ namespace BinaMitraTextile
         public string SaleOrderItemCustomerName;
         public Guid? SaleOrders_Customers_Id;
         public bool isSold;
+        public string Sales_Hexbarcode;
+        public Guid? Sales_Id;
 
         public InventoryItem(Guid ID)
         {
@@ -94,6 +98,8 @@ namespace BinaMitraTextile
                 SaleOrderItemCustomerName = DBUtil.parseData<string>(row, COL_SaleOrderItemCustomerName);
                 isSold = Util.wrapNullable<bool>(row, COL_IS_SOLD);
                 SaleOrders_Customers_Id = Util.wrapNullable<Guid?>(row, COL_SaleOrders_Customers_Id);
+                Sales_Hexbarcode = Util.wrapNullable<string>(row, COL_Sales_Hexbarcode);
+                Sales_Id = Util.wrapNullable<Guid?>(row, COL_Sales_Id);
 
                 Grades_Id = Util.wrapNullable<Guid>(row, COL_DB_Grades_Id);
                 Grades_Name = Util.wrapNullable<string>(row, COL_Grades_Name);

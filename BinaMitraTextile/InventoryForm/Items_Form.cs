@@ -57,6 +57,8 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_colorname.DataPropertyName = InventoryItem.COL_INVENTORYITEMCOLORNAME;
             col_grid_notes.DataPropertyName = InventoryItem.COL_DB_NOTES;
             col_grid_SaleOrderItemDescription.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
+            col_grid_Sales_Hexbarcode.DataPropertyName = InventoryItem.COL_Sales_Hexbarcode;
+            col_grid_Sales_Id.DataPropertyName = InventoryItem.COL_Sales_Id;
             populateGrid();
 
             txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
@@ -94,6 +96,10 @@ namespace BinaMitraTextile.InventoryForm
             if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), COL_BARCODE))
             {
                 enableForm(grid.Rows[e.RowIndex].Cells[COL_BARCODE].Value.ToString(), true);
+            }
+            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), col_grid_Sales_Hexbarcode.Name))
+            {
+                Tools.displayForm(new Sales.Invoice_Form((Guid)LIBUtil.Util.getClickedRowValue(sender, e, col_grid_Sales_Id)));
             }
         }
 

@@ -63,7 +63,8 @@
             this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Barcode = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sold = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_Sales_Hexbarcode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.col_grid_Sales_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_lastOpname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_ItemLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_colorname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -158,7 +159,8 @@
             this.col_grid_id,
             this.Barcode,
             this.Length,
-            this.Sold,
+            this.col_grid_Sales_Hexbarcode,
+            this.col_grid_Sales_Id,
             this.col_grid_lastOpname,
             this.col_grid_ItemLocation,
             this.col_grid_colorname,
@@ -171,7 +173,7 @@
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(628, 483);
+            this.grid.Size = new System.Drawing.Size(695, 483);
             this.grid.TabIndex = 1;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
@@ -417,7 +419,7 @@
             // 
             // Barcode
             // 
-            this.Barcode.ActiveLinkColor = System.Drawing.Color.Orange;
+            this.Barcode.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
             this.Barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.Barcode.DataPropertyName = "barcode";
             this.Barcode.HeaderText = "Barcode";
@@ -441,15 +443,27 @@
             this.Length.ReadOnly = true;
             this.Length.Width = 50;
             // 
-            // Sold
+            // col_grid_Sales_Hexbarcode
             // 
-            this.Sold.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Sold.DataPropertyName = "isSold";
-            this.Sold.HeaderText = "Sold";
-            this.Sold.MinimumWidth = 30;
-            this.Sold.Name = "Sold";
-            this.Sold.ReadOnly = true;
-            this.Sold.Width = 30;
+            this.col_grid_Sales_Hexbarcode.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.col_grid_Sales_Hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_Sales_Hexbarcode.HeaderText = "Invoice";
+            this.col_grid_Sales_Hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.col_grid_Sales_Hexbarcode.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.col_grid_Sales_Hexbarcode.MinimumWidth = 50;
+            this.col_grid_Sales_Hexbarcode.Name = "col_grid_Sales_Hexbarcode";
+            this.col_grid_Sales_Hexbarcode.ReadOnly = true;
+            this.col_grid_Sales_Hexbarcode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_Sales_Hexbarcode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_grid_Sales_Hexbarcode.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.col_grid_Sales_Hexbarcode.Width = 50;
+            // 
+            // col_grid_Sales_Id
+            // 
+            this.col_grid_Sales_Id.HeaderText = "Sales_Id";
+            this.col_grid_Sales_Id.Name = "col_grid_Sales_Id";
+            this.col_grid_Sales_Id.ReadOnly = true;
+            this.col_grid_Sales_Id.Visible = false;
             // 
             // col_grid_lastOpname
             // 
@@ -502,7 +516,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 511);
+            this.ClientSize = new System.Drawing.Size(984, 511);
             this.Controls.Add(this.lblReceived);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblReceiveDate);
@@ -565,7 +579,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_id;
         private System.Windows.Forms.DataGridViewLinkColumn Barcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Length;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Sold;
+        private System.Windows.Forms.DataGridViewLinkColumn col_grid_Sales_Hexbarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Sales_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_lastOpname;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_ItemLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_colorname;
