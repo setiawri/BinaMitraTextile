@@ -145,6 +145,7 @@ namespace BinaMitraTextile.CustomerCredits
             {
                 _customerID = (Guid)iddl_Customers.SelectedValue;
                 CustomerCredit.submitNew((Guid)_customerID, in_Amount.ValueDecimal, null, txtNotes.Text.Trim(), (PaymentMethod)cbPaymentMethods.SelectedValue);
+                populateGridSummary(true);
                 populateGridDetail();
 
                 in_Amount.reset();
