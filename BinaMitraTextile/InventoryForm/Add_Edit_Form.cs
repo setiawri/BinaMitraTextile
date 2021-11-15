@@ -60,7 +60,7 @@ namespace BinaMitraTextile.InventoryForm
                     break;
             }
 
-            if(GlobalData.UserAccount.role == Roles.User)
+            if(GlobalData.UserAccount.role != Roles.Super)
             {
                 lblBuyPrice.Visible = false;
                 txtBuyPrice.Visible = false;

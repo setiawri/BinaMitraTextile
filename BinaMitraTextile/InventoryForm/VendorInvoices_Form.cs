@@ -417,12 +417,12 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (_createVendorInvoicePayment)
             {
-                this.gridvendorinvoice.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridvendorinvoice_CellValueChanged);
+                this.gridvendorinvoice.CellValueChanged -= new DataGridViewCellEventHandler(Gridvendorinvoice_CellValueChanged);
 
                 foreach (DataGridViewRow row in gridvendorinvoice.Rows)
                     Util.setRowValue(row, col_gridVendorInvoice_PaymentAmount, 0);
 
-                this.gridvendorinvoice.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridvendorinvoice_CellValueChanged);
+                this.gridvendorinvoice.CellValueChanged += new DataGridViewCellEventHandler(Gridvendorinvoice_CellValueChanged);
                 calculateVendorInvoicePaymentAmount();
             }
         }
@@ -433,7 +433,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void GridInventory_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Util.isColumnMatch(sender, e, col_gridinventory_buyprice))
+            if (Util.isColumnMatch(sender, e, col_gridinventory_buyprice) && GlobalData.UserAccount.role == Roles.Super)
             {
                 pnlUpdateBuyPrice.Visible = true;
                 _clickedInventoryID = (Guid)Util.getClickedRowValue(sender, e, col_gridinventory_id);
