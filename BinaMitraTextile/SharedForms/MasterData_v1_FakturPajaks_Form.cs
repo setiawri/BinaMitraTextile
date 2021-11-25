@@ -208,7 +208,7 @@ namespace BinaMitraTextile.SharedForms
         {
             base.populateGridViewDataSource(reloadFromDB);
 
-            lblGridRowCount.Text = string.Format("Rows: {0}", dgv.Rows.Count);
+            lblGridInfo.Text = string.Format("Rows: {0}, DPP: {1:N0}", dgv.Rows.Count, Util.compute(Util.getDataTable(dgv.DataSource), "SUM", FakturPajak.COL_DB_DPP, ""));
         }
 
         protected override void populateInputFields()

@@ -81,11 +81,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments - Copy.cs">
+    <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments - Copy.Designer.cs">
-      <DependentUpon>MasterData_v1_CustomerSaleAdjustments - Copy.cs</DependentUpon>
+    <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments.Designer.cs">
+      <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\MasterData_v1_ProductPrices.cs">
       <SubType>Form</SubType>
@@ -605,8 +605,8 @@
     <Compile Include="Users\SaleComissions_Form.Designer.cs">
       <DependentUpon>SaleComissions_Form.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin\MasterData_v1_CustomerSaleAdjustments - Copy.resx">
-      <DependentUpon>MasterData_v1_CustomerSaleAdjustments - Copy.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\MasterData_v1_CustomerSaleAdjustments.resx">
+      <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_ProductPrices.resx">
       <DependentUpon>MasterData_v1_ProductPrices.cs</DependentUpon>

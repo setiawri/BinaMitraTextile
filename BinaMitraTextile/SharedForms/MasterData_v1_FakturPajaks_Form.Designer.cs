@@ -104,7 +104,7 @@
             this.rbCustomer = new System.Windows.Forms.RadioButton();
             this.rbVendor = new System.Windows.Forms.RadioButton();
             this.chkCopyCell = new System.Windows.Forms.CheckBox();
-            this.lblGridRowCount = new System.Windows.Forms.Label();
+            this.lblGridInfo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -202,7 +202,7 @@
             // 
             // pnlQuickSearch
             // 
-            this.pnlQuickSearch.Controls.Add(this.lblGridRowCount);
+            this.pnlQuickSearch.Controls.Add(this.lblGridInfo);
             this.pnlQuickSearch.Controls.Add(this.chkCopyCell);
             this.pnlQuickSearch.Controls.Add(this.chkShowCompleted);
             this.pnlQuickSearch.Size = new System.Drawing.Size(854, 28);
@@ -212,7 +212,7 @@
             this.pnlQuickSearch.Controls.SetChildIndex(this.label1, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkShowCompleted, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkCopyCell, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.lblGridRowCount, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.lblGridInfo, 0);
             // 
             // col_dgv_Active
             // 
@@ -993,14 +993,14 @@
             this.chkCopyCell.Text = "copy cell";
             this.chkCopyCell.UseVisualStyleBackColor = true;
             // 
-            // lblGridRowCount
+            // lblGridInfo
             // 
-            this.lblGridRowCount.Location = new System.Drawing.Point(623, 4);
-            this.lblGridRowCount.Name = "lblGridRowCount";
-            this.lblGridRowCount.Size = new System.Drawing.Size(152, 23);
-            this.lblGridRowCount.TabIndex = 16;
-            this.lblGridRowCount.Text = "lblGridRowCount";
-            this.lblGridRowCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblGridInfo.Location = new System.Drawing.Point(459, 4);
+            this.lblGridInfo.Name = "lblGridInfo";
+            this.lblGridInfo.Size = new System.Drawing.Size(316, 23);
+            this.lblGridInfo.TabIndex = 16;
+            this.lblGridInfo.Text = "lblGridInfo";
+            this.lblGridInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MasterData_v1_FakturPajaks_Form
             // 
@@ -1103,6 +1103,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_notes;
         private System.Windows.Forms.CheckBox chkCopyCell;
-        private System.Windows.Forms.Label lblGridRowCount;
+        private System.Windows.Forms.Label lblGridInfo;
     }
 }

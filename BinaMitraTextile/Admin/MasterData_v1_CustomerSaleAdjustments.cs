@@ -64,6 +64,8 @@ namespace BinaMitraTextile.Admin
             col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, CustomerSaleAdjustment.COL_DB_NOTES, true, true, "", true, true, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_dgv_Checked = base.addColumn<DataGridViewCheckBoxCell>(dgv, "col_dgv_Checked", "OK", CustomerSaleAdjustment.COL_DB_Checked, true, true, "", false, false, 30, DataGridViewContentAlignment.MiddleLeft);
+
+            btnLog.Enabled = true;
         }
 
         protected override void setupControlsBasedOnRoles()
