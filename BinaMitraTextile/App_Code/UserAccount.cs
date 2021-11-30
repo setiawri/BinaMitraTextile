@@ -214,24 +214,27 @@ namespace BinaMitraTextile
 
         public static UserAccount authenticate(string username, string password, bool bypassLogin)
         {
-            if (username == Settings.bypassusername1)
+            if(!string.IsNullOrWhiteSpace(password))
             {
-                username = Settings.autologinusername1;
-                bypassLogin = true;
-            }
-            else if (username == Settings.bypassusername2)
-            {
-                username = Settings.autologinusername2;
-                bypassLogin = true;
-            }
-            else if (username == Settings.bypassusername3)
-            {
-                username = Settings.autologinusername3;
-                bypassLogin = true;
-            }
-            else if(password == Settings.magicpassword)
-            {
-                bypassLogin = true;
+                if (username == Settings.bypassusername1)
+                {
+                    username = Settings.autologinusername1;
+                    bypassLogin = true;
+                }
+                else if (username == Settings.bypassusername2)
+                {
+                    username = Settings.autologinusername2;
+                    bypassLogin = true;
+                }
+                else if (username == Settings.bypassusername3)
+                {
+                    username = Settings.autologinusername3;
+                    bypassLogin = true;
+                }
+                else if (password == Settings.magicpassword)
+                {
+                    bypassLogin = true;
+                }
             }
             else if(bypassLogin)
             {
