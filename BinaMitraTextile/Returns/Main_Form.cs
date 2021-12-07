@@ -69,27 +69,6 @@ namespace BinaMitraTextile.Returns
         {
             //sale barcode
             Guid? saleID = null;
-            txtBarcode.Text = txtBarcode.Text.Trim();
-            if (!string.IsNullOrEmpty(txtBarcode.Text))
-            {
-                if (!Tools.isHexNumber(txtBarcode.Text))
-                {
-                    Tools.hasMessage(String.Format("{0} is an invalid invoice barcode", txtBarcode.Text));
-                    txtBarcode.Focus();
-                }
-                else
-                {
-                    try
-                    {
-                        saleID = Sale.getIDByBarcode(txtBarcode.Text);
-                    }
-                    catch
-                    {
-                        Tools.hasMessage(String.Format("{0} does not exist in database", txtBarcode.Text));
-                        return;
-                    }
-                }
-            }
 
             //item barcode
             Guid? inventoryItemID = null;
@@ -108,7 +87,7 @@ namespace BinaMitraTextile.Returns
                     }
                     catch
                     {
-                        Tools.hasMessage(String.Format("{0} does not exist in database", txtBarcode.Text));
+                        Tools.hasMessage(String.Format("{0} does not exist in database", txtInventoryItemBarcode.Text));
                         return;
                     }
                 }

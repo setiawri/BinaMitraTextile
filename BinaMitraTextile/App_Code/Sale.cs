@@ -497,7 +497,7 @@ namespace BinaMitraTextile
             using (SqlCommand cmd = new SqlCommand("sale_get_id_by_barcode", DBConnection.ActiveSqlConnection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@barcode", SqlDbType.Int).Value = Tools.getInt(barcode);
+                cmd.Parameters.Add("@hexbarcode", SqlDbType.VarChar).Value = barcode;
 
                 return new Guid(cmd.ExecuteScalar().ToString());
             }
