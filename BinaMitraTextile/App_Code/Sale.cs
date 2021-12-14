@@ -144,7 +144,7 @@ namespace BinaMitraTextile
         public string Kontrabons_No;
         public string Vendors_Name = "";
         public string Customers_Name = "";
-        public string PettyCashRecords_No;
+        public string MoneyAccountItems_No;
 
         public DataTable sale_items;
         public DataTable datatable;
@@ -331,7 +331,7 @@ namespace BinaMitraTextile
             }
         }
 
-        public static void update_ShippingExpense(Guid Id, Guid PettyCashRecordsCategories_Id, int Amount, string Notes)
+        public static void update_ShippingExpense(Guid Id, Guid MoneyAccountCategories_Id, int Amount, string Notes)
         {
             Sale objOld = new Sale(Id);
             string log = "";
@@ -339,27 +339,27 @@ namespace BinaMitraTextile
 
             if (!string.IsNullOrEmpty(log))
             {
-                int PettyCashRecords_Amount = -1 * Amount;
-                string PettyCashRecords_Notes = string.Format("Expense for Invoice {0}", objOld.barcode);
+                int MoneyAccountItems_Amount = -1 * Amount;
+                string MoneyAccountItems_Description = string.Format("Expense for Invoice {0}", objOld.barcode);
 
-                //if there is previous amount value, adjust amount so petty cash is still correct.
+                //if there is previous amount value, adjust amount so money account item is still correct.
                 if (objOld.ShippingExpense > 0)
                 {
-                    PettyCashRecords_Amount += objOld.ShippingExpense;
-                    PettyCashRecords_Notes += string.Format(" (Update {0:N0} to {1:N0})", objOld.ShippingExpense, Amount);
+                    MoneyAccountItems_Amount += objOld.ShippingExpense;
+                    MoneyAccountItems_Description += string.Format(" (Update {0:N0} to {1:N0})", objOld.ShippingExpense, Amount);
                 }
 
                 //transport information
                 if(objOld.TransportName != null)
-                    PettyCashRecords_Notes += string.Format(", Angkutan {0}", objOld.TransportName);
+                    MoneyAccountItems_Description += string.Format(", Angkutan {0}", objOld.TransportName);
 
                 if (!string.IsNullOrWhiteSpace(Notes))
-                    PettyCashRecords_Notes += ", " + Notes;
+                    MoneyAccountItems_Description += ", " + Notes;
 
-                Guid? PettyCashRecords_Id = PettyCashRecord.add(PettyCashRecordsCategories_Id, PettyCashRecords_Amount, PettyCashRecords_Notes);
-                if(PettyCashRecords_Id != null)
+                Guid? MoneyAccountItems_Id = MoneyAccountItem.add(MoneyAccountCategories_Id, MoneyAccountItems_Description, MoneyAccountItems_Amount);
+                if(MoneyAccountItems_Id != null)
                 {
-                    log += string.Format(", Petty Cash {0} Amount: {1:N0}", new PettyCashRecord((Guid)PettyCashRecords_Id).No, PettyCashRecords_Amount);
+                    log += string.Format(", Money Account Item {0} Amount: {1:N0}", new MoneyAccountItem((Guid)MoneyAccountItems_Id).No, MoneyAccountItems_Amount);
 
                     SqlQueryResult result = DBConnection.query(
                         false,

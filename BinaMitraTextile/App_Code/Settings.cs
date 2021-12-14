@@ -59,7 +59,7 @@ namespace BinaMitraTextile
 
         //sql connection
         private static Guid GUID_LastConnectedPortNo = new Guid("06AFBB4E-F66B-42A0-96A7-0B5705629248");
-        
+
         #endregion
         /*******************************************************************************************************/
         #region PUBLIC VARIABLES
@@ -87,7 +87,6 @@ namespace BinaMitraTextile
         public static int itemBarcodeTotalLength = itemBarcodeMandatoryPrefix.Length + itemBarcodeLength;
         public static int saleBarcodeLength = Convert.ToInt16(ConfigurationManager.AppSettings["saleBarcodeLength"]);
         public static int gordenOrderBarcodeLength = Convert.ToInt16(ConfigurationManager.AppSettings["gordenOrderBarcodeLength"]);
-        public static int pettyCashNoLength = Convert.ToInt16(ConfigurationManager.AppSettings["pettyCashNoLength"]);
         public static int barcodeScannerDelay = Convert.ToInt16(ConfigurationManager.AppSettings["barcodeScannerDelay"]);
 
         public const int BUTTON_GAP = 5;

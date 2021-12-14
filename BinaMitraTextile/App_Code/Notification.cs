@@ -91,7 +91,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, Util.wrapNullable(id)),
                 new SqlQueryParameter(COL_FILTER_Timestamp_Start, SqlDbType.DateTime, Util.wrapNullable(timestamp_Start)),
                 new SqlQueryParameter(COL_FILTER_Timestamp_End, SqlDbType.DateTime, Util.wrapNullable(timestamp_End)),
-                new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(pettyCashRecordsCategories_Id)),
+                //new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(pettyCashRecordsCategories_Id)),
                 new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
             );
 
@@ -100,10 +100,10 @@ namespace BinaMitraTextile
 
         public static void update(Guid id, DateTime timestamp, Guid pettyCashRecordsCategories_Id, decimal amount, string notes)
         {
-            PettyCashRecord objOld = new PettyCashRecord(id);
+            //PettyCashRecord objOld = new PettyCashRecord(id);
             string log = "";
             log = ActivityLog.appendChange(log, objOld.Timestamp, timestamp, "Timestamp: '{0}' to '{1}'");
-            log = ActivityLog.appendChange(log, objOld.PettyCashRecordsCategories_Name, new PettyCashRecordsCategory(pettyCashRecordsCategories_Id).Name, "Category: '{0}' to '{1}'");
+            //log = ActivityLog.appendChange(log, objOld.PettyCashRecordsCategories_Name, new PettyCashRecordsCategory(pettyCashRecordsCategories_Id).Name, "Category: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.Amount, amount, "Amount: '{0:N2}' to '{1:N2}'");
             log = ActivityLog.appendChange(log, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
@@ -116,7 +116,7 @@ namespace BinaMitraTextile
                     "Notifications_update",
                     new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
                     new SqlQueryParameter(COL_DB_Timestamp, SqlDbType.DateTime, timestamp),
-                    new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, pettyCashRecordsCategories_Id),
+                    //new SqlQueryParameter(COL_DB_PettyCashRecordsCategories_Id, SqlDbType.UniqueIdentifier, pettyCashRecordsCategories_Id),
                     new SqlQueryParameter(COL_DB_Amount, SqlDbType.Decimal, amount),
                     new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(notes))
                 );

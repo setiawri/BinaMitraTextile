@@ -75,8 +75,6 @@ namespace BinaMitraTextile
 
                 Inventory_Barcodes.Visible = false;
 
-                Admin_PettyCashCategories.Visible = false;
-
                 Internal.Visible = false;
 
                 Account_Log.Visible = false;
@@ -113,11 +111,6 @@ namespace BinaMitraTextile
         private void LnkInventory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new InventoryForm.Main_Form());
-        }
-
-        private void LnkPettyCash_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Util.displayMDIChild(new Admin.PettyCash_Form());
         }
 
         private void LnkSaleReturns_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -294,16 +287,6 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Admin.MasterData_v1_ToDoList_Form(FormModes.Add));
         }
 
-        private void Admin_PettyCash_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new Admin.PettyCash_Form());
-        }
-
-        private void Admin_PettyCashCategories_Click(object sender, EventArgs e)
-        {
-            Util.displayMDIChild(new MasterData.PettyCashRecordsCategories_Form(FormMode.New));
-        }
-
         #endregion MENU - ADMIN
         /*******************************************************************************************************/
         #region MENU - ACCOUNT
@@ -424,6 +407,26 @@ namespace BinaMitraTextile
         private void btnChart_Click(object sender, EventArgs e)
         {
             Sales_Chart.PerformClick();
+        }
+
+        private void Internal_MoneyAccounts_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccounts_Form());
+        }
+
+        private void Internal_MoneyAccountCategories_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountCategories_Form());
+        }
+
+        private void Admin_CashAccounts_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountItems_Form());
+        }
+
+        private void lnkMoneyAccountItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountItems_Form());
         }
 
         #endregion MENU - INTERNAL

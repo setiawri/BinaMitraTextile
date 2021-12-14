@@ -41,10 +41,6 @@ namespace BinaMitraTextile.Admin
         private void setupControls()
         {
             Settings.setGeneralSettings(this);
-
-            //not used. category is selected when submitting expense
-            //PettyCashRecordsCategory.populateInputControlDropDownList(iddl_PettyCashCategories_for_SaleInvoices_ShippingExpense, true);
-            //iddl_PettyCashCategories_for_SaleInvoices_ShippingExpense.SelectedValue = Settings.PettyCashCategoryForSaleInvoiceShippingExpense;
         }
 
         private void populatePageData()
@@ -65,18 +61,6 @@ namespace BinaMitraTextile.Admin
         {
             _isFormShown = true;
             populatePageData();
-        }
-
-        private void iddl_PettyCashCategories_for_SaleInvoices_ShippingExpense_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(_isFormShown)
-            {
-                //not used. category is selected when submitting expense
-                //if (iddl_PettyCashCategories_for_SaleInvoices_ShippingExpense.hasSelectedValue())
-                //    Settings.PettyCashCategoryForSaleInvoiceShippingExpense = (Guid)iddl_PettyCashCategories_for_SaleInvoices_ShippingExpense.SelectedValue;
-                //else
-                //    Settings.PettyCashCategoryForSaleInvoiceShippingExpense = null;
-            }
         }
 
         #endregion EVENT HANDLERS

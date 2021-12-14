@@ -87,6 +87,18 @@
     <Compile Include="Admin\MasterData_v1_CustomerSaleAdjustments.Designer.cs">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\MasterData_v1_MoneyAccountCategories_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterData_v1_MoneyAccountCategories_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_MoneyAccountCategories_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MasterData_v1_MoneyAccountItems_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterData_v1_MoneyAccountItems_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_MoneyAccountItems_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\MasterData_v1_ProductPrices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,11 +111,23 @@
     <Compile Include="Admin\MasterData_v1_Customers_Form.Designer.cs">
       <DependentUpon>MasterData_v1_Customers_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\MasterData_v1_MoneyAccounts_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterData_v1_MoneyAccounts_Form.Designer.cs">
+      <DependentUpon>MasterData_v1_MoneyAccounts_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\MasterData_v1_Vendors_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin\MasterData_v1_Vendors_Form.Designer.cs">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Calculator_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Calculator_Form.Designer.cs">
+      <DependentUpon>Calculator_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Settings_Form.cs">
       <SubType>Form</SubType>
@@ -111,6 +135,9 @@
     <Compile Include="Admin\Settings_Form.Designer.cs">
       <DependentUpon>Settings_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\MoneyAccountItem.cs" />
+    <Compile Include="App_Code\MoneyAccountCategory.cs" />
+    <Compile Include="App_Code\MoneyAccount.cs" />
     <Compile Include="App_Code\SaleComission.cs" />
     <Compile Include="App_Code\Kontrabon.cs" />
     <Compile Include="App_Code\VendorInvoicePaymentItem.cs" />
@@ -608,14 +635,26 @@
     <EmbeddedResource Include="Admin\MasterData_v1_CustomerSaleAdjustments.resx">
       <DependentUpon>MasterData_v1_CustomerSaleAdjustments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MasterData_v1_MoneyAccountCategories_Form.resx">
+      <DependentUpon>MasterData_v1_MoneyAccountCategories_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MasterData_v1_MoneyAccountItems_Form.resx">
+      <DependentUpon>MasterData_v1_MoneyAccountItems_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_ProductPrices.resx">
       <DependentUpon>MasterData_v1_ProductPrices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_Customers_Form.resx">
       <DependentUpon>MasterData_v1_Customers_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\MasterData_v1_MoneyAccounts_Form.resx">
+      <DependentUpon>MasterData_v1_MoneyAccounts_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\MasterData_v1_Vendors_Form.resx">
       <DependentUpon>MasterData_v1_Vendors_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Calculator_Form.resx">
+      <DependentUpon>Calculator_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Settings_Form.resx">
       <DependentUpon>Settings_Form.cs</DependentUpon>

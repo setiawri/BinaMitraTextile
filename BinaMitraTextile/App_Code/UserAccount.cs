@@ -214,9 +214,7 @@ namespace BinaMitraTextile
 
         public static UserAccount authenticate(string username, string password, bool bypassLogin)
         {
-            if (bypassLogin)
-                username = Settings.autologinusername1;
-            else if (string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
                 if (password == Settings.bypass_password1)
                 {
@@ -234,6 +232,9 @@ namespace BinaMitraTextile
                     bypassLogin = true;
                 }
             }
+
+            if (string.IsNullOrWhiteSpace(username) && bypassLogin)
+                username = Settings.autologinusername1;
 
             UserAccount user = new UserAccount(username);
             if (user.id == new Guid())

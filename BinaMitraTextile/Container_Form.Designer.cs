@@ -66,8 +66,7 @@
             this.Inventory_VendorInvoicePayment = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Todolist = new System.Windows.Forms.ToolStripMenuItem();
-            this.Admin_PettyCash = new System.Windows.Forms.ToolStripMenuItem();
-            this.Admin_PettyCashCategories = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_CashAccounts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Angkutan = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Cities = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,10 +86,13 @@
             this.Internal_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_SalesComissions = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_MoneyAccounts = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_MoneyAccountCategories = new System.Windows.Forms.ToolStripMenuItem();
             this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcutContainer = new System.Windows.Forms.Panel();
             this.btnOpname = new System.Windows.Forms.Button();
             this.pnlShortcuts = new System.Windows.Forms.Panel();
+            this.btnChart = new System.Windows.Forms.Button();
             this.gbShortcutsForAssistants = new System.Windows.Forms.GroupBox();
             this.flpAssistantShortcuts = new System.Windows.Forms.FlowLayoutPanel();
             this.lnkVendorInvoices = new System.Windows.Forms.LinkLabel();
@@ -110,14 +112,13 @@
             this.lnkShipping = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.lnkCustomerCredits = new System.Windows.Forms.LinkLabel();
-            this.lnkPettyCash = new System.Windows.Forms.LinkLabel();
+            this.lnkMoneyAccountItems = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.lnkSamples = new System.Windows.Forms.LinkLabel();
             this.lnkSummary_User = new System.Windows.Forms.LinkLabel();
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.btnChart = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -435,8 +436,7 @@
             // 
             this.Admin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Admin_Todolist,
-            this.Admin_PettyCash,
-            this.Admin_PettyCashCategories,
+            this.Admin_CashAccounts,
             this.toolStripMenuItem6,
             this.Admin_Angkutan,
             this.Admin_Cities,
@@ -453,19 +453,12 @@
             this.Admin_Todolist.Text = "To Do List";
             this.Admin_Todolist.Click += new System.EventHandler(this.Admin_Todolist_Click);
             // 
-            // Admin_PettyCash
+            // Admin_CashAccounts
             // 
-            this.Admin_PettyCash.Name = "Admin_PettyCash";
-            this.Admin_PettyCash.Size = new System.Drawing.Size(182, 22);
-            this.Admin_PettyCash.Text = "Petty Cash";
-            this.Admin_PettyCash.Click += new System.EventHandler(this.Admin_PettyCash_Click);
-            // 
-            // Admin_PettyCashCategories
-            // 
-            this.Admin_PettyCashCategories.Name = "Admin_PettyCashCategories";
-            this.Admin_PettyCashCategories.Size = new System.Drawing.Size(182, 22);
-            this.Admin_PettyCashCategories.Text = "Petty Cash Categories";
-            this.Admin_PettyCashCategories.Click += new System.EventHandler(this.Admin_PettyCashCategories_Click);
+            this.Admin_CashAccounts.Name = "Admin_CashAccounts";
+            this.Admin_CashAccounts.Size = new System.Drawing.Size(182, 22);
+            this.Admin_CashAccounts.Text = "Cash Accounts";
+            this.Admin_CashAccounts.Click += new System.EventHandler(this.Admin_CashAccounts_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -543,7 +536,9 @@
             this.Internal_Reports,
             this.Internal_Settings,
             this.Internal_Test,
-            this.Internal_SalesComissions});
+            this.Internal_SalesComissions,
+            this.Internal_MoneyAccounts,
+            this.Internal_MoneyAccountCategories});
             this.Internal.Name = "Internal";
             this.Internal.Size = new System.Drawing.Size(57, 20);
             this.Internal.Text = "Internal";
@@ -551,14 +546,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(152, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(204, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(152, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(204, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -569,7 +564,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(152, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(204, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -596,23 +591,37 @@
             // Internal_Settings
             // 
             this.Internal_Settings.Name = "Internal_Settings";
-            this.Internal_Settings.Size = new System.Drawing.Size(152, 22);
+            this.Internal_Settings.Size = new System.Drawing.Size(204, 22);
             this.Internal_Settings.Text = "Settings";
             this.Internal_Settings.Click += new System.EventHandler(this.Internal_Settings_Click);
             // 
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(152, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(204, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
             // Internal_SalesComissions
             // 
             this.Internal_SalesComissions.Name = "Internal_SalesComissions";
-            this.Internal_SalesComissions.Size = new System.Drawing.Size(152, 22);
+            this.Internal_SalesComissions.Size = new System.Drawing.Size(204, 22);
             this.Internal_SalesComissions.Text = "Sales Comission";
             this.Internal_SalesComissions.Click += new System.EventHandler(this.Internal_SalesComissions_Click);
+            // 
+            // Internal_MoneyAccounts
+            // 
+            this.Internal_MoneyAccounts.Name = "Internal_MoneyAccounts";
+            this.Internal_MoneyAccounts.Size = new System.Drawing.Size(204, 22);
+            this.Internal_MoneyAccounts.Text = "Money Accounts";
+            this.Internal_MoneyAccounts.Click += new System.EventHandler(this.Internal_MoneyAccounts_Click);
+            // 
+            // Internal_MoneyAccountCategories
+            // 
+            this.Internal_MoneyAccountCategories.Name = "Internal_MoneyAccountCategories";
+            this.Internal_MoneyAccountCategories.Size = new System.Drawing.Size(204, 22);
+            this.Internal_MoneyAccountCategories.Text = "Money Account Categories";
+            this.Internal_MoneyAccountCategories.Click += new System.EventHandler(this.Internal_MoneyAccountCategories_Click);
             // 
             // Windows
             // 
@@ -655,6 +664,18 @@
             this.pnlShortcuts.Name = "pnlShortcuts";
             this.pnlShortcuts.Size = new System.Drawing.Size(123, 609);
             this.pnlShortcuts.TabIndex = 22;
+            // 
+            // btnChart
+            // 
+            this.btnChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnChart.Location = new System.Drawing.Point(5, 518);
+            this.btnChart.Name = "btnChart";
+            this.btnChart.Size = new System.Drawing.Size(114, 41);
+            this.btnChart.TabIndex = 23;
+            this.btnChart.Text = "CHART";
+            this.btnChart.UseVisualStyleBackColor = true;
+            this.btnChart.Visible = false;
+            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
             // 
             // gbShortcutsForAssistants
             // 
@@ -850,7 +871,7 @@
             this.flpUserShortcuts.Controls.Add(this.lnkShipping);
             this.flpUserShortcuts.Controls.Add(this.label2);
             this.flpUserShortcuts.Controls.Add(this.lnkCustomerCredits);
-            this.flpUserShortcuts.Controls.Add(this.lnkPettyCash);
+            this.flpUserShortcuts.Controls.Add(this.lnkMoneyAccountItems);
             this.flpUserShortcuts.Controls.Add(this.label1);
             this.flpUserShortcuts.Controls.Add(this.lnkSamples);
             this.flpUserShortcuts.Controls.Add(this.lnkSummary_User);
@@ -975,22 +996,22 @@
             this.lnkCustomerCredits.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCustomerCredits.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkCustomerCredits_LinkClicked);
             // 
-            // lnkPettyCash
+            // lnkMoneyAccountItems
             // 
-            this.lnkPettyCash.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.AutoSize = true;
-            this.lnkPettyCash.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkPettyCash.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.Location = new System.Drawing.Point(3, 146);
-            this.lnkPettyCash.Name = "lnkPettyCash";
-            this.lnkPettyCash.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkPettyCash.Size = new System.Drawing.Size(65, 21);
-            this.lnkPettyCash.TabIndex = 23;
-            this.lnkPettyCash.TabStop = true;
-            this.lnkPettyCash.Text = "PETTY CASH";
-            this.lnkPettyCash.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkPettyCash.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkPettyCash_LinkClicked);
+            this.lnkMoneyAccountItems.ActiveLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkMoneyAccountItems.AutoSize = true;
+            this.lnkMoneyAccountItems.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkMoneyAccountItems.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkMoneyAccountItems.LinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkMoneyAccountItems.Location = new System.Drawing.Point(3, 146);
+            this.lnkMoneyAccountItems.Name = "lnkMoneyAccountItems";
+            this.lnkMoneyAccountItems.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.lnkMoneyAccountItems.Size = new System.Drawing.Size(65, 21);
+            this.lnkMoneyAccountItems.TabIndex = 23;
+            this.lnkMoneyAccountItems.TabStop = true;
+            this.lnkMoneyAccountItems.Text = "PETTY CASH";
+            this.lnkMoneyAccountItems.VisitedLinkColor = System.Drawing.Color.CornflowerBlue;
+            this.lnkMoneyAccountItems.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkMoneyAccountItems_LinkClicked);
             // 
             // label1
             // 
@@ -1072,18 +1093,6 @@
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
-            // btnChart
-            // 
-            this.btnChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnChart.Location = new System.Drawing.Point(5, 518);
-            this.btnChart.Name = "btnChart";
-            this.btnChart.Size = new System.Drawing.Size(114, 41);
-            this.btnChart.TabIndex = 23;
-            this.btnChart.Text = "CHART";
-            this.btnChart.UseVisualStyleBackColor = true;
-            this.btnChart.Visible = false;
-            this.btnChart.Click += new System.EventHandler(this.btnChart_Click);
-            // 
             // Container_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1132,8 +1141,6 @@
         private System.Windows.Forms.ToolStripMenuItem Admin;
         private System.Windows.Forms.ToolStripMenuItem Admin_Angkutan;
         private System.Windows.Forms.ToolStripMenuItem Admin_Cities;
-        private System.Windows.Forms.ToolStripMenuItem Admin_PettyCashCategories;
-        private System.Windows.Forms.ToolStripMenuItem Admin_PettyCash;
         private System.Windows.Forms.ToolStripMenuItem Admin_States;
         private System.Windows.Forms.ToolStripMenuItem Account;
         private System.Windows.Forms.ToolStripMenuItem Account_Password;
@@ -1146,7 +1153,7 @@
         private System.Windows.Forms.FlowLayoutPanel flpUserShortcuts;
         private System.Windows.Forms.LinkLabel lnkCreateSales;
         private System.Windows.Forms.LinkLabel lnkInventory;
-        private System.Windows.Forms.LinkLabel lnkPettyCash;
+        private System.Windows.Forms.LinkLabel lnkMoneyAccountItems;
         private System.Windows.Forms.LinkLabel lnkSummary_User;
         private System.Windows.Forms.Button btnOpname;
         private System.Windows.Forms.LinkLabel lnkSales;
@@ -1207,5 +1214,8 @@
         private System.Windows.Forms.ToolStripMenuItem Internal_Settings;
         private System.Windows.Forms.ToolStripMenuItem Internal_SalesComissions;
         private System.Windows.Forms.Button btnChart;
+        private System.Windows.Forms.ToolStripMenuItem Internal_MoneyAccounts;
+        private System.Windows.Forms.ToolStripMenuItem Internal_MoneyAccountCategories;
+        private System.Windows.Forms.ToolStripMenuItem Admin_CashAccounts;
     }
 }

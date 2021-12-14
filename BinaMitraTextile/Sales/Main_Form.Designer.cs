@@ -140,7 +140,7 @@
             this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.pnlUpdateShippingExpense = new System.Windows.Forms.Panel();
-            this.iddl_PettyCashCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_MoneyAccountCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.itxt_ShippingExpenseNotes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.btnCancelUpdateShippingExpense = new System.Windows.Forms.Button();
             this.btnUpdateShippingExpense = new System.Windows.Forms.Button();
@@ -1231,32 +1231,32 @@
             // 
             this.pnlUpdateShippingExpense.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlUpdateShippingExpense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUpdateShippingExpense.Controls.Add(this.iddl_PettyCashCategories);
+            this.pnlUpdateShippingExpense.Controls.Add(this.iddl_MoneyAccountCategories);
             this.pnlUpdateShippingExpense.Controls.Add(this.itxt_ShippingExpenseNotes);
             this.pnlUpdateShippingExpense.Controls.Add(this.btnCancelUpdateShippingExpense);
             this.pnlUpdateShippingExpense.Controls.Add(this.btnUpdateShippingExpense);
             this.pnlUpdateShippingExpense.Controls.Add(this.in_ShippingExpense);
-            this.pnlUpdateShippingExpense.Location = new System.Drawing.Point(372, 33);
+            this.pnlUpdateShippingExpense.Location = new System.Drawing.Point(372, 34);
             this.pnlUpdateShippingExpense.Name = "pnlUpdateShippingExpense";
             this.pnlUpdateShippingExpense.Size = new System.Drawing.Size(230, 177);
             this.pnlUpdateShippingExpense.TabIndex = 108;
             this.pnlUpdateShippingExpense.Visible = false;
             // 
-            // iddl_PettyCashCategories
+            // iddl_MoneyAccountCategories
             // 
-            this.iddl_PettyCashCategories.DisableTextInput = false;
-            this.iddl_PettyCashCategories.HideFilter = true;
-            this.iddl_PettyCashCategories.HideUpdateLink = true;
-            this.iddl_PettyCashCategories.LabelText = "Petty Cash Category";
-            this.iddl_PettyCashCategories.Location = new System.Drawing.Point(45, 12);
-            this.iddl_PettyCashCategories.Name = "iddl_PettyCashCategories";
-            this.iddl_PettyCashCategories.SelectedIndex = -1;
-            this.iddl_PettyCashCategories.SelectedItem = null;
-            this.iddl_PettyCashCategories.SelectedItemText = "";
-            this.iddl_PettyCashCategories.SelectedValue = null;
-            this.iddl_PettyCashCategories.ShowDropdownlistOnly = false;
-            this.iddl_PettyCashCategories.Size = new System.Drawing.Size(139, 41);
-            this.iddl_PettyCashCategories.TabIndex = 0;
+            this.iddl_MoneyAccountCategories.DisableTextInput = false;
+            this.iddl_MoneyAccountCategories.HideFilter = true;
+            this.iddl_MoneyAccountCategories.HideUpdateLink = true;
+            this.iddl_MoneyAccountCategories.LabelText = "Category";
+            this.iddl_MoneyAccountCategories.Location = new System.Drawing.Point(45, 12);
+            this.iddl_MoneyAccountCategories.Name = "iddl_MoneyAccountCategories";
+            this.iddl_MoneyAccountCategories.SelectedIndex = -1;
+            this.iddl_MoneyAccountCategories.SelectedItem = null;
+            this.iddl_MoneyAccountCategories.SelectedItemText = "";
+            this.iddl_MoneyAccountCategories.SelectedValue = null;
+            this.iddl_MoneyAccountCategories.ShowDropdownlistOnly = false;
+            this.iddl_MoneyAccountCategories.Size = new System.Drawing.Size(139, 41);
+            this.iddl_MoneyAccountCategories.TabIndex = 0;
             // 
             // itxt_ShippingExpenseNotes
             // 
@@ -1523,6 +1523,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_gridMaster_isManualAdjustment;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridMaster_FakturPajaks_No;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_ShippingExpenseNotes;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_PettyCashCategories;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategories;
     }
 }
