@@ -74,7 +74,7 @@
             this.chkHidePrices = new System.Windows.Forms.CheckBox();
             this.btnPayment = new System.Windows.Forms.Button();
             this.pnlSubmit1 = new System.Windows.Forms.Panel();
-            this.iddl_MoneyAccountCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_MoneyAccountCategoryAssignments = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.rbHutang = new System.Windows.Forms.RadioButton();
             this.rbTransfer = new System.Windows.Forms.RadioButton();
             this.rbCash = new System.Windows.Forms.RadioButton();
@@ -546,7 +546,7 @@
             // 
             // pnlSubmit1
             // 
-            this.pnlSubmit1.Controls.Add(this.iddl_MoneyAccountCategories);
+            this.pnlSubmit1.Controls.Add(this.iddl_MoneyAccountCategoryAssignments);
             this.pnlSubmit1.Controls.Add(this.rbHutang);
             this.pnlSubmit1.Controls.Add(this.rbTransfer);
             this.pnlSubmit1.Controls.Add(this.rbCash);
@@ -558,21 +558,21 @@
             this.pnlSubmit1.Size = new System.Drawing.Size(486, 28);
             this.pnlSubmit1.TabIndex = 2;
             // 
-            // iddl_MoneyAccountCategories
+            // iddl_MoneyAccountCategoryAssignments
             // 
-            this.iddl_MoneyAccountCategories.DisableTextInput = false;
-            this.iddl_MoneyAccountCategories.HideFilter = true;
-            this.iddl_MoneyAccountCategories.HideUpdateLink = false;
-            this.iddl_MoneyAccountCategories.LabelText = "dropdownlist";
-            this.iddl_MoneyAccountCategories.Location = new System.Drawing.Point(141, 4);
-            this.iddl_MoneyAccountCategories.Name = "iddl_MoneyAccountCategories";
-            this.iddl_MoneyAccountCategories.SelectedIndex = -1;
-            this.iddl_MoneyAccountCategories.SelectedItem = null;
-            this.iddl_MoneyAccountCategories.SelectedItemText = "";
-            this.iddl_MoneyAccountCategories.SelectedValue = null;
-            this.iddl_MoneyAccountCategories.ShowDropdownlistOnly = true;
-            this.iddl_MoneyAccountCategories.Size = new System.Drawing.Size(131, 22);
-            this.iddl_MoneyAccountCategories.TabIndex = 1002;
+            this.iddl_MoneyAccountCategoryAssignments.DisableTextInput = false;
+            this.iddl_MoneyAccountCategoryAssignments.HideFilter = true;
+            this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = false;
+            this.iddl_MoneyAccountCategoryAssignments.LabelText = "dropdownlist";
+            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(141, 4);
+            this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
+            this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
+            this.iddl_MoneyAccountCategoryAssignments.SelectedItem = null;
+            this.iddl_MoneyAccountCategoryAssignments.SelectedItemText = "";
+            this.iddl_MoneyAccountCategoryAssignments.SelectedValue = null;
+            this.iddl_MoneyAccountCategoryAssignments.ShowDropdownlistOnly = true;
+            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(131, 22);
+            this.iddl_MoneyAccountCategoryAssignments.TabIndex = 1002;
             // 
             // rbHutang
             // 
@@ -792,7 +792,7 @@
         private System.Windows.Forms.Panel pnlSubmit2;
         private System.Windows.Forms.RadioButton rbTransfer;
         private System.Windows.Forms.RadioButton rbHutang;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategories;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategoryAssignments;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_PaymentMethods;
         private System.Windows.Forms.RadioButton rbCash;
         private System.Windows.Forms.Label lblDisclaimer;

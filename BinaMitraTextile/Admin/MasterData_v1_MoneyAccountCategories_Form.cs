@@ -17,7 +17,6 @@ namespace BinaMitraTextile.Admin
         #region PRIVATE VARIABLES
 
         private DataGridViewColumn col_dgv_Name;
-        private DataGridViewColumn col_dgv_MoneyAccountCategories_Name;
         private DataGridViewColumn col_dgv_Notes;
 
         #endregion PRIVATE VARIABLES
@@ -39,14 +38,11 @@ namespace BinaMitraTextile.Admin
         {
             Settings.setGeneralSettings(this);
 
-            setColumnsDataPropertyNames(MoneyAccountCategory.COL_DB_Id, MoneyAccountCategory.COL_DB_Active, null, null, MoneyAccountCategory.COL_DB_Default, null);
-            col_dgv_MoneyAccountCategories_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_MoneyAccountCategories_Name", iddl_MoneyAccounts_Id.LabelText, MoneyAccountCategory.COL_DB_MoneyAccounts_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            setColumnsDataPropertyNames(MoneyAccountCategory.COL_DB_Id, MoneyAccountCategory.COL_DB_Active, null, null, null, null);
             col_dgv_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Name", itxt_Name.LabelText, MoneyAccountCategory.COL_DB_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
 
             col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, MoneyAccountCategory.COL_DB_Notes, true, true, "", true, true, null, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_Id, null);
 
             ptInputPanel.PerformClick();
         }
@@ -63,7 +59,6 @@ namespace BinaMitraTextile.Admin
         protected override void clearInputFields()
         {
             itxt_Name.reset();
-            iddl_MoneyAccounts_Id.reset();
             itxt_Notes.reset();
         }
 
@@ -75,9 +70,9 @@ namespace BinaMitraTextile.Admin
         protected override System.Data.DataView loadGridviewDataSource()
         {
             if (Mode == FormModes.Add)
-                return MoneyAccountCategory.get(null, null, (Guid?)iddl_MoneyAccounts_Id.SelectedValue, chkIncludeInactive.Checked ? null : (bool?)true).DefaultView;
+                return MoneyAccountCategory.get(null, null, chkIncludeInactive.Checked ? null : (bool?)true, null).DefaultView;
             else
-                return MoneyAccountCategory.get(null, itxt_Name.ValueText, (Guid?)iddl_MoneyAccounts_Id.SelectedValue, chkIncludeInactive.Checked ? null : (bool?)true).DefaultView;
+                return MoneyAccountCategory.get(null, itxt_Name.ValueText, chkIncludeInactive.Checked ? null : (bool?)true, null).DefaultView;
         }
 
         protected override void populateInputFields()
@@ -89,22 +84,20 @@ namespace BinaMitraTextile.Admin
 
         protected override void update()
         {
-            MoneyAccountCategory.update(selectedRowID(), itxt_Name.ValueText, (Guid)iddl_MoneyAccounts_Id.SelectedValue, itxt_Notes.ValueText);
+            MoneyAccountCategory.update(selectedRowID(), itxt_Name.ValueText, itxt_Notes.ValueText);
         }
 
         protected override void add()
         {
-            MoneyAccountCategory.add(itxt_Name.ValueText, (Guid)iddl_MoneyAccounts_Id.SelectedValue, itxt_Notes.ValueText);
+            MoneyAccountCategory.add(itxt_Name.ValueText, itxt_Notes.ValueText);
         }
 
         protected override bool isInputFieldsValid()
         {
             if (itxt_Name.isEmpty())
                 return itxt_Name.isValueError("Please provide name");
-            else if (!iddl_MoneyAccounts_Id.hasSelectedValue())
-                return iddl_MoneyAccounts_Id.SelectedValueError("Please select an account");
-            else if ((Mode != FormModes.Update && MoneyAccountCategory.isExist(null, itxt_Name.ValueText, (Guid)iddl_MoneyAccounts_Id.SelectedValue))
-                || (Mode == FormModes.Update && MoneyAccountCategory.isExist(selectedRowID(), itxt_Name.ValueText, (Guid)iddl_MoneyAccounts_Id.SelectedValue)))
+            else if ((Mode != FormModes.Update && MoneyAccountCategory.isExist(null, itxt_Name.ValueText))
+                || (Mode == FormModes.Update && MoneyAccountCategory.isExist(selectedRowID(), itxt_Name.ValueText)))
                 return itxt_Name.isValueError("Name is already in list");
 
             return true;
@@ -117,7 +110,6 @@ namespace BinaMitraTextile.Admin
 
         protected override void updateDefaultRow(Guid id)
         {
-            MoneyAccountCategory.update_Default(id);
         }
 
         protected override void updateActiveStatus(Guid id, bool activeStatus)
@@ -127,12 +119,6 @@ namespace BinaMitraTextile.Admin
 
         protected override void virtual_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        }
-
-        private void iddl_MoneyAccounts_Id_UpdateLink_Click(object sender, EventArgs e)
-        {
-            Util.displayForm(null, new MasterData_v1_MoneyAccounts_Form(), false);
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_Id, true);
         }
 
         #endregion OVERRIDE METHODS

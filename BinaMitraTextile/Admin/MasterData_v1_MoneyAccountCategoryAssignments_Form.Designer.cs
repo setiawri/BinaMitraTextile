@@ -1,6 +1,6 @@
 ﻿namespace BinaMitraTextile.Admin
 {
-    partial class MasterData_v1_MoneyAccountCategories_Form
+    partial class MasterData_v1_MoneyAccountCategoryAssignments_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.itxt_Name = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.iddl_MoneyAccounts_Id = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_MoneyAccountCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
             this.scInputLeft.Panel1.SuspendLayout();
+            this.scInputLeft.Panel2.SuspendLayout();
             this.scInputLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputRight)).BeginInit();
             this.scInputRight.SuspendLayout();
@@ -56,7 +58,7 @@
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 157);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 127);
             this.pnlActionButtons.Size = new System.Drawing.Size(800, 23);
             // 
             // scInputLeft
@@ -64,13 +66,17 @@
             // 
             // scInputLeft.Panel1
             // 
-            this.scInputLeft.Panel1.Controls.Add(this.itxt_Name);
-            this.scInputLeft.Panel1.Controls.Add(this.itxt_Notes);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 131);
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccountCategories);
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccounts_Id);
+            // 
+            // scInputLeft.Panel2
+            // 
+            this.scInputLeft.Panel2.Controls.Add(this.itxt_Notes);
+            this.scInputLeft.Size = new System.Drawing.Size(500, 101);
             // 
             // scInputRight
             // 
-            this.scInputRight.Size = new System.Drawing.Size(296, 131);
+            this.scInputRight.Size = new System.Drawing.Size(296, 101);
             // 
             // btnAdd
             // 
@@ -87,7 +93,7 @@
             // scMain
             // 
             this.scMain.Size = new System.Drawing.Size(800, 484);
-            this.scMain.SplitterDistance = 180;
+            this.scMain.SplitterDistance = 150;
             // 
             // pnlButtons
             // 
@@ -95,19 +101,15 @@
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Size = new System.Drawing.Size(800, 131);
+            this.scInputContainer.Size = new System.Drawing.Size(800, 101);
             // 
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Size = new System.Drawing.Size(770, 28);
             // 
-            // col_dgv_Active
-            // 
-            this.col_dgv_Active.Width = 40;
-            // 
             // pnlRowInfo
             // 
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 203);
+            this.pnlRowInfo.Location = new System.Drawing.Point(0, 233);
             this.pnlRowInfo.Size = new System.Drawing.Size(800, 100);
             // 
             // pnlRowInfoHeader
@@ -122,7 +124,7 @@
             // 
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
-            this.itxt_Notes.Location = new System.Drawing.Point(3, 45);
+            this.itxt_Notes.Location = new System.Drawing.Point(5, 5);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = true;
             this.itxt_Notes.Name = "itxt_Notes";
@@ -135,34 +137,51 @@
             this.itxt_Notes.TabIndex = 0;
             this.itxt_Notes.ValueText = "";
             // 
-            // itxt_Name
+            // iddl_MoneyAccounts_Id
             // 
-            this.itxt_Name.IsBrowseMode = false;
-            this.itxt_Name.LabelText = "Name";
-            this.itxt_Name.Location = new System.Drawing.Point(3, 5);
-            this.itxt_Name.MaxLength = 32767;
-            this.itxt_Name.MultiLine = false;
-            this.itxt_Name.Name = "itxt_Name";
-            this.itxt_Name.PasswordChar = '\0';
-            this.itxt_Name.RowCount = 1;
-            this.itxt_Name.ShowDeleteButton = false;
-            this.itxt_Name.ShowFilter = false;
-            this.itxt_Name.ShowTextboxOnly = false;
-            this.itxt_Name.Size = new System.Drawing.Size(242, 41);
-            this.itxt_Name.TabIndex = 0;
-            this.itxt_Name.ValueText = "";
+            this.iddl_MoneyAccounts_Id.DisableTextInput = false;
+            this.iddl_MoneyAccounts_Id.HideFilter = false;
+            this.iddl_MoneyAccounts_Id.HideUpdateLink = false;
+            this.iddl_MoneyAccounts_Id.LabelText = "Account";
+            this.iddl_MoneyAccounts_Id.Location = new System.Drawing.Point(4, 6);
+            this.iddl_MoneyAccounts_Id.Name = "iddl_MoneyAccounts_Id";
+            this.iddl_MoneyAccounts_Id.SelectedIndex = -1;
+            this.iddl_MoneyAccounts_Id.SelectedItem = null;
+            this.iddl_MoneyAccounts_Id.SelectedItemText = "";
+            this.iddl_MoneyAccounts_Id.SelectedValue = null;
+            this.iddl_MoneyAccounts_Id.ShowDropdownlistOnly = false;
+            this.iddl_MoneyAccounts_Id.Size = new System.Drawing.Size(242, 41);
+            this.iddl_MoneyAccounts_Id.TabIndex = 5;
+            this.iddl_MoneyAccounts_Id.UpdateLink_Click += new System.EventHandler(this.iddl_MoneyAccounts_Id_UpdateLink_Click);
             // 
-            // MasterData_v1_MoneyAccountCategories_Form
+            // iddl_MoneyAccountCategories
+            // 
+            this.iddl_MoneyAccountCategories.DisableTextInput = false;
+            this.iddl_MoneyAccountCategories.HideFilter = false;
+            this.iddl_MoneyAccountCategories.HideUpdateLink = false;
+            this.iddl_MoneyAccountCategories.LabelText = "Category";
+            this.iddl_MoneyAccountCategories.Location = new System.Drawing.Point(4, 50);
+            this.iddl_MoneyAccountCategories.Name = "iddl_MoneyAccountCategories";
+            this.iddl_MoneyAccountCategories.SelectedIndex = -1;
+            this.iddl_MoneyAccountCategories.SelectedItem = null;
+            this.iddl_MoneyAccountCategories.SelectedItemText = "";
+            this.iddl_MoneyAccountCategories.SelectedValue = null;
+            this.iddl_MoneyAccountCategories.ShowDropdownlistOnly = false;
+            this.iddl_MoneyAccountCategories.Size = new System.Drawing.Size(242, 41);
+            this.iddl_MoneyAccountCategories.TabIndex = 6;
+            // 
+            // MasterData_v1_MoneyAccountCategoryAssignments_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 484);
             this.Mode = LIBUtil.FormModes.Add;
-            this.Name = "MasterData_v1_MoneyAccountCategories_Form";
-            this.Text = "MONEY ACCOUNTS";
+            this.Name = "MasterData_v1_MoneyAccountCategoryAssignments_Form";
+            this.Text = "MONEY ACCOUNT CATEGORIES ASSIGNMENT";
             this.panel1.ResumeLayout(false);
             this.pnlActionButtons.ResumeLayout(false);
             this.scInputLeft.Panel1.ResumeLayout(false);
+            this.scInputLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).EndInit();
             this.scInputLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scInputRight)).EndInit();
@@ -186,6 +205,7 @@
         #endregion
 
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Notes;
-        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Name;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccounts_Id;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategories;
     }
 }

@@ -1,1 +1,312 @@
-﻿
+﻿CREATE TABLE [dbo].[MoneyAccountCategoryAssignments] (
+    [Id]               UNIQUEIDENTIFIER NOT NULL,
+    [MoneyAccounts_Id] UNIQUEIDENTIFIER NOT NULL,
+    [Name]             VARCHAR (MAX)    NOT NULL,
+    [Notes]            VARCHAR (MAX)    NULL,
+    [Default]          BIT              DEFAULT ((0)) NOT NULL,
+    [Active]           BIT              DEFAULT ((1)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+GO
+insert into MoneyAccountCategoryAssignments
+select * from MoneyAccountCategories
+GO
+EXEC sp_RENAME 'MoneyAccountItems.MoneyAccountCategories_Id' , 'MoneyAccountCategoryAssignments_Id', 'COLUMN'
+GO
+CREATE PROCEDURE [dbo].[MoneyAccountCategoryAssignments_update_Default]
+
+	@Id uniqueidentifier
+
+AS
+
+BEGIN
+
+	UPDATE MoneyAccountCategoryAssignments SET MoneyAccountCategoryAssignments.[Default] = 0 WHERE MoneyAccounts_Id = (SELECT MoneyAccounts_Id FROM MoneyAccountCategoryAssignments WHERE Id=@Id)
+	UPDATE MoneyAccountCategoryAssignments SET MoneyAccountCategoryAssignments.[Default] = 1 WHERE Id = @Id
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[MoneyAccountCategoryAssignments_update_Active]
+
+	@Id uniqueidentifier,
+	@Active bit
+
+AS
+
+BEGIN
+
+	UPDATE MoneyAccountCategoryAssignments SET Active = @Active WHERE Id = @Id
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[MoneyAccountCategoryAssignments_update]
+
+	@Id uniqueidentifier,
+	@MoneyAccountCategories_Id uniqueidentifier,
+	@MoneyAccounts_Id uniqueidentifier,
+	@Notes varchar(MAX)
+
+AS
+
+BEGIN
+
+	UPDATE MoneyAccountCategoryAssignments
+	SET 
+		MoneyAccountCategories_Id = @MoneyAccountCategories_Id,
+		MoneyAccounts_Id = @MoneyAccounts_Id,
+		Notes = @Notes
+	WHERE Id = @Id
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[MoneyAccountCategoryAssignments_isExist]
+
+	@Id uniqueidentifier,
+	@MoneyAccountCategories_Id uniqueidentifier,
+	@MoneyAccounts_Id uniqueidentifier,
+	@returnValueBoolean bit = 0 OUTPUT
+
+AS
+
+BEGIN
+
+	IF EXISTS (SELECT Id FROM MoneyAccountCategoryAssignments 
+	WHERE 
+		MoneyAccountCategories_Id = @MoneyAccountCategories_Id 
+		AND MoneyAccounts_Id = @MoneyAccounts_Id 
+		AND (@Id IS NULL OR Id != @Id))
+
+		SET @returnValueBoolean = 1
+	ELSE
+		SET @returnValueBoolean = 0
+
+END
+GO
+
+CREATE PROCEDURE [dbo].[MoneyAccountCategoryAssignments_get]
+
+	@Id uniqueidentifier = NULL,
+	@MoneyAccountCategories_Id uniqueidentifier = NULL,
+	@MoneyAccounts_Id uniqueidentifier = NULL,
+	@Active bit = NULL
+
+AS
+
+BEGIN
+
+	SELECT MoneyAccountCategoryAssignments.*,
+		MoneyAccounts.Name AS MoneyAccounts_Name,
+		MoneyAccountCategories.Name AS MoneyAccountCategories_Name
+	FROM MoneyAccountCategoryAssignments
+		LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountCategoryAssignments.MoneyAccounts_Id
+		LEFT JOIN MoneyAccountCategories ON MoneyAccountCategories.Id = MoneyAccountCategoryAssignments.MoneyAccountCategories_Id
+	WHERE 1=1
+		AND (@Id IS NULL OR MoneyAccountCategoryAssignments.Id = @Id)
+		AND (@Id IS NOT NULL OR (
+				(@MoneyAccountCategories_Id IS NULL OR MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = @MoneyAccountCategories_Id)
+				AND (@MoneyAccounts_Id IS NULL OR MoneyAccountCategoryAssignments.MoneyAccounts_Id = @MoneyAccounts_Id)
+				AND (@Active IS NULL OR MoneyAccountCategoryAssignments.Active = @Active)
+			))
+	ORDER BY MoneyAccounts.Name ASC, MoneyAccountCategories.Name ASC
+
+END
+GO
+CREATE PROCEDURE [dbo].[MoneyAccountCategoryAssignments_add]
+
+	@Id uniqueidentifier,
+	@MoneyAccountCategories_Id uniqueidentifier,
+	@MoneyAccounts_Id uniqueidentifier,
+	@Notes varchar(MAX) = NULL
+
+AS
+
+BEGIN
+
+	INSERT INTO MoneyAccountCategoryAssignments(Id,MoneyAccountCategories_Id,MoneyAccounts_Id,Notes) VALUES(@Id,@MoneyAccountCategories_Id,@MoneyAccounts_Id,@Notes)
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[MoneyAccountItems_get]
+
+	@Id uniqueidentifier = NULL,
+	@MoneyAccounts_Id uniqueidentifier = NULL,
+	@MoneyAccountCategories_Id uniqueidentifier = NULL,
+	@Approved bit = NULL,
+	@FILTER_Timestamp_Start datetime = NULL,
+	@FILTER_Timestamp_End datetime = NULL
+
+AS
+
+BEGIN
+
+	SELECT * FROM (
+		SELECT MoneyAccountItems.*,
+			MoneyAccounts.Name AS MoneyAccounts_Name,
+			MoneyAccountCategories.Name AS MoneyAccountCategories_Name,
+			InitialBalance.Amount + (SUM(MoneyAccountItems.Amount) OVER(ORDER BY MoneyAccountItems.Timestamp ASC)) AS Balance
+		FROM MoneyAccountItems
+			LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
+			LEFT JOIN MoneyAccountCategories ON MoneyAccountCategories.Id = MoneyAccountItems.MoneyAccountCategories_Id
+			LEFT JOIN (
+					SELECT 1 AS Id, ISNULL(SUM(MoneyAccountItems.Amount),0) AS Amount
+					FROM MoneyAccountItems
+					WHERE 1=1
+                		AND MoneyAccountItems.MoneyAccounts_Id = @MoneyAccounts_Id
+						AND MoneyAccountItems.Timestamp < @FILTER_Timestamp_Start
+				) InitialBalance ON InitialBalance.Id = 1
+		WHERE 1=1
+			AND (@Id IS NULL OR MoneyAccountItems.Id = @Id)
+			AND (@Id IS NOT NULL OR (
+					(@MoneyAccounts_Id IS NULL OR MoneyAccountItems.MoneyAccounts_Id = @MoneyAccounts_Id)
+					AND (@MoneyAccountCategories_Id IS NULL OR MoneyAccountItems.MoneyAccountCategories_Id = @MoneyAccountCategories_Id)
+					AND (@Approved IS NULL OR MoneyAccountItems.Approved = @Approved)
+					AND (@FILTER_Timestamp_Start IS NULL OR MoneyAccountItems.Timestamp > @FILTER_Timestamp_Start)
+					AND (@FILTER_Timestamp_End IS NULL OR MoneyAccountItems.Timestamp < @FILTER_Timestamp_End)
+				))
+	) ResultTable
+	ORDER BY ResultTable.Timestamp DESC
+
+END
+GO
+
+ALTER PROCEDURE [dbo].[MoneyAccountItems_add]
+
+	@Id uniqueidentifier,
+	@MoneyAccounts_Id uniqueidentifier,
+	@MoneyAccountCategories_Id uniqueidentifier,
+	@Description varchar(MAX),
+	@Amount int,
+	@Approved bit,
+	@ReferenceId uniqueidentifier,
+	@ReferenceEnumId int
+
+AS
+
+BEGIN
+
+	-- INCREMENT LAST HEX NUMBER
+	DECLARE @HexLength int = 6, @LastHex_String varchar(6), @NewNo varchar(6)
+	SELECT @LastHex_String = ISNULL(MAX(No),'') From MoneyAccountItems	
+	EXEC UTIL_IncrementHex @HexLength, @LastHex_String, @NewNo OUTPUT
+
+	INSERT INTO MoneyAccountItems(Id, MoneyAccounts_Id, MoneyAccountCategories_Id,[Timestamp],		[No],  [Description],Amount, Approved, ReferenceId, ReferenceEnumId) 
+						  VALUES(@Id,@MoneyAccounts_Id,@MoneyAccountCategories_Id,CURRENT_TIMESTAMP,@NewNo,@Description,@Amount,@Approved,@ReferenceId,@ReferenceEnumId)
+
+END
+GO
+
+
+	IF EXISTS (select * from dbo.sysobjects where id = object_id(N'[dbo].[MoneyAccountCategories_add]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].MoneyAccountCategories_add
+	GO
+	IF EXISTS (select * from dbo.sysobjects where id = object_id(N'[dbo].[MoneyAccountCategories_update]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].MoneyAccountCategories_update
+	GO
+	IF EXISTS (select * from dbo.sysobjects where id = object_id(N'[dbo].[MoneyAccountCategories_get]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].MoneyAccountCategories_get
+	GO
+	IF EXISTS (select * from dbo.sysobjects where id = object_id(N'[dbo].[MoneyAccountCategories_update_Active]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].MoneyAccountCategories_update_Active
+	GO
+	IF EXISTS (select * from dbo.sysobjects where id = object_id(N'[dbo].[MoneyAccountCategories_update_Default]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].MoneyAccountCategories_update_Default
+	GO
+	IF EXISTS (select * from dbo.sysobjects where id = object_id(N'[dbo].[MoneyAccountCategories_isExist]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].MoneyAccountCategories_isExist
+	GO
+
+drop table MoneyAccountCategories
+GO
+CREATE TABLE [dbo].[MoneyAccountCategories]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Name] VARCHAR(MAX) NOT NULL, 
+    [Notes] VARCHAR(MAX) NULL, 
+    [Active] BIT NOT NULL DEFAULT 1
+)
+GO
+insert into MoneyAccountCategories
+select DISTINCT
+	Id,
+	Name,
+	Notes,
+	Active
+from MoneyAccountCategoryAssignments
+GO
+
+	-- drop table if already exists
+	IF(SELECT object_id('TempDB..#TEMP_INPUTARRAY')) IS NOT NULL
+		DROP TABLE #TEMP_INPUTARRAY
+		
+	SELECT * INTO #TEMP_INPUTARRAY FROM (SELECT * FROM MoneyAccountCategoryAssignments) AS x
+	
+	DECLARE @Iteration_Id uniqueidentifier
+	WHILE EXISTS(SELECT * FROM #TEMP_INPUTARRAY)
+	BEGIN
+		SELECT TOP 1 @Iteration_Id = Id FROM #TEMP_INPUTARRAY
+
+		-- add operation here
+		UPDATE MoneyAccountCategoryAssignments SET Id=NEWID() WHERE Id=@Iteration_Id
+		
+		-- remove row to iterate to the next row
+		DELETE #TEMP_INPUTARRAY WHERE Id = @Iteration_Id
+	END
+	
+	-- clean up
+	DROP TABLE #TEMP_INPUTARRAY
+	GO
+
+ALTER TABLE MoneyAccountCategoryAssignments ADD MoneyAccountCategories_Id uniqueidentifier NULL
+GO
+
+	-- drop table if already exists
+	IF(SELECT object_id('TempDB..#TEMP_INPUTARRAY')) IS NOT NULL
+		DROP TABLE #TEMP_INPUTARRAY
+		
+	SELECT * INTO #TEMP_INPUTARRAY FROM (SELECT * FROM MoneyAccountCategoryAssignments) AS x
+	
+	DECLARE @Iteration_Id uniqueidentifier, @Name varchar(MAX)
+	WHILE EXISTS(SELECT * FROM #TEMP_INPUTARRAY)
+	BEGIN
+		SELECT TOP 1 @Iteration_Id = Id, @Name = [Name] FROM #TEMP_INPUTARRAY
+
+		-- add operation here
+		UPDATE MoneyAccountCategoryAssignments SET MoneyAccountCategories_Id=(SELECT Id FROM MoneyAccountCategories WHERE [Name]=@Name) WHERE Id=@Iteration_Id
+		
+		-- remove row to iterate to the next row
+		DELETE #TEMP_INPUTARRAY WHERE Id = @Iteration_Id
+	END
+	
+	-- clean up
+	DROP TABLE #TEMP_INPUTARRAY
+	GO
+
+IF EXISTS (SELECT 1
+				FROM   INFORMATION_SCHEMA.COLUMNS
+				WHERE  TABLE_NAME = 'MoneyAccountCategoryAssignments'
+						AND COLUMN_NAME = 'Name'
+						AND TABLE_SCHEMA='dbo')
+	BEGIN
+		ALTER TABLE MoneyAccountCategoryAssignments DROP COLUMN [Name]
+	END
+GO
+
+
+ALTER TABLE MoneyAccountItems ADD MoneyAccountCategories_Id uniqueidentifier NULL
+GO
+UPDATE MoneyAccountItems SET MoneyAccountCategories_Id = MoneyAccountCategoryAssignments_Id
+GO
+
+IF EXISTS (SELECT 1
+				FROM   INFORMATION_SCHEMA.COLUMNS
+				WHERE  TABLE_NAME = 'MoneyAccountItems'
+						AND COLUMN_NAME = 'MoneyAccountCategoryAssignments_Id'
+						AND TABLE_SCHEMA='dbo')
+	BEGIN
+		ALTER TABLE MoneyAccountItems DROP COLUMN [MoneyAccountCategoryAssignments_Id]
+	END
+GO

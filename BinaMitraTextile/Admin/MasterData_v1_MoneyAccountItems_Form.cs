@@ -53,13 +53,13 @@ namespace BinaMitraTextile.Admin
             InputToDisableOnSearch.Add(in_Amount);
 
             MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true);
-            MoneyAccountCategory.populateInputControlDropDownList(iddl_MoneyAccountCategories, (Guid)iddl_MoneyAccounts.SelectedValue, true);
+            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
             col_dgv_Checkbox1.HeaderText = "OK";
 
             setColumnsDataPropertyNames(MoneyAccountItem.COL_DB_Id, null, null, null, null, MoneyAccountItem.COL_DB_Approved);
             col_dgv_No = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_No", "No", MoneyAccountItem.COL_DB_No, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleCenter);
             col_dgv_Timestamp = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Timestamp", "Time", MoneyAccountItem.COL_DB_Timestamp, true, true, "dd/MM/yy HH:mm", false, false, 50, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_MoneyAccountCategories_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_MoneyAccountCategories_Name", iddl_MoneyAccountCategories.LabelText, MoneyAccountItem.COL_MoneyAccountCategories_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_MoneyAccountCategories_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_MoneyAccountCategories_Name", iddl_MoneyAccountCategoryAssignments.LabelText, MoneyAccountItem.COL_MoneyAccountCategories_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
 
             col_dgv_Description = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Description", itxt_Description.LabelText, MoneyAccountItem.COL_DB_Description, true, true, "", true, true, null, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Description.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -97,15 +97,15 @@ namespace BinaMitraTextile.Admin
         protected override System.Data.DataView loadGridviewDataSource()
         {
             if (Mode == FormModes.Add)
-                return MoneyAccountItem.get(null, (Guid)iddl_MoneyAccounts.SelectedValue, null, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
+                return MoneyAccountItem.get(null, null, null, null, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
             else
-                return MoneyAccountItem.get(null, (Guid)iddl_MoneyAccounts.SelectedValue, null, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
+                return MoneyAccountItem.get(null, null, null, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
         }
 
         protected override void populateInputFields()
         {
             MoneyAccountItem obj = new MoneyAccountItem(selectedRowID());
-            iddl_MoneyAccountCategories.SelectedValue = obj.MoneyAccountCategories_Id;
+            iddl_MoneyAccountCategoryAssignments.SelectedValue = MoneyAccountCategoryAssignment.get(obj.MoneyAccountCategories_Id, obj.MoneyAccounts_Id);
             itxt_Description.ValueText = obj.Description;
             in_Amount.Value = obj.Amount;
         }
@@ -117,13 +117,13 @@ namespace BinaMitraTextile.Admin
 
         protected override void add()
         {
-            MoneyAccountItem.add((Guid)iddl_MoneyAccountCategories.SelectedValue, itxt_Description.ValueText, in_Amount.ValueInt);
+            MoneyAccountItem.add((Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, itxt_Description.ValueText, in_Amount.ValueInt);
         }
 
         protected override bool isInputFieldsValid()
         {
-            if (!iddl_MoneyAccountCategories.hasSelectedValue())
-                return iddl_MoneyAccountCategories.SelectedValueError("Please select Category");
+            if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
+                return iddl_MoneyAccountCategoryAssignments.SelectedValueError("Please select Category");
             else if (itxt_Description.isEmpty())
                 return itxt_Description.isValueError("Please provide description");
 
@@ -154,7 +154,7 @@ namespace BinaMitraTextile.Admin
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
         {
-            MoneyAccountCategory.populateInputControlDropDownList(iddl_MoneyAccountCategories, (Guid)iddl_MoneyAccounts.SelectedValue, true);
+            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
             populateGridViewDataSource(true);
         }
 

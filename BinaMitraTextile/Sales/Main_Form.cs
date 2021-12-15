@@ -46,7 +46,7 @@ namespace BinaMitraTextile.Sales
             txtSaleBarcode.MaxLength = Settings.saleBarcodeLength;
             txtInventoryItemBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
             
-            MoneyAccountCategory.populateInputControlDropDownList(iddl_MoneyAccountCategories, MoneyAccount.getDefaultItem(), true);
+            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, MoneyAccount.getDefaultItem(), true);
 
             gridMaster.AutoGenerateColumns = false;
             gridMaster.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -371,7 +371,7 @@ namespace BinaMitraTextile.Sales
                 pnlUpdateShippingExpense.Visible = true;
                 itxt_ShippingExpenseNotes.ValueText = "";
                 in_ShippingExpense.Value = new Sale(selectedRowID()).ShippingExpense;
-                iddl_MoneyAccountCategories.focus();
+                iddl_MoneyAccountCategoryAssignments.focus();
             }
             else
             {
@@ -462,11 +462,11 @@ namespace BinaMitraTextile.Sales
 
         private void btnUpdateShippingExpense_Click(object sender, EventArgs e)
         {
-            if (!iddl_MoneyAccountCategories.hasSelectedValue())
-                iddl_MoneyAccountCategories.SelectedValueError("Select category");
+            if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
+                iddl_MoneyAccountCategoryAssignments.SelectedValueError("Select category");
             else
             {
-                Sale.update_ShippingExpense(selectedRowID(), (Guid)iddl_MoneyAccountCategories.SelectedValue, in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
+                Sale.update_ShippingExpense(selectedRowID(), (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
                 pnlUpdateShippingExpense.Visible = false;
                 populateMasterGrid();
             }

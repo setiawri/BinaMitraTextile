@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterData_v1_MoneyAccountItems_Form));
             this.itxt_Description = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.iddl_MoneyAccountCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_MoneyAccountCategoryAssignments = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_MoneyAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.label2 = new System.Windows.Forms.Label();
             this.idtp_Timestamp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
@@ -81,7 +81,7 @@
             // scInputLeft.Panel1
             // 
             this.scInputLeft.Panel1.Controls.Add(this.in_Amount);
-            this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccountCategories);
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccountCategoryAssignments);
             // 
             // scInputLeft.Panel2
             // 
@@ -205,21 +205,21 @@
             0,
             0});
             // 
-            // iddl_MoneyAccountCategories
+            // iddl_MoneyAccountCategoryAssignments
             // 
-            this.iddl_MoneyAccountCategories.DisableTextInput = false;
-            this.iddl_MoneyAccountCategories.HideFilter = false;
-            this.iddl_MoneyAccountCategories.HideUpdateLink = true;
-            this.iddl_MoneyAccountCategories.LabelText = "Category";
-            this.iddl_MoneyAccountCategories.Location = new System.Drawing.Point(3, 6);
-            this.iddl_MoneyAccountCategories.Name = "iddl_MoneyAccountCategories";
-            this.iddl_MoneyAccountCategories.SelectedIndex = -1;
-            this.iddl_MoneyAccountCategories.SelectedItem = null;
-            this.iddl_MoneyAccountCategories.SelectedItemText = "";
-            this.iddl_MoneyAccountCategories.SelectedValue = null;
-            this.iddl_MoneyAccountCategories.ShowDropdownlistOnly = false;
-            this.iddl_MoneyAccountCategories.Size = new System.Drawing.Size(242, 41);
-            this.iddl_MoneyAccountCategories.TabIndex = 0;
+            this.iddl_MoneyAccountCategoryAssignments.DisableTextInput = false;
+            this.iddl_MoneyAccountCategoryAssignments.HideFilter = false;
+            this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = true;
+            this.iddl_MoneyAccountCategoryAssignments.LabelText = "Category";
+            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(3, 6);
+            this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
+            this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
+            this.iddl_MoneyAccountCategoryAssignments.SelectedItem = null;
+            this.iddl_MoneyAccountCategoryAssignments.SelectedItemText = "";
+            this.iddl_MoneyAccountCategoryAssignments.SelectedValue = null;
+            this.iddl_MoneyAccountCategoryAssignments.ShowDropdownlistOnly = false;
+            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(242, 41);
+            this.iddl_MoneyAccountCategoryAssignments.TabIndex = 0;
             // 
             // iddl_MoneyAccounts
             // 
@@ -366,7 +366,7 @@
 
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Description;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Amount;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategories;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategoryAssignments;
         private System.Windows.Forms.Label label2;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccounts;
         private System.Windows.Forms.Label label4;

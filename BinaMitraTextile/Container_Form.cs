@@ -414,9 +414,9 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccounts_Form());
         }
 
-        private void Internal_MoneyAccountCategories_Click(object sender, EventArgs e)
+        private void Internal_MoneyAccountCategoryAssignments_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountCategories_Form());
+            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountCategoryAssignments_Form());
         }
 
         private void Admin_CashAccounts_Click(object sender, EventArgs e)
@@ -427,6 +427,11 @@ namespace BinaMitraTextile
         private void lnkMoneyAccountItems_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountItems_Form());
+        }
+
+        private void Admin_MoneyAccountCategories_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountCategories_Form());
         }
 
         #endregion MENU - INTERNAL

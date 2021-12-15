@@ -58,10 +58,12 @@ namespace BinaMitraTextile
             Balance = Util.wrapNullable<int>(row, COL_Balance);
         }
 
-        public static Guid? add(Guid MoneyAccountCategories_Id, string Description, int Amount) { return add(MoneyAccountCategories_Id, Description, Amount, false, null, null); }
-        public static Guid? add(Guid MoneyAccountCategories_Id, string Description, 
+        public static Guid? add(Guid MoneyAccountCategoryAssignments_Id, string Description, int Amount) { return add(MoneyAccountCategoryAssignments_Id, Description, Amount, false, null, null); }
+        public static Guid? add(Guid MoneyAccountCategoryAssignments_Id, string Description, 
             int Amount, bool Approved, Guid? ReferenceId, int? ReferenceEnumId)
         {
+            MoneyAccountCategoryAssignment moneyAccountCategoryAssignment = new MoneyAccountCategoryAssignment(MoneyAccountCategoryAssignments_Id);
+
             Guid Id = Guid.NewGuid();
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -69,7 +71,8 @@ namespace BinaMitraTextile
                 QueryTypes.ExecuteNonQuery,
                 "MoneyAccountItems_add",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
-                new SqlQueryParameter(COL_DB_MoneyAccountCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(MoneyAccountCategories_Id)),
+                new SqlQueryParameter(COL_DB_MoneyAccounts_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(moneyAccountCategoryAssignment.MoneyAccounts_Id)),
+                new SqlQueryParameter(COL_DB_MoneyAccountCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(moneyAccountCategoryAssignment.MoneyAccountCategories_Id)),
                 new SqlQueryParameter(COL_DB_Description, SqlDbType.VarChar, Util.wrapNullable(Description)),
                 new SqlQueryParameter(COL_DB_Amount, SqlDbType.Int, Util.wrapNullable(Amount)),
                 new SqlQueryParameter(COL_DB_Approved, SqlDbType.Bit, Util.wrapNullable(Approved)),
@@ -86,9 +89,17 @@ namespace BinaMitraTextile
             }
         }
 
-        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null, null, null)); }
-        public static DataTable get(Guid? Id, Guid? MoneyAccounts_Id, Guid? MoneyAccountCategories_Id, bool? Approved, DateTime? Timestamp_Start, DateTime? Timestamp_End)
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null, null, null, null)); }
+        public static DataTable get(Guid? Id, Guid? MoneyAccounts_Id, Guid? MoneyAccountCategories_Id, Guid? MoneyAccountCategoryAssignments_Id, 
+            bool? Approved, DateTime? Timestamp_Start, DateTime? Timestamp_End)
         {
+            if(MoneyAccountCategoryAssignments_Id != null)
+            {
+                MoneyAccountCategoryAssignment moneyAccountCategoryAssignment = new MoneyAccountCategoryAssignment((Guid)MoneyAccountCategoryAssignments_Id);
+                MoneyAccounts_Id = moneyAccountCategoryAssignment.MoneyAccounts_Id;
+                MoneyAccountCategories_Id = moneyAccountCategoryAssignment.MoneyAccountCategories_Id;
+            }
+
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
@@ -104,13 +115,14 @@ namespace BinaMitraTextile
             return result.Datatable;
         }
 
-        public static void update(Guid Id, Guid MoneyAccounts_Id, Guid MoneyAccountCategories_Id, string Description, int Amount)
+        public static void update(Guid Id, Guid MoneyAccountCategoryAssignments_Id, string Description, int Amount)
         {
             MoneyAccountItem objOld = new MoneyAccountItem(Id);
+            MoneyAccountCategoryAssignment moneyAccountCategoryAssignment = new MoneyAccountCategoryAssignment(MoneyAccountCategoryAssignments_Id);
 
             string log = "";
-            log = Util.appendChange(log, objOld.MoneyAccounts_Name, new MoneyAccountCategory(MoneyAccounts_Id).Name, "Account: '{0}' to '{1}'");
-            log = Util.appendChange(log, objOld.MoneyAccountCategories_Name, new MoneyAccountCategory(MoneyAccountCategories_Id).Name, "Category: '{0}' to '{1}'");
+            log = Util.appendChange(log, objOld.MoneyAccounts_Name, moneyAccountCategoryAssignment.MoneyAccounts_Name, "Account: '{0}' to '{1}'");
+            log = Util.appendChange(log, objOld.MoneyAccountCategories_Name, moneyAccountCategoryAssignment.MoneyAccountCategories_Name, "Category: '{0}' to '{1}'");
             log = Util.appendChange(log, objOld.Description, Description, "Description: '{0}' to '{1}'");
             log = Util.appendChange(log, objOld.Amount, Amount, "Amount: '{0}' to '{1}'");
 
@@ -122,8 +134,8 @@ namespace BinaMitraTextile
                     QueryTypes.ExecuteNonQuery,
                     "MoneyAccountItems_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
-                    new SqlQueryParameter(COL_DB_MoneyAccounts_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(MoneyAccounts_Id)),
-                    new SqlQueryParameter(COL_DB_MoneyAccountCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(MoneyAccountCategories_Id)),
+                    new SqlQueryParameter(COL_DB_MoneyAccounts_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(moneyAccountCategoryAssignment.MoneyAccounts_Id)),
+                    new SqlQueryParameter(COL_DB_MoneyAccountCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(moneyAccountCategoryAssignment.MoneyAccountCategories_Id)),
                     new SqlQueryParameter(COL_DB_Description, SqlDbType.VarChar, Util.wrapNullable(Description)),
                     new SqlQueryParameter(COL_DB_Amount, SqlDbType.Int, Util.wrapNullable(Amount))
                 );

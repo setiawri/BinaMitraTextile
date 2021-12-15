@@ -87,7 +87,8 @@
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_SalesComissions = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_MoneyAccounts = new System.Windows.Forms.ToolStripMenuItem();
-            this.Internal_MoneyAccountCategories = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_MoneyAccountCategoryAssignments = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_MoneyAccountCategories = new System.Windows.Forms.ToolStripMenuItem();
             this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcutContainer = new System.Windows.Forms.Panel();
             this.btnOpname = new System.Windows.Forms.Button();
@@ -119,6 +120,7 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -457,7 +459,7 @@
             // 
             this.Admin_CashAccounts.Name = "Admin_CashAccounts";
             this.Admin_CashAccounts.Size = new System.Drawing.Size(182, 22);
-            this.Admin_CashAccounts.Text = "Cash Accounts";
+            this.Admin_CashAccounts.Text = "Petty Cash";
             this.Admin_CashAccounts.Click += new System.EventHandler(this.Admin_CashAccounts_Click);
             // 
             // toolStripMenuItem6
@@ -537,8 +539,10 @@
             this.Internal_Settings,
             this.Internal_Test,
             this.Internal_SalesComissions,
+            this.toolStripMenuItem3,
             this.Internal_MoneyAccounts,
-            this.Internal_MoneyAccountCategories});
+            this.Admin_MoneyAccountCategories,
+            this.Internal_MoneyAccountCategoryAssignments});
             this.Internal.Name = "Internal";
             this.Internal.Size = new System.Drawing.Size(57, 20);
             this.Internal.Text = "Internal";
@@ -546,14 +550,14 @@
             // Internal_Summary_Superuser
             // 
             this.Internal_Summary_Superuser.Name = "Internal_Summary_Superuser";
-            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(204, 22);
+            this.Internal_Summary_Superuser.Size = new System.Drawing.Size(187, 22);
             this.Internal_Summary_Superuser.Text = "Summary";
             this.Internal_Summary_Superuser.Click += new System.EventHandler(this.Internal_Summary_Click);
             // 
             // Internal_UserAccounts
             // 
             this.Internal_UserAccounts.Name = "Internal_UserAccounts";
-            this.Internal_UserAccounts.Size = new System.Drawing.Size(204, 22);
+            this.Internal_UserAccounts.Size = new System.Drawing.Size(187, 22);
             this.Internal_UserAccounts.Text = "User Accounts";
             this.Internal_UserAccounts.Click += new System.EventHandler(this.Internal_UserAccounts_Click);
             // 
@@ -564,7 +568,7 @@
             this.Internal_Reports_Sales,
             this.Internal_Reports_Taxes});
             this.Internal_Reports.Name = "Internal_Reports";
-            this.Internal_Reports.Size = new System.Drawing.Size(204, 22);
+            this.Internal_Reports.Size = new System.Drawing.Size(187, 22);
             this.Internal_Reports.Text = "Reports";
             // 
             // Internal_Reports_Financial
@@ -591,37 +595,44 @@
             // Internal_Settings
             // 
             this.Internal_Settings.Name = "Internal_Settings";
-            this.Internal_Settings.Size = new System.Drawing.Size(204, 22);
+            this.Internal_Settings.Size = new System.Drawing.Size(187, 22);
             this.Internal_Settings.Text = "Settings";
             this.Internal_Settings.Click += new System.EventHandler(this.Internal_Settings_Click);
             // 
             // Internal_Test
             // 
             this.Internal_Test.Name = "Internal_Test";
-            this.Internal_Test.Size = new System.Drawing.Size(204, 22);
+            this.Internal_Test.Size = new System.Drawing.Size(187, 22);
             this.Internal_Test.Text = "Test";
             this.Internal_Test.Click += new System.EventHandler(this.Internal_Test_Click);
             // 
             // Internal_SalesComissions
             // 
             this.Internal_SalesComissions.Name = "Internal_SalesComissions";
-            this.Internal_SalesComissions.Size = new System.Drawing.Size(204, 22);
+            this.Internal_SalesComissions.Size = new System.Drawing.Size(187, 22);
             this.Internal_SalesComissions.Text = "Sales Comission";
             this.Internal_SalesComissions.Click += new System.EventHandler(this.Internal_SalesComissions_Click);
             // 
             // Internal_MoneyAccounts
             // 
             this.Internal_MoneyAccounts.Name = "Internal_MoneyAccounts";
-            this.Internal_MoneyAccounts.Size = new System.Drawing.Size(204, 22);
+            this.Internal_MoneyAccounts.Size = new System.Drawing.Size(187, 22);
             this.Internal_MoneyAccounts.Text = "Money Accounts";
             this.Internal_MoneyAccounts.Click += new System.EventHandler(this.Internal_MoneyAccounts_Click);
             // 
-            // Internal_MoneyAccountCategories
+            // Internal_MoneyAccountCategoryAssignments
             // 
-            this.Internal_MoneyAccountCategories.Name = "Internal_MoneyAccountCategories";
-            this.Internal_MoneyAccountCategories.Size = new System.Drawing.Size(204, 22);
-            this.Internal_MoneyAccountCategories.Text = "Money Account Categories";
-            this.Internal_MoneyAccountCategories.Click += new System.EventHandler(this.Internal_MoneyAccountCategories_Click);
+            this.Internal_MoneyAccountCategoryAssignments.Name = "Internal_MoneyAccountCategoryAssignments";
+            this.Internal_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(187, 22);
+            this.Internal_MoneyAccountCategoryAssignments.Text = "Categories Assignment";
+            this.Internal_MoneyAccountCategoryAssignments.Click += new System.EventHandler(this.Internal_MoneyAccountCategoryAssignments_Click);
+            // 
+            // Admin_MoneyAccountCategories
+            // 
+            this.Admin_MoneyAccountCategories.Name = "Admin_MoneyAccountCategories";
+            this.Admin_MoneyAccountCategories.Size = new System.Drawing.Size(187, 22);
+            this.Admin_MoneyAccountCategories.Text = "Categories";
+            this.Admin_MoneyAccountCategories.Click += new System.EventHandler(this.Admin_MoneyAccountCategories_Click);
             // 
             // Windows
             // 
@@ -1093,6 +1104,13 @@
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItem3.Text = "---------------------------";
+            // 
             // Container_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1215,7 +1233,9 @@
         private System.Windows.Forms.ToolStripMenuItem Internal_SalesComissions;
         private System.Windows.Forms.Button btnChart;
         private System.Windows.Forms.ToolStripMenuItem Internal_MoneyAccounts;
-        private System.Windows.Forms.ToolStripMenuItem Internal_MoneyAccountCategories;
+        private System.Windows.Forms.ToolStripMenuItem Internal_MoneyAccountCategoryAssignments;
         private System.Windows.Forms.ToolStripMenuItem Admin_CashAccounts;
+        private System.Windows.Forms.ToolStripMenuItem Admin_MoneyAccountCategories;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }

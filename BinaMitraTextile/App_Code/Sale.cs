@@ -331,7 +331,7 @@ namespace BinaMitraTextile
             }
         }
 
-        public static void update_ShippingExpense(Guid Id, Guid MoneyAccountCategories_Id, int Amount, string Notes)
+        public static void update_ShippingExpense(Guid Id, Guid MoneyAccountCategoryAssignments_Id, int Amount, string Notes)
         {
             Sale objOld = new Sale(Id);
             string log = "";
@@ -356,7 +356,7 @@ namespace BinaMitraTextile
                 if (!string.IsNullOrWhiteSpace(Notes))
                     MoneyAccountItems_Description += ", " + Notes;
 
-                Guid? MoneyAccountItems_Id = MoneyAccountItem.add(MoneyAccountCategories_Id, MoneyAccountItems_Description, MoneyAccountItems_Amount);
+                Guid? MoneyAccountItems_Id = MoneyAccountItem.add(MoneyAccountCategoryAssignments_Id, MoneyAccountItems_Description, MoneyAccountItems_Amount);
                 if(MoneyAccountItems_Id != null)
                 {
                     log += string.Format(", Money Account Item {0} Amount: {1:N0}", new MoneyAccountItem((Guid)MoneyAccountItems_Id).No, MoneyAccountItems_Amount);

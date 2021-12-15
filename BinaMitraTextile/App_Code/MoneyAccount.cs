@@ -51,7 +51,7 @@ namespace BinaMitraTextile
                 "MoneyAccounts_add",
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
                 new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(Name)),
-                new SqlQueryParameter(COL_DB_Notes, SqlDbType.Bit, Util.wrapNullable(Notes))
+                new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(Notes))
             );
 
             if (!result.IsSuccessful)
@@ -97,7 +97,7 @@ namespace BinaMitraTextile
                     "MoneyAccounts_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
                     new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(Name)),
-                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.Bit, Util.wrapNullable(Notes))
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Util.wrapNullable(Notes))
                 );
 
                 if (result.IsSuccessful)

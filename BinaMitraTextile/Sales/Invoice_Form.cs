@@ -41,7 +41,7 @@ namespace BinaMitraTextile.Sales
             col_griditems_price.DataPropertyName = InventoryItem.COL_SALE_ADJUSTEDPRICE;
             col_grid_inventory_color_name.DataPropertyName = InventoryItem.COL_INVENTORYCOLORNAME;
 
-            MoneyAccountCategory.populateInputControlDropDownList(iddl_MoneyAccountCategories, MoneyAccount.getDefaultItem(), true);
+            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, MoneyAccount.getDefaultItem(), true);
             rbCash.Checked = true;
 
             iddl_PaymentMethods.populate(typeof(PaymentMethod));
@@ -346,8 +346,8 @@ namespace BinaMitraTextile.Sales
 
         private bool submit()
         {
-            if (!iddl_MoneyAccountCategories.hasSelectedValue())
-                return iddl_MoneyAccountCategories.SelectedValueError("Select Category");
+            if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
+                return iddl_MoneyAccountCategoryAssignments.SelectedValueError("Select Category");
             else if (!iddl_PaymentMethods.hasSelectedValue())
                 return iddl_PaymentMethods.SelectedValueError("Select Payment Method");
             else if (_sale.submitNew(_saleItems) != null)
@@ -371,7 +371,7 @@ namespace BinaMitraTextile.Sales
                     Guid? paymentId = Payment.add(_sale.id, (PaymentMethod)iddl_PaymentMethods.SelectedValue, paymentAmount, null);
                     if(paymentId != null)
                     {
-                        Guid? MoneyAccountItems_Id = MoneyAccountItem.add((Guid)iddl_MoneyAccountCategories.SelectedValue, string.Format("{0}", _sale.barcode), Convert.ToInt32(paymentAmount));
+                        Guid? MoneyAccountItems_Id = MoneyAccountItem.add((Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, string.Format("{0}", _sale.barcode), Convert.ToInt32(paymentAmount));
 
                         if (MoneyAccountItems_Id != null && isFullPayment)
                         {
@@ -421,19 +421,19 @@ namespace BinaMitraTextile.Sales
         private void rbTransfer_CheckedChanged(object sender, EventArgs e)
         {
             iddl_PaymentMethods.SelectedItem = PaymentMethod.Transfer;
-            iddl_MoneyAccountCategories.SelectedItemText = "Penjualan Non-Tunai";
+            iddl_MoneyAccountCategoryAssignments.SelectedItemText = "Penjualan Non-Tunai";
         }
 
         private void rbHutang_CheckedChanged(object sender, EventArgs e)
         {
             iddl_PaymentMethods.SelectedItem = PaymentMethod.Hutang;
-            iddl_MoneyAccountCategories.SelectedItemText = "Penjualan Non-Tunai";
+            iddl_MoneyAccountCategoryAssignments.SelectedItemText = "Penjualan Non-Tunai";
         }
 
         private void rbCash_CheckedChanged(object sender, EventArgs e)
         {
             iddl_PaymentMethods.SelectedItem = PaymentMethod.Cash;
-            iddl_MoneyAccountCategories.SelectedItemText = "Penjualan Tunai";
+            iddl_MoneyAccountCategoryAssignments.SelectedItemText = "Penjualan Tunai";
         }
 
         #endregion PRINT METHODS
