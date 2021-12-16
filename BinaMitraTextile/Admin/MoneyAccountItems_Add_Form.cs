@@ -44,7 +44,10 @@ namespace BinaMitraTextile.Admin
 
         private void setupControlsBasedOnRoles()
         {
-
+            if (GlobalData.UserAccount.role != Roles.Super)
+            {
+                col_grid_Approved.Visible = false;
+            }
         }
 
         private void setupControls()
@@ -54,17 +57,34 @@ namespace BinaMitraTextile.Admin
             MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true);
             MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
 
+            grid.AutoGenerateColumns = false;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_grid_Id.DataPropertyName = MoneyAccountItem.COL_DB_Id;
+            col_grid_No.DataPropertyName = MoneyAccountItem.COL_DB_No;
+            col_grid_MoneyAccounts_Name.DataPropertyName = MoneyAccountItem.COL_MoneyAccounts_Name;
+            col_grid_MoneyAccountCategories_Name.DataPropertyName = MoneyAccountItem.COL_MoneyAccountCategories_Name;
+            col_grid_Description.DataPropertyName = MoneyAccountItem.COL_DB_Description;
+            col_grid_Amount.DataPropertyName = MoneyAccountItem.COL_DB_Amount;
+            col_grid_Approved.DataPropertyName = MoneyAccountItem.COL_DB_Approved;
+
             iddl_MoneyAccounts.focus();
         }
 
         private void populatePageData()
         {
+            populateGrid();
+        }
+
+        private void populateGrid()
+        {
+            Util.populateDataGridView(grid, MoneyAccountItem.get_by_ReferenceId(_Id));
         }
 
         private void resetInputFields()
         {
-            itxt_ShippingExpenseNotes.ValueText = "";
-            in_ShippingExpense.Value = new Sale(_Id).ShippingExpense;
+            itxt_Description.ValueText = "";
+            in_Amount.Value = 0;
+            iddl_MoneyAccounts.focus();
         }
 
         #endregion METHODS
@@ -83,26 +103,39 @@ namespace BinaMitraTextile.Admin
             populatePageData();
         }
 
-        private void btnUpdateShippingExpense_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
+            if (!iddl_MoneyAccounts.hasSelectedValue())
+                iddl_MoneyAccounts.SelectedValueError("Select account");
+            else if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
                 iddl_MoneyAccountCategoryAssignments.SelectedValueError("Select category");
             else
             {
-                Sale.update_ShippingExpense(_Id, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
+                Sale.update_ShippingExpense(_Id, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, in_Amount.ValueInt, itxt_Description.ValueText);
+                resetInputFields();
+                populateGrid();
             }
         }
 
-        private void in_ShippingExpense_onKeyDown(object sender, KeyEventArgs e)
+        private void in_Amount_onKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
-                btnUpdateShippingExpense.PerformClick();
+                btnSubmit.PerformClick();
         }
 
         private void iddl_MoneyAccounts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_isFormShown)
                 MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Util.isColumnMatch(sender, e, col_grid_Approved))
+            {
+                MoneyAccountItem.update_Approved(Util.getSelectedRowID(sender, col_grid_Id), !(bool)Util.getClickedRowValue(sender, e));
+                populateGrid();
+            }
         }
 
         #endregion EVENT HANDLERS

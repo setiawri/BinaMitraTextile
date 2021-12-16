@@ -333,47 +333,28 @@ namespace BinaMitraTextile
 
         public static void update_ShippingExpense(Guid Id, Guid MoneyAccountCategoryAssignments_Id, int Amount, string Notes)
         {
-            Sale objOld = new Sale(Id);
-            string log = "";
-            log = ActivityLog.appendChange(log, objOld.ShippingExpense, Amount, "Shipping Expense: '{0}' to '{1}'");
+            Sale sale = new Sale(Id);
 
-            if (!string.IsNullOrEmpty(log))
-            {
-                int MoneyAccountItems_Amount = -1 * Amount;
-                string MoneyAccountItems_Description = string.Format("Expense for Invoice {0}", objOld.barcode);
+            int MoneyAccountItems_Amount = -1 * Amount;
+            string MoneyAccountItems_Description = string.Format("Expense for Invoice {0}", sale.barcode);
 
-                //if there is previous amount value, adjust amount so money account item is still correct.
-                if (objOld.ShippingExpense > 0)
-                {
-                    MoneyAccountItems_Amount += objOld.ShippingExpense;
-                    MoneyAccountItems_Description += string.Format(" (Update {0:N0} to {1:N0})", objOld.ShippingExpense, Amount);
-                }
+            //transport information
+            if(sale.TransportName != null)
+                MoneyAccountItems_Description += string.Format(", Angkutan {0}", sale.TransportName);
 
-                //transport information
-                if(objOld.TransportName != null)
-                    MoneyAccountItems_Description += string.Format(", Angkutan {0}", objOld.TransportName);
+            if (!string.IsNullOrWhiteSpace(Notes))
+                MoneyAccountItems_Description += ", " + Notes;
 
-                if (!string.IsNullOrWhiteSpace(Notes))
-                    MoneyAccountItems_Description += ", " + Notes;
+            MoneyAccountItem.add(MoneyAccountCategoryAssignments_Id, MoneyAccountItems_Description, MoneyAccountItems_Amount, Id);
 
-                Guid? MoneyAccountItems_Id = MoneyAccountItem.add(MoneyAccountCategoryAssignments_Id, MoneyAccountItems_Description, MoneyAccountItems_Amount);
-                if(MoneyAccountItems_Id != null)
-                {
-                    log += string.Format(", Money Account Item {0} Amount: {1:N0}", new MoneyAccountItem((Guid)MoneyAccountItems_Id).No, MoneyAccountItems_Amount);
-
-                    SqlQueryResult result = DBConnection.query(
-                        false,
-                        DBConnection.ActiveSqlConnection,
-                        QueryTypes.ExecuteNonQuery,
-                        "Sales_update_ShippingExpense",
-                        new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
-                        new SqlQueryParameter(COL_DB_ShippingExpense, SqlDbType.Int, Amount)
-                    );
-
-                    if (result.IsSuccessful)
-                        ActivityLog.submit(Id, String.Format("Updated: {0}", log));
-                }
-            }
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "Sales_update_ShippingExpense",
+                new SqlQueryParameter(COL_ID, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_ShippingExpense, SqlDbType.Int, sale.ShippingExpense + Amount)
+            );
         }
 
         public static bool update(Guid saleID, Guid? Customers_Id, Guid? Vendors_Id, DataTable saleItems, Guid? transportID, decimal shippingCost, string notes)

@@ -58,7 +58,7 @@ namespace BinaMitraTextile
             Balance = Util.wrapNullable<int>(row, COL_Balance);
         }
 
-        public static Guid? add(Guid MoneyAccountCategoryAssignments_Id, string Description, int Amount) { return add(MoneyAccountCategoryAssignments_Id, Description, Amount, false, null, null); }
+        public static Guid? add(Guid MoneyAccountCategoryAssignments_Id, string Description, int Amount, Guid? ReferenceId) { return add(MoneyAccountCategoryAssignments_Id, Description, Amount, false, ReferenceId, null); }
         public static Guid? add(Guid MoneyAccountCategoryAssignments_Id, string Description, 
             int Amount, bool Approved, Guid? ReferenceId, int? ReferenceEnumId)
         {
@@ -89,9 +89,10 @@ namespace BinaMitraTextile
             }
         }
 
-        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null, null, null, null)); }
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null, null, null, null, null)); }
+        public static DataTable get_by_ReferenceId(Guid ReferenceId) { return get(null, null, null, null, null, null, null, ReferenceId); }
         public static DataTable get(Guid? Id, Guid? MoneyAccounts_Id, Guid? MoneyAccountCategories_Id, Guid? MoneyAccountCategoryAssignments_Id, 
-            bool? Approved, DateTime? Timestamp_Start, DateTime? Timestamp_End)
+            bool? Approved, DateTime? Timestamp_Start, DateTime? Timestamp_End, Guid? ReferenceId)
         {
             if(MoneyAccountCategoryAssignments_Id != null)
             {
@@ -108,6 +109,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
                 new SqlQueryParameter(COL_DB_MoneyAccounts_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(MoneyAccounts_Id)),
                 new SqlQueryParameter(COL_DB_MoneyAccountCategories_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(MoneyAccountCategories_Id)),
+                new SqlQueryParameter(COL_DB_ReferenceId, SqlDbType.UniqueIdentifier, Util.wrapNullable(ReferenceId)),
                 new SqlQueryParameter(COL_DB_Approved, SqlDbType.Bit, Util.wrapNullable(Approved)),
                 new SqlQueryParameter(FILTER_Timestamp_Start, SqlDbType.DateTime, Util.wrapNullable(Timestamp_Start)),
                 new SqlQueryParameter(FILTER_Timestamp_End, SqlDbType.DateTime, Util.wrapNullable(Timestamp_End))

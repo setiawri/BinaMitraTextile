@@ -371,7 +371,7 @@ namespace BinaMitraTextile.Sales
                     Guid? paymentId = Payment.add(_sale.id, (PaymentMethod)iddl_PaymentMethods.SelectedValue, paymentAmount, null);
                     if(paymentId != null)
                     {
-                        Guid? MoneyAccountItems_Id = MoneyAccountItem.add((Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, string.Format("{0}", _sale.barcode), Convert.ToInt32(paymentAmount));
+                        Guid? MoneyAccountItems_Id = MoneyAccountItem.add((Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, string.Format("{0}", _sale.barcode), Convert.ToInt32(paymentAmount), _sale.id);
 
                         if (MoneyAccountItems_Id != null && isFullPayment)
                         {
