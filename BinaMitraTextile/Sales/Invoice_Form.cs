@@ -263,22 +263,7 @@ namespace BinaMitraTextile.Sales
             calculateChange();
         }
 
-        private void rbCash1_CheckedChanged(object sender, EventArgs e)
-        {
-            selectPaymentAmount(sender);
-        }
-
-        private void rbCash2_CheckedChanged(object sender, EventArgs e)
-        {
-            selectPaymentAmount(sender);
-        }
-
-        private void rbCash3_CheckedChanged(object sender, EventArgs e)
-        {
-            selectPaymentAmount(sender);
-        }
-
-        private void rbCash4_CheckedChanged(object sender, EventArgs e)
+        private void rbCashAmount_CheckedChanged(object sender, EventArgs e)
         {
             selectPaymentAmount(sender);
         }
