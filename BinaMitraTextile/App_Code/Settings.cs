@@ -57,6 +57,11 @@ namespace BinaMitraTextile
         private static Guid GUID_OffsetX = new Guid("6BA57BBD-DC44-4295-88C0-47292C1D8B26");
         private static Guid GUID_OffsetY = new Guid("9630BE8A-01A3-4363-9E63-2DF17DB2339C");
 
+        //Sale Payment
+        private static Guid GUID_SalePayment_MoneyAccounts_Id = new Guid("388DD793-937D-44E6-AB53-F7ED79B264BC");
+        private static Guid GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash = new Guid("C17F446E-0DD6-4A55-B4E2-43235182E590");
+        private static Guid GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe = new Guid("8493D84B-F1CA-4155-BF31-31A692C42BF7");
+
         //sql connection
         private static Guid GUID_LastConnectedPortNo = new Guid("06AFBB4E-F66B-42A0-96A7-0B5705629248");
 
@@ -150,6 +155,31 @@ namespace BinaMitraTextile
         {
             get { return (ConnectionPorts)Enum.Parse(typeof(ConnectionPorts), Util.getAppData(GUID_LastConnectedPortNo.ToString())); }
             set { Util.saveAppData(GUID_LastConnectedPortNo.ToString(), value.ToString()); }
+        }
+
+        /*******************************************************************************************************
+         * SALE PAYMENT
+         *******************************************************************************************************/
+
+        /// <summary><para></para></summary>
+        public static Guid? SalePayment_MoneyAccounts_Id
+        {
+            get { return getGuidValue(GUID_SalePayment_MoneyAccounts_Id); }
+            set { update(GUID_SalePayment_MoneyAccounts_Id, value); }
+        }
+
+        /// <summary><para></para></summary>
+        public static Guid? SalePayment_MoneyAccountCategoryAssignments_Id_Cash
+        {
+            get { return getGuidValue(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash); }
+            set { update(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash, value); }
+        }
+
+        /// <summary><para></para></summary>
+        public static Guid? SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe
+        {
+            get { return getGuidValue(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe); }
+            set { update(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe, value); }
         }
 
         #endregion PUBLIC VARIABLES

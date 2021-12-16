@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnEdit = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
             this.dataGridViewLinkColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,41 +73,30 @@
             this.chkHidePrices = new System.Windows.Forms.CheckBox();
             this.btnPayment = new System.Windows.Forms.Button();
             this.pnlSubmit1 = new System.Windows.Forms.Panel();
-            this.iddl_MoneyAccountCategoryAssignments = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
-            this.rbHutang = new System.Windows.Forms.RadioButton();
-            this.rbTransfer = new System.Windows.Forms.RadioButton();
+            this.rbTransferHutang = new System.Windows.Forms.RadioButton();
             this.rbCash = new System.Windows.Forms.RadioButton();
-            this.iddl_PaymentMethods = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.txtPaymentAmount = new System.Windows.Forms.TextBox();
-            this.rbCash4 = new System.Windows.Forms.RadioButton();
             this.rbCash3 = new System.Windows.Forms.RadioButton();
             this.rbCash2 = new System.Windows.Forms.RadioButton();
             this.rbCash1 = new System.Windows.Forms.RadioButton();
             this.chkShowPrintDialog = new System.Windows.Forms.CheckBox();
             this.chkPrintAllPages = new System.Windows.Forms.CheckBox();
+            this.rbCash4 = new System.Windows.Forms.RadioButton();
             this.pnlSubmit2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pnlPrintButtons = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.pnlPrint.SuspendLayout();
             this.pnlSubmit1.SuspendLayout();
             this.pnlSubmit2.SuspendLayout();
+            this.pnlPrintButtons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(5, 548);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(64, 28);
-            this.btnEdit.TabIndex = 0;
-            this.btnEdit.Text = "EDIT";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(404, 0);
+            this.btnSubmit.Location = new System.Drawing.Point(177, 3);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(80, 28);
@@ -124,14 +112,14 @@
             this.grid.AllowUserToResizeRows = false;
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewLinkColumn2,
@@ -178,8 +166,8 @@
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "product_width_name";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridViewTextBoxColumn2.HeaderText = "Lebar (cm)";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 40;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -190,8 +178,8 @@
             // 
             this.Grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.Grade.DataPropertyName = "grade_name";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Grade.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Grade.DefaultCellStyle = dataGridViewCellStyle30;
             this.Grade.HeaderText = "Grade";
             this.Grade.MinimumWidth = 50;
             this.Grade.Name = "Grade";
@@ -201,8 +189,8 @@
             // col_grid_inventory_color_name
             // 
             this.col_grid_inventory_color_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_inventory_color_name.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_inventory_color_name.DefaultCellStyle = dataGridViewCellStyle31;
             this.col_grid_inventory_color_name.HeaderText = "Warna";
             this.col_grid_inventory_color_name.MinimumWidth = 50;
             this.col_grid_inventory_color_name.Name = "col_grid_inventory_color_name";
@@ -213,8 +201,8 @@
             // 
             this.qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.qty.DataPropertyName = "qty";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle32;
             this.qty.HeaderText = "Pcs";
             this.qty.MinimumWidth = 30;
             this.qty.Name = "qty";
@@ -225,8 +213,8 @@
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "item_length";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridViewTextBoxColumn3.HeaderText = "Qty";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 50;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -237,8 +225,8 @@
             // 
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "length_unit_name";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle34;
             this.dataGridViewTextBoxColumn4.HeaderText = "Unit";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 30;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -248,9 +236,9 @@
             // col_griditems_price
             // 
             this.col_griditems_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            this.col_griditems_price.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle35.Format = "N2";
+            this.col_griditems_price.DefaultCellStyle = dataGridViewCellStyle35;
             this.col_griditems_price.HeaderText = "Harga";
             this.col_griditems_price.MinimumWidth = 50;
             this.col_griditems_price.Name = "col_griditems_price";
@@ -261,10 +249,10 @@
             // 
             this.col_griditems_subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_griditems_subtotal.DataPropertyName = "subtotal";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.col_griditems_subtotal.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle36.Format = "N2";
+            dataGridViewCellStyle36.NullValue = null;
+            this.col_griditems_subtotal.DefaultCellStyle = dataGridViewCellStyle36;
             this.col_griditems_subtotal.HeaderText = "Subtotal";
             this.col_griditems_subtotal.MinimumWidth = 50;
             this.col_griditems_subtotal.Name = "col_griditems_subtotal";
@@ -463,8 +451,9 @@
             // 
             // btnPackingList
             // 
+            this.btnPackingList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPackingList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPackingList.Location = new System.Drawing.Point(596, 547);
+            this.btnPackingList.Location = new System.Drawing.Point(104, 32);
             this.btnPackingList.Margin = new System.Windows.Forms.Padding(2);
             this.btnPackingList.Name = "btnPackingList";
             this.btnPackingList.Size = new System.Drawing.Size(132, 28);
@@ -475,8 +464,9 @@
             // 
             // btnNext
             // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(702, 514);
+            this.btnNext.Location = new System.Drawing.Point(210, 2);
             this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(26, 28);
@@ -487,8 +477,9 @@
             // 
             // btnPrevious
             // 
+            this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevious.Location = new System.Drawing.Point(596, 514);
+            this.btnPrevious.Location = new System.Drawing.Point(104, 2);
             this.btnPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(26, 28);
@@ -499,8 +490,9 @@
             // 
             // btnPrint
             // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(626, 514);
+            this.btnPrint.Location = new System.Drawing.Point(134, 2);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(72, 28);
@@ -512,7 +504,7 @@
             // btnAddNotes
             // 
             this.btnAddNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNotes.Location = new System.Drawing.Point(72, 548);
+            this.btnAddNotes.Location = new System.Drawing.Point(5, 547);
             this.btnAddNotes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNotes.Name = "btnAddNotes";
             this.btnAddNotes.Size = new System.Drawing.Size(111, 28);
@@ -523,8 +515,9 @@
             // 
             // chkHidePrices
             // 
+            this.chkHidePrices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkHidePrices.AutoSize = true;
-            this.chkHidePrices.Location = new System.Drawing.Point(493, 515);
+            this.chkHidePrices.Location = new System.Drawing.Point(5, 3);
             this.chkHidePrices.Name = "chkHidePrices";
             this.chkHidePrices.Size = new System.Drawing.Size(102, 17);
             this.chkHidePrices.TabIndex = 3;
@@ -535,7 +528,7 @@
             // btnPayment
             // 
             this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.Location = new System.Drawing.Point(187, 548);
+            this.btnPayment.Location = new System.Drawing.Point(120, 547);
             this.btnPayment.Margin = new System.Windows.Forms.Padding(2);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(106, 28);
@@ -546,55 +539,27 @@
             // 
             // pnlSubmit1
             // 
-            this.pnlSubmit1.Controls.Add(this.iddl_MoneyAccountCategoryAssignments);
-            this.pnlSubmit1.Controls.Add(this.rbHutang);
-            this.pnlSubmit1.Controls.Add(this.rbTransfer);
+            this.pnlSubmit1.Controls.Add(this.rbCash4);
+            this.pnlSubmit1.Controls.Add(this.rbTransferHutang);
+            this.pnlSubmit1.Controls.Add(this.rbCash3);
             this.pnlSubmit1.Controls.Add(this.rbCash);
-            this.pnlSubmit1.Controls.Add(this.iddl_PaymentMethods);
-            this.pnlSubmit1.Controls.Add(this.txtPaymentAmount);
-            this.pnlSubmit1.Controls.Add(this.btnSubmit);
+            this.pnlSubmit1.Controls.Add(this.rbCash2);
+            this.pnlSubmit1.Controls.Add(this.rbCash1);
             this.pnlSubmit1.Location = new System.Drawing.Point(5, 515);
             this.pnlSubmit1.Name = "pnlSubmit1";
             this.pnlSubmit1.Size = new System.Drawing.Size(486, 28);
             this.pnlSubmit1.TabIndex = 2;
             // 
-            // iddl_MoneyAccountCategoryAssignments
+            // rbTransferHutang
             // 
-            this.iddl_MoneyAccountCategoryAssignments.DisableTextInput = false;
-            this.iddl_MoneyAccountCategoryAssignments.HideFilter = true;
-            this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = false;
-            this.iddl_MoneyAccountCategoryAssignments.LabelText = "dropdownlist";
-            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(141, 4);
-            this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
-            this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
-            this.iddl_MoneyAccountCategoryAssignments.SelectedItem = null;
-            this.iddl_MoneyAccountCategoryAssignments.SelectedItemText = "";
-            this.iddl_MoneyAccountCategoryAssignments.SelectedValue = null;
-            this.iddl_MoneyAccountCategoryAssignments.ShowDropdownlistOnly = true;
-            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(131, 22);
-            this.iddl_MoneyAccountCategoryAssignments.TabIndex = 1002;
-            // 
-            // rbHutang
-            // 
-            this.rbHutang.AutoSize = true;
-            this.rbHutang.Location = new System.Drawing.Point(88, 6);
-            this.rbHutang.Name = "rbHutang";
-            this.rbHutang.Size = new System.Drawing.Size(47, 17);
-            this.rbHutang.TabIndex = 1001;
-            this.rbHutang.Text = "Owe";
-            this.rbHutang.UseVisualStyleBackColor = true;
-            this.rbHutang.CheckedChanged += new System.EventHandler(this.rbHutang_CheckedChanged);
-            // 
-            // rbTransfer
-            // 
-            this.rbTransfer.AutoSize = true;
-            this.rbTransfer.Location = new System.Drawing.Point(50, 6);
-            this.rbTransfer.Name = "rbTransfer";
-            this.rbTransfer.Size = new System.Drawing.Size(38, 17);
-            this.rbTransfer.TabIndex = 1000;
-            this.rbTransfer.Text = "TF";
-            this.rbTransfer.UseVisualStyleBackColor = true;
-            this.rbTransfer.CheckedChanged += new System.EventHandler(this.rbTransfer_CheckedChanged);
+            this.rbTransferHutang.AutoSize = true;
+            this.rbTransferHutang.Location = new System.Drawing.Point(48, 6);
+            this.rbTransferHutang.Name = "rbTransferHutang";
+            this.rbTransferHutang.Size = new System.Drawing.Size(84, 17);
+            this.rbTransferHutang.TabIndex = 1000;
+            this.rbTransferHutang.Text = "TF / Hutang";
+            this.rbTransferHutang.UseVisualStyleBackColor = true;
+            this.rbTransferHutang.CheckedChanged += new System.EventHandler(this.rbTransferHutang_CheckedChanged);
             // 
             // rbCash
             // 
@@ -607,46 +572,21 @@
             this.rbCash.UseVisualStyleBackColor = true;
             this.rbCash.CheckedChanged += new System.EventHandler(this.rbCash_CheckedChanged);
             // 
-            // iddl_PaymentMethods
-            // 
-            this.iddl_PaymentMethods.DisableTextInput = false;
-            this.iddl_PaymentMethods.HideFilter = true;
-            this.iddl_PaymentMethods.HideUpdateLink = false;
-            this.iddl_PaymentMethods.LabelText = "dropdownlist";
-            this.iddl_PaymentMethods.Location = new System.Drawing.Point(274, 4);
-            this.iddl_PaymentMethods.Name = "iddl_PaymentMethods";
-            this.iddl_PaymentMethods.SelectedIndex = -1;
-            this.iddl_PaymentMethods.SelectedItem = null;
-            this.iddl_PaymentMethods.SelectedItemText = "";
-            this.iddl_PaymentMethods.SelectedValue = null;
-            this.iddl_PaymentMethods.ShowDropdownlistOnly = true;
-            this.iddl_PaymentMethods.Size = new System.Drawing.Size(61, 22);
-            this.iddl_PaymentMethods.TabIndex = 161;
-            // 
             // txtPaymentAmount
             // 
-            this.txtPaymentAmount.Location = new System.Drawing.Point(337, 5);
+            this.txtPaymentAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPaymentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaymentAmount.Location = new System.Drawing.Point(50, 4);
             this.txtPaymentAmount.Name = "txtPaymentAmount";
-            this.txtPaymentAmount.Size = new System.Drawing.Size(66, 20);
+            this.txtPaymentAmount.Size = new System.Drawing.Size(122, 26);
             this.txtPaymentAmount.TabIndex = 2;
             this.txtPaymentAmount.Click += new System.EventHandler(this.txtPaymentAmount_Click);
             this.txtPaymentAmount.TextChanged += new System.EventHandler(this.txtPaymentAmount_TextChanged);
             // 
-            // rbCash4
-            // 
-            this.rbCash4.AutoSize = true;
-            this.rbCash4.Location = new System.Drawing.Point(91, 20);
-            this.rbCash4.Name = "rbCash4";
-            this.rbCash4.Size = new System.Drawing.Size(64, 17);
-            this.rbCash4.TabIndex = 999;
-            this.rbCash4.Text = "rbCash4";
-            this.rbCash4.UseVisualStyleBackColor = true;
-            this.rbCash4.CheckedChanged += new System.EventHandler(this.rbCash4_CheckedChanged);
-            // 
             // rbCash3
             // 
             this.rbCash3.AutoSize = true;
-            this.rbCash3.Location = new System.Drawing.Point(91, 3);
+            this.rbCash3.Location = new System.Drawing.Point(312, 6);
             this.rbCash3.Name = "rbCash3";
             this.rbCash3.Size = new System.Drawing.Size(64, 17);
             this.rbCash3.TabIndex = 999;
@@ -657,7 +597,7 @@
             // rbCash2
             // 
             this.rbCash2.AutoSize = true;
-            this.rbCash2.Location = new System.Drawing.Point(3, 20);
+            this.rbCash2.Location = new System.Drawing.Point(226, 6);
             this.rbCash2.Name = "rbCash2";
             this.rbCash2.Size = new System.Drawing.Size(64, 17);
             this.rbCash2.TabIndex = 999;
@@ -668,7 +608,7 @@
             // rbCash1
             // 
             this.rbCash1.AutoSize = true;
-            this.rbCash1.Location = new System.Drawing.Point(3, 3);
+            this.rbCash1.Location = new System.Drawing.Point(140, 6);
             this.rbCash1.Name = "rbCash1";
             this.rbCash1.Size = new System.Drawing.Size(64, 17);
             this.rbCash1.TabIndex = 999;
@@ -678,8 +618,9 @@
             // 
             // chkShowPrintDialog
             // 
+            this.chkShowPrintDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowPrintDialog.AutoSize = true;
-            this.chkShowPrintDialog.Location = new System.Drawing.Point(493, 531);
+            this.chkShowPrintDialog.Location = new System.Drawing.Point(5, 21);
             this.chkShowPrintDialog.Name = "chkShowPrintDialog";
             this.chkShowPrintDialog.Size = new System.Drawing.Size(77, 17);
             this.chkShowPrintDialog.TabIndex = 111;
@@ -688,26 +629,61 @@
             // 
             // chkPrintAllPages
             // 
+            this.chkPrintAllPages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPrintAllPages.AutoSize = true;
             this.chkPrintAllPages.Checked = true;
             this.chkPrintAllPages.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPrintAllPages.Location = new System.Drawing.Point(493, 547);
+            this.chkPrintAllPages.Location = new System.Drawing.Point(5, 39);
             this.chkPrintAllPages.Name = "chkPrintAllPages";
             this.chkPrintAllPages.Size = new System.Drawing.Size(59, 17);
             this.chkPrintAllPages.TabIndex = 151;
             this.chkPrintAllPages.Text = "print all";
             this.chkPrintAllPages.UseVisualStyleBackColor = true;
             // 
+            // rbCash4
+            // 
+            this.rbCash4.AutoSize = true;
+            this.rbCash4.Location = new System.Drawing.Point(398, 6);
+            this.rbCash4.Name = "rbCash4";
+            this.rbCash4.Size = new System.Drawing.Size(64, 17);
+            this.rbCash4.TabIndex = 1004;
+            this.rbCash4.Text = "rbCash4";
+            this.rbCash4.UseVisualStyleBackColor = true;
+            this.rbCash4.CheckedChanged += new System.EventHandler(this.rbCash_CheckedChanged);
+            // 
             // pnlSubmit2
             // 
-            this.pnlSubmit2.Controls.Add(this.rbCash4);
-            this.pnlSubmit2.Controls.Add(this.rbCash3);
-            this.pnlSubmit2.Controls.Add(this.rbCash1);
-            this.pnlSubmit2.Controls.Add(this.rbCash2);
-            this.pnlSubmit2.Location = new System.Drawing.Point(298, 546);
+            this.pnlSubmit2.Controls.Add(this.label3);
+            this.pnlSubmit2.Controls.Add(this.txtPaymentAmount);
+            this.pnlSubmit2.Controls.Add(this.btnSubmit);
+            this.pnlSubmit2.Location = new System.Drawing.Point(231, 544);
             this.pnlSubmit2.Name = "pnlSubmit2";
-            this.pnlSubmit2.Size = new System.Drawing.Size(189, 42);
-            this.pnlSubmit2.TabIndex = 161;
+            this.pnlSubmit2.Size = new System.Drawing.Size(260, 34);
+            this.pnlSubmit2.TabIndex = 163;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "PAY";
+            // 
+            // pnlPrintButtons
+            // 
+            this.pnlPrintButtons.Controls.Add(this.btnPrevious);
+            this.pnlPrintButtons.Controls.Add(this.btnNext);
+            this.pnlPrintButtons.Controls.Add(this.chkPrintAllPages);
+            this.pnlPrintButtons.Controls.Add(this.chkHidePrices);
+            this.pnlPrintButtons.Controls.Add(this.chkShowPrintDialog);
+            this.pnlPrintButtons.Controls.Add(this.btnPrint);
+            this.pnlPrintButtons.Controls.Add(this.btnPackingList);
+            this.pnlPrintButtons.Location = new System.Drawing.Point(490, 515);
+            this.pnlPrintButtons.Name = "pnlPrintButtons";
+            this.pnlPrintButtons.Size = new System.Drawing.Size(238, 63);
+            this.pnlPrintButtons.TabIndex = 162;
             // 
             // Invoice_Form
             // 
@@ -715,17 +691,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(734, 585);
+            this.Controls.Add(this.pnlPrintButtons);
             this.Controls.Add(this.pnlSubmit2);
-            this.Controls.Add(this.chkPrintAllPages);
-            this.Controls.Add(this.chkShowPrintDialog);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.btnAddNotes);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.chkHidePrices);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnPackingList);
-            this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pnlPrint);
             this.Controls.Add(this.pnlSubmit1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -739,14 +708,13 @@
             this.pnlSubmit1.PerformLayout();
             this.pnlSubmit2.ResumeLayout(false);
             this.pnlSubmit2.PerformLayout();
+            this.pnlPrintButtons.ResumeLayout(false);
+            this.pnlPrintButtons.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.Panel pnlPrint;
@@ -786,15 +754,14 @@
         private System.Windows.Forms.CheckBox chkPrintAllPages;
         private System.Windows.Forms.RadioButton rbCash2;
         private System.Windows.Forms.RadioButton rbCash1;
-        private System.Windows.Forms.RadioButton rbCash4;
         private System.Windows.Forms.RadioButton rbCash3;
         private System.Windows.Forms.Label lblPayment;
-        private System.Windows.Forms.Panel pnlSubmit2;
-        private System.Windows.Forms.RadioButton rbTransfer;
-        private System.Windows.Forms.RadioButton rbHutang;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategoryAssignments;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_PaymentMethods;
+        private System.Windows.Forms.RadioButton rbTransferHutang;
         private System.Windows.Forms.RadioButton rbCash;
         private System.Windows.Forms.Label lblDisclaimer;
+        private System.Windows.Forms.RadioButton rbCash4;
+        private System.Windows.Forms.Panel pnlSubmit2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel pnlPrintButtons;
     }
 }
