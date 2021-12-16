@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using LIBUtil;
@@ -45,9 +40,6 @@ namespace BinaMitraTextile.Sales
             clearFilter();
             txtSaleBarcode.MaxLength = Settings.saleBarcodeLength;
             txtInventoryItemBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
-
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true);
-            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
 
             gridMaster.AutoGenerateColumns = false;
             gridMaster.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -369,10 +361,8 @@ namespace BinaMitraTextile.Sales
             }
             else if(Util.isColumnMatch(sender, e, col_gridMaster_ShippingExpense))
             {
-                pnlUpdateShippingExpense.Visible = true;
-                itxt_ShippingExpenseNotes.ValueText = "";
-                in_ShippingExpense.Value = new Sale(selectedRowID()).ShippingExpense;
-                iddl_MoneyAccounts.focus();
+                Util.displayForm(new Admin.MoneyAccountItems_Add_Form(selectedRowID()));
+                populateMasterGrid();
             }
             else
             {
@@ -454,41 +444,6 @@ namespace BinaMitraTextile.Sales
         private void pbRefresh_Click(object sender, EventArgs e)
         {
             populateMasterGrid();
-        }
-
-        private void btnCancelUpdateBuyPrice_Click(object sender, EventArgs e)
-        {
-            pnlUpdateShippingExpense.Visible = false;
-        }
-
-        private void btnUpdateShippingExpense_Click(object sender, EventArgs e)
-        {
-            if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
-                iddl_MoneyAccountCategoryAssignments.SelectedValueError("Select category");
-            else
-            {
-                Sale.update_ShippingExpense(selectedRowID(), (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, in_ShippingExpense.ValueInt, itxt_ShippingExpenseNotes.ValueText);
-                pnlUpdateShippingExpense.Visible = false;
-                populateMasterGrid();
-            }
-        }
-
-        private void in_ShippingExpense_onKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-                btnUpdateShippingExpense.PerformClick();
-        }
-
-        private void itxt_ShippingExpenseNotes_onKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-                btnUpdateShippingExpense.PerformClick();
-        }
-
-        private void iddl_MoneyAccounts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(_isFormShown)
-                MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
         }
 
         #endregion FORM METHODS
