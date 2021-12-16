@@ -97,7 +97,7 @@ namespace BinaMitraTextile.Admin
         protected override System.Data.DataView loadGridviewDataSource()
         {
             if (Mode == FormModes.Add)
-                return MoneyAccountItem.get(null, null, null, null, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
+                return MoneyAccountItem.get(null, (Guid)iddl_MoneyAccounts.SelectedValue, null, null, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
             else
                 return MoneyAccountItem.get(null, null, null, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
         }
@@ -154,7 +154,6 @@ namespace BinaMitraTextile.Admin
 
         private void btnApplyFilter_Click(object sender, EventArgs e)
         {
-            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
             populateGridViewDataSource(true);
         }
 
@@ -169,6 +168,12 @@ namespace BinaMitraTextile.Admin
                 balance = (int)Util.zeroNonNumericString(Util.getRowValue(dgv.Rows[0], col_dgv_Balance));
 
             Util.displayForm(new Admin.Calculator_Form(balance));
+        }
+
+        private void iddl_MoneyAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(isFormShown)
+                MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
         }
 
         #endregion EVENT HANDLERS

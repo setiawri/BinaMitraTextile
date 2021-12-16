@@ -237,6 +237,7 @@
             this.iddl_MoneyAccounts.ShowDropdownlistOnly = true;
             this.iddl_MoneyAccounts.Size = new System.Drawing.Size(104, 22);
             this.iddl_MoneyAccounts.TabIndex = 4;
+            this.iddl_MoneyAccounts.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccounts_SelectedIndexChanged);
             // 
             // label2
             // 

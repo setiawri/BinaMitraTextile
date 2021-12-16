@@ -45,8 +45,9 @@ namespace BinaMitraTextile.Sales
             clearFilter();
             txtSaleBarcode.MaxLength = Settings.saleBarcodeLength;
             txtInventoryItemBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
-            
-            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, MoneyAccount.getDefaultItem(), true);
+
+            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true);
+            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
 
             gridMaster.AutoGenerateColumns = false;
             gridMaster.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -371,7 +372,7 @@ namespace BinaMitraTextile.Sales
                 pnlUpdateShippingExpense.Visible = true;
                 itxt_ShippingExpenseNotes.ValueText = "";
                 in_ShippingExpense.Value = new Sale(selectedRowID()).ShippingExpense;
-                iddl_MoneyAccountCategoryAssignments.focus();
+                iddl_MoneyAccounts.focus();
             }
             else
             {
@@ -482,6 +483,12 @@ namespace BinaMitraTextile.Sales
         {
             if (e.KeyData == Keys.Enter)
                 btnUpdateShippingExpense.PerformClick();
+        }
+
+        private void iddl_MoneyAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(_isFormShown)
+                MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
         }
 
         #endregion FORM METHODS
