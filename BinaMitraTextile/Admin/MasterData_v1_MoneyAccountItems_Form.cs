@@ -52,7 +52,7 @@ namespace BinaMitraTextile.Admin
             idtp_Timestamp_End.Checked = false;
             InputToDisableOnSearch.Add(in_Amount);
 
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true);
+            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true, GlobalData.UserAccount.role != Roles.User);
             MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
             col_dgv_Checkbox1.HeaderText = "OK";
 
@@ -173,6 +173,12 @@ namespace BinaMitraTextile.Admin
         {
             if(isFormShown)
                 MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
+        }
+
+        private void btnTransfer_Click(object sender, EventArgs e)
+        {
+            Util.displayForm(new Admin.MoneyAccountItems_Transfer_Form((Guid)iddl_MoneyAccounts.SelectedValue));
+            populateGridViewDataSource(true);
         }
 
         #endregion EVENT HANDLERS

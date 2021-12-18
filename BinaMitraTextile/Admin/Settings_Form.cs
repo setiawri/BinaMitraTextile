@@ -42,7 +42,7 @@ namespace BinaMitraTextile.Admin
         {
             Settings.setGeneralSettings(this);
 
-            MoneyAccount.populateInputControlDropDownList(iddl_SalePayment_MoneyAccounts, true);
+            MoneyAccount.populateInputControlDropDownList(iddl_SalePayment_MoneyAccounts, true, null);
             iddl_SalePayment_MoneyAccounts.SelectedValue = Settings.SalePayment_MoneyAccounts_Id;
             if (iddl_SalePayment_MoneyAccounts.hasSelectedValue())
             {

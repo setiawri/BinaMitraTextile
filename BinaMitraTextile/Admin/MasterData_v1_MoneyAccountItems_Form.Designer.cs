@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnApplyFilter = new System.Windows.Forms.Button();
             this.pbCalculator = new System.Windows.Forms.PictureBox();
+            this.btnTransfer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -111,7 +112,13 @@
             // 
             // pnlButtons
             // 
+            this.pnlButtons.Controls.Add(this.btnTransfer);
             this.pnlButtons.Size = new System.Drawing.Size(784, 26);
+            this.pnlButtons.Controls.SetChildIndex(this.btnSearch, 0);
+            this.pnlButtons.Controls.SetChildIndex(this.btnUpdate, 0);
+            this.pnlButtons.Controls.SetChildIndex(this.btnLog, 0);
+            this.pnlButtons.Controls.SetChildIndex(this.btnAdd, 0);
+            this.pnlButtons.Controls.SetChildIndex(this.btnTransfer, 0);
             // 
             // scInputContainer
             // 
@@ -330,6 +337,17 @@
             this.pbCalculator.TabStop = false;
             this.pbCalculator.Click += new System.EventHandler(this.pbCalculator_Click);
             // 
+            // btnTransfer
+            // 
+            this.btnTransfer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTransfer.Location = new System.Drawing.Point(696, 2);
+            this.btnTransfer.Name = "btnTransfer";
+            this.btnTransfer.Size = new System.Drawing.Size(85, 23);
+            this.btnTransfer.TabIndex = 125;
+            this.btnTransfer.Text = "TRANSFER";
+            this.btnTransfer.UseVisualStyleBackColor = true;
+            this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
+            // 
             // MasterData_v1_MoneyAccountItems_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,5 +394,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_End;
         private System.Windows.Forms.Button btnApplyFilter;
         private System.Windows.Forms.PictureBox pbCalculator;
+        private System.Windows.Forms.Button btnTransfer;
     }
 }

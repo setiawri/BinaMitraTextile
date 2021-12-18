@@ -34,7 +34,7 @@ namespace BinaMitraTextile
 
         public static Guid getDefaultItem()
         {
-            DataRow row = Util.getFirstRow(get(null, null, null, true));
+            DataRow row = Util.getFirstRow(get(null, null, null, true, null));
             if (row != null)
                 return Util.wrapNullable<Guid>(row, COL_DB_Id);
             else
@@ -66,13 +66,9 @@ namespace BinaMitraTextile
             }
         }
 
-        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null)); }
-        public static DataTable get(Guid? Id, string Name, bool? Active, bool? Default)
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null, null)); }
+        public static DataTable get(Guid? Id, string Name, bool? Active, bool? Default, bool? UserRoleRestriction)
         {
-            bool? UserRoleRestriction = null;
-            if (GlobalData.UserAccount.role == Roles.User)
-                UserRoleRestriction = false;
-
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
@@ -171,14 +167,14 @@ namespace BinaMitraTextile
             return result.ValueBoolean;
         }
 
-        public static void populateCheckedListBox(LIBUtil.Desktop.UserControls.InputControl_CheckedListBox checkedlistbox, bool? Active)
+        public static void populateCheckedListBox(LIBUtil.Desktop.UserControls.InputControl_CheckedListBox checkedlistbox, bool? Active, bool? UserRoleRestriction)
         {
-            checkedlistbox.populate(get(null, null, Active, null).DefaultView, COL_DB_Name, COL_DB_Id);
+            checkedlistbox.populate(get(null, null, Active, null, UserRoleRestriction).DefaultView, COL_DB_Name, COL_DB_Id);
         }
 
-        public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool? Active)
+        public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool? Active, bool? UserRoleRestriction)
         {
-            control.populate(get(null, null, Active, null).DefaultView, COL_DB_Name, COL_DB_Id, COL_DB_Default);
+            control.populate(get(null, null, Active, null, UserRoleRestriction).DefaultView, COL_DB_Name, COL_DB_Id, COL_DB_Default);
         }
 
     }

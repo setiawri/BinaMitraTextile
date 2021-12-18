@@ -81,6 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\MoneyAccountItems_Transfer_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\MoneyAccountItems_Transfer_Form.Designer.cs">
+      <DependentUpon>MoneyAccountItems_Transfer_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\MoneyAccountItems_Add_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -645,6 +651,9 @@
     <Compile Include="Users\SaleComissions_Form.Designer.cs">
       <DependentUpon>SaleComissions_Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\MoneyAccountItems_Transfer_Form.resx">
+      <DependentUpon>MoneyAccountItems_Transfer_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\MoneyAccountItems_Add_Form.resx">
       <DependentUpon>MoneyAccountItems_Add_Form.cs</DependentUpon>
     </EmbeddedResource>

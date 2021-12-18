@@ -54,7 +54,7 @@ namespace BinaMitraTextile.Admin
         {
             Settings.setGeneralSettings(this);
 
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true);
+            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true, GlobalData.UserAccount.role != Roles.User);
             MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
 
             grid.AutoGenerateColumns = false;
