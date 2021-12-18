@@ -170,7 +170,7 @@ namespace BinaMitraTextile
             logDescription = ActivityLog.appendChange(logDescription, objOld.DefaultTransportName, new Transport(defaultTransportID).Name, "Angkutan: '{0}' to '{1}'");
             if (objOld.Phone1 != phone1) logDescription = Tools.append(logDescription, String.Format("Phone 1: '{0}' to '{1}'", objOld.Phone1, phone1), ",");
             if (objOld.Phone2 != phone2) logDescription = Tools.append(logDescription, String.Format("Phone 2: '{0}' to '{1}'", objOld.Phone2, phone2), ",");
-            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
             logDescription = ActivityLog.appendChange(logDescription, objOld.SalesUserName, new UserAccount(salesUserID).name, "Sales: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))

@@ -168,7 +168,7 @@ namespace BinaMitraTextile
             if (objOld.role != role) logDescription = Tools.append(logDescription, String.Format("Role: '{0}' to '{1}'", objOld.role, role), ",");
             if (objOld.percentCommission != percentCommission) logDescription = Util.appendChange(logDescription, objOld.percentCommission, percentCommission, "% Comission: {0:N2} to {1:N2}");
             if (objOld.GlobalPercentComission != GlobalPercentComission) logDescription = Util.appendChange(logDescription, objOld.GlobalPercentComission, GlobalPercentComission, "Global % Comission: {0} to {1}");
-            if (objOld.notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {

@@ -77,7 +77,7 @@ namespace BinaMitraTextile
             string logDescription = "";
             if (objOld.DebtLimit != debtLimit) logDescription = Tools.append(logDescription, String.Format("Limit: '{0}' to '{1}'", objOld.DebtLimit, debtLimit), ",");
             if (objOld.TermDays != termDays) logDescription = Tools.append(logDescription, String.Format("Term days: '{0}' to '{1}'", objOld.TermDays, termDays), ",");
-            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {

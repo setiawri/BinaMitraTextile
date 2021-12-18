@@ -99,7 +99,7 @@ namespace BinaMitraTextile
             //generate log description
             string logDescription = "";
             if (objOld.Name != name) logDescription = Tools.append(logDescription, String.Format("Name: '{0}' to '{1}'", objOld.Name, name), ",");
-            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {

@@ -102,9 +102,9 @@ namespace BinaMitraTextile
             if (objOld.PriceDate != priceDate) { logDescription = Tools.append(logDescription, String.Format("Price Date: '{0:MM/dd/yy}' to '{1:MM/dd/yy}'", objOld.PriceDate, priceDate), ","); }
             if (objOld.PricePerUnit != pricePerUnit) { logDescription = Tools.append(logDescription, String.Format("Price Per Unit: '{0:N2}' to '{1:N2}'", objOld.PricePerUnit, pricePerUnit), ","); }
             if (objOld.DiscontinueDate != discontinueDate) { logDescription = Tools.append(logDescription, String.Format("Discontinue Date: '{0:MM/dd/yy}' to '{1:MM/dd/yy}'", objOld.DiscontinueDate, discontinueDate), ","); }
-            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
             logDescription = ActivityLog.appendChange(logDescription, objOld.SellPricePerUnit, sellPricePerUnit, "Sell Price: '{0}' to '{1}'");
             logDescription = ActivityLog.appendChange(logDescription, objOld.LengthUnitName, new LengthUnit(lengthUnitID).Name, "Unit: '{0}' to '{1}'");
+            logDescription = Util.appendChange(logDescription, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {

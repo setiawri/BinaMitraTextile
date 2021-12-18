@@ -260,7 +260,7 @@ namespace BinaMitraTextile
             if (objOld.inventory_id != inventory_id) logDescription = Tools.append(logDescription, String.Format("Inventory ID: '{0}' to '{1}'", objOld.inventory_id, inventory_id), ",");
             if (objOld.item_length != item_length) logDescription = Tools.append(logDescription, String.Format("Length: '{0}' to '{1}'", objOld.item_length, item_length), ",");
             logDescription = Util.appendChange(logDescription, objOld.ColorName, new FabricColor(ColorID).Name, "Color: '{0}' to '{1}'");
-            if (objOld.notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {

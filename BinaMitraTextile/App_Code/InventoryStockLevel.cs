@@ -147,7 +147,7 @@ namespace BinaMitraTextile
             if (objOld.OrderLotQty != orderLotQty) logDescription = Tools.append(logDescription, String.Format("Lot qty: '{0}' to '{1}'", objOld.OrderLotQty, orderLotQty), ",");
             if (objOld.Qty != qty) logDescription = Tools.append(logDescription, String.Format("Qty: '{0}' to '{1}'", objOld.Qty, qty), ",");
             if (objOld.PONotes != poNotes) logDescription = Tools.append(logDescription, String.Format("PO Notes: '{0}' to '{1}'", objOld.PONotes, poNotes), ",");
-            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {

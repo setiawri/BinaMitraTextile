@@ -127,7 +127,7 @@ namespace BinaMitraTextile
             if (objOld.VendorID != vendorID) logDescription = Tools.append(logDescription, String.Format("Vendor ID: '{0}' to '{1}'", objOld.VendorName, new Vendor(vendorID).Name), ",");
             logDescription = LIBUtil.Util.appendChange(logDescription, objOld.PercentageOfPercentCommission, percentageOfPercentCommission, "Percentage of Percent Comission: {0:N2} to {1:N2}");
             logDescription = LIBUtil.Util.appendChange(logDescription, objOld.MaxCommissionAmount, maxCommissionAmount, "Max Comission: {0:N0} to {1:N0}");
-            if (objOld.Notes != notes) logDescription = Tools.append(logDescription, String.Format("Notes: '{0}' to '{1}'", objOld.Notes, notes), ",");
+            logDescription = Util.appendChange(logDescription, objOld.Notes, notes, "Notes: '{0}' to '{1}'");
 
             if (!string.IsNullOrEmpty(logDescription))
             {
