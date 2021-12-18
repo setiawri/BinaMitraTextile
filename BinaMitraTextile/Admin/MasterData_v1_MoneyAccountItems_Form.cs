@@ -74,7 +74,6 @@ namespace BinaMitraTextile.Admin
         {
             if (GlobalData.UserAccount.role != Roles.Super)
             {
-                iddl_MoneyAccounts.Enabled = false;
                 col_dgv_Checkbox1.Visible = false;
                 btnUpdate.Visible = false;
                 btnLog.Visible = false;

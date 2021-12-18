@@ -12,12 +12,14 @@ namespace BinaMitraTextile
         public const string COL_DB_Notes = "Notes";
         public const string COL_DB_Default = "Default";
         public const string COL_DB_Active = "Active";
+        public const string COL_DB_UserRoleRestriction = "UserRoleRestriction";
 
         public Guid Id;
         public string Name = "";
         public string Notes = "";
         public bool Default = false;
         public bool Active = true;
+        public bool UserRoleRestriction = true;
 
         public MoneyAccount(Guid id)
         {
@@ -27,6 +29,7 @@ namespace BinaMitraTextile
             Notes = Util.wrapNullable<string>(row, COL_DB_Notes);
             Default = Util.wrapNullable<bool>(row, COL_DB_Default);
             Active = Util.wrapNullable<bool>(row, COL_DB_Active);
+            UserRoleRestriction = Util.wrapNullable<bool>(row, COL_DB_UserRoleRestriction);
         }
 
         public static Guid getDefaultItem()
@@ -66,6 +69,10 @@ namespace BinaMitraTextile
         public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null, null, null)); }
         public static DataTable get(Guid? Id, string Name, bool? Active, bool? Default)
         {
+            bool? UserRoleRestriction = null;
+            if (GlobalData.UserAccount.role == Roles.User)
+                UserRoleRestriction = false;
+
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
@@ -74,7 +81,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Id)),
                 new SqlQueryParameter(COL_DB_Name, SqlDbType.VarChar, Util.wrapNullable(Name)),
                 new SqlQueryParameter(COL_DB_Active, SqlDbType.Bit, Util.wrapNullable(Active)),
-                new SqlQueryParameter(COL_DB_Default, SqlDbType.Bit, Util.wrapNullable(Default))
+                new SqlQueryParameter(COL_DB_Default, SqlDbType.Bit, Util.wrapNullable(Default)),
+                new SqlQueryParameter(COL_DB_UserRoleRestriction, SqlDbType.Bit, Util.wrapNullable(UserRoleRestriction))
             );
             return result.Datatable;
         }
@@ -132,6 +140,21 @@ namespace BinaMitraTextile
 
             if (result.IsSuccessful)
                 ActivityLog.submit(Id, String.Format("Set as default"));
+        }
+
+        public static void update_UserRoleRestriction(Guid Id, bool Value)
+        {
+            SqlQueryResult result = DBConnection.query(
+                false,
+                DBConnection.ActiveSqlConnection,
+                QueryTypes.ExecuteNonQuery,
+                "MoneyAccounts_update_UserRoleRestriction",
+                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                new SqlQueryParameter(COL_DB_UserRoleRestriction, SqlDbType.Bit, Value)
+            );
+
+            if (result.IsSuccessful)
+                ActivityLog.submit(Id, String.Format("User Role Restriction changed to: {0}", Value));
         }
 
         public static bool isExist(Guid? Id, string Name)

@@ -18,6 +18,7 @@ namespace BinaMitraTextile.Admin
 
         private DataGridViewColumn col_dgv_Name;
         private DataGridViewColumn col_dgv_Notes;
+        private DataGridViewColumn col_dgv_UserRoleRestriction;
 
         #endregion PRIVATE VARIABLES
         /*******************************************************************************************************/
@@ -43,6 +44,8 @@ namespace BinaMitraTextile.Admin
 
             col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, MoneyAccount.COL_DB_Notes, true, true, "", true, true, null, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            col_dgv_UserRoleRestriction = base.addColumn<DataGridViewCheckBoxCell>(dgv, "col_dgv_UserRoleRestriction", "Restricted", MoneyAccount.COL_DB_UserRoleRestriction, true, true, "", false, false, 55, DataGridViewContentAlignment.MiddleCenter);
 
             ptInputPanel.PerformClick();
         }
@@ -120,6 +123,11 @@ namespace BinaMitraTextile.Admin
 
         protected override void virtual_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (Util.isColumnMatch(sender, e, col_dgv_UserRoleRestriction))
+            {
+                MoneyAccount.update_UserRoleRestriction(Util.getClickedRowValue<Guid>(sender, e, col_dgv_Id), !Util.getCheckboxValue(sender, e));
+                populateGridViewDataSource(true);
+            }
         }
 
         #endregion OVERRIDE METHODS
