@@ -202,7 +202,7 @@ namespace BinaMitraTextile.Invoices
                 {
                     Guid? id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
                     if (id != null && (PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
-                        CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null);
+                        CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null, true);
                 }
 
                 populateData();

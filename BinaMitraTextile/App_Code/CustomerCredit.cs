@@ -46,7 +46,7 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region DATABASE STATIC METHODS
 
-        public static Guid? submitNew(Guid customerID, decimal creditAmount, Guid? salePaymentID, string notes, PaymentMethod? paymentMethod)
+        public static Guid? submitNew(Guid customerID, decimal creditAmount, Guid? salePaymentID, string notes, PaymentMethod? paymentMethod, bool Confirmed)
         {
             Guid Id = Guid.NewGuid();
             SqlQueryResult result = DBConnection.query(
@@ -60,7 +60,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, notes),
                 new SqlQueryParameter(COL_DB_SALEPAYMENTID, SqlDbType.UniqueIdentifier, Util.wrapNullable(salePaymentID)),
                 new SqlQueryParameter(COL_DB_USERID, SqlDbType.UniqueIdentifier, GlobalData.UserAccount.id),
-                new SqlQueryParameter(COL_DB_METHODENUMID, SqlDbType.TinyInt, Util.wrapNullable(paymentMethod))
+                new SqlQueryParameter(COL_DB_METHODENUMID, SqlDbType.TinyInt, Util.wrapNullable(paymentMethod)),
+                new SqlQueryParameter(COL_DB_Confirmed, SqlDbType.Bit, Util.wrapNullable(Confirmed))
             );
 
             if (!result.IsSuccessful)

@@ -70,7 +70,7 @@ namespace BinaMitraTextile.Returns
                 {
                     if(_customerID != null)
                     {
-                        CustomerCredit.submitNew((Guid)_customerID, _totalAmount, null, string.Format("Credit from Sale Return " + obj.barcode), PaymentMethod.Cash);
+                        CustomerCredit.submitNew((Guid)_customerID, _totalAmount, null, string.Format("Credit from Sale Return " + obj.barcode), PaymentMethod.Cash, false);
                         Tools.hasMessage("Credit sudah dibuat sejumlah " + lblTotalAmount.Text);
                     }
                     this.Close();
