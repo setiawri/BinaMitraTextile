@@ -49,14 +49,14 @@ namespace BinaMitraTextile.Admin
 
             setColumnsDataPropertyNames(Customer.COL_DB_ID, Customer.COL_DB_ACTIVE, null, null, null, Customer.COL_DB_usesFakturPajak);
             col_dgv_Checkbox1.HeaderText = "FP";
-            col_dgv_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Name", itxt_Name.LabelText, Customer.COL_DB_NAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Name", itxt_Name.LabelText, Customer.COL_DB_NAME, true, true, "", true, false, 50, 150, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Phone1 = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Phone1", itxt_Phone1.LabelText, Customer.COL_DB_PHONE1, true, true, "", true, false, 70, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Phone2 = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Phone2", itxt_Phone2.LabelText, Customer.COL_DB_PHONE2, true, true, "", true, false, 70, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_City = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_City", iddl_Cities.LabelText, Customer.COL_CITYNAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_Address = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Address", itxt_Address.LabelText, Customer.COL_DB_ADDRESS, true, true, "", true, true, 50, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Address = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Address", itxt_Address.LabelText, Customer.COL_DB_ADDRESS, true, true, "", true, true, 100, 200, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Transport = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Transport", iddl_Transports.LabelText, Customer.COL_DEFAULTTRANSPORTNAME, true, true, "", true, false, 60, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_SalesUserAccount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_SalesUserAccount", iddl_Sales_UserAccounts.LabelText, Customer.COL_SALESUSERNAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, Customer.COL_DB_NOTES, true, true, "", true, true, null, DataGridViewContentAlignment.MiddleLeft);
+            col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, Customer.COL_DB_NOTES, true, true, "", true, true, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             Transport.populateInputControlDropDownList(iddl_Transports, true);
@@ -76,6 +76,8 @@ namespace BinaMitraTextile.Admin
             if (GlobalData.UserAccount.role != Roles.Super)
             {
                 iddl_Sales_UserAccounts.Visible = false;
+                col_dgv_SalesUserAccount.Visible = false;
+                col_dgv_Checkbox1.Visible = false;
             }
         }
 
