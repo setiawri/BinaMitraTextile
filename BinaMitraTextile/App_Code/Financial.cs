@@ -18,7 +18,6 @@ namespace BinaMitraTextile
         #region DATABASE COLUMNS
 
         public const string COL_INVENTORYBUYVALUE = "inventory_buy_value";
-        public const string COL_RECEIVABLEAMOUNT = "receivable_amount";
 
         #endregion DATABASE COLUMNS
         /*******************************************************************************************************/
@@ -38,6 +37,8 @@ namespace BinaMitraTextile
 
         public static FinancialOverview getOverview()
         {
+            DataTable dtReceivables = Sale.get_ReceivablesOnly(false);
+
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
@@ -49,7 +50,7 @@ namespace BinaMitraTextile
             return new FinancialOverview()
             {
                 InventoryBuyValue = Util.wrapNullable<decimal>(row, COL_INVENTORYBUYVALUE),
-                ReceivableAmount = Util.wrapNullable<decimal>(row, COL_RECEIVABLEAMOUNT)
+                ReceivableAmount = Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, "")
             };
         }
 
