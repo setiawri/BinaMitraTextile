@@ -33,14 +33,13 @@
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.iddl_MoneyAccountCategoryAssignments = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_MoneyAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
-            this.label2 = new System.Windows.Forms.Label();
             this.idtp_Timestamp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_Timestamp_Start = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnApplyFilter = new System.Windows.Forms.Button();
             this.pbCalculator = new System.Windows.Forms.PictureBox();
             this.btnTransfer = new System.Windows.Forms.Button();
+            this.chkOnlyNotApproved = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -126,27 +125,25 @@
             // 
             // pnlQuickSearch
             // 
+            this.pnlQuickSearch.Controls.Add(this.idtp_Timestamp_Start);
+            this.pnlQuickSearch.Controls.Add(this.chkOnlyNotApproved);
+            this.pnlQuickSearch.Controls.Add(this.label3);
+            this.pnlQuickSearch.Controls.Add(this.idtp_Timestamp_End);
             this.pnlQuickSearch.Controls.Add(this.pbCalculator);
             this.pnlQuickSearch.Controls.Add(this.btnApplyFilter);
-            this.pnlQuickSearch.Controls.Add(this.label4);
-            this.pnlQuickSearch.Controls.Add(this.label3);
-            this.pnlQuickSearch.Controls.Add(this.idtp_Timestamp_Start);
-            this.pnlQuickSearch.Controls.Add(this.idtp_Timestamp_End);
-            this.pnlQuickSearch.Controls.Add(this.label2);
             this.pnlQuickSearch.Controls.Add(this.iddl_MoneyAccounts);
             this.pnlQuickSearch.Size = new System.Drawing.Size(754, 28);
             this.pnlQuickSearch.Controls.SetChildIndex(this.iddl_MoneyAccounts, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label2, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.idtp_Timestamp_End, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.idtp_Timestamp_Start, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label3, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.label1, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label4, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.btnApplyFilter, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.pbCalculator, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.idtp_Timestamp_End, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.label3, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.chkOnlyNotApproved, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.idtp_Timestamp_Start, 0);
             // 
             // pnlRowInfo
             // 
@@ -235,7 +232,7 @@
             this.iddl_MoneyAccounts.HideFilter = false;
             this.iddl_MoneyAccounts.HideUpdateLink = true;
             this.iddl_MoneyAccounts.LabelText = "Account";
-            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(553, 2);
+            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(562, 2);
             this.iddl_MoneyAccounts.Name = "iddl_MoneyAccounts";
             this.iddl_MoneyAccounts.SelectedIndex = -1;
             this.iddl_MoneyAccounts.SelectedItem = null;
@@ -246,16 +243,6 @@
             this.iddl_MoneyAccounts.TabIndex = 4;
             this.iddl_MoneyAccounts.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccounts_SelectedIndexChanged);
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(494, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "ACCOUNT";
-            // 
             // idtp_Timestamp_End
             // 
             this.idtp_Timestamp_End.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -264,15 +251,16 @@
             this.idtp_Timestamp_End.DefaultCheckedValue = false;
             this.idtp_Timestamp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Timestamp_End.LabelText = "dropdownlist";
-            this.idtp_Timestamp_End.Location = new System.Drawing.Point(378, 3);
+            this.idtp_Timestamp_End.Location = new System.Drawing.Point(451, 3);
             this.idtp_Timestamp_End.Name = "idtp_Timestamp_End";
             this.idtp_Timestamp_End.ShowCheckBox = true;
             this.idtp_Timestamp_End.ShowDateTimePickerOnly = true;
             this.idtp_Timestamp_End.ShowUpAndDown = false;
-            this.idtp_Timestamp_End.Size = new System.Drawing.Size(109, 21);
+            this.idtp_Timestamp_End.Size = new System.Drawing.Size(110, 21);
             this.idtp_Timestamp_End.TabIndex = 6;
             this.idtp_Timestamp_End.Value = null;
             this.idtp_Timestamp_End.ValueTimeSpan = null;
+            this.idtp_Timestamp_End.Load += new System.EventHandler(this.idtp_Timestamp_End_Load);
             // 
             // idtp_Timestamp_Start
             // 
@@ -282,7 +270,7 @@
             this.idtp_Timestamp_Start.DefaultCheckedValue = true;
             this.idtp_Timestamp_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Timestamp_Start.LabelText = "dropdownlist";
-            this.idtp_Timestamp_Start.Location = new System.Drawing.Point(271, 3);
+            this.idtp_Timestamp_Start.Location = new System.Drawing.Point(344, 3);
             this.idtp_Timestamp_Start.Name = "idtp_Timestamp_Start";
             this.idtp_Timestamp_Start.ShowCheckBox = false;
             this.idtp_Timestamp_Start.ShowDateTimePickerOnly = true;
@@ -296,26 +284,16 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(356, 7);
+            this.label3.Location = new System.Drawing.Point(429, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "TO";
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(235, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "DATE";
-            // 
             // btnApplyFilter
             // 
             this.btnApplyFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApplyFilter.Location = new System.Drawing.Point(662, 2);
+            this.btnApplyFilter.Location = new System.Drawing.Point(666, 2);
             this.btnApplyFilter.Name = "btnApplyFilter";
             this.btnApplyFilter.Size = new System.Drawing.Size(56, 23);
             this.btnApplyFilter.TabIndex = 1;
@@ -330,9 +308,9 @@
             this.pbCalculator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCalculator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbCalculator.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pbCalculator.Location = new System.Drawing.Point(720, 0);
+            this.pbCalculator.Location = new System.Drawing.Point(724, 0);
             this.pbCalculator.Name = "pbCalculator";
-            this.pbCalculator.Size = new System.Drawing.Size(32, 26);
+            this.pbCalculator.Size = new System.Drawing.Size(28, 26);
             this.pbCalculator.TabIndex = 124;
             this.pbCalculator.TabStop = false;
             this.pbCalculator.Click += new System.EventHandler(this.pbCalculator_Click);
@@ -348,6 +326,17 @@
             this.btnTransfer.UseVisualStyleBackColor = true;
             this.btnTransfer.Click += new System.EventHandler(this.btnTransfer_Click);
             // 
+            // chkOnlyNotApproved
+            // 
+            this.chkOnlyNotApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOnlyNotApproved.AutoSize = true;
+            this.chkOnlyNotApproved.Location = new System.Drawing.Point(279, 6);
+            this.chkOnlyNotApproved.Name = "chkOnlyNotApproved";
+            this.chkOnlyNotApproved.Size = new System.Drawing.Size(67, 17);
+            this.chkOnlyNotApproved.TabIndex = 125;
+            this.chkOnlyNotApproved.Text = "NOT OK";
+            this.chkOnlyNotApproved.UseVisualStyleBackColor = true;
+            // 
             // MasterData_v1_MoneyAccountItems_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,7 +344,7 @@
             this.ClientSize = new System.Drawing.Size(784, 484);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_MoneyAccountItems_Form";
-            this.Text = "MONEY ACCOUNTS";
+            this.Text = "MONEY ACCOUNT ITEMS";
             this.panel1.ResumeLayout(false);
             this.pnlActionButtons.ResumeLayout(false);
             this.scInputLeft.Panel1.ResumeLayout(false);
@@ -386,14 +375,13 @@
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Description;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Amount;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategoryAssignments;
-        private System.Windows.Forms.Label label2;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccounts;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_Start;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_End;
         private System.Windows.Forms.Button btnApplyFilter;
         private System.Windows.Forms.PictureBox pbCalculator;
         private System.Windows.Forms.Button btnTransfer;
+        private System.Windows.Forms.CheckBox chkOnlyNotApproved;
     }
 }

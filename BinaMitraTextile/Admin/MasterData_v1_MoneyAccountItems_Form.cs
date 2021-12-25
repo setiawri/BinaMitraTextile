@@ -52,7 +52,7 @@ namespace BinaMitraTextile.Admin
             idtp_Timestamp_End.Checked = false;
             InputToDisableOnSearch.Add(in_Amount);
 
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true, GlobalData.UserAccount.role != Roles.User);
+            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts, true, MoneyAccount.getUserRoleRestriction(GlobalData.UserAccount.role));
             MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
             col_dgv_Checkbox1.HeaderText = "OK";
 
@@ -67,6 +67,8 @@ namespace BinaMitraTextile.Admin
             col_dgv_Amount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Amount", in_Amount.LabelText, MoneyAccountItem.COL_DB_Amount, true, true, "N0", false, false, 50, DataGridViewContentAlignment.MiddleRight);
             col_dgv_Balance = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Balance", "Balance", MoneyAccountItem.COL_Balance, true, true, "N0", false, false, 50, DataGridViewContentAlignment.MiddleRight);
 
+            InputToDisableOnSearch.Add(itxt_Description);
+
             ptInputPanel.PerformClick();
         }
 
@@ -74,6 +76,7 @@ namespace BinaMitraTextile.Admin
         {
             if (GlobalData.UserAccount.role != Roles.Super)
             {
+                chkOnlyNotApproved.Visible = false;
                 col_dgv_Checkbox1.Visible = false;
                 btnUpdate.Visible = false;
                 btnLog.Visible = false;
@@ -95,10 +98,15 @@ namespace BinaMitraTextile.Admin
 
         protected override System.Data.DataView loadGridviewDataSource()
         {
-            if (Mode == FormModes.Add)
-                return MoneyAccountItem.get(null, (Guid)iddl_MoneyAccounts.SelectedValue, null, null, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
+            if (chkOnlyNotApproved.Checked || Mode == FormModes.Search)
+                col_dgv_Balance.Visible = false;
             else
-                return MoneyAccountItem.get(null, null, null, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
+                col_dgv_Balance.Visible = true;
+
+            if (Mode == FormModes.Add)
+                return MoneyAccountItem.get(null, (Guid)iddl_MoneyAccounts.SelectedValue, null, null, chkOnlyNotApproved.Checked ? (bool?)false : null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
+            else
+                return MoneyAccountItem.get(null, null, null, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, chkOnlyNotApproved.Checked ? (bool?)false : null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
         }
 
         protected override void populateInputFields()
@@ -111,7 +119,7 @@ namespace BinaMitraTextile.Admin
 
         protected override void update()
         {
-            //MoneyAccountItem.update(selectedRowID(), itxt_No.ValueText, itxt_Description.ValueText);
+            MoneyAccountItem.update(selectedRowID(), (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, itxt_Description.ValueText, in_Amount.ValueInt);
         }
 
         protected override void add()
@@ -179,6 +187,11 @@ namespace BinaMitraTextile.Admin
         {
             Util.displayForm(new Admin.MoneyAccountItems_Transfer_Form((Guid)iddl_MoneyAccounts.SelectedValue));
             populateGridViewDataSource(true);
+        }
+
+        private void idtp_Timestamp_End_Load(object sender, EventArgs e)
+        {
+
         }
 
         #endregion EVENT HANDLERS

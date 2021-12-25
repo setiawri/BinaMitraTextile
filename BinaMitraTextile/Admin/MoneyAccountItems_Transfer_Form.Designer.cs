@@ -210,7 +210,7 @@
             this.Controls.Add(this.in_Amount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MoneyAccountItems_Transfer_Form";
-            this.Text = "SHIPPING EXPENSES";
+            this.Text = "MONEY TRANSFER";
             this.Load += new System.EventHandler(this.Form_Load);
             this.Shown += new System.EventHandler(this.Form_Shown);
             this.ResumeLayout(false);

@@ -177,5 +177,13 @@ namespace BinaMitraTextile
             control.populate(get(null, null, Active, null, UserRoleRestriction).DefaultView, COL_DB_Name, COL_DB_Id, COL_DB_Default);
         }
 
+        public static bool? getUserRoleRestriction(Roles role)
+        {
+            if (role != Roles.Super)
+                return false;
+            else
+                return null;
+        }
+
     }
 }

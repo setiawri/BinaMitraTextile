@@ -101,10 +101,6 @@
             // 
             this.pnlQuickSearch.Size = new System.Drawing.Size(770, 28);
             // 
-            // col_dgv_Active
-            // 
-            this.col_dgv_Active.Width = 40;
-            // 
             // pnlRowInfo
             // 
             this.pnlRowInfo.Location = new System.Drawing.Point(0, 203);
@@ -159,7 +155,7 @@
             this.ClientSize = new System.Drawing.Size(800, 484);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_MoneyAccountCategories_Form";
-            this.Text = "MONEY ACCOUNTS";
+            this.Text = "MONEY ACCOUNT CATEGORIES";
             this.panel1.ResumeLayout(false);
             this.pnlActionButtons.ResumeLayout(false);
             this.scInputLeft.Panel1.ResumeLayout(false);

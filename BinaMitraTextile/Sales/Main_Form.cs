@@ -97,6 +97,8 @@ namespace BinaMitraTextile.Sales
                 //Tools.clearWhenSelected(gridMaster);
             }
 
+            //no longer used
+            col_gridmaster_SaleCommission_Users_Name.Visible = false;
         }
         public Main_Form(bool hasReceivablesOnly) : this()
         {

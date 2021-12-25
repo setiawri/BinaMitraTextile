@@ -51,12 +51,16 @@ namespace BinaMitraTextile.Admin
         {
             Settings.setGeneralSettings(this);
 
-            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_From, true, GlobalData.UserAccount.role != Roles.User);
+            MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_From, true, MoneyAccount.getUserRoleRestriction(GlobalData.UserAccount.role));
             iddl_MoneyAccounts_From.SelectedValue = _Initial_MoneyAccounts_Id;
-            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_From, (Guid)iddl_MoneyAccounts_From.SelectedValue, true);
+
+            if(iddl_MoneyAccounts_From.SelectedValue != null)
+                MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_From, (Guid)iddl_MoneyAccounts_From.SelectedValue, true);
 
             MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_To, true, null);
-            MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_To, (Guid)iddl_MoneyAccounts_To.SelectedValue, true);
+
+            if (iddl_MoneyAccounts_To.SelectedValue != null)
+                MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_To, (Guid)iddl_MoneyAccounts_To.SelectedValue, true);
 
             iddl_MoneyAccounts_From.focus();
         }
