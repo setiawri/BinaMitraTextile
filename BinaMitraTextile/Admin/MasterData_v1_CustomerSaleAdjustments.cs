@@ -30,7 +30,7 @@ namespace BinaMitraTextile.Admin
         /*******************************************************************************************************/
         #region CONSTRUCTOR METHODS
 
-        public MasterData_v1_CustomerSaleAdjustments() : this(FormModes.Add) { }
+        public MasterData_v1_CustomerSaleAdjustments() : this(FormModes.Search) { }
         public MasterData_v1_CustomerSaleAdjustments(FormModes startingMode) : base(startingMode, FORM_SHOWDATAONLOAD) { InitializeComponent(); }
 
         #endregion CONSTRUCTOR METHODS
@@ -74,6 +74,8 @@ namespace BinaMitraTextile.Admin
             {
                 chkOnlyNotOK.Visible = false;
                 col_dgv_Checked.Visible = false;
+                btnAdd.Enabled = false;
+                btnUpdate.Enabled = false;
             }
         }
 
@@ -102,10 +104,10 @@ namespace BinaMitraTextile.Admin
         {
             if (Mode == FormModes.Add)
                 return CustomerSaleAdjustment.getAll(null, null, null, null, null, null, chkOnlyNotOK.Checked).DefaultView;
-            else
-                return CustomerSaleAdjustment.getAll((Guid)iddl_Customers.SelectedValue, (Guid)iddl_Grades.SelectedValue,
-                    (Guid)iddl_ProductStoreNames.SelectedValue, (Guid)iddl_ProductWidths.SelectedValue,
-                    (Guid)iddl_LengthUnits.SelectedValue, (Guid)iddl_FabricColors.SelectedValue, chkOnlyNotOK.Checked).DefaultView;
+            else 
+                return CustomerSaleAdjustment.getAll((Guid?)iddl_Customers.SelectedValue, (Guid?)iddl_Grades.SelectedValue,
+                    (Guid?)iddl_ProductStoreNames.SelectedValue, (Guid?)iddl_ProductWidths.SelectedValue,
+                    (Guid?)iddl_LengthUnits.SelectedValue, (Guid?)iddl_FabricColors.SelectedValue, chkOnlyNotOK.Checked).DefaultView;
         }
 
         protected override void populateInputFields()

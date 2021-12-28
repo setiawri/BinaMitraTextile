@@ -352,7 +352,7 @@ namespace BinaMitraTextile
 
         private void Sales_Customers_Discounts_Click(object sender, EventArgs e)
         {
-            Util.displayMDIChild(new Admin.MasterData_v1_CustomerSaleAdjustments(FormModes.Add));
+            Util.displayMDIChild(new Admin.MasterData_v1_CustomerSaleAdjustments());
         }
 
         private void Sales_Customers_DebLimits_Click(object sender, EventArgs e)
