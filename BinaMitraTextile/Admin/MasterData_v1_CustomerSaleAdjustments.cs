@@ -75,7 +75,7 @@ namespace BinaMitraTextile.Admin
                 chkOnlyNotOK.Visible = false;
                 col_dgv_Checked.Visible = false;
                 btnAdd.Enabled = false;
-                btnUpdate.Enabled = false;
+                IsBtnUpdateEnabled = false;
             }
         }
 
