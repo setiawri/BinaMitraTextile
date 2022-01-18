@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
@@ -47,11 +48,12 @@ namespace BinaMitraTextile.InventoryForm
             _isFormShown = true;
 
             _selectCheckboxHeader = Tools.addHeaderCheckbox(grid, col_grid_select, "_selectCheckboxHeader", selectCheckboxHeader_CheckedChanged);
+            ptFilter.toggle();
+            ptRowInfo.toggle();
+
             populatePageData();
 
             this.Activate();
-            ptFilter.toggle();
-            ptRowInfo.toggle();
             itxt_QuickSearch.focus();
         }
 
@@ -104,7 +106,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridSummary_availableQty.DataPropertyName = Inventory.COL_AVAILABLEITEMLENGTH;
             col_gridSummary_averagePrice.DataPropertyName = Inventory.COL_DB_BUYPRICE;
             col_gridSummary_grade.DataPropertyName = Inventory.COL_GRADE_NAME;
-            col_gridSummary_Product_Id.DataPropertyName = Inventory.COL_PRODUCTID;
+            col_gridSummary_Product_Id.DataPropertyName = Inventory.COL_DB_PRODUCTID;
             col_gridSummary_StoreName.DataPropertyName = Inventory.COL_PRODUCTSTORENAME;
             col_gridSummary_unitName.DataPropertyName = Inventory.COL_LENGTH_UNIT_NAME;
             col_gridSummary_Width.DataPropertyName = Inventory.COL_PRODUCT_WIDTH_NAME;
@@ -118,7 +120,6 @@ namespace BinaMitraTextile.InventoryForm
             col_gridSummaryByColor_AveragePrice.DataPropertyName = Inventory.COL_DB_BUYPRICE;
             col_gridSummaryByColor_Grade.DataPropertyName = Inventory.COL_GRADE_NAME;
             col_gridSummaryByColor_ColorName.DataPropertyName = Inventory.COL_COLOR_NAME;
-            col_gridSummaryByColor_ProductId.DataPropertyName = Inventory.COL_PRODUCTID;
             col_gridSummaryByColor_ProductStoreName.DataPropertyName = Inventory.COL_PRODUCTSTORENAME;
             col_gridSummaryByColor_UnitName.DataPropertyName = Inventory.COL_LENGTH_UNIT_NAME;
             col_gridSummaryByColor_ProductWidthName.DataPropertyName = Inventory.COL_PRODUCT_WIDTH_NAME;
@@ -151,15 +152,37 @@ namespace BinaMitraTextile.InventoryForm
 
         private void populateGridSummary()
         {
-            if (pnlRowInfo.Visible && _isFormShown)
+            if (_isFormShown && pnlRowInfo.Visible && ptRowInfo.isPanelOpen)
             {
                 DataView dvw = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource), false).DefaultView;
                 dvw.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME);
                 gridSummary.DataSource = dvw;
 
-                DataView dvwByColor = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource), true).DefaultView;
-                dvwByColor.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC, {3} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_COLOR_NAME);
-                gridSummaryByColor.DataSource = dvwByColor;
+                //show summary of inventory item color
+                List<Guid?> inventoryIdList = new List<Guid?>();                
+                foreach(DataRow row in Util.getDataTable(grid.DataSource).Rows)
+                {
+                    inventoryIdList.Add(Util.wrapNullable<Guid?>(row, Inventory.COL_DB_ID));
+                }
+                if (inventoryIdList.Count == 0)
+                    gridSummaryByColor.DataSource = null;
+                else
+                {
+                    SqlQueryResult result = DBConnection.query(
+                        false,
+                        DBConnection.ActiveSqlConnection,
+                        QueryTypes.FillByAdapter,
+                        "inventoryitem_getSummary",
+                        DBConnection.createTableParameters(
+                            new SqlQueryTableParameterGuid("ARRAY_Inventory_Id", inventoryIdList.ToArray())
+                            )
+                    );
+
+                    DataView dvwByColor = result.Datatable.DefaultView;
+                    dvwByColor.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC, {3} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_COLOR_NAME);
+                    gridSummaryByColor.DataSource = dvwByColor;
+
+                }
             }
         }
 
@@ -480,6 +503,12 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void ptRowInfo_pictureBox_ClickEvent(object sender, EventArgs e)
+        {
+            if (ptRowInfo.isPanelOpen)
+                populateGridSummary();
         }
 
         #endregion FORM METHODS

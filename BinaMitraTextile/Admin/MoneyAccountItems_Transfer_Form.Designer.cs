@@ -112,7 +112,7 @@
             this.in_Amount.LabelText = "Amount";
             this.in_Amount.Location = new System.Drawing.Point(171, 64);
             this.in_Amount.MaximumValue = new decimal(new int[] {
-            10000000,
+            900000000,
             0,
             0,
             0});

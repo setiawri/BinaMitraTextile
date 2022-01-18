@@ -49,7 +49,6 @@ namespace BinaMitraTextile
         public const string COL_POITEMDESCRIPTION = "po_item_description";
         public const string COL_PONo = "po_no";
         public const string COL_VENDORINVOICENO = "vendorinvoice_no";
-        public const string COL_PRODUCTID = "vendor_id";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
 
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";

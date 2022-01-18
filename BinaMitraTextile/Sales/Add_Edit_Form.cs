@@ -458,7 +458,7 @@ namespace BinaMitraTextile.Sales
 
         private void populateCustomers()
         {
-            Customer.populateInputControlDropDownList(iddl_Customers, true);
+            Customer.populateInputControlDropDownList(iddl_Customers, false);
         }
 
         private void populateVendors()
