@@ -89,7 +89,7 @@ namespace BinaMitraTextile
         public SaleOrderItem(Guid id)
         {
             Id = id;
-            DataTable dt = get(null, Id, null, false);
+            DataTable dt = get(Id, null, null, false);
             SaleOrders_Id = (Guid)dt.Rows[0][COL_DB_SaleOrders_Id];
             if (dt.Rows[0][COL_DB_Ref_Inventory_Id] != DBNull.Value) Ref_Inventory_Id = (Guid)dt.Rows[0][COL_DB_Ref_Inventory_Id];
             PricePerUnit = Convert.ToDecimal(dt.Rows[0][COL_DB_PricePerUnit]);
@@ -171,19 +171,27 @@ namespace BinaMitraTextile
             return datatable;
         }
 
-        public static void updateQty(Guid id, decimal value)
+        public static void updateQty(Guid id, decimal Qty)
         {
-            SqlQueryResult result = DBConnection.query(
-                false,
-                DBConnection.ActiveSqlConnection,
-                QueryTypes.ExecuteNonQuery,
-                "SaleOrderItems_update_Qty",
-                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
-                new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, value)
-            );
+            SaleOrderItem objOld = new SaleOrderItem(id);
 
-            if (result.IsSuccessful)
-                ActivityLog.submit(id, "Qty updated to: " + value);
+            string log = "";
+            log = Util.appendChange(log, objOld.Qty, Qty, "Qty: '{0}' to '{1}'");
+
+            if(!string.IsNullOrWhiteSpace(log))
+            {
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "SaleOrderItems_update_Qty",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, Qty)
+                );
+
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, log);
+            }
         }
 
         #endregion STATIC DATABASE METHODS

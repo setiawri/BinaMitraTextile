@@ -132,19 +132,29 @@ namespace BinaMitraTextile
             return isSuccess;
         }
 
-        public static void updateTargetDate(Guid id, DateTime value)
+        public static void update(Guid id, DateTime TargetDate, string CustomerPONo)
         {
-            SqlQueryResult result = DBConnection.query(
-                false,
-                DBConnection.ActiveSqlConnection,
-                QueryTypes.ExecuteNonQuery,
-                "SaleOrders_update_TargetDate",
-                new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
-                new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, value)
-            );
+            SaleOrder objOld = new SaleOrder(id);
 
-            if (result.IsSuccessful)
-                ActivityLog.submit(id, "Due date updated to: " + value.ToString("dd/MM/yy"));
+            string log = "";
+            log = Util.appendChange(log, objOld.TargetDate, TargetDate, "Target Date: '{0:dd/MM/yy} to {1:dd/MM/yy}");
+            log = Util.appendChange(log, objOld.CustomerPONo, CustomerPONo, "PO: '{0}' to '{1}'");
+
+            if (!string.IsNullOrWhiteSpace(log))
+            {
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "SaleOrders_update",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, TargetDate),
+                    new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, CustomerPONo)
+                );
+
+                if (result.IsSuccessful)
+                    ActivityLog.submit(id, log);
+            }
         }
 
         #endregion DATABASE STATIC METHODS

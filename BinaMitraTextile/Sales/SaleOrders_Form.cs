@@ -214,7 +214,7 @@ namespace BinaMitraTextile.Sales
                 gridSaleOrderItems.DataSource = null;
             else
             {
-                gridSaleOrderItems.DataSource = SaleOrderItem.get(selectedSaleOrdersRowID(), null, _Customers_Id, false);
+                gridSaleOrderItems.DataSource = SaleOrderItem.get(null, selectedSaleOrdersRowID(), _Customers_Id, false);
                 lblSaleOrderInfo.Text = string.Format("Customer PO #{0}  Order Date: {1: dd/MMM/yy}  Target: {2: dd/MMM/yy}", 
                     Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_CustomerPONo),
                     Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_Timestamp),  
@@ -372,10 +372,11 @@ namespace BinaMitraTextile.Sales
 
         private void GridSaleOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Util.isColumnMatch(sender, e, col_gridSaleOrders_TargetDate))
+            if (Util.isColumnMatch(sender, e, col_gridSaleOrders_TargetDate, col_gridSaleOrders_CustomerPONo))
             {
-                pnlUpdateTargetDate.Visible = true;
+                pnlUpdateSaleOrder.Visible = true;
                 idtp_SaleOrders_TargetDate.Value = (DateTime)Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_TargetDate);
+                itxt_CustomerPONo.ValueText = Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_CustomerPONo).ToString();
             }
             else
             {
@@ -383,16 +384,16 @@ namespace BinaMitraTextile.Sales
             }
         }
 
-        private void BtnUpdateTargetDate_Click(object sender, EventArgs e)
+        private void BtnUpdateSaleOrder_Click(object sender, EventArgs e)
         {
-            SaleOrder.updateTargetDate(Util.getSelectedRowID(gridSaleOrders, col_gridSaleOrders_id), (DateTime)idtp_SaleOrders_TargetDate.Value);
-            pnlUpdateTargetDate.Visible = false;
+            SaleOrder.update(Util.getSelectedRowID(gridSaleOrders, col_gridSaleOrders_id), (DateTime)idtp_SaleOrders_TargetDate.Value, itxt_CustomerPONo.ValueText);
+            pnlUpdateSaleOrder.Visible = false;
             populateGridSaleOrders();
         }
 
-        private void BtnCancelUpdateTargetDate_Click(object sender, EventArgs e)
+        private void BtnCancelUpdateSaleOrder_Click(object sender, EventArgs e)
         {
-            pnlUpdateTargetDate.Visible = false;
+            pnlUpdateSaleOrder.Visible = false;
         }
 
         private void GridSaleOrderItems_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -411,6 +412,7 @@ namespace BinaMitraTextile.Sales
                 if (Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Qty))
                 {
                     pnlUpdateSaleOrderItemQty.Visible = true;
+                    in_SaleOrderItemQty.Value = (decimal)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Qty);
                     in_SaleOrderItemQty.focus();
                 }
                 else

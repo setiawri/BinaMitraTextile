@@ -175,9 +175,10 @@ namespace BinaMitraTextile.InventoryForm
                         "inventoryitem_getSummary",
                         DBConnection.createTableParameters(
                             new SqlQueryTableParameterGuid("ARRAY_Inventory_Id", inventoryIdList.ToArray())
-                            )
+                            ),
+                        new SqlQueryParameter("FILTER_ShowNotBookedOnly", SqlDbType.Bit, chkShowNotBookedOnly.Checked)
                     );
-
+                    
                     DataView dvwByColor = result.Datatable.DefaultView;
                     dvwByColor.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC, {3} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_COLOR_NAME);
                     gridSummaryByColor.DataSource = dvwByColor;

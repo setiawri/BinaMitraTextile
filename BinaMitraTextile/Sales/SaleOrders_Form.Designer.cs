@@ -143,10 +143,10 @@
             this.lblInventoryItems = new System.Windows.Forms.Label();
             this.btnRemoveSOFromInventoryItems = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.pnlUpdateTargetDate = new System.Windows.Forms.Panel();
+            this.pnlUpdateSaleOrder = new System.Windows.Forms.Panel();
             this.idtp_SaleOrders_TargetDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.btnCancelUpdateTargetDate = new System.Windows.Forms.Button();
-            this.btnUpdateTargetDate = new System.Windows.Forms.Button();
+            this.btnUpdateSaleOrder = new System.Windows.Forms.Button();
             this.pnlDetails = new System.Windows.Forms.Panel();
             this.ptDetails = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.pnlUpdateSaleOrderItemQty = new System.Windows.Forms.Panel();
@@ -159,6 +159,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlSaleOrderInfo = new System.Windows.Forms.Panel();
             this.chkShowShippedBookedSisa = new System.Windows.Forms.CheckBox();
+            this.itxt_CustomerPONo = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -180,7 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventoryItems)).BeginInit();
             this.pnlInventoryItems.SuspendLayout();
-            this.pnlUpdateTargetDate.SuspendLayout();
+            this.pnlUpdateSaleOrder.SuspendLayout();
             this.pnlDetails.SuspendLayout();
             this.pnlUpdateSaleOrderItemQty.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -1245,58 +1246,56 @@
             this.textBox2.Size = new System.Drawing.Size(210, 20);
             this.textBox2.TabIndex = 1;
             // 
-            // pnlUpdateTargetDate
+            // pnlUpdateSaleOrder
             // 
-            this.pnlUpdateTargetDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlUpdateTargetDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUpdateTargetDate.Controls.Add(this.idtp_SaleOrders_TargetDate);
-            this.pnlUpdateTargetDate.Controls.Add(this.btnCancelUpdateTargetDate);
-            this.pnlUpdateTargetDate.Controls.Add(this.btnUpdateTargetDate);
-            this.pnlUpdateTargetDate.Location = new System.Drawing.Point(377, 230);
-            this.pnlUpdateTargetDate.Name = "pnlUpdateTargetDate";
-            this.pnlUpdateTargetDate.Size = new System.Drawing.Size(230, 110);
-            this.pnlUpdateTargetDate.TabIndex = 117;
-            this.pnlUpdateTargetDate.Visible = false;
+            this.pnlUpdateSaleOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlUpdateSaleOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdateSaleOrder.Controls.Add(this.itxt_CustomerPONo);
+            this.pnlUpdateSaleOrder.Controls.Add(this.idtp_SaleOrders_TargetDate);
+            this.pnlUpdateSaleOrder.Controls.Add(this.btnCancelUpdateTargetDate);
+            this.pnlUpdateSaleOrder.Controls.Add(this.btnUpdateSaleOrder);
+            this.pnlUpdateSaleOrder.Location = new System.Drawing.Point(377, 225);
+            this.pnlUpdateSaleOrder.Name = "pnlUpdateSaleOrder";
+            this.pnlUpdateSaleOrder.Size = new System.Drawing.Size(231, 149);
+            this.pnlUpdateSaleOrder.TabIndex = 117;
+            this.pnlUpdateSaleOrder.Visible = false;
             // 
             // idtp_SaleOrders_TargetDate
             // 
             this.idtp_SaleOrders_TargetDate.Checked = true;
-            this.idtp_SaleOrders_TargetDate.CustomFormat = "dd/MM/yy";
+            this.idtp_SaleOrders_TargetDate.CustomFormat = "dd/MM/yyyy";
             this.idtp_SaleOrders_TargetDate.DefaultCheckedValue = false;
             this.idtp_SaleOrders_TargetDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_SaleOrders_TargetDate.LabelText = "Due date";
-            this.idtp_SaleOrders_TargetDate.Location = new System.Drawing.Point(45, 19);
+            this.idtp_SaleOrders_TargetDate.Location = new System.Drawing.Point(29, 60);
             this.idtp_SaleOrders_TargetDate.Name = "idtp_SaleOrders_TargetDate";
             this.idtp_SaleOrders_TargetDate.ShowCheckBox = false;
+            this.idtp_SaleOrders_TargetDate.ShowDateTimePickerOnly = false;
             this.idtp_SaleOrders_TargetDate.ShowUpAndDown = false;
-            this.idtp_SaleOrders_TargetDate.Size = new System.Drawing.Size(139, 41);
+            this.idtp_SaleOrders_TargetDate.Size = new System.Drawing.Size(171, 41);
             this.idtp_SaleOrders_TargetDate.TabIndex = 3;
             this.idtp_SaleOrders_TargetDate.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.idtp_SaleOrders_TargetDate.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
             // 
             // btnCancelUpdateTargetDate
             // 
-            this.btnCancelUpdateTargetDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelUpdateTargetDate.Location = new System.Drawing.Point(123, 66);
+            this.btnCancelUpdateTargetDate.Location = new System.Drawing.Point(121, 111);
             this.btnCancelUpdateTargetDate.Name = "btnCancelUpdateTargetDate";
-            this.btnCancelUpdateTargetDate.Size = new System.Drawing.Size(61, 23);
+            this.btnCancelUpdateTargetDate.Size = new System.Drawing.Size(60, 23);
             this.btnCancelUpdateTargetDate.TabIndex = 2;
             this.btnCancelUpdateTargetDate.Text = "CANCEL";
             this.btnCancelUpdateTargetDate.UseVisualStyleBackColor = true;
-            this.btnCancelUpdateTargetDate.Click += new System.EventHandler(this.BtnCancelUpdateTargetDate_Click);
+            this.btnCancelUpdateTargetDate.Click += new System.EventHandler(this.BtnCancelUpdateSaleOrder_Click);
             // 
-            // btnUpdateTargetDate
+            // btnUpdateSaleOrder
             // 
-            this.btnUpdateTargetDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateTargetDate.Location = new System.Drawing.Point(45, 66);
-            this.btnUpdateTargetDate.Name = "btnUpdateTargetDate";
-            this.btnUpdateTargetDate.Size = new System.Drawing.Size(72, 23);
-            this.btnUpdateTargetDate.TabIndex = 1;
-            this.btnUpdateTargetDate.Text = "UPDATE";
-            this.btnUpdateTargetDate.UseVisualStyleBackColor = true;
-            this.btnUpdateTargetDate.Click += new System.EventHandler(this.BtnUpdateTargetDate_Click);
+            this.btnUpdateSaleOrder.Location = new System.Drawing.Point(50, 111);
+            this.btnUpdateSaleOrder.Name = "btnUpdateSaleOrder";
+            this.btnUpdateSaleOrder.Size = new System.Drawing.Size(71, 23);
+            this.btnUpdateSaleOrder.TabIndex = 1;
+            this.btnUpdateSaleOrder.Text = "UPDATE";
+            this.btnUpdateSaleOrder.UseVisualStyleBackColor = true;
+            this.btnUpdateSaleOrder.Click += new System.EventHandler(this.BtnUpdateSaleOrder_Click);
             // 
             // pnlDetails
             // 
@@ -1313,8 +1312,11 @@
             this.ptDetails.AdjustLocationOnClick = true;
             this.ptDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ptDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptDetails.ContainerPanel = null;
+            this.ptDetails.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.ptDetails.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
             this.ptDetails.Location = new System.Drawing.Point(0, 332);
+            this.ptDetails.MinimumSplitterDistance = 100;
             this.ptDetails.Name = "ptDetails";
             this.ptDetails.Size = new System.Drawing.Size(25, 25);
             this.ptDetails.TabIndex = 118;
@@ -1422,9 +1424,12 @@
             this.panelToggle1.AdjustLocationOnClick = false;
             this.panelToggle1.BackColor = System.Drawing.Color.White;
             this.panelToggle1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelToggle1.ContainerPanel = null;
+            this.panelToggle1.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.panelToggle1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
             this.panelToggle1.Location = new System.Drawing.Point(960, 0);
+            this.panelToggle1.MinimumSplitterDistance = 100;
             this.panelToggle1.Name = "panelToggle1";
             this.panelToggle1.Size = new System.Drawing.Size(24, 27);
             this.panelToggle1.TabIndex = 122;
@@ -1467,19 +1472,36 @@
             this.chkShowShippedBookedSisa.UseVisualStyleBackColor = true;
             this.chkShowShippedBookedSisa.CheckedChanged += new System.EventHandler(this.ChkShowShippedBookedSisa_CheckedChanged);
             // 
-            // Main_Form
+            // itxt_CustomerPONo
+            // 
+            this.itxt_CustomerPONo.IsBrowseMode = false;
+            this.itxt_CustomerPONo.LabelText = "PO";
+            this.itxt_CustomerPONo.Location = new System.Drawing.Point(29, 13);
+            this.itxt_CustomerPONo.MaxLength = 32767;
+            this.itxt_CustomerPONo.MultiLine = false;
+            this.itxt_CustomerPONo.Name = "itxt_CustomerPONo";
+            this.itxt_CustomerPONo.PasswordChar = '\0';
+            this.itxt_CustomerPONo.RowCount = 1;
+            this.itxt_CustomerPONo.ShowDeleteButton = false;
+            this.itxt_CustomerPONo.ShowFilter = false;
+            this.itxt_CustomerPONo.ShowTextboxOnly = false;
+            this.itxt_CustomerPONo.Size = new System.Drawing.Size(171, 41);
+            this.itxt_CustomerPONo.TabIndex = 4;
+            this.itxt_CustomerPONo.ValueText = "";
+            // 
+            // SaleOrders_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 509);
             this.Controls.Add(this.ptDetails);
-            this.Controls.Add(this.pnlUpdateTargetDate);
+            this.Controls.Add(this.pnlUpdateSaleOrder);
             this.Controls.Add(this.pnlUpdateSaleOrderItemQty);
             this.Controls.Add(this.gridSaleOrderItems);
             this.Controls.Add(this.pnlSaleOrderInfo);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlDetails);
-            this.Name = "Main_Form";
+            this.Name = "SaleOrders_Form";
             this.Text = "SALE ORDERS";
             this.Load += new System.EventHandler(this.Form_Load);
             this.Shown += new System.EventHandler(this.Main_Form_Shown);
@@ -1505,7 +1527,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventoryItems)).EndInit();
             this.pnlInventoryItems.ResumeLayout(false);
-            this.pnlUpdateTargetDate.ResumeLayout(false);
+            this.pnlUpdateSaleOrder.ResumeLayout(false);
             this.pnlDetails.ResumeLayout(false);
             this.pnlUpdateSaleOrderItemQty.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
@@ -1562,10 +1584,10 @@
         private System.Windows.Forms.DataGridViewLinkColumn col_gridInventory_Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridInventory_length;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridInventory_Notes;
-        private System.Windows.Forms.Panel pnlUpdateTargetDate;
+        private System.Windows.Forms.Panel pnlUpdateSaleOrder;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_SaleOrders_TargetDate;
         public System.Windows.Forms.Button btnCancelUpdateTargetDate;
-        public System.Windows.Forms.Button btnUpdateTargetDate;
+        public System.Windows.Forms.Button btnUpdateSaleOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleOrders_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleOrders_Timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleOrders_CustomerPONo;
@@ -1615,5 +1637,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel pnlSaleOrderInfo;
         private System.Windows.Forms.CheckBox chkShowShippedBookedSisa;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_CustomerPONo;
     }
 }
