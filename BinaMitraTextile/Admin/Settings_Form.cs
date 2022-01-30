@@ -57,10 +57,23 @@ namespace BinaMitraTextile.Admin
                 iddl_SalePayment_MoneyAccountCategoryAssignments_Cash.Enabled = false;
                 iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe.Enabled = false;
             }
+
+            MoneyAccountCategory.populateInputControlDropDownList(iddl_MoneyAccountCategories_PenjualanTunai, true);
+            iddl_MoneyAccountCategories_PenjualanTunai.SelectedValue = Settings.MoneyAccountCategories_Id_PenjualanTunai;
         }
 
         private void populatePageData()
         {
+        }
+
+        public void setSalePayment_MoneyAccountCategoryAssignments_Id_Cash()
+        {
+            Settings.SalePayment_MoneyAccountCategoryAssignments_Id_Cash = (Guid?)iddl_SalePayment_MoneyAccountCategoryAssignments_Cash.SelectedValue;
+        }
+
+        public void setSalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe()
+        {
+            Settings.SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe = (Guid?)iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe.SelectedValue;
         }
 
         #endregion METHODS
@@ -77,6 +90,12 @@ namespace BinaMitraTextile.Admin
         {
             _isFormShown = true;
             populatePageData();
+        }
+
+        private void iddl_MoneyAccountCategories_PenjualanTunai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_isFormShown)
+                Settings.MoneyAccountCategories_Id_PenjualanTunai = (Guid?)iddl_MoneyAccountCategories_PenjualanTunai.SelectedValue;
         }
 
         private void iddl_MoneyAccountCategories_SalePayment_Cash_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,16 +129,6 @@ namespace BinaMitraTextile.Admin
                 this.iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccountCategories_SalePayment_TransferOwe_SelectedIndexChanged);
                 setSalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe();
             }
-        }
-
-        public void setSalePayment_MoneyAccountCategoryAssignments_Id_Cash()
-        {
-            Settings.SalePayment_MoneyAccountCategoryAssignments_Id_Cash = (Guid?)iddl_SalePayment_MoneyAccountCategoryAssignments_Cash.SelectedValue;
-        }
-
-        public void setSalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe()
-        {
-            Settings.SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe = (Guid?)iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe.SelectedValue;
         }
 
         #endregion EVENT HANDLERS

@@ -61,6 +61,7 @@ namespace BinaMitraTextile
         private static Guid GUID_SalePayment_MoneyAccounts_Id = new Guid("388DD793-937D-44E6-AB53-F7ED79B264BC");
         private static Guid GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash = new Guid("C17F446E-0DD6-4A55-B4E2-43235182E590");
         private static Guid GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe = new Guid("8493D84B-F1CA-4155-BF31-31A692C42BF7");
+        private static Guid GUID_MoneyAccountCategories_Id_PenjualanTunai = new Guid("4507866B-48B7-4C14-9FD5-2F17E08F8221");
 
         //sql connection
         private static Guid GUID_LastConnectedPortNo = new Guid("06AFBB4E-F66B-42A0-96A7-0B5705629248");
@@ -102,36 +103,31 @@ namespace BinaMitraTextile
         {
             return ConfigurationManager.AppSettings["uploadStorage"];
         }
-
-        /// <summary><para></para></summary>
+                
         public static string LastSheetNo
         {
             get { return getStringValue(GUID_LastSheetNo); }
             set { update(GUID_LastSheetNo, value); }
         }
-
-        /// <summary><para></para></summary>
+                
         public static string LastStartHexNo
         {
             get { return getStringValue(GUID_LastStartHexNo); }
             set { update(GUID_LastStartHexNo, value); }
         }
-
-        /// <summary><para></para></summary>
+                
         public static int OffsetX
         {
             get { return getIntValue(GUID_OffsetX, 0); }
             set { update(GUID_OffsetX, value); }
         }
-
-        /// <summary><para></para></summary>
+                
         public static int OffsetY
         {
             get { return getIntValue(GUID_OffsetY, 0); }
             set { update(GUID_OffsetY, value); }
         }
-
-        /// <summary><para></para></summary>
+                
         public static DateTime LastOpnameCleanupDate
         {
             get {
@@ -149,8 +145,7 @@ namespace BinaMitraTextile
             }
             set { update(GUID_LastOpnameCleanupDate, value); }
         }
-
-        /// <summary><para></para></summary>
+                
         public static ConnectionPorts LastConnectedPortNo
         {
             get { return (ConnectionPorts)Enum.Parse(typeof(ConnectionPorts), Util.getAppData(GUID_LastConnectedPortNo.ToString())); }
@@ -160,26 +155,29 @@ namespace BinaMitraTextile
         /*******************************************************************************************************
          * SALE PAYMENT
          *******************************************************************************************************/
-
-        /// <summary><para></para></summary>
+                
         public static Guid? SalePayment_MoneyAccounts_Id
         {
             get { return getGuidValue(GUID_SalePayment_MoneyAccounts_Id); }
             set { update(GUID_SalePayment_MoneyAccounts_Id, value); }
         }
-
-        /// <summary><para></para></summary>
+                
         public static Guid? SalePayment_MoneyAccountCategoryAssignments_Id_Cash
         {
             get { return getGuidValue(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash); }
             set { update(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash, value); }
         }
-
-        /// <summary><para></para></summary>
+        
         public static Guid? SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe
         {
             get { return getGuidValue(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe); }
             set { update(GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe, value); }
+        }
+
+        public static Guid? MoneyAccountCategories_Id_PenjualanTunai
+        {
+            get { return getGuidValue(GUID_MoneyAccountCategories_Id_PenjualanTunai); }
+            set { update(GUID_MoneyAccountCategories_Id_PenjualanTunai, value); }
         }
 
         #endregion PUBLIC VARIABLES
@@ -191,10 +189,6 @@ namespace BinaMitraTextile
             form.Icon = taskbarIcon;
         }
 
-        #endregion
-
-        /*******************************************************************************************************/
-        #region METHODS
         public static int getIntValue(Guid GUID, int defaultValue)
         {
             DataRow row = get(GUID);

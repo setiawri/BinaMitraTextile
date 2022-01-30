@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BinaMitraTextile.Invoices
@@ -203,10 +197,20 @@ namespace BinaMitraTextile.Invoices
                     Guid? id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
                     if (id != null && (PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
                         CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null, true);
+
+                    //auto generate approved petty cash record
+                    if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Cash)
+                    {
+                        string notes = string.IsNullOrWhiteSpace(txtNotes.Text) ? "" : ", Notes: " + txtNotes.Text;
+                        try
+                        {
+                            MoneyAccountItem.add((Guid)MoneyAccountCategoryAssignment.get(Settings.MoneyAccountCategories_Id_PenjualanTunai, Settings.SalePayment_MoneyAccounts_Id),
+                                string.Format("Invoice {0}{1}", _sale.barcode, notes), (int)paymentAmount, true, _sale.id, null);
+                        } catch { LIBUtil.Util.displayMessageBoxError("Error while generating money account item. Please contact administrator."); }
+                    }
                 }
 
                 populateData();
-                //resetData();
                 txtNotes.Text = "";
                 _dataWasUpdated = true;
             }

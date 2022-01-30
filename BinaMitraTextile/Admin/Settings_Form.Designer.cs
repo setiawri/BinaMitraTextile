@@ -32,6 +32,7 @@
             this.iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.label1 = new System.Windows.Forms.Label();
             this.iddl_SalePayment_MoneyAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_MoneyAccountCategories_PenjualanTunai = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.SuspendLayout();
             // 
             // iddl_SalePayment_MoneyAccountCategoryAssignments_Cash
@@ -94,11 +95,29 @@
             this.iddl_SalePayment_MoneyAccounts.TabIndex = 4;
             this.iddl_SalePayment_MoneyAccounts.SelectedIndexChanged += new System.EventHandler(this.iddl_SalePayment_MoneyAccounts_SelectedIndexChanged);
             // 
+            // iddl_MoneyAccountCategories_PenjualanTunai
+            // 
+            this.iddl_MoneyAccountCategories_PenjualanTunai.DisableTextInput = false;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.HideFilter = true;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.HideUpdateLink = true;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.LabelText = "Category for Penjualan Tunai";
+            this.iddl_MoneyAccountCategories_PenjualanTunai.Location = new System.Drawing.Point(12, 90);
+            this.iddl_MoneyAccountCategories_PenjualanTunai.Name = "iddl_MoneyAccountCategories_PenjualanTunai";
+            this.iddl_MoneyAccountCategories_PenjualanTunai.SelectedIndex = -1;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.SelectedItem = null;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.SelectedItemText = "";
+            this.iddl_MoneyAccountCategories_PenjualanTunai.SelectedValue = null;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.ShowDropdownlistOnly = false;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.Size = new System.Drawing.Size(172, 41);
+            this.iddl_MoneyAccountCategories_PenjualanTunai.TabIndex = 5;
+            this.iddl_MoneyAccountCategories_PenjualanTunai.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccountCategories_PenjualanTunai_SelectedIndexChanged);
+            // 
             // Settings_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 276);
+            this.Controls.Add(this.iddl_MoneyAccountCategories_PenjualanTunai);
             this.Controls.Add(this.iddl_SalePayment_MoneyAccounts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe);
@@ -117,5 +136,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_SalePayment_MoneyAccountCategoryAssignments_TransferOwe;
         private System.Windows.Forms.Label label1;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_SalePayment_MoneyAccounts;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategories_PenjualanTunai;
     }
 }

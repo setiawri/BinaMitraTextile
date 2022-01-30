@@ -210,23 +210,12 @@
     <Compile Include="App_Code\GordenOrder.cs" />
     <Compile Include="App_Code\GordenOrderItemMaterial.cs" />
     <Compile Include="App_Code\GordenOrderItem.cs" />
-    <Compile Include="App_Code\MasterData\PettyCashRecordsCategories_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <None Include="App_Code\Notification.cs" />
-    <Compile Include="App_Code\PettyCashRecord.cs" />
-    <Compile Include="App_Code\PettyCashRecordsCategory.cs" />
     <Compile Include="Container_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Container_Form.Designer.cs">
       <DependentUpon>Container_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\PettyCash_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin\PettyCash_Form.Designer.cs">
-      <DependentUpon>PettyCash_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Gorden\GordenItems_Form.cs">
       <SubType>Form</SubType>
@@ -707,9 +696,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Container_Form.resx">
       <DependentUpon>Container_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\PettyCash_Form.resx">
-      <DependentUpon>PettyCash_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gorden\GordenOrderDetails_Form.resx">
       <DependentUpon>GordenOrderDetails_Form.cs</DependentUpon>
