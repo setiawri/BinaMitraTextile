@@ -271,14 +271,20 @@ namespace BinaMitraTextile.InventoryForm
                 Inventory.updateOpnameMarker((Guid)Util.getClickedRowValue(sender, e, col_grid_id), Util.clickDataGridViewCheckbox(sender, e));
                 populateGridview();
             }
-            else if (GlobalData.UserAccount.role != Roles.User)
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
             {
-                if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
+                if (GlobalData.UserAccount.role == Roles.User)
+                    Util.displayMessageBoxError("Must have administrator access to change this value");
                 {
                     Inventory.updateActiveStatus(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
                     populateGridview();
-                }
-                else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_isConsignment.Name))
+                } 
+            }
+            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_isConsignment.Name))
+            {
+                if (GlobalData.UserAccount.role == Roles.User)
+                    Util.displayMessageBoxError("Must have administrator access to change this value");
+                else
                 {
                     Inventory.updateIsConsignment(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
                     populateGridview();
