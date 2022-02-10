@@ -146,9 +146,15 @@ namespace BinaMitraTextile
             set { update(GUID_LastOpnameCleanupDate, value); }
         }
                 
-        public static ConnectionPorts LastConnectedPortNo
+        public static ConnectionPorts? LastConnectedPortNo
         {
-            get { return (ConnectionPorts)Enum.Parse(typeof(ConnectionPorts), Util.getAppData(GUID_LastConnectedPortNo.ToString())); }
+            get {
+                string lastConnectedPortNo = Util.getAppData(GUID_LastConnectedPortNo.ToString());
+                if (string.IsNullOrEmpty(lastConnectedPortNo))
+                    return null;
+                else
+                    return (ConnectionPorts)Enum.Parse(typeof(ConnectionPorts), lastConnectedPortNo);
+            }
             set { Util.saveAppData(GUID_LastConnectedPortNo.ToString(), value.ToString()); }
         }
 

@@ -67,7 +67,7 @@ namespace BinaMitraTextile
 
         private void setLastConnectedPortNo()
         {
-            if (rbLiveDB.Checked || rbLocalDB.Checked)
+            if ((rbLiveDB.Checked || rbLocalDB.Checked) && Settings.LastConnectedPortNo != null)
                 iddl_Ports.SelectedItem = Settings.LastConnectedPortNo;
             else
                 iddl_Ports.reset();
