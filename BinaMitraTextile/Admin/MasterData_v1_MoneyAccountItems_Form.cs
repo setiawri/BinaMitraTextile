@@ -106,7 +106,7 @@ namespace BinaMitraTextile.Admin
             if (Mode == FormModes.Add)
                 return MoneyAccountItem.get(null, (Guid)iddl_MoneyAccounts.SelectedValue, null, null, chkOnlyNotApproved.Checked ? (bool?)false : null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
             else
-                return MoneyAccountItem.get(null, null, null, (Guid)iddl_MoneyAccountCategoryAssignments.SelectedValue, chkOnlyNotApproved.Checked ? (bool?)false : null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
+                return MoneyAccountItem.get(null, null, null, (Guid?)iddl_MoneyAccountCategoryAssignments.SelectedValue, chkOnlyNotApproved.Checked ? (bool?)false : null, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null).DefaultView;
         }
 
         protected override void populateInputFields()
