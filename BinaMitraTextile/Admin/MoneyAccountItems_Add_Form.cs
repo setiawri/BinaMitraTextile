@@ -60,6 +60,7 @@ namespace BinaMitraTextile.Admin
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_Id.DataPropertyName = MoneyAccountItem.COL_DB_Id;
+            col_grid_Timestamp.DataPropertyName = MoneyAccountItem.COL_DB_Timestamp;
             col_grid_No.DataPropertyName = MoneyAccountItem.COL_DB_No;
             col_grid_MoneyAccounts_Name.DataPropertyName = MoneyAccountItem.COL_MoneyAccounts_Name;
             col_grid_MoneyAccountCategories_Name.DataPropertyName = MoneyAccountItem.COL_MoneyAccountCategories_Name;

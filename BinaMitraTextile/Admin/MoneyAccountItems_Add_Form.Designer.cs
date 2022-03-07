@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.iddl_MoneyAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_MoneyAccountCategoryAssignments = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.itxt_Description = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
@@ -41,6 +42,7 @@
             this.grid = new System.Windows.Forms.DataGridView();
             this.col_grid_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_MoneyAccounts_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_MoneyAccountCategories_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,14 +57,15 @@
             this.iddl_MoneyAccounts.HideFilter = true;
             this.iddl_MoneyAccounts.HideUpdateLink = true;
             this.iddl_MoneyAccounts.LabelText = "Account";
-            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(12, 12);
+            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(16, 15);
+            this.iddl_MoneyAccounts.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.iddl_MoneyAccounts.Name = "iddl_MoneyAccounts";
             this.iddl_MoneyAccounts.SelectedIndex = -1;
             this.iddl_MoneyAccounts.SelectedItem = null;
             this.iddl_MoneyAccounts.SelectedItemText = "";
             this.iddl_MoneyAccounts.SelectedValue = null;
             this.iddl_MoneyAccounts.ShowDropdownlistOnly = false;
-            this.iddl_MoneyAccounts.Size = new System.Drawing.Size(139, 41);
+            this.iddl_MoneyAccounts.Size = new System.Drawing.Size(185, 50);
             this.iddl_MoneyAccounts.TabIndex = 0;
             this.iddl_MoneyAccounts.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccounts_SelectedIndexChanged);
             // 
@@ -72,21 +75,23 @@
             this.iddl_MoneyAccountCategoryAssignments.HideFilter = true;
             this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = true;
             this.iddl_MoneyAccountCategoryAssignments.LabelText = "Category";
-            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(12, 57);
+            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(16, 70);
+            this.iddl_MoneyAccountCategoryAssignments.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
             this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
             this.iddl_MoneyAccountCategoryAssignments.SelectedItem = null;
             this.iddl_MoneyAccountCategoryAssignments.SelectedItemText = "";
             this.iddl_MoneyAccountCategoryAssignments.SelectedValue = null;
             this.iddl_MoneyAccountCategoryAssignments.ShowDropdownlistOnly = false;
-            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(139, 41);
+            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(185, 50);
             this.iddl_MoneyAccountCategoryAssignments.TabIndex = 1;
             // 
             // itxt_Description
             // 
             this.itxt_Description.IsBrowseMode = false;
             this.itxt_Description.LabelText = "Notes";
-            this.itxt_Description.Location = new System.Drawing.Point(157, 12);
+            this.itxt_Description.Location = new System.Drawing.Point(209, 15);
+            this.itxt_Description.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.itxt_Description.MaxLength = 32767;
             this.itxt_Description.MultiLine = true;
             this.itxt_Description.Name = "itxt_Description";
@@ -95,15 +100,16 @@
             this.itxt_Description.ShowDeleteButton = false;
             this.itxt_Description.ShowFilter = false;
             this.itxt_Description.ShowTextboxOnly = false;
-            this.itxt_Description.Size = new System.Drawing.Size(267, 86);
+            this.itxt_Description.Size = new System.Drawing.Size(542, 105);
             this.itxt_Description.TabIndex = 2;
             this.itxt_Description.ValueText = "";
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(430, 58);
+            this.btnSubmit.Location = new System.Drawing.Point(761, 70);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(113, 41);
+            this.btnSubmit.Size = new System.Drawing.Size(151, 50);
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -120,7 +126,8 @@
             0,
             0});
             this.in_Amount.LabelText = "Amount";
-            this.in_Amount.Location = new System.Drawing.Point(430, 13);
+            this.in_Amount.Location = new System.Drawing.Point(761, 15);
+            this.in_Amount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.in_Amount.MaximumValue = new decimal(new int[] {
             10000000,
             0,
@@ -135,7 +142,7 @@
             this.in_Amount.ShowAllowDecimalCheckbox = false;
             this.in_Amount.ShowCheckbox = false;
             this.in_Amount.ShowTextboxOnly = false;
-            this.in_Amount.Size = new System.Drawing.Size(113, 41);
+            this.in_Amount.Size = new System.Drawing.Size(151, 50);
             this.in_Amount.TabIndex = 3;
             this.in_Amount.Value = new decimal(new int[] {
             0,
@@ -164,19 +171,21 @@
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_grid_Id,
             this.col_grid_MoneyAccounts_Name,
+            this.col_grid_Timestamp,
             this.col_grid_No,
             this.col_grid_MoneyAccountCategories_Name,
             this.col_grid_Description,
             this.col_grid_Amount,
             this.col_grid_Approved});
-            this.grid.Location = new System.Drawing.Point(12, 105);
-            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.Location = new System.Drawing.Point(16, 129);
+            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
+            this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(532, 116);
+            this.grid.Size = new System.Drawing.Size(896, 143);
             this.grid.TabIndex = 6;
             this.grid.TabStop = false;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
@@ -184,14 +193,15 @@
             // col_grid_Id
             // 
             this.col_grid_Id.HeaderText = "Id";
+            this.col_grid_Id.MinimumWidth = 6;
             this.col_grid_Id.Name = "col_grid_Id";
             this.col_grid_Id.ReadOnly = true;
             this.col_grid_Id.Visible = false;
+            this.col_grid_Id.Width = 125;
             // 
             // col_grid_MoneyAccounts_Name
             // 
             this.col_grid_MoneyAccounts_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_MoneyAccounts_Name.DataPropertyName = "grade_name";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.col_grid_MoneyAccounts_Name.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_grid_MoneyAccounts_Name.HeaderText = "Account";
@@ -200,11 +210,22 @@
             this.col_grid_MoneyAccounts_Name.ReadOnly = true;
             this.col_grid_MoneyAccounts_Name.Width = 50;
             // 
+            // col_grid_Timestamp
+            // 
+            this.col_grid_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Format = "dd/MM/yy";
+            this.col_grid_Timestamp.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_grid_Timestamp.HeaderText = "Date";
+            this.col_grid_Timestamp.MinimumWidth = 40;
+            this.col_grid_Timestamp.Name = "col_grid_Timestamp";
+            this.col_grid_Timestamp.ReadOnly = true;
+            this.col_grid_Timestamp.Width = 40;
+            // 
             // col_grid_No
             // 
             this.col_grid_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_No.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_No.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_grid_No.HeaderText = "No";
             this.col_grid_No.MinimumWidth = 50;
             this.col_grid_No.Name = "col_grid_No";
@@ -214,8 +235,8 @@
             // col_grid_MoneyAccountCategories_Name
             // 
             this.col_grid_MoneyAccountCategories_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_MoneyAccountCategories_Name.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_MoneyAccountCategories_Name.DefaultCellStyle = dataGridViewCellStyle5;
             this.col_grid_MoneyAccountCategories_Name.HeaderText = "Category";
             this.col_grid_MoneyAccountCategories_Name.MinimumWidth = 50;
             this.col_grid_MoneyAccountCategories_Name.Name = "col_grid_MoneyAccountCategories_Name";
@@ -234,9 +255,9 @@
             // col_grid_Amount
             // 
             this.col_grid_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            this.col_grid_Amount.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.col_grid_Amount.DefaultCellStyle = dataGridViewCellStyle6;
             this.col_grid_Amount.HeaderText = "Amount";
             this.col_grid_Amount.MinimumWidth = 50;
             this.col_grid_Amount.Name = "col_grid_Amount";
@@ -256,16 +277,17 @@
             // 
             // MoneyAccountItems_Add_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 232);
+            this.ClientSize = new System.Drawing.Size(924, 286);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.iddl_MoneyAccounts);
             this.Controls.Add(this.iddl_MoneyAccountCategoryAssignments);
             this.Controls.Add(this.itxt_Description);
-            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.in_Amount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MoneyAccountItems_Add_Form";
             this.Text = "SHIPPING EXPENSES";
             this.Load += new System.EventHandler(this.Form_Load);
@@ -285,6 +307,7 @@
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_MoneyAccounts_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Timestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_No;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_MoneyAccountCategories_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_Description;

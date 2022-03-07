@@ -195,8 +195,12 @@ namespace BinaMitraTextile.Invoices
                 else if (_paymentMode == PaymentMode.SaleInvoice)
                 {
                     Guid? id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
+
                     if (id != null && (PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
+                    {
+                        //Payment.updateCheckedStatus((Guid)id, true); //not done to avoid loophole. Forces manager to check manually.
                         CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null, true);
+                    }
 
                     //auto generate approved petty cash record
                     if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Cash)
