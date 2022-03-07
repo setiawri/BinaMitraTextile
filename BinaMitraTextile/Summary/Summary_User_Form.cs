@@ -106,8 +106,9 @@ namespace BinaMitraTextile
             else
                 dtReceivables = Sale.get_ReceivablesOnly(false);
 
+            DataView dataView = dtReceivables.DefaultView;
+            dataView.Sort = String.Format("{0} ASC,{1} DESC", Sale.COL_RemainingTermDays, Sale.COL_DAYSELAPSED);
             Util.setGridviewDataSource(gridReceivables, dtReceivables);
-            gridReceivables.Sort(col_gridReceivables_RemainingTermDays, ListSortDirection.Ascending);
             lblTotalDaftarPiutang.Text = string.Format("{0:N0}", LIBUtil.Util.compute(dtReceivables, "SUM", Sale.COL_RECEIVABLEAMOUNT, ""));
 
             populateReceivablesSummary(dtReceivables);
