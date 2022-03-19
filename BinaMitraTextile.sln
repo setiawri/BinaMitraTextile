@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaMitraTextileWebApp", "BinaMitraTextileWebApp\BinaMitraTextileWebApp.csproj", "{34B206B8-731B-4C9E-90AC-A9B9DA376122}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F06C7265-4672-4A0D-8776-40BE47B865D4} = {F06C7265-4672-4A0D-8776-40BE47B865D4}
+		{344268D2-6387-4AD2-88F5-DC743733ABFC} = {344268D2-6387-4AD2-88F5-DC743733ABFC}
+		{23013BFC-021E-426A-8A92-8C1C34836974} = {23013BFC-021E-426A-8A92-8C1C34836974}
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaMitraTextile", "BinaMitraTextile\BinaMitraTextile.csproj", "{F06C7265-4672-4A0D-8776-40BE47B865D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeLib", "..\..\Barcode\BarcodeLib\BarcodeLib.csproj", "{F8646414-0C9C-49BB-9DA3-3923BF78A398}"
@@ -10,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIBUtil", "..\..\LIBUtil\LIBUtil\LIBUtil\LIBUtil.csproj", "{23013BFC-021E-426A-8A92-8C1C34836974}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{353C0537-EFC7-46F3-AF9F-815F98FE24D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIBWebMVC", "..\..\LIBUtil\LIBUtil\LIBWebMVC\LIBWebMVC.csproj", "{344268D2-6387-4AD2-88F5-DC743733ABFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +60,22 @@ Global
 		{353C0537-EFC7-46F3-AF9F-815F98FE24D1}.Release|Any CPU.Build.0 = Release
 		{353C0537-EFC7-46F3-AF9F-815F98FE24D1}.Release|x86.ActiveCfg = Release
 		{353C0537-EFC7-46F3-AF9F-815F98FE24D1}.Release|x86.Build.0 = Release
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Debug|x86.Build.0 = Debug|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Release|x86.ActiveCfg = Release|Any CPU
+		{34B206B8-731B-4C9E-90AC-A9B9DA376122}.Release|x86.Build.0 = Release|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Debug|x86.Build.0 = Debug|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Release|x86.ActiveCfg = Release|Any CPU
+		{344268D2-6387-4AD2-88F5-DC743733ABFC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
