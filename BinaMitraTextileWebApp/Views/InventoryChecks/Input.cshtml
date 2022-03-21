@@ -10,7 +10,7 @@
 <div class="content-wrapper">
     <!-- Content area -->
     <div class="content">
-            <!-- Form inputs -->
+        <!-- Form inputs -->
         <div class="card animated bounceInLeft">
             <div class="card-header header-elements-inline pb-1">
                 <h5 class="card-title text-uppercase">@ViewBag.Title</h5>
@@ -82,7 +82,7 @@
 
                                     @*Update to bootstrap v5*@
                                     @*<input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label>*@
+                                        <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label>*@
 
                                     <div class="input-group-text">
                                         @Html.CheckBox("IsRescan", false, new { @class = "form-check-input check-styled", @onclick = "adjustLocation()" })
@@ -142,25 +142,33 @@
     <!-- /content area -->
 </div>
 
+<audio id="clickSound"><source src="~/Resources/Sounds/click.mp3" /></audio>
+<audio id="inputSound"><source src="~/Resources/Sounds/input.mp3" /></audio>
+<audio id="errorSound"><source src="~/Resources/Sounds/inputerror.mp3" /></audio>
+
 <script type="text/javascript">
 
     var lastKeyPressTime = $.now();
     var isScanner = false;
-    var scannerMaxDelay = 50;
+    var scannerMaxDelay = 5;
 
     $(document).ready(function () {
         $('.popoverbutton').click(function (e) {
-            console.log('a');
+            //console.log('a');
             e.stopPropagation();
         });
 
+        barcodeKeypress();
+    });
+
+    function barcodeKeypress() {
         $('#InventoryItems_Barcode').on('keypress', function (e) {
             var now = $.now();
             var delay = now - lastKeyPressTime;
-            
+
+            //console.log("delay: " + delay);
             if (delay < scannerMaxDelay) {
                 isScanner = true;
-//                console.log("delay: " + delay);
             }
 
             lastKeyPressTime = now;
@@ -171,20 +179,26 @@
                 var barcode = $.trim($('#InventoryItems_Barcode').val()).substring(1);
                 var location = getLocation();
 
-                if (isScanner || !confirm("Tidak terdeteksi menggunakan scanner. Coba lagi?"))
+                if (isScanner || confirmManual())
                     AddScannedItem(now, location, barcode);
 
                 disableElement('InventoryItems_Barcode', false); //Enable
                 isScanner = false;
 
                 setValue('InventoryItems_Barcode', '');
+                $('#inputSound').get(0).play();
                 selectBarcodeTextbox();
             }
         });
-    });
+    }
 
     function applyLast() {
         selectBarcodeTextbox();
+    }
+
+    function confirmManual() {
+        $('#errorSound').get(0).play();
+        return !confirm("Tidak terdeteksi menggunakan scanner. Coba lagi?")
     }
 
     var item_no = 100;
@@ -238,8 +252,9 @@
                 if ($('#problemItemList' + data.item_no).length == 0) {
                     itemNo = AddProblemItem(parseJSONDate(data.timestamp), data.location, data.barcode);
                     addResult(itemNo, data.result);
+                    $('#errorSound').get(0).play();
                 }
-            } 
+            }
         });
     }
 

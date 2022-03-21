@@ -246,6 +246,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resources\Sounds\click.mp3" />
+    <Content Include="Resources\Sounds\input.mp3" />
+    <Content Include="Resources\Sounds\inputerror.mp3" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
