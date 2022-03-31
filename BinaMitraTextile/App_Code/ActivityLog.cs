@@ -65,7 +65,7 @@ namespace BinaMitraTextile
 
         public static string getDefaultValue<T>(Guid? Id)
         {
-            if (Id == null)
+            if (Id == null || Id == Guid.Empty)
                 return string.Empty;
             else if (typeof(T) == typeof(Inventory))
                 return new Inventory((Guid)Id).code.ToString();

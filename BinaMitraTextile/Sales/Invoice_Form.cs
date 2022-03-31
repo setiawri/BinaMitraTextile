@@ -55,7 +55,7 @@ namespace BinaMitraTextile.Sales
                 pnlSubmit1.Visible = true;
                 pnlSubmit2.Visible = true;
 
-                pnlPrintButtons.Enabled = false;
+                enablePrintButtons(false);
                 btnPayment.Enabled = false;
                 btnAddNotes.Enabled = false;
             }
@@ -66,7 +66,7 @@ namespace BinaMitraTextile.Sales
                 pnlSubmit1.Visible = false;
                 pnlSubmit2.Visible = false;
 
-                pnlPrintButtons.Enabled = true;
+                enablePrintButtons(true);
                 btnPayment.Enabled = true;
                 btnAddNotes.Enabled = true;
             }
@@ -74,6 +74,15 @@ namespace BinaMitraTextile.Sales
             Tools.disableResizing(this);
 
             grid.AutoGenerateColumns = false;
+        }
+
+        private void enablePrintButtons(bool isEnable)
+        {
+            chkHidePrices.Enabled = isEnable; 
+            chkShowPrintDialog.Enabled = isEnable;
+            chkPrintAllPages.Enabled = isEnable;
+            btnPrint.Enabled = isEnable;
+            btnPackingList.Enabled = isEnable;
         }
 
         private void populatePage()
@@ -322,7 +331,7 @@ namespace BinaMitraTextile.Sales
                 pnlSubmit1.Visible = false;
                 pnlSubmit2.Visible = false;
 
-                pnlPrintButtons.Enabled = true;
+                enablePrintButtons(true);
                 btnAddNotes.Enabled = true;
                 btnPayment.Enabled = true;
 

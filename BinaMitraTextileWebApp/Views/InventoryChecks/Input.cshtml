@@ -252,8 +252,8 @@
                 if ($('#problemItemList' + data.item_no).length == 0) {
                     itemNo = AddProblemItem(parseJSONDate(data.timestamp), data.location, data.barcode);
                     addResult(itemNo, data.result);
-                    $('#errorSound').get(0).play();
                 }
+                $('#errorSound').get(0).play();
             }
         });
     }

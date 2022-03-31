@@ -181,6 +181,11 @@ namespace BinaMitraTextile.Sales
                 itxt_AddBarcode.focus();
                 return true;
             }
+            else if (keyData == (Keys.Control | Keys.C))
+            {
+                if (LIBUtil.Util.copyContentToClipboardIfGridview(this))
+                    return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -360,7 +365,7 @@ namespace BinaMitraTextile.Sales
 
         private void gridSummary_SelectionChanged(object sender, EventArgs e)
         {
-            gridSummary.ClearSelection(); //disable cell color change when user click on it
+            //gridSummary.ClearSelection(); //disable cell color change when user click on it
         }
 
         #endregion LIST - SUMMARY
