@@ -17,6 +17,7 @@ namespace BinaMitraTextile.InventoryForm
     public partial class BarcodePrint_Form : Form
     {
         private List<BarcodeUC> listBarcodeUC;
+        private int listBarcodeUCColumnCount = 0;
         private List<TextBox> listManualInputTexboxes;
         Margins _margins = new Margins(2,2,2,2);
 
@@ -29,6 +30,7 @@ namespace BinaMitraTextile.InventoryForm
 
             Settings.setGeneralSettings(this);
 
+            listBarcodeUCColumnCount = 5;
             listBarcodeUC = new List<BarcodeUC>() { 
                 barcodeUC1, barcodeUC2, barcodeUC3, barcodeUC4, barcodeUC5,
                 barcodeUC6, barcodeUC7, barcodeUC8, barcodeUC9, barcodeUC10,
@@ -105,7 +107,8 @@ namespace BinaMitraTextile.InventoryForm
             if (string.IsNullOrEmpty(textbox.Text))
                 return false;
 
-            if (textbox.Text.Length == Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length)
+            if (textbox.Text.Length == Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length
+                || textbox.Text.Length == Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length + 3) //for suffix [.XX]
             {
                 _prefix = InventoryItem.getBarcodePrefix(textbox.Text.ToUpper());
                 _lastHex = InventoryItem.getBarcodeWithoutPrefix(textbox.Text.ToUpper());
@@ -164,36 +167,82 @@ namespace BinaMitraTextile.InventoryForm
 
         private void setControlLayout()
         {
-            int i = 0;
-            int startX = -20 + in_ManualOffsetX.ValueInt;
-            int startY = 8 + in_ManualOffsetY.ValueInt;
-            int gapX = 14;
+            int startX = -10 + in_ManualOffsetX.ValueInt;
+            int startY = 0 + in_ManualOffsetY.ValueInt;
+            int gapX = 7;
             int gapY = 24;
-            Size barcodeSize = new Size(137, 50); //minimum width of the barcode control inside the user control must be 120 or will throw error
+            int columnCount = 5;
+            int rowCount = 8;
+
+            BorderStyle borderStyle = BorderStyle.FixedSingle;
+            Size barcodeSize = new Size(145, 50); //minimum width of the barcode control inside the user control must be 120 or will throw error
             Size markerSize = new Size(14, 14);
             Point markerLocation = new Point(1, (barcodeSize.Height / 2) - (markerSize.Height / 2));
             Font barcodeFont = new Font(barcodeUC1.Barcode.Font.FontFamily, 6);
-            int columnCount = 5;
+
+            if (chkLabel107.Checked)
+            {
+                startX = -7;
+                startY = 0;
+                gapX = 12;
+                gapY = 24;
+                columnCount = 4;
+                rowCount = 7;
+                barcodeSize = new Size(190, 50);
+            }
 
             //set location of every barcode control
             Point currentPoint = new Point(startX, startY);
+            int currentColumnIndex = 0;
+            int currentRowIndex = 0;
+            int barcodeIndexCounter = 0;
             foreach (BarcodeUC barcode in listBarcodeUC)
             {
-                barcode.setup(BorderStyle.None, barcodeSize, markerSize, barcodeFont, markerLocation);
-                barcode.Location = currentPoint;
-                i++;
-                currentPoint = new Point(currentPoint.X + barcode.Width + gapX, currentPoint.Y);
-                if ((i % columnCount) == 0)
+                if (barcodeIndexCounter % listBarcodeUCColumnCount < columnCount)
                 {
-                    i = 0;
-                    currentPoint = new Point(startX, currentPoint.Y + barcode.Height + gapY);
-                }                
+                    if (currentColumnIndex == columnCount)
+                    {
+                        currentColumnIndex = 0;
+                        currentRowIndex++;
+                    }
+
+                    if (currentRowIndex < rowCount && currentColumnIndex <= columnCount)
+                    {
+                        barcode.setup(borderStyle, barcodeSize, markerSize, barcodeFont, markerLocation);
+                        currentPoint = new Point(startX + (barcodeSize.Width * currentColumnIndex) + (gapX * currentColumnIndex), startY + (barcodeSize.Height * currentRowIndex) + (gapY * currentRowIndex));
+                        barcode.Location = currentPoint;
+                        currentColumnIndex++;
+                    }
+                }
+                else
+                {
+                    currentPoint = new Point(currentPoint.X + gapX + barcodeSize.Width, currentPoint.Y);
+                    barcode.Location = currentPoint;
+                }
+
+                barcodeIndexCounter++;
             }
 
             //set size of printable panel
-            int widthX = listBarcodeUC[listBarcodeUC.Count - 1].Width + gapX;
-            pnlPrint.Width = listBarcodeUC[listBarcodeUC.Count - 1].Location.X + listBarcodeUC[listBarcodeUC.Count - 1].Width + gapX;
-            pnlPrint.Height = listBarcodeUC[listBarcodeUC.Count - 1].Location.Y + listBarcodeUC[listBarcodeUC.Count - 1].Height + gapY;
+            pnlPrint.Width = (columnCount * barcodeSize.Width) + (gapX * columnCount);
+            pnlPrint.Height = (rowCount * barcodeSize.Height) + (gapY * rowCount);
+        }
+
+        private void setTextboxVisibilityForLabel107(bool show)
+        {
+            textBox5.Visible = show;
+            textBox10.Visible = show;
+            textBox15.Visible = show;
+            textBox20.Visible = show;
+            textBox25.Visible = show;
+            textBox30.Visible = show;
+            textBox35.Visible = show;
+
+            textBox36.Visible = show;
+            textBox37.Visible = show;
+            textBox38.Visible = show;
+            textBox39.Visible = show;
+            textBox40.Visible = show;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -278,6 +327,7 @@ namespace BinaMitraTextile.InventoryForm
                 pnlAutomaticInput.Enabled = false;
                 clearManualInputs();
                 clearBarcodes();
+                setTextboxVisibilityForLabel107(!chkLabel107.Checked);
             }
             else
             {
@@ -292,19 +342,24 @@ namespace BinaMitraTextile.InventoryForm
         private void manualInput_TextChanged(object sender, EventArgs e)
         {
             TextBox textbox = (TextBox)sender;
+            int cursorPosition = textbox.SelectionStart;
 
             int index = listManualInputTexboxes.IndexOf(textbox);
-            if (textbox.Text == StockOpname_Form.BARCODE_RESET || isValidBarcode(textbox))
+            if (textbox.Text.Length > 0 || textbox.Text == StockOpname_Form.BARCODE_RESET || isValidBarcode(textbox))
             {
                 if (textbox.Text != textbox.Text.ToUpper())
                     textbox.Text = textbox.Text.ToUpper();
                 else
                 {
-                    showBarcode(listBarcodeUC[index], textbox.Text);
+                    try
+                    {
+                        showBarcode(listBarcodeUC[index], textbox.Text);
+                    } catch (Exception ex) { LIBUtil.Util.displayMessageBoxError(ex.Message); }
+
                     btnPrint.Enabled = true;
                 }
             }
-            else if (listBarcodeUC[index].Visible)
+            else if (listBarcodeUC[index].Location.X + listBarcodeUC[index].Width > 0) //barcode is not out of print panel
             {
                 hideBarcode(listBarcodeUC[index]);
 
@@ -318,6 +373,7 @@ namespace BinaMitraTextile.InventoryForm
                     }
                 }
             }
+            textbox.SelectionStart = cursorPosition; //place cursor at the original index
         }
 
         private void showBarcode(BarcodeUC barcode, string data)
@@ -338,6 +394,7 @@ namespace BinaMitraTextile.InventoryForm
                 txtStartHex.Enabled = true;
                 txtStartHex.Text = Settings.itemBarcodeMandatoryPrefix;
                 txtStartHex.Focus();
+                txtStartHex.SelectionStart = txtStartHex.Text.Length;
             }
             else
             {
@@ -363,6 +420,12 @@ namespace BinaMitraTextile.InventoryForm
         private void in_ManualOffsetY_ValueChanged(object sender, EventArgs e)
         {
             setControlLayout();
+        }
+
+        private void chkLabel107_CheckedChanged(object sender, EventArgs e)
+        {
+            setControlLayout();
+            checkInputMode();
         }
     }
 }

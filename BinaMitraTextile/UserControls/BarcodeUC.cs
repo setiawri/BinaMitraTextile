@@ -13,7 +13,7 @@ namespace BinaMitraTextile
     public partial class BarcodeUC : UserControl
     {
         public BarcodeLib.BarcodeControl Barcode { get { return barcode; } }
-        public PictureBox Marker { get { return marker; } }
+        public PictureBox Marker { get { return pbMarker; } }
 
         public BarcodeUC()
         {
@@ -23,15 +23,16 @@ namespace BinaMitraTextile
         public void setup(BorderStyle borderstyle, Size controlSize, Size markerSize, Font font, Point markerLocation)
         {
             //setup marker. 
-            splitContainer.SplitterDistance = markerSize.Width + splitContainer.SplitterWidth;
-            marker.Size = markerSize;
-            marker.Location = markerLocation;
+            //splitContainer.SplitterDistance = markerSize.Width + splitContainer.SplitterWidth;
+            //marker.Size = markerSize;
+            //marker.Location = markerLocation;
 
-            barcode.BorderStyle = BorderStyle.None;
+            barcode.BorderStyle = borderstyle;
             barcode.Font = font;
 
-            this.Size = controlSize;
             this.BorderStyle = borderstyle;
+            this.Size = controlSize;
+            pbMarker.Location = new Point(10, this.Size.Height - pbMarker.Size.Height);
 
             //minimum width of the barcode control inside the user control must be 120 or will throw error
             if (barcode.Width < 120)

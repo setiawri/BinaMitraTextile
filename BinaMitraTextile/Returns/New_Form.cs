@@ -50,7 +50,7 @@ namespace BinaMitraTextile.Returns
 
             txtBarcode.Focus();
 
-            txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
+            txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length + 3;
 
             Tools.formatDeleteColumn(DeleteRow);
 

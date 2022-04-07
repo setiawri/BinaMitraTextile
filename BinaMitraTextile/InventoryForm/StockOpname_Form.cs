@@ -30,13 +30,16 @@ namespace BinaMitraTextile.InventoryForm
             txtItemLocation.Text = getItemLocation();
         }
 
+        private void ItemCheck_Submit_Form_Shown(object sender, EventArgs e)
+        {
+            Grade.populateInputControlCheckedListBox(iclb_Grades, false);
+        }
+
         private void setupControls()
         {
             Settings.setGeneralSettings(this);
 
             InventoryItemCheck.CheckCleanup();
-
-            Grade.populateInputControlCheckedListBox(iclb_Grades, false);
 
             lblMessage.Text = "";
             in_Floor.Enabled = false;
