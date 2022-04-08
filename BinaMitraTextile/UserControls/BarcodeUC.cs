@@ -20,23 +20,21 @@ namespace BinaMitraTextile
             InitializeComponent();
         }
 
-        public void setup(BorderStyle borderstyle, Size controlSize, Size markerSize, Font font, Point markerLocation)
+        public void setup(BorderStyle borderstyle, Size barcodeSize, Size markerSize, Font font, Point markerLocation)
         {
-            //setup marker. 
-            //splitContainer.SplitterDistance = markerSize.Width + splitContainer.SplitterWidth;
-            //marker.Size = markerSize;
-            //marker.Location = markerLocation;
-
             barcode.BorderStyle = borderstyle;
             barcode.Font = font;
+            this.Size = barcodeSize;
+            //barcode.Size = barcodeSize;
+            //this.Size = new Size(barcodeSize.Width, barcodeSize.Height + pbMarker.Height + 2 * markerYOffset);
 
-            this.BorderStyle = borderstyle;
-            this.Size = controlSize;
-            pbMarker.Location = new Point(10, this.Size.Height - pbMarker.Size.Height);
+            pbMarker.Location = new Point(20, this.Height - pbMarker.Height);
 
             //minimum width of the barcode control inside the user control must be 120 or will throw error
             if (barcode.Width < 120)
                 this.Width += 120 - barcode.Width;
+
+            barcode.BringToFront(); //for unknown reason, if barcode is on top of marker, the marker gets printed. otherwise, marker is hidden under barcode when printed
         }
 
         public void encode(string data, BarcodeLib.TYPE type, bool includeLabel)

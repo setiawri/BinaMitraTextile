@@ -37,7 +37,7 @@
             // 
             this.pbMarker.BackgroundImage = global::BinaMitraTextile.Properties.Resources.handshake_32;
             this.pbMarker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbMarker.Location = new System.Drawing.Point(0, 42);
+            this.pbMarker.Location = new System.Drawing.Point(79, 38);
             this.pbMarker.Name = "pbMarker";
             this.pbMarker.Size = new System.Drawing.Size(20, 20);
             this.pbMarker.TabIndex = 118;
@@ -50,7 +50,7 @@
             this.barcode.Location = new System.Drawing.Point(0, 0);
             this.barcode.Margin = new System.Windows.Forms.Padding(5);
             this.barcode.Name = "barcode";
-            this.barcode.Size = new System.Drawing.Size(183, 62);
+            this.barcode.Size = new System.Drawing.Size(183, 56);
             this.barcode.TabIndex = 0;
             // 
             // BarcodeUC
@@ -61,7 +61,7 @@
             this.Controls.Add(this.barcode);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BarcodeUC";
-            this.Size = new System.Drawing.Size(183, 62);
+            this.Size = new System.Drawing.Size(183, 56);
             ((System.ComponentModel.ISupportInitialize)(this.pbMarker)).EndInit();
             this.ResumeLayout(false);
 

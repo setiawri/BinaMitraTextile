@@ -23,6 +23,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private DataTable _barcodeForReprint;
         private int _currentReprintIdx;
+        private int currentVisibleLabelCount = 0;
 
         public BarcodePrint_Form()
         {
@@ -141,8 +142,11 @@ namespace BinaMitraTextile.InventoryForm
                 string currentHex = _lastHex;
                 foreach (BarcodeUC barcode in listBarcodeUC)
                 {
-                    currentHex = Tools.IncrementBarcode(currentHex, 1, Settings.itemBarcodeLength);
-                    showBarcode(barcode, _prefix + currentHex);
+                    if(barcode.Enabled)
+                    {
+                        currentHex = Tools.IncrementBarcode(currentHex, 1, Settings.itemBarcodeLength);
+                        showBarcode(barcode, _prefix + currentHex);
+                    }
                 }
             }
             else
@@ -174,7 +178,7 @@ namespace BinaMitraTextile.InventoryForm
             int columnCount = 5;
             int rowCount = 8;
 
-            BorderStyle borderStyle = BorderStyle.FixedSingle;
+            BorderStyle borderStyle = BorderStyle.None;
             Size barcodeSize = new Size(145, 50); //minimum width of the barcode control inside the user control must be 120 or will throw error
             Size markerSize = new Size(14, 14);
             Point markerLocation = new Point(1, (barcodeSize.Height / 2) - (markerSize.Height / 2));
@@ -192,12 +196,14 @@ namespace BinaMitraTextile.InventoryForm
             }
 
             //set location of every barcode control
+            currentVisibleLabelCount = 0;
             Point currentPoint = new Point(startX, startY);
             int currentColumnIndex = 0;
             int currentRowIndex = 0;
             int barcodeIndexCounter = 0;
             foreach (BarcodeUC barcode in listBarcodeUC)
             {
+                barcode.Enabled = false;
                 if (barcodeIndexCounter % listBarcodeUCColumnCount < columnCount)
                 {
                     if (currentColumnIndex == columnCount)
@@ -208,9 +214,11 @@ namespace BinaMitraTextile.InventoryForm
 
                     if (currentRowIndex < rowCount && currentColumnIndex <= columnCount)
                     {
+                        barcode.Enabled = true;
                         barcode.setup(borderStyle, barcodeSize, markerSize, barcodeFont, markerLocation);
                         currentPoint = new Point(startX + (barcodeSize.Width * currentColumnIndex) + (gapX * currentColumnIndex), startY + (barcodeSize.Height * currentRowIndex) + (gapY * currentRowIndex));
                         barcode.Location = currentPoint;
+                        currentVisibleLabelCount++;
                         currentColumnIndex++;
                     }
                 }
@@ -286,7 +294,7 @@ namespace BinaMitraTextile.InventoryForm
                     setStartHexToCurrentReprintBarcode(); 
                 }
                 else
-                    txtStartHex.Text = _prefix + Tools.IncrementBarcode(_lastHex, listBarcodeUC.Count, Settings.itemBarcodeLength);
+                    txtStartHex.Text = _prefix + Tools.IncrementBarcode(_lastHex, currentVisibleLabelCount, Settings.itemBarcodeLength);
 
                 if (Tools.isNumeric(txtSheetNo.Text))
                     txtSheetNo.Text = (Convert.ToInt16(txtSheetNo.Text) + 1).ToString();
@@ -306,7 +314,7 @@ namespace BinaMitraTextile.InventoryForm
                     setStartHexToCurrentReprintBarcode();
                 }
                 else
-                    txtStartHex.Text = _prefix + Tools.IncrementBarcode(_lastHex, listBarcodeUC.Count * -1, Settings.itemBarcodeLength); 
+                    txtStartHex.Text = _prefix + Tools.IncrementBarcode(_lastHex, currentVisibleLabelCount * -1, Settings.itemBarcodeLength); 
     
                 if (Tools.isNumeric(txtSheetNo.Text))
                     txtSheetNo.Text = (Convert.ToInt16(txtSheetNo.Text) - 1).ToString();
