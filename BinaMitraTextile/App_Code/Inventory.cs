@@ -47,6 +47,7 @@ namespace BinaMitraTextile
         public const string COL_SELLVALUE = "sell_value";
         public const string COL_AVAILABLEQTY = "available_qty";
         public const string COL_POITEMDESCRIPTION = "po_item_description";
+        public const string COL_POItems_PricePerUnit = "POItems_PricePerUnit";
         public const string COL_PONo = "po_no";
         public const string COL_VENDORINVOICENO = "vendorinvoice_no";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
@@ -76,6 +77,7 @@ namespace BinaMitraTextile
         public DateTime receive_date;
         public Guid? POItemID = null;
         public string POItemDescription = "";
+        public int POItems_PricePerUnit = 0;
         public string PONo = "";
         public string PackingListNo = "";
         public Guid? VendorInvoiceID = null;
@@ -114,6 +116,7 @@ namespace BinaMitraTextile
             receive_date = Util.wrapNullable<DateTime>(row, COL_DB_RECEIVEDATE);
             POItemID = Util.wrapNullable<Guid>(row, COL_DB_POITEMID);
             POItemDescription = Util.wrapNullable<string>(row, COL_POITEMDESCRIPTION);
+            POItems_PricePerUnit = Util.wrapNullable<int>(row, COL_POItems_PricePerUnit);
             PONo = Util.wrapNullable<string>(row, COL_PONo);
             PackingListNo = Util.wrapNullable<string>(row, COL_DB_PACKINGLISTNO);
             VendorInvoiceID = Util.wrapNullable<Guid>(row, COL_DB_VENDORINVOICEID);

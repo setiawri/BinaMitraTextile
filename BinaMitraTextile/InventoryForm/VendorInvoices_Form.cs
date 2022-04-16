@@ -53,6 +53,7 @@ namespace BinaMitraTextile.InventoryForm
         private void Form_Load(object sender, EventArgs e)
         {
             setupControls();
+            setupControlsBasedOnRoles();
         }
 
         private void Form_Shown(object sender, EventArgs e)
@@ -114,6 +115,7 @@ namespace BinaMitraTextile.InventoryForm
             col_gridinventory_packinglistno.DataPropertyName = Inventory.COL_DB_PACKINGLISTNO;
             col_gridInventory_Notes.DataPropertyName = Inventory.COL_DB_NOTES;
             col_gridInventory_Notes.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            col_gridinventory_POItems_PricePerUnit.DataPropertyName = Inventory.COL_POItems_PricePerUnit;
 
             gridSaleInvoices.AutoGenerateColumns = false;
             gridSaleInvoices.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -128,6 +130,14 @@ namespace BinaMitraTextile.InventoryForm
 
         }
 
+        protected void setupControlsBasedOnRoles()
+        {
+            if(GlobalData.UserAccount.role != Roles.Super && GlobalData.UserAccount.role != Roles.Assistant)
+            {
+                col_gridinventory_POItems_PricePerUnit.Visible = false;
+            }
+        }
+
         public void populateGridVendorInvoices()
         {
             DataView dvw;
@@ -140,7 +150,7 @@ namespace BinaMitraTextile.InventoryForm
             else
                 dvw = VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false).DefaultView;
 
-            string[] fieldNames = { VendorInvoice.COL_VendorName, VendorInvoice.COL_VendorName };
+            string[] fieldNames = { VendorInvoice.COL_VendorName };
             dvw.RowFilter = Util.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNames);
             Util.setGridviewDataSource(gridvendorinvoice, dvw);
 
