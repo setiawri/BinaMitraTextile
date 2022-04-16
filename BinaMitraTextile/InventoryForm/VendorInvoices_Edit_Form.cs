@@ -132,7 +132,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void In_FakturPajak_DPP_ValueChanged(object sender, EventArgs e)
         {
-            in_FakturPajak_PPN.Value = Math.Floor(in_FakturPajak_DPP.ValueDecimal / 10);
+            in_FakturPajak_PPN.Value = Math.Floor(in_FakturPajak_DPP.ValueDecimal * (decimal)0.11);
         }
 
         private void Idtp_Timestamp_ValueChanged(object sender, EventArgs e)
