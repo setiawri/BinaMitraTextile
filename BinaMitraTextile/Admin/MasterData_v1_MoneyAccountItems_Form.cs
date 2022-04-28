@@ -181,6 +181,9 @@ namespace BinaMitraTextile.Admin
         {
             if(isFormShown)
                 MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments, (Guid)iddl_MoneyAccounts.SelectedValue, true);
+
+            if(iddl_MoneyAccounts.hasSelectedValue())
+                this.Text = iddl_MoneyAccounts.SelectedItemText;
         }
 
         private void btnTransfer_Click(object sender, EventArgs e)

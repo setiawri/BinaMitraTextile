@@ -71,6 +71,7 @@ namespace BinaMitraTextile.InventoryForm
             lblVendorInvoicePayment.Text = "0";
             idtp_VendorInvoicePaymentDate.Value = DateTime.Now;
             calculateDueAmount();
+            calculatePayableAmount();
 
             gridvendorinvoice.AutoGenerateColumns = false;
             gridvendorinvoice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
