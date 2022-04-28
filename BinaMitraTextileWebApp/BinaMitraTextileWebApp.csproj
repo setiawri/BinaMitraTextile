@@ -126,6 +126,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivityLogsController.cs" />
+    <Compile Include="Controllers\SuppliesController.cs" />
+    <Compile Include="Controllers\SupplyItemsController.cs" />
+    <Compile Include="Controllers\UnitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryChecksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -136,6 +139,9 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Models\ActivityLogsModel.cs" />
+    <Compile Include="Models\SuppliesModel.cs" />
+    <Compile Include="Models\UnitsModel.cs" />
+    <Compile Include="Models\SupplyItemsModel.cs" />
     <Compile Include="Models\InventoryChecksModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -323,6 +329,14 @@
     <Content Include="Views\Shared\Scripts.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\InventoryChecks\Input.cshtml" />
+    <Content Include="Views\Units\Index.cshtml" />
+    <Content Include="Views\Units\Create.cshtml" />
+    <Content Include="Views\Units\Edit.cshtml" />
+    <Content Include="Views\SupplyItems\Create.cshtml" />
+    <Content Include="Views\SupplyItems\Edit.cshtml" />
+    <Content Include="Views\SupplyItems\Index.cshtml" />
+    <Content Include="Views\Supplies\Create.cshtml" />
+    <Content Include="Views\Supplies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

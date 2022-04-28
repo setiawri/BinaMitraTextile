@@ -10,19 +10,7 @@ namespace BinaMitraTextileWebApp.Controllers
 {
     public class ActivityLogsController : Controller
     {
-
         private readonly DBContext db = new DBContext();
-
-        public static string editListStringFormat(string fieldName) { return fieldName + ": {0}"; }
-        public static string editStringFormat(string fieldName) { return fieldName + ": '{0}' to '{1}'"; }
-        public static string editStringFormat2(string fieldName) { return fieldName + ": '{0}'"; }
-        public static string editStringFormat3(string fieldName) { return fieldName + ": '{1}'"; }
-        public static string editIntFormat(string fieldName) { return fieldName + ": '{0:N0}' to '{1:N0}'"; }
-        public static string editDateFormat(string fieldName) { return fieldName + ": '{0:dd/MM/yyyy}' to '{1:dd/MM/yyyy}'"; }
-        public static string editTimeFormat(string fieldName) { return fieldName + ": '{0:HH:mm}' to '{1:HH:mm}'"; }
-        public static string editDateTimeFormat(string fieldName) { return fieldName + ": '{0:dd/MM/yyyy HH:mm}' to '{1:dd/MM/yyyy HH:mm}'"; }
-        public static string editDecimalFormat(string fieldName) { return fieldName + ": '{0:G29}' to '{1:G29}'"; }
-        public static string editBooleanFormat(string fieldName) { return fieldName + ": {1}"; }
 
         /* DISPLAY LOG ****************************************************************************************************************************************/
 
@@ -67,7 +55,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 Timestamp = Helper.getCurrentDateTime(),
                 Description = description,
                 UserAccounts_Id = (Guid)UsersController.getUserId(Session),
-                UserAccounts_Fullname = null
+                UserAccounts_Fullname = UsersController.getUserAccount(Session).username
             });
         }
 
@@ -76,14 +64,11 @@ namespace BinaMitraTextileWebApp.Controllers
         public List<ActivityLogsModel> get(Guid ReferenceId)
         {
             return db.Database.SqlQuery<ActivityLogsModel>(@"
-                        SELECT ActivityLogs.Id,
-                            ActivityLogs.Timestamp,
-                            ActivityLogs.ReferenceId,
-                            ActivityLogs.Description,
-                            ActivityLogs.UserAccounts_Id,
-                            UserAccounts.Fullname AS UserAccounts_Fullname
+                        SELECT ActivityLogs.*,
+                            Users.id AS UserAccounts_Id,
+                            Users.username AS UserAccounts_Fullname
                         FROM ActivityLogs
-                            LEFT JOIN UserAccounts ON UserAccounts.Id = ActivityLogs.UserAccounts_Id
+                            LEFT JOIN Users ON Users.id = ActivityLogs.UserAccounts_Id
                         WHERE ActivityLogs.ReferenceId = @ReferenceId
 						ORDER BY ActivityLogs.Timestamp DESC
                     ",

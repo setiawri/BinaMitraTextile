@@ -59,10 +59,26 @@
                         <i class="icon-home4 mr-2"></i>Dashboard
                     </a>
                 </li>
-                <li id="Menu_StockOpanme" class="nav-item">
+                <li id="Menu_Supplies" class="nav-item">
+                    <a href="@Url.Action("Index", "Supplies", new { rss=1 })" class="navbar-nav-link">
+                        <i class="icon-home4 mr-2"></i>Supplies
+                    </a>
+                </li>
+                <li id="Menu_StockOpname" class="nav-item">
                     <a href="@Url.Action("Input", "InventoryChecks", new { rss=1 })" class="navbar-nav-link">
                         <i class="icon-meter2 mr-2"></i>
                         Stok Opname
+                    </a>
+                </li>
+                <li id="Menu_SupplyItems" class="nav-item">
+                    <a href="@Url.Action("Index", "SupplyItems", new { rss=1 })" class="navbar-nav-link">
+                        <i class="icon-home4 mr-2"></i>Supply Items
+                    </a>
+                </li>
+                <li id="Menu_Units" class="nav-item">
+                    <a href="@Url.Action("Index", "Units", new { rss=1 })" class="navbar-nav-link">
+                        <i class="icon-meter2 mr-2"></i>
+                        Units
                     </a>
                 </li>
             </ul>
@@ -109,13 +125,31 @@ FILTERING
 =================================================================================================================================================================-->
 
 <input type="hidden" id="returnurl" name="returnurl" value="@ViewBag.returnurl" />
+<input type="hidden" id="FILTER_Keyword" name="FILTER_Keyword" value="@ViewBag.FILTER_Keyword" />
+<input type="hidden" id="FILTER_Active" name="FILTER_Active" value="@ViewBag.FILTER_Active" />
 
 <script type="text/javascript">
 
     $(document).ready(function () {
 
         setValue('returnurl', '@ViewBag.returnurl');
+        setValue('FILTER_Keyword', '@ViewBag.FILTER_Keyword');
+        setValue('FILTER_Active', '@ViewBag.FILTER_Active');
 
     });
+
+    function getFilter() {
+        var filter = '';
+
+        if ($('#FILTER_Active') != null)
+            FILTER_Keyword = $('#FILTER_Keyword').val();
+        filter += appendFilter(FILTER_Keyword, "FILTER_Keyword");
+
+        if ($('#FILTER_Active') != null)
+            FILTER_Active = $('#FILTER_Active').val();
+        filter += appendFilter(FILTER_Active, "FILTER_Active");
+
+        return filter;
+    }
 
 </script>

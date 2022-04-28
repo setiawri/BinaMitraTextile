@@ -726,9 +726,14 @@
             if ($(this).scrollTop() + $(this).height() > $(document).height() - 50) {
                 $('.scrolldown').fadeOut();
             } else {
+                $('.scrolldown').removeClass('d-none');
                 $('.scrolldown').fadeIn();
             }
         });
+
+        if (!$(document.body).hasVerticalScrollBar()) {
+            $('.scrolldown').addClass('d-none');
+        }
     }
 
     // PRINTING ====================================================================================================================================================
@@ -822,6 +827,12 @@
             $('#' + controlId).focus();
         })
     }
+
+    (function ($) {
+        $.fn.hasVerticalScrollBar = function () {
+            return this.get(0).scrollHeight > this.get(0).clientHeight;
+        }
+    })(jQuery);
 
     //==============================================================================================================================================================
 

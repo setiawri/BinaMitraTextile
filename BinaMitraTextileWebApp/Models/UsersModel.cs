@@ -26,7 +26,7 @@ namespace BinaMitraTextileWebApp.Models
 
         [Display(Name = "Active")]
         public bool active { get; set; } = true;
-        public static ModelMember COL_Active = new ModelMember { Name = "active", Display = "Active", LogDisplay = ActivityLogsController.editBooleanFormat("Active") };
+        public static ModelMember COL_Active = new ModelMember { Name = "active", Display = "Active", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Active") };
 
 
         /******************************************************************************************************************************************************/

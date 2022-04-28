@@ -186,9 +186,9 @@ namespace BinaMitraTextileWebApp
 
         public static string getName<T>(object value)
         {
-            //string id = value.ToString().ToLower();
-            //if (typeof(T) == typeof(UserAccountRolesModel))
-            //    return db.UserAccountRoles.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
+            string id = value.ToString().ToLower();
+            if (typeof(T) == typeof(UnitsModel))
+                return db.Units.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
             //else if (typeof(T) == typeof(UsersModel))
             //    return new UsersController().get((Guid)value).Fullname;
             //else if (typeof(T) == typeof(BranchesModel))
@@ -200,7 +200,7 @@ namespace BinaMitraTextileWebApp
             //else if (typeof(T) == typeof(SaleInvoiceItemsModel))
             //    return SaleInvoiceItemsController.get_by_IdList(id).FirstOrDefault().SaleInvoices_No;
             //else
-                return null;
+            return null;
         }
 
         public static DateTime getCurrentDateTime()
