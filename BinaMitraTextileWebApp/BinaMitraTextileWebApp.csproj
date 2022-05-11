@@ -149,7 +149,6 @@
   <ItemGroup>
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap-datetimepicker.css" />
-    <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\bootstrap_limitless.min.css" />
     <Content Include="assets\css\colors.min.css" />
     <Content Include="assets\css\components.min.css" />
@@ -195,6 +194,7 @@
     <Content Include="assets\js\landingpage\main.js" />
     <Content Include="assets\js\landingpage\owl.carousel.min.js" />
     <Content Include="assets\js\landingpage\popper.min.js" />
+    <Content Include="assets\js\main\bootstrap.bundle.min.js" />
     <Content Include="assets\js\main\jquery.min.js" />
     <Content Include="assets\js\plugins\forms\number\jquery.number.min.js" />
     <Content Include="assets\js\plugins\forms\selects\select2.min.js" />

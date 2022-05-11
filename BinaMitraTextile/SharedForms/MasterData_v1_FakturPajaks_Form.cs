@@ -361,7 +361,7 @@ namespace BinaMitraTextile.SharedForms
 
         private void In_DPP_ValueChanged(object sender, EventArgs e)
         {
-            in_PPN.Value = Math.Floor(in_DPP.ValueDecimal / 10);
+            in_PPN.Value = Math.Floor(in_DPP.ValueDecimal * (decimal)0.11);
         }
 
         private void MasterData_v1_FakturPajaks_Form_Shown(object sender, EventArgs e)

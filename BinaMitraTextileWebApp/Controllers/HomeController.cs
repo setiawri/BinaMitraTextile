@@ -8,9 +8,9 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             ViewBag.RemoveDatatablesStateSave = rss;
 
-            return RedirectToAction("Input", "InventoryChecks", new { rss = 1 });
+            //return RedirectToAction("Input", "InventoryChecks", new { rss = 1 });
 
-            //return View();
+            return View();
         }
 
     }

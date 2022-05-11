@@ -21,7 +21,7 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbar-mobile">
-            <span class="navbar-text ml-md-3 mr-md-auto h1 my-0 py-1">@Helper.COMPANYNAME</span>
+            <span class="navbar-text ml-md-0 mr-md-auto h1 my-0 py-1 text-uppercase">@Helper.COMPANYNAME</span>
             @*<img src="@Helper.getImageUrl("LogoWithBorder.png", Request, Server)" class="navbar-text ml-md-0 mr-md-auto h1 my-0 py-0" style="width:110px;" onclick="Action('LandingPage','LandingPage')" />*@
             <span class="navbar-text">
             </span>
@@ -59,20 +59,20 @@
                         <i class="icon-home4 mr-2"></i>Dashboard
                     </a>
                 </li>
-                <li id="Menu_Supplies" class="nav-item">
-                    <a href="@Url.Action("Index", "Supplies", new { rss=1 })" class="navbar-nav-link">
-                        <i class="icon-home4 mr-2"></i>Supplies
+                <li id="Menu_Sales" class="nav-item dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-list3 mr-2"></i>
+                        Supplies
                     </a>
+                    <div class="dropdown-menu">
+                        <a href="@Url.Action("Index", "Supplies", new { rss=1 })" class="dropdown-item">Supplies</a>
+                        <a href="@Url.Action("Index", "SupplyItems", new { rss=1 })" class="dropdown-item">Items</a>
+                    </div>
                 </li>
                 <li id="Menu_StockOpname" class="nav-item">
                     <a href="@Url.Action("Input", "InventoryChecks", new { rss=1 })" class="navbar-nav-link">
                         <i class="icon-meter2 mr-2"></i>
                         Stok Opname
-                    </a>
-                </li>
-                <li id="Menu_SupplyItems" class="nav-item">
-                    <a href="@Url.Action("Index", "SupplyItems", new { rss=1 })" class="navbar-nav-link">
-                        <i class="icon-home4 mr-2"></i>Supply Items
                     </a>
                 </li>
                 <li id="Menu_Units" class="nav-item">
