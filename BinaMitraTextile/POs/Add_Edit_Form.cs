@@ -125,6 +125,28 @@ namespace BinaMitraTextile.POs
 
         private void addItem(Inventory inventory, int qty, int rowIndex, string notes)
         {
+            //calculate buy price
+            decimal? buyPrice = 0;
+            decimal buyPercentDiscount = 0;
+            DataTable productPrices = ProductPrice.get(null, inventory.product_store_name_id, inventory.grade_id, inventory.product_width_id, inventory.length_unit_id, null, inventory.color_id, false);
+            if (productPrices.Rows.Count > 0)
+            {
+                buyPercentDiscount = Util.wrapNullable<decimal?>(productPrices.Rows[0], ProductPrice.COL_DB_BuyPercentDiscount) ?? 0;
+                buyPrice = Util.wrapNullable<decimal?>(productPrices.Rows[0], ProductPrice.COL_DB_BuyPrice);
+            }
+            else //get price without color
+            {
+                productPrices = ProductPrice.get(null, inventory.product_store_name_id, inventory.grade_id, inventory.product_width_id, inventory.length_unit_id, null, null, false);
+                if (productPrices.Rows.Count > 0)
+                {
+                    buyPercentDiscount = Util.wrapNullable<decimal?>(productPrices.Rows[0], ProductPrice.COL_DB_BuyPercentDiscount) ?? 0;
+                    buyPrice = Util.wrapNullable<decimal?>(productPrices.Rows[0], ProductPrice.COL_DB_BuyPrice);
+                }
+            }
+            if(buyPrice == null || buyPrice == 0)
+                buyPrice = inventory.buy_price;
+
+            //populate row
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_productName.Name].Value = inventory.id;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_productName.Name].Value = inventory.product_name_vendor;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_widthName.Name].Value = inventory.product_width_name;
@@ -132,7 +154,10 @@ namespace BinaMitraTextile.POs
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_colorName.Name].Value = inventory.color_name;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_unitName.Name].Value = inventory.length_unit_name;
             if (GlobalData.UserAccount.role == Roles.Super)
-                gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_pricePerUnit.Name].Value = inventory.buy_price;
+            {
+                gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_buyPrice.Name].Value = buyPrice;
+                gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_PercentDiscount.Name].Value = buyPercentDiscount;
+            }
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_referencedInventoryID.Name].Value = inventory.id;
             gridPOItems.Rows[rowIndex].Cells[col_gridPOItems_qty.Name].Value = qty;
             if(iddl_Vendor.Enabled)
@@ -146,12 +171,7 @@ namespace BinaMitraTextile.POs
 
         private void gridPOItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewTextBoxColumn), col_gridPOItems_qty.Name) || Tools.isCorrectColumn(sender, e, typeof(DataGridViewTextBoxColumn), col_gridPOItems_pricePerUnit.Name))
-            {
-                calculateSubtotal(e.RowIndex);
-                calculateGrandTotal();
-            }
-            addNewRowIfNeeded(e.RowIndex);
+
         }
 
         private void addNewRowIfNeeded(int currentRowIndex)
@@ -379,6 +399,16 @@ namespace BinaMitraTextile.POs
 
         private void Add_Edit_Form_Load(object sender, EventArgs e)
         {
+        }
+
+        private void gridPOItems_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewTextBoxColumn), col_gridPOItems_PercentDiscount.Name))
+            {
+                decimal buyPrice = Util.getClickedRowValue<decimal>(sender, e, col_gridPOItems_buyPrice);
+                decimal percentDiscount = Util.zeroNonNumericString(Util.getClickedCellValue(sender, e));
+                Util.setRowValue(sender, e, col_gridPOItems_pricePerUnit, buyPrice * (1 - percentDiscount/100));
+            }
         }
 
         #endregion SUBMISSION

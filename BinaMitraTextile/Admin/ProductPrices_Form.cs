@@ -57,6 +57,7 @@ namespace BinaMitraTextile.Admin
             col_grid_colorname.DataPropertyName = ProductPrice.COL_COLORNAME;
             col_grid_Checked.DataPropertyName = ProductPrice.COL_DB_Checked;
             col_grid_BuyPrice.DataPropertyName = ProductPrice.COL_DB_BuyPrice;
+            col_grid_BuyPercentDiscount.DataPropertyName = ProductPrice.COL_DB_BuyPercentDiscount;
 
             if (GlobalData.UserAccount.role != Roles.Super)
             {
@@ -64,6 +65,7 @@ namespace BinaMitraTextile.Admin
                 chkOnlyNotOK.Visible = false;
                 in_BuyPrice.Visible = false;
                 col_grid_BuyPrice.Visible = false;
+                col_grid_BuyPercentDiscount.Visible = false;
                 btnDelete.Enabled = false;
             }
         }
@@ -164,9 +166,9 @@ namespace BinaMitraTextile.Admin
             if (isInputFieldsValid(btnSubmit.Text == BTN_TEXT_UPDATE))
             {
                 if (chkUseInventoryID.Checked)
-                    obj = new ProductPrice(null, null, null, null, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, _inventory.id, null, in_BuyPrice.Value);
+                    obj = new ProductPrice(null, null, null, null, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, _inventory.id, null, in_BuyPrice.Value, in_BuyPercentDiscount.Value);
                 else
-                    obj = new ProductPrice((Guid)cbProductStoreNames.SelectedValue, (Guid)cbGrades.SelectedValue, (Guid)cbProductWidths.SelectedValue, (Guid)cbLengthUnits.SelectedValue, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, null, (Guid?)cbColors.SelectedValue, in_BuyPrice.Value);
+                    obj = new ProductPrice((Guid)cbProductStoreNames.SelectedValue, (Guid)cbGrades.SelectedValue, (Guid)cbProductWidths.SelectedValue, (Guid)cbLengthUnits.SelectedValue, Tools.zeroNonNumericString(txtTagPrice.Text), txtNotes.Text, null, (Guid?)cbColors.SelectedValue, in_BuyPrice.Value, in_BuyPercentDiscount.Value);
 
                 if(btnSubmit.Text == BTN_TEXT_ADDNEW)
                 {
@@ -180,7 +182,7 @@ namespace BinaMitraTextile.Admin
                 else
                 {
                     obj.ID = _productPrice.ID;
-                    ProductPrice.update(obj.ID, obj.ProductStoreNameID, obj.GradeID, obj.ProductWidthID, obj.LengthUnitID, obj.TagPrice, obj.Notes, obj.InventoryID, obj.ColorID, obj.BuyPrice);
+                    ProductPrice.update(obj.ID, obj.ProductStoreNameID, obj.GradeID, obj.ProductWidthID, obj.LengthUnitID, obj.TagPrice, obj.Notes, obj.InventoryID, obj.ColorID, obj.BuyPrice, obj.BuyPercentDiscount);
                     populateGrid();
                 }
             }
@@ -233,6 +235,7 @@ namespace BinaMitraTextile.Admin
             chkUseInventoryID.Enabled = false;
             txtTagPrice.Text = "";
             in_BuyPrice.reset();
+            in_BuyPercentDiscount.reset();
             txtNotes.Text = "";
 
             Tools.resetDropDownList(cbGrades);
@@ -310,6 +313,7 @@ namespace BinaMitraTextile.Admin
                 cbColors.SelectedValue = Util.wrapNullable(_productPrice.ColorID);
                 txtTagPrice.Text = _productPrice.TagPrice.ToString();
                 in_BuyPrice.Value = _productPrice.BuyPrice;
+                in_BuyPercentDiscount.Value = _productPrice.BuyPercentDiscount;
                 txtNotes.Text = _productPrice.Notes;
             }
             if(_inventory != null)

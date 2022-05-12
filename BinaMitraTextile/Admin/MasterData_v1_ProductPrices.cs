@@ -23,6 +23,7 @@ namespace BinaMitraTextile.Admin
         private DataGridViewColumn col_dgv_FabricColors_Name;
         private DataGridViewColumn col_dgv_SellPrice;
         private DataGridViewColumn col_dgv_BuyPrice;
+        private DataGridViewColumn col_dgv_BuyPercentDiscount;
         private DataGridViewColumn col_dgv_Notes;
         private DataGridViewColumn col_dgv_Checked;
 
@@ -77,6 +78,7 @@ namespace BinaMitraTextile.Admin
             col_dgv_FabricColors_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_FabricColors_Name", iddl_FabricColors.LabelText, ProductPrice.COL_COLORNAME, true, true, "", true, false, 60, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_SellPrice = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_SellPrice", in_SellPrice.LabelText, ProductPrice.COL_DB_SELLPRICE, true, true, "N2", false, false, 60, DataGridViewContentAlignment.MiddleRight);
             col_dgv_BuyPrice = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_BuyPrice", in_BuyPrice.LabelText, ProductPrice.COL_DB_BuyPrice, true, true, "N2", false, false, 60, DataGridViewContentAlignment.MiddleRight);
+            col_dgv_BuyPercentDiscount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_BuyPercentDiscount", in_BuyPercentDiscount.LabelText, ProductPrice.COL_DB_BuyPrice, true, true, "N2", false, false, 60, DataGridViewContentAlignment.MiddleRight);
             col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, ProductPrice.COL_DB_NOTES, true, true, "", true, true, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Notes.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_dgv_Checked = base.addColumn<DataGridViewCheckBoxCell>(dgv, "col_dgv_Checked", "OK", ProductPrice.COL_DB_Checked, true, true, "", false, false, 30, DataGridViewContentAlignment.MiddleLeft);            
@@ -90,6 +92,7 @@ namespace BinaMitraTextile.Admin
                     col_dgv_Checked,
                     col_dgv_BuyPrice,
                     in_BuyPrice,
+                    in_BuyPercentDiscount,
                     chkOnlyNotOK,
                     btnDelete
                     );
@@ -110,6 +113,7 @@ namespace BinaMitraTextile.Admin
             iddl_ProductWidths.reset();
             in_SellPrice.reset();
             in_BuyPrice.reset();
+            in_BuyPercentDiscount.reset();
             itxt_Notes.reset();
         }
 
@@ -138,6 +142,7 @@ namespace BinaMitraTextile.Admin
             iddl_LengthUnits.SelectedValue = obj.LengthUnitID;
             iddl_FabricColors.SelectedValue = obj.ColorID;
             in_BuyPrice.Value = obj.BuyPrice;
+            in_BuyPercentDiscount.Value = obj.BuyPercentDiscount;
             in_SellPrice.Value = obj.TagPrice;
             itxt_Notes.ValueText = obj.Notes;
 
@@ -150,7 +155,7 @@ namespace BinaMitraTextile.Admin
                 (Guid)iddl_ProductWidths.SelectedValue,
                 (Guid)iddl_LengthUnits.SelectedValue, in_SellPrice.ValueDecimal, itxt_Notes.ValueText, 
                 in_InventoryCode.ValueGuid, (Guid?)iddl_FabricColors.SelectedValue,
-                in_BuyPrice.ValueDecimal);
+                in_BuyPrice.ValueDecimal, in_BuyPercentDiscount.ValueDecimal);
         }
 
         protected override void add()
@@ -159,7 +164,7 @@ namespace BinaMitraTextile.Admin
                 (Guid)iddl_ProductWidths.SelectedValue,
                 (Guid)iddl_LengthUnits.SelectedValue, in_SellPrice.ValueDecimal, itxt_Notes.ValueText,
                 in_InventoryCode.ValueGuid, (Guid?)iddl_FabricColors.SelectedValue,
-                in_BuyPrice.ValueDecimal);
+                in_BuyPrice.ValueDecimal, in_BuyPercentDiscount.ValueDecimal);
         }
 
         protected override Boolean isInputFieldsValid()

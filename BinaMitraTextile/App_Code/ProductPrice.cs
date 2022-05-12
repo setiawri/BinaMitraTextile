@@ -23,6 +23,7 @@ namespace BinaMitraTextile
         public const string COL_DB_INVENTORYID = "inventory_id";
         public const string COL_DB_Checked = "Checked";
         public const string COL_DB_BuyPrice = "BuyPrice";
+        public const string COL_DB_BuyPercentDiscount = "BuyPercentDiscount";
 
         public const string COL_Grades_Name = "grade_name";
         public const string COL_PRODUCTSTORENAME = "product_store_name";
@@ -46,12 +47,13 @@ namespace BinaMitraTextile
         public Guid? InventoryID;
         public bool Checked;
         public decimal? BuyPrice;
+        public decimal? BuyPercentDiscount;
 
         public string ColorName = "";
         public int? Inventory_Code;
 
         public ProductPrice(Guid? productStoreNameID, Guid? gradeID, Guid? productWidthID, Guid? lengthUnitID, decimal tagPrice, string notes, 
-            Guid? inventoryID, Guid? colorID, decimal? buyPrice)
+            Guid? inventoryID, Guid? colorID, decimal? buyPrice, decimal? buyPercentDiscount)
         {
             ID = Guid.NewGuid();
             ProductStoreNameID = productStoreNameID;
@@ -60,6 +62,7 @@ namespace BinaMitraTextile
             LengthUnitID = lengthUnitID;
             TagPrice = tagPrice;
             BuyPrice = buyPrice;
+            BuyPercentDiscount = buyPercentDiscount;
             Notes = notes;
             if(productStoreNameID != null) 
                 StoreName = new ProductStoreName((Guid)productStoreNameID).Name;
@@ -88,6 +91,7 @@ namespace BinaMitraTextile
             StoreName = Util.wrapNullable<string>(row, COL_PRODUCTSTORENAME);
             Checked = Util.wrapNullable<bool>(row, COL_DB_Checked);
             BuyPrice = Util.wrapNullable<decimal?>(row, COL_DB_BuyPrice);
+            BuyPercentDiscount = Util.wrapNullable<decimal?>(row, COL_DB_BuyPercentDiscount);
 
             ColorName = Util.wrapNullable<string>(row, COL_COLORNAME);
             Inventory_Code = Util.wrapNullable<int?>(row, COL_Inventory_Code);
@@ -110,6 +114,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
                 new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, TagPrice),
                 new SqlQueryParameter(COL_DB_BuyPrice, SqlDbType.Decimal, Util.wrapNullable(BuyPrice)),
+                new SqlQueryParameter(COL_DB_BuyPercentDiscount, SqlDbType.Decimal, Util.wrapNullable(BuyPercentDiscount)),
                 new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes))
             );
 
@@ -123,7 +128,7 @@ namespace BinaMitraTextile
         }
 
         public static Guid? add(Guid? ProductStoreNameID, Guid? GradeID, Guid? ProductWidthID, Guid? LengthUnitID, decimal TagPrice, string Notes,
-            Guid? InventoryID, Guid? ColorID, decimal? BuyPrice)
+            Guid? InventoryID, Guid? ColorID, decimal? BuyPrice, decimal? BuyPercentDiscount)
         {
             Guid Id = Guid.NewGuid();
             SqlQueryResult result = DBConnection.query(
@@ -140,6 +145,7 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
                 new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, TagPrice),
                 new SqlQueryParameter(COL_DB_BuyPrice, SqlDbType.Decimal, Util.wrapNullable(BuyPrice)),
+                new SqlQueryParameter(COL_DB_BuyPercentDiscount, SqlDbType.Decimal, Util.wrapNullable(BuyPercentDiscount)),
                 new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes))
             );
 
@@ -223,7 +229,7 @@ namespace BinaMitraTextile
         }
 
         public static void update(Guid ID, Guid? ProductStoreNameID, Guid? GradeID, Guid? ProductWidthID, Guid? LengthUnitID, decimal TagPrice, string Notes,
-            Guid? InventoryID, Guid? ColorID, decimal? BuyPrice)
+            Guid? InventoryID, Guid? ColorID, decimal? BuyPrice, decimal? BuyPercentDiscount)
         {
             ProductPrice objOld = new ProductPrice(ID);
 
@@ -236,6 +242,7 @@ namespace BinaMitraTextile
             log = ActivityLog.appendChange<Inventory>(log, objOld.InventoryID, InventoryID, "Inventory Code: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.TagPrice, TagPrice, "Sell Price: '{0:N2}' to '{1:N2}'");
             log = ActivityLog.appendChange(log, objOld.BuyPrice, BuyPrice, "Buy Price: {0:N2} to {1:N2}");
+            log = ActivityLog.appendChange(log, objOld.BuyPercentDiscount, BuyPercentDiscount, "Buy % Discount: {0:N2} to {1:N2}");
             log = ActivityLog.appendChange<FabricColor>(log, objOld.ColorID, ColorID, "Color: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
 
@@ -255,6 +262,7 @@ namespace BinaMitraTextile
                     new SqlQueryParameter(COL_DB_COLORID, SqlDbType.UniqueIdentifier, Util.wrapNullable(ColorID)),
                     new SqlQueryParameter(COL_DB_SELLPRICE, SqlDbType.Decimal, TagPrice),
                     new SqlQueryParameter(COL_DB_BuyPrice, SqlDbType.Decimal, Util.wrapNullable(BuyPrice)),
+                    new SqlQueryParameter(COL_DB_BuyPercentDiscount, SqlDbType.Decimal, Util.wrapNullable(BuyPercentDiscount)),
                     new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes))
                 );
 
