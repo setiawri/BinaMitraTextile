@@ -40,6 +40,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "col-form-label col-lg-1" })
+                            <div class="col-lg-3">
+                                @Html.TextAreaFor(model => model.Notes, new { @class = "form-control", @rows = 3, @placeholder = "Notes" })
+                                @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
                     </fieldset>
 
                     @if (true) //access.Supplies_Add)

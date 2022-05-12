@@ -36,6 +36,42 @@
                             </div>
                         </div>
 
+                        <div class="row ml-0 mr-2" style="width:150px;">
+                            <label class="mb-0">Date From</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_chkDateFrom", false, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Editor("FILTER_DateFrom", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                            </div>
+                        </div>
+
+                        <div class="row ml-0 mr-2" style="width:150px;">
+                            <label class="mb-0">Date To</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_chkDateTo", false, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Editor("FILTER_DateTo", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                            </div>
+                        </div>
+
+                        <div class="row ml-0 mr-2" style="width:160px;">
+                            <label class="mb-0">&nbsp;</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_IsLastOnly", true, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Label("SUMMARY", htmlAttributes: new { @for = "FILTER_IsLastOnly", @class = "input-group-text mr-2" })
+                            </div>
+                        </div>
+
                         <div class="ml-0 mr-2">
                             <label class="mb-0">&nbsp;</label>
                             <button type="submit" id="LoadData" onclick="showLoadingSpinner()" class="btn btn-outline-primary form-control"><i class="icon-reload-alt mr-2"></i>LOAD</button>
@@ -48,8 +84,13 @@
                                 <tr>
                                     <th style="width:150px;">@Html.DisplayNameFor(model => model.Timestamp)</th>
                                     <th>@Html.DisplayNameFor(model => model.SupplyItems_Id)</th>
-                                    <th class="text-right" style="width:100px;">@Html.DisplayNameFor(model => model.Qty)</th>
-                                    <th style="width:50px;">@Html.DisplayNameFor(model => model.Units_Id)</th>
+                                    @if (ViewBag.FILTER_IsLastOnly != null && !ViewBag.FILTER_IsLastOnly)
+                                    {
+                                        <th>@Html.DisplayNameFor(model => model.Notes)</th>
+                                        <th class="text-right" style="width:100px;">@Html.DisplayNameFor(model => model.Qty)</th>
+                                    }
+                                    <th class="text-right" style="width:100px;">@Html.DisplayNameFor(model => model.Balance)</th>
+                                    <th class="non-sortable" style="width:50px;"></th>
                                     <th class="non-searchable non-sortable" style="width:120px;"></th>
                                 </tr>
                             </thead>
@@ -61,8 +102,13 @@
                                         <tr>
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.Timestamp)</td>
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.SupplyItems_Name)</td>
+                                            @if (ViewBag.FILTER_IsLastOnly != null && !ViewBag.FILTER_IsLastOnly)
+                                            {
+                                            <td class="align-top">@Html.DisplayFor(modelItem => item.Notes)</td>
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Qty)</td>
-                                            <td class="align-top">@Html.DisplayFor(modelItem => item.Units_Name)</td>
+                                            }
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Balance)</td>
+                                            <td class="align-top px-0">@Html.DisplayFor(modelItem => item.Units_Name)</td>
                                             <td>
                                                 <a href="javascript:void(0)" class=""><span style="width:50px;" data-toggle="modal" data-target="#modal_Add" onclick="PopulateAddModal('@item.SupplyItems_Id')">Update</span></a>
                                                 • <a href="javascript:void(0)" onclick="Log('@item.SupplyItems_Id')">Log</a>
@@ -76,7 +122,7 @@
                 </div>
             </div>
             <!-- /form inputs -->
-
+        }
             <!-- Add form modal -->
             <div id="modal_Add" class="modal fade" tabindex="-1">
                 <div class="modal-dialog">
@@ -92,40 +138,52 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-form-label col-sm-2">Qty</label>
+                                <label class="col-form-label col-sm-2">Current Qty</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="modal_Add_Qty" id="modal_Add_Qty" onkeyup="CalculateBalance()" class="form-control integeronly" placeholder="Qty" />
+                                    <input type="text" name="modal_Add_Balance" id="modal_Add_Balance" class="form-control" readonly />
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-form-label col-sm-2">Balance</label>
+                                <label class="col-form-label col-sm-2">New Qty</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="modal_Add_Balance" id="modal_Add_Balance" onkeyup="CalculateQty()" class="form-control integeronly" placeholder="Balance" />
+                                    <input type="text" name="modal_Add_NewQty" id="modal_Add_NewQty" onkeyup="CalculateBalance()" class="form-control integeronly" placeholder="New Qty" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2">New Balance</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="modal_Add_NewBalance" id="modal_Add_NewBalance" onkeyup="CalculateQty()" class="form-control integeronly" placeholder="New Balance" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2">Notes</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="modal_Add_Notes" rows="2" placeholder="Notes"></textarea>
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn bg-success" onclick="Add();">Submit</button>
+                            <button type="button" class="btn bg-success" onclick="Add();">SUBMIT</button>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">CLOSE</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /Add form modal -->
-
-        }
     </div>
     <!-- /content area -->
 </div>
 
 
-
-
 <script type="text/javascript">
 
     $(document).ready(function () {
+        setDateRangePicker('FILTER_DateFrom', '@string.Format("{0:yyyy/MM/dd}", DateTime.Today)');
+        setDateRangePicker('FILTER_DateTo', '@string.Format("{0:yyyy/MM/dd}", DateTime.Today)');
     });
 
     function applyLast() {
@@ -133,51 +191,31 @@
 
     // ADD NEW SUPPLIES ============================================================================================================================================
 
+    function PopulateAddModal(id) {
+        $('#modal_Add_SupplyItems_Id').val(id);
+        AjaxAssignValue('modal_Add_Balance', 'Ajax_Get_Balance', '@ControllerName', id);
+    }
+
+    $('#modal_Add').on('shown.bs.modal', function () {
+        $('#modal_Add_NewQty').focus();
+    })
+
     function CalculateQty() {
-        $('#modal_Add_Qty').val();
+        var value = getValueInt('modal_Add_NewBalance') - getValueInt('modal_Add_Balance');
+        $('#modal_Add_NewQty').val(value);
     }
 
     function CalculateBalance() {
-        $('#modal_Add_Balance').val();
+        var value = getValueInt('modal_Add_Balance') + getValueInt('modal_Add_NewQty');
+        $('#modal_Add_NewBalance').val(value);
     }
 
     function Add() {
-        AjaxUpdate('Ajax_Update_Qty', '@ControllerName', $('#modal_Add_SupplyItems_Id').val(), $('#modal_Add_Qty').val(), new function () {
+        var params = getValueString('modal_Add_SupplyItems_Id') + "|" + getValueInt('modal_Add_NewQty') + "|" + getValueString('modal_Add_Notes');
+        AjaxExecute('Ajax_Add', '@ControllerName', params, function (data) {
             $('#LoadData').trigger('click');
         });
     }
-
-    function PopulateAddModal(id) {
-        $('#modal_Add_SupplyItems_Id').val(id);
-    }
-
-    function Cancel() {
-        if (!event.detail || event.detail == 1) {
-            if ($('#modal_cancel-Notes').val() == '') {
-                showMessage('Please provide reason for cancellation.', 'modal_cancel-Notes');
-            }
-            else {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Ajax_Update_Cancelled", ControllerName)',
-                    data: {
-                        id: $('#modal_cancel-Id').val(),
-                        notes: $('#modal_cancel-Notes').val()
-                    },
-                    success: function (data) {
-                        $('#LoadData').trigger('click');
-                    }, //end success
-                    error: function (data) {
-                        showMessage("ERROR: " + data.statusText);
-                    } //end error
-                }); //end ajax
-            }
-        }
-    }
-
-    $('#modal_cancel').on('shown.bs.modal', function () {
-        $('#modal_cancel-Notes').focus();
-    })
 
     //==============================================================================================================================================================
 

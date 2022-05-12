@@ -127,6 +127,11 @@ FILTERING
 <input type="hidden" id="returnurl" name="returnurl" value="@ViewBag.returnurl" />
 <input type="hidden" id="FILTER_Keyword" name="FILTER_Keyword" value="@ViewBag.FILTER_Keyword" />
 <input type="hidden" id="FILTER_Active" name="FILTER_Active" value="@ViewBag.FILTER_Active" />
+<input type="hidden" id="FILTER_chkDateFrom" name="FILTER_chkDateFrom" value="@ViewBag.FILTER_chkDateFrom" />
+<input type="hidden" id="FILTER_DateFrom" name="FILTER_DateFrom" value="@ViewBag.FILTER_DateFrom" />
+<input type="hidden" id="FILTER_chkDateTo" name="FILTER_chkDateTo" value="@ViewBag.FILTER_chkDateTo" />
+<input type="hidden" id="FILTER_DateTo" name="FILTER_DateTo" value="@ViewBag.FILTER_DateTo" />
+<input type="hidden" id="FILTER_IsLastOnly" name="FILTER_IsLastOnly" value="@ViewBag.FILTER_IsLastOnly" />
 
 <script type="text/javascript">
 
@@ -136,6 +141,12 @@ FILTERING
         setValue('FILTER_Keyword', '@ViewBag.FILTER_Keyword');
         setValue('FILTER_Active', '@ViewBag.FILTER_Active');
 
+        setCheckboxFilter('FILTER_chkDateFrom', '@ViewBag.FILTER_chkDateFrom');
+        setCheckboxFilter('FILTER_chkDateTo', '@ViewBag.FILTER_chkDateTo');
+        setCheckboxFilter('FILTER_IsLastOnly', '@ViewBag.FILTER_IsLastOnly');
+
+        setDaterangepickerFilter('FILTER_DateFrom', '@string.Format("{0:yyyy/MM/dd}", ViewBag.FILTER_DateFrom ?? Helper.getCurrentDateTime())');
+        setDaterangepickerFilter('FILTER_DateTo', '@string.Format("{0:yyyy/MM/dd}", ViewBag.FILTER_DateTo ?? Helper.getCurrentDateTime())');
     });
 
     function getFilter() {
@@ -148,6 +159,26 @@ FILTERING
         if ($('#FILTER_Active') != null)
             FILTER_Active = $('#FILTER_Active').val();
         filter += appendFilter(FILTER_Active, "FILTER_Active");
+
+        if ($('#FILTER_DateFrom') != null)
+            FILTER_DateFrom = $('#FILTER_DateFrom').val();
+        filter += appendFilter(FILTER_DateFrom, "FILTER_DateFrom");
+
+        if ($('#FILTER_DateTo') != null)
+            FILTER_DateTo = $('#FILTER_DateTo').val();
+        filter += appendFilter(FILTER_DateTo, "FILTER_DateTo");
+
+        if ($('#FILTER_chkDateFrom') != null)
+            FILTER_chkDateFrom = getCheckboxFilterValue('FILTER_chkDateFrom');
+        filter += appendFilter(FILTER_chkDateFrom, "FILTER_chkDateFrom");
+
+        if ($('#FILTER_chkDateTo') != null)
+            FILTER_chkDateTo = getCheckboxFilterValue('FILTER_chkDateTo');
+        filter += appendFilter(FILTER_chkDateTo, "FILTER_chkDateTo");
+
+        if ($('#FILTER_IsLastOnly') != null)
+            FILTER_IsLastOnly = getCheckboxFilterValue('FILTER_IsLastOnly');
+        filter += appendFilter(FILTER_IsLastOnly, "FILTER_IsLastOnly");
 
         return filter;
     }

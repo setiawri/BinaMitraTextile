@@ -626,6 +626,16 @@
         });
     }
 
+    function AjaxAssignValue(controlid, action, controller, id) {
+        var url = '@Url.Action("__action", "__controller")';
+        url = url.replace("__action", action).replace("__controller", controller);
+        $.ajax({
+            type: "POST", url: url, data: { id: id },
+            success: function (data) { setValue(controlid, data.content); },
+            error: function (result) { bootbox.alert({ backdrop: true, message: "Error " + result }); }
+        });
+    }
+
     function AjaxGetDropdownlistData(id, action, controller, key) {
         var url = '@Url.Action("__action", "__controller")';
         url = url.replace("__action", action).replace("__controller", controller);
@@ -660,7 +670,7 @@
         },
         autoWidth: false,
         pagingType: 'full_numbers',
-        order: [[0, 'asc']],
+        order: [], //remove initial ordering. must clear browser history to work //order: [[0, 'asc']],
         //ordering: false,
         bStateSave: true,
         stateSaveCallback: function (settings, data) {
@@ -809,7 +819,7 @@
         return $(control).prop('id');
     }
 
-    //use data-container:'.modal-body' for modals and data-container:'body' everywhere else    
+    //use data-container:'.modal-body' for modals and data-container:'body' everywhere else
     function applyPopovers() {
         //popovers doesn't work on mobile devices
         try {

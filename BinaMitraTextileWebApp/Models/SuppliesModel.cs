@@ -23,13 +23,21 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Timestamp = new ModelMember { Name = "Timestamp", Display = "Timestamp" };
 
 
-        [Display(Name = "Qty")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public int Qty { get; set; }
         public static ModelMember COL_Qty = new ModelMember { Name = "Qty", Display = "Qty" };
-        
-        
+
+
+        public string Notes { get; set; }
+        public static ModelMember COL_Notes = new ModelMember { Name = "Notes", Display = "Notes" };
+
+
         /******************************************************************************************************************************************************/
+
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public int Balance { get; set; }
+        public static ModelMember COL_Balance = new ModelMember { Name = "Balance", Display = "Balance" };
+
 
         [Display(Name = "Unit")]
         public Guid Units_Id { get; set; }
