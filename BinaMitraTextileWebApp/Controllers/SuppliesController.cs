@@ -131,27 +131,32 @@ namespace BinaMitraTextileWebApp.Controllers
 
                         SELECT * INTO #TEMP_TABLE FROM (
                             SELECT Supplies.*,
-                                SupplyItems.Name AS SupplyItems_Name,
-                                Units.Id AS Units_Id,
-                                Units.Name AS Units_Name,
-                                InitialBalance.Qty + (SUM(Supplies.Qty) OVER(PARTITION BY Supplies.SupplyItems_Id ORDER BY Supplies.Timestamp ASC)) AS Balance
-                            FROM Supplies
-                                LEFT JOIN SupplyItems ON SupplyItems.Id = Supplies.SupplyItems_Id
-                                LEFT JOIN Units ON Units.Id = SupplyItems.Units_Id
-                                LEFT JOIN (
-                                        SELECT 1 AS Id, ISNULL(SUM(Supplies.Qty),0) AS Qty
-                                        FROM Supplies
-                                        WHERE 1=1
-                                            AND Supplies.Timestamp < @FILTER_DateFrom
-                                    ) InitialBalance ON InitialBalance.Id = 1
-                            WHERE 1=1
-							    AND (@Id IS NULL OR Supplies.Id = @Id)
-							    AND (@Id IS NOT NULL OR (
-    							    (@FILTER_Keyword IS NULL OR (SupplyItems.Name LIKE '%'+@FILTER_Keyword+'%'))
-    							    AND (@SupplyItems_Id IS NULL OR Supplies.SupplyItems_Id = @SupplyItems_Id)
-                                    AND (@FILTER_DateFrom IS NULL OR Supplies.Timestamp >= @FILTER_DateFrom)
-                                    AND (@FILTER_DateTo IS NULL OR Supplies.Timestamp <= @FILTER_DateTo)
-                                ))
+                                IIF((Supplies.MinimumQty - Supplies.Balance) > 0, Supplies.MinimumQty - Supplies.Balance, NULL) AS OrderQty
+                            FROM (
+                                SELECT Supplies.*,
+                                    SupplyItems.Name AS SupplyItems_Name,
+                                    SupplyItems.MinimumQty AS MinimumQty,
+                                    Units.Id AS Units_Id,
+                                    Units.Name AS Units_Name,
+                                    InitialBalance.Qty + (SUM(Supplies.Qty) OVER(PARTITION BY Supplies.SupplyItems_Id ORDER BY Supplies.Timestamp ASC)) AS Balance
+                                FROM Supplies
+                                    LEFT JOIN SupplyItems ON SupplyItems.Id = Supplies.SupplyItems_Id
+                                    LEFT JOIN Units ON Units.Id = SupplyItems.Units_Id
+                                    LEFT JOIN (
+                                            SELECT 1 AS Id, ISNULL(SUM(Supplies.Qty),0) AS Qty
+                                            FROM Supplies
+                                            WHERE 1=1
+                                                AND Supplies.Timestamp < @FILTER_DateFrom
+                                        ) InitialBalance ON InitialBalance.Id = 1
+                                WHERE 1=1
+							        AND (@Id IS NULL OR Supplies.Id = @Id)
+							        AND (@Id IS NOT NULL OR (
+    							        (@FILTER_Keyword IS NULL OR (SupplyItems.Name LIKE '%'+@FILTER_Keyword+'%'))
+    							        AND (@SupplyItems_Id IS NULL OR Supplies.SupplyItems_Id = @SupplyItems_Id)
+                                        AND (@FILTER_DateFrom IS NULL OR Supplies.Timestamp >= @FILTER_DateFrom)
+                                        AND (@FILTER_DateTo IS NULL OR Supplies.Timestamp <= @FILTER_DateTo)
+                                    ))
+                            ) Supplies
                         ) AS X
 
                         IF @IsLastOnly = 0

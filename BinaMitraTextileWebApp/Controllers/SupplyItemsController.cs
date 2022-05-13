@@ -98,6 +98,7 @@ namespace BinaMitraTextileWebApp.Controllers
                     string log = string.Empty;
                     log = Helper.append(log, originalModel.Name, modifiedModel.Name, SupplyItemsModel.COL_Name.LogDisplay);
                     log = Helper.append<UnitsModel>(log, originalModel.Units_Id, modifiedModel.Units_Id, SupplyItemsModel.COL_Name.LogDisplay);
+                    log = Helper.append(log, originalModel.MinimumQty, modifiedModel.MinimumQty, SupplyItemsModel.COL_MinimumQty.LogDisplay);
                     log = Helper.append(log, originalModel.Notes, modifiedModel.Notes, SupplyItemsModel.COL_Notes.LogDisplay);
                     log = Helper.append(log, originalModel.Active, modifiedModel.Active, SupplyItemsModel.COL_Active.LogDisplay);
 
@@ -186,6 +187,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Id.Name, model.Id),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Name.Name, model.Name),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Units_Id.Name, model.Units_Id),
+                DBConnection.getSqlParameter(SupplyItemsModel.COL_MinimumQty.Name, model.MinimumQty),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Notes.Name, model.Notes)
             );
@@ -197,6 +199,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Id.Name, model.Id),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Name.Name, model.Name),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Units_Id.Name, model.Units_Id),
+                DBConnection.getSqlParameter(SupplyItemsModel.COL_MinimumQty.Name, model.MinimumQty),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(SupplyItemsModel.COL_Notes.Name, model.Notes)
             );

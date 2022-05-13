@@ -43,6 +43,18 @@ namespace BinaMitraTextileWebApp.Models
         public Guid Units_Id { get; set; }
         public string Units_Name { get; set; } = string.Empty;
 
+
+        [Display(Name = "Min")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public int? MinimumQty { get; set; }
+        public static ModelMember COL_MinimumQty = new ModelMember { Name = "MinimumQty", Display = "Min" };
+
+
+        [Display(Name = "Order")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public int? OrderQty { get; set; }
+        public static ModelMember COL_OrderQty = new ModelMember { Name = "OrderQty", Display = "Order Qty" };
+
         /******************************************************************************************************************************************************/
 
     }

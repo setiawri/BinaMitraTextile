@@ -22,6 +22,12 @@ namespace BinaMitraTextileWebApp.Models
         public string Units_Name { get; set; } = string.Empty;
 
 
+        [Display(Name = "Minimum Qty")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public int? MinimumQty { get; set; }
+        public static ModelMember COL_MinimumQty = new ModelMember { Name = "MinimumQty", Display = "MinimumQty", LogDisplay = LIBUtil.ActivityLog.editIntFormat("Minimum qty") };
+
+
         public string Notes { get; set; } = null;
         public static ModelMember COL_Notes = new ModelMember { Name = "Notes", Display = "Notes", LogDisplay = LIBUtil.ActivityLog.editStringFormat("Notes") };
 
