@@ -93,6 +93,7 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_totalQty.DataPropertyName = Inventory.COL_ITEMLENGTH;
             col_grid_PONo.DataPropertyName = Inventory.COL_PONo;
             col_grid_invoiceNo.DataPropertyName = Inventory.COL_VENDORINVOICENO;
+            col_grid_VendorInvoices_Approved.DataPropertyName = Inventory.COL_VendorInvoices_Approved;
             col_grid_packingListNo.DataPropertyName = Inventory.COL_DB_PACKINGLISTNO;
             col_grid_isConsignment.DataPropertyName = Inventory.COL_DB_IsConsignment;
             col_grid_OpnameMarker.DataPropertyName = Inventory.COL_DB_OpnameMarker;
@@ -217,14 +218,19 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new InventoryForm.Add_Edit_Form());
+            Tools.displayForm(new Add_Edit_Form());
             populateGridview();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new InventoryForm.Add_Edit_Form(selectedRowID()));
-            populateGridview();
+            if((bool)Util.getSelectedRowValue(grid, col_grid_VendorInvoices_Approved))
+                Util.displayMessageBoxError(String.Format("Please unlock Vendor Invoice {0} to update this inventory.", Util.getSelectedRowValue(grid, col_grid_invoiceNo)));
+            else
+            {
+                Tools.displayForm(new Add_Edit_Form(selectedRowID()));
+                populateGridview();
+            }
         }
 
         protected void chkIncludeInactive_CheckedChanged(object sender, EventArgs e)

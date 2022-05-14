@@ -45,10 +45,10 @@ namespace BinaMitraTextile.InventoryForm
             ProductWidth.populateDropDownList(cbProductWidths, false, true);
             LengthUnit.populateDropDownList(cbLengthUnits, false, true);
             FabricColor.populateDropDownList(cbColors, false, true);
-            VendorInvoice.populateDropDownList(cbVendorInvoices, true);
+            VendorInvoice.populateInputControlDropDownList(iddl_VendorInvoices, true);
 
             //set window title
-            switch(_formMode)
+            switch (_formMode)
             {
                 case FormMode.New:
                     this.Text = "ADD NEW INVENTORY";
@@ -77,9 +77,9 @@ namespace BinaMitraTextile.InventoryForm
                 txtPackingListNo.Text = obj.PackingListNo;
 
                 if (obj.VendorInvoiceID == null)
-                    Tools.resetDropDownList(cbVendorInvoices);
+                    iddl_VendorInvoices.reset();
                 else
-                    cbVendorInvoices.SelectedValue = obj.VendorInvoiceID;
+                    iddl_VendorInvoices.SelectedValue = obj.VendorInvoiceID;
 
                 cbColors.SelectedValue = obj.color_id;
                 cbGrades.SelectedValue = obj.grade_id;
@@ -184,8 +184,8 @@ namespace BinaMitraTextile.InventoryForm
         {
             if(Tools.displayForm(new InventoryForm.VendorInvoices_Add_Form()))
             {
-                VendorInvoice.populateDropDownList(cbVendorInvoices, true);
-                cbVendorInvoices.SelectedIndex = 0;
+                VendorInvoice.populateInputControlDropDownList(iddl_VendorInvoices, true);
+                iddl_VendorInvoices.SelectedIndex = 0;
             }
         }
 
@@ -207,7 +207,7 @@ namespace BinaMitraTextile.InventoryForm
                     txtNotes.Text.Trim(),
                     itxt_POItemID.ValueGuid,
                     txtPackingListNo.Text.Trim(),
-                    (Guid?)cbVendorInvoices.SelectedValue,
+                    (Guid?)iddl_VendorInvoices.SelectedValue,
                     Convert.ToInt32(Tools.zeroNonNumericString(txtCode.Text)));
                 if(_id != null && _id != new Guid())
                     inventory.id = _id;
@@ -237,6 +237,8 @@ namespace BinaMitraTextile.InventoryForm
 
             if (!string.IsNullOrEmpty(txtBuyPrice.Text) && !Tools.isNumeric(txtBuyPrice.Text))
                 return Tools.inputError<TextBox>(txtBuyPrice, "Invalid buy price");
+            else if (!iddl_VendorInvoices.hasSelectedValue())
+                return iddl_VendorInvoices.SelectedValueError("Please select an invoice");
             else if (cbGrades.SelectedValue == null)
                 return Tools.inputError<ComboBox>(cbGrades, "Please select a grade listed in the drop down list");
             else if (_browsedProductID == null)

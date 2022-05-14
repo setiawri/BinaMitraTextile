@@ -262,6 +262,11 @@ namespace BinaMitraTextile
             Tools.populateDropDownList(dropdownlist, get(showOnlyIncomplete).DefaultView, COL_DB_InvoiceNo, COL_DB_Id, false);
         }
 
+        public static void populateInputControlDropDownList(LIBUtil.Desktop.UserControls.InputControl_Dropdownlist control, bool showOnlyIncomplete)
+        {
+            control.populate(get(showOnlyIncomplete).DefaultView, COL_DB_InvoiceNo, COL_DB_Id, null);
+        }
+
         #endregion CLASS METHODS
         /*******************************************************************************************************/
     }

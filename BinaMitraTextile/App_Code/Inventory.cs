@@ -50,6 +50,7 @@ namespace BinaMitraTextile
         public const string COL_POItems_PricePerUnit = "POItems_PricePerUnit";
         public const string COL_PONo = "po_no";
         public const string COL_VENDORINVOICENO = "vendorinvoice_no";
+        public const string COL_VendorInvoices_Approved = "VendorInvoices_Approved";
         public const string COL_FakturPajaks_No = "FakturPajaks_No";
 
         public const string FILTER_SaleOrderItems_Id = "FILTER_SaleOrderItems_Id";
