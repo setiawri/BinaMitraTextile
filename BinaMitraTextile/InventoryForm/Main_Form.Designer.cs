@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,23 +60,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.scMain = new System.Windows.Forms.SplitContainer();
-            this.btnReset = new System.Windows.Forms.Button();
             this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iclb_Colors = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.iclb_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iclb_ProductWidths = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iclb_Grades = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.pnlUpdateBuyPrice = new System.Windows.Forms.Panel();
@@ -72,6 +72,30 @@
             this.btnUpdateBuyPrice = new System.Windows.Forms.Button();
             this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_receiveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_productWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_buyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_sellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_availablePcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_availableQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_totalPcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_totalQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_PONo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_invoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_VendorInvoices_Approved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_packingListNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_FakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_isConsignment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.extracol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlRowInfo = new System.Windows.Forms.Panel();
             this.scSummary = new System.Windows.Forms.SplitContainer();
             this.gridSummary = new System.Windows.Forms.DataGridView();
@@ -121,30 +145,6 @@
             this.btnSetPrice = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_receiveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_productWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_buyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_sellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_grid_availablePcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_availableQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_totalPcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_totalQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_PONo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_invoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_VendorInvoices_Approved = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_packingListNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_FakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_grid_isConsignment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_grid_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.extracol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -174,17 +174,17 @@
             this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scMain.IsSplitterFixed = true;
             this.scMain.Location = new System.Drawing.Point(0, 36);
-            this.scMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scMain.Margin = new System.Windows.Forms.Padding(4);
             this.scMain.Name = "scMain";
             this.scMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // scMain.Panel1
             // 
             this.scMain.Panel1.BackColor = System.Drawing.Color.White;
-            this.scMain.Panel1.Controls.Add(this.btnReset);
             this.scMain.Panel1.Controls.Add(this.iclb_ProductStoreNames);
-            this.scMain.Panel1.Controls.Add(this.iclb_LengthUnits);
             this.scMain.Panel1.Controls.Add(this.iclb_Colors);
+            this.scMain.Panel1.Controls.Add(this.btnReset);
+            this.scMain.Panel1.Controls.Add(this.iclb_LengthUnits);
             this.scMain.Panel1.Controls.Add(this.iclb_ProductWidths);
             this.scMain.Panel1.Controls.Add(this.iclb_Grades);
             this.scMain.Panel1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -196,14 +196,34 @@
             this.scMain.Panel2.Controls.Add(this.pnlRowInfo);
             this.scMain.Panel2.Controls.Add(this.panel1);
             this.scMain.Size = new System.Drawing.Size(1445, 716);
-            this.scMain.SplitterDistance = 105;
+            this.scMain.SplitterDistance = 115;
             this.scMain.SplitterWidth = 1;
             this.scMain.TabIndex = 0;
             // 
+            // iclb_ProductStoreNames
+            // 
+            this.iclb_ProductStoreNames.LabelText = "Products";
+            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(670, 9);
+            this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
+            this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
+            this.iclb_ProductStoreNames.ShowListOnly = false;
+            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(240, 124);
+            this.iclb_ProductStoreNames.TabIndex = 12;
+            // 
+            // iclb_Colors
+            // 
+            this.iclb_Colors.LabelText = "Colors";
+            this.iclb_Colors.Location = new System.Drawing.Point(425, 9);
+            this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
+            this.iclb_Colors.Name = "iclb_Colors";
+            this.iclb_Colors.ShowListOnly = false;
+            this.iclb_Colors.Size = new System.Drawing.Size(240, 124);
+            this.iclb_Colors.TabIndex = 12;
+            // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(925, 71);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Location = new System.Drawing.Point(918, 81);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 52);
             this.btnReset.TabIndex = 12;
@@ -211,44 +231,22 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // iclb_ProductStoreNames
-            // 
-            this.iclb_ProductStoreNames.LabelText = "Product (store)";
-            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(677, 2);
-            this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
-            this.iclb_ProductStoreNames.ShowListOnly = false;
-            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(240, 129);
-            this.iclb_ProductStoreNames.TabIndex = 6;
-            this.iclb_ProductStoreNames.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
             // iclb_LengthUnits
             // 
             this.iclb_LengthUnits.LabelText = "Unit";
-            this.iclb_LengthUnits.Location = new System.Drawing.Point(288, 7);
-            this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iclb_LengthUnits.Location = new System.Drawing.Point(287, 15);
+            this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_LengthUnits.Name = "iclb_LengthUnits";
             this.iclb_LengthUnits.ShowListOnly = true;
             this.iclb_LengthUnits.Size = new System.Drawing.Size(133, 116);
             this.iclb_LengthUnits.TabIndex = 19;
             this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
             // 
-            // iclb_Colors
-            // 
-            this.iclb_Colors.LabelText = "Warna";
-            this.iclb_Colors.Location = new System.Drawing.Point(429, 2);
-            this.iclb_Colors.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.iclb_Colors.Name = "iclb_Colors";
-            this.iclb_Colors.ShowListOnly = false;
-            this.iclb_Colors.Size = new System.Drawing.Size(240, 128);
-            this.iclb_Colors.TabIndex = 6;
-            this.iclb_Colors.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
             // iclb_ProductWidths
             // 
             this.iclb_ProductWidths.LabelText = "Lebar";
-            this.iclb_ProductWidths.Location = new System.Drawing.Point(147, 7);
-            this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iclb_ProductWidths.Location = new System.Drawing.Point(146, 15);
+            this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_ProductWidths.Name = "iclb_ProductWidths";
             this.iclb_ProductWidths.ShowListOnly = true;
             this.iclb_ProductWidths.Size = new System.Drawing.Size(133, 116);
@@ -258,8 +256,8 @@
             // iclb_Grades
             // 
             this.iclb_Grades.LabelText = "Grades";
-            this.iclb_Grades.Location = new System.Drawing.Point(5, 7);
-            this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iclb_Grades.Location = new System.Drawing.Point(4, 15);
+            this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_Grades.Name = "iclb_Grades";
             this.iclb_Grades.ShowListOnly = true;
             this.iclb_Grades.Size = new System.Drawing.Size(133, 116);
@@ -273,8 +271,8 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(568, 159);
-            this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(568, 162);
+            this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(306, 135);
             this.pnlUpdateBuyPrice.TabIndex = 7;
@@ -285,7 +283,7 @@
             this.btnCancelUpdateBuyPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelUpdateBuyPrice.Location = new System.Drawing.Point(164, 81);
-            this.btnCancelUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelUpdateBuyPrice.Name = "btnCancelUpdateBuyPrice";
             this.btnCancelUpdateBuyPrice.Size = new System.Drawing.Size(81, 28);
             this.btnCancelUpdateBuyPrice.TabIndex = 2;
@@ -298,7 +296,7 @@
             this.btnUpdateBuyPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateBuyPrice.Location = new System.Drawing.Point(60, 81);
-            this.btnUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateBuyPrice.Name = "btnUpdateBuyPrice";
             this.btnUpdateBuyPrice.Size = new System.Drawing.Size(96, 28);
             this.btnUpdateBuyPrice.TabIndex = 1;
@@ -318,7 +316,7 @@
             0});
             this.in_BuyPrice.LabelText = "Buy Price";
             this.in_BuyPrice.Location = new System.Drawing.Point(60, 23);
-            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5);
             this.in_BuyPrice.MaximumValue = new decimal(new int[] {
             10000000,
             0,
@@ -385,663 +383,14 @@
             this.extracol});
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 33);
-            this.grid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grid.Margin = new System.Windows.Forms.Padding(4);
             this.grid.Name = "grid";
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
-            this.grid.Size = new System.Drawing.Size(1443, 374);
+            this.grid.Size = new System.Drawing.Size(1443, 364);
             this.grid.TabIndex = 5;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
-            // 
-            // pnlRowInfo
-            // 
-            this.pnlRowInfo.Controls.Add(this.scSummary);
-            this.pnlRowInfo.Controls.Add(this.pnlRowInfoHeaderContainer);
-            this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 407);
-            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlRowInfo.Name = "pnlRowInfo";
-            this.pnlRowInfo.Size = new System.Drawing.Size(1443, 201);
-            this.pnlRowInfo.TabIndex = 11;
-            // 
-            // scSummary
-            // 
-            this.scSummary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scSummary.Location = new System.Drawing.Point(0, 30);
-            this.scSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.scSummary.Name = "scSummary";
-            // 
-            // scSummary.Panel1
-            // 
-            this.scSummary.Panel1.Controls.Add(this.gridSummary);
-            // 
-            // scSummary.Panel2
-            // 
-            this.scSummary.Panel2.Controls.Add(this.gridSummaryByColor);
-            this.scSummary.Size = new System.Drawing.Size(1443, 171);
-            this.scSummary.SplitterDistance = 674;
-            this.scSummary.SplitterWidth = 5;
-            this.scSummary.TabIndex = 0;
-            // 
-            // gridSummary
-            // 
-            this.gridSummary.AllowUserToAddRows = false;
-            this.gridSummary.AllowUserToDeleteRows = false;
-            this.gridSummary.AllowUserToResizeRows = false;
-            this.gridSummary.BackgroundColor = System.Drawing.Color.White;
-            this.gridSummary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridSummary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_gridSummary_Product_Id,
-            this.col_gridSummary_grade,
-            this.col_gridSummary_StoreName,
-            this.col_gridSummary_Width,
-            this.col_gridSummary_averagePrice,
-            this.col_gridSummary_availablePcs,
-            this.col_gridSummary_availableQty,
-            this.col_gridSummary_unitName,
-            this.col_gridSummary_BuyValue,
-            this.col_gridSummary_SellValue});
-            this.gridSummary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSummary.Location = new System.Drawing.Point(0, 0);
-            this.gridSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gridSummary.Name = "gridSummary";
-            this.gridSummary.RowHeadersVisible = false;
-            this.gridSummary.RowHeadersWidth = 51;
-            this.gridSummary.Size = new System.Drawing.Size(674, 171);
-            this.gridSummary.TabIndex = 6;
-            // 
-            // col_gridSummary_Product_Id
-            // 
-            this.col_gridSummary_Product_Id.HeaderText = "Product Id";
-            this.col_gridSummary_Product_Id.MinimumWidth = 6;
-            this.col_gridSummary_Product_Id.Name = "col_gridSummary_Product_Id";
-            this.col_gridSummary_Product_Id.ReadOnly = true;
-            this.col_gridSummary_Product_Id.Visible = false;
-            this.col_gridSummary_Product_Id.Width = 125;
-            // 
-            // col_gridSummary_grade
-            // 
-            this.col_gridSummary_grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummary_grade.DefaultCellStyle = dataGridViewCellStyle15;
-            this.col_gridSummary_grade.HeaderText = "Grade";
-            this.col_gridSummary_grade.MinimumWidth = 40;
-            this.col_gridSummary_grade.Name = "col_gridSummary_grade";
-            this.col_gridSummary_grade.ReadOnly = true;
-            this.col_gridSummary_grade.Width = 40;
-            // 
-            // col_gridSummary_StoreName
-            // 
-            this.col_gridSummary_StoreName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_gridSummary_StoreName.HeaderText = "Product";
-            this.col_gridSummary_StoreName.MinimumWidth = 50;
-            this.col_gridSummary_StoreName.Name = "col_gridSummary_StoreName";
-            this.col_gridSummary_StoreName.ReadOnly = true;
-            // 
-            // col_gridSummary_Width
-            // 
-            this.col_gridSummary_Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummary_Width.DefaultCellStyle = dataGridViewCellStyle16;
-            this.col_gridSummary_Width.HeaderText = "Lebar";
-            this.col_gridSummary_Width.MinimumWidth = 40;
-            this.col_gridSummary_Width.Name = "col_gridSummary_Width";
-            this.col_gridSummary_Width.ReadOnly = true;
-            this.col_gridSummary_Width.Width = 40;
-            // 
-            // col_gridSummary_averagePrice
-            // 
-            this.col_gridSummary_averagePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "N0";
-            this.col_gridSummary_averagePrice.DefaultCellStyle = dataGridViewCellStyle17;
-            this.col_gridSummary_averagePrice.HeaderText = "Buy";
-            this.col_gridSummary_averagePrice.MinimumWidth = 30;
-            this.col_gridSummary_averagePrice.Name = "col_gridSummary_averagePrice";
-            this.col_gridSummary_averagePrice.ReadOnly = true;
-            this.col_gridSummary_averagePrice.Width = 30;
-            // 
-            // col_gridSummary_availablePcs
-            // 
-            this.col_gridSummary_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            this.col_gridSummary_availablePcs.DefaultCellStyle = dataGridViewCellStyle18;
-            this.col_gridSummary_availablePcs.HeaderText = "";
-            this.col_gridSummary_availablePcs.MinimumWidth = 20;
-            this.col_gridSummary_availablePcs.Name = "col_gridSummary_availablePcs";
-            this.col_gridSummary_availablePcs.ReadOnly = true;
-            this.col_gridSummary_availablePcs.Width = 20;
-            // 
-            // col_gridSummary_availableQty
-            // 
-            this.col_gridSummary_availableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N2";
-            this.col_gridSummary_availableQty.DefaultCellStyle = dataGridViewCellStyle19;
-            this.col_gridSummary_availableQty.HeaderText = "Qty";
-            this.col_gridSummary_availableQty.MinimumWidth = 30;
-            this.col_gridSummary_availableQty.Name = "col_gridSummary_availableQty";
-            this.col_gridSummary_availableQty.ReadOnly = true;
-            this.col_gridSummary_availableQty.Width = 30;
-            // 
-            // col_gridSummary_unitName
-            // 
-            this.col_gridSummary_unitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummary_unitName.DefaultCellStyle = dataGridViewCellStyle20;
-            this.col_gridSummary_unitName.HeaderText = "Unit";
-            this.col_gridSummary_unitName.MinimumWidth = 40;
-            this.col_gridSummary_unitName.Name = "col_gridSummary_unitName";
-            this.col_gridSummary_unitName.ReadOnly = true;
-            this.col_gridSummary_unitName.Width = 40;
-            // 
-            // col_gridSummary_BuyValue
-            // 
-            this.col_gridSummary_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.Format = "N0";
-            this.col_gridSummary_BuyValue.DefaultCellStyle = dataGridViewCellStyle21;
-            this.col_gridSummary_BuyValue.HeaderText = "Buy Value";
-            this.col_gridSummary_BuyValue.MinimumWidth = 75;
-            this.col_gridSummary_BuyValue.Name = "col_gridSummary_BuyValue";
-            this.col_gridSummary_BuyValue.ReadOnly = true;
-            this.col_gridSummary_BuyValue.Width = 75;
-            // 
-            // col_gridSummary_SellValue
-            // 
-            this.col_gridSummary_SellValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "N0";
-            this.col_gridSummary_SellValue.DefaultCellStyle = dataGridViewCellStyle22;
-            this.col_gridSummary_SellValue.HeaderText = "Sell Value";
-            this.col_gridSummary_SellValue.MinimumWidth = 75;
-            this.col_gridSummary_SellValue.Name = "col_gridSummary_SellValue";
-            this.col_gridSummary_SellValue.ReadOnly = true;
-            this.col_gridSummary_SellValue.Width = 75;
-            // 
-            // gridSummaryByColor
-            // 
-            this.gridSummaryByColor.AllowUserToAddRows = false;
-            this.gridSummaryByColor.AllowUserToDeleteRows = false;
-            this.gridSummaryByColor.AllowUserToResizeRows = false;
-            this.gridSummaryByColor.BackgroundColor = System.Drawing.Color.White;
-            this.gridSummaryByColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gridSummaryByColor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummaryByColor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
-            this.gridSummaryByColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSummaryByColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_gridSummaryByColor_ProductId,
-            this.col_gridSummaryByColor_Grade,
-            this.col_gridSummaryByColor_ProductStoreName,
-            this.col_gridSummaryByColor_ProductWidthName,
-            this.col_gridSummaryByColor_ColorName,
-            this.col_gridSummaryByColor_AveragePrice,
-            this.col_gridSummaryByColor_availablePcs,
-            this.col_gridSummaryByColor_AvailableQty,
-            this.col_gridSummaryByColor_UnitName,
-            this.col_gridSummaryByColor_BuyValue,
-            this.col_gridSummaryByColor_SellValue});
-            this.gridSummaryByColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSummaryByColor.Location = new System.Drawing.Point(0, 0);
-            this.gridSummaryByColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gridSummaryByColor.Name = "gridSummaryByColor";
-            this.gridSummaryByColor.RowHeadersVisible = false;
-            this.gridSummaryByColor.RowHeadersWidth = 51;
-            this.gridSummaryByColor.Size = new System.Drawing.Size(764, 171);
-            this.gridSummaryByColor.TabIndex = 7;
-            // 
-            // col_gridSummaryByColor_ProductId
-            // 
-            this.col_gridSummaryByColor_ProductId.HeaderText = "Product Id";
-            this.col_gridSummaryByColor_ProductId.MinimumWidth = 6;
-            this.col_gridSummaryByColor_ProductId.Name = "col_gridSummaryByColor_ProductId";
-            this.col_gridSummaryByColor_ProductId.ReadOnly = true;
-            this.col_gridSummaryByColor_ProductId.Visible = false;
-            this.col_gridSummaryByColor_ProductId.Width = 125;
-            // 
-            // col_gridSummaryByColor_Grade
-            // 
-            this.col_gridSummaryByColor_Grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummaryByColor_Grade.DefaultCellStyle = dataGridViewCellStyle24;
-            this.col_gridSummaryByColor_Grade.HeaderText = "Grade";
-            this.col_gridSummaryByColor_Grade.MinimumWidth = 40;
-            this.col_gridSummaryByColor_Grade.Name = "col_gridSummaryByColor_Grade";
-            this.col_gridSummaryByColor_Grade.ReadOnly = true;
-            this.col_gridSummaryByColor_Grade.Width = 40;
-            // 
-            // col_gridSummaryByColor_ProductStoreName
-            // 
-            this.col_gridSummaryByColor_ProductStoreName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_gridSummaryByColor_ProductStoreName.HeaderText = "Product";
-            this.col_gridSummaryByColor_ProductStoreName.MinimumWidth = 50;
-            this.col_gridSummaryByColor_ProductStoreName.Name = "col_gridSummaryByColor_ProductStoreName";
-            this.col_gridSummaryByColor_ProductStoreName.ReadOnly = true;
-            // 
-            // col_gridSummaryByColor_ProductWidthName
-            // 
-            this.col_gridSummaryByColor_ProductWidthName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummaryByColor_ProductWidthName.DefaultCellStyle = dataGridViewCellStyle25;
-            this.col_gridSummaryByColor_ProductWidthName.HeaderText = "Lebar";
-            this.col_gridSummaryByColor_ProductWidthName.MinimumWidth = 40;
-            this.col_gridSummaryByColor_ProductWidthName.Name = "col_gridSummaryByColor_ProductWidthName";
-            this.col_gridSummaryByColor_ProductWidthName.ReadOnly = true;
-            this.col_gridSummaryByColor_ProductWidthName.Width = 40;
-            // 
-            // col_gridSummaryByColor_ColorName
-            // 
-            this.col_gridSummaryByColor_ColorName.HeaderText = "Color";
-            this.col_gridSummaryByColor_ColorName.MinimumWidth = 80;
-            this.col_gridSummaryByColor_ColorName.Name = "col_gridSummaryByColor_ColorName";
-            this.col_gridSummaryByColor_ColorName.ReadOnly = true;
-            this.col_gridSummaryByColor_ColorName.Width = 80;
-            // 
-            // col_gridSummaryByColor_AveragePrice
-            // 
-            this.col_gridSummaryByColor_AveragePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N0";
-            this.col_gridSummaryByColor_AveragePrice.DefaultCellStyle = dataGridViewCellStyle26;
-            this.col_gridSummaryByColor_AveragePrice.HeaderText = "Buy";
-            this.col_gridSummaryByColor_AveragePrice.MinimumWidth = 30;
-            this.col_gridSummaryByColor_AveragePrice.Name = "col_gridSummaryByColor_AveragePrice";
-            this.col_gridSummaryByColor_AveragePrice.ReadOnly = true;
-            this.col_gridSummaryByColor_AveragePrice.Width = 30;
-            // 
-            // col_gridSummaryByColor_availablePcs
-            // 
-            this.col_gridSummaryByColor_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N0";
-            this.col_gridSummaryByColor_availablePcs.DefaultCellStyle = dataGridViewCellStyle27;
-            this.col_gridSummaryByColor_availablePcs.HeaderText = "";
-            this.col_gridSummaryByColor_availablePcs.MinimumWidth = 20;
-            this.col_gridSummaryByColor_availablePcs.Name = "col_gridSummaryByColor_availablePcs";
-            this.col_gridSummaryByColor_availablePcs.ReadOnly = true;
-            this.col_gridSummaryByColor_availablePcs.Width = 20;
-            // 
-            // col_gridSummaryByColor_AvailableQty
-            // 
-            this.col_gridSummaryByColor_AvailableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "N2";
-            this.col_gridSummaryByColor_AvailableQty.DefaultCellStyle = dataGridViewCellStyle28;
-            this.col_gridSummaryByColor_AvailableQty.HeaderText = "Qty";
-            this.col_gridSummaryByColor_AvailableQty.MinimumWidth = 30;
-            this.col_gridSummaryByColor_AvailableQty.Name = "col_gridSummaryByColor_AvailableQty";
-            this.col_gridSummaryByColor_AvailableQty.ReadOnly = true;
-            this.col_gridSummaryByColor_AvailableQty.Width = 30;
-            // 
-            // col_gridSummaryByColor_UnitName
-            // 
-            this.col_gridSummaryByColor_UnitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummaryByColor_UnitName.DefaultCellStyle = dataGridViewCellStyle29;
-            this.col_gridSummaryByColor_UnitName.HeaderText = "Unit";
-            this.col_gridSummaryByColor_UnitName.MinimumWidth = 40;
-            this.col_gridSummaryByColor_UnitName.Name = "col_gridSummaryByColor_UnitName";
-            this.col_gridSummaryByColor_UnitName.ReadOnly = true;
-            this.col_gridSummaryByColor_UnitName.Width = 40;
-            // 
-            // col_gridSummaryByColor_BuyValue
-            // 
-            this.col_gridSummaryByColor_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Format = "N0";
-            this.col_gridSummaryByColor_BuyValue.DefaultCellStyle = dataGridViewCellStyle30;
-            this.col_gridSummaryByColor_BuyValue.HeaderText = "Buy Value";
-            this.col_gridSummaryByColor_BuyValue.MinimumWidth = 75;
-            this.col_gridSummaryByColor_BuyValue.Name = "col_gridSummaryByColor_BuyValue";
-            this.col_gridSummaryByColor_BuyValue.ReadOnly = true;
-            this.col_gridSummaryByColor_BuyValue.Width = 75;
-            // 
-            // col_gridSummaryByColor_SellValue
-            // 
-            this.col_gridSummaryByColor_SellValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            this.col_gridSummaryByColor_SellValue.DefaultCellStyle = dataGridViewCellStyle31;
-            this.col_gridSummaryByColor_SellValue.HeaderText = "Sell Value";
-            this.col_gridSummaryByColor_SellValue.MinimumWidth = 75;
-            this.col_gridSummaryByColor_SellValue.Name = "col_gridSummaryByColor_SellValue";
-            this.col_gridSummaryByColor_SellValue.ReadOnly = true;
-            this.col_gridSummaryByColor_SellValue.Width = 75;
-            // 
-            // pnlRowInfoHeaderContainer
-            // 
-            this.pnlRowInfoHeaderContainer.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlRowInfoHeaderContainer.Controls.Add(this.pnlRowInfoHeader);
-            this.pnlRowInfoHeaderContainer.Controls.Add(this.ptRowInfo);
-            this.pnlRowInfoHeaderContainer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlRowInfoHeaderContainer.Location = new System.Drawing.Point(0, 0);
-            this.pnlRowInfoHeaderContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlRowInfoHeaderContainer.Name = "pnlRowInfoHeaderContainer";
-            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(1443, 30);
-            this.pnlRowInfoHeaderContainer.TabIndex = 1;
-            // 
-            // pnlRowInfoHeader
-            // 
-            this.pnlRowInfoHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
-            this.pnlRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRowInfoHeader.Location = new System.Drawing.Point(32, 0);
-            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlRowInfoHeader.Name = "pnlRowInfoHeader";
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1411, 30);
-            this.pnlRowInfoHeader.TabIndex = 6;
-            // 
-            // lblRowInfoHeader
-            // 
-            this.lblRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblRowInfoHeader.Location = new System.Drawing.Point(0, 0);
-            this.lblRowInfoHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblRowInfoHeader.Name = "lblRowInfoHeader";
-            this.lblRowInfoHeader.Size = new System.Drawing.Size(1409, 28);
-            this.lblRowInfoHeader.TabIndex = 108;
-            this.lblRowInfoHeader.Text = "lblRowInfoHeader";
-            this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ptRowInfo
-            // 
-            this.ptRowInfo.AdjustLocationOnClick = true;
-            this.ptRowInfo.BackColor = System.Drawing.Color.White;
-            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
-            this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
-            this.ptRowInfo.Location = new System.Drawing.Point(0, 0);
-            this.ptRowInfo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.ptRowInfo.MinimumSplitterDistance = 100;
-            this.ptRowInfo.Name = "ptRowInfo";
-            this.ptRowInfo.Size = new System.Drawing.Size(32, 30);
-            this.ptRowInfo.TabIndex = 5;
-            this.ptRowInfo.TogglePanel = null;
-            this.ptRowInfo.pictureBox_ClickEvent += new System.EventHandler(this.ptRowInfo_pictureBox_ClickEvent);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pnlQuickSearch);
-            this.panel1.Controls.Add(this.ptFilter);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1443, 33);
-            this.panel1.TabIndex = 10;
-            // 
-            // pnlQuickSearch
-            // 
-            this.pnlQuickSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlQuickSearch.Controls.Add(this.pbLog);
-            this.pnlQuickSearch.Controls.Add(this.pbRefresh);
-            this.pnlQuickSearch.Controls.Add(this.itxt_QuickSearch);
-            this.pnlQuickSearch.Controls.Add(this.chkShowNotBookedOnly);
-            this.pnlQuickSearch.Controls.Add(this.chkCalculateBuyValue);
-            this.pnlQuickSearch.Controls.Add(this.chkShowHidden);
-            this.pnlQuickSearch.Controls.Add(this.chkRearrange);
-            this.pnlQuickSearch.Controls.Add(this.chkLast3Months);
-            this.pnlQuickSearch.Controls.Add(this.lblCounts);
-            this.pnlQuickSearch.Controls.Add(this.chkIncludeInactive);
-            this.pnlQuickSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlQuickSearch.Location = new System.Drawing.Point(37, 0);
-            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlQuickSearch.Name = "pnlQuickSearch";
-            this.pnlQuickSearch.Size = new System.Drawing.Size(1406, 33);
-            this.pnlQuickSearch.TabIndex = 0;
-            // 
-            // pbLog
-            // 
-            this.pbLog.BackColor = System.Drawing.Color.White;
-            this.pbLog.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLog.BackgroundImage")));
-            this.pbLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbLog.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbLog.Location = new System.Drawing.Point(33, 0);
-            this.pbLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pbLog.Name = "pbLog";
-            this.pbLog.Size = new System.Drawing.Size(33, 31);
-            this.pbLog.TabIndex = 20;
-            this.pbLog.TabStop = false;
-            this.pbLog.Click += new System.EventHandler(this.PbLog_Click);
-            // 
-            // pbRefresh
-            // 
-            this.pbRefresh.BackColor = System.Drawing.Color.White;
-            this.pbRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRefresh.BackgroundImage")));
-            this.pbRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbRefresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbRefresh.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbRefresh.Location = new System.Drawing.Point(0, 0);
-            this.pbRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pbRefresh.Name = "pbRefresh";
-            this.pbRefresh.Size = new System.Drawing.Size(33, 31);
-            this.pbRefresh.TabIndex = 19;
-            this.pbRefresh.TabStop = false;
-            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
-            // 
-            // itxt_QuickSearch
-            // 
-            this.itxt_QuickSearch.IsBrowseMode = false;
-            this.itxt_QuickSearch.LabelText = "textbox";
-            this.itxt_QuickSearch.Location = new System.Drawing.Point(69, 2);
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.itxt_QuickSearch.MaxLength = 32767;
-            this.itxt_QuickSearch.MultiLine = false;
-            this.itxt_QuickSearch.Name = "itxt_QuickSearch";
-            this.itxt_QuickSearch.PasswordChar = '\0';
-            this.itxt_QuickSearch.RowCount = 1;
-            this.itxt_QuickSearch.ShowDeleteButton = true;
-            this.itxt_QuickSearch.ShowFilter = false;
-            this.itxt_QuickSearch.ShowTextboxOnly = true;
-            this.itxt_QuickSearch.Size = new System.Drawing.Size(112, 26);
-            this.itxt_QuickSearch.TabIndex = 0;
-            this.itxt_QuickSearch.ValueText = "";
-            this.itxt_QuickSearch.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.Itxt_QuickSearch_onKeyDown);
-            // 
-            // chkShowNotBookedOnly
-            // 
-            this.chkShowNotBookedOnly.AutoSize = true;
-            this.chkShowNotBookedOnly.Location = new System.Drawing.Point(431, 6);
-            this.chkShowNotBookedOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkShowNotBookedOnly.Name = "chkShowNotBookedOnly";
-            this.chkShowNotBookedOnly.Size = new System.Drawing.Size(97, 20);
-            this.chkShowNotBookedOnly.TabIndex = 10;
-            this.chkShowNotBookedOnly.Text = "not booked";
-            this.chkShowNotBookedOnly.UseVisualStyleBackColor = true;
-            this.chkShowNotBookedOnly.CheckedChanged += new System.EventHandler(this.ChkShowNotBookedOnly_CheckedChanged);
-            // 
-            // chkCalculateBuyValue
-            // 
-            this.chkCalculateBuyValue.AutoSize = true;
-            this.chkCalculateBuyValue.Location = new System.Drawing.Point(676, 6);
-            this.chkCalculateBuyValue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkCalculateBuyValue.Name = "chkCalculateBuyValue";
-            this.chkCalculateBuyValue.Size = new System.Drawing.Size(51, 20);
-            this.chkCalculateBuyValue.TabIndex = 18;
-            this.chkCalculateBuyValue.Text = "buy";
-            this.chkCalculateBuyValue.UseVisualStyleBackColor = true;
-            // 
-            // chkShowHidden
-            // 
-            this.chkShowHidden.AutoSize = true;
-            this.chkShowHidden.Location = new System.Drawing.Point(632, 6);
-            this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkShowHidden.Name = "chkShowHidden";
-            this.chkShowHidden.Size = new System.Drawing.Size(37, 20);
-            this.chkShowHidden.TabIndex = 6;
-            this.chkShowHidden.Text = "X";
-            this.chkShowHidden.UseVisualStyleBackColor = true;
-            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
-            // 
-            // chkRearrange
-            // 
-            this.chkRearrange.AutoSize = true;
-            this.chkRearrange.Location = new System.Drawing.Point(537, 6);
-            this.chkRearrange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkRearrange.Name = "chkRearrange";
-            this.chkRearrange.Size = new System.Drawing.Size(88, 20);
-            this.chkRearrange.TabIndex = 17;
-            this.chkRearrange.TabStop = false;
-            this.chkRearrange.Text = "rearrange";
-            this.chkRearrange.UseVisualStyleBackColor = true;
-            this.chkRearrange.CheckedChanged += new System.EventHandler(this.chkRearrange_CheckedChanged);
-            // 
-            // chkLast3Months
-            // 
-            this.chkLast3Months.AutoSize = true;
-            this.chkLast3Months.Location = new System.Drawing.Point(313, 6);
-            this.chkLast3Months.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkLast3Months.Name = "chkLast3Months";
-            this.chkLast3Months.Size = new System.Drawing.Size(106, 20);
-            this.chkLast3Months.TabIndex = 15;
-            this.chkLast3Months.TabStop = false;
-            this.chkLast3Months.Text = "last 3 months";
-            this.chkLast3Months.UseVisualStyleBackColor = true;
-            this.chkLast3Months.CheckedChanged += new System.EventHandler(this.chkLast3Months_CheckedChanged);
-            // 
-            // lblCounts
-            // 
-            this.lblCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCounts.Location = new System.Drawing.Point(884, 9);
-            this.lblCounts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCounts.Name = "lblCounts";
-            this.lblCounts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCounts.Size = new System.Drawing.Size(512, 16);
-            this.lblCounts.TabIndex = 12;
-            this.lblCounts.Text = "lblCounts";
-            this.lblCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.AutoSize = true;
-            this.chkIncludeInactive.Location = new System.Drawing.Point(192, 6);
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkIncludeInactive.Name = "chkIncludeInactive";
-            this.chkIncludeInactive.Size = new System.Drawing.Size(109, 20);
-            this.chkIncludeInactive.TabIndex = 1;
-            this.chkIncludeInactive.TabStop = false;
-            this.chkIncludeInactive.Text = "show inactive";
-            this.chkIncludeInactive.UseVisualStyleBackColor = true;
-            this.chkIncludeInactive.CheckedChanged += new System.EventHandler(this.chkIncludeInactive_CheckedChanged);
-            // 
-            // ptFilter
-            // 
-            this.ptFilter.AdjustLocationOnClick = false;
-            this.ptFilter.BackColor = System.Drawing.Color.White;
-            this.ptFilter.ContainerPanel = null;
-            this.ptFilter.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.ptFilter.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
-            this.ptFilter.Location = new System.Drawing.Point(0, 0);
-            this.ptFilter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.ptFilter.MinimumSplitterDistance = 100;
-            this.ptFilter.Name = "ptFilter";
-            this.ptFilter.Size = new System.Drawing.Size(37, 33);
-            this.ptFilter.TabIndex = 6;
-            this.ptFilter.TogglePanel = this.scMain.Panel1;
-            // 
-            // btnClearQtyZeroes
-            // 
-            this.btnClearQtyZeroes.Location = new System.Drawing.Point(545, 4);
-            this.btnClearQtyZeroes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnClearQtyZeroes.Name = "btnClearQtyZeroes";
-            this.btnClearQtyZeroes.Size = new System.Drawing.Size(116, 28);
-            this.btnClearQtyZeroes.TabIndex = 7;
-            this.btnClearQtyZeroes.Text = "HIDE QTY 0";
-            this.btnClearQtyZeroes.UseVisualStyleBackColor = true;
-            this.btnClearQtyZeroes.Click += new System.EventHandler(this.btnClearQtyZeroes_Click);
-            // 
-            // btnUpdateItemColor
-            // 
-            this.btnUpdateItemColor.Location = new System.Drawing.Point(421, 4);
-            this.btnUpdateItemColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnUpdateItemColor.Name = "btnUpdateItemColor";
-            this.btnUpdateItemColor.Size = new System.Drawing.Size(116, 28);
-            this.btnUpdateItemColor.TabIndex = 6;
-            this.btnUpdateItemColor.Text = "WARNA";
-            this.btnUpdateItemColor.UseVisualStyleBackColor = true;
-            this.btnUpdateItemColor.Click += new System.EventHandler(this.btnUpdateItemColor_Click);
-            // 
-            // btnAddItems
-            // 
-            this.btnAddItems.Location = new System.Drawing.Point(205, 4);
-            this.btnAddItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAddItems.Name = "btnAddItems";
-            this.btnAddItems.Size = new System.Drawing.Size(84, 28);
-            this.btnAddItems.TabIndex = 1;
-            this.btnAddItems.Text = "ITEMS";
-            this.btnAddItems.UseVisualStyleBackColor = true;
-            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(109, 4);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(88, 28);
-            this.btnUpdate.TabIndex = 3;
-            this.btnUpdate.Text = "UPDATE";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnSetPrice
-            // 
-            this.btnSetPrice.Location = new System.Drawing.Point(297, 4);
-            this.btnSetPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSetPrice.Name = "btnSetPrice";
-            this.btnSetPrice.Size = new System.Drawing.Size(116, 28);
-            this.btnSetPrice.TabIndex = 2;
-            this.btnSetPrice.Text = "SET PRICE";
-            this.btnSetPrice.UseVisualStyleBackColor = true;
-            this.btnSetPrice.Click += new System.EventHandler(this.btnSetPrice_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(4, 4);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(97, 28);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "ADD NEW";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // flpButtons
-            // 
-            this.flpButtons.BackColor = System.Drawing.Color.White;
-            this.flpButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpButtons.Controls.Add(this.btnAdd);
-            this.flpButtons.Controls.Add(this.btnUpdate);
-            this.flpButtons.Controls.Add(this.btnAddItems);
-            this.flpButtons.Controls.Add(this.btnSetPrice);
-            this.flpButtons.Controls.Add(this.btnUpdateItemColor);
-            this.flpButtons.Controls.Add(this.btnClearQtyZeroes);
-            this.flpButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpButtons.Location = new System.Drawing.Point(0, 0);
-            this.flpButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.flpButtons.Name = "flpButtons";
-            this.flpButtons.Size = new System.Drawing.Size(1445, 36);
-            this.flpButtons.TabIndex = 109;
             // 
             // col_grid_id
             // 
@@ -1288,6 +637,655 @@
             this.extracol.ReadOnly = true;
             this.extracol.Width = 6;
             // 
+            // pnlRowInfo
+            // 
+            this.pnlRowInfo.Controls.Add(this.scSummary);
+            this.pnlRowInfo.Controls.Add(this.pnlRowInfoHeaderContainer);
+            this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlRowInfo.Location = new System.Drawing.Point(0, 397);
+            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlRowInfo.Name = "pnlRowInfo";
+            this.pnlRowInfo.Size = new System.Drawing.Size(1443, 201);
+            this.pnlRowInfo.TabIndex = 11;
+            // 
+            // scSummary
+            // 
+            this.scSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scSummary.Location = new System.Drawing.Point(0, 30);
+            this.scSummary.Margin = new System.Windows.Forms.Padding(4);
+            this.scSummary.Name = "scSummary";
+            // 
+            // scSummary.Panel1
+            // 
+            this.scSummary.Panel1.Controls.Add(this.gridSummary);
+            // 
+            // scSummary.Panel2
+            // 
+            this.scSummary.Panel2.Controls.Add(this.gridSummaryByColor);
+            this.scSummary.Size = new System.Drawing.Size(1443, 171);
+            this.scSummary.SplitterDistance = 674;
+            this.scSummary.SplitterWidth = 5;
+            this.scSummary.TabIndex = 0;
+            // 
+            // gridSummary
+            // 
+            this.gridSummary.AllowUserToAddRows = false;
+            this.gridSummary.AllowUserToDeleteRows = false;
+            this.gridSummary.AllowUserToResizeRows = false;
+            this.gridSummary.BackgroundColor = System.Drawing.Color.White;
+            this.gridSummary.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridSummary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridSummary_Product_Id,
+            this.col_gridSummary_grade,
+            this.col_gridSummary_StoreName,
+            this.col_gridSummary_Width,
+            this.col_gridSummary_averagePrice,
+            this.col_gridSummary_availablePcs,
+            this.col_gridSummary_availableQty,
+            this.col_gridSummary_unitName,
+            this.col_gridSummary_BuyValue,
+            this.col_gridSummary_SellValue});
+            this.gridSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSummary.Location = new System.Drawing.Point(0, 0);
+            this.gridSummary.Margin = new System.Windows.Forms.Padding(4);
+            this.gridSummary.Name = "gridSummary";
+            this.gridSummary.RowHeadersVisible = false;
+            this.gridSummary.RowHeadersWidth = 51;
+            this.gridSummary.Size = new System.Drawing.Size(674, 171);
+            this.gridSummary.TabIndex = 6;
+            // 
+            // col_gridSummary_Product_Id
+            // 
+            this.col_gridSummary_Product_Id.HeaderText = "Product Id";
+            this.col_gridSummary_Product_Id.MinimumWidth = 6;
+            this.col_gridSummary_Product_Id.Name = "col_gridSummary_Product_Id";
+            this.col_gridSummary_Product_Id.ReadOnly = true;
+            this.col_gridSummary_Product_Id.Visible = false;
+            this.col_gridSummary_Product_Id.Width = 125;
+            // 
+            // col_gridSummary_grade
+            // 
+            this.col_gridSummary_grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummary_grade.DefaultCellStyle = dataGridViewCellStyle15;
+            this.col_gridSummary_grade.HeaderText = "Grade";
+            this.col_gridSummary_grade.MinimumWidth = 40;
+            this.col_gridSummary_grade.Name = "col_gridSummary_grade";
+            this.col_gridSummary_grade.ReadOnly = true;
+            this.col_gridSummary_grade.Width = 40;
+            // 
+            // col_gridSummary_StoreName
+            // 
+            this.col_gridSummary_StoreName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridSummary_StoreName.HeaderText = "Product";
+            this.col_gridSummary_StoreName.MinimumWidth = 50;
+            this.col_gridSummary_StoreName.Name = "col_gridSummary_StoreName";
+            this.col_gridSummary_StoreName.ReadOnly = true;
+            // 
+            // col_gridSummary_Width
+            // 
+            this.col_gridSummary_Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummary_Width.DefaultCellStyle = dataGridViewCellStyle16;
+            this.col_gridSummary_Width.HeaderText = "Lebar";
+            this.col_gridSummary_Width.MinimumWidth = 40;
+            this.col_gridSummary_Width.Name = "col_gridSummary_Width";
+            this.col_gridSummary_Width.ReadOnly = true;
+            this.col_gridSummary_Width.Width = 40;
+            // 
+            // col_gridSummary_averagePrice
+            // 
+            this.col_gridSummary_averagePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            this.col_gridSummary_averagePrice.DefaultCellStyle = dataGridViewCellStyle17;
+            this.col_gridSummary_averagePrice.HeaderText = "Buy";
+            this.col_gridSummary_averagePrice.MinimumWidth = 30;
+            this.col_gridSummary_averagePrice.Name = "col_gridSummary_averagePrice";
+            this.col_gridSummary_averagePrice.ReadOnly = true;
+            this.col_gridSummary_averagePrice.Width = 30;
+            // 
+            // col_gridSummary_availablePcs
+            // 
+            this.col_gridSummary_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            this.col_gridSummary_availablePcs.DefaultCellStyle = dataGridViewCellStyle18;
+            this.col_gridSummary_availablePcs.HeaderText = "";
+            this.col_gridSummary_availablePcs.MinimumWidth = 20;
+            this.col_gridSummary_availablePcs.Name = "col_gridSummary_availablePcs";
+            this.col_gridSummary_availablePcs.ReadOnly = true;
+            this.col_gridSummary_availablePcs.Width = 20;
+            // 
+            // col_gridSummary_availableQty
+            // 
+            this.col_gridSummary_availableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N2";
+            this.col_gridSummary_availableQty.DefaultCellStyle = dataGridViewCellStyle19;
+            this.col_gridSummary_availableQty.HeaderText = "Qty";
+            this.col_gridSummary_availableQty.MinimumWidth = 30;
+            this.col_gridSummary_availableQty.Name = "col_gridSummary_availableQty";
+            this.col_gridSummary_availableQty.ReadOnly = true;
+            this.col_gridSummary_availableQty.Width = 30;
+            // 
+            // col_gridSummary_unitName
+            // 
+            this.col_gridSummary_unitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummary_unitName.DefaultCellStyle = dataGridViewCellStyle20;
+            this.col_gridSummary_unitName.HeaderText = "Unit";
+            this.col_gridSummary_unitName.MinimumWidth = 40;
+            this.col_gridSummary_unitName.Name = "col_gridSummary_unitName";
+            this.col_gridSummary_unitName.ReadOnly = true;
+            this.col_gridSummary_unitName.Width = 40;
+            // 
+            // col_gridSummary_BuyValue
+            // 
+            this.col_gridSummary_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N0";
+            this.col_gridSummary_BuyValue.DefaultCellStyle = dataGridViewCellStyle21;
+            this.col_gridSummary_BuyValue.HeaderText = "Buy Value";
+            this.col_gridSummary_BuyValue.MinimumWidth = 75;
+            this.col_gridSummary_BuyValue.Name = "col_gridSummary_BuyValue";
+            this.col_gridSummary_BuyValue.ReadOnly = true;
+            this.col_gridSummary_BuyValue.Width = 75;
+            // 
+            // col_gridSummary_SellValue
+            // 
+            this.col_gridSummary_SellValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N0";
+            this.col_gridSummary_SellValue.DefaultCellStyle = dataGridViewCellStyle22;
+            this.col_gridSummary_SellValue.HeaderText = "Sell Value";
+            this.col_gridSummary_SellValue.MinimumWidth = 75;
+            this.col_gridSummary_SellValue.Name = "col_gridSummary_SellValue";
+            this.col_gridSummary_SellValue.ReadOnly = true;
+            this.col_gridSummary_SellValue.Width = 75;
+            // 
+            // gridSummaryByColor
+            // 
+            this.gridSummaryByColor.AllowUserToAddRows = false;
+            this.gridSummaryByColor.AllowUserToDeleteRows = false;
+            this.gridSummaryByColor.AllowUserToResizeRows = false;
+            this.gridSummaryByColor.BackgroundColor = System.Drawing.Color.White;
+            this.gridSummaryByColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridSummaryByColor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummaryByColor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.gridSummaryByColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSummaryByColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_gridSummaryByColor_ProductId,
+            this.col_gridSummaryByColor_Grade,
+            this.col_gridSummaryByColor_ProductStoreName,
+            this.col_gridSummaryByColor_ProductWidthName,
+            this.col_gridSummaryByColor_ColorName,
+            this.col_gridSummaryByColor_AveragePrice,
+            this.col_gridSummaryByColor_availablePcs,
+            this.col_gridSummaryByColor_AvailableQty,
+            this.col_gridSummaryByColor_UnitName,
+            this.col_gridSummaryByColor_BuyValue,
+            this.col_gridSummaryByColor_SellValue});
+            this.gridSummaryByColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSummaryByColor.Location = new System.Drawing.Point(0, 0);
+            this.gridSummaryByColor.Margin = new System.Windows.Forms.Padding(4);
+            this.gridSummaryByColor.Name = "gridSummaryByColor";
+            this.gridSummaryByColor.RowHeadersVisible = false;
+            this.gridSummaryByColor.RowHeadersWidth = 51;
+            this.gridSummaryByColor.Size = new System.Drawing.Size(764, 171);
+            this.gridSummaryByColor.TabIndex = 7;
+            // 
+            // col_gridSummaryByColor_ProductId
+            // 
+            this.col_gridSummaryByColor_ProductId.HeaderText = "Product Id";
+            this.col_gridSummaryByColor_ProductId.MinimumWidth = 6;
+            this.col_gridSummaryByColor_ProductId.Name = "col_gridSummaryByColor_ProductId";
+            this.col_gridSummaryByColor_ProductId.ReadOnly = true;
+            this.col_gridSummaryByColor_ProductId.Visible = false;
+            this.col_gridSummaryByColor_ProductId.Width = 125;
+            // 
+            // col_gridSummaryByColor_Grade
+            // 
+            this.col_gridSummaryByColor_Grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummaryByColor_Grade.DefaultCellStyle = dataGridViewCellStyle24;
+            this.col_gridSummaryByColor_Grade.HeaderText = "Grade";
+            this.col_gridSummaryByColor_Grade.MinimumWidth = 40;
+            this.col_gridSummaryByColor_Grade.Name = "col_gridSummaryByColor_Grade";
+            this.col_gridSummaryByColor_Grade.ReadOnly = true;
+            this.col_gridSummaryByColor_Grade.Width = 40;
+            // 
+            // col_gridSummaryByColor_ProductStoreName
+            // 
+            this.col_gridSummaryByColor_ProductStoreName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_gridSummaryByColor_ProductStoreName.HeaderText = "Product";
+            this.col_gridSummaryByColor_ProductStoreName.MinimumWidth = 50;
+            this.col_gridSummaryByColor_ProductStoreName.Name = "col_gridSummaryByColor_ProductStoreName";
+            this.col_gridSummaryByColor_ProductStoreName.ReadOnly = true;
+            // 
+            // col_gridSummaryByColor_ProductWidthName
+            // 
+            this.col_gridSummaryByColor_ProductWidthName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummaryByColor_ProductWidthName.DefaultCellStyle = dataGridViewCellStyle25;
+            this.col_gridSummaryByColor_ProductWidthName.HeaderText = "Lebar";
+            this.col_gridSummaryByColor_ProductWidthName.MinimumWidth = 40;
+            this.col_gridSummaryByColor_ProductWidthName.Name = "col_gridSummaryByColor_ProductWidthName";
+            this.col_gridSummaryByColor_ProductWidthName.ReadOnly = true;
+            this.col_gridSummaryByColor_ProductWidthName.Width = 40;
+            // 
+            // col_gridSummaryByColor_ColorName
+            // 
+            this.col_gridSummaryByColor_ColorName.HeaderText = "Color";
+            this.col_gridSummaryByColor_ColorName.MinimumWidth = 80;
+            this.col_gridSummaryByColor_ColorName.Name = "col_gridSummaryByColor_ColorName";
+            this.col_gridSummaryByColor_ColorName.ReadOnly = true;
+            this.col_gridSummaryByColor_ColorName.Width = 80;
+            // 
+            // col_gridSummaryByColor_AveragePrice
+            // 
+            this.col_gridSummaryByColor_AveragePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "N0";
+            this.col_gridSummaryByColor_AveragePrice.DefaultCellStyle = dataGridViewCellStyle26;
+            this.col_gridSummaryByColor_AveragePrice.HeaderText = "Buy";
+            this.col_gridSummaryByColor_AveragePrice.MinimumWidth = 30;
+            this.col_gridSummaryByColor_AveragePrice.Name = "col_gridSummaryByColor_AveragePrice";
+            this.col_gridSummaryByColor_AveragePrice.ReadOnly = true;
+            this.col_gridSummaryByColor_AveragePrice.Width = 30;
+            // 
+            // col_gridSummaryByColor_availablePcs
+            // 
+            this.col_gridSummaryByColor_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "N0";
+            this.col_gridSummaryByColor_availablePcs.DefaultCellStyle = dataGridViewCellStyle27;
+            this.col_gridSummaryByColor_availablePcs.HeaderText = "";
+            this.col_gridSummaryByColor_availablePcs.MinimumWidth = 20;
+            this.col_gridSummaryByColor_availablePcs.Name = "col_gridSummaryByColor_availablePcs";
+            this.col_gridSummaryByColor_availablePcs.ReadOnly = true;
+            this.col_gridSummaryByColor_availablePcs.Width = 20;
+            // 
+            // col_gridSummaryByColor_AvailableQty
+            // 
+            this.col_gridSummaryByColor_AvailableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Format = "N2";
+            this.col_gridSummaryByColor_AvailableQty.DefaultCellStyle = dataGridViewCellStyle28;
+            this.col_gridSummaryByColor_AvailableQty.HeaderText = "Qty";
+            this.col_gridSummaryByColor_AvailableQty.MinimumWidth = 30;
+            this.col_gridSummaryByColor_AvailableQty.Name = "col_gridSummaryByColor_AvailableQty";
+            this.col_gridSummaryByColor_AvailableQty.ReadOnly = true;
+            this.col_gridSummaryByColor_AvailableQty.Width = 30;
+            // 
+            // col_gridSummaryByColor_UnitName
+            // 
+            this.col_gridSummaryByColor_UnitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummaryByColor_UnitName.DefaultCellStyle = dataGridViewCellStyle29;
+            this.col_gridSummaryByColor_UnitName.HeaderText = "Unit";
+            this.col_gridSummaryByColor_UnitName.MinimumWidth = 40;
+            this.col_gridSummaryByColor_UnitName.Name = "col_gridSummaryByColor_UnitName";
+            this.col_gridSummaryByColor_UnitName.ReadOnly = true;
+            this.col_gridSummaryByColor_UnitName.Width = 40;
+            // 
+            // col_gridSummaryByColor_BuyValue
+            // 
+            this.col_gridSummaryByColor_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Format = "N0";
+            this.col_gridSummaryByColor_BuyValue.DefaultCellStyle = dataGridViewCellStyle30;
+            this.col_gridSummaryByColor_BuyValue.HeaderText = "Buy Value";
+            this.col_gridSummaryByColor_BuyValue.MinimumWidth = 75;
+            this.col_gridSummaryByColor_BuyValue.Name = "col_gridSummaryByColor_BuyValue";
+            this.col_gridSummaryByColor_BuyValue.ReadOnly = true;
+            this.col_gridSummaryByColor_BuyValue.Width = 75;
+            // 
+            // col_gridSummaryByColor_SellValue
+            // 
+            this.col_gridSummaryByColor_SellValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle31.Format = "N0";
+            this.col_gridSummaryByColor_SellValue.DefaultCellStyle = dataGridViewCellStyle31;
+            this.col_gridSummaryByColor_SellValue.HeaderText = "Sell Value";
+            this.col_gridSummaryByColor_SellValue.MinimumWidth = 75;
+            this.col_gridSummaryByColor_SellValue.Name = "col_gridSummaryByColor_SellValue";
+            this.col_gridSummaryByColor_SellValue.ReadOnly = true;
+            this.col_gridSummaryByColor_SellValue.Width = 75;
+            // 
+            // pnlRowInfoHeaderContainer
+            // 
+            this.pnlRowInfoHeaderContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlRowInfoHeaderContainer.Controls.Add(this.pnlRowInfoHeader);
+            this.pnlRowInfoHeaderContainer.Controls.Add(this.ptRowInfo);
+            this.pnlRowInfoHeaderContainer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlRowInfoHeaderContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlRowInfoHeaderContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlRowInfoHeaderContainer.Name = "pnlRowInfoHeaderContainer";
+            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(1443, 30);
+            this.pnlRowInfoHeaderContainer.TabIndex = 1;
+            // 
+            // pnlRowInfoHeader
+            // 
+            this.pnlRowInfoHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
+            this.pnlRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRowInfoHeader.Location = new System.Drawing.Point(32, 0);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlRowInfoHeader.Name = "pnlRowInfoHeader";
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1411, 30);
+            this.pnlRowInfoHeader.TabIndex = 6;
+            // 
+            // lblRowInfoHeader
+            // 
+            this.lblRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblRowInfoHeader.Location = new System.Drawing.Point(0, 0);
+            this.lblRowInfoHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRowInfoHeader.Name = "lblRowInfoHeader";
+            this.lblRowInfoHeader.Size = new System.Drawing.Size(1409, 28);
+            this.lblRowInfoHeader.TabIndex = 108;
+            this.lblRowInfoHeader.Text = "lblRowInfoHeader";
+            this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ptRowInfo
+            // 
+            this.ptRowInfo.AdjustLocationOnClick = true;
+            this.ptRowInfo.BackColor = System.Drawing.Color.White;
+            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
+            this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
+            this.ptRowInfo.Location = new System.Drawing.Point(0, 0);
+            this.ptRowInfo.Margin = new System.Windows.Forms.Padding(5);
+            this.ptRowInfo.MinimumSplitterDistance = 100;
+            this.ptRowInfo.Name = "ptRowInfo";
+            this.ptRowInfo.Size = new System.Drawing.Size(32, 30);
+            this.ptRowInfo.TabIndex = 5;
+            this.ptRowInfo.TogglePanel = null;
+            this.ptRowInfo.pictureBox_ClickEvent += new System.EventHandler(this.ptRowInfo_pictureBox_ClickEvent);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pnlQuickSearch);
+            this.panel1.Controls.Add(this.ptFilter);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1443, 33);
+            this.panel1.TabIndex = 10;
+            // 
+            // pnlQuickSearch
+            // 
+            this.pnlQuickSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlQuickSearch.Controls.Add(this.pbLog);
+            this.pnlQuickSearch.Controls.Add(this.pbRefresh);
+            this.pnlQuickSearch.Controls.Add(this.itxt_QuickSearch);
+            this.pnlQuickSearch.Controls.Add(this.chkShowNotBookedOnly);
+            this.pnlQuickSearch.Controls.Add(this.chkCalculateBuyValue);
+            this.pnlQuickSearch.Controls.Add(this.chkShowHidden);
+            this.pnlQuickSearch.Controls.Add(this.chkRearrange);
+            this.pnlQuickSearch.Controls.Add(this.chkLast3Months);
+            this.pnlQuickSearch.Controls.Add(this.lblCounts);
+            this.pnlQuickSearch.Controls.Add(this.chkIncludeInactive);
+            this.pnlQuickSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlQuickSearch.Location = new System.Drawing.Point(37, 0);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlQuickSearch.Name = "pnlQuickSearch";
+            this.pnlQuickSearch.Size = new System.Drawing.Size(1406, 33);
+            this.pnlQuickSearch.TabIndex = 0;
+            // 
+            // pbLog
+            // 
+            this.pbLog.BackColor = System.Drawing.Color.White;
+            this.pbLog.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLog.BackgroundImage")));
+            this.pbLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbLog.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbLog.Location = new System.Drawing.Point(33, 0);
+            this.pbLog.Margin = new System.Windows.Forms.Padding(4);
+            this.pbLog.Name = "pbLog";
+            this.pbLog.Size = new System.Drawing.Size(33, 31);
+            this.pbLog.TabIndex = 20;
+            this.pbLog.TabStop = false;
+            this.pbLog.Click += new System.EventHandler(this.PbLog_Click);
+            // 
+            // pbRefresh
+            // 
+            this.pbRefresh.BackColor = System.Drawing.Color.White;
+            this.pbRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbRefresh.BackgroundImage")));
+            this.pbRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbRefresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbRefresh.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbRefresh.Location = new System.Drawing.Point(0, 0);
+            this.pbRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(33, 31);
+            this.pbRefresh.TabIndex = 19;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
+            // 
+            // itxt_QuickSearch
+            // 
+            this.itxt_QuickSearch.IsBrowseMode = false;
+            this.itxt_QuickSearch.LabelText = "textbox";
+            this.itxt_QuickSearch.Location = new System.Drawing.Point(69, 2);
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.itxt_QuickSearch.MaxLength = 32767;
+            this.itxt_QuickSearch.MultiLine = false;
+            this.itxt_QuickSearch.Name = "itxt_QuickSearch";
+            this.itxt_QuickSearch.PasswordChar = '\0';
+            this.itxt_QuickSearch.RowCount = 1;
+            this.itxt_QuickSearch.ShowDeleteButton = true;
+            this.itxt_QuickSearch.ShowFilter = false;
+            this.itxt_QuickSearch.ShowTextboxOnly = true;
+            this.itxt_QuickSearch.Size = new System.Drawing.Size(112, 26);
+            this.itxt_QuickSearch.TabIndex = 0;
+            this.itxt_QuickSearch.ValueText = "";
+            this.itxt_QuickSearch.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.Itxt_QuickSearch_onKeyDown);
+            // 
+            // chkShowNotBookedOnly
+            // 
+            this.chkShowNotBookedOnly.AutoSize = true;
+            this.chkShowNotBookedOnly.Location = new System.Drawing.Point(431, 6);
+            this.chkShowNotBookedOnly.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowNotBookedOnly.Name = "chkShowNotBookedOnly";
+            this.chkShowNotBookedOnly.Size = new System.Drawing.Size(94, 20);
+            this.chkShowNotBookedOnly.TabIndex = 10;
+            this.chkShowNotBookedOnly.Text = "not booked";
+            this.chkShowNotBookedOnly.UseVisualStyleBackColor = true;
+            this.chkShowNotBookedOnly.CheckedChanged += new System.EventHandler(this.ChkShowNotBookedOnly_CheckedChanged);
+            // 
+            // chkCalculateBuyValue
+            // 
+            this.chkCalculateBuyValue.AutoSize = true;
+            this.chkCalculateBuyValue.Location = new System.Drawing.Point(676, 6);
+            this.chkCalculateBuyValue.Margin = new System.Windows.Forms.Padding(4);
+            this.chkCalculateBuyValue.Name = "chkCalculateBuyValue";
+            this.chkCalculateBuyValue.Size = new System.Drawing.Size(48, 20);
+            this.chkCalculateBuyValue.TabIndex = 18;
+            this.chkCalculateBuyValue.Text = "buy";
+            this.chkCalculateBuyValue.UseVisualStyleBackColor = true;
+            // 
+            // chkShowHidden
+            // 
+            this.chkShowHidden.AutoSize = true;
+            this.chkShowHidden.Location = new System.Drawing.Point(632, 6);
+            this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowHidden.Name = "chkShowHidden";
+            this.chkShowHidden.Size = new System.Drawing.Size(34, 20);
+            this.chkShowHidden.TabIndex = 6;
+            this.chkShowHidden.Text = "X";
+            this.chkShowHidden.UseVisualStyleBackColor = true;
+            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
+            // 
+            // chkRearrange
+            // 
+            this.chkRearrange.AutoSize = true;
+            this.chkRearrange.Location = new System.Drawing.Point(537, 6);
+            this.chkRearrange.Margin = new System.Windows.Forms.Padding(4);
+            this.chkRearrange.Name = "chkRearrange";
+            this.chkRearrange.Size = new System.Drawing.Size(85, 20);
+            this.chkRearrange.TabIndex = 17;
+            this.chkRearrange.TabStop = false;
+            this.chkRearrange.Text = "rearrange";
+            this.chkRearrange.UseVisualStyleBackColor = true;
+            this.chkRearrange.CheckedChanged += new System.EventHandler(this.chkRearrange_CheckedChanged);
+            // 
+            // chkLast3Months
+            // 
+            this.chkLast3Months.AutoSize = true;
+            this.chkLast3Months.Location = new System.Drawing.Point(313, 6);
+            this.chkLast3Months.Margin = new System.Windows.Forms.Padding(4);
+            this.chkLast3Months.Name = "chkLast3Months";
+            this.chkLast3Months.Size = new System.Drawing.Size(103, 20);
+            this.chkLast3Months.TabIndex = 15;
+            this.chkLast3Months.TabStop = false;
+            this.chkLast3Months.Text = "last 3 months";
+            this.chkLast3Months.UseVisualStyleBackColor = true;
+            this.chkLast3Months.CheckedChanged += new System.EventHandler(this.chkLast3Months_CheckedChanged);
+            // 
+            // lblCounts
+            // 
+            this.lblCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCounts.Location = new System.Drawing.Point(884, 9);
+            this.lblCounts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCounts.Name = "lblCounts";
+            this.lblCounts.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCounts.Size = new System.Drawing.Size(512, 16);
+            this.lblCounts.TabIndex = 12;
+            this.lblCounts.Text = "lblCounts";
+            this.lblCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // chkIncludeInactive
+            // 
+            this.chkIncludeInactive.AutoSize = true;
+            this.chkIncludeInactive.Location = new System.Drawing.Point(192, 6);
+            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4);
+            this.chkIncludeInactive.Name = "chkIncludeInactive";
+            this.chkIncludeInactive.Size = new System.Drawing.Size(106, 20);
+            this.chkIncludeInactive.TabIndex = 1;
+            this.chkIncludeInactive.TabStop = false;
+            this.chkIncludeInactive.Text = "show inactive";
+            this.chkIncludeInactive.UseVisualStyleBackColor = true;
+            this.chkIncludeInactive.CheckedChanged += new System.EventHandler(this.chkIncludeInactive_CheckedChanged);
+            // 
+            // ptFilter
+            // 
+            this.ptFilter.AdjustLocationOnClick = false;
+            this.ptFilter.BackColor = System.Drawing.Color.White;
+            this.ptFilter.ContainerPanel = null;
+            this.ptFilter.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptFilter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
+            this.ptFilter.Location = new System.Drawing.Point(0, 0);
+            this.ptFilter.Margin = new System.Windows.Forms.Padding(5);
+            this.ptFilter.MinimumSplitterDistance = 100;
+            this.ptFilter.Name = "ptFilter";
+            this.ptFilter.Size = new System.Drawing.Size(37, 33);
+            this.ptFilter.TabIndex = 6;
+            this.ptFilter.TogglePanel = this.scMain.Panel1;
+            // 
+            // btnClearQtyZeroes
+            // 
+            this.btnClearQtyZeroes.Location = new System.Drawing.Point(545, 4);
+            this.btnClearQtyZeroes.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClearQtyZeroes.Name = "btnClearQtyZeroes";
+            this.btnClearQtyZeroes.Size = new System.Drawing.Size(116, 28);
+            this.btnClearQtyZeroes.TabIndex = 7;
+            this.btnClearQtyZeroes.Text = "HIDE QTY 0";
+            this.btnClearQtyZeroes.UseVisualStyleBackColor = true;
+            this.btnClearQtyZeroes.Click += new System.EventHandler(this.btnClearQtyZeroes_Click);
+            // 
+            // btnUpdateItemColor
+            // 
+            this.btnUpdateItemColor.Location = new System.Drawing.Point(421, 4);
+            this.btnUpdateItemColor.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateItemColor.Name = "btnUpdateItemColor";
+            this.btnUpdateItemColor.Size = new System.Drawing.Size(116, 28);
+            this.btnUpdateItemColor.TabIndex = 6;
+            this.btnUpdateItemColor.Text = "WARNA";
+            this.btnUpdateItemColor.UseVisualStyleBackColor = true;
+            this.btnUpdateItemColor.Click += new System.EventHandler(this.btnUpdateItemColor_Click);
+            // 
+            // btnAddItems
+            // 
+            this.btnAddItems.Location = new System.Drawing.Point(205, 4);
+            this.btnAddItems.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddItems.Name = "btnAddItems";
+            this.btnAddItems.Size = new System.Drawing.Size(84, 28);
+            this.btnAddItems.TabIndex = 1;
+            this.btnAddItems.Text = "ITEMS";
+            this.btnAddItems.UseVisualStyleBackColor = true;
+            this.btnAddItems.Click += new System.EventHandler(this.btnAddItems_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(109, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(88, 28);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnSetPrice
+            // 
+            this.btnSetPrice.Location = new System.Drawing.Point(297, 4);
+            this.btnSetPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSetPrice.Name = "btnSetPrice";
+            this.btnSetPrice.Size = new System.Drawing.Size(116, 28);
+            this.btnSetPrice.TabIndex = 2;
+            this.btnSetPrice.Text = "SET PRICE";
+            this.btnSetPrice.UseVisualStyleBackColor = true;
+            this.btnSetPrice.Click += new System.EventHandler(this.btnSetPrice_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(4, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(97, 28);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "ADD NEW";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // flpButtons
+            // 
+            this.flpButtons.BackColor = System.Drawing.Color.White;
+            this.flpButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpButtons.Controls.Add(this.btnAdd);
+            this.flpButtons.Controls.Add(this.btnUpdate);
+            this.flpButtons.Controls.Add(this.btnAddItems);
+            this.flpButtons.Controls.Add(this.btnSetPrice);
+            this.flpButtons.Controls.Add(this.btnUpdateItemColor);
+            this.flpButtons.Controls.Add(this.btnClearQtyZeroes);
+            this.flpButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpButtons.Location = new System.Drawing.Point(0, 0);
+            this.flpButtons.Margin = new System.Windows.Forms.Padding(4);
+            this.flpButtons.Name = "flpButtons";
+            this.flpButtons.Size = new System.Drawing.Size(1445, 36);
+            this.flpButtons.TabIndex = 109;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1295,7 +1293,7 @@
             this.ClientSize = new System.Drawing.Size(1445, 752);
             this.Controls.Add(this.scMain);
             this.Controls.Add(this.flpButtons);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "INVENTORY";
             this.Load += new System.EventHandler(this.Form_Load);
@@ -1338,8 +1336,6 @@
         private System.Windows.Forms.DataGridView grid;
         public System.Windows.Forms.Button btnReset;
         public System.Windows.Forms.Button btnUpdateItemColor;
-        private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_Colors;
-        private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_ProductStoreNames;
         private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_LengthUnits;
         private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_ProductWidths;
         private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_Grades;
@@ -1412,5 +1408,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_isConsignment;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_OpnameMarker;
         private System.Windows.Forms.DataGridViewTextBoxColumn extracol;
+        private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_ProductStoreNames;
+        private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_Colors;
     }
 }

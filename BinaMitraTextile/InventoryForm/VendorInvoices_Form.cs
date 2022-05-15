@@ -151,7 +151,7 @@ namespace BinaMitraTextile.InventoryForm
             else
                 dvw = VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false).DefaultView;
 
-            string[] fieldNames = { VendorInvoice.COL_VendorName };
+            string[] fieldNames = { VendorInvoice.COL_VendorName, VendorInvoice.COL_DB_InvoiceNo, VendorInvoice.COL_FakturPajaks_No };
             dvw.RowFilter = Util.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNames);
             Util.setGridviewDataSource(gridvendorinvoice, dvw);
 

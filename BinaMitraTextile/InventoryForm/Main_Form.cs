@@ -224,13 +224,20 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if((bool)Util.getSelectedRowValue(grid, col_grid_VendorInvoices_Approved))
-                Util.displayMessageBoxError(String.Format("Please unlock Vendor Invoice {0} to update this inventory.", Util.getSelectedRowValue(grid, col_grid_invoiceNo)));
-            else
+            Inventory inventory = new Inventory(selectedRowID());
+
+            //if inventory has a vendor invoice and it is approved, need to unapproved it first so the invoice doesn't get unlinked from the inventory.
+            if (inventory.VendorInvoiceID != null)
             {
-                Tools.displayForm(new Add_Edit_Form(selectedRowID()));
-                populateGridview();
+                if((bool)inventory.VendorInvoices_Approved)
+                {
+                    Util.displayMessageBoxError(String.Format("Please unlock Vendor Invoice {0} to update this inventory.", inventory.VendorInvoiceNo));
+                    return;
+                }
             }
+
+            Tools.displayForm(new Add_Edit_Form(inventory.id));
+            populateGridview();
         }
 
         protected void chkIncludeInactive_CheckedChanged(object sender, EventArgs e)

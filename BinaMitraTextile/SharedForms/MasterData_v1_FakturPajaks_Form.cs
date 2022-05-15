@@ -96,6 +96,7 @@ namespace BinaMitraTextile.SharedForms
         {
             Settings.setGeneralSettings(this);
 
+            FieldnamesForQuickSearch.Add(FakturPajak.COL_DB_No);
             setColumnsDataPropertyNames(FakturPajak.COL_DB_Id, null, null, null, null, FakturPajak.COL_DB_Completed) ;
             col_dgv_Checkbox1.HeaderText = "Lock";
 

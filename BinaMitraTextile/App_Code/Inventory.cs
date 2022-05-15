@@ -83,6 +83,7 @@ namespace BinaMitraTextile
         public string PackingListNo = "";
         public Guid? VendorInvoiceID = null;
         public string VendorInvoiceNo = "";
+        public bool? VendorInvoices_Approved = false;
         public Guid VendorID;
         public bool isConsignment = false;
         public bool OpnameMarker = false;
@@ -115,13 +116,14 @@ namespace BinaMitraTextile
             OpnameMarker = Util.wrapNullable<bool>(row, COL_DB_OpnameMarker);
             notes = Util.wrapNullable<string>(row, COL_DB_NOTES);
             receive_date = Util.wrapNullable<DateTime>(row, COL_DB_RECEIVEDATE);
-            POItemID = Util.wrapNullable<Guid>(row, COL_DB_POITEMID);
+            POItemID = Util.wrapNullable<Guid?>(row, COL_DB_POITEMID);
             POItemDescription = Util.wrapNullable<string>(row, COL_POITEMDESCRIPTION);
             POItems_PricePerUnit = Util.wrapNullable<int>(row, COL_POItems_PricePerUnit);
             PONo = Util.wrapNullable<string>(row, COL_PONo);
             PackingListNo = Util.wrapNullable<string>(row, COL_DB_PACKINGLISTNO);
-            VendorInvoiceID = Util.wrapNullable<Guid>(row, COL_DB_VENDORINVOICEID);
+            VendorInvoiceID = Util.wrapNullable<Guid?>(row, COL_DB_VENDORINVOICEID);
             VendorInvoiceNo = Util.wrapNullable<string>(row, COL_VENDORINVOICENO);
+            VendorInvoices_Approved = Util.wrapNullable<bool?>(row, COL_VendorInvoices_Approved);
             VendorID = Util.wrapNullable<Guid>(row, COL_VENDORID);
 
             FakturPajaks_No = Util.wrapNullable<string>(row, COL_FakturPajaks_No);
