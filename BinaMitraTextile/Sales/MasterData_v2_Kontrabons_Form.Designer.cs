@@ -53,10 +53,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.itxt_No = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.idtp_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
-            this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.idtp_StartDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_EndDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
@@ -102,6 +100,8 @@
             this.btnAddReturns = new System.Windows.Forms.Button();
             this.idtp_ReturnDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.lblRowInfoHeader = new System.Windows.Forms.Label();
+            this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -140,15 +140,18 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(804, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Size = new System.Drawing.Size(1072, 34);
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 177);
-            this.pnlActionButtons.Size = new System.Drawing.Size(804, 23);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 212);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlActionButtons.Size = new System.Drawing.Size(1072, 28);
             // 
             // scInputLeft
             // 
+            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // scInputLeft.Panel1
             // 
@@ -161,16 +164,20 @@
             // 
             this.scInputLeft.Panel2.Controls.Add(this.idtp_ReturnDate);
             this.scInputLeft.Panel2.Controls.Add(this.itxt_Notes);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 151);
+            this.scInputLeft.Size = new System.Drawing.Size(530, 180);
+            this.scInputLeft.SplitterDistance = 270;
+            this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
+            this.scInputRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // scInputRight.Panel1
             // 
             this.scInputRight.Panel1.Controls.Add(this.idtp_StartDate);
             this.scInputRight.Panel1.Controls.Add(this.idtp_EndDate);
-            this.scInputRight.Size = new System.Drawing.Size(300, 151);
+            this.scInputRight.Size = new System.Drawing.Size(535, 180);
+            this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
@@ -186,21 +193,31 @@
             // 
             // scMain
             // 
-            this.scMain.Size = new System.Drawing.Size(804, 560);
-            this.scMain.SplitterDistance = 200;
+            this.scMain.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scMain.Size = new System.Drawing.Size(1072, 689);
+            this.scMain.SplitterDistance = 240;
+            // 
+            // txtQuickSearch
+            // 
+            this.txtQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // pnlButtons
             // 
-            this.pnlButtons.Size = new System.Drawing.Size(804, 26);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlButtons.Size = new System.Drawing.Size(1072, 32);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Size = new System.Drawing.Size(804, 151);
+            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputContainer.Size = new System.Drawing.Size(1072, 180);
+            this.scInputContainer.SplitterDistance = 530;
+            this.scInputContainer.SplitterWidth = 7;
             // 
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Controls.Add(this.chkShowOnlyApproved);
-            this.pnlQuickSearch.Size = new System.Drawing.Size(774, 28);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlQuickSearch.Size = new System.Drawing.Size(1032, 34);
             this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
@@ -210,41 +227,29 @@
             // pnlRowInfoHeader
             // 
             this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(784, 21);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1045, 26);
             // 
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Controls.Add(this.tcRowInfo);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(804, 199);
+            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1072, 194);
             // 
             // scContent
             // 
+            this.scContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.scContent.Panel2MinSize = 220;
-            this.scContent.Size = new System.Drawing.Size(804, 331);
-            this.scContent.SplitterDistance = 110;
+            this.scContent.Size = new System.Drawing.Size(1072, 414);
+            this.scContent.SplitterDistance = 193;
             this.scContent.SplitterWidth = 1;
-            // 
-            // iddl_Customers
-            // 
-            this.iddl_Customers.DisableTextInput = false;
-            this.iddl_Customers.HideFilter = false;
-            this.iddl_Customers.HideUpdateLink = false;
-            this.iddl_Customers.LabelText = "Customer";
-            this.iddl_Customers.Location = new System.Drawing.Point(7, 51);
-            this.iddl_Customers.Name = "iddl_Customers";
-            this.iddl_Customers.SelectedIndex = -1;
-            this.iddl_Customers.SelectedItem = null;
-            this.iddl_Customers.SelectedItemText = "";
-            this.iddl_Customers.SelectedValue = null;
-            this.iddl_Customers.ShowDropdownlistOnly = false;
-            this.iddl_Customers.Size = new System.Drawing.Size(239, 41);
-            this.iddl_Customers.TabIndex = 5;
             // 
             // itxt_No
             // 
             this.itxt_No.IsBrowseMode = false;
             this.itxt_No.LabelText = "Nomor Kontrabon";
-            this.itxt_No.Location = new System.Drawing.Point(7, 6);
+            this.itxt_No.Location = new System.Drawing.Point(9, 7);
+            this.itxt_No.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.itxt_No.MaxLength = 32767;
             this.itxt_No.MultiLine = false;
             this.itxt_No.Name = "itxt_No";
@@ -253,7 +258,7 @@
             this.itxt_No.ShowDeleteButton = false;
             this.itxt_No.ShowFilter = false;
             this.itxt_No.ShowTextboxOnly = false;
-            this.itxt_No.Size = new System.Drawing.Size(239, 41);
+            this.itxt_No.Size = new System.Drawing.Size(255, 50);
             this.itxt_No.TabIndex = 3;
             this.itxt_No.ValueText = "";
             // 
@@ -264,55 +269,23 @@
             this.idtp_Timestamp.DefaultCheckedValue = false;
             this.idtp_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Timestamp.LabelText = "Date";
-            this.idtp_Timestamp.Location = new System.Drawing.Point(7, 95);
+            this.idtp_Timestamp.Location = new System.Drawing.Point(9, 117);
+            this.idtp_Timestamp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.idtp_Timestamp.Name = "idtp_Timestamp";
             this.idtp_Timestamp.ShowCheckBox = false;
             this.idtp_Timestamp.ShowDateTimePickerOnly = false;
             this.idtp_Timestamp.ShowUpAndDown = false;
-            this.idtp_Timestamp.Size = new System.Drawing.Size(99, 41);
+            this.idtp_Timestamp.Size = new System.Drawing.Size(105, 50);
             this.idtp_Timestamp.TabIndex = 4;
             this.idtp_Timestamp.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.idtp_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
-            // 
-            // in_Amount
-            // 
-            this.in_Amount.Checked = false;
-            this.in_Amount.DecimalPlaces = 2;
-            this.in_Amount.HideUpDown = false;
-            this.in_Amount.Increment = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.in_Amount.LabelText = "Amount";
-            this.in_Amount.Location = new System.Drawing.Point(112, 96);
-            this.in_Amount.MaximumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            0});
-            this.in_Amount.MinimumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            -2147483648});
-            this.in_Amount.Name = "in_Amount";
-            this.in_Amount.ShowAllowDecimalCheckbox = false;
-            this.in_Amount.ShowCheckbox = false;
-            this.in_Amount.ShowTextboxOnly = false;
-            this.in_Amount.Size = new System.Drawing.Size(134, 41);
-            this.in_Amount.TabIndex = 6;
-            this.in_Amount.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             // 
             // itxt_Notes
             // 
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
-            this.itxt_Notes.Location = new System.Drawing.Point(3, 51);
+            this.itxt_Notes.Location = new System.Drawing.Point(4, 63);
+            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = true;
             this.itxt_Notes.Name = "itxt_Notes";
@@ -321,7 +294,7 @@
             this.itxt_Notes.ShowDeleteButton = false;
             this.itxt_Notes.ShowFilter = false;
             this.itxt_Notes.ShowTextboxOnly = false;
-            this.itxt_Notes.Size = new System.Drawing.Size(234, 86);
+            this.itxt_Notes.Size = new System.Drawing.Size(244, 106);
             this.itxt_Notes.TabIndex = 6;
             this.itxt_Notes.ValueText = "";
             // 
@@ -332,12 +305,13 @@
             this.idtp_StartDate.DefaultCheckedValue = false;
             this.idtp_StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_StartDate.LabelText = "Start Date";
-            this.idtp_StartDate.Location = new System.Drawing.Point(3, 8);
+            this.idtp_StartDate.Location = new System.Drawing.Point(4, 10);
+            this.idtp_StartDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.idtp_StartDate.Name = "idtp_StartDate";
             this.idtp_StartDate.ShowCheckBox = true;
             this.idtp_StartDate.ShowDateTimePickerOnly = false;
             this.idtp_StartDate.ShowUpAndDown = false;
-            this.idtp_StartDate.Size = new System.Drawing.Size(105, 39);
+            this.idtp_StartDate.Size = new System.Drawing.Size(118, 48);
             this.idtp_StartDate.TabIndex = 18;
             this.idtp_StartDate.Value = null;
             this.idtp_StartDate.ValueTimeSpan = null;
@@ -349,12 +323,13 @@
             this.idtp_EndDate.DefaultCheckedValue = false;
             this.idtp_EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_EndDate.LabelText = "End Date";
-            this.idtp_EndDate.Location = new System.Drawing.Point(114, 8);
+            this.idtp_EndDate.Location = new System.Drawing.Point(126, 10);
+            this.idtp_EndDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.idtp_EndDate.Name = "idtp_EndDate";
             this.idtp_EndDate.ShowCheckBox = true;
             this.idtp_EndDate.ShowDateTimePickerOnly = false;
             this.idtp_EndDate.ShowUpAndDown = false;
-            this.idtp_EndDate.Size = new System.Drawing.Size(105, 39);
+            this.idtp_EndDate.Size = new System.Drawing.Size(118, 48);
             this.idtp_EndDate.TabIndex = 19;
             this.idtp_EndDate.Value = null;
             this.idtp_EndDate.ValueTimeSpan = null;
@@ -362,9 +337,10 @@
             // chkShowOnlyApproved
             // 
             this.chkShowOnlyApproved.AutoSize = true;
-            this.chkShowOnlyApproved.Location = new System.Drawing.Point(199, 6);
+            this.chkShowOnlyApproved.Location = new System.Drawing.Point(265, 7);
+            this.chkShowOnlyApproved.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkShowOnlyApproved.Name = "chkShowOnlyApproved";
-            this.chkShowOnlyApproved.Size = new System.Drawing.Size(94, 17);
+            this.chkShowOnlyApproved.Size = new System.Drawing.Size(114, 20);
             this.chkShowOnlyApproved.TabIndex = 15;
             this.chkShowOnlyApproved.Text = "only Approved";
             this.chkShowOnlyApproved.UseVisualStyleBackColor = true;
@@ -377,9 +353,10 @@
             this.tcRowInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcRowInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tcRowInfo.Location = new System.Drawing.Point(0, 0);
+            this.tcRowInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tcRowInfo.Name = "tcRowInfo";
             this.tcRowInfo.SelectedIndex = 0;
-            this.tcRowInfo.Size = new System.Drawing.Size(804, 199);
+            this.tcRowInfo.Size = new System.Drawing.Size(1072, 194);
             this.tcRowInfo.TabIndex = 8;
             // 
             // tpFakturPajaks
@@ -387,8 +364,9 @@
             this.tpFakturPajaks.Controls.Add(this.gridFakturPajaks);
             this.tpFakturPajaks.Controls.Add(this.panel5);
             this.tpFakturPajaks.Location = new System.Drawing.Point(4, 22);
+            this.tpFakturPajaks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpFakturPajaks.Name = "tpFakturPajaks";
-            this.tpFakturPajaks.Size = new System.Drawing.Size(796, 173);
+            this.tpFakturPajaks.Size = new System.Drawing.Size(1064, 168);
             this.tpFakturPajaks.TabIndex = 3;
             this.tpFakturPajaks.Text = "Faktur Pajak";
             this.tpFakturPajaks.UseVisualStyleBackColor = true;
@@ -419,10 +397,11 @@
             this.col_gridFakturPajaks_Amount,
             this.col_gridFakturPajaks_Notes});
             this.gridFakturPajaks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridFakturPajaks.Location = new System.Drawing.Point(0, 25);
+            this.gridFakturPajaks.Location = new System.Drawing.Point(0, 31);
+            this.gridFakturPajaks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridFakturPajaks.Name = "gridFakturPajaks";
             this.gridFakturPajaks.RowHeadersVisible = false;
-            this.gridFakturPajaks.Size = new System.Drawing.Size(796, 148);
+            this.gridFakturPajaks.Size = new System.Drawing.Size(1064, 137);
             this.gridFakturPajaks.TabIndex = 132;
             this.gridFakturPajaks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridFakturPajaks_CellContentClick);
             // 
@@ -521,15 +500,17 @@
             this.panel5.Controls.Add(this.btnAddFakturPajak);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(796, 25);
+            this.panel5.Size = new System.Drawing.Size(1064, 31);
             this.panel5.TabIndex = 133;
             // 
             // btnAddFakturPajak
             // 
             this.btnAddFakturPajak.Location = new System.Drawing.Point(1, 1);
+            this.btnAddFakturPajak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddFakturPajak.Name = "btnAddFakturPajak";
-            this.btnAddFakturPajak.Size = new System.Drawing.Size(40, 23);
+            this.btnAddFakturPajak.Size = new System.Drawing.Size(53, 28);
             this.btnAddFakturPajak.TabIndex = 128;
             this.btnAddFakturPajak.Text = "ADD";
             this.btnAddFakturPajak.UseVisualStyleBackColor = true;
@@ -540,9 +521,10 @@
             this.tpSaleInvoices.Controls.Add(this.gridSaleInvoices);
             this.tpSaleInvoices.Controls.Add(this.panel4);
             this.tpSaleInvoices.Location = new System.Drawing.Point(4, 22);
+            this.tpSaleInvoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
-            this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(796, 173);
+            this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(1779, 449);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -576,8 +558,8 @@
             this.col_gridSaleInvoices_returnedamount,
             this.col_gridSaleInvoices_Sales_id});
             this.gridSaleInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSaleInvoices.Location = new System.Drawing.Point(3, 28);
-            this.gridSaleInvoices.Margin = new System.Windows.Forms.Padding(2);
+            this.gridSaleInvoices.Location = new System.Drawing.Point(4, 35);
+            this.gridSaleInvoices.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridSaleInvoices.MultiSelect = false;
             this.gridSaleInvoices.Name = "gridSaleInvoices";
             this.gridSaleInvoices.ReadOnly = true;
@@ -585,7 +567,7 @@
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(790, 142);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(1771, 410);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -722,16 +704,18 @@
             // 
             this.panel4.Controls.Add(this.btnAddSales);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(790, 25);
+            this.panel4.Size = new System.Drawing.Size(1771, 31);
             this.panel4.TabIndex = 132;
             // 
             // btnAddSales
             // 
             this.btnAddSales.Location = new System.Drawing.Point(1, 1);
+            this.btnAddSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddSales.Name = "btnAddSales";
-            this.btnAddSales.Size = new System.Drawing.Size(40, 23);
+            this.btnAddSales.Size = new System.Drawing.Size(53, 28);
             this.btnAddSales.TabIndex = 127;
             this.btnAddSales.Text = "ADD";
             this.btnAddSales.UseVisualStyleBackColor = true;
@@ -742,8 +726,9 @@
             this.tpSaleReturns.Controls.Add(this.gridReturns);
             this.tpSaleReturns.Controls.Add(this.panel2);
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
+            this.tpSaleReturns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(796, 173);
+            this.tpSaleReturns.Size = new System.Drawing.Size(1779, 449);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -775,8 +760,8 @@
             this.col_gridReturns_sale_amount,
             this.col_gridReturns_id});
             this.gridReturns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridReturns.Location = new System.Drawing.Point(0, 25);
-            this.gridReturns.Margin = new System.Windows.Forms.Padding(2);
+            this.gridReturns.Location = new System.Drawing.Point(0, 31);
+            this.gridReturns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridReturns.MultiSelect = false;
             this.gridReturns.Name = "gridReturns";
             this.gridReturns.ReadOnly = true;
@@ -784,7 +769,7 @@
             dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(796, 148);
+            this.gridReturns.Size = new System.Drawing.Size(1779, 418);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
@@ -889,15 +874,17 @@
             this.panel2.Controls.Add(this.btnAddReturns);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(796, 25);
+            this.panel2.Size = new System.Drawing.Size(1779, 31);
             this.panel2.TabIndex = 130;
             // 
             // btnAddReturns
             // 
             this.btnAddReturns.Location = new System.Drawing.Point(1, 1);
+            this.btnAddReturns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddReturns.Name = "btnAddReturns";
-            this.btnAddReturns.Size = new System.Drawing.Size(40, 23);
+            this.btnAddReturns.Size = new System.Drawing.Size(53, 28);
             this.btnAddReturns.TabIndex = 129;
             this.btnAddReturns.Text = "ADD";
             this.btnAddReturns.UseVisualStyleBackColor = true;
@@ -910,12 +897,13 @@
             this.idtp_ReturnDate.DefaultCheckedValue = false;
             this.idtp_ReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_ReturnDate.LabelText = "Return Date";
-            this.idtp_ReturnDate.Location = new System.Drawing.Point(3, 6);
+            this.idtp_ReturnDate.Location = new System.Drawing.Point(4, 7);
+            this.idtp_ReturnDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.idtp_ReturnDate.Name = "idtp_ReturnDate";
             this.idtp_ReturnDate.ShowCheckBox = true;
             this.idtp_ReturnDate.ShowDateTimePickerOnly = false;
             this.idtp_ReturnDate.ShowUpAndDown = false;
-            this.idtp_ReturnDate.Size = new System.Drawing.Size(118, 41);
+            this.idtp_ReturnDate.Size = new System.Drawing.Size(157, 50);
             this.idtp_ReturnDate.TabIndex = 7;
             this.idtp_ReturnDate.Value = null;
             this.idtp_ReturnDate.ValueTimeSpan = null;
@@ -924,17 +912,70 @@
             // 
             this.lblRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRowInfoHeader.Location = new System.Drawing.Point(0, 0);
+            this.lblRowInfoHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRowInfoHeader.Name = "lblRowInfoHeader";
-            this.lblRowInfoHeader.Size = new System.Drawing.Size(782, 19);
+            this.lblRowInfoHeader.Size = new System.Drawing.Size(1043, 24);
             this.lblRowInfoHeader.TabIndex = 108;
             this.lblRowInfoHeader.Text = "Kontrabon: None";
             this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // iddl_Customers
+            // 
+            this.iddl_Customers.DisableTextInput = false;
+            this.iddl_Customers.HideFilter = false;
+            this.iddl_Customers.HideUpdateLink = true;
+            this.iddl_Customers.LabelText = "Customer";
+            this.iddl_Customers.Location = new System.Drawing.Point(9, 63);
+            this.iddl_Customers.Margin = new System.Windows.Forms.Padding(5);
+            this.iddl_Customers.Name = "iddl_Customers";
+            this.iddl_Customers.SelectedIndex = -1;
+            this.iddl_Customers.SelectedItem = null;
+            this.iddl_Customers.SelectedItemText = "";
+            this.iddl_Customers.SelectedValue = null;
+            this.iddl_Customers.ShowDropdownlistOnly = false;
+            this.iddl_Customers.Size = new System.Drawing.Size(255, 50);
+            this.iddl_Customers.TabIndex = 7;
+            // 
+            // in_Amount
+            // 
+            this.in_Amount.Checked = false;
+            this.in_Amount.DecimalPlaces = 2;
+            this.in_Amount.HideUpDown = false;
+            this.in_Amount.Increment = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.in_Amount.LabelText = "Amount";
+            this.in_Amount.Location = new System.Drawing.Point(118, 123);
+            this.in_Amount.Margin = new System.Windows.Forms.Padding(5);
+            this.in_Amount.MaximumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            0});
+            this.in_Amount.MinimumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            -2147483648});
+            this.in_Amount.Name = "in_Amount";
+            this.in_Amount.ShowAllowDecimalCheckbox = false;
+            this.in_Amount.ShowCheckbox = false;
+            this.in_Amount.ShowTextboxOnly = false;
+            this.in_Amount.Size = new System.Drawing.Size(146, 50);
+            this.in_Amount.TabIndex = 8;
+            this.in_Amount.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
             // MasterData_v2_Kontrabons_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 560);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1072, 689);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v2_Kontrabons_Form";
             this.Text = "KONTRABON";
@@ -979,11 +1020,8 @@
         }
 
         #endregion
-
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Customers;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_No;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp;
-        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Amount;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Notes;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_StartDate;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_EndDate;
@@ -1029,5 +1067,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajaks_PPN;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajaks_Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridFakturPajaks_Notes;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Amount;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Customers;
     }
 }

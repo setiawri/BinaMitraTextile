@@ -61,22 +61,28 @@
             this.scInputContainer.SuspendLayout();
             this.pnlQuickSearch.SuspendLayout();
             this.pnlRowInfo.SuspendLayout();
+            this.pnlRowInfoHeaderContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).BeginInit();
+            this.scContent.Panel2.SuspendLayout();
+            this.scContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1039, 34);
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 212);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 202);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
             this.pnlActionButtons.Size = new System.Drawing.Size(1039, 28);
             // 
             // scInputLeft
             // 
-            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputLeft.Panel1
             // 
@@ -89,13 +95,13 @@
             this.scInputLeft.Panel2.Controls.Add(this.iddl_FabricColors);
             this.scInputLeft.Panel2.Controls.Add(this.iddl_ProductWidths);
             this.scInputLeft.Panel2.Controls.Add(this.iddl_LengthUnits);
-            this.scInputLeft.Size = new System.Drawing.Size(400, 180);
+            this.scInputLeft.Size = new System.Drawing.Size(400, 170);
             this.scInputLeft.SplitterDistance = 200;
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
-            this.scInputRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputRight.Panel1
             // 
@@ -106,7 +112,7 @@
             // scInputRight.Panel2
             // 
             this.scInputRight.Panel2.Controls.Add(this.in_BuyPercentDiscount);
-            this.scInputRight.Size = new System.Drawing.Size(632, 180);
+            this.scInputRight.Size = new System.Drawing.Size(632, 170);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
@@ -123,18 +129,14 @@
             // 
             // scMain
             // 
-            this.scMain.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scMain.Margin = new System.Windows.Forms.Padding(5);
             this.scMain.Size = new System.Drawing.Size(1039, 554);
-            this.scMain.SplitterDistance = 240;
-            // 
-            // txtQuickSearch
-            // 
-            this.txtQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scMain.SplitterDistance = 230;
             // 
             // pnlButtons
             // 
             this.pnlButtons.Controls.Add(this.btnDelete);
-            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
             this.pnlButtons.Size = new System.Drawing.Size(1039, 32);
             this.pnlButtons.Controls.SetChildIndex(this.btnSearch, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnUpdate, 0);
@@ -144,44 +146,57 @@
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.scInputContainer.Size = new System.Drawing.Size(1039, 180);
+            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.scInputContainer.Size = new System.Drawing.Size(1039, 170);
             this.scInputContainer.SplitterDistance = 400;
             this.scInputContainer.SplitterWidth = 7;
             // 
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Controls.Add(this.chkOnlyNotOK);
-            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlQuickSearch.Size = new System.Drawing.Size(999, 34);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlQuickSearch.Size = new System.Drawing.Size(1005, 34);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.pbRefresh, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.pbLog, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.itxt_QuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label1, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkOnlyNotOK, 0);
             // 
             // pnlRowInfo
             // 
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 190);
-            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 123);
+            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 103);
+            // 
+            // pnlRowInfoHeaderContainer
+            // 
+            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(1039, 26);
             // 
             // pnlRowInfoHeader
             // 
-            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1012, 26);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1013, 26);
             // 
             // pnlRowInfoContent
             // 
-            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 97);
+            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 77);
+            // 
+            // itxt_QuickSearch
+            // 
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.itxt_QuickSearch.ShowDeleteButton = true;
+            // 
+            // scContent
+            // 
+            this.scContent.Size = new System.Drawing.Size(1039, 289);
+            this.scContent.SplitterDistance = 182;
             // 
             // itxt_Notes
             // 
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
             this.itxt_Notes.Location = new System.Drawing.Point(4, 59);
-            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = true;
             this.itxt_Notes.Name = "itxt_Notes";
@@ -201,14 +216,14 @@
             this.iddl_ProductStoreNames.HideUpdateLink = true;
             this.iddl_ProductStoreNames.LabelText = "Product";
             this.iddl_ProductStoreNames.Location = new System.Drawing.Point(4, 59);
-            this.iddl_ProductStoreNames.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_ProductStoreNames.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_ProductStoreNames.Name = "iddl_ProductStoreNames";
             this.iddl_ProductStoreNames.SelectedIndex = -1;
             this.iddl_ProductStoreNames.SelectedItem = null;
             this.iddl_ProductStoreNames.SelectedItemText = "";
             this.iddl_ProductStoreNames.SelectedValue = null;
             this.iddl_ProductStoreNames.ShowDropdownlistOnly = false;
-            this.iddl_ProductStoreNames.Size = new System.Drawing.Size(240, 50);
+            this.iddl_ProductStoreNames.Size = new System.Drawing.Size(191, 50);
             this.iddl_ProductStoreNames.TabIndex = 1;
             // 
             // iddl_Grades
@@ -218,14 +233,14 @@
             this.iddl_Grades.HideUpdateLink = true;
             this.iddl_Grades.LabelText = "Grade";
             this.iddl_Grades.Location = new System.Drawing.Point(4, 111);
-            this.iddl_Grades.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_Grades.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_Grades.Name = "iddl_Grades";
             this.iddl_Grades.SelectedIndex = -1;
             this.iddl_Grades.SelectedItem = null;
             this.iddl_Grades.SelectedItemText = "";
             this.iddl_Grades.SelectedValue = null;
             this.iddl_Grades.ShowDropdownlistOnly = false;
-            this.iddl_Grades.Size = new System.Drawing.Size(240, 50);
+            this.iddl_Grades.Size = new System.Drawing.Size(191, 50);
             this.iddl_Grades.TabIndex = 2;
             // 
             // iddl_ProductWidths
@@ -235,14 +250,14 @@
             this.iddl_ProductWidths.HideUpdateLink = true;
             this.iddl_ProductWidths.LabelText = "Lebar";
             this.iddl_ProductWidths.Location = new System.Drawing.Point(4, 7);
-            this.iddl_ProductWidths.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_ProductWidths.Name = "iddl_ProductWidths";
             this.iddl_ProductWidths.SelectedIndex = -1;
             this.iddl_ProductWidths.SelectedItem = null;
             this.iddl_ProductWidths.SelectedItemText = "";
             this.iddl_ProductWidths.SelectedValue = null;
             this.iddl_ProductWidths.ShowDropdownlistOnly = false;
-            this.iddl_ProductWidths.Size = new System.Drawing.Size(240, 50);
+            this.iddl_ProductWidths.Size = new System.Drawing.Size(184, 50);
             this.iddl_ProductWidths.TabIndex = 3;
             // 
             // iddl_LengthUnits
@@ -252,14 +267,14 @@
             this.iddl_LengthUnits.HideUpdateLink = true;
             this.iddl_LengthUnits.LabelText = "Unit";
             this.iddl_LengthUnits.Location = new System.Drawing.Point(4, 59);
-            this.iddl_LengthUnits.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_LengthUnits.Name = "iddl_LengthUnits";
             this.iddl_LengthUnits.SelectedIndex = -1;
             this.iddl_LengthUnits.SelectedItem = null;
             this.iddl_LengthUnits.SelectedItemText = "";
             this.iddl_LengthUnits.SelectedValue = null;
             this.iddl_LengthUnits.ShowDropdownlistOnly = false;
-            this.iddl_LengthUnits.Size = new System.Drawing.Size(240, 50);
+            this.iddl_LengthUnits.Size = new System.Drawing.Size(184, 50);
             this.iddl_LengthUnits.TabIndex = 0;
             // 
             // iddl_FabricColors
@@ -269,23 +284,24 @@
             this.iddl_FabricColors.HideUpdateLink = true;
             this.iddl_FabricColors.LabelText = "Color";
             this.iddl_FabricColors.Location = new System.Drawing.Point(4, 111);
-            this.iddl_FabricColors.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_FabricColors.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_FabricColors.Name = "iddl_FabricColors";
             this.iddl_FabricColors.SelectedIndex = -1;
             this.iddl_FabricColors.SelectedItem = null;
             this.iddl_FabricColors.SelectedItemText = "";
             this.iddl_FabricColors.SelectedValue = null;
             this.iddl_FabricColors.ShowDropdownlistOnly = false;
-            this.iddl_FabricColors.Size = new System.Drawing.Size(240, 50);
+            this.iddl_FabricColors.Size = new System.Drawing.Size(184, 50);
             this.iddl_FabricColors.TabIndex = 1;
             // 
             // chkOnlyNotOK
             // 
             this.chkOnlyNotOK.AutoSize = true;
-            this.chkOnlyNotOK.Location = new System.Drawing.Point(265, 7);
-            this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkOnlyNotOK.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkOnlyNotOK.Location = new System.Drawing.Point(357, 0);
+            this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnlyNotOK.Name = "chkOnlyNotOK";
-            this.chkOnlyNotOK.Size = new System.Drawing.Size(102, 20);
+            this.chkOnlyNotOK.Size = new System.Drawing.Size(99, 32);
             this.chkOnlyNotOK.TabIndex = 97;
             this.chkOnlyNotOK.Text = "only not OK  ";
             this.chkOnlyNotOK.UseVisualStyleBackColor = true;
@@ -303,7 +319,7 @@
             0});
             this.in_InventoryCode.LabelText = "Inventory Code";
             this.in_InventoryCode.Location = new System.Drawing.Point(4, 7);
-            this.in_InventoryCode.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_InventoryCode.Margin = new System.Windows.Forms.Padding(5);
             this.in_InventoryCode.MaximumValue = new decimal(new int[] {
             1000000,
             0,
@@ -334,8 +350,8 @@
             0,
             0});
             this.in_BuyPrice.LabelText = "Buy Price";
-            this.in_BuyPrice.Location = new System.Drawing.Point(125, 4);
-            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_BuyPrice.Location = new System.Drawing.Point(125, 7);
+            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5);
             this.in_BuyPrice.MaximumValue = new decimal(new int[] {
             10000000,
             0,
@@ -369,8 +385,8 @@
             0,
             0});
             this.in_SellPrice.LabelText = "Sell Price";
-            this.in_SellPrice.Location = new System.Drawing.Point(4, 4);
-            this.in_SellPrice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_SellPrice.Location = new System.Drawing.Point(4, 7);
+            this.in_SellPrice.Margin = new System.Windows.Forms.Padding(5);
             this.in_SellPrice.MaximumValue = new decimal(new int[] {
             10000000,
             0,
@@ -396,7 +412,7 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(403, 2);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 4;
@@ -415,7 +431,7 @@
             0,
             65536});
             this.in_BuyPercentDiscount.LabelText = "% Buy Discount";
-            this.in_BuyPercentDiscount.Location = new System.Drawing.Point(5, 4);
+            this.in_BuyPercentDiscount.Location = new System.Drawing.Point(5, 7);
             this.in_BuyPercentDiscount.Margin = new System.Windows.Forms.Padding(5);
             this.in_BuyPercentDiscount.MaximumValue = new decimal(new int[] {
             100,
@@ -441,10 +457,9 @@
             // 
             // MasterData_v1_ProductPrices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1039, 554);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_ProductPrices";
             this.Text = "PRODUCT PRICES";
@@ -471,6 +486,12 @@
             this.pnlQuickSearch.ResumeLayout(false);
             this.pnlQuickSearch.PerformLayout();
             this.pnlRowInfo.ResumeLayout(false);
+            this.pnlRowInfoHeaderContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
+            this.scContent.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).EndInit();
+            this.scContent.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

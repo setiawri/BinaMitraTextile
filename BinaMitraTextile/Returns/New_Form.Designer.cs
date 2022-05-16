@@ -86,19 +86,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(15, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.Size = new System.Drawing.Size(129, 16);
             this.label1.TabIndex = 97;
             this.label1.Text = "Add Barcode (Alt+A)";
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(117, 7);
-            this.txtBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBarcode.Location = new System.Drawing.Point(156, 9);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(96, 20);
+            this.txtBarcode.Size = new System.Drawing.Size(127, 22);
             this.txtBarcode.TabIndex = 0;
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
             this.txtBarcode.Leave += new System.EventHandler(this.txtBarcode_Leave);
@@ -146,14 +145,14 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grid.DefaultCellStyle = dataGridViewCellStyle9;
-            this.grid.Location = new System.Drawing.Point(13, 30);
-            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.Location = new System.Drawing.Point(17, 37);
+            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(950, 266);
+            this.grid.Size = new System.Drawing.Size(1267, 327);
             this.grid.TabIndex = 96;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.SelectionChanged += new System.EventHandler(this.grid_SelectionChanged);
@@ -350,14 +349,14 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn7});
-            this.gridSummary.Location = new System.Drawing.Point(11, 300);
-            this.gridSummary.Margin = new System.Windows.Forms.Padding(2);
+            this.gridSummary.Location = new System.Drawing.Point(15, 369);
+            this.gridSummary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridSummary.MultiSelect = false;
             this.gridSummary.Name = "gridSummary";
             this.gridSummary.ReadOnly = true;
             this.gridSummary.RowHeadersVisible = false;
             this.gridSummary.RowTemplate.Height = 24;
-            this.gridSummary.Size = new System.Drawing.Size(640, 210);
+            this.gridSummary.Size = new System.Drawing.Size(853, 258);
             this.gridSummary.TabIndex = 109;
             this.gridSummary.SelectionChanged += new System.EventHandler(this.gridSummary_SelectionChanged);
             // 
@@ -469,8 +468,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(655, 300);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(873, 369);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 20);
             this.label3.TabIndex = 110;
@@ -481,8 +479,7 @@
             this.lblCustomerName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCustomerName.AutoSize = true;
             this.lblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerName.Location = new System.Drawing.Point(741, 300);
-            this.lblCustomerName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCustomerName.Location = new System.Drawing.Point(988, 369);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(135, 20);
             this.lblCustomerName.TabIndex = 111;
@@ -492,10 +489,9 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(659, 448);
-            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalAmount.Location = new System.Drawing.Point(879, 551);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(305, 32);
+            this.lblTotalAmount.Size = new System.Drawing.Size(407, 39);
             this.lblTotalAmount.TabIndex = 113;
             this.lblTotalAmount.Text = "GrandTotal";
             this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -504,10 +500,9 @@
             // 
             this.lblTotalCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCounts.Location = new System.Drawing.Point(659, 422);
-            this.lblTotalCounts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalCounts.Location = new System.Drawing.Point(879, 519);
             this.lblTotalCounts.Name = "lblTotalCounts";
-            this.lblTotalCounts.Size = new System.Drawing.Size(304, 20);
+            this.lblTotalCounts.Size = new System.Drawing.Size(405, 25);
             this.lblTotalCounts.TabIndex = 112;
             this.lblTotalCounts.Text = "TotalCounts";
             this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -516,10 +511,10 @@
             // 
             this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(876, 482);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmit.Location = new System.Drawing.Point(1168, 593);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(88, 28);
+            this.btnSubmit.Size = new System.Drawing.Size(117, 34);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -529,32 +524,31 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(663, 327);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(884, 402);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(43, 16);
             this.label8.TabIndex = 117;
             this.label8.Text = "Notes";
             // 
             // txtNotes
             // 
             this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNotes.Location = new System.Drawing.Point(699, 327);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNotes.Location = new System.Drawing.Point(932, 402);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNotes.MaxLength = 500;
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(263, 86);
+            this.txtNotes.Size = new System.Drawing.Size(349, 105);
             this.txtNotes.TabIndex = 1;
             // 
             // btnRemoveSaleOrderItems
             // 
             this.btnRemoveSaleOrderItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveSaleOrderItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveSaleOrderItems.Location = new System.Drawing.Point(666, 482);
-            this.btnRemoveSaleOrderItems.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoveSaleOrderItems.Location = new System.Drawing.Point(888, 593);
+            this.btnRemoveSaleOrderItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveSaleOrderItems.Name = "btnRemoveSaleOrderItems";
-            this.btnRemoveSaleOrderItems.Size = new System.Drawing.Size(121, 28);
+            this.btnRemoveSaleOrderItems.Size = new System.Drawing.Size(161, 34);
             this.btnRemoveSaleOrderItems.TabIndex = 118;
             this.btnRemoveSaleOrderItems.Text = "REMOVE SO";
             this.btnRemoveSaleOrderItems.UseVisualStyleBackColor = true;
@@ -562,9 +556,8 @@
             // 
             // New_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 521);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1297, 641);
             this.Controls.Add(this.btnRemoveSaleOrderItems);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtNotes);
@@ -577,6 +570,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.grid);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "New_Form";
             this.Text = "SALES RETURN";
             this.Load += new System.EventHandler(this.Form_Load);

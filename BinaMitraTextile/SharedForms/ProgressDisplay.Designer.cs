@@ -41,9 +41,10 @@
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.ForeColor = System.Drawing.Color.White;
-            this.lblMessage.Location = new System.Drawing.Point(121, 13);
+            this.lblMessage.Location = new System.Drawing.Point(162, 16);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(65, 16);
+            this.lblMessage.Size = new System.Drawing.Size(64, 16);
             this.lblMessage.TabIndex = 2;
             this.lblMessage.Text = "message";
             // 
@@ -57,19 +58,20 @@
             this.panel1.Controls.Add(this.lblMessage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 44);
+            this.panel1.Size = new System.Drawing.Size(412, 54);
             this.panel1.TabIndex = 4;
             // 
             // ProgressDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(309, 44);
+            this.ClientSize = new System.Drawing.Size(412, 54);
             this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ProgressDisplay";
             this.Text = "ProgressBar";
             this.Load += new System.EventHandler(this.ProgressBar_Load);

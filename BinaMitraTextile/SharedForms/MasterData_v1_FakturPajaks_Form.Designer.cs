@@ -28,34 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.idtp_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
             this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.in_DPP = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.itxt_No = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.in_PPN = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.btnAddSales = new System.Windows.Forms.Button();
             this.gridSaleInvoices = new System.Windows.Forms.DataGridView();
             this.col_gridSaleInvoices_removeFakturPajaks_Id = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -68,7 +64,6 @@
             this.col_gridSaleInvoices_ReceivableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSaleInvoices_returnedamount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridSaleInvoices_Sales_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.btnAddReturns = new System.Windows.Forms.Button();
             this.gridReturns = new System.Windows.Forms.DataGridView();
             this.col_gridReturns_removeFakturPajaks_Id = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -81,7 +76,6 @@
             this.col_gridReturns_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblRowInfoHeader = new System.Windows.Forms.Label();
             this.chkShowCompleted = new System.Windows.Forms.CheckBox();
-            this.idtp_MonthFilter = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.tcRowInfo = new System.Windows.Forms.TabControl();
             this.tpVendorInvoices = new System.Windows.Forms.TabPage();
             this.gridVendorInvoices = new System.Windows.Forms.DataGridView();
@@ -100,11 +94,17 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tpSaleReturns = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.rbCustomer = new System.Windows.Forms.RadioButton();
             this.rbVendor = new System.Windows.Forms.RadioButton();
             this.chkCopyCell = new System.Windows.Forms.CheckBox();
             this.lblGridInfo = new System.Windows.Forms.Label();
+            this.itxt_No = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.idtp_Timestamp = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.idtp_MonthFilter = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.in_DPP = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_PPN = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -125,8 +125,14 @@
             this.scInputContainer.SuspendLayout();
             this.pnlQuickSearch.SuspendLayout();
             this.pnlRowInfo.SuspendLayout();
+            this.pnlRowInfoHeaderContainer.SuspendLayout();
             this.pnlRowInfoHeader.SuspendLayout();
             this.pnlRowInfoContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).BeginInit();
+            this.scContent.Panel2.SuspendLayout();
+            this.scContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleInvoices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReturns)).BeginInit();
             this.tcRowInfo.SuspendLayout();
@@ -141,39 +147,46 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(884, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(1179, 34);
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 177);
-            this.pnlActionButtons.Size = new System.Drawing.Size(884, 23);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 212);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlActionButtons.Size = new System.Drawing.Size(1179, 28);
             // 
             // scInputLeft
             // 
+            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputLeft.Panel1
             // 
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_Vendors);
+            this.scInputLeft.Panel1.Controls.Add(this.idtp_Timestamp);
+            this.scInputLeft.Panel1.Controls.Add(this.itxt_No);
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_Customers);
             this.scInputLeft.Panel1.Controls.Add(this.rbCustomer);
             this.scInputLeft.Panel1.Controls.Add(this.rbVendor);
-            this.scInputLeft.Panel1.Controls.Add(this.iddl_Vendors);
-            this.scInputLeft.Panel1.Controls.Add(this.iddl_Customers);
-            this.scInputLeft.Panel1.Controls.Add(this.itxt_No);
-            this.scInputLeft.Panel1.Controls.Add(this.idtp_Timestamp);
             // 
             // scInputLeft.Panel2
             // 
-            this.scInputLeft.Panel2.Controls.Add(this.itxt_Notes);
             this.scInputLeft.Panel2.Controls.Add(this.in_PPN);
             this.scInputLeft.Panel2.Controls.Add(this.in_DPP);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 151);
+            this.scInputLeft.Panel2.Controls.Add(this.itxt_Notes);
+            this.scInputLeft.Size = new System.Drawing.Size(670, 180);
+            this.scInputLeft.SplitterDistance = 330;
+            this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
+            this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputRight.Panel1
             // 
             this.scInputRight.Panel1.Controls.Add(this.idtp_MonthFilter);
-            this.scInputRight.Size = new System.Drawing.Size(380, 151);
+            this.scInputRight.Size = new System.Drawing.Size(502, 180);
+            this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
@@ -189,72 +202,74 @@
             // 
             // scMain
             // 
-            this.scMain.Size = new System.Drawing.Size(884, 531);
-            this.scMain.SplitterDistance = 200;
+            this.scMain.Margin = new System.Windows.Forms.Padding(5);
+            this.scMain.Size = new System.Drawing.Size(1179, 654);
+            this.scMain.SplitterDistance = 240;
             // 
             // pnlButtons
             // 
-            this.pnlButtons.Size = new System.Drawing.Size(884, 26);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlButtons.Size = new System.Drawing.Size(1179, 32);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Size = new System.Drawing.Size(884, 151);
+            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.scInputContainer.Size = new System.Drawing.Size(1179, 180);
+            this.scInputContainer.SplitterDistance = 670;
+            this.scInputContainer.SplitterWidth = 7;
             // 
             // pnlQuickSearch
             // 
+            this.pnlQuickSearch.Controls.Add(this.chkShowCompleted);
             this.pnlQuickSearch.Controls.Add(this.lblGridInfo);
             this.pnlQuickSearch.Controls.Add(this.chkCopyCell);
-            this.pnlQuickSearch.Controls.Add(this.chkShowCompleted);
-            this.pnlQuickSearch.Size = new System.Drawing.Size(854, 28);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlQuickSearch.Size = new System.Drawing.Size(1145, 34);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.pbRefresh, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.pbLog, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.itxt_QuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label1, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.chkShowCompleted, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkCopyCell, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.lblGridInfo, 0);
-            // 
-            // col_dgv_Active
-            // 
-            this.col_dgv_Active.Width = 40;
+            this.pnlQuickSearch.Controls.SetChildIndex(this.chkShowCompleted, 0);
             // 
             // pnlRowInfo
             // 
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 162);
-            this.pnlRowInfo.Size = new System.Drawing.Size(884, 168);
+            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 136);
+            // 
+            // pnlRowInfoHeaderContainer
+            // 
+            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(1179, 26);
             // 
             // pnlRowInfoHeader
             // 
             this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(864, 21);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1153, 26);
             // 
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Controls.Add(this.tcRowInfo);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(884, 147);
+            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 110);
             // 
-            // idtp_Timestamp
+            // itxt_QuickSearch
             // 
-            this.idtp_Timestamp.Checked = true;
-            this.idtp_Timestamp.CustomFormat = "dd/MM/yyyy";
-            this.idtp_Timestamp.DefaultCheckedValue = false;
-            this.idtp_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.idtp_Timestamp.LabelText = "Date";
-            this.idtp_Timestamp.Location = new System.Drawing.Point(142, 6);
-            this.idtp_Timestamp.Name = "idtp_Timestamp";
-            this.idtp_Timestamp.ShowCheckBox = false;
-            this.idtp_Timestamp.ShowDateTimePickerOnly = false;
-            this.idtp_Timestamp.ShowUpAndDown = false;
-            this.idtp_Timestamp.Size = new System.Drawing.Size(100, 41);
-            this.idtp_Timestamp.TabIndex = 1;
-            this.idtp_Timestamp.Value = new System.DateTime(2020, 9, 19, 0, 0, 0, 0);
-            this.idtp_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.itxt_QuickSearch.ShowDeleteButton = true;
+            // 
+            // scContent
+            // 
+            this.scContent.Size = new System.Drawing.Size(1179, 379);
+            this.scContent.SplitterDistance = 239;
             // 
             // itxt_Notes
             // 
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
-            this.itxt_Notes.Location = new System.Drawing.Point(6, 50);
+            this.itxt_Notes.Location = new System.Drawing.Point(4, 55);
+            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = true;
             this.itxt_Notes.Name = "itxt_Notes";
@@ -263,101 +278,16 @@
             this.itxt_Notes.ShowDeleteButton = false;
             this.itxt_Notes.ShowFilter = false;
             this.itxt_Notes.ShowTextboxOnly = false;
-            this.itxt_Notes.Size = new System.Drawing.Size(234, 86);
+            this.itxt_Notes.Size = new System.Drawing.Size(312, 112);
             this.itxt_Notes.TabIndex = 5;
             this.itxt_Notes.ValueText = "";
-            // 
-            // in_DPP
-            // 
-            this.in_DPP.Checked = false;
-            this.in_DPP.DecimalPlaces = 2;
-            this.in_DPP.HideUpDown = false;
-            this.in_DPP.Increment = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.in_DPP.LabelText = "DPP";
-            this.in_DPP.Location = new System.Drawing.Point(6, 6);
-            this.in_DPP.MaximumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            0});
-            this.in_DPP.MinimumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            -2147483648});
-            this.in_DPP.Name = "in_DPP";
-            this.in_DPP.ShowAllowDecimalCheckbox = false;
-            this.in_DPP.ShowCheckbox = false;
-            this.in_DPP.ShowTextboxOnly = false;
-            this.in_DPP.Size = new System.Drawing.Size(115, 41);
-            this.in_DPP.TabIndex = 3;
-            this.in_DPP.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_DPP.ValueChanged += new System.EventHandler(this.In_DPP_ValueChanged);
-            // 
-            // itxt_No
-            // 
-            this.itxt_No.IsBrowseMode = false;
-            this.itxt_No.LabelText = "Nomor Faktur";
-            this.itxt_No.Location = new System.Drawing.Point(8, 6);
-            this.itxt_No.MaxLength = 32767;
-            this.itxt_No.MultiLine = false;
-            this.itxt_No.Name = "itxt_No";
-            this.itxt_No.PasswordChar = '\0';
-            this.itxt_No.RowCount = 1;
-            this.itxt_No.ShowDeleteButton = false;
-            this.itxt_No.ShowFilter = false;
-            this.itxt_No.ShowTextboxOnly = false;
-            this.itxt_No.Size = new System.Drawing.Size(133, 41);
-            this.itxt_No.TabIndex = 0;
-            this.itxt_No.ValueText = "";
-            // 
-            // in_PPN
-            // 
-            this.in_PPN.Checked = false;
-            this.in_PPN.DecimalPlaces = 2;
-            this.in_PPN.HideUpDown = false;
-            this.in_PPN.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_PPN.LabelText = "PPN";
-            this.in_PPN.Location = new System.Drawing.Point(125, 6);
-            this.in_PPN.MaximumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            0});
-            this.in_PPN.MinimumValue = new decimal(new int[] {
-            -194313216,
-            20,
-            0,
-            -2147483648});
-            this.in_PPN.Name = "in_PPN";
-            this.in_PPN.ShowAllowDecimalCheckbox = false;
-            this.in_PPN.ShowCheckbox = false;
-            this.in_PPN.ShowTextboxOnly = false;
-            this.in_PPN.Size = new System.Drawing.Size(115, 41);
-            this.in_PPN.TabIndex = 4;
-            this.in_PPN.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             // 
             // btnAddSales
             // 
             this.btnAddSales.Location = new System.Drawing.Point(1, 1);
+            this.btnAddSales.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSales.Name = "btnAddSales";
-            this.btnAddSales.Size = new System.Drawing.Size(40, 23);
+            this.btnAddSales.Size = new System.Drawing.Size(53, 28);
             this.btnAddSales.TabIndex = 127;
             this.btnAddSales.Text = "ADD";
             this.btnAddSales.UseVisualStyleBackColor = true;
@@ -371,14 +301,14 @@
             this.gridSaleInvoices.BackgroundColor = System.Drawing.Color.White;
             this.gridSaleInvoices.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSaleInvoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSaleInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSaleInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.gridSaleInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSaleInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridSaleInvoices_removeFakturPajaks_Id,
@@ -392,24 +322,24 @@
             this.col_gridSaleInvoices_returnedamount,
             this.col_gridSaleInvoices_Sales_id});
             this.gridSaleInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSaleInvoices.Location = new System.Drawing.Point(3, 28);
-            this.gridSaleInvoices.Margin = new System.Windows.Forms.Padding(2);
+            this.gridSaleInvoices.Location = new System.Drawing.Point(4, 35);
+            this.gridSaleInvoices.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridSaleInvoices.MultiSelect = false;
             this.gridSaleInvoices.Name = "gridSaleInvoices";
             this.gridSaleInvoices.ReadOnly = true;
             this.gridSaleInvoices.RowHeadersVisible = false;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle57;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(991, 90);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(1163, 116);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
             // col_gridSaleInvoices_removeFakturPajaks_Id
             // 
             this.col_gridSaleInvoices_removeFakturPajaks_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridSaleInvoices_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridSaleInvoices_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle48;
             this.col_gridSaleInvoices_removeFakturPajaks_Id.HeaderText = "";
             this.col_gridSaleInvoices_removeFakturPajaks_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridSaleInvoices_removeFakturPajaks_Id.LinkColor = System.Drawing.Color.Red;
@@ -424,8 +354,8 @@
             // col_gridSaleInvoices_timestamp
             // 
             this.col_gridSaleInvoices_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle26.Format = "dd/MM/yy";
-            this.col_gridSaleInvoices_timestamp.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle49.Format = "dd/MM/yy";
+            this.col_gridSaleInvoices_timestamp.DefaultCellStyle = dataGridViewCellStyle49;
             this.col_gridSaleInvoices_timestamp.HeaderText = "Date";
             this.col_gridSaleInvoices_timestamp.MinimumWidth = 50;
             this.col_gridSaleInvoices_timestamp.Name = "col_gridSaleInvoices_timestamp";
@@ -436,8 +366,8 @@
             // 
             this.col_gridSaleInvoices_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
             this.col_gridSaleInvoices_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.col_gridSaleInvoices_hexbarcode.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.col_gridSaleInvoices_hexbarcode.DefaultCellStyle = dataGridViewCellStyle50;
             this.col_gridSaleInvoices_hexbarcode.HeaderText = "Invoice";
             this.col_gridSaleInvoices_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridSaleInvoices_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
@@ -452,9 +382,9 @@
             // col_gridSaleInvoices_sale_qty
             // 
             this.col_gridSaleInvoices_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "N0";
-            this.col_gridSaleInvoices_sale_qty.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle51.Format = "N0";
+            this.col_gridSaleInvoices_sale_qty.DefaultCellStyle = dataGridViewCellStyle51;
             this.col_gridSaleInvoices_sale_qty.HeaderText = "Pcs";
             this.col_gridSaleInvoices_sale_qty.MinimumWidth = 30;
             this.col_gridSaleInvoices_sale_qty.Name = "col_gridSaleInvoices_sale_qty";
@@ -464,9 +394,9 @@
             // col_gridSaleInvoices_sale_length
             // 
             this.col_gridSaleInvoices_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle29.Format = "N2";
-            this.col_gridSaleInvoices_sale_length.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle52.Format = "N2";
+            this.col_gridSaleInvoices_sale_length.DefaultCellStyle = dataGridViewCellStyle52;
             this.col_gridSaleInvoices_sale_length.HeaderText = "Qty";
             this.col_gridSaleInvoices_sale_length.MinimumWidth = 30;
             this.col_gridSaleInvoices_sale_length.Name = "col_gridSaleInvoices_sale_length";
@@ -477,10 +407,10 @@
             // 
             this.col_gridSaleInvoices_SaleAmount.ActiveLinkColor = System.Drawing.Color.SpringGreen;
             this.col_gridSaleInvoices_SaleAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle30.Format = "N0";
-            this.col_gridSaleInvoices_SaleAmount.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle53.Format = "N0";
+            this.col_gridSaleInvoices_SaleAmount.DefaultCellStyle = dataGridViewCellStyle53;
             this.col_gridSaleInvoices_SaleAmount.HeaderText = "Amount";
             this.col_gridSaleInvoices_SaleAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridSaleInvoices_SaleAmount.LinkColor = System.Drawing.Color.SpringGreen;
@@ -495,9 +425,9 @@
             // col_gridSaleInvoices_shippingcost
             // 
             this.col_gridSaleInvoices_shippingcost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            this.col_gridSaleInvoices_shippingcost.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle54.Format = "N0";
+            this.col_gridSaleInvoices_shippingcost.DefaultCellStyle = dataGridViewCellStyle54;
             this.col_gridSaleInvoices_shippingcost.HeaderText = "Shipping";
             this.col_gridSaleInvoices_shippingcost.MinimumWidth = 50;
             this.col_gridSaleInvoices_shippingcost.Name = "col_gridSaleInvoices_shippingcost";
@@ -507,9 +437,9 @@
             // col_gridSaleInvoices_ReceivableAmount
             // 
             this.col_gridSaleInvoices_ReceivableAmount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "N0";
-            this.col_gridSaleInvoices_ReceivableAmount.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle55.Format = "N0";
+            this.col_gridSaleInvoices_ReceivableAmount.DefaultCellStyle = dataGridViewCellStyle55;
             this.col_gridSaleInvoices_ReceivableAmount.HeaderText = "Hutang";
             this.col_gridSaleInvoices_ReceivableAmount.MinimumWidth = 50;
             this.col_gridSaleInvoices_ReceivableAmount.Name = "col_gridSaleInvoices_ReceivableAmount";
@@ -519,9 +449,9 @@
             // col_gridSaleInvoices_returnedamount
             // 
             this.col_gridSaleInvoices_returnedamount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "N0";
-            this.col_gridSaleInvoices_returnedamount.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle56.Format = "N0";
+            this.col_gridSaleInvoices_returnedamount.DefaultCellStyle = dataGridViewCellStyle56;
             this.col_gridSaleInvoices_returnedamount.HeaderText = "Return";
             this.col_gridSaleInvoices_returnedamount.MinimumWidth = 50;
             this.col_gridSaleInvoices_returnedamount.Name = "col_gridSaleInvoices_returnedamount";
@@ -534,27 +464,12 @@
             this.col_gridSaleInvoices_Sales_id.ReadOnly = true;
             this.col_gridSaleInvoices_Sales_id.Visible = false;
             // 
-            // iddl_Customers
-            // 
-            this.iddl_Customers.DisableTextInput = false;
-            this.iddl_Customers.HideFilter = false;
-            this.iddl_Customers.HideUpdateLink = false;
-            this.iddl_Customers.LabelText = "Customer";
-            this.iddl_Customers.Location = new System.Drawing.Point(30, 97);
-            this.iddl_Customers.Name = "iddl_Customers";
-            this.iddl_Customers.SelectedIndex = -1;
-            this.iddl_Customers.SelectedItem = null;
-            this.iddl_Customers.SelectedItemText = "";
-            this.iddl_Customers.SelectedValue = null;
-            this.iddl_Customers.ShowDropdownlistOnly = false;
-            this.iddl_Customers.Size = new System.Drawing.Size(212, 41);
-            this.iddl_Customers.TabIndex = 2;
-            // 
             // btnAddReturns
             // 
             this.btnAddReturns.Location = new System.Drawing.Point(1, 1);
+            this.btnAddReturns.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddReturns.Name = "btnAddReturns";
-            this.btnAddReturns.Size = new System.Drawing.Size(40, 23);
+            this.btnAddReturns.Size = new System.Drawing.Size(53, 28);
             this.btnAddReturns.TabIndex = 129;
             this.btnAddReturns.Text = "ADD";
             this.btnAddReturns.UseVisualStyleBackColor = true;
@@ -568,14 +483,14 @@
             this.gridReturns.BackgroundColor = System.Drawing.Color.White;
             this.gridReturns.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridReturns.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridReturns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridReturns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
             this.gridReturns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridReturns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridReturns_removeFakturPajaks_Id,
@@ -587,24 +502,24 @@
             this.col_gridReturns_sale_amount,
             this.col_gridReturns_id});
             this.gridReturns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridReturns.Location = new System.Drawing.Point(0, 25);
-            this.gridReturns.Margin = new System.Windows.Forms.Padding(2);
+            this.gridReturns.Location = new System.Drawing.Point(0, 31);
+            this.gridReturns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridReturns.MultiSelect = false;
             this.gridReturns.Name = "gridReturns";
             this.gridReturns.ReadOnly = true;
             this.gridReturns.RowHeadersVisible = false;
-            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle65;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(997, 96);
+            this.gridReturns.Size = new System.Drawing.Size(1171, 124);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
             // col_gridReturns_removeFakturPajaks_Id
             // 
             this.col_gridReturns_removeFakturPajaks_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridReturns_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridReturns_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle59;
             this.col_gridReturns_removeFakturPajaks_Id.HeaderText = "";
             this.col_gridReturns_removeFakturPajaks_Id.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridReturns_removeFakturPajaks_Id.LinkColor = System.Drawing.Color.Red;
@@ -619,8 +534,8 @@
             // col_gridReturns_Timestamp
             // 
             this.col_gridReturns_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle37.Format = "dd/MM/yy";
-            this.col_gridReturns_Timestamp.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle60.Format = "dd/MM/yy";
+            this.col_gridReturns_Timestamp.DefaultCellStyle = dataGridViewCellStyle60;
             this.col_gridReturns_Timestamp.HeaderText = "Date";
             this.col_gridReturns_Timestamp.MinimumWidth = 30;
             this.col_gridReturns_Timestamp.Name = "col_gridReturns_Timestamp";
@@ -631,8 +546,8 @@
             // 
             this.col_gridReturns_hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
             this.col_gridReturns_hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.col_gridReturns_hexbarcode.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle61.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.col_gridReturns_hexbarcode.DefaultCellStyle = dataGridViewCellStyle61;
             this.col_gridReturns_hexbarcode.HeaderText = "No";
             this.col_gridReturns_hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.col_gridReturns_hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
@@ -657,8 +572,8 @@
             // col_gridReturns_sale_qty
             // 
             this.col_gridReturns_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_gridReturns_sale_qty.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_gridReturns_sale_qty.DefaultCellStyle = dataGridViewCellStyle62;
             this.col_gridReturns_sale_qty.HeaderText = "Pcs";
             this.col_gridReturns_sale_qty.MinimumWidth = 30;
             this.col_gridReturns_sale_qty.Name = "col_gridReturns_sale_qty";
@@ -668,8 +583,8 @@
             // col_gridReturns_sale_length
             // 
             this.col_gridReturns_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_gridReturns_sale_length.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_gridReturns_sale_length.DefaultCellStyle = dataGridViewCellStyle63;
             this.col_gridReturns_sale_length.HeaderText = "Qty";
             this.col_gridReturns_sale_length.MinimumWidth = 30;
             this.col_gridReturns_sale_length.Name = "col_gridReturns_sale_length";
@@ -679,10 +594,10 @@
             // col_gridReturns_sale_amount
             // 
             this.col_gridReturns_sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle41.Format = "N2";
-            dataGridViewCellStyle41.NullValue = null;
-            this.col_gridReturns_sale_amount.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle64.Format = "N2";
+            dataGridViewCellStyle64.NullValue = null;
+            this.col_gridReturns_sale_amount.DefaultCellStyle = dataGridViewCellStyle64;
             this.col_gridReturns_sale_amount.HeaderText = "Amount";
             this.col_gridReturns_sale_amount.MinimumWidth = 50;
             this.col_gridReturns_sale_amount.Name = "col_gridReturns_sale_amount";
@@ -700,8 +615,9 @@
             // 
             this.lblRowInfoHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRowInfoHeader.Location = new System.Drawing.Point(0, 0);
+            this.lblRowInfoHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRowInfoHeader.Name = "lblRowInfoHeader";
-            this.lblRowInfoHeader.Size = new System.Drawing.Size(862, 19);
+            this.lblRowInfoHeader.Size = new System.Drawing.Size(1151, 24);
             this.lblRowInfoHeader.TabIndex = 107;
             this.lblRowInfoHeader.Text = "Faktur Pajak: None";
             this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -709,31 +625,15 @@
             // chkShowCompleted
             // 
             this.chkShowCompleted.AutoSize = true;
-            this.chkShowCompleted.Location = new System.Drawing.Point(199, 7);
+            this.chkShowCompleted.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowCompleted.Location = new System.Drawing.Point(357, 0);
+            this.chkShowCompleted.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowCompleted.Name = "chkShowCompleted";
-            this.chkShowCompleted.Size = new System.Drawing.Size(88, 17);
+            this.chkShowCompleted.Size = new System.Drawing.Size(103, 32);
             this.chkShowCompleted.TabIndex = 14;
             this.chkShowCompleted.Text = "Show locked";
             this.chkShowCompleted.UseVisualStyleBackColor = true;
             this.chkShowCompleted.CheckedChanged += new System.EventHandler(this.ChkShowCompleted_CheckedChanged);
-            // 
-            // idtp_MonthFilter
-            // 
-            this.idtp_MonthFilter.Checked = false;
-            this.idtp_MonthFilter.CustomFormat = "MMM yyyy";
-            this.idtp_MonthFilter.DefaultCheckedValue = false;
-            this.idtp_MonthFilter.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.idtp_MonthFilter.LabelText = "Month";
-            this.idtp_MonthFilter.Location = new System.Drawing.Point(3, 6);
-            this.idtp_MonthFilter.Name = "idtp_MonthFilter";
-            this.idtp_MonthFilter.ShowCheckBox = true;
-            this.idtp_MonthFilter.ShowDateTimePickerOnly = false;
-            this.idtp_MonthFilter.ShowUpAndDown = false;
-            this.idtp_MonthFilter.Size = new System.Drawing.Size(117, 39);
-            this.idtp_MonthFilter.TabIndex = 5;
-            this.idtp_MonthFilter.Value = null;
-            this.idtp_MonthFilter.ValueTimeSpan = null;
-            this.idtp_MonthFilter.ValueChanged += new System.EventHandler(this.idtp_StartDate_ValueChanged);
             // 
             // tcRowInfo
             // 
@@ -743,9 +643,10 @@
             this.tcRowInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcRowInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tcRowInfo.Location = new System.Drawing.Point(0, 0);
+            this.tcRowInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tcRowInfo.Name = "tcRowInfo";
             this.tcRowInfo.SelectedIndex = 0;
-            this.tcRowInfo.Size = new System.Drawing.Size(884, 147);
+            this.tcRowInfo.Size = new System.Drawing.Size(1179, 110);
             this.tcRowInfo.TabIndex = 7;
             // 
             // tpVendorInvoices
@@ -753,9 +654,10 @@
             this.tpVendorInvoices.Controls.Add(this.gridVendorInvoices);
             this.tpVendorInvoices.Controls.Add(this.panel3);
             this.tpVendorInvoices.Location = new System.Drawing.Point(4, 22);
+            this.tpVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpVendorInvoices.Name = "tpVendorInvoices";
-            this.tpVendorInvoices.Padding = new System.Windows.Forms.Padding(3);
-            this.tpVendorInvoices.Size = new System.Drawing.Size(876, 121);
+            this.tpVendorInvoices.Padding = new System.Windows.Forms.Padding(4);
+            this.tpVendorInvoices.Size = new System.Drawing.Size(1171, 84);
             this.tpVendorInvoices.TabIndex = 1;
             this.tpVendorInvoices.Text = "Vendor Invoices";
             this.tpVendorInvoices.UseVisualStyleBackColor = true;
@@ -767,14 +669,14 @@
             this.gridVendorInvoices.AllowUserToResizeRows = false;
             this.gridVendorInvoices.BackgroundColor = System.Drawing.Color.White;
             this.gridVendorInvoices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle43.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridVendorInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle66.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle66.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle66.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridVendorInvoices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle66;
             this.gridVendorInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridVendorInvoices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridvendorinvoice_id,
@@ -787,10 +689,11 @@
             this.col_gridvendorinvoice_Amount,
             this.col_gridvendorinvoice_notes});
             this.gridVendorInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridVendorInvoices.Location = new System.Drawing.Point(3, 28);
+            this.gridVendorInvoices.Location = new System.Drawing.Point(4, 35);
+            this.gridVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.gridVendorInvoices.Name = "gridVendorInvoices";
             this.gridVendorInvoices.RowHeadersVisible = false;
-            this.gridVendorInvoices.Size = new System.Drawing.Size(870, 90);
+            this.gridVendorInvoices.Size = new System.Drawing.Size(1163, 45);
             this.gridVendorInvoices.TabIndex = 129;
             this.gridVendorInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVendorInvoices_CellContentClick);
             // 
@@ -805,9 +708,9 @@
             // col_gridVendorInvoices_removeFakturPajaks_Id
             // 
             this.col_gridVendorInvoices_removeFakturPajaks_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.Red;
-            this.col_gridVendorInvoices_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle67.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle67.SelectionForeColor = System.Drawing.Color.Red;
+            this.col_gridVendorInvoices_removeFakturPajaks_Id.DefaultCellStyle = dataGridViewCellStyle67;
             this.col_gridVendorInvoices_removeFakturPajaks_Id.HeaderText = "";
             this.col_gridVendorInvoices_removeFakturPajaks_Id.LinkColor = System.Drawing.Color.Red;
             this.col_gridVendorInvoices_removeFakturPajaks_Id.MinimumWidth = 10;
@@ -839,8 +742,8 @@
             // col_gridvendorinvoice_timestamp
             // 
             this.col_gridvendorinvoice_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle45.Format = "dd/MM/yy";
-            this.col_gridvendorinvoice_timestamp.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle68.Format = "dd/MM/yy";
+            this.col_gridvendorinvoice_timestamp.DefaultCellStyle = dataGridViewCellStyle68;
             this.col_gridvendorinvoice_timestamp.HeaderText = "Date";
             this.col_gridvendorinvoice_timestamp.MinimumWidth = 40;
             this.col_gridvendorinvoice_timestamp.Name = "col_gridvendorinvoice_timestamp";
@@ -868,9 +771,9 @@
             // col_gridvendorinvoice_Amount
             // 
             this.col_gridvendorinvoice_Amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle46.Format = "N0";
-            this.col_gridvendorinvoice_Amount.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle69.Format = "N0";
+            this.col_gridvendorinvoice_Amount.DefaultCellStyle = dataGridViewCellStyle69;
             this.col_gridvendorinvoice_Amount.HeaderText = "Amount";
             this.col_gridvendorinvoice_Amount.MinimumWidth = 45;
             this.col_gridvendorinvoice_Amount.Name = "col_gridvendorinvoice_Amount";
@@ -889,16 +792,18 @@
             // 
             this.panel3.Controls.Add(this.btnAddVendorInvoices);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Location = new System.Drawing.Point(4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(870, 25);
+            this.panel3.Size = new System.Drawing.Size(1163, 31);
             this.panel3.TabIndex = 131;
             // 
             // btnAddVendorInvoices
             // 
             this.btnAddVendorInvoices.Location = new System.Drawing.Point(1, 1);
+            this.btnAddVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddVendorInvoices.Name = "btnAddVendorInvoices";
-            this.btnAddVendorInvoices.Size = new System.Drawing.Size(40, 23);
+            this.btnAddVendorInvoices.Size = new System.Drawing.Size(53, 28);
             this.btnAddVendorInvoices.TabIndex = 128;
             this.btnAddVendorInvoices.Text = "ADD";
             this.btnAddVendorInvoices.UseVisualStyleBackColor = true;
@@ -909,9 +814,10 @@
             this.tpSaleInvoices.Controls.Add(this.gridSaleInvoices);
             this.tpSaleInvoices.Controls.Add(this.panel4);
             this.tpSaleInvoices.Location = new System.Drawing.Point(4, 22);
+            this.tpSaleInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
-            this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(997, 121);
+            this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(4);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(1171, 155);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -920,9 +826,10 @@
             // 
             this.panel4.Controls.Add(this.btnAddSales);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(991, 25);
+            this.panel4.Size = new System.Drawing.Size(1163, 31);
             this.panel4.TabIndex = 132;
             // 
             // tpSaleReturns
@@ -930,8 +837,9 @@
             this.tpSaleReturns.Controls.Add(this.gridReturns);
             this.tpSaleReturns.Controls.Add(this.panel2);
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
+            this.tpSaleReturns.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(997, 121);
+            this.tpSaleReturns.Size = new System.Drawing.Size(1171, 155);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -941,30 +849,16 @@
             this.panel2.Controls.Add(this.btnAddReturns);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(997, 25);
+            this.panel2.Size = new System.Drawing.Size(1171, 31);
             this.panel2.TabIndex = 130;
-            // 
-            // iddl_Vendors
-            // 
-            this.iddl_Vendors.DisableTextInput = false;
-            this.iddl_Vendors.HideFilter = false;
-            this.iddl_Vendors.HideUpdateLink = false;
-            this.iddl_Vendors.LabelText = "Vendor";
-            this.iddl_Vendors.Location = new System.Drawing.Point(30, 50);
-            this.iddl_Vendors.Name = "iddl_Vendors";
-            this.iddl_Vendors.SelectedIndex = -1;
-            this.iddl_Vendors.SelectedItem = null;
-            this.iddl_Vendors.SelectedItemText = "";
-            this.iddl_Vendors.SelectedValue = null;
-            this.iddl_Vendors.ShowDropdownlistOnly = false;
-            this.iddl_Vendors.Size = new System.Drawing.Size(212, 41);
-            this.iddl_Vendors.TabIndex = 3;
             // 
             // rbCustomer
             // 
             this.rbCustomer.AutoSize = true;
-            this.rbCustomer.Location = new System.Drawing.Point(8, 121);
+            this.rbCustomer.Location = new System.Drawing.Point(10, 149);
+            this.rbCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.rbCustomer.Name = "rbCustomer";
             this.rbCustomer.Size = new System.Drawing.Size(14, 13);
             this.rbCustomer.TabIndex = 18;
@@ -975,7 +869,8 @@
             // rbVendor
             // 
             this.rbVendor.AutoSize = true;
-            this.rbVendor.Location = new System.Drawing.Point(8, 74);
+            this.rbVendor.Location = new System.Drawing.Point(10, 91);
+            this.rbVendor.Margin = new System.Windows.Forms.Padding(4);
             this.rbVendor.Name = "rbVendor";
             this.rbVendor.Size = new System.Drawing.Size(14, 13);
             this.rbVendor.TabIndex = 19;
@@ -986,27 +881,190 @@
             // chkCopyCell
             // 
             this.chkCopyCell.AutoSize = true;
-            this.chkCopyCell.Location = new System.Drawing.Point(781, 7);
+            this.chkCopyCell.Dock = System.Windows.Forms.DockStyle.Right;
+            this.chkCopyCell.Location = new System.Drawing.Point(1063, 0);
+            this.chkCopyCell.Margin = new System.Windows.Forms.Padding(4);
             this.chkCopyCell.Name = "chkCopyCell";
-            this.chkCopyCell.Size = new System.Drawing.Size(68, 17);
+            this.chkCopyCell.Size = new System.Drawing.Size(80, 32);
             this.chkCopyCell.TabIndex = 15;
             this.chkCopyCell.Text = "copy cell";
             this.chkCopyCell.UseVisualStyleBackColor = true;
             // 
             // lblGridInfo
             // 
-            this.lblGridInfo.Location = new System.Drawing.Point(459, 4);
+            this.lblGridInfo.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblGridInfo.Location = new System.Drawing.Point(642, 0);
+            this.lblGridInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGridInfo.Name = "lblGridInfo";
-            this.lblGridInfo.Size = new System.Drawing.Size(316, 23);
+            this.lblGridInfo.Size = new System.Drawing.Size(421, 32);
             this.lblGridInfo.TabIndex = 16;
             this.lblGridInfo.Text = "lblGridInfo";
             this.lblGridInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // itxt_No
+            // 
+            this.itxt_No.IsBrowseMode = false;
+            this.itxt_No.LabelText = "Nomor Faktur";
+            this.itxt_No.Location = new System.Drawing.Point(8, 7);
+            this.itxt_No.Margin = new System.Windows.Forms.Padding(4);
+            this.itxt_No.MaxLength = 32767;
+            this.itxt_No.MultiLine = false;
+            this.itxt_No.Name = "itxt_No";
+            this.itxt_No.PasswordChar = '\0';
+            this.itxt_No.RowCount = 1;
+            this.itxt_No.ShowDeleteButton = false;
+            this.itxt_No.ShowFilter = false;
+            this.itxt_No.ShowTextboxOnly = false;
+            this.itxt_No.Size = new System.Drawing.Size(177, 50);
+            this.itxt_No.TabIndex = 5;
+            this.itxt_No.ValueText = "";
+            // 
+            // idtp_Timestamp
+            // 
+            this.idtp_Timestamp.Checked = true;
+            this.idtp_Timestamp.CustomFormat = "dd/MM/yyyy";
+            this.idtp_Timestamp.DefaultCheckedValue = false;
+            this.idtp_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_Timestamp.LabelText = "Date";
+            this.idtp_Timestamp.Location = new System.Drawing.Point(189, 6);
+            this.idtp_Timestamp.Margin = new System.Windows.Forms.Padding(4);
+            this.idtp_Timestamp.Name = "idtp_Timestamp";
+            this.idtp_Timestamp.ShowCheckBox = false;
+            this.idtp_Timestamp.ShowDateTimePickerOnly = false;
+            this.idtp_Timestamp.ShowUpAndDown = false;
+            this.idtp_Timestamp.Size = new System.Drawing.Size(133, 50);
+            this.idtp_Timestamp.TabIndex = 5;
+            this.idtp_Timestamp.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.idtp_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
+            // 
+            // idtp_MonthFilter
+            // 
+            this.idtp_MonthFilter.Checked = false;
+            this.idtp_MonthFilter.CustomFormat = "MMM yyyy";
+            this.idtp_MonthFilter.DefaultCheckedValue = false;
+            this.idtp_MonthFilter.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_MonthFilter.LabelText = "Month";
+            this.idtp_MonthFilter.Location = new System.Drawing.Point(4, 7);
+            this.idtp_MonthFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.idtp_MonthFilter.Name = "idtp_MonthFilter";
+            this.idtp_MonthFilter.ShowCheckBox = true;
+            this.idtp_MonthFilter.ShowDateTimePickerOnly = false;
+            this.idtp_MonthFilter.ShowUpAndDown = false;
+            this.idtp_MonthFilter.Size = new System.Drawing.Size(133, 50);
+            this.idtp_MonthFilter.TabIndex = 20;
+            this.idtp_MonthFilter.Value = null;
+            this.idtp_MonthFilter.ValueTimeSpan = null;
+            // 
+            // in_DPP
+            // 
+            this.in_DPP.Checked = false;
+            this.in_DPP.DecimalPlaces = 2;
+            this.in_DPP.HideUpDown = false;
+            this.in_DPP.Increment = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.in_DPP.LabelText = "DPP";
+            this.in_DPP.Location = new System.Drawing.Point(4, 6);
+            this.in_DPP.Margin = new System.Windows.Forms.Padding(4);
+            this.in_DPP.MaximumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            0});
+            this.in_DPP.MinimumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            -2147483648});
+            this.in_DPP.Name = "in_DPP";
+            this.in_DPP.ShowAllowDecimalCheckbox = false;
+            this.in_DPP.ShowCheckbox = false;
+            this.in_DPP.ShowTextboxOnly = false;
+            this.in_DPP.Size = new System.Drawing.Size(153, 50);
+            this.in_DPP.TabIndex = 5;
+            this.in_DPP.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_DPP.ValueChanged += new System.EventHandler(this.In_DPP_ValueChanged);
+            // 
+            // in_PPN
+            // 
+            this.in_PPN.Checked = false;
+            this.in_PPN.DecimalPlaces = 2;
+            this.in_PPN.HideUpDown = false;
+            this.in_PPN.Increment = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.in_PPN.LabelText = "PPN";
+            this.in_PPN.Location = new System.Drawing.Point(163, 6);
+            this.in_PPN.Margin = new System.Windows.Forms.Padding(4);
+            this.in_PPN.MaximumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            0});
+            this.in_PPN.MinimumValue = new decimal(new int[] {
+            -194313216,
+            20,
+            0,
+            -2147483648});
+            this.in_PPN.Name = "in_PPN";
+            this.in_PPN.ShowAllowDecimalCheckbox = false;
+            this.in_PPN.ShowCheckbox = false;
+            this.in_PPN.ShowTextboxOnly = false;
+            this.in_PPN.Size = new System.Drawing.Size(153, 50);
+            this.in_PPN.TabIndex = 6;
+            this.in_PPN.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // iddl_Vendors
+            // 
+            this.iddl_Vendors.DisableTextInput = false;
+            this.iddl_Vendors.HideFilter = false;
+            this.iddl_Vendors.HideUpdateLink = true;
+            this.iddl_Vendors.LabelText = "Vendors";
+            this.iddl_Vendors.Location = new System.Drawing.Point(31, 61);
+            this.iddl_Vendors.Margin = new System.Windows.Forms.Padding(4);
+            this.iddl_Vendors.Name = "iddl_Vendors";
+            this.iddl_Vendors.SelectedIndex = -1;
+            this.iddl_Vendors.SelectedItem = null;
+            this.iddl_Vendors.SelectedItemText = "";
+            this.iddl_Vendors.SelectedValue = null;
+            this.iddl_Vendors.ShowDropdownlistOnly = false;
+            this.iddl_Vendors.Size = new System.Drawing.Size(291, 50);
+            this.iddl_Vendors.TabIndex = 5;
+            // 
+            // iddl_Customers
+            // 
+            this.iddl_Customers.DisableTextInput = false;
+            this.iddl_Customers.HideFilter = false;
+            this.iddl_Customers.HideUpdateLink = true;
+            this.iddl_Customers.LabelText = "Customers";
+            this.iddl_Customers.Location = new System.Drawing.Point(31, 117);
+            this.iddl_Customers.Margin = new System.Windows.Forms.Padding(4);
+            this.iddl_Customers.Name = "iddl_Customers";
+            this.iddl_Customers.SelectedIndex = -1;
+            this.iddl_Customers.SelectedItem = null;
+            this.iddl_Customers.SelectedItemText = "";
+            this.iddl_Customers.SelectedValue = null;
+            this.iddl_Customers.ShowDropdownlistOnly = false;
+            this.iddl_Customers.Size = new System.Drawing.Size(291, 50);
+            this.iddl_Customers.TabIndex = 20;
+            // 
             // MasterData_v1_FakturPajaks_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 531);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1179, 654);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_FakturPajaks_Form";
             this.Text = "FAKTUR PAJAK";
@@ -1033,8 +1091,14 @@
             this.pnlQuickSearch.ResumeLayout(false);
             this.pnlQuickSearch.PerformLayout();
             this.pnlRowInfo.ResumeLayout(false);
+            this.pnlRowInfoHeaderContainer.ResumeLayout(false);
             this.pnlRowInfoHeader.ResumeLayout(false);
             this.pnlRowInfoContent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
+            this.scContent.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).EndInit();
+            this.scContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleInvoices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReturns)).EndInit();
             this.tcRowInfo.ResumeLayout(false);
@@ -1050,14 +1114,9 @@
         }
 
         #endregion
-        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_DPP;
-        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Notes;
-        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_No;
-        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PPN;
         private System.Windows.Forms.Button btnAddSales;
         private System.Windows.Forms.DataGridView gridSaleInvoices;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Customers;
         private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_removeFakturPajaks_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridSaleInvoices_timestamp;
         private System.Windows.Forms.DataGridViewLinkColumn col_gridSaleInvoices_hexbarcode;
@@ -1079,7 +1138,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_sale_length;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_sale_amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridReturns_id;
-        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_MonthFilter;
         private System.Windows.Forms.CheckBox chkShowCompleted;
         private System.Windows.Forms.TabControl tcRowInfo;
         private System.Windows.Forms.TabPage tpSaleInvoices;
@@ -1090,7 +1148,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Vendors;
         private System.Windows.Forms.RadioButton rbCustomer;
         private System.Windows.Forms.RadioButton rbVendor;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_id;
@@ -1104,5 +1161,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridvendorinvoice_notes;
         private System.Windows.Forms.CheckBox chkCopyCell;
         private System.Windows.Forms.Label lblGridInfo;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_No;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_MonthFilter;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Vendors;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Customers;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PPN;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_DPP;
     }
 }

@@ -376,9 +376,9 @@
             this.groupBox2.Controls.Add(this.gridDetail);
             this.groupBox2.Controls.Add(this.dtpStartDate1);
             this.groupBox2.Location = new System.Drawing.Point(4, 129);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(515, 561);
             this.groupBox2.TabIndex = 110;
             this.groupBox2.TabStop = false;
@@ -397,9 +397,9 @@
             // 
             this.chkAllUsers.AutoSize = true;
             this.chkAllUsers.Location = new System.Drawing.Point(363, 14);
-            this.chkAllUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkAllUsers.Margin = new System.Windows.Forms.Padding(4);
             this.chkAllUsers.Name = "chkAllUsers";
-            this.chkAllUsers.Size = new System.Drawing.Size(79, 20);
+            this.chkAllUsers.Size = new System.Drawing.Size(76, 20);
             this.chkAllUsers.TabIndex = 112;
             this.chkAllUsers.Text = "all users";
             this.chkAllUsers.UseVisualStyleBackColor = true;
@@ -411,7 +411,7 @@
             this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalCounts.Location = new System.Drawing.Point(4, 74);
             this.lblTotalCounts.Name = "lblTotalCounts";
-            this.lblTotalCounts.Size = new System.Drawing.Size(138, 25);
+            this.lblTotalCounts.Size = new System.Drawing.Size(110, 20);
             this.lblTotalCounts.TabIndex = 111;
             this.lblTotalCounts.Text = "lblTotalCounts";
             this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -420,7 +420,7 @@
             // 
             this.btnLoad1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoad1.Location = new System.Drawing.Point(363, 34);
-            this.btnLoad1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoad1.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoad1.Name = "btnLoad1";
             this.btnLoad1.Size = new System.Drawing.Size(77, 36);
             this.btnLoad1.TabIndex = 1;
@@ -455,7 +455,7 @@
             // 
             this.btnReset1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset1.Location = new System.Drawing.Point(221, 14);
-            this.btnReset1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset1.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset1.Name = "btnReset1";
             this.btnReset1.Size = new System.Drawing.Size(136, 57);
             this.btnReset1.TabIndex = 0;
@@ -634,14 +634,14 @@
             this.txtBarcode.Location = new System.Drawing.Point(241, 89);
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(116, 41);
+            this.txtBarcode.Size = new System.Drawing.Size(116, 35);
             this.txtBarcode.TabIndex = 0;
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
             // 
             // btnCompareToInventory
             // 
             this.btnCompareToInventory.Location = new System.Drawing.Point(137, 2);
-            this.btnCompareToInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCompareToInventory.Margin = new System.Windows.Forms.Padding(4);
             this.btnCompareToInventory.Name = "btnCompareToInventory";
             this.btnCompareToInventory.Size = new System.Drawing.Size(201, 27);
             this.btnCompareToInventory.TabIndex = 112;
@@ -655,9 +655,9 @@
             this.chkExcludeZeroDiffsFromCompleteSummary.Checked = true;
             this.chkExcludeZeroDiffsFromCompleteSummary.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkExcludeZeroDiffsFromCompleteSummary.Location = new System.Drawing.Point(4, 6);
-            this.chkExcludeZeroDiffsFromCompleteSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkExcludeZeroDiffsFromCompleteSummary.Margin = new System.Windows.Forms.Padding(4);
             this.chkExcludeZeroDiffsFromCompleteSummary.Name = "chkExcludeZeroDiffsFromCompleteSummary";
-            this.chkExcludeZeroDiffsFromCompleteSummary.Size = new System.Drawing.Size(113, 20);
+            this.chkExcludeZeroDiffsFromCompleteSummary.Size = new System.Drawing.Size(110, 20);
             this.chkExcludeZeroDiffsFromCompleteSummary.TabIndex = 114;
             this.chkExcludeZeroDiffsFromCompleteSummary.Text = "exclude 0 diffs";
             this.chkExcludeZeroDiffsFromCompleteSummary.UseVisualStyleBackColor = true;
@@ -672,7 +672,7 @@
             this.tcSummary.Controls.Add(this.tpCheckSummary);
             this.tcSummary.Controls.Add(this.tpMissingInventoryItems);
             this.tcSummary.Location = new System.Drawing.Point(524, 0);
-            this.tcSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tcSummary.Name = "tcSummary";
             this.tcSummary.SelectedIndex = 0;
             this.tcSummary.Size = new System.Drawing.Size(675, 690);
@@ -684,9 +684,9 @@
             this.tpSummary.Controls.Add(this.dgvSummary);
             this.tpSummary.Controls.Add(this.panel2);
             this.tpSummary.Location = new System.Drawing.Point(4, 25);
-            this.tpSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tpSummary.Name = "tpSummary";
-            this.tpSummary.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSummary.Padding = new System.Windows.Forms.Padding(4);
             this.tpSummary.Size = new System.Drawing.Size(667, 661);
             this.tpSummary.TabIndex = 1;
             this.tpSummary.Text = "Summary";
@@ -820,7 +820,7 @@
             this.panel2.Controls.Add(this.btnGenerateSummary);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(4, 624);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(659, 33);
             this.panel2.TabIndex = 0;
@@ -829,10 +829,10 @@
             // 
             this.chkShowDeleteTodayData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowDeleteTodayData.AutoSize = true;
-            this.chkShowDeleteTodayData.Location = new System.Drawing.Point(476, 11);
-            this.chkShowDeleteTodayData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowDeleteTodayData.Location = new System.Drawing.Point(479, 11);
+            this.chkShowDeleteTodayData.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowDeleteTodayData.Name = "chkShowDeleteTodayData";
-            this.chkShowDeleteTodayData.Size = new System.Drawing.Size(18, 17);
+            this.chkShowDeleteTodayData.Size = new System.Drawing.Size(15, 14);
             this.chkShowDeleteTodayData.TabIndex = 113;
             this.chkShowDeleteTodayData.UseVisualStyleBackColor = true;
             this.chkShowDeleteTodayData.CheckedChanged += new System.EventHandler(this.chkShowDeleteTodayData_CheckedChanged);
@@ -841,7 +841,7 @@
             // 
             this.btnDeleteIgnoreSold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteIgnoreSold.Location = new System.Drawing.Point(502, 4);
-            this.btnDeleteIgnoreSold.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteIgnoreSold.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteIgnoreSold.Name = "btnDeleteIgnoreSold";
             this.btnDeleteIgnoreSold.Size = new System.Drawing.Size(151, 28);
             this.btnDeleteIgnoreSold.TabIndex = 112;
@@ -853,7 +853,7 @@
             // 
             this.btnDeleteTodayData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteTodayData.Location = new System.Drawing.Point(248, 4);
-            this.btnDeleteTodayData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteTodayData.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteTodayData.Name = "btnDeleteTodayData";
             this.btnDeleteTodayData.Size = new System.Drawing.Size(217, 28);
             this.btnDeleteTodayData.TabIndex = 111;
@@ -865,7 +865,7 @@
             // btnGenerateSummary
             // 
             this.btnGenerateSummary.Location = new System.Drawing.Point(4, 1);
-            this.btnGenerateSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerateSummary.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerateSummary.Name = "btnGenerateSummary";
             this.btnGenerateSummary.Size = new System.Drawing.Size(100, 28);
             this.btnGenerateSummary.TabIndex = 110;
@@ -878,9 +878,9 @@
             this.tpCheckSummary.Controls.Add(this.gridSummaryCheck);
             this.tpCheckSummary.Controls.Add(this.panel1);
             this.tpCheckSummary.Location = new System.Drawing.Point(4, 25);
-            this.tpCheckSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpCheckSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tpCheckSummary.Name = "tpCheckSummary";
-            this.tpCheckSummary.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpCheckSummary.Padding = new System.Windows.Forms.Padding(4);
             this.tpCheckSummary.Size = new System.Drawing.Size(667, 661);
             this.tpCheckSummary.TabIndex = 0;
             this.tpCheckSummary.Text = "Check";
@@ -892,7 +892,7 @@
             this.panel1.Controls.Add(this.btnCompareToInventory);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(4, 624);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(659, 33);
             this.panel1.TabIndex = 115;
@@ -902,9 +902,9 @@
             this.tpMissingInventoryItems.Controls.Add(this.gridMissingItems);
             this.tpMissingInventoryItems.Controls.Add(this.panel3);
             this.tpMissingInventoryItems.Location = new System.Drawing.Point(4, 25);
-            this.tpMissingInventoryItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpMissingInventoryItems.Margin = new System.Windows.Forms.Padding(4);
             this.tpMissingInventoryItems.Name = "tpMissingInventoryItems";
-            this.tpMissingInventoryItems.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpMissingInventoryItems.Padding = new System.Windows.Forms.Padding(4);
             this.tpMissingInventoryItems.Size = new System.Drawing.Size(667, 661);
             this.tpMissingInventoryItems.TabIndex = 2;
             this.tpMissingInventoryItems.Text = "Missing";
@@ -1087,7 +1087,7 @@
             this.panel3.Controls.Add(this.btnRefreshMissingInventoryItems);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(4, 4);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(659, 70);
             this.panel3.TabIndex = 117;
@@ -1098,7 +1098,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 4);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 25);
+            this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 118;
             this.label2.Text = "EXCLUDE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1107,7 +1107,7 @@
             // 
             this.iclb_Grades.LabelText = "Grades";
             this.iclb_Grades.Location = new System.Drawing.Point(124, 5);
-            this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_Grades.Name = "iclb_Grades";
             this.iclb_Grades.ShowListOnly = true;
             this.iclb_Grades.Size = new System.Drawing.Size(105, 62);
@@ -1117,7 +1117,7 @@
             // btnRefreshMissingInventoryItems
             // 
             this.btnRefreshMissingInventoryItems.Location = new System.Drawing.Point(7, 39);
-            this.btnRefreshMissingInventoryItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefreshMissingInventoryItems.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefreshMissingInventoryItems.Name = "btnRefreshMissingInventoryItems";
             this.btnRefreshMissingInventoryItems.Size = new System.Drawing.Size(112, 27);
             this.btnRefreshMissingInventoryItems.TabIndex = 116;
@@ -1130,9 +1130,9 @@
             this.chkIgnoreSold.AutoSize = true;
             this.chkIgnoreSold.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkIgnoreSold.Location = new System.Drawing.Point(363, 70);
-            this.chkIgnoreSold.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkIgnoreSold.Margin = new System.Windows.Forms.Padding(4);
             this.chkIgnoreSold.Name = "chkIgnoreSold";
-            this.chkIgnoreSold.Size = new System.Drawing.Size(113, 24);
+            this.chkIgnoreSold.Size = new System.Drawing.Size(93, 20);
             this.chkIgnoreSold.TabIndex = 116;
             this.chkIgnoreSold.Text = "ignore sold";
             this.chkIgnoreSold.UseVisualStyleBackColor = true;
@@ -1143,9 +1143,9 @@
             this.chkCheckListBeforeSubmit.AutoSize = true;
             this.chkCheckListBeforeSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCheckListBeforeSubmit.Location = new System.Drawing.Point(363, 91);
-            this.chkCheckListBeforeSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkCheckListBeforeSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.chkCheckListBeforeSubmit.Name = "chkCheckListBeforeSubmit";
-            this.chkCheckListBeforeSubmit.Size = new System.Drawing.Size(137, 24);
+            this.chkCheckListBeforeSubmit.Size = new System.Drawing.Size(109, 20);
             this.chkCheckListBeforeSubmit.TabIndex = 117;
             this.chkCheckListBeforeSubmit.Text = "check list only";
             this.chkCheckListBeforeSubmit.UseVisualStyleBackColor = true;
@@ -1156,9 +1156,9 @@
             this.chkDoNotLoadList.AutoSize = true;
             this.chkDoNotLoadList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDoNotLoadList.Location = new System.Drawing.Point(363, 31);
-            this.chkDoNotLoadList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkDoNotLoadList.Margin = new System.Windows.Forms.Padding(4);
             this.chkDoNotLoadList.Name = "chkDoNotLoadList";
-            this.chkDoNotLoadList.Size = new System.Drawing.Size(140, 24);
+            this.chkDoNotLoadList.Size = new System.Drawing.Size(112, 20);
             this.chkDoNotLoadList.TabIndex = 118;
             this.chkDoNotLoadList.Text = "do not load list";
             this.chkDoNotLoadList.UseVisualStyleBackColor = true;
@@ -1168,7 +1168,7 @@
             // 
             this.btnFloorMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFloorMore.Location = new System.Drawing.Point(4, 33);
-            this.btnFloorMore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFloorMore.Margin = new System.Windows.Forms.Padding(4);
             this.btnFloorMore.Name = "btnFloorMore";
             this.btnFloorMore.Size = new System.Drawing.Size(59, 36);
             this.btnFloorMore.TabIndex = 111;
@@ -1180,7 +1180,7 @@
             // 
             this.btnFloorLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFloorLess.Location = new System.Drawing.Point(4, 97);
-            this.btnFloorLess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFloorLess.Margin = new System.Windows.Forms.Padding(4);
             this.btnFloorLess.Name = "btnFloorLess";
             this.btnFloorLess.Size = new System.Drawing.Size(59, 36);
             this.btnFloorLess.TabIndex = 112;
@@ -1192,7 +1192,7 @@
             // 
             this.btnRowLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRowLess.Location = new System.Drawing.Point(121, 97);
-            this.btnRowLess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRowLess.Margin = new System.Windows.Forms.Padding(4);
             this.btnRowLess.Name = "btnRowLess";
             this.btnRowLess.Size = new System.Drawing.Size(59, 36);
             this.btnRowLess.TabIndex = 119;
@@ -1204,7 +1204,7 @@
             // 
             this.btnRowMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRowMore.Location = new System.Drawing.Point(121, 33);
-            this.btnRowMore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRowMore.Margin = new System.Windows.Forms.Padding(4);
             this.btnRowMore.Name = "btnRowMore";
             this.btnRowMore.Size = new System.Drawing.Size(59, 36);
             this.btnRowMore.TabIndex = 118;
@@ -1216,7 +1216,7 @@
             // 
             this.btnRackLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRackLess.Location = new System.Drawing.Point(63, 97);
-            this.btnRackLess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRackLess.Margin = new System.Windows.Forms.Padding(4);
             this.btnRackLess.Name = "btnRackLess";
             this.btnRackLess.Size = new System.Drawing.Size(59, 36);
             this.btnRackLess.TabIndex = 123;
@@ -1228,7 +1228,7 @@
             // 
             this.btnRackMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRackMore.Location = new System.Drawing.Point(63, 33);
-            this.btnRackMore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRackMore.Margin = new System.Windows.Forms.Padding(4);
             this.btnRackMore.Name = "btnRackMore";
             this.btnRackMore.Size = new System.Drawing.Size(59, 36);
             this.btnRackMore.TabIndex = 122;
@@ -1240,7 +1240,7 @@
             // 
             this.btnColumnLess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColumnLess.Location = new System.Drawing.Point(180, 97);
-            this.btnColumnLess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnColumnLess.Margin = new System.Windows.Forms.Padding(4);
             this.btnColumnLess.Name = "btnColumnLess";
             this.btnColumnLess.Size = new System.Drawing.Size(59, 36);
             this.btnColumnLess.TabIndex = 127;
@@ -1252,7 +1252,7 @@
             // 
             this.btnColumnMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColumnMore.Location = new System.Drawing.Point(180, 33);
-            this.btnColumnMore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnColumnMore.Margin = new System.Windows.Forms.Padding(4);
             this.btnColumnMore.Name = "btnColumnMore";
             this.btnColumnMore.Size = new System.Drawing.Size(59, 36);
             this.btnColumnMore.TabIndex = 126;
@@ -1265,9 +1265,9 @@
             this.chkNonRack.AutoSize = true;
             this.chkNonRack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkNonRack.Location = new System.Drawing.Point(8, 1);
-            this.chkNonRack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkNonRack.Margin = new System.Windows.Forms.Padding(4);
             this.chkNonRack.Name = "chkNonRack";
-            this.chkNonRack.Size = new System.Drawing.Size(144, 33);
+            this.chkNonRack.Size = new System.Drawing.Size(115, 28);
             this.chkNonRack.TabIndex = 128;
             this.chkNonRack.Text = "NON RAK";
             this.chkNonRack.UseVisualStyleBackColor = true;
@@ -1280,7 +1280,7 @@
             this.txtItemLocation.Location = new System.Drawing.Point(241, 34);
             this.txtItemLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtItemLocation.Name = "txtItemLocation";
-            this.txtItemLocation.Size = new System.Drawing.Size(116, 49);
+            this.txtItemLocation.Size = new System.Drawing.Size(116, 40);
             this.txtItemLocation.TabIndex = 129;
             this.txtItemLocation.TabStop = false;
             this.txtItemLocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1292,7 +1292,7 @@
             this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblMessage.Location = new System.Drawing.Point(153, 5);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(112, 25);
+            this.lblMessage.Size = new System.Drawing.Size(89, 20);
             this.lblMessage.TabIndex = 116;
             this.lblMessage.Text = "lblMessage";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1302,9 +1302,9 @@
             this.chkRescanToday.AutoSize = true;
             this.chkRescanToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRescanToday.Location = new System.Drawing.Point(363, 50);
-            this.chkRescanToday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkRescanToday.Margin = new System.Windows.Forms.Padding(4);
             this.chkRescanToday.Name = "chkRescanToday";
-            this.chkRescanToday.Size = new System.Drawing.Size(88, 24);
+            this.chkRescanToday.Size = new System.Drawing.Size(71, 20);
             this.chkRescanToday.TabIndex = 130;
             this.chkRescanToday.Text = "re-scan";
             this.chkRescanToday.UseVisualStyleBackColor = true;
@@ -1322,7 +1322,7 @@
             0});
             this.in_Column.LabelText = "numeric";
             this.in_Column.Location = new System.Drawing.Point(181, 60);
-            this.in_Column.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_Column.Margin = new System.Windows.Forms.Padding(5);
             this.in_Column.MaximumValue = new decimal(new int[] {
             9,
             0,
@@ -1357,7 +1357,7 @@
             0});
             this.in_Row.LabelText = "numeric";
             this.in_Row.Location = new System.Drawing.Point(123, 60);
-            this.in_Row.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_Row.Margin = new System.Windows.Forms.Padding(5);
             this.in_Row.MaximumValue = new decimal(new int[] {
             9,
             0,
@@ -1392,7 +1392,7 @@
             0});
             this.in_Rack.LabelText = "numeric";
             this.in_Rack.Location = new System.Drawing.Point(64, 60);
-            this.in_Rack.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_Rack.Margin = new System.Windows.Forms.Padding(5);
             this.in_Rack.MaximumValue = new decimal(new int[] {
             9,
             0,
@@ -1427,7 +1427,7 @@
             0});
             this.in_Floor.LabelText = "numeric";
             this.in_Floor.Location = new System.Drawing.Point(5, 60);
-            this.in_Floor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_Floor.Margin = new System.Windows.Forms.Padding(5);
             this.in_Floor.MaximumValue = new decimal(new int[] {
             9,
             0,
@@ -1455,9 +1455,9 @@
             this.chkRequestBarcode.AutoSize = true;
             this.chkRequestBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRequestBarcode.Location = new System.Drawing.Point(363, 112);
-            this.chkRequestBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkRequestBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.chkRequestBarcode.Name = "chkRequestBarcode";
-            this.chkRequestBarcode.Size = new System.Drawing.Size(152, 24);
+            this.chkRequestBarcode.Size = new System.Drawing.Size(125, 20);
             this.chkRequestBarcode.TabIndex = 131;
             this.chkRequestBarcode.Text = "request barcode";
             this.chkRequestBarcode.UseVisualStyleBackColor = true;
@@ -1465,8 +1465,7 @@
             // 
             // StockOpname_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1188, 690);
             this.Controls.Add(this.chkIgnoreSold);
             this.Controls.Add(this.chkRescanToday);
@@ -1491,7 +1490,7 @@
             this.Controls.Add(this.chkNonRack);
             this.Controls.Add(this.chkRequestBarcode);
             this.Controls.Add(this.groupBox2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StockOpname_Form";
             this.Text = "STOCK OPNAME";
             this.Load += new System.EventHandler(this.ItemCheck_Submit_Form_Load);

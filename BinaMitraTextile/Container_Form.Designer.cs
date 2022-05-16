@@ -86,9 +86,10 @@
             this.Internal_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_Test = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_SalesComissions = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.Internal_MoneyAccounts = new System.Windows.Forms.ToolStripMenuItem();
-            this.Internal_MoneyAccountCategoryAssignments = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_MoneyAccountCategories = new System.Windows.Forms.ToolStripMenuItem();
+            this.Internal_MoneyAccountCategoryAssignments = new System.Windows.Forms.ToolStripMenuItem();
             this.Windows = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlShortcutContainer = new System.Windows.Forms.Panel();
             this.btnOpname = new System.Windows.Forms.Button();
@@ -120,7 +121,6 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -145,8 +145,8 @@
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.MdiWindowListItem = this.Windows;
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.mainMenu.Size = new System.Drawing.Size(800, 24);
+            this.mainMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.mainMenu.Size = new System.Drawing.Size(1067, 24);
             this.mainMenu.TabIndex = 3;
             this.mainMenu.Text = "mainMenu";
             // 
@@ -613,6 +613,13 @@
             this.Internal_SalesComissions.Text = "Sales Comission";
             this.Internal_SalesComissions.Click += new System.EventHandler(this.Internal_SalesComissions_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItem3.Text = "---------------------------";
+            // 
             // Internal_MoneyAccounts
             // 
             this.Internal_MoneyAccounts.Name = "Internal_MoneyAccounts";
@@ -620,19 +627,19 @@
             this.Internal_MoneyAccounts.Text = "Money Accounts";
             this.Internal_MoneyAccounts.Click += new System.EventHandler(this.Internal_MoneyAccounts_Click);
             // 
-            // Internal_MoneyAccountCategoryAssignments
-            // 
-            this.Internal_MoneyAccountCategoryAssignments.Name = "Internal_MoneyAccountCategoryAssignments";
-            this.Internal_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(187, 22);
-            this.Internal_MoneyAccountCategoryAssignments.Text = "Categories Assignment";
-            this.Internal_MoneyAccountCategoryAssignments.Click += new System.EventHandler(this.Internal_MoneyAccountCategoryAssignments_Click);
-            // 
             // Admin_MoneyAccountCategories
             // 
             this.Admin_MoneyAccountCategories.Name = "Admin_MoneyAccountCategories";
             this.Admin_MoneyAccountCategories.Size = new System.Drawing.Size(187, 22);
             this.Admin_MoneyAccountCategories.Text = "Categories";
             this.Admin_MoneyAccountCategories.Click += new System.EventHandler(this.Admin_MoneyAccountCategories_Click);
+            // 
+            // Internal_MoneyAccountCategoryAssignments
+            // 
+            this.Internal_MoneyAccountCategoryAssignments.Name = "Internal_MoneyAccountCategoryAssignments";
+            this.Internal_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(187, 22);
+            this.Internal_MoneyAccountCategoryAssignments.Text = "Categories Assignment";
+            this.Internal_MoneyAccountCategoryAssignments.Click += new System.EventHandler(this.Internal_MoneyAccountCategoryAssignments_Click);
             // 
             // Windows
             // 
@@ -649,17 +656,19 @@
             this.pnlShortcutContainer.Controls.Add(this.pnlShortcutHeaderContainer);
             this.pnlShortcutContainer.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlShortcutContainer.Location = new System.Drawing.Point(0, 24);
+            this.pnlShortcutContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlShortcutContainer.Name = "pnlShortcutContainer";
-            this.pnlShortcutContainer.Padding = new System.Windows.Forms.Padding(5, 5, 0, 5);
-            this.pnlShortcutContainer.Size = new System.Drawing.Size(145, 621);
+            this.pnlShortcutContainer.Padding = new System.Windows.Forms.Padding(7, 6, 0, 6);
+            this.pnlShortcutContainer.Size = new System.Drawing.Size(193, 770);
             this.pnlShortcutContainer.TabIndex = 18;
             // 
             // btnOpname
             // 
             this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpname.Location = new System.Drawing.Point(10, 570);
+            this.btnOpname.Location = new System.Drawing.Point(13, 708);
+            this.btnOpname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOpname.Name = "btnOpname";
-            this.btnOpname.Size = new System.Drawing.Size(114, 41);
+            this.btnOpname.Size = new System.Drawing.Size(152, 50);
             this.btnOpname.TabIndex = 21;
             this.btnOpname.Text = "OPNAME";
             this.btnOpname.UseVisualStyleBackColor = true;
@@ -671,17 +680,19 @@
             this.pnlShortcuts.Controls.Add(this.gbShortcutsForAssistants);
             this.pnlShortcuts.Controls.Add(this.gbShortcutsForUsers);
             this.pnlShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlShortcuts.Location = new System.Drawing.Point(5, 5);
+            this.pnlShortcuts.Location = new System.Drawing.Point(7, 6);
+            this.pnlShortcuts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlShortcuts.Name = "pnlShortcuts";
-            this.pnlShortcuts.Size = new System.Drawing.Size(123, 609);
+            this.pnlShortcuts.Size = new System.Drawing.Size(164, 756);
             this.pnlShortcuts.TabIndex = 22;
             // 
             // btnChart
             // 
             this.btnChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnChart.Location = new System.Drawing.Point(5, 518);
+            this.btnChart.Location = new System.Drawing.Point(7, 644);
+            this.btnChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChart.Name = "btnChart";
-            this.btnChart.Size = new System.Drawing.Size(114, 41);
+            this.btnChart.Size = new System.Drawing.Size(152, 50);
             this.btnChart.TabIndex = 23;
             this.btnChart.Text = "CHART";
             this.btnChart.UseVisualStyleBackColor = true;
@@ -694,10 +705,11 @@
             this.gbShortcutsForAssistants.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbShortcutsForAssistants.Controls.Add(this.flpAssistantShortcuts);
             this.gbShortcutsForAssistants.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbShortcutsForAssistants.Location = new System.Drawing.Point(0, 245);
+            this.gbShortcutsForAssistants.Location = new System.Drawing.Point(0, 268);
+            this.gbShortcutsForAssistants.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbShortcutsForAssistants.Name = "gbShortcutsForAssistants";
-            this.gbShortcutsForAssistants.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(123, 194);
+            this.gbShortcutsForAssistants.Padding = new System.Windows.Forms.Padding(4, 0, 4, 4);
+            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(164, 215);
             this.gbShortcutsForAssistants.TabIndex = 22;
             this.gbShortcutsForAssistants.TabStop = false;
             // 
@@ -716,10 +728,11 @@
             this.flpAssistantShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpAssistantShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpAssistantShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpAssistantShortcuts.Location = new System.Drawing.Point(3, 13);
+            this.flpAssistantShortcuts.Location = new System.Drawing.Point(4, 15);
+            this.flpAssistantShortcuts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flpAssistantShortcuts.Name = "flpAssistantShortcuts";
-            this.flpAssistantShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpAssistantShortcuts.Size = new System.Drawing.Size(117, 178);
+            this.flpAssistantShortcuts.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
+            this.flpAssistantShortcuts.Size = new System.Drawing.Size(156, 196);
             this.flpAssistantShortcuts.TabIndex = 17;
             // 
             // lnkVendorInvoices
@@ -729,10 +742,11 @@
             this.lnkVendorInvoices.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkVendorInvoices.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkVendorInvoices.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkVendorInvoices.Location = new System.Drawing.Point(3, 5);
+            this.lnkVendorInvoices.Location = new System.Drawing.Point(4, 6);
+            this.lnkVendorInvoices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkVendorInvoices.Name = "lnkVendorInvoices";
-            this.lnkVendorInvoices.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkVendorInvoices.Size = new System.Drawing.Size(95, 21);
+            this.lnkVendorInvoices.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkVendorInvoices.Size = new System.Drawing.Size(95, 23);
             this.lnkVendorInvoices.TabIndex = 31;
             this.lnkVendorInvoices.TabStop = true;
             this.lnkVendorInvoices.Text = "VENDOR INVOICES";
@@ -746,10 +760,11 @@
             this.lnkVendorInvoicePayments.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkVendorInvoicePayments.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkVendorInvoicePayments.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkVendorInvoicePayments.Location = new System.Drawing.Point(3, 26);
+            this.lnkVendorInvoicePayments.Location = new System.Drawing.Point(4, 29);
+            this.lnkVendorInvoicePayments.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkVendorInvoicePayments.Name = "lnkVendorInvoicePayments";
-            this.lnkVendorInvoicePayments.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkVendorInvoicePayments.Size = new System.Drawing.Size(101, 21);
+            this.lnkVendorInvoicePayments.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkVendorInvoicePayments.Size = new System.Drawing.Size(101, 23);
             this.lnkVendorInvoicePayments.TabIndex = 34;
             this.lnkVendorInvoicePayments.TabStop = true;
             this.lnkVendorInvoicePayments.Text = "VENDOR PAYMENTS";
@@ -763,10 +778,11 @@
             this.lnkSales2.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSales2.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSales2.Location = new System.Drawing.Point(3, 47);
+            this.lnkSales2.Location = new System.Drawing.Point(4, 52);
+            this.lnkSales2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSales2.Name = "lnkSales2";
-            this.lnkSales2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSales2.Size = new System.Drawing.Size(80, 21);
+            this.lnkSales2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSales2.Size = new System.Drawing.Size(80, 23);
             this.lnkSales2.TabIndex = 26;
             this.lnkSales2.TabStop = true;
             this.lnkSales2.Text = "SALE INVOICES";
@@ -780,10 +796,11 @@
             this.lnkSaleReturns.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSaleReturns.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSaleReturns.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleReturns.Location = new System.Drawing.Point(3, 68);
+            this.lnkSaleReturns.Location = new System.Drawing.Point(4, 75);
+            this.lnkSaleReturns.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSaleReturns.Name = "lnkSaleReturns";
-            this.lnkSaleReturns.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSaleReturns.Size = new System.Drawing.Size(80, 21);
+            this.lnkSaleReturns.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSaleReturns.Size = new System.Drawing.Size(80, 23);
             this.lnkSaleReturns.TabIndex = 33;
             this.lnkSaleReturns.TabStop = true;
             this.lnkSaleReturns.Text = "SALE RETURNS";
@@ -797,10 +814,11 @@
             this.lnkFakturPajak.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkFakturPajak.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkFakturPajak.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkFakturPajak.Location = new System.Drawing.Point(3, 89);
+            this.lnkFakturPajak.Location = new System.Drawing.Point(4, 98);
+            this.lnkFakturPajak.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkFakturPajak.Name = "lnkFakturPajak";
-            this.lnkFakturPajak.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkFakturPajak.Size = new System.Drawing.Size(81, 21);
+            this.lnkFakturPajak.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkFakturPajak.Size = new System.Drawing.Size(81, 23);
             this.lnkFakturPajak.TabIndex = 32;
             this.lnkFakturPajak.TabStop = true;
             this.lnkFakturPajak.Text = "FAKTUR PAJAK";
@@ -814,10 +832,11 @@
             this.lnkKontrabon.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkKontrabon.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkKontrabon.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkKontrabon.Location = new System.Drawing.Point(3, 110);
+            this.lnkKontrabon.Location = new System.Drawing.Point(4, 121);
+            this.lnkKontrabon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkKontrabon.Name = "lnkKontrabon";
-            this.lnkKontrabon.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkKontrabon.Size = new System.Drawing.Size(68, 21);
+            this.lnkKontrabon.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkKontrabon.Size = new System.Drawing.Size(68, 23);
             this.lnkKontrabon.TabIndex = 36;
             this.lnkKontrabon.TabStop = true;
             this.lnkKontrabon.Text = "KONTRABON";
@@ -831,10 +850,11 @@
             this.lnkInventory2.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkInventory2.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory2.Location = new System.Drawing.Point(3, 131);
+            this.lnkInventory2.Location = new System.Drawing.Point(4, 144);
+            this.lnkInventory2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkInventory2.Name = "lnkInventory2";
-            this.lnkInventory2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkInventory2.Size = new System.Drawing.Size(61, 21);
+            this.lnkInventory2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkInventory2.Size = new System.Drawing.Size(61, 23);
             this.lnkInventory2.TabIndex = 21;
             this.lnkInventory2.TabStop = true;
             this.lnkInventory2.Text = "INVENTORY";
@@ -848,10 +868,11 @@
             this.lnkSummary_Assistant.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary_Assistant.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary_Assistant.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary_Assistant.Location = new System.Drawing.Point(3, 152);
+            this.lnkSummary_Assistant.Location = new System.Drawing.Point(4, 167);
+            this.lnkSummary_Assistant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSummary_Assistant.Name = "lnkSummary_Assistant";
-            this.lnkSummary_Assistant.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSummary_Assistant.Size = new System.Drawing.Size(56, 21);
+            this.lnkSummary_Assistant.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSummary_Assistant.Size = new System.Drawing.Size(56, 23);
             this.lnkSummary_Assistant.TabIndex = 35;
             this.lnkSummary_Assistant.TabStop = true;
             this.lnkSummary_Assistant.Text = "SUMMARY";
@@ -865,9 +886,10 @@
             this.gbShortcutsForUsers.Controls.Add(this.flpUserShortcuts);
             this.gbShortcutsForUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcutsForUsers.Location = new System.Drawing.Point(0, 0);
+            this.gbShortcutsForUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbShortcutsForUsers.Name = "gbShortcutsForUsers";
-            this.gbShortcutsForUsers.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.gbShortcutsForUsers.Size = new System.Drawing.Size(123, 245);
+            this.gbShortcutsForUsers.Padding = new System.Windows.Forms.Padding(4, 0, 4, 4);
+            this.gbShortcutsForUsers.Size = new System.Drawing.Size(164, 268);
             this.gbShortcutsForUsers.TabIndex = 14;
             this.gbShortcutsForUsers.TabStop = false;
             // 
@@ -889,10 +911,11 @@
             this.flpUserShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpUserShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpUserShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpUserShortcuts.Location = new System.Drawing.Point(3, 13);
+            this.flpUserShortcuts.Location = new System.Drawing.Point(4, 15);
+            this.flpUserShortcuts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flpUserShortcuts.Name = "flpUserShortcuts";
-            this.flpUserShortcuts.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.flpUserShortcuts.Size = new System.Drawing.Size(117, 229);
+            this.flpUserShortcuts.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
+            this.flpUserShortcuts.Size = new System.Drawing.Size(156, 249);
             this.flpUserShortcuts.TabIndex = 17;
             // 
             // lnkInventory
@@ -902,10 +925,11 @@
             this.lnkInventory.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkInventory.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkInventory.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkInventory.Location = new System.Drawing.Point(3, 5);
+            this.lnkInventory.Location = new System.Drawing.Point(4, 6);
+            this.lnkInventory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkInventory.Name = "lnkInventory";
-            this.lnkInventory.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkInventory.Size = new System.Drawing.Size(61, 21);
+            this.lnkInventory.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkInventory.Size = new System.Drawing.Size(61, 23);
             this.lnkInventory.TabIndex = 21;
             this.lnkInventory.TabStop = true;
             this.lnkInventory.Text = "INVENTORY";
@@ -919,10 +943,11 @@
             this.lnkCreateSales.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCreateSales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkCreateSales.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCreateSales.Location = new System.Drawing.Point(3, 26);
+            this.lnkCreateSales.Location = new System.Drawing.Point(4, 29);
+            this.lnkCreateSales.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkCreateSales.Name = "lnkCreateSales";
-            this.lnkCreateSales.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkCreateSales.Size = new System.Drawing.Size(73, 21);
+            this.lnkCreateSales.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkCreateSales.Size = new System.Drawing.Size(73, 23);
             this.lnkCreateSales.TabIndex = 25;
             this.lnkCreateSales.TabStop = true;
             this.lnkCreateSales.Text = "CREATE SALE";
@@ -936,10 +961,11 @@
             this.lnkSales.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSales.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSales.Location = new System.Drawing.Point(3, 47);
+            this.lnkSales.Location = new System.Drawing.Point(4, 52);
+            this.lnkSales.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSales.Name = "lnkSales";
-            this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSales.Size = new System.Drawing.Size(80, 21);
+            this.lnkSales.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSales.Size = new System.Drawing.Size(80, 23);
             this.lnkSales.TabIndex = 26;
             this.lnkSales.TabStop = true;
             this.lnkSales.Text = "SALE INVOICES";
@@ -953,10 +979,11 @@
             this.lnkSaleOrders.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSaleOrders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSaleOrders.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSaleOrders.Location = new System.Drawing.Point(3, 68);
+            this.lnkSaleOrders.Location = new System.Drawing.Point(4, 75);
+            this.lnkSaleOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSaleOrders.Name = "lnkSaleOrders";
-            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSaleOrders.Size = new System.Drawing.Size(97, 21);
+            this.lnkSaleOrders.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSaleOrders.Size = new System.Drawing.Size(97, 23);
             this.lnkSaleOrders.TabIndex = 28;
             this.lnkSaleOrders.TabStop = true;
             this.lnkSaleOrders.Text = "SALE ORDERS (SO)";
@@ -970,10 +997,11 @@
             this.lnkShipping.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkShipping.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkShipping.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkShipping.Location = new System.Drawing.Point(3, 89);
+            this.lnkShipping.Location = new System.Drawing.Point(4, 98);
+            this.lnkShipping.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkShipping.Name = "lnkShipping";
-            this.lnkShipping.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkShipping.Size = new System.Drawing.Size(52, 21);
+            this.lnkShipping.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkShipping.Size = new System.Drawing.Size(52, 23);
             this.lnkShipping.TabIndex = 27;
             this.lnkShipping.TabStop = true;
             this.lnkShipping.Text = "SHIPPING";
@@ -984,7 +1012,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(3, 110);
+            this.label2.Location = new System.Drawing.Point(4, 121);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 15);
             this.label2.TabIndex = 30;
@@ -997,10 +1026,11 @@
             this.lnkCustomerCredits.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkCustomerCredits.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkCustomerCredits.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkCustomerCredits.Location = new System.Drawing.Point(3, 125);
+            this.lnkCustomerCredits.Location = new System.Drawing.Point(4, 136);
+            this.lnkCustomerCredits.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkCustomerCredits.Name = "lnkCustomerCredits";
-            this.lnkCustomerCredits.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkCustomerCredits.Size = new System.Drawing.Size(104, 21);
+            this.lnkCustomerCredits.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkCustomerCredits.Size = new System.Drawing.Size(104, 23);
             this.lnkCustomerCredits.TabIndex = 31;
             this.lnkCustomerCredits.TabStop = true;
             this.lnkCustomerCredits.Text = "CUSTOMER CREDITS";
@@ -1014,10 +1044,11 @@
             this.lnkMoneyAccountItems.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkMoneyAccountItems.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkMoneyAccountItems.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkMoneyAccountItems.Location = new System.Drawing.Point(3, 146);
+            this.lnkMoneyAccountItems.Location = new System.Drawing.Point(4, 159);
+            this.lnkMoneyAccountItems.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkMoneyAccountItems.Name = "lnkMoneyAccountItems";
-            this.lnkMoneyAccountItems.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkMoneyAccountItems.Size = new System.Drawing.Size(65, 21);
+            this.lnkMoneyAccountItems.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkMoneyAccountItems.Size = new System.Drawing.Size(65, 23);
             this.lnkMoneyAccountItems.TabIndex = 23;
             this.lnkMoneyAccountItems.TabStop = true;
             this.lnkMoneyAccountItems.Text = "PETTY CASH";
@@ -1028,7 +1059,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 167);
+            this.label1.Location = new System.Drawing.Point(4, 182);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 15);
             this.label1.TabIndex = 21;
@@ -1041,10 +1073,11 @@
             this.lnkSamples.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSamples.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSamples.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSamples.Location = new System.Drawing.Point(3, 182);
+            this.lnkSamples.Location = new System.Drawing.Point(4, 197);
+            this.lnkSamples.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSamples.Name = "lnkSamples";
-            this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSamples.Size = new System.Drawing.Size(52, 21);
+            this.lnkSamples.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSamples.Size = new System.Drawing.Size(52, 23);
             this.lnkSamples.TabIndex = 29;
             this.lnkSamples.TabStop = true;
             this.lnkSamples.Text = "SAMPLES";
@@ -1058,10 +1091,11 @@
             this.lnkSummary_User.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lnkSummary_User.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkSummary_User.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkSummary_User.Location = new System.Drawing.Point(3, 203);
+            this.lnkSummary_User.Location = new System.Drawing.Point(4, 220);
+            this.lnkSummary_User.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkSummary_User.Name = "lnkSummary_User";
-            this.lnkSummary_User.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lnkSummary_User.Size = new System.Drawing.Size(56, 21);
+            this.lnkSummary_User.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lnkSummary_User.Size = new System.Drawing.Size(56, 23);
             this.lnkSummary_User.TabIndex = 24;
             this.lnkSummary_User.TabStop = true;
             this.lnkSummary_User.Text = "SUMMARY";
@@ -1074,19 +1108,20 @@
             this.pnlShortcutHeaderContainer.Controls.Add(this.pnlShortcutHeader);
             this.pnlShortcutHeaderContainer.Controls.Add(this.tpShortcutPanel);
             this.pnlShortcutHeaderContainer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlShortcutHeaderContainer.Location = new System.Drawing.Point(128, 5);
+            this.pnlShortcutHeaderContainer.Location = new System.Drawing.Point(171, 6);
             this.pnlShortcutHeaderContainer.Margin = new System.Windows.Forms.Padding(0);
             this.pnlShortcutHeaderContainer.Name = "pnlShortcutHeaderContainer";
-            this.pnlShortcutHeaderContainer.Size = new System.Drawing.Size(15, 609);
+            this.pnlShortcutHeaderContainer.Size = new System.Drawing.Size(20, 756);
             this.pnlShortcutHeaderContainer.TabIndex = 22;
             // 
             // pnlShortcutHeader
             // 
             this.pnlShortcutHeader.BackColor = System.Drawing.Color.Transparent;
             this.pnlShortcutHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlShortcutHeader.Location = new System.Drawing.Point(0, 15);
+            this.pnlShortcutHeader.Location = new System.Drawing.Point(0, 18);
+            this.pnlShortcutHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlShortcutHeader.Name = "pnlShortcutHeader";
-            this.pnlShortcutHeader.Size = new System.Drawing.Size(15, 594);
+            this.pnlShortcutHeader.Size = new System.Drawing.Size(20, 738);
             this.pnlShortcutHeader.TabIndex = 21;
             // 
             // tpShortcutPanel
@@ -1100,25 +1135,18 @@
             this.tpShortcutPanel.Margin = new System.Windows.Forms.Padding(0);
             this.tpShortcutPanel.MinimumSplitterDistance = 100;
             this.tpShortcutPanel.Name = "tpShortcutPanel";
-            this.tpShortcutPanel.Size = new System.Drawing.Size(15, 15);
+            this.tpShortcutPanel.Size = new System.Drawing.Size(20, 18);
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(187, 22);
-            this.toolStripMenuItem3.Text = "---------------------------";
-            // 
             // Container_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 645);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1067, 794);
             this.Controls.Add(this.pnlShortcutContainer);
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Container_Form";
             this.Text = "CV. BINA MITRA TEXTILE";
             this.Load += new System.EventHandler(this.Form_Load);

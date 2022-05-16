@@ -75,8 +75,8 @@ namespace BinaMitraTextile.Invoices
             col_grid_notes.DataPropertyName = Payment.COL_DB_Notes;
             col_grid_Checked.DataPropertyName = Payment.COL_DB_Checked;
 
-            Tools.populateDropDownList(cbPaymentMethods, typeof(PaymentMethod));
-            cbPaymentMethods.Focus();
+            iddl_PaymentMethods.populate(typeof(PaymentMethod));
+            iddl_PaymentMethods.focus();
 
             if (GlobalData.UserAccount.role != Roles.Super)
             {
@@ -119,44 +119,42 @@ namespace BinaMitraTextile.Invoices
             lblTotalAmount.Text = String.Format("Balance: Rp.{0:N2} / Rp.{1:N2}", _payableAmount, startingBalance);
             
             if (_creditBalance > 0)
-                cbPaymentMethods.SelectedItem = PaymentMethod.Credit;
+                iddl_PaymentMethods.SelectedItem = PaymentMethod.Credit;
             else
-                cbPaymentMethods.SelectedItem = PaymentMethod.Cash;
+                iddl_PaymentMethods.SelectedItem = PaymentMethod.Cash;
 
             autoSetPaymentAmount();
         }
 
         private void resetData()
         {
-            Tools.resetDropDownList(cbPaymentMethods);
+            iddl_PaymentMethods.reset();
             in_PaymentAmount.reset();
-            txtNotes.Text = "";
+            itxt_Notes.ValueText = "";
         }
 
         private bool isInputFieldsValid()
         {
-            DBUtil.sanitize(txtNotes);
-            
-            if (cbPaymentMethods.SelectedIndex == -1)
-                return Tools.inputError<ComboBox>(cbPaymentMethods, "Please select a payment method from the dropdownlist");
+            if (iddl_PaymentMethods.isValidSelectedValue())
+                return iddl_PaymentMethods.SelectedValueError("Please select a payment method from the dropdownlist");
 
             decimal paymentAmount = in_PaymentAmount.ValueDecimal;
 
             if (paymentAmount <= 0)
                 return in_PaymentAmount.isValueError("Invalid Payment Amount");
-            else if ((PaymentMethod)cbPaymentMethods.SelectedValue != PaymentMethod.Cash && paymentAmount > _payableAmount)
+            else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue != PaymentMethod.Cash && paymentAmount > _payableAmount)
                 return in_PaymentAmount.isValueError("Pembayaran melebihi jumlah yang belum dibayar");
-            else if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit && paymentAmount > _creditBalance)
+            else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Credit && paymentAmount > _creditBalance)
                 return in_PaymentAmount.isValueError("Pembayaran melebihi credit yang tersedia");
-            else if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Giro && string.IsNullOrEmpty(txtNotes.Text.Trim()))
-                return Tools.inputError<TextBox>(txtNotes, "Tulis informasi giro di notes");
+            else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Giro && itxt_Notes.isEmpty())
+                return itxt_Notes.isValueError("Tulis informasi giro di notes");
             
             return true;
         }
 
         private void autoSetPaymentAmount()
         {
-            if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
+            if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Credit)
             {
                 if (_creditBalance > _payableAmount)
                     in_PaymentAmount.Value = _payableAmount;
@@ -184,28 +182,28 @@ namespace BinaMitraTextile.Invoices
             if (isInputFieldsValid())
             {
                 decimal paymentAmount = in_PaymentAmount.ValueDecimal;
-                if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Cash && paymentAmount > _payableAmount)
+                if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Cash && paymentAmount > _payableAmount)
                 {
                     Tools.displayForm(new SharedForms.Verify_Form("KEMBALI", string.Format("Rp. {0:N0}", paymentAmount - _payableAmount), SharedForms.VerifyFormFontSize.Medium));
                     paymentAmount = _payableAmount;
                 }
                 
                 if (_paymentMode == PaymentMode.VendorInvoice)
-                    Payment.add(_vendorInvoice.ID, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
+                    Payment.add(_vendorInvoice.ID, (PaymentMethod)iddl_PaymentMethods.SelectedValue, paymentAmount, itxt_Notes.ValueText.Trim());
                 else if (_paymentMode == PaymentMode.SaleInvoice)
                 {
-                    Guid? id = Payment.add(_sale.id, (PaymentMethod)cbPaymentMethods.SelectedValue, paymentAmount, txtNotes.Text.Trim());
+                    Guid? id = Payment.add(_sale.id, (PaymentMethod)iddl_PaymentMethods.SelectedValue, paymentAmount, itxt_Notes.ValueText.Trim());
 
-                    if (id != null && (PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Credit)
+                    if (id != null && (PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Credit)
                     {
                         //Payment.updateCheckedStatus((Guid)id, true); //not done to avoid loophole. Forces manager to check manually.
-                        CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, txtNotes.Text.Trim(), null, true);
+                        CustomerCredit.submitNew((Guid)_sale.customer_id, paymentAmount * -1, id, itxt_Notes.ValueText.Trim(), null, true);
                     }
 
                     //auto generate approved petty cash record
-                    if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Cash)
+                    if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Cash)
                     {
-                        string notes = string.IsNullOrWhiteSpace(txtNotes.Text) ? "" : ", Notes: " + txtNotes.Text;
+                        string notes = string.IsNullOrWhiteSpace(itxt_Notes.ValueText) ? "" : ", Notes: " + itxt_Notes.ValueText;
                         try
                         {
                             MoneyAccountItem.add((Guid)MoneyAccountCategoryAssignment.get(Settings.MoneyAccountCategories_Id_PenjualanTunai, Settings.SalePayment_MoneyAccounts_Id),
@@ -215,7 +213,7 @@ namespace BinaMitraTextile.Invoices
                 }
 
                 populateData();
-                txtNotes.Text = "";
+                itxt_Notes.ValueText = "";
                 _dataWasUpdated = true;
             }
         }
@@ -225,9 +223,9 @@ namespace BinaMitraTextile.Invoices
             LIBUtil.Desktop.UserControls.InputControl_Textbox.showInNumeric((TextBox)sender, false, true);
         }
 
-        private void cbPaymentMethods_SelectedIndexChanged(object sender, EventArgs e)
+        private void iddl_PaymentMethods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbPaymentMethods != null && cbPaymentMethods.SelectedValue != null)
+            if (iddl_PaymentMethods != null && iddl_PaymentMethods.SelectedValue != null)
                 autoSetPaymentAmount();
         }
 

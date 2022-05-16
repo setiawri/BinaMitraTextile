@@ -37,27 +37,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(16, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(128, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Inventory Buy Value:";
             // 
             // lblInventoryBuyValue
             // 
             this.lblInventoryBuyValue.AutoSize = true;
-            this.lblInventoryBuyValue.Location = new System.Drawing.Point(123, 38);
+            this.lblInventoryBuyValue.Location = new System.Drawing.Point(164, 47);
+            this.lblInventoryBuyValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInventoryBuyValue.Name = "lblInventoryBuyValue";
-            this.lblInventoryBuyValue.Size = new System.Drawing.Size(106, 13);
+            this.lblInventoryBuyValue.Size = new System.Drawing.Size(133, 16);
             this.lblInventoryBuyValue.TabIndex = 1;
             this.lblInventoryBuyValue.Text = "lblInventoryBuyValue";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 51);
+            this.label3.Location = new System.Drawing.Point(64, 63);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(87, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Receivables:";
             // 
@@ -66,9 +69,10 @@
             this.lnkReceivablesAmount.AutoSize = true;
             this.lnkReceivablesAmount.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkReceivablesAmount.LinkColor = System.Drawing.Color.CornflowerBlue;
-            this.lnkReceivablesAmount.Location = new System.Drawing.Point(123, 51);
+            this.lnkReceivablesAmount.Location = new System.Drawing.Point(164, 63);
+            this.lnkReceivablesAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lnkReceivablesAmount.Name = "lnkReceivablesAmount";
-            this.lnkReceivablesAmount.Size = new System.Drawing.Size(116, 13);
+            this.lnkReceivablesAmount.Size = new System.Drawing.Size(146, 16);
             this.lnkReceivablesAmount.TabIndex = 4;
             this.lnkReceivablesAmount.TabStop = true;
             this.lnkReceivablesAmount.Text = "lnkReceivablesAmount";
@@ -76,13 +80,13 @@
             // 
             // Financial_Overview_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 559);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1012, 688);
             this.Controls.Add(this.lnkReceivablesAmount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblInventoryBuyValue);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Financial_Overview_Form";
             this.Text = "FINANCIAL OVERVIEW";
             this.ResumeLayout(false);

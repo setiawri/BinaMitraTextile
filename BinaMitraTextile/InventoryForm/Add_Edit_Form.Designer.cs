@@ -389,9 +389,9 @@
             this.chkPOItem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkPOItem.AutoSize = true;
             this.chkPOItem.Location = new System.Drawing.Point(141, 453);
-            this.chkPOItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkPOItem.Margin = new System.Windows.Forms.Padding(4);
             this.chkPOItem.Name = "chkPOItem";
-            this.chkPOItem.Size = new System.Drawing.Size(76, 20);
+            this.chkPOItem.Size = new System.Drawing.Size(73, 20);
             this.chkPOItem.TabIndex = 1005;
             this.chkPOItem.Text = "PO item";
             this.chkPOItem.UseVisualStyleBackColor = true;
@@ -402,7 +402,7 @@
             this.itxt_POItemID.IsBrowseMode = true;
             this.itxt_POItemID.LabelText = "textbox";
             this.itxt_POItemID.Location = new System.Drawing.Point(137, 92);
-            this.itxt_POItemID.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_POItemID.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_POItemID.MaxLength = 32767;
             this.itxt_POItemID.MultiLine = false;
             this.itxt_POItemID.Name = "itxt_POItemID";
@@ -411,7 +411,7 @@
             this.itxt_POItemID.ShowDeleteButton = true;
             this.itxt_POItemID.ShowFilter = false;
             this.itxt_POItemID.ShowTextboxOnly = true;
-            this.itxt_POItemID.Size = new System.Drawing.Size(304, 26);
+            this.itxt_POItemID.Size = new System.Drawing.Size(297, 26);
             this.itxt_POItemID.TabIndex = 1006;
             this.itxt_POItemID.ValueText = "";
             this.itxt_POItemID.isBrowseMode_Clicked += new System.EventHandler(this.Itxt_POItemID_isBrowseMode_Clicked);
@@ -434,7 +434,7 @@
             this.iddl_VendorInvoices.HideUpdateLink = false;
             this.iddl_VendorInvoices.LabelText = "dropdownlist";
             this.iddl_VendorInvoices.Location = new System.Drawing.Point(137, 61);
-            this.iddl_VendorInvoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iddl_VendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.iddl_VendorInvoices.Name = "iddl_VendorInvoices";
             this.iddl_VendorInvoices.SelectedIndex = -1;
             this.iddl_VendorInvoices.SelectedItem = null;
@@ -446,8 +446,7 @@
             // 
             // Add_Edit_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(460, 528);
             this.Controls.Add(this.iddl_VendorInvoices);
             this.Controls.Add(this.label10);
@@ -481,7 +480,7 @@
             this.Controls.Add(this.cbLengthUnits);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Add_Edit_Form";
             this.Text = "CREATE INVENTORY";
             this.Load += new System.EventHandler(this.Add_Edit_Form_Load);

@@ -93,7 +93,7 @@
             this.pnlInputContainer.Controls.Add(this.gbInputFields);
             this.pnlInputContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInputContainer.Location = new System.Drawing.Point(0, 34);
-            this.pnlInputContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlInputContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInputContainer.Name = "pnlInputContainer";
             this.pnlInputContainer.Size = new System.Drawing.Size(1333, 378);
             this.pnlInputContainer.TabIndex = 1;
@@ -104,9 +104,9 @@
             this.gbInputFields.Controls.Add(this.scInputMain);
             this.gbInputFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbInputFields.Location = new System.Drawing.Point(0, 0);
-            this.gbInputFields.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbInputFields.Margin = new System.Windows.Forms.Padding(4);
             this.gbInputFields.Name = "gbInputFields";
-            this.gbInputFields.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbInputFields.Padding = new System.Windows.Forms.Padding(4);
             this.gbInputFields.Size = new System.Drawing.Size(1333, 378);
             this.gbInputFields.TabIndex = 0;
             this.gbInputFields.TabStop = false;
@@ -116,7 +116,7 @@
             this.pnlActionButtonsContainer.Controls.Add(this.pnlActionButtons);
             this.pnlActionButtonsContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlActionButtonsContainer.Location = new System.Drawing.Point(4, 342);
-            this.pnlActionButtonsContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlActionButtonsContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlActionButtonsContainer.Name = "pnlActionButtonsContainer";
             this.pnlActionButtonsContainer.Size = new System.Drawing.Size(1325, 32);
             this.pnlActionButtonsContainer.TabIndex = 2;
@@ -128,7 +128,7 @@
             this.pnlActionButtons.Controls.Add(this.btnCancel);
             this.pnlActionButtons.Controls.Add(this.btnReset);
             this.pnlActionButtons.Location = new System.Drawing.Point(401, 4);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(4);
             this.pnlActionButtons.Name = "pnlActionButtons";
             this.pnlActionButtons.Size = new System.Drawing.Size(505, 28);
             this.pnlActionButtons.TabIndex = 9;
@@ -136,7 +136,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(9, 2);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(155, 27);
             this.btnSubmit.TabIndex = 93;
@@ -147,7 +147,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(343, 2);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(155, 27);
             this.btnCancel.TabIndex = 95;
@@ -158,7 +158,7 @@
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(176, 2);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(155, 27);
             this.btnReset.TabIndex = 94;
@@ -221,9 +221,9 @@
             // 
             this.chkIncludeInactive.AutoSize = true;
             this.chkIncludeInactive.Location = new System.Drawing.Point(277, 7);
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4);
             this.chkIncludeInactive.Name = "chkIncludeInactive";
-            this.chkIncludeInactive.Size = new System.Drawing.Size(114, 21);
+            this.chkIncludeInactive.Size = new System.Drawing.Size(106, 20);
             this.chkIncludeInactive.TabIndex = 8;
             this.chkIncludeInactive.TabStop = false;
             this.chkIncludeInactive.Text = "show inactive";
@@ -233,7 +233,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(204, 4);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 28);
             this.btnUpdate.TabIndex = 98;
@@ -244,7 +244,7 @@
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(104, 4);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 28);
             this.btnAdd.TabIndex = 97;
@@ -255,7 +255,7 @@
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(4, 4);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 28);
             this.btnSearch.TabIndex = 96;
@@ -288,7 +288,7 @@
             this.col_grid_checkbox1});
             this.gridview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridview.Location = new System.Drawing.Point(0, 0);
-            this.gridview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridview.Margin = new System.Windows.Forms.Padding(4);
             this.gridview.Name = "gridview";
             this.gridview.RowHeadersVisible = false;
             this.gridview.RowHeadersWidth = 51;
@@ -338,7 +338,6 @@
             this.col_grid_statusname.MinimumWidth = 6;
             this.col_grid_statusname.Name = "col_grid_statusname";
             this.col_grid_statusname.Visible = false;
-            this.col_grid_statusname.Width = 125;
             // 
             // col_grid_active
             // 
@@ -379,7 +378,7 @@
             this.pnlModeButtons.Controls.Add(this.btnSearch);
             this.pnlModeButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlModeButtons.Location = new System.Drawing.Point(0, 0);
-            this.pnlModeButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlModeButtons.Margin = new System.Windows.Forms.Padding(4);
             this.pnlModeButtons.Name = "pnlModeButtons";
             this.pnlModeButtons.Size = new System.Drawing.Size(1333, 34);
             this.pnlModeButtons.TabIndex = 0;
@@ -389,7 +388,7 @@
             // 
             this.btnAction6.Enabled = false;
             this.btnAction6.Location = new System.Drawing.Point(928, 4);
-            this.btnAction6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction6.Margin = new System.Windows.Forms.Padding(4);
             this.btnAction6.Name = "btnAction6";
             this.btnAction6.Size = new System.Drawing.Size(100, 28);
             this.btnAction6.TabIndex = 105;
@@ -401,7 +400,7 @@
             // 
             this.btnAction5.Enabled = false;
             this.btnAction5.Location = new System.Drawing.Point(820, 4);
-            this.btnAction5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction5.Margin = new System.Windows.Forms.Padding(4);
             this.btnAction5.Name = "btnAction5";
             this.btnAction5.Size = new System.Drawing.Size(100, 28);
             this.btnAction5.TabIndex = 104;
@@ -413,7 +412,7 @@
             // 
             this.btnAction4.Enabled = false;
             this.btnAction4.Location = new System.Drawing.Point(712, 4);
-            this.btnAction4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction4.Margin = new System.Windows.Forms.Padding(4);
             this.btnAction4.Name = "btnAction4";
             this.btnAction4.Size = new System.Drawing.Size(100, 28);
             this.btnAction4.TabIndex = 103;
@@ -425,7 +424,7 @@
             // 
             this.btnAction3.Enabled = false;
             this.btnAction3.Location = new System.Drawing.Point(604, 4);
-            this.btnAction3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction3.Margin = new System.Windows.Forms.Padding(4);
             this.btnAction3.Name = "btnAction3";
             this.btnAction3.Size = new System.Drawing.Size(100, 28);
             this.btnAction3.TabIndex = 102;
@@ -437,7 +436,7 @@
             // 
             this.btnAction2.Enabled = false;
             this.btnAction2.Location = new System.Drawing.Point(504, 4);
-            this.btnAction2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction2.Margin = new System.Windows.Forms.Padding(4);
             this.btnAction2.Name = "btnAction2";
             this.btnAction2.Size = new System.Drawing.Size(100, 28);
             this.btnAction2.TabIndex = 101;
@@ -449,7 +448,7 @@
             // 
             this.btnAction1.Enabled = false;
             this.btnAction1.Location = new System.Drawing.Point(404, 4);
-            this.btnAction1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction1.Margin = new System.Windows.Forms.Padding(4);
             this.btnAction1.Name = "btnAction1";
             this.btnAction1.Size = new System.Drawing.Size(100, 28);
             this.btnAction1.TabIndex = 100;
@@ -460,7 +459,7 @@
             // btnLog
             // 
             this.btnLog.Location = new System.Drawing.Point(304, 4);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(4);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(100, 28);
             this.btnLog.TabIndex = 99;
@@ -474,7 +473,7 @@
             this.pnlGridviewContainer.Controls.Add(this.pnlQuickFilters);
             this.pnlGridviewContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGridviewContainer.Location = new System.Drawing.Point(0, 412);
-            this.pnlGridviewContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlGridviewContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGridviewContainer.Name = "pnlGridviewContainer";
             this.pnlGridviewContainer.Size = new System.Drawing.Size(1333, 278);
             this.pnlGridviewContainer.TabIndex = 0;
@@ -484,7 +483,7 @@
             this.pnlGridview.Controls.Add(this.gridview);
             this.pnlGridview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlGridview.Location = new System.Drawing.Point(0, 34);
-            this.pnlGridview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlGridview.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGridview.Name = "pnlGridview";
             this.pnlGridview.Size = new System.Drawing.Size(1333, 244);
             this.pnlGridview.TabIndex = 12;
@@ -500,7 +499,7 @@
             this.pnlQuickFilters.Controls.Add(this.txtQuickSearch);
             this.pnlQuickFilters.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlQuickFilters.Location = new System.Drawing.Point(0, 0);
-            this.pnlQuickFilters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlQuickFilters.Margin = new System.Windows.Forms.Padding(4);
             this.pnlQuickFilters.Name = "pnlQuickFilters";
             this.pnlQuickFilters.Size = new System.Drawing.Size(1333, 34);
             this.pnlQuickFilters.TabIndex = 0;
@@ -509,7 +508,7 @@
             // 
             this.btnShowUserHiddenControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowUserHiddenControls.Location = new System.Drawing.Point(1213, 5);
-            this.btnShowUserHiddenControls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowUserHiddenControls.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowUserHiddenControls.Name = "btnShowUserHiddenControls";
             this.btnShowUserHiddenControls.Size = new System.Drawing.Size(31, 27);
             this.btnShowUserHiddenControls.TabIndex = 98;
@@ -522,7 +521,7 @@
             // 
             this.btnShowInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowInput.Location = new System.Drawing.Point(1247, 5);
-            this.btnShowInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowInput.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowInput.Name = "btnShowInput";
             this.btnShowInput.Size = new System.Drawing.Size(83, 27);
             this.btnShowInput.TabIndex = 97;
@@ -535,7 +534,7 @@
             // 
             this.btnHideInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHideInput.Location = new System.Drawing.Point(1247, 5);
-            this.btnHideInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHideInput.Margin = new System.Windows.Forms.Padding(4);
             this.btnHideInput.Name = "btnHideInput";
             this.btnHideInput.Size = new System.Drawing.Size(83, 27);
             this.btnHideInput.TabIndex = 96;
@@ -553,7 +552,7 @@
             this.lnkClearQuickSearch.Location = new System.Drawing.Point(252, 10);
             this.lnkClearQuickSearch.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lnkClearQuickSearch.Name = "lnkClearQuickSearch";
-            this.lnkClearQuickSearch.Size = new System.Drawing.Size(18, 17);
+            this.lnkClearQuickSearch.Size = new System.Drawing.Size(15, 13);
             this.lnkClearQuickSearch.TabIndex = 11;
             this.lnkClearQuickSearch.TabStop = true;
             this.lnkClearQuickSearch.Text = "X";
@@ -566,14 +565,14 @@
             this.label1.Location = new System.Drawing.Point(4, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 17);
+            this.label1.Size = new System.Drawing.Size(90, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Quick Search:";
             // 
             // txtQuickSearch
             // 
             this.txtQuickSearch.Location = new System.Drawing.Point(104, 5);
-            this.txtQuickSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQuickSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuickSearch.Name = "txtQuickSearch";
             this.txtQuickSearch.Size = new System.Drawing.Size(145, 22);
             this.txtQuickSearch.TabIndex = 0;
@@ -581,13 +580,12 @@
             // 
             // MasterData_v1_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1333, 690);
             this.Controls.Add(this.pnlGridviewContainer);
             this.Controls.Add(this.pnlInputContainer);
             this.Controls.Add(this.pnlModeButtons);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(527, 728);
             this.Name = "MasterData_v1_Form";
             this.Text = "MasterData_v1_Form";

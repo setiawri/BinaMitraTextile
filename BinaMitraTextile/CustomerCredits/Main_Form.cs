@@ -37,7 +37,7 @@ namespace BinaMitraTextile.CustomerCredits
         {
             Settings.setGeneralSettings(this);
 
-            Tools.populateDropDownList(cbPaymentMethods, typeof(PaymentMethod));
+            iddl_PaymentMethods.populate(typeof(PaymentMethod));
 
             gridSummary.AutoGenerateColumns = false;
             gridSummary.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -144,12 +144,12 @@ namespace BinaMitraTextile.CustomerCredits
             if(isInputValid())
             {
                 _customerID = (Guid)iddl_Customers.SelectedValue;
-                CustomerCredit.submitNew((Guid)_customerID, in_Amount.ValueDecimal, null, txtNotes.Text.Trim(), (PaymentMethod)cbPaymentMethods.SelectedValue, false);
+                CustomerCredit.submitNew((Guid)_customerID, in_Amount.ValueDecimal, null, itxt_Notes.ValueText.Trim(), (PaymentMethod)iddl_PaymentMethods.SelectedValue, false);
                 populateGridSummary(true);
                 populateGridDetail();
 
                 in_Amount.reset();
-                txtNotes.Text = "";
+                itxt_Notes.ValueText = "";
             }
         }
 
@@ -159,10 +159,10 @@ namespace BinaMitraTextile.CustomerCredits
                 return iddl_Customers.SelectedValueError("Please select a customer from the drop down list");
             else if (in_Amount.Value == 0)
                 return in_Amount.isValueError("Invalid amount");
-            else if (cbPaymentMethods.SelectedIndex == -1)
-                return Tools.inputError<ComboBox>(cbPaymentMethods, "Please select a payment method from the dropdownlist");
-            else if ((PaymentMethod)cbPaymentMethods.SelectedValue == PaymentMethod.Giro && string.IsNullOrEmpty(txtNotes.Text.Trim()))
-                return Tools.inputError<TextBox>(txtNotes, "Tulis informasi giro di notes");
+            else if (!iddl_PaymentMethods.isValidSelectedValue())
+                return iddl_PaymentMethods.SelectedValueError("Please select a payment method from the dropdownlist");
+            else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Giro && string.IsNullOrEmpty(itxt_Notes.ValueText.Trim()))
+                return itxt_Notes.isValueError("Tulis informasi giro di notes");
 
             return true;
         }
@@ -171,7 +171,7 @@ namespace BinaMitraTextile.CustomerCredits
         {
             iddl_Customers.reset();
             in_Amount.reset();
-            txtNotes.Text = "";
+            itxt_Notes.ValueText = "";
         }
 
         #endregion ADD/UPDATE ITEM

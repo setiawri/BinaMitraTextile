@@ -44,15 +44,13 @@
             this.col_grid_balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_Checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cbPaymentMethods = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnAddPayment = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.lblCreditBalance = new System.Windows.Forms.Label();
             this.btnAddCredit = new System.Windows.Forms.Button();
             this.in_PaymentAmount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtNotes = new System.Windows.Forms.TextBox();
+            this.iddl_PaymentMethods = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,8 +83,8 @@
             this.col_grid_balance,
             this.col_grid_notes,
             this.col_grid_Checked});
-            this.grid.Location = new System.Drawing.Point(14, 54);
-            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.Location = new System.Drawing.Point(19, 66);
+            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
@@ -94,7 +92,7 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.grid.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(797, 261);
+            this.grid.Size = new System.Drawing.Size(1063, 321);
             this.grid.TabIndex = 4;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
@@ -174,31 +172,12 @@
             this.col_grid_Checked.ReadOnly = true;
             this.col_grid_Checked.Width = 30;
             // 
-            // cbPaymentMethods
-            // 
-            this.cbPaymentMethods.FormattingEnabled = true;
-            this.cbPaymentMethods.Location = new System.Drawing.Point(14, 30);
-            this.cbPaymentMethods.Margin = new System.Windows.Forms.Padding(2);
-            this.cbPaymentMethods.Name = "cbPaymentMethods";
-            this.cbPaymentMethods.Size = new System.Drawing.Size(83, 21);
-            this.cbPaymentMethods.TabIndex = 0;
-            this.cbPaymentMethods.SelectedIndexChanged += new System.EventHandler(this.cbPaymentMethods_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 15);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 102;
-            this.label3.Text = "Method";
-            // 
             // btnAddPayment
             // 
-            this.btnAddPayment.Location = new System.Drawing.Point(453, 28);
+            this.btnAddPayment.Location = new System.Drawing.Point(547, 35);
+            this.btnAddPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddPayment.Name = "btnAddPayment";
-            this.btnAddPayment.Size = new System.Drawing.Size(61, 23);
+            this.btnAddPayment.Size = new System.Drawing.Size(81, 28);
             this.btnAddPayment.TabIndex = 3;
             this.btnAddPayment.Text = "Add";
             this.btnAddPayment.UseVisualStyleBackColor = true;
@@ -208,10 +187,9 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(519, 29);
-            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalAmount.Location = new System.Drawing.Point(692, 36);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(292, 23);
+            this.lblTotalAmount.Size = new System.Drawing.Size(389, 28);
             this.lblTotalAmount.TabIndex = 108;
             this.lblTotalAmount.Text = "lblTotalAmount";
             this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -219,10 +197,9 @@
             // lblCreditBalance
             // 
             this.lblCreditBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCreditBalance.Location = new System.Drawing.Point(396, 13);
-            this.lblCreditBalance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCreditBalance.Location = new System.Drawing.Point(528, 16);
             this.lblCreditBalance.Name = "lblCreditBalance";
-            this.lblCreditBalance.Size = new System.Drawing.Size(396, 13);
+            this.lblCreditBalance.Size = new System.Drawing.Size(528, 16);
             this.lblCreditBalance.TabIndex = 109;
             this.lblCreditBalance.Text = "lblCreditBalance";
             this.lblCreditBalance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -235,10 +212,10 @@
             this.btnAddCredit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddCredit.FlatAppearance.BorderSize = 0;
             this.btnAddCredit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCredit.Location = new System.Drawing.Point(793, 11);
-            this.btnAddCredit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddCredit.Location = new System.Drawing.Point(1057, 14);
+            this.btnAddCredit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddCredit.Name = "btnAddCredit";
-            this.btnAddCredit.Size = new System.Drawing.Size(15, 16);
+            this.btnAddCredit.Size = new System.Drawing.Size(20, 20);
             this.btnAddCredit.TabIndex = 120;
             this.btnAddCredit.UseVisualStyleBackColor = false;
             this.btnAddCredit.Click += new System.EventHandler(this.btnAddCredit_Click);
@@ -254,7 +231,8 @@
             0,
             0});
             this.in_PaymentAmount.LabelText = "Amount";
-            this.in_PaymentAmount.Location = new System.Drawing.Point(102, 12);
+            this.in_PaymentAmount.Location = new System.Drawing.Point(126, 12);
+            this.in_PaymentAmount.Margin = new System.Windows.Forms.Padding(5);
             this.in_PaymentAmount.MaximumValue = new decimal(new int[] {
             1000000000,
             0,
@@ -266,66 +244,77 @@
             0,
             -2147483648});
             this.in_PaymentAmount.Name = "in_PaymentAmount";
-            this.in_PaymentAmount.ShowCheckbox = false;
             this.in_PaymentAmount.ShowAllowDecimalCheckbox = false;
+            this.in_PaymentAmount.ShowCheckbox = false;
             this.in_PaymentAmount.ShowTextboxOnly = false;
-            this.in_PaymentAmount.Size = new System.Drawing.Size(111, 40);
-            this.in_PaymentAmount.TabIndex = 1;
+            this.in_PaymentAmount.Size = new System.Drawing.Size(148, 50);
+            this.in_PaymentAmount.TabIndex = 121;
             this.in_PaymentAmount.Value = new decimal(new int[] {
             0,
             0,
             0,
             0});
             // 
-            // label2
+            // iddl_PaymentMethods
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 16);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 107;
-            this.label2.Text = "Notes";
+            this.iddl_PaymentMethods.DisableTextInput = false;
+            this.iddl_PaymentMethods.HideFilter = true;
+            this.iddl_PaymentMethods.HideUpdateLink = true;
+            this.iddl_PaymentMethods.LabelText = "Method";
+            this.iddl_PaymentMethods.Location = new System.Drawing.Point(19, 12);
+            this.iddl_PaymentMethods.Margin = new System.Windows.Forms.Padding(5);
+            this.iddl_PaymentMethods.Name = "iddl_PaymentMethods";
+            this.iddl_PaymentMethods.SelectedIndex = -1;
+            this.iddl_PaymentMethods.SelectedItem = null;
+            this.iddl_PaymentMethods.SelectedItemText = "";
+            this.iddl_PaymentMethods.SelectedValue = null;
+            this.iddl_PaymentMethods.ShowDropdownlistOnly = false;
+            this.iddl_PaymentMethods.Size = new System.Drawing.Size(99, 50);
+            this.iddl_PaymentMethods.TabIndex = 138;
             // 
-            // txtNotes
+            // itxt_Notes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(218, 30);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNotes.MaxLength = 500;
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(232, 20);
-            this.txtNotes.TabIndex = 2;
+            this.itxt_Notes.IsBrowseMode = false;
+            this.itxt_Notes.LabelText = "Notes";
+            this.itxt_Notes.Location = new System.Drawing.Point(282, 13);
+            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(4);
+            this.itxt_Notes.MaxLength = 32767;
+            this.itxt_Notes.MultiLine = false;
+            this.itxt_Notes.Name = "itxt_Notes";
+            this.itxt_Notes.PasswordChar = '\0';
+            this.itxt_Notes.RowCount = 1;
+            this.itxt_Notes.ShowDeleteButton = true;
+            this.itxt_Notes.ShowFilter = false;
+            this.itxt_Notes.ShowTextboxOnly = false;
+            this.itxt_Notes.Size = new System.Drawing.Size(257, 50);
+            this.itxt_Notes.TabIndex = 140;
+            this.itxt_Notes.ValueText = "";
             // 
             // Payment_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 326);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1100, 401);
+            this.Controls.Add(this.itxt_Notes);
+            this.Controls.Add(this.iddl_PaymentMethods);
             this.Controls.Add(this.in_PaymentAmount);
             this.Controls.Add(this.btnAddCredit);
             this.Controls.Add(this.lblCreditBalance);
             this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.btnAddPayment);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbPaymentMethods);
             this.Controls.Add(this.grid);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Payment_Form";
             this.Text = "Payment";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payment_Form_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.ComboBox cbPaymentMethods;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAddPayment;
         private System.Windows.Forms.Label lblTotalAmount;
         private System.Windows.Forms.Label lblCreditBalance;
@@ -339,7 +328,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_notes;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_Checked;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_PaymentAmount;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNotes;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_PaymentMethods;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Notes;
     }
 }

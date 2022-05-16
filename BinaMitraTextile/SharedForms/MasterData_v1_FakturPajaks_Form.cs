@@ -272,7 +272,7 @@ namespace BinaMitraTextile.SharedForms
         protected override void btnLog_Click(object sender, EventArgs e)
         {
             Util.displayForm(null, new Logs.Main_Form(selectedRowID()));
-            txtQuickSearch.Focus();
+            itxt_QuickSearch.Focus();
         }
 
         protected override void updateDefaultRow(Guid id) { }

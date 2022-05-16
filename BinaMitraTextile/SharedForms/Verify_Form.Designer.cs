@@ -38,9 +38,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(13, 12);
+            this.btnClose.Location = new System.Drawing.Point(83, 15);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(100, 28);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "CLOSE";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             this.lblCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCode.ForeColor = System.Drawing.Color.Red;
-            this.lblCode.Location = new System.Drawing.Point(4, 18);
+            this.lblCode.Location = new System.Drawing.Point(5, 22);
+            this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(412, 108);
+            this.lblCode.Size = new System.Drawing.Size(549, 133);
             this.lblCode.TabIndex = 2;
             this.lblCode.Text = "[Code]";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -62,9 +64,10 @@
             // 
             this.pnlButtons.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlButtons.Controls.Add(this.btnClose);
-            this.pnlButtons.Location = new System.Drawing.Point(297, 161);
+            this.pnlButtons.Location = new System.Drawing.Point(385, 198);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(200, 49);
+            this.pnlButtons.Size = new System.Drawing.Size(267, 60);
             this.pnlButtons.TabIndex = 0;
             // 
             // lblLength
@@ -72,9 +75,10 @@
             this.lblLength.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLength.ForeColor = System.Drawing.Color.Blue;
-            this.lblLength.Location = new System.Drawing.Point(404, 18);
+            this.lblLength.Location = new System.Drawing.Point(539, 22);
+            this.lblLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLength.Name = "lblLength";
-            this.lblLength.Size = new System.Drawing.Size(371, 108);
+            this.lblLength.Size = new System.Drawing.Size(495, 133);
             this.lblLength.TabIndex = 5;
             this.lblLength.Text = "Length";
             this.lblLength.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -86,12 +90,12 @@
             // 
             // Verify_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 225);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1037, 277);
             this.Controls.Add(this.lblLength);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.lblCode);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Verify_Form";
             this.Text = "Verify";
             this.pnlButtons.ResumeLayout(false);

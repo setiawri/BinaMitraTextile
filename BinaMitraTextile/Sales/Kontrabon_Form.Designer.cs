@@ -34,9 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridKontrabon = new System.Windows.Forms.DataGridView();
-            this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
             this.col_gridKontrabon_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridKontrabon_Create_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridKontrabon_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +44,9 @@
             this.col_gridKontrabon_Sent_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridKontrabon_FollowUpDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridKontrabon_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridKontrabon)).BeginInit();
             this.flpButtons.SuspendLayout();
             this.SuspendLayout();
@@ -80,8 +80,8 @@
             this.col_gridKontrabon_FollowUpDate,
             this.col_gridKontrabon_Notes});
             this.gridKontrabon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridKontrabon.Location = new System.Drawing.Point(0, 30);
-            this.gridKontrabon.Margin = new System.Windows.Forms.Padding(2);
+            this.gridKontrabon.Location = new System.Drawing.Point(0, 36);
+            this.gridKontrabon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridKontrabon.MultiSelect = false;
             this.gridKontrabon.Name = "gridKontrabon";
             this.gridKontrabon.ReadOnly = true;
@@ -89,40 +89,8 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridKontrabon.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.gridKontrabon.RowTemplate.Height = 24;
-            this.gridKontrabon.Size = new System.Drawing.Size(800, 420);
+            this.gridKontrabon.Size = new System.Drawing.Size(1067, 518);
             this.gridKontrabon.TabIndex = 114;
-            // 
-            // flpButtons
-            // 
-            this.flpButtons.BackColor = System.Drawing.SystemColors.Control;
-            this.flpButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpButtons.Controls.Add(this.btnAdd);
-            this.flpButtons.Controls.Add(this.btnLog);
-            this.flpButtons.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpButtons.Location = new System.Drawing.Point(0, 0);
-            this.flpButtons.Name = "flpButtons";
-            this.flpButtons.Size = new System.Drawing.Size(800, 30);
-            this.flpButtons.TabIndex = 125;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(73, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "ADD NEW";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLog.Location = new System.Drawing.Point(82, 3);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(87, 23);
-            this.btnLog.TabIndex = 4;
-            this.btnLog.Text = "LOG";
-            this.btnLog.UseVisualStyleBackColor = true;
             // 
             // col_gridKontrabon_Id
             // 
@@ -161,7 +129,6 @@
             this.col_gridKontrabon_Customers_Id.Name = "col_gridKontrabon_Customers_Id";
             this.col_gridKontrabon_Customers_Id.ReadOnly = true;
             this.col_gridKontrabon_Customers_Id.Visible = false;
-            this.col_gridKontrabon_Customers_Id.Width = 5;
             // 
             // col_gridKontrabon_Customers_Name
             // 
@@ -225,13 +192,48 @@
             this.col_gridKontrabon_Notes.Name = "col_gridKontrabon_Notes";
             this.col_gridKontrabon_Notes.ReadOnly = true;
             // 
+            // flpButtons
+            // 
+            this.flpButtons.BackColor = System.Drawing.SystemColors.Control;
+            this.flpButtons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpButtons.Controls.Add(this.btnAdd);
+            this.flpButtons.Controls.Add(this.btnLog);
+            this.flpButtons.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpButtons.Location = new System.Drawing.Point(0, 0);
+            this.flpButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpButtons.Name = "flpButtons";
+            this.flpButtons.Size = new System.Drawing.Size(1067, 36);
+            this.flpButtons.TabIndex = 125;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(4, 4);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(97, 28);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "ADD NEW";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnLog
+            // 
+            this.btnLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLog.Location = new System.Drawing.Point(109, 4);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(116, 28);
+            this.btnLog.TabIndex = 4;
+            this.btnLog.Text = "LOG";
+            this.btnLog.UseVisualStyleBackColor = true;
+            // 
             // Kontrabon_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.gridKontrabon);
             this.Controls.Add(this.flpButtons);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Kontrabon_Form";
             this.Text = "KONTRABON";
             this.Load += new System.EventHandler(this.Form_Load);

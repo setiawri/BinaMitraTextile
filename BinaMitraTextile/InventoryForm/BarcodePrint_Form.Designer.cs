@@ -30,6 +30,46 @@
         {
             this.btnPrint = new System.Windows.Forms.Button();
             this.pnlPrint = new System.Windows.Forms.Panel();
+            this.barcodeUC21 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC22 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC23 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC24 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC25 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC26 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC27 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC28 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC29 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC30 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC31 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC32 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC33 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC34 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC35 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC36 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC37 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC38 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC39 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC40 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC16 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC17 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC18 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC19 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC20 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC11 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC12 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC13 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC14 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC15 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC6 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC7 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC8 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC9 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC10 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC5 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC4 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC3 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC2 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC1 = new BinaMitraTextile.BarcodeUC();
             this.txtStartHex = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -85,46 +125,6 @@
             this.in_ManualOffsetX = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.in_ManualOffsetY = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.chkLabel107 = new System.Windows.Forms.CheckBox();
-            this.barcodeUC21 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC22 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC23 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC24 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC25 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC26 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC27 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC28 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC29 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC30 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC31 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC32 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC33 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC34 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC35 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC36 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC37 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC38 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC39 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC40 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC16 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC17 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC18 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC19 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC20 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC11 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC12 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC13 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC14 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC15 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC6 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC7 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC8 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC9 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC10 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC5 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC4 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC3 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC2 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC1 = new BinaMitraTextile.BarcodeUC();
             this.pnlPrint.SuspendLayout();
             this.pnlManualInput.SuspendLayout();
             this.pnlAutomaticInput.SuspendLayout();
@@ -188,6 +188,326 @@
             this.pnlPrint.Name = "pnlPrint";
             this.pnlPrint.Size = new System.Drawing.Size(1101, 745);
             this.pnlPrint.TabIndex = 2;
+            // 
+            // barcodeUC21
+            // 
+            this.barcodeUC21.Location = new System.Drawing.Point(820, 544);
+            this.barcodeUC21.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC21.Name = "barcodeUC21";
+            this.barcodeUC21.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC21.TabIndex = 119;
+            // 
+            // barcodeUC22
+            // 
+            this.barcodeUC22.Location = new System.Drawing.Point(615, 544);
+            this.barcodeUC22.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC22.Name = "barcodeUC22";
+            this.barcodeUC22.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC22.TabIndex = 118;
+            // 
+            // barcodeUC23
+            // 
+            this.barcodeUC23.Location = new System.Drawing.Point(411, 544);
+            this.barcodeUC23.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC23.Name = "barcodeUC23";
+            this.barcodeUC23.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC23.TabIndex = 117;
+            // 
+            // barcodeUC24
+            // 
+            this.barcodeUC24.Location = new System.Drawing.Point(205, 544);
+            this.barcodeUC24.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC24.Name = "barcodeUC24";
+            this.barcodeUC24.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC24.TabIndex = 116;
+            // 
+            // barcodeUC25
+            // 
+            this.barcodeUC25.Location = new System.Drawing.Point(17, 544);
+            this.barcodeUC25.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC25.Name = "barcodeUC25";
+            this.barcodeUC25.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC25.TabIndex = 115;
+            // 
+            // barcodeUC26
+            // 
+            this.barcodeUC26.Location = new System.Drawing.Point(820, 469);
+            this.barcodeUC26.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC26.Name = "barcodeUC26";
+            this.barcodeUC26.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC26.TabIndex = 114;
+            // 
+            // barcodeUC27
+            // 
+            this.barcodeUC27.Location = new System.Drawing.Point(615, 469);
+            this.barcodeUC27.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC27.Name = "barcodeUC27";
+            this.barcodeUC27.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC27.TabIndex = 113;
+            // 
+            // barcodeUC28
+            // 
+            this.barcodeUC28.Location = new System.Drawing.Point(411, 469);
+            this.barcodeUC28.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC28.Name = "barcodeUC28";
+            this.barcodeUC28.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC28.TabIndex = 112;
+            // 
+            // barcodeUC29
+            // 
+            this.barcodeUC29.Location = new System.Drawing.Point(205, 469);
+            this.barcodeUC29.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC29.Name = "barcodeUC29";
+            this.barcodeUC29.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC29.TabIndex = 111;
+            // 
+            // barcodeUC30
+            // 
+            this.barcodeUC30.Location = new System.Drawing.Point(17, 469);
+            this.barcodeUC30.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC30.Name = "barcodeUC30";
+            this.barcodeUC30.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC30.TabIndex = 110;
+            // 
+            // barcodeUC31
+            // 
+            this.barcodeUC31.Location = new System.Drawing.Point(820, 394);
+            this.barcodeUC31.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC31.Name = "barcodeUC31";
+            this.barcodeUC31.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC31.TabIndex = 109;
+            // 
+            // barcodeUC32
+            // 
+            this.barcodeUC32.Location = new System.Drawing.Point(615, 394);
+            this.barcodeUC32.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC32.Name = "barcodeUC32";
+            this.barcodeUC32.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC32.TabIndex = 108;
+            // 
+            // barcodeUC33
+            // 
+            this.barcodeUC33.Location = new System.Drawing.Point(411, 394);
+            this.barcodeUC33.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC33.Name = "barcodeUC33";
+            this.barcodeUC33.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC33.TabIndex = 107;
+            // 
+            // barcodeUC34
+            // 
+            this.barcodeUC34.Location = new System.Drawing.Point(205, 394);
+            this.barcodeUC34.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC34.Name = "barcodeUC34";
+            this.barcodeUC34.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC34.TabIndex = 106;
+            // 
+            // barcodeUC35
+            // 
+            this.barcodeUC35.Location = new System.Drawing.Point(17, 394);
+            this.barcodeUC35.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC35.Name = "barcodeUC35";
+            this.barcodeUC35.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC35.TabIndex = 105;
+            // 
+            // barcodeUC36
+            // 
+            this.barcodeUC36.Location = new System.Drawing.Point(820, 319);
+            this.barcodeUC36.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC36.Name = "barcodeUC36";
+            this.barcodeUC36.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC36.TabIndex = 104;
+            // 
+            // barcodeUC37
+            // 
+            this.barcodeUC37.Location = new System.Drawing.Point(615, 319);
+            this.barcodeUC37.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC37.Name = "barcodeUC37";
+            this.barcodeUC37.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC37.TabIndex = 103;
+            // 
+            // barcodeUC38
+            // 
+            this.barcodeUC38.Location = new System.Drawing.Point(411, 319);
+            this.barcodeUC38.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC38.Name = "barcodeUC38";
+            this.barcodeUC38.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC38.TabIndex = 102;
+            // 
+            // barcodeUC39
+            // 
+            this.barcodeUC39.Location = new System.Drawing.Point(205, 319);
+            this.barcodeUC39.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC39.Name = "barcodeUC39";
+            this.barcodeUC39.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC39.TabIndex = 101;
+            // 
+            // barcodeUC40
+            // 
+            this.barcodeUC40.Location = new System.Drawing.Point(17, 319);
+            this.barcodeUC40.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC40.Name = "barcodeUC40";
+            this.barcodeUC40.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC40.TabIndex = 100;
+            // 
+            // barcodeUC16
+            // 
+            this.barcodeUC16.Location = new System.Drawing.Point(820, 244);
+            this.barcodeUC16.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC16.Name = "barcodeUC16";
+            this.barcodeUC16.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC16.TabIndex = 99;
+            // 
+            // barcodeUC17
+            // 
+            this.barcodeUC17.Location = new System.Drawing.Point(615, 244);
+            this.barcodeUC17.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC17.Name = "barcodeUC17";
+            this.barcodeUC17.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC17.TabIndex = 98;
+            // 
+            // barcodeUC18
+            // 
+            this.barcodeUC18.Location = new System.Drawing.Point(411, 244);
+            this.barcodeUC18.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC18.Name = "barcodeUC18";
+            this.barcodeUC18.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC18.TabIndex = 97;
+            // 
+            // barcodeUC19
+            // 
+            this.barcodeUC19.Location = new System.Drawing.Point(205, 244);
+            this.barcodeUC19.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC19.Name = "barcodeUC19";
+            this.barcodeUC19.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC19.TabIndex = 96;
+            // 
+            // barcodeUC20
+            // 
+            this.barcodeUC20.Location = new System.Drawing.Point(17, 244);
+            this.barcodeUC20.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC20.Name = "barcodeUC20";
+            this.barcodeUC20.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC20.TabIndex = 95;
+            // 
+            // barcodeUC11
+            // 
+            this.barcodeUC11.Location = new System.Drawing.Point(820, 169);
+            this.barcodeUC11.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC11.Name = "barcodeUC11";
+            this.barcodeUC11.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC11.TabIndex = 94;
+            // 
+            // barcodeUC12
+            // 
+            this.barcodeUC12.Location = new System.Drawing.Point(615, 169);
+            this.barcodeUC12.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC12.Name = "barcodeUC12";
+            this.barcodeUC12.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC12.TabIndex = 93;
+            // 
+            // barcodeUC13
+            // 
+            this.barcodeUC13.Location = new System.Drawing.Point(411, 169);
+            this.barcodeUC13.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC13.Name = "barcodeUC13";
+            this.barcodeUC13.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC13.TabIndex = 92;
+            // 
+            // barcodeUC14
+            // 
+            this.barcodeUC14.Location = new System.Drawing.Point(205, 169);
+            this.barcodeUC14.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC14.Name = "barcodeUC14";
+            this.barcodeUC14.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC14.TabIndex = 91;
+            // 
+            // barcodeUC15
+            // 
+            this.barcodeUC15.Location = new System.Drawing.Point(17, 169);
+            this.barcodeUC15.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC15.Name = "barcodeUC15";
+            this.barcodeUC15.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC15.TabIndex = 90;
+            // 
+            // barcodeUC6
+            // 
+            this.barcodeUC6.Location = new System.Drawing.Point(820, 94);
+            this.barcodeUC6.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC6.Name = "barcodeUC6";
+            this.barcodeUC6.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC6.TabIndex = 89;
+            // 
+            // barcodeUC7
+            // 
+            this.barcodeUC7.Location = new System.Drawing.Point(615, 94);
+            this.barcodeUC7.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC7.Name = "barcodeUC7";
+            this.barcodeUC7.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC7.TabIndex = 88;
+            // 
+            // barcodeUC8
+            // 
+            this.barcodeUC8.Location = new System.Drawing.Point(411, 94);
+            this.barcodeUC8.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC8.Name = "barcodeUC8";
+            this.barcodeUC8.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC8.TabIndex = 87;
+            // 
+            // barcodeUC9
+            // 
+            this.barcodeUC9.Location = new System.Drawing.Point(205, 94);
+            this.barcodeUC9.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC9.Name = "barcodeUC9";
+            this.barcodeUC9.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC9.TabIndex = 86;
+            // 
+            // barcodeUC10
+            // 
+            this.barcodeUC10.Location = new System.Drawing.Point(17, 94);
+            this.barcodeUC10.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC10.Name = "barcodeUC10";
+            this.barcodeUC10.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC10.TabIndex = 85;
+            // 
+            // barcodeUC5
+            // 
+            this.barcodeUC5.Location = new System.Drawing.Point(820, 18);
+            this.barcodeUC5.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC5.Name = "barcodeUC5";
+            this.barcodeUC5.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC5.TabIndex = 84;
+            // 
+            // barcodeUC4
+            // 
+            this.barcodeUC4.Location = new System.Drawing.Point(615, 18);
+            this.barcodeUC4.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC4.Name = "barcodeUC4";
+            this.barcodeUC4.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC4.TabIndex = 83;
+            // 
+            // barcodeUC3
+            // 
+            this.barcodeUC3.Location = new System.Drawing.Point(411, 18);
+            this.barcodeUC3.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC3.Name = "barcodeUC3";
+            this.barcodeUC3.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC3.TabIndex = 82;
+            // 
+            // barcodeUC2
+            // 
+            this.barcodeUC2.Location = new System.Drawing.Point(205, 18);
+            this.barcodeUC2.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC2.Name = "barcodeUC2";
+            this.barcodeUC2.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC2.TabIndex = 81;
+            // 
+            // barcodeUC1
+            // 
+            this.barcodeUC1.Location = new System.Drawing.Point(17, 18);
+            this.barcodeUC1.Margin = new System.Windows.Forms.Padding(5);
+            this.barcodeUC1.Name = "barcodeUC1";
+            this.barcodeUC1.Size = new System.Drawing.Size(183, 62);
+            this.barcodeUC1.TabIndex = 80;
             // 
             // txtStartHex
             // 
@@ -645,7 +965,7 @@
             this.chkManualInput.Location = new System.Drawing.Point(20, 41);
             this.chkManualInput.Margin = new System.Windows.Forms.Padding(4);
             this.chkManualInput.Name = "chkManualInput";
-            this.chkManualInput.Size = new System.Drawing.Size(104, 20);
+            this.chkManualInput.Size = new System.Drawing.Size(101, 20);
             this.chkManualInput.TabIndex = 2;
             this.chkManualInput.Text = "Manual Input";
             this.chkManualInput.UseVisualStyleBackColor = true;
@@ -717,7 +1037,7 @@
             this.chkPrintExisting.Location = new System.Drawing.Point(245, 41);
             this.chkPrintExisting.Margin = new System.Windows.Forms.Padding(4);
             this.chkPrintExisting.Name = "chkPrintExisting";
-            this.chkPrintExisting.Size = new System.Drawing.Size(104, 20);
+            this.chkPrintExisting.Size = new System.Drawing.Size(101, 20);
             this.chkPrintExisting.TabIndex = 5;
             this.chkPrintExisting.Text = "Print Existing";
             this.chkPrintExisting.UseVisualStyleBackColor = true;
@@ -729,7 +1049,7 @@
             this.chkShowPrintDialog.Location = new System.Drawing.Point(107, 114);
             this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowPrintDialog.Name = "chkShowPrintDialog";
-            this.chkShowPrintDialog.Size = new System.Drawing.Size(95, 20);
+            this.chkShowPrintDialog.Size = new System.Drawing.Size(92, 20);
             this.chkShowPrintDialog.TabIndex = 112;
             this.chkShowPrintDialog.Text = "print dialog";
             this.chkShowPrintDialog.UseVisualStyleBackColor = true;
@@ -856,336 +1176,15 @@
             this.chkLabel107.Location = new System.Drawing.Point(154, 225);
             this.chkLabel107.Margin = new System.Windows.Forms.Padding(4);
             this.chkLabel107.Name = "chkLabel107";
-            this.chkLabel107.Size = new System.Drawing.Size(87, 20);
+            this.chkLabel107.Size = new System.Drawing.Size(84, 20);
             this.chkLabel107.TabIndex = 116;
             this.chkLabel107.Text = "Label 107";
             this.chkLabel107.UseVisualStyleBackColor = true;
             this.chkLabel107.CheckedChanged += new System.EventHandler(this.chkLabel107_CheckedChanged);
             // 
-            // barcodeUC21
-            // 
-            this.barcodeUC21.Location = new System.Drawing.Point(820, 544);
-            this.barcodeUC21.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC21.Name = "barcodeUC21";
-            this.barcodeUC21.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC21.TabIndex = 119;
-            // 
-            // barcodeUC22
-            // 
-            this.barcodeUC22.Location = new System.Drawing.Point(615, 544);
-            this.barcodeUC22.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC22.Name = "barcodeUC22";
-            this.barcodeUC22.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC22.TabIndex = 118;
-            // 
-            // barcodeUC23
-            // 
-            this.barcodeUC23.Location = new System.Drawing.Point(411, 544);
-            this.barcodeUC23.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC23.Name = "barcodeUC23";
-            this.barcodeUC23.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC23.TabIndex = 117;
-            // 
-            // barcodeUC24
-            // 
-            this.barcodeUC24.Location = new System.Drawing.Point(205, 544);
-            this.barcodeUC24.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC24.Name = "barcodeUC24";
-            this.barcodeUC24.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC24.TabIndex = 116;
-            // 
-            // barcodeUC25
-            // 
-            this.barcodeUC25.Location = new System.Drawing.Point(17, 544);
-            this.barcodeUC25.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC25.Name = "barcodeUC25";
-            this.barcodeUC25.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC25.TabIndex = 115;
-            // 
-            // barcodeUC26
-            // 
-            this.barcodeUC26.Location = new System.Drawing.Point(820, 469);
-            this.barcodeUC26.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC26.Name = "barcodeUC26";
-            this.barcodeUC26.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC26.TabIndex = 114;
-            // 
-            // barcodeUC27
-            // 
-            this.barcodeUC27.Location = new System.Drawing.Point(615, 469);
-            this.barcodeUC27.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC27.Name = "barcodeUC27";
-            this.barcodeUC27.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC27.TabIndex = 113;
-            // 
-            // barcodeUC28
-            // 
-            this.barcodeUC28.Location = new System.Drawing.Point(411, 469);
-            this.barcodeUC28.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC28.Name = "barcodeUC28";
-            this.barcodeUC28.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC28.TabIndex = 112;
-            // 
-            // barcodeUC29
-            // 
-            this.barcodeUC29.Location = new System.Drawing.Point(205, 469);
-            this.barcodeUC29.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC29.Name = "barcodeUC29";
-            this.barcodeUC29.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC29.TabIndex = 111;
-            // 
-            // barcodeUC30
-            // 
-            this.barcodeUC30.Location = new System.Drawing.Point(17, 469);
-            this.barcodeUC30.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC30.Name = "barcodeUC30";
-            this.barcodeUC30.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC30.TabIndex = 110;
-            // 
-            // barcodeUC31
-            // 
-            this.barcodeUC31.Location = new System.Drawing.Point(820, 394);
-            this.barcodeUC31.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC31.Name = "barcodeUC31";
-            this.barcodeUC31.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC31.TabIndex = 109;
-            // 
-            // barcodeUC32
-            // 
-            this.barcodeUC32.Location = new System.Drawing.Point(615, 394);
-            this.barcodeUC32.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC32.Name = "barcodeUC32";
-            this.barcodeUC32.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC32.TabIndex = 108;
-            // 
-            // barcodeUC33
-            // 
-            this.barcodeUC33.Location = new System.Drawing.Point(411, 394);
-            this.barcodeUC33.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC33.Name = "barcodeUC33";
-            this.barcodeUC33.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC33.TabIndex = 107;
-            // 
-            // barcodeUC34
-            // 
-            this.barcodeUC34.Location = new System.Drawing.Point(205, 394);
-            this.barcodeUC34.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC34.Name = "barcodeUC34";
-            this.barcodeUC34.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC34.TabIndex = 106;
-            // 
-            // barcodeUC35
-            // 
-            this.barcodeUC35.Location = new System.Drawing.Point(17, 394);
-            this.barcodeUC35.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC35.Name = "barcodeUC35";
-            this.barcodeUC35.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC35.TabIndex = 105;
-            // 
-            // barcodeUC36
-            // 
-            this.barcodeUC36.Location = new System.Drawing.Point(820, 319);
-            this.barcodeUC36.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC36.Name = "barcodeUC36";
-            this.barcodeUC36.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC36.TabIndex = 104;
-            // 
-            // barcodeUC37
-            // 
-            this.barcodeUC37.Location = new System.Drawing.Point(615, 319);
-            this.barcodeUC37.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC37.Name = "barcodeUC37";
-            this.barcodeUC37.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC37.TabIndex = 103;
-            // 
-            // barcodeUC38
-            // 
-            this.barcodeUC38.Location = new System.Drawing.Point(411, 319);
-            this.barcodeUC38.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC38.Name = "barcodeUC38";
-            this.barcodeUC38.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC38.TabIndex = 102;
-            // 
-            // barcodeUC39
-            // 
-            this.barcodeUC39.Location = new System.Drawing.Point(205, 319);
-            this.barcodeUC39.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC39.Name = "barcodeUC39";
-            this.barcodeUC39.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC39.TabIndex = 101;
-            // 
-            // barcodeUC40
-            // 
-            this.barcodeUC40.Location = new System.Drawing.Point(17, 319);
-            this.barcodeUC40.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC40.Name = "barcodeUC40";
-            this.barcodeUC40.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC40.TabIndex = 100;
-            // 
-            // barcodeUC16
-            // 
-            this.barcodeUC16.Location = new System.Drawing.Point(820, 244);
-            this.barcodeUC16.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC16.Name = "barcodeUC16";
-            this.barcodeUC16.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC16.TabIndex = 99;
-            // 
-            // barcodeUC17
-            // 
-            this.barcodeUC17.Location = new System.Drawing.Point(615, 244);
-            this.barcodeUC17.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC17.Name = "barcodeUC17";
-            this.barcodeUC17.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC17.TabIndex = 98;
-            // 
-            // barcodeUC18
-            // 
-            this.barcodeUC18.Location = new System.Drawing.Point(411, 244);
-            this.barcodeUC18.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC18.Name = "barcodeUC18";
-            this.barcodeUC18.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC18.TabIndex = 97;
-            // 
-            // barcodeUC19
-            // 
-            this.barcodeUC19.Location = new System.Drawing.Point(205, 244);
-            this.barcodeUC19.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC19.Name = "barcodeUC19";
-            this.barcodeUC19.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC19.TabIndex = 96;
-            // 
-            // barcodeUC20
-            // 
-            this.barcodeUC20.Location = new System.Drawing.Point(17, 244);
-            this.barcodeUC20.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC20.Name = "barcodeUC20";
-            this.barcodeUC20.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC20.TabIndex = 95;
-            // 
-            // barcodeUC11
-            // 
-            this.barcodeUC11.Location = new System.Drawing.Point(820, 169);
-            this.barcodeUC11.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC11.Name = "barcodeUC11";
-            this.barcodeUC11.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC11.TabIndex = 94;
-            // 
-            // barcodeUC12
-            // 
-            this.barcodeUC12.Location = new System.Drawing.Point(615, 169);
-            this.barcodeUC12.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC12.Name = "barcodeUC12";
-            this.barcodeUC12.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC12.TabIndex = 93;
-            // 
-            // barcodeUC13
-            // 
-            this.barcodeUC13.Location = new System.Drawing.Point(411, 169);
-            this.barcodeUC13.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC13.Name = "barcodeUC13";
-            this.barcodeUC13.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC13.TabIndex = 92;
-            // 
-            // barcodeUC14
-            // 
-            this.barcodeUC14.Location = new System.Drawing.Point(205, 169);
-            this.barcodeUC14.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC14.Name = "barcodeUC14";
-            this.barcodeUC14.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC14.TabIndex = 91;
-            // 
-            // barcodeUC15
-            // 
-            this.barcodeUC15.Location = new System.Drawing.Point(17, 169);
-            this.barcodeUC15.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC15.Name = "barcodeUC15";
-            this.barcodeUC15.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC15.TabIndex = 90;
-            // 
-            // barcodeUC6
-            // 
-            this.barcodeUC6.Location = new System.Drawing.Point(820, 94);
-            this.barcodeUC6.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC6.Name = "barcodeUC6";
-            this.barcodeUC6.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC6.TabIndex = 89;
-            // 
-            // barcodeUC7
-            // 
-            this.barcodeUC7.Location = new System.Drawing.Point(615, 94);
-            this.barcodeUC7.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC7.Name = "barcodeUC7";
-            this.barcodeUC7.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC7.TabIndex = 88;
-            // 
-            // barcodeUC8
-            // 
-            this.barcodeUC8.Location = new System.Drawing.Point(411, 94);
-            this.barcodeUC8.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC8.Name = "barcodeUC8";
-            this.barcodeUC8.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC8.TabIndex = 87;
-            // 
-            // barcodeUC9
-            // 
-            this.barcodeUC9.Location = new System.Drawing.Point(205, 94);
-            this.barcodeUC9.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC9.Name = "barcodeUC9";
-            this.barcodeUC9.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC9.TabIndex = 86;
-            // 
-            // barcodeUC10
-            // 
-            this.barcodeUC10.Location = new System.Drawing.Point(17, 94);
-            this.barcodeUC10.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC10.Name = "barcodeUC10";
-            this.barcodeUC10.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC10.TabIndex = 85;
-            // 
-            // barcodeUC5
-            // 
-            this.barcodeUC5.Location = new System.Drawing.Point(820, 18);
-            this.barcodeUC5.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC5.Name = "barcodeUC5";
-            this.barcodeUC5.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC5.TabIndex = 84;
-            // 
-            // barcodeUC4
-            // 
-            this.barcodeUC4.Location = new System.Drawing.Point(615, 18);
-            this.barcodeUC4.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC4.Name = "barcodeUC4";
-            this.barcodeUC4.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC4.TabIndex = 83;
-            // 
-            // barcodeUC3
-            // 
-            this.barcodeUC3.Location = new System.Drawing.Point(411, 18);
-            this.barcodeUC3.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC3.Name = "barcodeUC3";
-            this.barcodeUC3.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC3.TabIndex = 82;
-            // 
-            // barcodeUC2
-            // 
-            this.barcodeUC2.Location = new System.Drawing.Point(205, 18);
-            this.barcodeUC2.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC2.Name = "barcodeUC2";
-            this.barcodeUC2.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC2.TabIndex = 81;
-            // 
-            // barcodeUC1
-            // 
-            this.barcodeUC1.Location = new System.Drawing.Point(17, 18);
-            this.barcodeUC1.Margin = new System.Windows.Forms.Padding(5);
-            this.barcodeUC1.Name = "barcodeUC1";
-            this.barcodeUC1.Size = new System.Drawing.Size(183, 62);
-            this.barcodeUC1.TabIndex = 80;
-            // 
             // BarcodePrint_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1133, 912);
             this.Controls.Add(this.chkLabel107);

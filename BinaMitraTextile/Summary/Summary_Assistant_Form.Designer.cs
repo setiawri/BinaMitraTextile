@@ -58,13 +58,15 @@
             // 
             this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scMain.Location = new System.Drawing.Point(0, 0);
+            this.scMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.scMain.Name = "scMain";
             // 
             // scMain.Panel1
             // 
             this.scMain.Panel1.Controls.Add(this.pnlFakturPajakRetur);
-            this.scMain.Size = new System.Drawing.Size(726, 448);
-            this.scMain.SplitterDistance = 363;
+            this.scMain.Size = new System.Drawing.Size(968, 551);
+            this.scMain.SplitterDistance = 484;
+            this.scMain.SplitterWidth = 5;
             this.scMain.TabIndex = 0;
             // 
             // pnlFakturPajakRetur
@@ -73,8 +75,9 @@
             this.pnlFakturPajakRetur.Controls.Add(this.lblFakturPajakRetur);
             this.pnlFakturPajakRetur.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFakturPajakRetur.Location = new System.Drawing.Point(0, 0);
+            this.pnlFakturPajakRetur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlFakturPajakRetur.Name = "pnlFakturPajakRetur";
-            this.pnlFakturPajakRetur.Size = new System.Drawing.Size(363, 125);
+            this.pnlFakturPajakRetur.Size = new System.Drawing.Size(484, 154);
             this.pnlFakturPajakRetur.TabIndex = 0;
             // 
             // gridSaleInvoices
@@ -104,8 +107,8 @@
             this.col_gridSaleInvoices_FakturPajaks_Id,
             this.col_gridSaleInvoices_FakturPajaks_No});
             this.gridSaleInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridSaleInvoices.Location = new System.Drawing.Point(0, 23);
-            this.gridSaleInvoices.Margin = new System.Windows.Forms.Padding(2);
+            this.gridSaleInvoices.Location = new System.Drawing.Point(0, 28);
+            this.gridSaleInvoices.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridSaleInvoices.MultiSelect = false;
             this.gridSaleInvoices.Name = "gridSaleInvoices";
             this.gridSaleInvoices.ReadOnly = true;
@@ -113,7 +116,7 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(363, 102);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(484, 126);
             this.gridSaleInvoices.TabIndex = 129;
             // 
             // col_gridSaleInvoices_Sales_id
@@ -213,19 +216,20 @@
             // 
             this.lblFakturPajakRetur.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblFakturPajakRetur.Location = new System.Drawing.Point(0, 0);
+            this.lblFakturPajakRetur.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFakturPajakRetur.Name = "lblFakturPajakRetur";
-            this.lblFakturPajakRetur.Size = new System.Drawing.Size(363, 23);
+            this.lblFakturPajakRetur.Size = new System.Drawing.Size(484, 28);
             this.lblFakturPajakRetur.TabIndex = 130;
             this.lblFakturPajakRetur.Text = "lblFakturPajakRetur";
             this.lblFakturPajakRetur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Summary2_Form
+            // Summary_Assistant_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 448);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(968, 551);
             this.Controls.Add(this.scMain);
-            this.Name = "Summary2_Form";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "Summary_Assistant_Form";
             this.Text = "SUMMARY";
             this.Load += new System.EventHandler(this.Form_Load);
             this.Shown += new System.EventHandler(this.Form_Shown);

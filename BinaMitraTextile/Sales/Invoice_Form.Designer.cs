@@ -247,7 +247,7 @@
             this.col_griditems_price.MinimumWidth = 50;
             this.col_griditems_price.Name = "col_griditems_price";
             this.col_griditems_price.ReadOnly = true;
-            this.col_griditems_price.Width = 64;
+            this.col_griditems_price.Width = 51;
             // 
             // col_griditems_subtotal
             // 
@@ -294,7 +294,7 @@
             this.lblPageCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPageCount.Location = new System.Drawing.Point(552, 559);
             this.lblPageCount.Name = "lblPageCount";
-            this.lblPageCount.Size = new System.Drawing.Size(104, 17);
+            this.lblPageCount.Size = new System.Drawing.Size(82, 13);
             this.lblPageCount.TabIndex = 156;
             this.lblPageCount.Text = "lblPageCount";
             this.lblPageCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -305,7 +305,7 @@
             this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalCounts.Location = new System.Drawing.Point(552, 535);
             this.lblTotalCounts.Name = "lblTotalCounts";
-            this.lblTotalCounts.Size = new System.Drawing.Size(130, 20);
+            this.lblTotalCounts.Size = new System.Drawing.Size(107, 16);
             this.lblTotalCounts.TabIndex = 114;
             this.lblTotalCounts.Text = "lblTotalCounts";
             this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -316,7 +316,7 @@
             this.txtNotes.Enabled = false;
             this.txtNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNotes.Location = new System.Drawing.Point(61, 535);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(483, 68);
@@ -359,7 +359,7 @@
             this.lblInvoiceNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvoiceNo.Location = new System.Drawing.Point(9, 27);
             this.lblInvoiceNo.Name = "lblInvoiceNo";
-            this.lblInvoiceNo.Size = new System.Drawing.Size(111, 20);
+            this.lblInvoiceNo.Size = new System.Drawing.Size(94, 16);
             this.lblInvoiceNo.TabIndex = 132;
             this.lblInvoiceNo.Text = "lblInvoiceNo";
             // 
@@ -369,7 +369,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(9, 6);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(83, 20);
+            this.lblTitle.Size = new System.Drawing.Size(67, 16);
             this.lblTitle.TabIndex = 130;
             this.lblTitle.Text = "INVOICE";
             // 
@@ -417,7 +417,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(661, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(273, 25);
+            this.label2.Size = new System.Drawing.Size(222, 20);
             this.label2.TabIndex = 119;
             this.label2.Text = "CV. BINA MITRA TEXTILE";
             // 
@@ -510,10 +510,10 @@
             // 
             this.chkHidePrices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkHidePrices.AutoSize = true;
-            this.chkHidePrices.Location = new System.Drawing.Point(15, 4);
-            this.chkHidePrices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkHidePrices.Location = new System.Drawing.Point(18, 4);
+            this.chkHidePrices.Margin = new System.Windows.Forms.Padding(4);
             this.chkHidePrices.Name = "chkHidePrices";
-            this.chkHidePrices.Size = new System.Drawing.Size(125, 20);
+            this.chkHidePrices.Size = new System.Drawing.Size(122, 20);
             this.chkHidePrices.TabIndex = 3;
             this.chkHidePrices.Text = "hilangkan harga";
             this.chkHidePrices.UseVisualStyleBackColor = true;
@@ -537,7 +537,7 @@
             this.pnlSubmit1.Controls.Add(this.rbTransferHutang);
             this.pnlSubmit1.Controls.Add(this.rbCash);
             this.pnlSubmit1.Location = new System.Drawing.Point(7, 634);
-            this.pnlSubmit1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSubmit1.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSubmit1.Name = "pnlSubmit1";
             this.pnlSubmit1.Size = new System.Drawing.Size(648, 34);
             this.pnlSubmit1.TabIndex = 2;
@@ -549,7 +549,7 @@
             this.panel1.Controls.Add(this.rbCash2);
             this.panel1.Controls.Add(this.rbCash3);
             this.panel1.Location = new System.Drawing.Point(184, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 28);
             this.panel1.TabIndex = 162;
@@ -558,9 +558,9 @@
             // 
             this.rbCash4.AutoSize = true;
             this.rbCash4.Location = new System.Drawing.Point(348, 4);
-            this.rbCash4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbCash4.Margin = new System.Windows.Forms.Padding(4);
             this.rbCash4.Name = "rbCash4";
-            this.rbCash4.Size = new System.Drawing.Size(78, 20);
+            this.rbCash4.Size = new System.Drawing.Size(75, 20);
             this.rbCash4.TabIndex = 1004;
             this.rbCash4.Text = "rbCash4";
             this.rbCash4.UseVisualStyleBackColor = true;
@@ -570,9 +570,9 @@
             // 
             this.rbCash1.AutoSize = true;
             this.rbCash1.Location = new System.Drawing.Point(4, 4);
-            this.rbCash1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbCash1.Margin = new System.Windows.Forms.Padding(4);
             this.rbCash1.Name = "rbCash1";
-            this.rbCash1.Size = new System.Drawing.Size(78, 20);
+            this.rbCash1.Size = new System.Drawing.Size(75, 20);
             this.rbCash1.TabIndex = 999;
             this.rbCash1.Text = "rbCash1";
             this.rbCash1.UseVisualStyleBackColor = true;
@@ -582,9 +582,9 @@
             // 
             this.rbCash2.AutoSize = true;
             this.rbCash2.Location = new System.Drawing.Point(119, 4);
-            this.rbCash2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbCash2.Margin = new System.Windows.Forms.Padding(4);
             this.rbCash2.Name = "rbCash2";
-            this.rbCash2.Size = new System.Drawing.Size(78, 20);
+            this.rbCash2.Size = new System.Drawing.Size(75, 20);
             this.rbCash2.TabIndex = 999;
             this.rbCash2.Text = "rbCash2";
             this.rbCash2.UseVisualStyleBackColor = true;
@@ -594,9 +594,9 @@
             // 
             this.rbCash3.AutoSize = true;
             this.rbCash3.Location = new System.Drawing.Point(233, 4);
-            this.rbCash3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbCash3.Margin = new System.Windows.Forms.Padding(4);
             this.rbCash3.Name = "rbCash3";
-            this.rbCash3.Size = new System.Drawing.Size(78, 20);
+            this.rbCash3.Size = new System.Drawing.Size(75, 20);
             this.rbCash3.TabIndex = 999;
             this.rbCash3.Text = "rbCash3";
             this.rbCash3.UseVisualStyleBackColor = true;
@@ -606,9 +606,9 @@
             // 
             this.rbTransferHutang.AutoSize = true;
             this.rbTransferHutang.Location = new System.Drawing.Point(64, 7);
-            this.rbTransferHutang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbTransferHutang.Margin = new System.Windows.Forms.Padding(4);
             this.rbTransferHutang.Name = "rbTransferHutang";
-            this.rbTransferHutang.Size = new System.Drawing.Size(98, 20);
+            this.rbTransferHutang.Size = new System.Drawing.Size(95, 20);
             this.rbTransferHutang.TabIndex = 1000;
             this.rbTransferHutang.Text = "TF / Hutang";
             this.rbTransferHutang.UseVisualStyleBackColor = true;
@@ -618,9 +618,9 @@
             // 
             this.rbCash.AutoSize = true;
             this.rbCash.Location = new System.Drawing.Point(1, 7);
-            this.rbCash.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbCash.Margin = new System.Windows.Forms.Padding(4);
             this.rbCash.Name = "rbCash";
-            this.rbCash.Size = new System.Drawing.Size(59, 20);
+            this.rbCash.Size = new System.Drawing.Size(56, 20);
             this.rbCash.TabIndex = 1003;
             this.rbCash.Text = "Cash";
             this.rbCash.UseVisualStyleBackColor = true;
@@ -631,9 +631,9 @@
             this.txtPaymentAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPaymentAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPaymentAmount.Location = new System.Drawing.Point(67, 5);
-            this.txtPaymentAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPaymentAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txtPaymentAmount.Name = "txtPaymentAmount";
-            this.txtPaymentAmount.Size = new System.Drawing.Size(161, 30);
+            this.txtPaymentAmount.Size = new System.Drawing.Size(161, 26);
             this.txtPaymentAmount.TabIndex = 2;
             this.txtPaymentAmount.Click += new System.EventHandler(this.txtPaymentAmount_Click);
             this.txtPaymentAmount.TextChanged += new System.EventHandler(this.txtPaymentAmount_TextChanged);
@@ -642,10 +642,10 @@
             // 
             this.chkShowPrintDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowPrintDialog.AutoSize = true;
-            this.chkShowPrintDialog.Location = new System.Drawing.Point(15, 26);
-            this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowPrintDialog.Location = new System.Drawing.Point(18, 26);
+            this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowPrintDialog.Name = "chkShowPrintDialog";
-            this.chkShowPrintDialog.Size = new System.Drawing.Size(95, 20);
+            this.chkShowPrintDialog.Size = new System.Drawing.Size(92, 20);
             this.chkShowPrintDialog.TabIndex = 111;
             this.chkShowPrintDialog.Text = "print dialog";
             this.chkShowPrintDialog.UseVisualStyleBackColor = true;
@@ -656,10 +656,10 @@
             this.chkPrintAllPages.AutoSize = true;
             this.chkPrintAllPages.Checked = true;
             this.chkPrintAllPages.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPrintAllPages.Location = new System.Drawing.Point(15, 48);
-            this.chkPrintAllPages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkPrintAllPages.Location = new System.Drawing.Point(18, 48);
+            this.chkPrintAllPages.Margin = new System.Windows.Forms.Padding(4);
             this.chkPrintAllPages.Name = "chkPrintAllPages";
-            this.chkPrintAllPages.Size = new System.Drawing.Size(71, 20);
+            this.chkPrintAllPages.Size = new System.Drawing.Size(68, 20);
             this.chkPrintAllPages.TabIndex = 151;
             this.chkPrintAllPages.Text = "print all";
             this.chkPrintAllPages.UseVisualStyleBackColor = true;
@@ -670,7 +670,7 @@
             this.pnlSubmit2.Controls.Add(this.txtPaymentAmount);
             this.pnlSubmit2.Controls.Add(this.btnSubmit);
             this.pnlSubmit2.Location = new System.Drawing.Point(308, 670);
-            this.pnlSubmit2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSubmit2.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSubmit2.Name = "pnlSubmit2";
             this.pnlSubmit2.Size = new System.Drawing.Size(347, 42);
             this.pnlSubmit2.TabIndex = 163;
@@ -682,7 +682,7 @@
             this.label3.Location = new System.Drawing.Point(9, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 25);
+            this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "PAY";
             // 
@@ -696,15 +696,14 @@
             this.pnlPrintButtons.Controls.Add(this.btnPrint);
             this.pnlPrintButtons.Controls.Add(this.btnPackingList);
             this.pnlPrintButtons.Location = new System.Drawing.Point(653, 634);
-            this.pnlPrintButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlPrintButtons.Margin = new System.Windows.Forms.Padding(4);
             this.pnlPrintButtons.Name = "pnlPrintButtons";
             this.pnlPrintButtons.Size = new System.Drawing.Size(317, 78);
             this.pnlPrintButtons.TabIndex = 162;
             // 
             // Invoice_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(979, 720);
             this.Controls.Add(this.pnlPrintButtons);

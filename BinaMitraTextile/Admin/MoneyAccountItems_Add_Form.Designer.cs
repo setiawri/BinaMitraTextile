@@ -57,8 +57,8 @@
             this.iddl_MoneyAccounts.HideFilter = true;
             this.iddl_MoneyAccounts.HideUpdateLink = true;
             this.iddl_MoneyAccounts.LabelText = "Account";
-            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(16, 15);
-            this.iddl_MoneyAccounts.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(16, 13);
+            this.iddl_MoneyAccounts.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_MoneyAccounts.Name = "iddl_MoneyAccounts";
             this.iddl_MoneyAccounts.SelectedIndex = -1;
             this.iddl_MoneyAccounts.SelectedItem = null;
@@ -76,7 +76,7 @@
             this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = true;
             this.iddl_MoneyAccountCategoryAssignments.LabelText = "Category";
             this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(16, 70);
-            this.iddl_MoneyAccountCategoryAssignments.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.iddl_MoneyAccountCategoryAssignments.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
             this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
             this.iddl_MoneyAccountCategoryAssignments.SelectedItem = null;
@@ -91,7 +91,7 @@
             this.itxt_Description.IsBrowseMode = false;
             this.itxt_Description.LabelText = "Notes";
             this.itxt_Description.Location = new System.Drawing.Point(209, 15);
-            this.itxt_Description.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_Description.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Description.MaxLength = 32767;
             this.itxt_Description.MultiLine = true;
             this.itxt_Description.Name = "itxt_Description";
@@ -107,7 +107,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(761, 70);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(151, 50);
             this.btnSubmit.TabIndex = 4;
@@ -126,8 +126,8 @@
             0,
             0});
             this.in_Amount.LabelText = "Amount";
-            this.in_Amount.Location = new System.Drawing.Point(761, 15);
-            this.in_Amount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_Amount.Location = new System.Drawing.Point(761, 12);
+            this.in_Amount.Margin = new System.Windows.Forms.Padding(5);
             this.in_Amount.MaximumValue = new decimal(new int[] {
             10000000,
             0,
@@ -277,8 +277,7 @@
             // 
             // MoneyAccountItems_Add_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(924, 286);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.grid);
@@ -287,7 +286,7 @@
             this.Controls.Add(this.itxt_Description);
             this.Controls.Add(this.in_Amount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MoneyAccountItems_Add_Form";
             this.Text = "SHIPPING EXPENSES";
             this.Load += new System.EventHandler(this.Form_Load);

@@ -37,10 +37,10 @@
             // 
             this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(112, 65);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubmit.Location = new System.Drawing.Point(149, 80);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(88, 28);
+            this.btnSubmit.Size = new System.Drawing.Size(117, 34);
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "SAVE";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -49,29 +49,28 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(84, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(51, 16);
             this.label2.TabIndex = 1012;
             this.label2.Text = "Tax No";
             // 
             // txtTaxNo
             // 
-            this.txtTaxNo.Location = new System.Drawing.Point(109, 25);
-            this.txtTaxNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTaxNo.Location = new System.Drawing.Point(145, 31);
+            this.txtTaxNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTaxNo.Name = "txtTaxNo";
-            this.txtTaxNo.Size = new System.Drawing.Size(141, 20);
+            this.txtTaxNo.Size = new System.Drawing.Size(187, 22);
             this.txtTaxNo.TabIndex = 1;
             // 
             // TaxNo_Edit_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 108);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(417, 133);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTaxNo);
             this.Controls.Add(this.btnSubmit);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TaxNo_Edit_Form";
             this.Text = "SALES TAX";
             this.ResumeLayout(false);

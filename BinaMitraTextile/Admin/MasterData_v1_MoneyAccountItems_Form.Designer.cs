@@ -33,13 +33,15 @@
             this.in_Amount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.iddl_MoneyAccountCategoryAssignments = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_MoneyAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
-            this.idtp_Timestamp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_Timestamp_Start = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnApplyFilter = new System.Windows.Forms.Button();
             this.pbCalculator = new System.Windows.Forms.PictureBox();
             this.btnTransfer = new System.Windows.Forms.Button();
             this.chkOnlyNotApproved = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.idtp_Timestamp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -59,24 +61,37 @@
             this.scInputContainer.SuspendLayout();
             this.pnlQuickSearch.SuspendLayout();
             this.pnlRowInfo.SuspendLayout();
+            this.pnlRowInfoHeaderContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).BeginInit();
+            this.scContent.Panel2.SuspendLayout();
+            this.scContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCalculator)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(784, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(1045, 34);
             // 
             // chkIncludeInactive
             // 
-            this.chkIncludeInactive.Location = new System.Drawing.Point(196, 6);
+            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(5);
+            this.chkIncludeInactive.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.chkIncludeInactive.Size = new System.Drawing.Size(119, 32);
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 127);
-            this.pnlActionButtons.Size = new System.Drawing.Size(784, 23);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 152);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlActionButtons.Size = new System.Drawing.Size(1045, 28);
             // 
             // scInputLeft
             // 
+            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputLeft.Panel1
             // 
@@ -86,33 +101,65 @@
             // scInputLeft.Panel2
             // 
             this.scInputLeft.Panel2.Controls.Add(this.itxt_Description);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 101);
+            this.scInputLeft.Size = new System.Drawing.Size(500, 120);
+            this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
-            this.scInputRight.Size = new System.Drawing.Size(280, 101);
+            this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
+            this.scInputRight.Size = new System.Drawing.Size(538, 120);
+            this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
+            this.btnAdd.Location = new System.Drawing.Point(4, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(271, 2);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
+            this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnSearch.Location = new System.Drawing.Point(137, 2);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSearch.Size = new System.Drawing.Size(133, 34);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(4, 0);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSubmit.Size = new System.Drawing.Size(124, 33);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(252, 0);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Size = new System.Drawing.Size(124, 33);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(128, 0);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(5);
+            this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
-            this.scMain.Size = new System.Drawing.Size(784, 484);
-            this.scMain.SplitterDistance = 150;
+            this.scMain.Margin = new System.Windows.Forms.Padding(5);
+            this.scMain.Size = new System.Drawing.Size(1045, 596);
+            this.scMain.SplitterDistance = 180;
             // 
             // pnlButtons
             // 
             this.pnlButtons.Controls.Add(this.btnTransfer);
-            this.pnlButtons.Size = new System.Drawing.Size(784, 26);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlButtons.Size = new System.Drawing.Size(1045, 32);
             this.pnlButtons.Controls.SetChildIndex(this.btnSearch, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnUpdate, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnLog, 0);
@@ -121,48 +168,90 @@
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Size = new System.Drawing.Size(784, 101);
+            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.scInputContainer.Size = new System.Drawing.Size(1045, 120);
+            this.scInputContainer.SplitterWidth = 7;
+            // 
+            // btnLog
+            // 
+            this.btnLog.Location = new System.Drawing.Point(404, 2);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
+            this.btnLog.Size = new System.Drawing.Size(133, 34);
+            // 
+            // ptInputPanel
+            // 
+            this.ptInputPanel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             // 
             // pnlQuickSearch
             // 
-            this.pnlQuickSearch.Controls.Add(this.idtp_Timestamp_Start);
             this.pnlQuickSearch.Controls.Add(this.chkOnlyNotApproved);
-            this.pnlQuickSearch.Controls.Add(this.label3);
-            this.pnlQuickSearch.Controls.Add(this.idtp_Timestamp_End);
-            this.pnlQuickSearch.Controls.Add(this.pbCalculator);
+            this.pnlQuickSearch.Controls.Add(this.panel2);
+            this.pnlQuickSearch.Controls.Add(this.panel3);
             this.pnlQuickSearch.Controls.Add(this.btnApplyFilter);
-            this.pnlQuickSearch.Controls.Add(this.iddl_MoneyAccounts);
-            this.pnlQuickSearch.Size = new System.Drawing.Size(754, 28);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.iddl_MoneyAccounts, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label1, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.btnApplyFilter, 0);
+            this.pnlQuickSearch.Controls.Add(this.pbCalculator);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlQuickSearch.Size = new System.Drawing.Size(1011, 34);
             this.pnlQuickSearch.Controls.SetChildIndex(this.pbCalculator, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.idtp_Timestamp_End, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.label3, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.btnApplyFilter, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.pbRefresh, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.pbLog, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.itxt_QuickSearch, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.chkIncludeInactive, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.panel3, 0);
+            this.pnlQuickSearch.Controls.SetChildIndex(this.panel2, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.chkOnlyNotApproved, 0);
-            this.pnlQuickSearch.Controls.SetChildIndex(this.idtp_Timestamp_Start, 0);
             // 
             // pnlRowInfo
             // 
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 233);
-            this.pnlRowInfo.Size = new System.Drawing.Size(784, 100);
+            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1045, 316);
+            // 
+            // pnlRowInfoHeaderContainer
+            // 
+            this.pnlRowInfoHeaderContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(1045, 26);
             // 
             // pnlRowInfoHeader
             // 
-            this.pnlRowInfoHeader.Size = new System.Drawing.Size(764, 21);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoHeader.Size = new System.Drawing.Size(1019, 26);
+            // 
+            // ptRowInfo
+            // 
+            this.ptRowInfo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             // 
             // pnlRowInfoContent
             // 
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(784, 79);
+            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1045, 290);
+            // 
+            // pbLog
+            // 
+            this.pbLog.Margin = new System.Windows.Forms.Padding(5);
+            // 
+            // pbRefresh
+            // 
+            this.pbRefresh.Margin = new System.Windows.Forms.Padding(5);
+            // 
+            // itxt_QuickSearch
+            // 
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.itxt_QuickSearch.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.itxt_QuickSearch.ShowDeleteButton = true;
+            // 
+            // scContent
+            // 
+            this.scContent.Margin = new System.Windows.Forms.Padding(4);
+            this.scContent.Size = new System.Drawing.Size(1045, 381);
+            this.scContent.SplitterDistance = 60;
+            this.scContent.SplitterWidth = 5;
             // 
             // itxt_Description
             // 
             this.itxt_Description.IsBrowseMode = false;
             this.itxt_Description.LabelText = "Description";
-            this.itxt_Description.Location = new System.Drawing.Point(3, 5);
+            this.itxt_Description.Location = new System.Drawing.Point(4, 6);
+            this.itxt_Description.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Description.MaxLength = 32767;
             this.itxt_Description.MultiLine = true;
             this.itxt_Description.Name = "itxt_Description";
@@ -171,7 +260,7 @@
             this.itxt_Description.ShowDeleteButton = false;
             this.itxt_Description.ShowFilter = false;
             this.itxt_Description.ShowTextboxOnly = false;
-            this.itxt_Description.Size = new System.Drawing.Size(242, 86);
+            this.itxt_Description.Size = new System.Drawing.Size(235, 106);
             this.itxt_Description.TabIndex = 1;
             this.itxt_Description.ValueText = "";
             // 
@@ -186,7 +275,8 @@
             0,
             0});
             this.in_Amount.LabelText = "Amount";
-            this.in_Amount.Location = new System.Drawing.Point(3, 50);
+            this.in_Amount.Location = new System.Drawing.Point(4, 62);
+            this.in_Amount.Margin = new System.Windows.Forms.Padding(5);
             this.in_Amount.MaximumValue = new decimal(new int[] {
             999999999,
             0,
@@ -201,7 +291,7 @@
             this.in_Amount.ShowAllowDecimalCheckbox = false;
             this.in_Amount.ShowCheckbox = false;
             this.in_Amount.ShowTextboxOnly = false;
-            this.in_Amount.Size = new System.Drawing.Size(104, 41);
+            this.in_Amount.Size = new System.Drawing.Size(139, 50);
             this.in_Amount.TabIndex = 2;
             this.in_Amount.Value = new decimal(new int[] {
             0,
@@ -215,87 +305,73 @@
             this.iddl_MoneyAccountCategoryAssignments.HideFilter = false;
             this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = true;
             this.iddl_MoneyAccountCategoryAssignments.LabelText = "Category";
-            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(3, 6);
+            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(4, 7);
+            this.iddl_MoneyAccountCategoryAssignments.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
             this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
             this.iddl_MoneyAccountCategoryAssignments.SelectedItem = null;
             this.iddl_MoneyAccountCategoryAssignments.SelectedItemText = "";
             this.iddl_MoneyAccountCategoryAssignments.SelectedValue = null;
             this.iddl_MoneyAccountCategoryAssignments.ShowDropdownlistOnly = false;
-            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(242, 41);
+            this.iddl_MoneyAccountCategoryAssignments.Size = new System.Drawing.Size(240, 50);
             this.iddl_MoneyAccountCategoryAssignments.TabIndex = 0;
             // 
             // iddl_MoneyAccounts
             // 
-            this.iddl_MoneyAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iddl_MoneyAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iddl_MoneyAccounts.DisableTextInput = false;
             this.iddl_MoneyAccounts.HideFilter = false;
             this.iddl_MoneyAccounts.HideUpdateLink = true;
             this.iddl_MoneyAccounts.LabelText = "Account";
-            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(562, 2);
+            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(6, 1);
+            this.iddl_MoneyAccounts.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_MoneyAccounts.Name = "iddl_MoneyAccounts";
             this.iddl_MoneyAccounts.SelectedIndex = -1;
             this.iddl_MoneyAccounts.SelectedItem = null;
             this.iddl_MoneyAccounts.SelectedItemText = "";
             this.iddl_MoneyAccounts.SelectedValue = null;
             this.iddl_MoneyAccounts.ShowDropdownlistOnly = true;
-            this.iddl_MoneyAccounts.Size = new System.Drawing.Size(104, 22);
+            this.iddl_MoneyAccounts.Size = new System.Drawing.Size(165, 27);
             this.iddl_MoneyAccounts.TabIndex = 4;
             this.iddl_MoneyAccounts.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccounts_SelectedIndexChanged);
             // 
-            // idtp_Timestamp_End
-            // 
-            this.idtp_Timestamp_End.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.idtp_Timestamp_End.Checked = false;
-            this.idtp_Timestamp_End.CustomFormat = "dd/MM/yy";
-            this.idtp_Timestamp_End.DefaultCheckedValue = false;
-            this.idtp_Timestamp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.idtp_Timestamp_End.LabelText = "dropdownlist";
-            this.idtp_Timestamp_End.Location = new System.Drawing.Point(451, 3);
-            this.idtp_Timestamp_End.Name = "idtp_Timestamp_End";
-            this.idtp_Timestamp_End.ShowCheckBox = true;
-            this.idtp_Timestamp_End.ShowDateTimePickerOnly = true;
-            this.idtp_Timestamp_End.ShowUpAndDown = false;
-            this.idtp_Timestamp_End.Size = new System.Drawing.Size(110, 21);
-            this.idtp_Timestamp_End.TabIndex = 6;
-            this.idtp_Timestamp_End.Value = null;
-            this.idtp_Timestamp_End.ValueTimeSpan = null;
-            this.idtp_Timestamp_End.Load += new System.EventHandler(this.idtp_Timestamp_End_Load);
-            // 
             // idtp_Timestamp_Start
             // 
-            this.idtp_Timestamp_Start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.idtp_Timestamp_Start.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.idtp_Timestamp_Start.Checked = true;
             this.idtp_Timestamp_Start.CustomFormat = "dd/MM/yy";
             this.idtp_Timestamp_Start.DefaultCheckedValue = true;
             this.idtp_Timestamp_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Timestamp_Start.LabelText = "dropdownlist";
-            this.idtp_Timestamp_Start.Location = new System.Drawing.Point(344, 3);
+            this.idtp_Timestamp_Start.Location = new System.Drawing.Point(6, 2);
+            this.idtp_Timestamp_Start.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_Timestamp_Start.Name = "idtp_Timestamp_Start";
             this.idtp_Timestamp_Start.ShowCheckBox = false;
             this.idtp_Timestamp_Start.ShowDateTimePickerOnly = true;
             this.idtp_Timestamp_Start.ShowUpAndDown = false;
-            this.idtp_Timestamp_Start.Size = new System.Drawing.Size(85, 21);
+            this.idtp_Timestamp_Start.Size = new System.Drawing.Size(104, 26);
             this.idtp_Timestamp_Start.TabIndex = 7;
             this.idtp_Timestamp_Start.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.idtp_Timestamp_Start.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(429, 7);
+            this.label3.Location = new System.Drawing.Point(110, 7);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 13);
+            this.label3.Size = new System.Drawing.Size(26, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "TO";
             // 
             // btnApplyFilter
             // 
-            this.btnApplyFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApplyFilter.Location = new System.Drawing.Point(666, 2);
+            this.btnApplyFilter.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnApplyFilter.Location = new System.Drawing.Point(897, 0);
+            this.btnApplyFilter.Margin = new System.Windows.Forms.Padding(4, 4, 10, 4);
             this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(56, 23);
+            this.btnApplyFilter.Size = new System.Drawing.Size(75, 32);
             this.btnApplyFilter.TabIndex = 1;
             this.btnApplyFilter.Text = "APPLY";
             this.btnApplyFilter.UseVisualStyleBackColor = true;
@@ -308,9 +384,10 @@
             this.pbCalculator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbCalculator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbCalculator.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pbCalculator.Location = new System.Drawing.Point(724, 0);
+            this.pbCalculator.Location = new System.Drawing.Point(972, 0);
+            this.pbCalculator.Margin = new System.Windows.Forms.Padding(4);
             this.pbCalculator.Name = "pbCalculator";
-            this.pbCalculator.Size = new System.Drawing.Size(28, 26);
+            this.pbCalculator.Size = new System.Drawing.Size(37, 32);
             this.pbCalculator.TabIndex = 124;
             this.pbCalculator.TabStop = false;
             this.pbCalculator.Click += new System.EventHandler(this.pbCalculator_Click);
@@ -318,9 +395,10 @@
             // btnTransfer
             // 
             this.btnTransfer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTransfer.Location = new System.Drawing.Point(696, 2);
+            this.btnTransfer.Location = new System.Drawing.Point(-994, 2);
+            this.btnTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.btnTransfer.Name = "btnTransfer";
-            this.btnTransfer.Size = new System.Drawing.Size(85, 23);
+            this.btnTransfer.Size = new System.Drawing.Size(113, 28);
             this.btnTransfer.TabIndex = 125;
             this.btnTransfer.Text = "TRANSFER";
             this.btnTransfer.UseVisualStyleBackColor = true;
@@ -328,20 +406,60 @@
             // 
             // chkOnlyNotApproved
             // 
-            this.chkOnlyNotApproved.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkOnlyNotApproved.AutoSize = true;
-            this.chkOnlyNotApproved.Location = new System.Drawing.Point(279, 6);
+            this.chkOnlyNotApproved.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkOnlyNotApproved.Location = new System.Drawing.Point(360, 0);
+            this.chkOnlyNotApproved.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnlyNotApproved.Name = "chkOnlyNotApproved";
-            this.chkOnlyNotApproved.Size = new System.Drawing.Size(67, 17);
+            this.chkOnlyNotApproved.Size = new System.Drawing.Size(76, 32);
             this.chkOnlyNotApproved.TabIndex = 125;
             this.chkOnlyNotApproved.Text = "NOT OK";
             this.chkOnlyNotApproved.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.idtp_Timestamp_Start);
+            this.panel2.Controls.Add(this.idtp_Timestamp_End);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(460, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(261, 32);
+            this.panel2.TabIndex = 4;
+            // 
+            // idtp_Timestamp_End
+            // 
+            this.idtp_Timestamp_End.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.idtp_Timestamp_End.Checked = false;
+            this.idtp_Timestamp_End.CustomFormat = "dd/MM/yy";
+            this.idtp_Timestamp_End.DefaultCheckedValue = false;
+            this.idtp_Timestamp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_Timestamp_End.LabelText = "dropdownlist";
+            this.idtp_Timestamp_End.Location = new System.Drawing.Point(134, 4);
+            this.idtp_Timestamp_End.Margin = new System.Windows.Forms.Padding(5);
+            this.idtp_Timestamp_End.Name = "idtp_Timestamp_End";
+            this.idtp_Timestamp_End.ShowCheckBox = true;
+            this.idtp_Timestamp_End.ShowDateTimePickerOnly = true;
+            this.idtp_Timestamp_End.ShowUpAndDown = false;
+            this.idtp_Timestamp_End.Size = new System.Drawing.Size(120, 24);
+            this.idtp_Timestamp_End.TabIndex = 9;
+            this.idtp_Timestamp_End.Value = null;
+            this.idtp_Timestamp_End.ValueTimeSpan = null;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.iddl_MoneyAccounts);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(721, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(176, 32);
+            this.panel3.TabIndex = 4;
+            // 
             // MasterData_v1_MoneyAccountItems_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 484);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(1045, 596);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_MoneyAccountItems_Form";
             this.Text = "MONEY ACCOUNT ITEMS";
@@ -365,7 +483,16 @@
             this.pnlQuickSearch.ResumeLayout(false);
             this.pnlQuickSearch.PerformLayout();
             this.pnlRowInfo.ResumeLayout(false);
+            this.pnlRowInfoHeaderContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
+            this.scContent.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).EndInit();
+            this.scContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbCalculator)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -378,10 +505,12 @@
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccounts;
         private System.Windows.Forms.Label label3;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_Start;
-        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_End;
         private System.Windows.Forms.Button btnApplyFilter;
         private System.Windows.Forms.PictureBox pbCalculator;
         private System.Windows.Forms.Button btnTransfer;
         private System.Windows.Forms.CheckBox chkOnlyNotApproved;
+        private System.Windows.Forms.Panel panel2;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_End;
+        private System.Windows.Forms.Panel panel3;
     }
 }

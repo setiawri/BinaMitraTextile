@@ -48,12 +48,6 @@
             this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.ptHeader = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.pnlUpdate = new System.Windows.Forms.Panel();
-            this.idtp_PaymentDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
-            this.btnCancelUpdate = new System.Windows.Forms.Button();
-            this.in_CorrectionAmount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.itxt_CorrectionNotes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.col_grid_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_Period = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_Users_Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +57,12 @@
             this.col_grid_CorrectionNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_PaymentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlUpdate = new System.Windows.Forms.Panel();
+            this.idtp_PaymentDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.btnCancelUpdate = new System.Windows.Forms.Button();
+            this.in_CorrectionAmount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.itxt_CorrectionNotes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlHeaderContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlFilterHeaderContainer.SuspendLayout();
@@ -80,8 +80,9 @@
             this.pnlHeaderContainer.Controls.Add(this.pnlFilterHeaderContainer);
             this.pnlHeaderContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeaderContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeaderContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeaderContainer.Name = "pnlHeaderContainer";
-            this.pnlHeaderContainer.Size = new System.Drawing.Size(652, 76);
+            this.pnlHeaderContainer.Size = new System.Drawing.Size(869, 94);
             this.pnlHeaderContainer.TabIndex = 4;
             // 
             // panel1
@@ -91,8 +92,9 @@
             this.panel1.Controls.Add(this.idtp_StartPeriod);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(652, 49);
+            this.panel1.Size = new System.Drawing.Size(869, 61);
             this.panel1.TabIndex = 6;
             // 
             // idtp_GeneratePeriod
@@ -103,12 +105,13 @@
             this.idtp_GeneratePeriod.DefaultCheckedValue = true;
             this.idtp_GeneratePeriod.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_GeneratePeriod.LabelText = "Period";
-            this.idtp_GeneratePeriod.Location = new System.Drawing.Point(458, 3);
+            this.idtp_GeneratePeriod.Location = new System.Drawing.Point(611, 4);
+            this.idtp_GeneratePeriod.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.idtp_GeneratePeriod.Name = "idtp_GeneratePeriod";
             this.idtp_GeneratePeriod.ShowCheckBox = true;
             this.idtp_GeneratePeriod.ShowDateTimePickerOnly = false;
             this.idtp_GeneratePeriod.ShowUpAndDown = false;
-            this.idtp_GeneratePeriod.Size = new System.Drawing.Size(110, 39);
+            this.idtp_GeneratePeriod.Size = new System.Drawing.Size(147, 48);
             this.idtp_GeneratePeriod.TabIndex = 99;
             this.idtp_GeneratePeriod.Value = new System.DateTime(2020, 9, 18, 0, 0, 0, 0);
             this.idtp_GeneratePeriod.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
@@ -116,9 +119,10 @@
             // btnGenerate
             // 
             this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerate.Location = new System.Drawing.Point(574, 20);
+            this.btnGenerate.Location = new System.Drawing.Point(765, 25);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerate.Size = new System.Drawing.Size(100, 28);
             this.btnGenerate.TabIndex = 97;
             this.btnGenerate.Text = "GENERATE";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -131,12 +135,13 @@
             this.idtp_StartPeriod.DefaultCheckedValue = true;
             this.idtp_StartPeriod.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_StartPeriod.LabelText = "Start Period";
-            this.idtp_StartPeriod.Location = new System.Drawing.Point(12, 3);
+            this.idtp_StartPeriod.Location = new System.Drawing.Point(16, 4);
+            this.idtp_StartPeriod.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.idtp_StartPeriod.Name = "idtp_StartPeriod";
             this.idtp_StartPeriod.ShowCheckBox = true;
             this.idtp_StartPeriod.ShowDateTimePickerOnly = false;
             this.idtp_StartPeriod.ShowUpAndDown = false;
-            this.idtp_StartPeriod.Size = new System.Drawing.Size(110, 39);
+            this.idtp_StartPeriod.Size = new System.Drawing.Size(147, 48);
             this.idtp_StartPeriod.TabIndex = 98;
             this.idtp_StartPeriod.Value = new System.DateTime(2020, 9, 18, 0, 0, 0, 0);
             this.idtp_StartPeriod.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
@@ -147,9 +152,10 @@
             this.pnlFilterHeaderContainer.Controls.Add(this.pnlHeader);
             this.pnlFilterHeaderContainer.Controls.Add(this.ptHeader);
             this.pnlFilterHeaderContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFilterHeaderContainer.Location = new System.Drawing.Point(0, 49);
+            this.pnlFilterHeaderContainer.Location = new System.Drawing.Point(0, 61);
+            this.pnlFilterHeaderContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlFilterHeaderContainer.Name = "pnlFilterHeaderContainer";
-            this.pnlFilterHeaderContainer.Size = new System.Drawing.Size(652, 27);
+            this.pnlFilterHeaderContainer.Size = new System.Drawing.Size(869, 33);
             this.pnlFilterHeaderContainer.TabIndex = 96;
             // 
             // pnlHeader
@@ -158,9 +164,10 @@
             this.pnlHeader.Controls.Add(this.pbLog);
             this.pnlHeader.Controls.Add(this.pbRefresh);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlHeader.Location = new System.Drawing.Point(25, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(33, 0);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(627, 27);
+            this.pnlHeader.Size = new System.Drawing.Size(836, 33);
             this.pnlHeader.TabIndex = 98;
             // 
             // pbLog
@@ -170,9 +177,10 @@
             this.pbLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbLog.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbLog.Location = new System.Drawing.Point(25, 0);
+            this.pbLog.Location = new System.Drawing.Point(33, 0);
+            this.pbLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbLog.Name = "pbLog";
-            this.pbLog.Size = new System.Drawing.Size(25, 25);
+            this.pbLog.Size = new System.Drawing.Size(33, 31);
             this.pbLog.TabIndex = 98;
             this.pbLog.TabStop = false;
             this.pbLog.Click += new System.EventHandler(this.pbLog_Click);
@@ -185,8 +193,9 @@
             this.pbRefresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbRefresh.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbRefresh.Location = new System.Drawing.Point(0, 0);
+            this.pbRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbRefresh.Name = "pbRefresh";
-            this.pbRefresh.Size = new System.Drawing.Size(25, 25);
+            this.pbRefresh.Size = new System.Drawing.Size(33, 31);
             this.pbRefresh.TabIndex = 97;
             this.pbRefresh.TabStop = false;
             this.pbRefresh.Click += new System.EventHandler(this.pbRefresh_Click);
@@ -200,9 +209,10 @@
             this.ptHeader.Dock = System.Windows.Forms.DockStyle.Left;
             this.ptHeader.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
             this.ptHeader.Location = new System.Drawing.Point(0, 0);
+            this.ptHeader.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ptHeader.MinimumSplitterDistance = 100;
             this.ptHeader.Name = "ptHeader";
-            this.ptHeader.Size = new System.Drawing.Size(25, 27);
+            this.ptHeader.Size = new System.Drawing.Size(33, 33);
             this.ptHeader.TabIndex = 94;
             this.ptHeader.TogglePanel = null;
             // 
@@ -234,8 +244,8 @@
             this.col_grid_TotalAmount,
             this.col_grid_PaymentDate});
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 76);
-            this.grid.Margin = new System.Windows.Forms.Padding(2);
+            this.grid.Location = new System.Drawing.Point(0, 94);
+            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
@@ -243,113 +253,9 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.grid.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(652, 269);
+            this.grid.Size = new System.Drawing.Size(869, 331);
             this.grid.TabIndex = 5;
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
-            // 
-            // pnlUpdate
-            // 
-            this.pnlUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlUpdate.Controls.Add(this.idtp_PaymentDate);
-            this.pnlUpdate.Controls.Add(this.btnCancelUpdate);
-            this.pnlUpdate.Controls.Add(this.in_CorrectionAmount);
-            this.pnlUpdate.Controls.Add(this.itxt_CorrectionNotes);
-            this.pnlUpdate.Controls.Add(this.btnUpdate);
-            this.pnlUpdate.Location = new System.Drawing.Point(212, 100);
-            this.pnlUpdate.Name = "pnlUpdate";
-            this.pnlUpdate.Size = new System.Drawing.Size(228, 153);
-            this.pnlUpdate.TabIndex = 6;
-            this.pnlUpdate.Visible = false;
-            // 
-            // idtp_PaymentDate
-            // 
-            this.idtp_PaymentDate.Checked = false;
-            this.idtp_PaymentDate.CustomFormat = "dd/MM/yyyy";
-            this.idtp_PaymentDate.DefaultCheckedValue = false;
-            this.idtp_PaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.idtp_PaymentDate.LabelText = "Payment Date";
-            this.idtp_PaymentDate.Location = new System.Drawing.Point(101, 12);
-            this.idtp_PaymentDate.Name = "idtp_PaymentDate";
-            this.idtp_PaymentDate.ShowCheckBox = true;
-            this.idtp_PaymentDate.ShowDateTimePickerOnly = false;
-            this.idtp_PaymentDate.ShowUpAndDown = false;
-            this.idtp_PaymentDate.Size = new System.Drawing.Size(120, 41);
-            this.idtp_PaymentDate.TabIndex = 103;
-            this.idtp_PaymentDate.Value = null;
-            this.idtp_PaymentDate.ValueTimeSpan = null;
-            // 
-            // btnCancelUpdate
-            // 
-            this.btnCancelUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCancelUpdate.Location = new System.Drawing.Point(114, 114);
-            this.btnCancelUpdate.Name = "btnCancelUpdate";
-            this.btnCancelUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelUpdate.TabIndex = 102;
-            this.btnCancelUpdate.Text = "CANCEL";
-            this.btnCancelUpdate.UseVisualStyleBackColor = true;
-            this.btnCancelUpdate.Click += new System.EventHandler(this.btnCancelUpdate_Click);
-            // 
-            // in_CorrectionAmount
-            // 
-            this.in_CorrectionAmount.Checked = false;
-            this.in_CorrectionAmount.DecimalPlaces = 0;
-            this.in_CorrectionAmount.HideUpDown = false;
-            this.in_CorrectionAmount.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_CorrectionAmount.LabelText = "Correction";
-            this.in_CorrectionAmount.Location = new System.Drawing.Point(7, 13);
-            this.in_CorrectionAmount.MaximumValue = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.in_CorrectionAmount.MinimumValue = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.in_CorrectionAmount.Name = "in_CorrectionAmount";
-            this.in_CorrectionAmount.ShowAllowDecimalCheckbox = false;
-            this.in_CorrectionAmount.ShowCheckbox = false;
-            this.in_CorrectionAmount.ShowTextboxOnly = false;
-            this.in_CorrectionAmount.Size = new System.Drawing.Size(88, 41);
-            this.in_CorrectionAmount.TabIndex = 101;
-            this.in_CorrectionAmount.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // itxt_CorrectionNotes
-            // 
-            this.itxt_CorrectionNotes.IsBrowseMode = false;
-            this.itxt_CorrectionNotes.LabelText = "Notes";
-            this.itxt_CorrectionNotes.Location = new System.Drawing.Point(7, 60);
-            this.itxt_CorrectionNotes.MaxLength = 32767;
-            this.itxt_CorrectionNotes.MultiLine = false;
-            this.itxt_CorrectionNotes.Name = "itxt_CorrectionNotes";
-            this.itxt_CorrectionNotes.PasswordChar = '\0';
-            this.itxt_CorrectionNotes.RowCount = 1;
-            this.itxt_CorrectionNotes.ShowDeleteButton = false;
-            this.itxt_CorrectionNotes.ShowFilter = false;
-            this.itxt_CorrectionNotes.ShowTextboxOnly = false;
-            this.itxt_CorrectionNotes.Size = new System.Drawing.Size(214, 41);
-            this.itxt_CorrectionNotes.TabIndex = 100;
-            this.itxt_CorrectionNotes.ValueText = "";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnUpdate.Location = new System.Drawing.Point(38, 114);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 98;
-            this.btnUpdate.Text = "UPDATE";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // col_grid_Id
             // 
@@ -447,14 +353,124 @@
             this.col_grid_PaymentDate.Name = "col_grid_PaymentDate";
             this.col_grid_PaymentDate.ReadOnly = true;
             // 
+            // pnlUpdate
+            // 
+            this.pnlUpdate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdate.Controls.Add(this.idtp_PaymentDate);
+            this.pnlUpdate.Controls.Add(this.btnCancelUpdate);
+            this.pnlUpdate.Controls.Add(this.in_CorrectionAmount);
+            this.pnlUpdate.Controls.Add(this.itxt_CorrectionNotes);
+            this.pnlUpdate.Controls.Add(this.btnUpdate);
+            this.pnlUpdate.Location = new System.Drawing.Point(283, 123);
+            this.pnlUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUpdate.Name = "pnlUpdate";
+            this.pnlUpdate.Size = new System.Drawing.Size(303, 188);
+            this.pnlUpdate.TabIndex = 6;
+            this.pnlUpdate.Visible = false;
+            // 
+            // idtp_PaymentDate
+            // 
+            this.idtp_PaymentDate.Checked = false;
+            this.idtp_PaymentDate.CustomFormat = "dd/MM/yyyy";
+            this.idtp_PaymentDate.DefaultCheckedValue = false;
+            this.idtp_PaymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_PaymentDate.LabelText = "Payment Date";
+            this.idtp_PaymentDate.Location = new System.Drawing.Point(135, 15);
+            this.idtp_PaymentDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_PaymentDate.Name = "idtp_PaymentDate";
+            this.idtp_PaymentDate.ShowCheckBox = true;
+            this.idtp_PaymentDate.ShowDateTimePickerOnly = false;
+            this.idtp_PaymentDate.ShowUpAndDown = false;
+            this.idtp_PaymentDate.Size = new System.Drawing.Size(160, 50);
+            this.idtp_PaymentDate.TabIndex = 103;
+            this.idtp_PaymentDate.Value = null;
+            this.idtp_PaymentDate.ValueTimeSpan = null;
+            // 
+            // btnCancelUpdate
+            // 
+            this.btnCancelUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCancelUpdate.Location = new System.Drawing.Point(152, 140);
+            this.btnCancelUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelUpdate.Name = "btnCancelUpdate";
+            this.btnCancelUpdate.Size = new System.Drawing.Size(100, 28);
+            this.btnCancelUpdate.TabIndex = 102;
+            this.btnCancelUpdate.Text = "CANCEL";
+            this.btnCancelUpdate.UseVisualStyleBackColor = true;
+            this.btnCancelUpdate.Click += new System.EventHandler(this.btnCancelUpdate_Click);
+            // 
+            // in_CorrectionAmount
+            // 
+            this.in_CorrectionAmount.Checked = false;
+            this.in_CorrectionAmount.DecimalPlaces = 0;
+            this.in_CorrectionAmount.HideUpDown = false;
+            this.in_CorrectionAmount.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_CorrectionAmount.LabelText = "Correction";
+            this.in_CorrectionAmount.Location = new System.Drawing.Point(9, 16);
+            this.in_CorrectionAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_CorrectionAmount.MaximumValue = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.in_CorrectionAmount.MinimumValue = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.in_CorrectionAmount.Name = "in_CorrectionAmount";
+            this.in_CorrectionAmount.ShowAllowDecimalCheckbox = false;
+            this.in_CorrectionAmount.ShowCheckbox = false;
+            this.in_CorrectionAmount.ShowTextboxOnly = false;
+            this.in_CorrectionAmount.Size = new System.Drawing.Size(117, 50);
+            this.in_CorrectionAmount.TabIndex = 101;
+            this.in_CorrectionAmount.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // itxt_CorrectionNotes
+            // 
+            this.itxt_CorrectionNotes.IsBrowseMode = false;
+            this.itxt_CorrectionNotes.LabelText = "Notes";
+            this.itxt_CorrectionNotes.Location = new System.Drawing.Point(9, 74);
+            this.itxt_CorrectionNotes.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_CorrectionNotes.MaxLength = 32767;
+            this.itxt_CorrectionNotes.MultiLine = false;
+            this.itxt_CorrectionNotes.Name = "itxt_CorrectionNotes";
+            this.itxt_CorrectionNotes.PasswordChar = '\0';
+            this.itxt_CorrectionNotes.RowCount = 1;
+            this.itxt_CorrectionNotes.ShowDeleteButton = false;
+            this.itxt_CorrectionNotes.ShowFilter = false;
+            this.itxt_CorrectionNotes.ShowTextboxOnly = false;
+            this.itxt_CorrectionNotes.Size = new System.Drawing.Size(285, 50);
+            this.itxt_CorrectionNotes.TabIndex = 100;
+            this.itxt_CorrectionNotes.ValueText = "";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUpdate.Location = new System.Drawing.Point(51, 140);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(100, 28);
+            this.btnUpdate.TabIndex = 98;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // SaleComissions_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 345);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(869, 425);
             this.Controls.Add(this.pnlUpdate);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.pnlHeaderContainer);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SaleComissions_Form";
             this.Text = "KOMISI SALES";
             this.Load += new System.EventHandler(this.Form_Load);
