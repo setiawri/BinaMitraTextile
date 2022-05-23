@@ -40,6 +40,7 @@ namespace BinaMitraTextile.Admin
         protected override void setupFields()
         {
             Settings.setGeneralSettings(this);
+            scContent.Panel2Collapsed = true;
 
             setColumnsDataPropertyNames(Vendor.COL_DB_ID, Vendor.COL_DB_ACTIVE, null, null, null, Vendor.COL_DB_usesFakturPajak);
             col_dgv_Checkbox1.HeaderText = "FP";

@@ -37,6 +37,7 @@ namespace BinaMitraTextile.Admin
         protected override void setupFields()
         {
             Settings.setGeneralSettings(this);
+            scContent.Panel2Collapsed = true;
 
             setColumnsDataPropertyNames(MoneyAccountCategory.COL_DB_Id, MoneyAccountCategory.COL_DB_Active, null, null, null, null);
             col_dgv_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Name", itxt_Name.LabelText, MoneyAccountCategory.COL_DB_Name, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);

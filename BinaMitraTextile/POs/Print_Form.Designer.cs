@@ -308,11 +308,12 @@
             // 
             // Print_Form
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 879);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pnlPrint);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Print_Form";
             this.Text = "PRINT PO";
             this.Load += new System.EventHandler(this.Form_Load);

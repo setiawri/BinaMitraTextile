@@ -46,6 +46,7 @@ namespace BinaMitraTextile.Admin
         protected override void setupFields()
         {
             Settings.setGeneralSettings(this);
+            scContent.Panel2Collapsed = true; 
 
             setColumnsDataPropertyNames(Customer.COL_DB_ID, Customer.COL_DB_ACTIVE, null, null, null, Customer.COL_DB_usesFakturPajak);
             col_dgv_Checkbox1.HeaderText = "FP";
@@ -67,8 +68,6 @@ namespace BinaMitraTextile.Admin
             InputToDisableOnSearch.Add(itxt_Phone2);
             InputToDisableOnSearch.Add(itxt_Address);
             InputToDisableOnSearch.Add(itxt_Notes);
-
-            ptInputPanel.PerformClick();
         }
 
         protected override void setupControlsBasedOnRoles()

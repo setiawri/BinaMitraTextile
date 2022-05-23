@@ -46,6 +46,8 @@ namespace BinaMitraTextile.Admin
         protected override void setupFields()
         {
             Settings.setGeneralSettings(this);
+            scContent.Panel2Collapsed = true;
+
             chkIncludeInactive.Visible = false;
             idtp_Timestamp_Start.Value = Util.getFirstDayOfSelectedMonth(DateTime.Now.AddMonths(-1));
             idtp_Timestamp_End.Value = DateTime.Now;

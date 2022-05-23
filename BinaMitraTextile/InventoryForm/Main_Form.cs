@@ -268,6 +268,8 @@ namespace BinaMitraTextile.InventoryForm
             iclb_ProductStoreNames.reset();
             iclb_Grades.reset();
             iclb_ProductWidths.reset();
+            idtp_Start.reset();
+            idtp_End.reset();
 
             populateGridview();
         }
@@ -355,7 +357,9 @@ namespace BinaMitraTextile.InventoryForm
                 _vendorID,
                 null,
                 chkShowNotBookedOnly.Checked,
-                itxt_QuickSearch.ValueText);
+                itxt_QuickSearch.ValueText,
+                idtp_Start.ValueAsStartDateFilter,
+                idtp_End.ValueAsEndDateFilter);
 
             //dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNamesForQuickSearch);
             setGridviewDataSource(datatable);
@@ -529,6 +533,16 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (ptRowInfo.isPanelOpen)
                 populateGridSummary();
+        }
+
+        private void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            populateGridview();
+        }
+
+        private void chkCalculateBuyValue_CheckedChanged(object sender, EventArgs e)
+        {
+            calculateSelections();
         }
 
         #endregion FORM METHODS

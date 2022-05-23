@@ -109,7 +109,7 @@ namespace BinaMitraTextile.Admin
         private void populateGrid()
         {
             DataView dvw = ProductPrice.get(chkOnlyNotOK.Checked).DefaultView;
-            dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText.Trim(), new string[] { ProductPrice.COL_PRODUCTSTORENAME, ProductPrice.COL_COLORNAME, ProductPrice.COL_DB_SELLPRICE } );
+            dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText.Trim(), new string[] { ProductPrice.COL_PRODUCTSTORENAME, ProductPrice.COL_COLORNAME, ProductPrice.COL_DB_SELLPRICE, ProductPrice.COL_Grades_Name } );
 
             Util.setGridviewDataSource(grid, true, true, dvw);
         }

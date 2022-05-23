@@ -135,7 +135,7 @@ namespace BinaMitraTextile.Invoices
 
         private bool isInputFieldsValid()
         {
-            if (iddl_PaymentMethods.isValidSelectedValue())
+            if (!iddl_PaymentMethods.isValidSelectedValue())
                 return iddl_PaymentMethods.SelectedValueError("Please select a payment method from the dropdownlist");
 
             decimal paymentAmount = in_PaymentAmount.ValueDecimal;

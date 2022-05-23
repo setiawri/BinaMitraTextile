@@ -45,28 +45,6 @@
             this.txtTagPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNotes = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbGrades = new System.Windows.Forms.ComboBox();
-            this.gbNonSelectionPanel = new System.Windows.Forms.GroupBox();
-            this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.cbColors = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtInventoryCode = new System.Windows.Forms.TextBox();
-            this.chkUseInventoryID = new System.Windows.Forms.CheckBox();
-            this.gbSelectionPanel = new System.Windows.Forms.GroupBox();
-            this.in_Price = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.btnCancelSelections = new System.Windows.Forms.Button();
-            this.btnUpdateSelected = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.chkOnlyNotOK = new System.Windows.Forms.CheckBox();
-            this.in_BuyPercentDiscount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_IsSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_grid_productStoreName = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -79,6 +57,28 @@
             this.col_grid_BuyPercentDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sell_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_Checked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbGrades = new System.Windows.Forms.ComboBox();
+            this.gbNonSelectionPanel = new System.Windows.Forms.GroupBox();
+            this.cbColors = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtInventoryCode = new System.Windows.Forms.TextBox();
+            this.chkUseInventoryID = new System.Windows.Forms.CheckBox();
+            this.gbSelectionPanel = new System.Windows.Forms.GroupBox();
+            this.btnCancelSelections = new System.Windows.Forms.Button();
+            this.btnUpdateSelected = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkOnlyNotOK = new System.Windows.Forms.CheckBox();
+            this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.in_BuyPercentDiscount = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_Price = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.gbNonSelectionPanel.SuspendLayout();
             this.gbSelectionPanel.SuspendLayout();
@@ -207,345 +207,10 @@
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 24;
-            this.grid.Size = new System.Drawing.Size(731, 447);
+            this.grid.Size = new System.Drawing.Size(800, 447);
             this.grid.TabIndex = 1;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(423, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 16);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Notes";
-            // 
-            // txtNotes
-            // 
-            this.txtNotes.Location = new System.Drawing.Point(475, 52);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNotes.MaxLength = 500;
-            this.txtNotes.Multiline = true;
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(183, 61);
-            this.txtNotes.TabIndex = 6;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(521, 175);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(95, 23);
-            this.btnClear.TabIndex = 9;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(427, 175);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(95, 23);
-            this.btnSubmit.TabIndex = 8;
-            this.btnSubmit.Text = "ADD NEW";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(163, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 16);
-            this.label6.TabIndex = 86;
-            this.label6.Text = "Grade";
-            // 
-            // cbGrades
-            // 
-            this.cbGrades.FormattingEnabled = true;
-            this.cbGrades.Location = new System.Drawing.Point(216, 86);
-            this.cbGrades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbGrades.Name = "cbGrades";
-            this.cbGrades.Size = new System.Drawing.Size(183, 24);
-            this.cbGrades.TabIndex = 1;
-            // 
-            // gbNonSelectionPanel
-            // 
-            this.gbNonSelectionPanel.Controls.Add(this.in_BuyPercentDiscount);
-            this.gbNonSelectionPanel.Controls.Add(this.in_BuyPrice);
-            this.gbNonSelectionPanel.Controls.Add(this.cbColors);
-            this.gbNonSelectionPanel.Controls.Add(this.label7);
-            this.gbNonSelectionPanel.Controls.Add(this.btnDelete);
-            this.gbNonSelectionPanel.Controls.Add(this.txtInventoryCode);
-            this.gbNonSelectionPanel.Controls.Add(this.btnSubmit);
-            this.gbNonSelectionPanel.Controls.Add(this.btnClear);
-            this.gbNonSelectionPanel.Controls.Add(this.chkUseInventoryID);
-            this.gbNonSelectionPanel.Controls.Add(this.label6);
-            this.gbNonSelectionPanel.Controls.Add(this.txtTagPrice);
-            this.gbNonSelectionPanel.Controls.Add(this.label4);
-            this.gbNonSelectionPanel.Controls.Add(this.cbProductStoreNames);
-            this.gbNonSelectionPanel.Controls.Add(this.label3);
-            this.gbNonSelectionPanel.Controls.Add(this.cbGrades);
-            this.gbNonSelectionPanel.Controls.Add(this.txtNotes);
-            this.gbNonSelectionPanel.Controls.Add(this.cbLengthUnits);
-            this.gbNonSelectionPanel.Controls.Add(this.label5);
-            this.gbNonSelectionPanel.Controls.Add(this.label2);
-            this.gbNonSelectionPanel.Controls.Add(this.cbProductWidths);
-            this.gbNonSelectionPanel.Controls.Add(this.label1);
-            this.gbNonSelectionPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbNonSelectionPanel.Location = new System.Drawing.Point(0, 48);
-            this.gbNonSelectionPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbNonSelectionPanel.Name = "gbNonSelectionPanel";
-            this.gbNonSelectionPanel.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbNonSelectionPanel.Size = new System.Drawing.Size(731, 218);
-            this.gbNonSelectionPanel.TabIndex = 0;
-            this.gbNonSelectionPanel.TabStop = false;
-            // 
-            // in_BuyPrice
-            // 
-            this.in_BuyPrice.Checked = false;
-            this.in_BuyPrice.DecimalPlaces = 2;
-            this.in_BuyPrice.HideUpDown = false;
-            this.in_BuyPrice.Increment = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.LabelText = "Buy Price";
-            this.in_BuyPrice.Location = new System.Drawing.Point(427, 117);
-            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.in_BuyPrice.MaximumValue = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.Name = "in_BuyPrice";
-            this.in_BuyPrice.ShowAllowDecimalCheckbox = false;
-            this.in_BuyPrice.ShowCheckbox = false;
-            this.in_BuyPrice.ShowTextboxOnly = false;
-            this.in_BuyPrice.Size = new System.Drawing.Size(141, 50);
-            this.in_BuyPrice.TabIndex = 7;
-            this.in_BuyPrice.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // cbColors
-            // 
-            this.cbColors.FormattingEnabled = true;
-            this.cbColors.Location = new System.Drawing.Point(216, 178);
-            this.cbColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbColors.Name = "cbColors";
-            this.cbColors.Size = new System.Drawing.Size(183, 24);
-            this.cbColors.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(169, 182);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 16);
-            this.label7.TabIndex = 90;
-            this.label7.Text = "Color";
-            // 
-            // txtInventoryCode
-            // 
-            this.txtInventoryCode.Location = new System.Drawing.Point(216, 25);
-            this.txtInventoryCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtInventoryCode.MaxLength = 8;
-            this.txtInventoryCode.Name = "txtInventoryCode";
-            this.txtInventoryCode.ReadOnly = true;
-            this.txtInventoryCode.Size = new System.Drawing.Size(183, 22);
-            this.txtInventoryCode.TabIndex = 88;
-            // 
-            // chkUseInventoryID
-            // 
-            this.chkUseInventoryID.AutoSize = true;
-            this.chkUseInventoryID.Location = new System.Drawing.Point(51, 28);
-            this.chkUseInventoryID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkUseInventoryID.Name = "chkUseInventoryID";
-            this.chkUseInventoryID.Size = new System.Drawing.Size(149, 20);
-            this.chkUseInventoryID.TabIndex = 87;
-            this.chkUseInventoryID.Text = "Only Inventory Code";
-            this.chkUseInventoryID.UseVisualStyleBackColor = true;
-            this.chkUseInventoryID.CheckedChanged += new System.EventHandler(this.chkUseInventoryID_CheckedChanged);
-            // 
-            // gbSelectionPanel
-            // 
-            this.gbSelectionPanel.Controls.Add(this.in_Price);
-            this.gbSelectionPanel.Controls.Add(this.btnCancelSelections);
-            this.gbSelectionPanel.Controls.Add(this.btnUpdateSelected);
-            this.gbSelectionPanel.Controls.Add(this.label8);
-            this.gbSelectionPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbSelectionPanel.Location = new System.Drawing.Point(0, 0);
-            this.gbSelectionPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbSelectionPanel.Name = "gbSelectionPanel";
-            this.gbSelectionPanel.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbSelectionPanel.Size = new System.Drawing.Size(731, 48);
-            this.gbSelectionPanel.TabIndex = 2;
-            this.gbSelectionPanel.TabStop = false;
-            this.gbSelectionPanel.Visible = false;
-            // 
-            // in_Price
-            // 
-            this.in_Price.Checked = false;
-            this.in_Price.DecimalPlaces = 2;
-            this.in_Price.HideUpDown = true;
-            this.in_Price.Increment = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.in_Price.LabelText = "numeric";
-            this.in_Price.Location = new System.Drawing.Point(63, 15);
-            this.in_Price.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.in_Price.MaximumValue = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.in_Price.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_Price.Name = "in_Price";
-            this.in_Price.ShowAllowDecimalCheckbox = false;
-            this.in_Price.ShowCheckbox = false;
-            this.in_Price.ShowTextboxOnly = true;
-            this.in_Price.Size = new System.Drawing.Size(128, 27);
-            this.in_Price.TabIndex = 94;
-            this.in_Price.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // btnCancelSelections
-            // 
-            this.btnCancelSelections.Location = new System.Drawing.Point(291, 14);
-            this.btnCancelSelections.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnCancelSelections.Name = "btnCancelSelections";
-            this.btnCancelSelections.Size = new System.Drawing.Size(80, 28);
-            this.btnCancelSelections.TabIndex = 93;
-            this.btnCancelSelections.Text = "CANCEL";
-            this.btnCancelSelections.UseVisualStyleBackColor = true;
-            this.btnCancelSelections.Click += new System.EventHandler(this.btnCancelSelections_Click);
-            // 
-            // btnUpdateSelected
-            // 
-            this.btnUpdateSelected.Location = new System.Drawing.Point(200, 14);
-            this.btnUpdateSelected.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnUpdateSelected.Name = "btnUpdateSelected";
-            this.btnUpdateSelected.Size = new System.Drawing.Size(83, 28);
-            this.btnUpdateSelected.TabIndex = 92;
-            this.btnUpdateSelected.Text = "UPDATE";
-            this.btnUpdateSelected.UseVisualStyleBackColor = true;
-            this.btnUpdateSelected.Click += new System.EventHandler(this.btnUpdateSelected_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 18);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 16);
-            this.label8.TabIndex = 91;
-            this.label8.Text = "Price";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 16);
-            this.label9.TabIndex = 91;
-            this.label9.Text = "Search";
-            // 
-            // itxt_QuickSearch
-            // 
-            this.itxt_QuickSearch.IsBrowseMode = false;
-            this.itxt_QuickSearch.LabelText = "textbox";
-            this.itxt_QuickSearch.Location = new System.Drawing.Point(68, 7);
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.itxt_QuickSearch.MaxLength = 7;
-            this.itxt_QuickSearch.MultiLine = false;
-            this.itxt_QuickSearch.Name = "itxt_QuickSearch";
-            this.itxt_QuickSearch.PasswordChar = '\0';
-            this.itxt_QuickSearch.RowCount = 1;
-            this.itxt_QuickSearch.ShowDeleteButton = false;
-            this.itxt_QuickSearch.ShowFilter = false;
-            this.itxt_QuickSearch.ShowTextboxOnly = true;
-            this.itxt_QuickSearch.Size = new System.Drawing.Size(68, 26);
-            this.itxt_QuickSearch.TabIndex = 0;
-            this.itxt_QuickSearch.ValueText = "";
-            this.itxt_QuickSearch.onTextChanged += new System.EventHandler(this.itxt_QuickSearch_onTextChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.chkOnlyNotOK);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.itxt_QuickSearch);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 266);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(731, 39);
-            this.panel1.TabIndex = 95;
-            // 
-            // chkOnlyNotOK
-            // 
-            this.chkOnlyNotOK.AutoSize = true;
-            this.chkOnlyNotOK.Location = new System.Drawing.Point(144, 11);
-            this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.chkOnlyNotOK.Name = "chkOnlyNotOK";
-            this.chkOnlyNotOK.Size = new System.Drawing.Size(96, 20);
-            this.chkOnlyNotOK.TabIndex = 96;
-            this.chkOnlyNotOK.Text = "only not OK";
-            this.chkOnlyNotOK.UseVisualStyleBackColor = true;
-            this.chkOnlyNotOK.CheckedChanged += new System.EventHandler(this.chkOnlyNotOK_CheckedChanged);
-            // 
-            // in_BuyPercentDiscount
-            // 
-            this.in_BuyPercentDiscount.Checked = false;
-            this.in_BuyPercentDiscount.DecimalPlaces = 2;
-            this.in_BuyPercentDiscount.HideUpDown = false;
-            this.in_BuyPercentDiscount.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.in_BuyPercentDiscount.LabelText = "Buy % Discount";
-            this.in_BuyPercentDiscount.Location = new System.Drawing.Point(570, 117);
-            this.in_BuyPercentDiscount.Margin = new System.Windows.Forms.Padding(5);
-            this.in_BuyPercentDiscount.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_BuyPercentDiscount.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_BuyPercentDiscount.Name = "in_BuyPercentDiscount";
-            this.in_BuyPercentDiscount.ShowAllowDecimalCheckbox = false;
-            this.in_BuyPercentDiscount.ShowCheckbox = false;
-            this.in_BuyPercentDiscount.ShowTextboxOnly = false;
-            this.in_BuyPercentDiscount.Size = new System.Drawing.Size(141, 50);
-            this.in_BuyPercentDiscount.TabIndex = 91;
-            this.in_BuyPercentDiscount.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             // 
             // col_grid_id
             // 
@@ -651,13 +316,14 @@
             // 
             // col_grid_BuyPercentDiscount
             // 
+            this.col_grid_BuyPercentDiscount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.col_grid_BuyPercentDiscount.DefaultCellStyle = dataGridViewCellStyle6;
             this.col_grid_BuyPercentDiscount.HeaderText = "%Disc";
-            this.col_grid_BuyPercentDiscount.MinimumWidth = 6;
+            this.col_grid_BuyPercentDiscount.MinimumWidth = 40;
             this.col_grid_BuyPercentDiscount.Name = "col_grid_BuyPercentDiscount";
             this.col_grid_BuyPercentDiscount.ReadOnly = true;
-            this.col_grid_BuyPercentDiscount.Width = 125;
+            this.col_grid_BuyPercentDiscount.Width = 40;
             // 
             // sell_price
             // 
@@ -683,11 +349,349 @@
             this.col_grid_Checked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.col_grid_Checked.Width = 30;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(423, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 16);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Notes";
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Location = new System.Drawing.Point(475, 52);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNotes.MaxLength = 500;
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(183, 61);
+            this.txtNotes.TabIndex = 6;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(521, 175);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(95, 23);
+            this.btnClear.TabIndex = 9;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(427, 175);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(95, 23);
+            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.Text = "ADD NEW";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(163, 90);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 16);
+            this.label6.TabIndex = 86;
+            this.label6.Text = "Grade";
+            // 
+            // cbGrades
+            // 
+            this.cbGrades.FormattingEnabled = true;
+            this.cbGrades.Location = new System.Drawing.Point(216, 86);
+            this.cbGrades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbGrades.Name = "cbGrades";
+            this.cbGrades.Size = new System.Drawing.Size(183, 24);
+            this.cbGrades.TabIndex = 1;
+            // 
+            // gbNonSelectionPanel
+            // 
+            this.gbNonSelectionPanel.Controls.Add(this.in_BuyPercentDiscount);
+            this.gbNonSelectionPanel.Controls.Add(this.in_BuyPrice);
+            this.gbNonSelectionPanel.Controls.Add(this.cbColors);
+            this.gbNonSelectionPanel.Controls.Add(this.label7);
+            this.gbNonSelectionPanel.Controls.Add(this.btnDelete);
+            this.gbNonSelectionPanel.Controls.Add(this.txtInventoryCode);
+            this.gbNonSelectionPanel.Controls.Add(this.btnSubmit);
+            this.gbNonSelectionPanel.Controls.Add(this.btnClear);
+            this.gbNonSelectionPanel.Controls.Add(this.chkUseInventoryID);
+            this.gbNonSelectionPanel.Controls.Add(this.label6);
+            this.gbNonSelectionPanel.Controls.Add(this.txtTagPrice);
+            this.gbNonSelectionPanel.Controls.Add(this.label4);
+            this.gbNonSelectionPanel.Controls.Add(this.cbProductStoreNames);
+            this.gbNonSelectionPanel.Controls.Add(this.label3);
+            this.gbNonSelectionPanel.Controls.Add(this.cbGrades);
+            this.gbNonSelectionPanel.Controls.Add(this.txtNotes);
+            this.gbNonSelectionPanel.Controls.Add(this.cbLengthUnits);
+            this.gbNonSelectionPanel.Controls.Add(this.label5);
+            this.gbNonSelectionPanel.Controls.Add(this.label2);
+            this.gbNonSelectionPanel.Controls.Add(this.cbProductWidths);
+            this.gbNonSelectionPanel.Controls.Add(this.label1);
+            this.gbNonSelectionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbNonSelectionPanel.Location = new System.Drawing.Point(0, 48);
+            this.gbNonSelectionPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.gbNonSelectionPanel.Name = "gbNonSelectionPanel";
+            this.gbNonSelectionPanel.Padding = new System.Windows.Forms.Padding(4);
+            this.gbNonSelectionPanel.Size = new System.Drawing.Size(800, 218);
+            this.gbNonSelectionPanel.TabIndex = 0;
+            this.gbNonSelectionPanel.TabStop = false;
+            // 
+            // cbColors
+            // 
+            this.cbColors.FormattingEnabled = true;
+            this.cbColors.Location = new System.Drawing.Point(216, 178);
+            this.cbColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbColors.Name = "cbColors";
+            this.cbColors.Size = new System.Drawing.Size(183, 24);
+            this.cbColors.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(169, 182);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 16);
+            this.label7.TabIndex = 90;
+            this.label7.Text = "Color";
+            // 
+            // txtInventoryCode
+            // 
+            this.txtInventoryCode.Location = new System.Drawing.Point(216, 25);
+            this.txtInventoryCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtInventoryCode.MaxLength = 8;
+            this.txtInventoryCode.Name = "txtInventoryCode";
+            this.txtInventoryCode.ReadOnly = true;
+            this.txtInventoryCode.Size = new System.Drawing.Size(183, 22);
+            this.txtInventoryCode.TabIndex = 88;
+            // 
+            // chkUseInventoryID
+            // 
+            this.chkUseInventoryID.AutoSize = true;
+            this.chkUseInventoryID.Location = new System.Drawing.Point(51, 28);
+            this.chkUseInventoryID.Margin = new System.Windows.Forms.Padding(4);
+            this.chkUseInventoryID.Name = "chkUseInventoryID";
+            this.chkUseInventoryID.Size = new System.Drawing.Size(146, 20);
+            this.chkUseInventoryID.TabIndex = 87;
+            this.chkUseInventoryID.Text = "Only Inventory Code";
+            this.chkUseInventoryID.UseVisualStyleBackColor = true;
+            this.chkUseInventoryID.CheckedChanged += new System.EventHandler(this.chkUseInventoryID_CheckedChanged);
+            // 
+            // gbSelectionPanel
+            // 
+            this.gbSelectionPanel.Controls.Add(this.in_Price);
+            this.gbSelectionPanel.Controls.Add(this.btnCancelSelections);
+            this.gbSelectionPanel.Controls.Add(this.btnUpdateSelected);
+            this.gbSelectionPanel.Controls.Add(this.label8);
+            this.gbSelectionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbSelectionPanel.Location = new System.Drawing.Point(0, 0);
+            this.gbSelectionPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.gbSelectionPanel.Name = "gbSelectionPanel";
+            this.gbSelectionPanel.Padding = new System.Windows.Forms.Padding(4);
+            this.gbSelectionPanel.Size = new System.Drawing.Size(800, 48);
+            this.gbSelectionPanel.TabIndex = 2;
+            this.gbSelectionPanel.TabStop = false;
+            this.gbSelectionPanel.Visible = false;
+            // 
+            // btnCancelSelections
+            // 
+            this.btnCancelSelections.Location = new System.Drawing.Point(291, 13);
+            this.btnCancelSelections.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelSelections.Name = "btnCancelSelections";
+            this.btnCancelSelections.Size = new System.Drawing.Size(80, 28);
+            this.btnCancelSelections.TabIndex = 93;
+            this.btnCancelSelections.Text = "CANCEL";
+            this.btnCancelSelections.UseVisualStyleBackColor = true;
+            this.btnCancelSelections.Click += new System.EventHandler(this.btnCancelSelections_Click);
+            // 
+            // btnUpdateSelected
+            // 
+            this.btnUpdateSelected.Location = new System.Drawing.Point(200, 13);
+            this.btnUpdateSelected.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateSelected.Name = "btnUpdateSelected";
+            this.btnUpdateSelected.Size = new System.Drawing.Size(83, 28);
+            this.btnUpdateSelected.TabIndex = 92;
+            this.btnUpdateSelected.Text = "UPDATE";
+            this.btnUpdateSelected.UseVisualStyleBackColor = true;
+            this.btnUpdateSelected.Click += new System.EventHandler(this.btnUpdateSelected_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 16);
+            this.label8.TabIndex = 91;
+            this.label8.Text = "Price";
+            // 
+            // label9
+            // 
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label9.Location = new System.Drawing.Point(0, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 39);
+            this.label9.TabIndex = 91;
+            this.label9.Text = "Search";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chkOnlyNotOK);
+            this.panel1.Controls.Add(this.itxt_QuickSearch);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 266);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 39);
+            this.panel1.TabIndex = 95;
+            // 
+            // chkOnlyNotOK
+            // 
+            this.chkOnlyNotOK.AutoSize = true;
+            this.chkOnlyNotOK.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkOnlyNotOK.Location = new System.Drawing.Point(191, 0);
+            this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOnlyNotOK.Name = "chkOnlyNotOK";
+            this.chkOnlyNotOK.Size = new System.Drawing.Size(93, 39);
+            this.chkOnlyNotOK.TabIndex = 96;
+            this.chkOnlyNotOK.Text = "only not OK";
+            this.chkOnlyNotOK.UseVisualStyleBackColor = true;
+            this.chkOnlyNotOK.CheckedChanged += new System.EventHandler(this.chkOnlyNotOK_CheckedChanged);
+            // 
+            // itxt_QuickSearch
+            // 
+            this.itxt_QuickSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.itxt_QuickSearch.IsBrowseMode = false;
+            this.itxt_QuickSearch.LabelText = "textbox";
+            this.itxt_QuickSearch.Location = new System.Drawing.Point(50, 0);
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.itxt_QuickSearch.MaxLength = 7;
+            this.itxt_QuickSearch.MultiLine = false;
+            this.itxt_QuickSearch.Name = "itxt_QuickSearch";
+            this.itxt_QuickSearch.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.itxt_QuickSearch.PasswordChar = '\0';
+            this.itxt_QuickSearch.RowCount = 1;
+            this.itxt_QuickSearch.ShowDeleteButton = true;
+            this.itxt_QuickSearch.ShowFilter = false;
+            this.itxt_QuickSearch.ShowTextboxOnly = true;
+            this.itxt_QuickSearch.Size = new System.Drawing.Size(141, 39);
+            this.itxt_QuickSearch.TabIndex = 0;
+            this.itxt_QuickSearch.ValueText = "";
+            this.itxt_QuickSearch.onTextChanged += new System.EventHandler(this.itxt_QuickSearch_onTextChanged);
+            // 
+            // in_BuyPercentDiscount
+            // 
+            this.in_BuyPercentDiscount.Checked = false;
+            this.in_BuyPercentDiscount.DecimalPlaces = 2;
+            this.in_BuyPercentDiscount.HideUpDown = false;
+            this.in_BuyPercentDiscount.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.in_BuyPercentDiscount.LabelText = "Buy % Discount";
+            this.in_BuyPercentDiscount.Location = new System.Drawing.Point(570, 117);
+            this.in_BuyPercentDiscount.Margin = new System.Windows.Forms.Padding(5);
+            this.in_BuyPercentDiscount.MaximumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.in_BuyPercentDiscount.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_BuyPercentDiscount.Name = "in_BuyPercentDiscount";
+            this.in_BuyPercentDiscount.ShowAllowDecimalCheckbox = false;
+            this.in_BuyPercentDiscount.ShowCheckbox = false;
+            this.in_BuyPercentDiscount.ShowTextboxOnly = false;
+            this.in_BuyPercentDiscount.Size = new System.Drawing.Size(141, 50);
+            this.in_BuyPercentDiscount.TabIndex = 91;
+            this.in_BuyPercentDiscount.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // in_BuyPrice
+            // 
+            this.in_BuyPrice.Checked = false;
+            this.in_BuyPrice.DecimalPlaces = 2;
+            this.in_BuyPrice.HideUpDown = false;
+            this.in_BuyPrice.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.LabelText = "Buy Price";
+            this.in_BuyPrice.Location = new System.Drawing.Point(427, 117);
+            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5);
+            this.in_BuyPrice.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.Name = "in_BuyPrice";
+            this.in_BuyPrice.ShowAllowDecimalCheckbox = false;
+            this.in_BuyPrice.ShowCheckbox = false;
+            this.in_BuyPrice.ShowTextboxOnly = false;
+            this.in_BuyPrice.Size = new System.Drawing.Size(141, 50);
+            this.in_BuyPrice.TabIndex = 7;
+            this.in_BuyPrice.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // in_Price
+            // 
+            this.in_Price.Checked = false;
+            this.in_Price.DecimalPlaces = 2;
+            this.in_Price.HideUpDown = true;
+            this.in_Price.Increment = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.in_Price.LabelText = "numeric";
+            this.in_Price.Location = new System.Drawing.Point(63, 15);
+            this.in_Price.Margin = new System.Windows.Forms.Padding(5);
+            this.in_Price.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_Price.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_Price.Name = "in_Price";
+            this.in_Price.ShowAllowDecimalCheckbox = false;
+            this.in_Price.ShowCheckbox = false;
+            this.in_Price.ShowTextboxOnly = true;
+            this.in_Price.Size = new System.Drawing.Size(128, 24);
+            this.in_Price.TabIndex = 94;
+            this.in_Price.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
             // ProductPrices_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 752);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(800, 752);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gbNonSelectionPanel);

@@ -39,6 +39,7 @@ namespace BinaMitraTextile.Admin
         protected override void setupFields()
         {
             Settings.setGeneralSettings(this);
+            scContent.Panel2Collapsed = true;
 
             enableFieldStatus<ToDoStatus>();
             setColumnsDataPropertyNames(ToDo.COL_DB_ID, null, ToDo.COL_STATUSNAME, ToDo.COL_DB_STATUSENUMID, null, null);

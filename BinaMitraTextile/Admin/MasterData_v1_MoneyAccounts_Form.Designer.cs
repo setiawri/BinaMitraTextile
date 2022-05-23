@@ -61,12 +61,6 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1067, 34);
             // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(5);
-            this.chkIncludeInactive.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.chkIncludeInactive.Size = new System.Drawing.Size(119, 32);
-            // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 202);
@@ -164,7 +158,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 184);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 230);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -183,7 +177,7 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 158);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 204);
             // 
             // pbLog
             // 
@@ -195,15 +189,13 @@
             // 
             // itxt_QuickSearch
             // 
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.itxt_QuickSearch.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.itxt_QuickSearch.ShowDeleteButton = true;
             // 
             // scContent
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1067, 331);
-            this.scContent.SplitterDistance = 142;
+            this.scContent.SplitterDistance = 96;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Notes

@@ -54,7 +54,7 @@ namespace BinaMitraTextile.POs
             setColumnsDataPropertyNames(POItem.COL_DB_ID, null, POItem.COL_STATUSNAME, POItem.COL_DB_STATUSENUMID, null, null);
             btnAdd.Enabled = false;
             btnLog.Enabled = false;
-
+            
             iddl_POItemStatus.populate(typeof(POItemStatus));
 
             col_ProductDescription = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ProductDescription", "Description", POItem.COL_DB_PRODUCTDESCRIPTION, true, true, "", true, true, 100, DataGridViewContentAlignment.TopLeft);
@@ -150,6 +150,7 @@ namespace BinaMitraTextile.POs
 
         private void MasterData_v1_CustomerSaleAdjustments_Shown(object sender, EventArgs e)
         {
+            scContent.Panel2Collapsed = true;
             ptInputPanel.PerformClick();
         }
 

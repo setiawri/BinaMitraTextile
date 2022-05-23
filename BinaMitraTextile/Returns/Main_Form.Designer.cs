@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.btnReturnSale = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
@@ -93,14 +93,14 @@
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DateTimeStamp,
@@ -120,8 +120,8 @@
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersVisible = false;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.grid.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.grid.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.grid.RowTemplate.Height = 24;
             this.grid.Size = new System.Drawing.Size(965, 303);
             this.grid.TabIndex = 2;
@@ -132,8 +132,8 @@
             // 
             this.DateTimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.DateTimeStamp.DataPropertyName = "time_stamp";
-            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
-            this.DateTimeStamp.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Format = "dd/MM/yy HH:mm";
+            this.DateTimeStamp.DefaultCellStyle = dataGridViewCellStyle16;
             this.DateTimeStamp.HeaderText = "Date";
             this.DateTimeStamp.MinimumWidth = 30;
             this.DateTimeStamp.Name = "DateTimeStamp";
@@ -145,8 +145,8 @@
             this.hexbarcode.ActiveLinkColor = System.Drawing.Color.SpringGreen;
             this.hexbarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.hexbarcode.DataPropertyName = "hexbarcode";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hexbarcode.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hexbarcode.DefaultCellStyle = dataGridViewCellStyle17;
             this.hexbarcode.HeaderText = "No";
             this.hexbarcode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.hexbarcode.LinkColor = System.Drawing.Color.SpringGreen;
@@ -181,8 +181,8 @@
             // 
             this.sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.sale_qty.DataPropertyName = "sale_qty";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.sale_qty.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.sale_qty.DefaultCellStyle = dataGridViewCellStyle18;
             this.sale_qty.HeaderText = "Pcs";
             this.sale_qty.MinimumWidth = 30;
             this.sale_qty.Name = "sale_qty";
@@ -193,8 +193,8 @@
             // 
             this.sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.sale_length.DataPropertyName = "sale_length";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.sale_length.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.sale_length.DefaultCellStyle = dataGridViewCellStyle19;
             this.sale_length.HeaderText = "Qty";
             this.sale_length.MinimumWidth = 30;
             this.sale_length.Name = "sale_length";
@@ -205,10 +205,10 @@
             // 
             this.sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.sale_amount.DataPropertyName = "sale_amount";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.sale_amount.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N2";
+            dataGridViewCellStyle20.NullValue = null;
+            this.sale_amount.DefaultCellStyle = dataGridViewCellStyle20;
             this.sale_amount.HeaderText = "Amount";
             this.sale_amount.MinimumWidth = 50;
             this.sale_amount.Name = "sale_amount";
@@ -248,8 +248,8 @@
             this.idtp_EndDate.DefaultCheckedValue = false;
             this.idtp_EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_EndDate.LabelText = "Start Date";
-            this.idtp_EndDate.Location = new System.Drawing.Point(443, 12);
-            this.idtp_EndDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_EndDate.Location = new System.Drawing.Point(411, 8);
+            this.idtp_EndDate.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_EndDate.Name = "idtp_EndDate";
             this.idtp_EndDate.ShowCheckBox = true;
             this.idtp_EndDate.ShowDateTimePickerOnly = true;
@@ -288,10 +288,10 @@
             // btnFilter
             // 
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Location = new System.Drawing.Point(585, 12);
+            this.btnFilter.Location = new System.Drawing.Point(272, 38);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(109, 53);
+            this.btnFilter.Size = new System.Drawing.Size(109, 33);
             this.btnFilter.TabIndex = 5;
             this.btnFilter.Text = "FILTER";
             this.btnFilter.UseVisualStyleBackColor = true;
@@ -309,18 +309,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(421, 16);
+            this.label1.Location = new System.Drawing.Point(385, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 16);
+            this.label1.Size = new System.Drawing.Size(26, 16);
             this.label1.TabIndex = 94;
-            this.label1.Text = "to";
+            this.label1.Text = "TO";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(700, 12);
+            this.btnClear.Location = new System.Drawing.Point(387, 38);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(109, 53);
+            this.btnClear.Size = new System.Drawing.Size(109, 33);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "CLEAR";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -341,7 +341,7 @@
             this.pnlFilter.Controls.Add(this.label1);
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilter.Location = new System.Drawing.Point(0, 0);
-            this.pnlFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFilter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFilter.Name = "pnlFilter";
             this.pnlFilter.Size = new System.Drawing.Size(965, 113);
             this.pnlFilter.TabIndex = 3;
@@ -353,7 +353,7 @@
             this.pnlFilterHeaderContainer.Controls.Add(this.ptFilter);
             this.pnlFilterHeaderContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFilterHeaderContainer.Location = new System.Drawing.Point(0, 80);
-            this.pnlFilterHeaderContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFilterHeaderContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFilterHeaderContainer.Name = "pnlFilterHeaderContainer";
             this.pnlFilterHeaderContainer.Size = new System.Drawing.Size(965, 33);
             this.pnlFilterHeaderContainer.TabIndex = 96;
@@ -366,7 +366,7 @@
             this.pnlFilterHeader.Controls.Add(this.pbRefresh);
             this.pnlFilterHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFilterHeader.Location = new System.Drawing.Point(33, 0);
-            this.pnlFilterHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFilterHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFilterHeader.Name = "pnlFilterHeader";
             this.pnlFilterHeader.Size = new System.Drawing.Size(932, 33);
             this.pnlFilterHeader.TabIndex = 98;
@@ -379,7 +379,7 @@
             this.pbLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbLog.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbLog.Location = new System.Drawing.Point(33, 0);
-            this.pbLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbLog.Margin = new System.Windows.Forms.Padding(4);
             this.pbLog.Name = "pbLog";
             this.pbLog.Size = new System.Drawing.Size(33, 31);
             this.pbLog.TabIndex = 98;
@@ -394,7 +394,7 @@
             this.pbRefresh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbRefresh.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbRefresh.Location = new System.Drawing.Point(0, 0);
-            this.pbRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.pbRefresh.Name = "pbRefresh";
             this.pbRefresh.Size = new System.Drawing.Size(33, 31);
             this.pbRefresh.TabIndex = 97;
@@ -410,7 +410,7 @@
             this.ptFilter.Dock = System.Windows.Forms.DockStyle.Left;
             this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
             this.ptFilter.Location = new System.Drawing.Point(0, 0);
-            this.ptFilter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ptFilter.Margin = new System.Windows.Forms.Padding(5);
             this.ptFilter.MinimumSplitterDistance = 100;
             this.ptFilter.Name = "ptFilter";
             this.ptFilter.Size = new System.Drawing.Size(33, 33);
@@ -424,13 +424,13 @@
             this.idtp_StartDate.DefaultCheckedValue = false;
             this.idtp_StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_StartDate.LabelText = "Start Date";
-            this.idtp_StartDate.Location = new System.Drawing.Point(285, 12);
-            this.idtp_StartDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_StartDate.Location = new System.Drawing.Point(272, 8);
+            this.idtp_StartDate.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_StartDate.Name = "idtp_StartDate";
             this.idtp_StartDate.ShowCheckBox = false;
             this.idtp_StartDate.ShowDateTimePickerOnly = true;
             this.idtp_StartDate.ShowUpAndDown = false;
-            this.idtp_StartDate.Size = new System.Drawing.Size(136, 26);
+            this.idtp_StartDate.Size = new System.Drawing.Size(113, 26);
             this.idtp_StartDate.TabIndex = 4;
             this.idtp_StartDate.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.idtp_StartDate.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
@@ -441,7 +441,7 @@
             this.ClientSize = new System.Drawing.Size(965, 416);
             this.Controls.Add(this.grid);
             this.Controls.Add(this.pnlFilter);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "SALES RETURNS";
             this.Load += new System.EventHandler(this.Form_Load);

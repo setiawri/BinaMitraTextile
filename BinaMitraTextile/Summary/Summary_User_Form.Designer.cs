@@ -180,7 +180,7 @@
             this.gridPOItems.RowHeadersVisible = false;
             this.gridPOItems.RowHeadersWidth = 51;
             this.gridPOItems.RowTemplate.Height = 24;
-            this.gridPOItems.Size = new System.Drawing.Size(1040, 173);
+            this.gridPOItems.Size = new System.Drawing.Size(1040, 244);
             this.gridPOItems.TabIndex = 117;
             this.gridPOItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPOItems_CellDoubleClick);
             this.gridPOItems.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridPOItems_CellMouseDown);
@@ -343,7 +343,7 @@
             this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scMain.Location = new System.Drawing.Point(0, 0);
-            this.scMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scMain.Margin = new System.Windows.Forms.Padding(4);
             this.scMain.Name = "scMain";
             // 
             // scMain.Panel1
@@ -364,7 +364,7 @@
             this.scButtonsAndReceivables.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scButtonsAndReceivables.IsSplitterFixed = true;
             this.scButtonsAndReceivables.Location = new System.Drawing.Point(0, 0);
-            this.scButtonsAndReceivables.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scButtonsAndReceivables.Margin = new System.Windows.Forms.Padding(4);
             this.scButtonsAndReceivables.Name = "scButtonsAndReceivables";
             this.scButtonsAndReceivables.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.scButtonsAndReceivables.Panel1Collapsed = true;
@@ -385,7 +385,7 @@
             // 
             this.scReceivablesAndNeedToOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scReceivablesAndNeedToOrder.Location = new System.Drawing.Point(0, 25);
-            this.scReceivablesAndNeedToOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scReceivablesAndNeedToOrder.Margin = new System.Windows.Forms.Padding(4);
             this.scReceivablesAndNeedToOrder.Name = "scReceivablesAndNeedToOrder";
             this.scReceivablesAndNeedToOrder.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -554,7 +554,7 @@
             this.pnlNeedToOrder.Controls.Add(this.label1);
             this.pnlNeedToOrder.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlNeedToOrder.Location = new System.Drawing.Point(0, 217);
-            this.pnlNeedToOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlNeedToOrder.Margin = new System.Windows.Forms.Padding(4);
             this.pnlNeedToOrder.Name = "pnlNeedToOrder";
             this.pnlNeedToOrder.Size = new System.Drawing.Size(400, 198);
             this.pnlNeedToOrder.TabIndex = 125;
@@ -796,7 +796,7 @@
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.Location = new System.Drawing.Point(310, 0);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(91, 25);
             this.btnRefresh.TabIndex = 2;
@@ -820,7 +820,7 @@
             // 
             this.btnShowHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowHidden.Location = new System.Drawing.Point(280, 0);
-            this.btnShowHidden.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowHidden.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowHidden.Name = "btnShowHidden";
             this.btnShowHidden.Size = new System.Drawing.Size(27, 25);
             this.btnShowHidden.TabIndex = 122;
@@ -843,9 +843,8 @@
             // 
             this.scIncompletePOAndTodoList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scIncompletePOAndTodoList.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.scIncompletePOAndTodoList.IsSplitterFixed = true;
             this.scIncompletePOAndTodoList.Location = new System.Drawing.Point(0, 0);
-            this.scIncompletePOAndTodoList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scIncompletePOAndTodoList.Margin = new System.Windows.Forms.Padding(4);
             this.scIncompletePOAndTodoList.Name = "scIncompletePOAndTodoList";
             this.scIncompletePOAndTodoList.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -856,7 +855,7 @@
             this.scIncompletePOAndTodoList.Panel1.Controls.Add(this.gridPOItems);
             this.scIncompletePOAndTodoList.Panel1.Controls.Add(this.lnkIncompletePO);
             this.scIncompletePOAndTodoList.Size = new System.Drawing.Size(1040, 690);
-            this.scIncompletePOAndTodoList.SplitterDistance = 200;
+            this.scIncompletePOAndTodoList.SplitterDistance = 271;
             this.scIncompletePOAndTodoList.SplitterWidth = 5;
             this.scIncompletePOAndTodoList.TabIndex = 120;
             // 
@@ -864,7 +863,7 @@
             // 
             this.btnRemoveSO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveSO.Location = new System.Drawing.Point(928, 2);
-            this.btnRemoveSO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveSO.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveSO.Name = "btnRemoveSO";
             this.btnRemoveSO.Size = new System.Drawing.Size(108, 25);
             this.btnRemoveSO.TabIndex = 125;

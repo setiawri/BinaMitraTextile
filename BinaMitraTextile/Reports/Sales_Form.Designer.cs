@@ -197,7 +197,7 @@
             series2.Name = "Series2";
             this.chartSales.Series.Add(series1);
             this.chartSales.Series.Add(series2);
-            this.chartSales.Size = new System.Drawing.Size(1022, 472);
+            this.chartSales.Size = new System.Drawing.Size(1022, 475);
             this.chartSales.TabIndex = 1;
             this.chartSales.Text = "SALES";
             // 
@@ -220,7 +220,7 @@
             series4.Name = "Series2";
             this.chartProfit.Series.Add(series3);
             this.chartProfit.Series.Add(series4);
-            this.chartProfit.Size = new System.Drawing.Size(1030, 480);
+            this.chartProfit.Size = new System.Drawing.Size(1030, 483);
             this.chartProfit.TabIndex = 2;
             this.chartProfit.Text = "chart1";
             // 
@@ -255,7 +255,7 @@
             this.gridSummaryByMonth.ReadOnly = true;
             this.gridSummaryByMonth.RowHeadersVisible = false;
             this.gridSummaryByMonth.RowTemplate.Height = 24;
-            this.gridSummaryByMonth.Size = new System.Drawing.Size(334, 263);
+            this.gridSummaryByMonth.Size = new System.Drawing.Size(334, 266);
             this.gridSummaryByMonth.TabIndex = 4;
             this.gridSummaryByMonth.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummary_CellDoubleClick);
             // 
@@ -336,7 +336,7 @@
             series6.Name = "Series2";
             this.chartQty.Series.Add(series5);
             this.chartQty.Series.Add(series6);
-            this.chartQty.Size = new System.Drawing.Size(1022, 472);
+            this.chartQty.Size = new System.Drawing.Size(1022, 283);
             this.chartQty.TabIndex = 3;
             this.chartQty.Text = "chart1";
             // 
@@ -357,7 +357,7 @@
             // scMain.Panel2
             // 
             this.scMain.Panel2.Controls.Add(this.tcCharts);
-            this.scMain.Size = new System.Drawing.Size(1038, 814);
+            this.scMain.Size = new System.Drawing.Size(1038, 622);
             this.scMain.SplitterDistance = 300;
             this.scMain.SplitterWidth = 5;
             this.scMain.TabIndex = 7;
@@ -397,11 +397,11 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.gridSummaryByMonth);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(342, 271);
+            this.tabPage4.Size = new System.Drawing.Size(342, 274);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Months";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -409,11 +409,11 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.gridSummaryByCustomers);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage5.Size = new System.Drawing.Size(342, 271);
+            this.tabPage5.Size = new System.Drawing.Size(342, 274);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Customers";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -452,7 +452,7 @@
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSummaryByCustomers.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.gridSummaryByCustomers.RowTemplate.Height = 24;
-            this.gridSummaryByCustomers.Size = new System.Drawing.Size(334, 263);
+            this.gridSummaryByCustomers.Size = new System.Drawing.Size(334, 266);
             this.gridSummaryByCustomers.TabIndex = 103;
             this.gridSummaryByCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSummaryByCustomers_CellContentClick);
             // 
@@ -538,11 +538,11 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dgvDetailBySales);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(679, 271);
+            this.tabPage1.Size = new System.Drawing.Size(679, 274);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sales";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -584,7 +584,7 @@
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dgvDetailBySales.RowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvDetailBySales.RowTemplate.Height = 24;
-            this.dgvDetailBySales.Size = new System.Drawing.Size(671, 263);
+            this.dgvDetailBySales.Size = new System.Drawing.Size(671, 266);
             this.dgvDetailBySales.TabIndex = 100;
             this.dgvDetailBySales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetail_CellContentClick);
             // 
@@ -704,11 +704,11 @@
             // 
             this.tabPage2.Controls.Add(this.dgvDetailByProducts);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(679, 271);
+            this.tabPage2.Size = new System.Drawing.Size(679, 274);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Products";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -749,7 +749,7 @@
             dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dgvDetailByProducts.RowsDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvDetailByProducts.RowTemplate.Height = 24;
-            this.dgvDetailByProducts.Size = new System.Drawing.Size(671, 263);
+            this.dgvDetailByProducts.Size = new System.Drawing.Size(671, 266);
             this.dgvDetailByProducts.TabIndex = 101;
             // 
             // col_dgvDetailByProducts_product_name
@@ -843,20 +843,20 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(284, 107);
+            this.label4.Location = new System.Drawing.Point(284, 109);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 16);
+            this.label4.Size = new System.Drawing.Size(98, 13);
             this.label4.TabIndex = 100;
             this.label4.Text = "Under Construction";
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvDetailByCustomers);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(679, 271);
+            this.tabPage3.Size = new System.Drawing.Size(679, 274);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Customers";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -896,7 +896,7 @@
             dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dgvDetailByCustomers.RowsDefaultCellStyle = dataGridViewCellStyle33;
             this.dgvDetailByCustomers.RowTemplate.Height = 24;
-            this.dgvDetailByCustomers.Size = new System.Drawing.Size(671, 263);
+            this.dgvDetailByCustomers.Size = new System.Drawing.Size(671, 266);
             this.dgvDetailByCustomers.TabIndex = 102;
             // 
             // col_dgvDetailByCustomers_customer_id
@@ -987,17 +987,17 @@
             this.tcCharts.Margin = new System.Windows.Forms.Padding(4);
             this.tcCharts.Name = "tcCharts";
             this.tcCharts.SelectedIndex = 0;
-            this.tcCharts.Size = new System.Drawing.Size(1038, 509);
+            this.tcCharts.Size = new System.Drawing.Size(1038, 317);
             this.tcCharts.TabIndex = 5;
             // 
             // tpQty
             // 
             this.tpQty.Controls.Add(this.chartQty);
-            this.tpQty.Location = new System.Drawing.Point(4, 25);
+            this.tpQty.Location = new System.Drawing.Point(4, 22);
             this.tpQty.Margin = new System.Windows.Forms.Padding(4);
             this.tpQty.Name = "tpQty";
             this.tpQty.Padding = new System.Windows.Forms.Padding(4);
-            this.tpQty.Size = new System.Drawing.Size(1030, 480);
+            this.tpQty.Size = new System.Drawing.Size(1030, 291);
             this.tpQty.TabIndex = 0;
             this.tpQty.Text = "Qty";
             this.tpQty.UseVisualStyleBackColor = true;
@@ -1005,11 +1005,11 @@
             // tpSales
             // 
             this.tpSales.Controls.Add(this.chartSales);
-            this.tpSales.Location = new System.Drawing.Point(4, 25);
+            this.tpSales.Location = new System.Drawing.Point(4, 22);
             this.tpSales.Margin = new System.Windows.Forms.Padding(4);
             this.tpSales.Name = "tpSales";
             this.tpSales.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSales.Size = new System.Drawing.Size(1030, 480);
+            this.tpSales.Size = new System.Drawing.Size(1030, 483);
             this.tpSales.TabIndex = 1;
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
@@ -1017,10 +1017,10 @@
             // tpProfit
             // 
             this.tpProfit.Controls.Add(this.chartProfit);
-            this.tpProfit.Location = new System.Drawing.Point(4, 25);
+            this.tpProfit.Location = new System.Drawing.Point(4, 22);
             this.tpProfit.Margin = new System.Windows.Forms.Padding(4);
             this.tpProfit.Name = "tpProfit";
-            this.tpProfit.Size = new System.Drawing.Size(1030, 480);
+            this.tpProfit.Size = new System.Drawing.Size(1030, 483);
             this.tpProfit.TabIndex = 2;
             this.tpProfit.Text = "Profit";
             this.tpProfit.UseVisualStyleBackColor = true;
@@ -1032,38 +1032,38 @@
             this.iclb_Customers.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_Customers.Name = "iclb_Customers";
             this.iclb_Customers.ShowListOnly = false;
-            this.iclb_Customers.Size = new System.Drawing.Size(215, 310);
+            this.iclb_Customers.Size = new System.Drawing.Size(215, 239);
             this.iclb_Customers.TabIndex = 160;
             this.iclb_Customers.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 69);
+            this.label2.Location = new System.Drawing.Point(14, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 16);
+            this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 159;
             this.label2.Text = "Tax Only";
             // 
             // iclb_LengthUnits
             // 
             this.iclb_LengthUnits.LabelText = "Unit";
-            this.iclb_LengthUnits.Location = new System.Drawing.Point(229, 290);
+            this.iclb_LengthUnits.Location = new System.Drawing.Point(229, 247);
             this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_LengthUnits.Name = "iclb_LengthUnits";
             this.iclb_LengthUnits.ShowListOnly = true;
-            this.iclb_LengthUnits.Size = new System.Drawing.Size(105, 137);
+            this.iclb_LengthUnits.Size = new System.Drawing.Size(105, 120);
             this.iclb_LengthUnits.TabIndex = 157;
             this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
             // iclb_ProductWidths
             // 
             this.iclb_ProductWidths.LabelText = "Lebar";
-            this.iclb_ProductWidths.Location = new System.Drawing.Point(229, 151);
+            this.iclb_ProductWidths.Location = new System.Drawing.Point(229, 129);
             this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_ProductWidths.Name = "iclb_ProductWidths";
             this.iclb_ProductWidths.ShowListOnly = true;
-            this.iclb_ProductWidths.Size = new System.Drawing.Size(105, 137);
+            this.iclb_ProductWidths.Size = new System.Drawing.Size(105, 120);
             this.iclb_ProductWidths.TabIndex = 156;
             this.iclb_ProductWidths.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1074,7 +1074,7 @@
             this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_Grades.Name = "iclb_Grades";
             this.iclb_Grades.ShowListOnly = true;
-            this.iclb_Grades.Size = new System.Drawing.Size(105, 137);
+            this.iclb_Grades.Size = new System.Drawing.Size(105, 120);
             this.iclb_Grades.TabIndex = 155;
             this.iclb_Grades.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1091,7 +1091,8 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(177, 756);
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReset.Location = new System.Drawing.Point(177, 585);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(95, 28);
@@ -1103,9 +1104,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 92);
+            this.label5.Location = new System.Drawing.Point(18, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
+            this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 145;
             this.label5.Text = "Exclude";
             // 
@@ -1115,7 +1116,7 @@
             this.cbExcludeCustomers.Location = new System.Drawing.Point(71, 89);
             this.cbExcludeCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbExcludeCustomers.Name = "cbExcludeCustomers";
-            this.cbExcludeCustomers.Size = new System.Drawing.Size(151, 24);
+            this.cbExcludeCustomers.Size = new System.Drawing.Size(151, 21);
             this.cbExcludeCustomers.TabIndex = 144;
             this.cbExcludeCustomers.SelectedIndexChanged += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1128,7 +1129,7 @@
             this.dtStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtStart.Name = "dtStart";
             this.dtStart.ShowCheckBox = true;
-            this.dtStart.Size = new System.Drawing.Size(151, 22);
+            this.dtStart.Size = new System.Drawing.Size(151, 20);
             this.dtStart.TabIndex = 97;
             this.dtStart.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             this.dtStart.ValueChanged += new System.EventHandler(this.Filter_Item_Checked);
@@ -1142,31 +1143,32 @@
             this.dtEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtEnd.Name = "dtEnd";
             this.dtEnd.ShowCheckBox = true;
-            this.dtEnd.Size = new System.Drawing.Size(151, 22);
+            this.dtEnd.Size = new System.Drawing.Size(151, 20);
             this.dtEnd.TabIndex = 98;
             this.dtEnd.ValueChanged += new System.EventHandler(this.Filter_Item_Checked);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 44);
+            this.label1.Location = new System.Drawing.Point(37, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 16);
+            this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 99;
             this.label1.Text = "End";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 15);
+            this.label3.Location = new System.Drawing.Point(34, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 16);
+            this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 100;
             this.label3.Text = "Start";
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(69, 756);
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSubmit.Location = new System.Drawing.Point(69, 585);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(100, 28);
@@ -1177,13 +1179,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkShowHidden);
+            this.panel1.Controls.Add(this.btnSubmit);
+            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.iclb_Colors);
             this.panel1.Controls.Add(this.iclb_ProductStoreNames);
-            this.panel1.Controls.Add(this.chkShowHidden);
             this.panel1.Controls.Add(this.iclb_Customers);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnSubmit);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.iclb_LengthUnits);
             this.panel1.Controls.Add(this.dtEnd);
@@ -1193,38 +1196,44 @@
             this.panel1.Controls.Add(this.cbExcludeCustomers);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.chkIsReported);
-            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 814);
+            this.panel1.Size = new System.Drawing.Size(341, 622);
             this.panel1.TabIndex = 101;
             // 
             // iclb_Colors
             // 
+            this.iclb_Colors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.iclb_Colors.LabelText = "Colors";
-            this.iclb_Colors.Location = new System.Drawing.Point(174, 435);
+            this.iclb_Colors.Location = new System.Drawing.Point(174, 358);
             this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_Colors.Name = "iclb_Colors";
             this.iclb_Colors.ShowListOnly = false;
-            this.iclb_Colors.Size = new System.Drawing.Size(160, 314);
+            this.iclb_Colors.Size = new System.Drawing.Size(160, 235);
             this.iclb_Colors.TabIndex = 101;
+            this.iclb_Colors.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
             // iclb_ProductStoreNames
             // 
+            this.iclb_ProductStoreNames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.iclb_ProductStoreNames.LabelText = "Products";
-            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(8, 435);
+            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(8, 358);
             this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
             this.iclb_ProductStoreNames.ShowListOnly = false;
-            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(160, 314);
+            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(160, 235);
             this.iclb_ProductStoreNames.TabIndex = 101;
+            this.iclb_ProductStoreNames.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
             // chkShowHidden
             // 
+            this.chkShowHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowHidden.AutoSize = true;
-            this.chkShowHidden.Location = new System.Drawing.Point(41, 762);
+            this.chkShowHidden.Location = new System.Drawing.Point(37, 593);
             this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowHidden.Name = "chkShowHidden";
             this.chkShowHidden.Size = new System.Drawing.Size(15, 14);
@@ -1235,7 +1244,7 @@
             // Sales_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1379, 814);
+            this.ClientSize = new System.Drawing.Size(1379, 622);
             this.Controls.Add(this.scMain);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);

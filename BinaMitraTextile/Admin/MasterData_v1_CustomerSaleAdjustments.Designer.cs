@@ -70,11 +70,6 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1039, 34);
             // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.Location = new System.Drawing.Point(220, 0);
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(5);
-            // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 192);
@@ -192,7 +187,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 184);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 229);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -210,18 +205,16 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 158);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 203);
             // 
             // itxt_QuickSearch
             // 
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_QuickSearch.ShowDeleteButton = true;
-            this.itxt_QuickSearch.Size = new System.Drawing.Size(154, 32);
             // 
             // scContent
             // 
             this.scContent.Size = new System.Drawing.Size(1039, 299);
-            this.scContent.SplitterDistance = 111;
+            this.scContent.SplitterDistance = 66;
             // 
             // itxt_Notes
             // 
@@ -245,7 +238,7 @@
             // 
             this.chkOnlyNotOK.AutoSize = true;
             this.chkOnlyNotOK.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotOK.Location = new System.Drawing.Point(336, 0);
+            this.chkOnlyNotOK.Location = new System.Drawing.Point(363, 0);
             this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnlyNotOK.Name = "chkOnlyNotOK";
             this.chkOnlyNotOK.Size = new System.Drawing.Size(99, 32);

@@ -28,49 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
             this.scMain = new System.Windows.Forms.SplitContainer();
-            this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_Colors = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.iclb_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_ProductWidths = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.iclb_Grades = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.pnlUpdateBuyPrice = new System.Windows.Forms.Panel();
             this.btnCancelUpdateBuyPrice = new System.Windows.Forms.Button();
             this.btnUpdateBuyPrice = new System.Windows.Forms.Button();
-            this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.grid = new System.Windows.Forms.DataGridView();
             this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_receiveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,20 +118,17 @@
             this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.lblRowInfoHeader = new System.Windows.Forms.Label();
-            this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlQuickSearch = new System.Windows.Forms.Panel();
-            this.pbLog = new System.Windows.Forms.PictureBox();
-            this.pbRefresh = new System.Windows.Forms.PictureBox();
-            this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.chkShowNotBookedOnly = new System.Windows.Forms.CheckBox();
             this.chkCalculateBuyValue = new System.Windows.Forms.CheckBox();
             this.chkShowHidden = new System.Windows.Forms.CheckBox();
             this.chkRearrange = new System.Windows.Forms.CheckBox();
+            this.chkShowNotBookedOnly = new System.Windows.Forms.CheckBox();
             this.chkLast3Months = new System.Windows.Forms.CheckBox();
-            this.lblCounts = new System.Windows.Forms.Label();
             this.chkIncludeInactive = new System.Windows.Forms.CheckBox();
-            this.ptFilter = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.pbLog = new System.Windows.Forms.PictureBox();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
+            this.lblCounts = new System.Windows.Forms.Label();
             this.btnClearQtyZeroes = new System.Windows.Forms.Button();
             this.btnUpdateItemColor = new System.Windows.Forms.Button();
             this.btnAddItems = new System.Windows.Forms.Button();
@@ -145,6 +136,18 @@
             this.btnSetPrice = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnApplyFilters = new System.Windows.Forms.Button();
+            this.idtp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.idtp_Start = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.iclb_Colors = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.iclb_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.iclb_ProductWidths = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.iclb_Grades = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
+            this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.ptFilter = new LIBUtil.Desktop.UserControls.PanelToggle();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -181,6 +184,9 @@
             // scMain.Panel1
             // 
             this.scMain.Panel1.BackColor = System.Drawing.Color.White;
+            this.scMain.Panel1.Controls.Add(this.btnApplyFilters);
+            this.scMain.Panel1.Controls.Add(this.idtp_End);
+            this.scMain.Panel1.Controls.Add(this.idtp_Start);
             this.scMain.Panel1.Controls.Add(this.iclb_ProductStoreNames);
             this.scMain.Panel1.Controls.Add(this.iclb_Colors);
             this.scMain.Panel1.Controls.Add(this.btnReset);
@@ -196,33 +202,13 @@
             this.scMain.Panel2.Controls.Add(this.pnlRowInfo);
             this.scMain.Panel2.Controls.Add(this.panel1);
             this.scMain.Size = new System.Drawing.Size(1445, 716);
-            this.scMain.SplitterDistance = 130;
+            this.scMain.SplitterDistance = 135;
             this.scMain.SplitterWidth = 1;
             this.scMain.TabIndex = 0;
             // 
-            // iclb_ProductStoreNames
-            // 
-            this.iclb_ProductStoreNames.LabelText = "Products";
-            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(670, 9);
-            this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
-            this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
-            this.iclb_ProductStoreNames.ShowListOnly = false;
-            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(240, 124);
-            this.iclb_ProductStoreNames.TabIndex = 12;
-            // 
-            // iclb_Colors
-            // 
-            this.iclb_Colors.LabelText = "Colors";
-            this.iclb_Colors.Location = new System.Drawing.Point(425, 9);
-            this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
-            this.iclb_Colors.Name = "iclb_Colors";
-            this.iclb_Colors.ShowListOnly = false;
-            this.iclb_Colors.Size = new System.Drawing.Size(240, 124);
-            this.iclb_Colors.TabIndex = 12;
-            // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(918, 70);
+            this.btnReset.Location = new System.Drawing.Point(921, 76);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 52);
@@ -231,39 +217,6 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // iclb_LengthUnits
-            // 
-            this.iclb_LengthUnits.LabelText = "Unit";
-            this.iclb_LengthUnits.Location = new System.Drawing.Point(287, 15);
-            this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
-            this.iclb_LengthUnits.Name = "iclb_LengthUnits";
-            this.iclb_LengthUnits.ShowListOnly = true;
-            this.iclb_LengthUnits.Size = new System.Drawing.Size(133, 116);
-            this.iclb_LengthUnits.TabIndex = 19;
-            this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
-            // iclb_ProductWidths
-            // 
-            this.iclb_ProductWidths.LabelText = "Lebar";
-            this.iclb_ProductWidths.Location = new System.Drawing.Point(146, 15);
-            this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
-            this.iclb_ProductWidths.Name = "iclb_ProductWidths";
-            this.iclb_ProductWidths.ShowListOnly = true;
-            this.iclb_ProductWidths.Size = new System.Drawing.Size(133, 116);
-            this.iclb_ProductWidths.TabIndex = 20;
-            this.iclb_ProductWidths.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
-            // iclb_Grades
-            // 
-            this.iclb_Grades.LabelText = "Grades";
-            this.iclb_Grades.Location = new System.Drawing.Point(4, 15);
-            this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5);
-            this.iclb_Grades.Name = "iclb_Grades";
-            this.iclb_Grades.ShowListOnly = true;
-            this.iclb_Grades.Size = new System.Drawing.Size(133, 116);
-            this.iclb_Grades.TabIndex = 6;
-            this.iclb_Grades.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
-            // 
             // pnlUpdateBuyPrice
             // 
             this.pnlUpdateBuyPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -271,7 +224,7 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(568, 157);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(568, 158);
             this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(306, 135);
@@ -304,42 +257,6 @@
             this.btnUpdateBuyPrice.UseVisualStyleBackColor = true;
             this.btnUpdateBuyPrice.Click += new System.EventHandler(this.btnUpdateBuyPrice_Click);
             // 
-            // in_BuyPrice
-            // 
-            this.in_BuyPrice.Checked = false;
-            this.in_BuyPrice.DecimalPlaces = 2;
-            this.in_BuyPrice.HideUpDown = true;
-            this.in_BuyPrice.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.LabelText = "Buy Price";
-            this.in_BuyPrice.Location = new System.Drawing.Point(60, 23);
-            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5);
-            this.in_BuyPrice.MaximumValue = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.Name = "in_BuyPrice";
-            this.in_BuyPrice.ShowAllowDecimalCheckbox = false;
-            this.in_BuyPrice.ShowCheckbox = false;
-            this.in_BuyPrice.ShowTextboxOnly = false;
-            this.in_BuyPrice.Size = new System.Drawing.Size(185, 50);
-            this.in_BuyPrice.TabIndex = 0;
-            this.in_BuyPrice.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_BuyPrice.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.in_BuyPrice_onKeyDown);
-            // 
             // grid
             // 
             this.grid.AllowUserToAddRows = false;
@@ -347,14 +264,14 @@
             this.grid.AllowUserToResizeRows = false;
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_grid_id,
@@ -387,7 +304,7 @@
             this.grid.Name = "grid";
             this.grid.RowHeadersVisible = false;
             this.grid.RowHeadersWidth = 51;
-            this.grid.Size = new System.Drawing.Size(1443, 349);
+            this.grid.Size = new System.Drawing.Size(1443, 344);
             this.grid.TabIndex = 5;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
@@ -405,9 +322,9 @@
             // col_grid_receiveDate
             // 
             this.col_grid_receiveDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.Format = "dd/MM/yy";
-            this.col_grid_receiveDate.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            this.col_grid_receiveDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_grid_receiveDate.HeaderText = "Terima";
             this.col_grid_receiveDate.MinimumWidth = 50;
             this.col_grid_receiveDate.Name = "col_grid_receiveDate";
@@ -417,8 +334,8 @@
             // col_grid_code
             // 
             this.col_grid_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_code.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_code.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_grid_code.HeaderText = "Code";
             this.col_grid_code.MinimumWidth = 40;
             this.col_grid_code.Name = "col_grid_code";
@@ -428,8 +345,8 @@
             // col_grid_grade
             // 
             this.col_grid_grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_grade.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_grade.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_grid_grade.HeaderText = "Grade";
             this.col_grid_grade.MinimumWidth = 40;
             this.col_grid_grade.Name = "col_grid_grade";
@@ -447,8 +364,8 @@
             // col_grid_productWidth
             // 
             this.col_grid_productWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_productWidth.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_productWidth.DefaultCellStyle = dataGridViewCellStyle5;
             this.col_grid_productWidth.HeaderText = "Lebar";
             this.col_grid_productWidth.MinimumWidth = 40;
             this.col_grid_productWidth.Name = "col_grid_productWidth";
@@ -458,8 +375,8 @@
             // col_grid_color
             // 
             this.col_grid_color.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_color.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_color.DefaultCellStyle = dataGridViewCellStyle6;
             this.col_grid_color.HeaderText = "Warna";
             this.col_grid_color.MinimumWidth = 40;
             this.col_grid_color.Name = "col_grid_color";
@@ -469,9 +386,9 @@
             // col_grid_buyPrice
             // 
             this.col_grid_buyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "N2";
-            this.col_grid_buyPrice.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            this.col_grid_buyPrice.DefaultCellStyle = dataGridViewCellStyle7;
             this.col_grid_buyPrice.HeaderText = "Buy";
             this.col_grid_buyPrice.MinimumWidth = 40;
             this.col_grid_buyPrice.Name = "col_grid_buyPrice";
@@ -481,9 +398,9 @@
             // col_grid_sellPrice
             // 
             this.col_grid_sellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Format = "N0";
-            this.col_grid_sellPrice.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            this.col_grid_sellPrice.DefaultCellStyle = dataGridViewCellStyle8;
             this.col_grid_sellPrice.HeaderText = "Price";
             this.col_grid_sellPrice.MinimumWidth = 40;
             this.col_grid_sellPrice.Name = "col_grid_sellPrice";
@@ -501,8 +418,8 @@
             // col_grid_availablePcs
             // 
             this.col_grid_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_availablePcs.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_availablePcs.DefaultCellStyle = dataGridViewCellStyle9;
             this.col_grid_availablePcs.HeaderText = "";
             this.col_grid_availablePcs.MinimumWidth = 30;
             this.col_grid_availablePcs.Name = "col_grid_availablePcs";
@@ -512,9 +429,9 @@
             // col_grid_availableQty
             // 
             this.col_grid_availableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle41.Format = "N2";
-            this.col_grid_availableQty.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            this.col_grid_availableQty.DefaultCellStyle = dataGridViewCellStyle10;
             this.col_grid_availableQty.HeaderText = "Qty";
             this.col_grid_availableQty.MinimumWidth = 30;
             this.col_grid_availableQty.Name = "col_grid_availableQty";
@@ -524,8 +441,8 @@
             // col_grid_unit
             // 
             this.col_grid_unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_unit.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_unit.DefaultCellStyle = dataGridViewCellStyle11;
             this.col_grid_unit.HeaderText = "Unit";
             this.col_grid_unit.MinimumWidth = 40;
             this.col_grid_unit.Name = "col_grid_unit";
@@ -535,8 +452,8 @@
             // col_grid_totalPcs
             // 
             this.col_grid_totalPcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_totalPcs.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_totalPcs.DefaultCellStyle = dataGridViewCellStyle12;
             this.col_grid_totalPcs.HeaderText = "";
             this.col_grid_totalPcs.MinimumWidth = 30;
             this.col_grid_totalPcs.Name = "col_grid_totalPcs";
@@ -546,9 +463,9 @@
             // col_grid_totalQty
             // 
             this.col_grid_totalQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle44.Format = "N2";
-            this.col_grid_totalQty.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            this.col_grid_totalQty.DefaultCellStyle = dataGridViewCellStyle13;
             this.col_grid_totalQty.HeaderText = "Terima";
             this.col_grid_totalQty.MinimumWidth = 50;
             this.col_grid_totalQty.Name = "col_grid_totalQty";
@@ -642,7 +559,7 @@
             this.pnlRowInfo.Controls.Add(this.scSummary);
             this.pnlRowInfo.Controls.Add(this.pnlRowInfoHeaderContainer);
             this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 382);
+            this.pnlRowInfo.Location = new System.Drawing.Point(0, 377);
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRowInfo.Name = "pnlRowInfo";
             this.pnlRowInfo.Size = new System.Drawing.Size(1443, 201);
@@ -675,14 +592,14 @@
             this.gridSummary.BackgroundColor = System.Drawing.Color.White;
             this.gridSummary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSummary.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.gridSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridSummary_Product_Id,
@@ -716,8 +633,8 @@
             // col_gridSummary_grade
             // 
             this.col_gridSummary_grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummary_grade.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummary_grade.DefaultCellStyle = dataGridViewCellStyle15;
             this.col_gridSummary_grade.HeaderText = "Grade";
             this.col_gridSummary_grade.MinimumWidth = 40;
             this.col_gridSummary_grade.Name = "col_gridSummary_grade";
@@ -735,8 +652,8 @@
             // col_gridSummary_Width
             // 
             this.col_gridSummary_Width.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummary_Width.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummary_Width.DefaultCellStyle = dataGridViewCellStyle16;
             this.col_gridSummary_Width.HeaderText = "Lebar";
             this.col_gridSummary_Width.MinimumWidth = 40;
             this.col_gridSummary_Width.Name = "col_gridSummary_Width";
@@ -746,9 +663,9 @@
             // col_gridSummary_averagePrice
             // 
             this.col_gridSummary_averagePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle48.Format = "N0";
-            this.col_gridSummary_averagePrice.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            this.col_gridSummary_averagePrice.DefaultCellStyle = dataGridViewCellStyle17;
             this.col_gridSummary_averagePrice.HeaderText = "Buy";
             this.col_gridSummary_averagePrice.MinimumWidth = 30;
             this.col_gridSummary_averagePrice.Name = "col_gridSummary_averagePrice";
@@ -758,9 +675,9 @@
             // col_gridSummary_availablePcs
             // 
             this.col_gridSummary_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle49.Format = "N0";
-            this.col_gridSummary_availablePcs.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            this.col_gridSummary_availablePcs.DefaultCellStyle = dataGridViewCellStyle18;
             this.col_gridSummary_availablePcs.HeaderText = "";
             this.col_gridSummary_availablePcs.MinimumWidth = 20;
             this.col_gridSummary_availablePcs.Name = "col_gridSummary_availablePcs";
@@ -770,9 +687,9 @@
             // col_gridSummary_availableQty
             // 
             this.col_gridSummary_availableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.Format = "N2";
-            this.col_gridSummary_availableQty.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N2";
+            this.col_gridSummary_availableQty.DefaultCellStyle = dataGridViewCellStyle19;
             this.col_gridSummary_availableQty.HeaderText = "Qty";
             this.col_gridSummary_availableQty.MinimumWidth = 30;
             this.col_gridSummary_availableQty.Name = "col_gridSummary_availableQty";
@@ -782,8 +699,8 @@
             // col_gridSummary_unitName
             // 
             this.col_gridSummary_unitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummary_unitName.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummary_unitName.DefaultCellStyle = dataGridViewCellStyle20;
             this.col_gridSummary_unitName.HeaderText = "Unit";
             this.col_gridSummary_unitName.MinimumWidth = 40;
             this.col_gridSummary_unitName.Name = "col_gridSummary_unitName";
@@ -793,9 +710,9 @@
             // col_gridSummary_BuyValue
             // 
             this.col_gridSummary_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle52.Format = "N0";
-            this.col_gridSummary_BuyValue.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N0";
+            this.col_gridSummary_BuyValue.DefaultCellStyle = dataGridViewCellStyle21;
             this.col_gridSummary_BuyValue.HeaderText = "Buy Value";
             this.col_gridSummary_BuyValue.MinimumWidth = 75;
             this.col_gridSummary_BuyValue.Name = "col_gridSummary_BuyValue";
@@ -805,9 +722,9 @@
             // col_gridSummary_SellValue
             // 
             this.col_gridSummary_SellValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle53.Format = "N0";
-            this.col_gridSummary_SellValue.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N0";
+            this.col_gridSummary_SellValue.DefaultCellStyle = dataGridViewCellStyle22;
             this.col_gridSummary_SellValue.HeaderText = "Sell Value";
             this.col_gridSummary_SellValue.MinimumWidth = 75;
             this.col_gridSummary_SellValue.Name = "col_gridSummary_SellValue";
@@ -822,14 +739,14 @@
             this.gridSummaryByColor.BackgroundColor = System.Drawing.Color.White;
             this.gridSummaryByColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSummaryByColor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummaryByColor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummaryByColor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.gridSummaryByColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSummaryByColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridSummaryByColor_ProductId,
@@ -864,8 +781,8 @@
             // col_gridSummaryByColor_Grade
             // 
             this.col_gridSummaryByColor_Grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummaryByColor_Grade.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummaryByColor_Grade.DefaultCellStyle = dataGridViewCellStyle24;
             this.col_gridSummaryByColor_Grade.HeaderText = "Grade";
             this.col_gridSummaryByColor_Grade.MinimumWidth = 40;
             this.col_gridSummaryByColor_Grade.Name = "col_gridSummaryByColor_Grade";
@@ -883,8 +800,8 @@
             // col_gridSummaryByColor_ProductWidthName
             // 
             this.col_gridSummaryByColor_ProductWidthName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummaryByColor_ProductWidthName.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummaryByColor_ProductWidthName.DefaultCellStyle = dataGridViewCellStyle25;
             this.col_gridSummaryByColor_ProductWidthName.HeaderText = "Lebar";
             this.col_gridSummaryByColor_ProductWidthName.MinimumWidth = 40;
             this.col_gridSummaryByColor_ProductWidthName.Name = "col_gridSummaryByColor_ProductWidthName";
@@ -902,9 +819,9 @@
             // col_gridSummaryByColor_AveragePrice
             // 
             this.col_gridSummaryByColor_AveragePrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle57.Format = "N0";
-            this.col_gridSummaryByColor_AveragePrice.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "N0";
+            this.col_gridSummaryByColor_AveragePrice.DefaultCellStyle = dataGridViewCellStyle26;
             this.col_gridSummaryByColor_AveragePrice.HeaderText = "Buy";
             this.col_gridSummaryByColor_AveragePrice.MinimumWidth = 30;
             this.col_gridSummaryByColor_AveragePrice.Name = "col_gridSummaryByColor_AveragePrice";
@@ -914,9 +831,9 @@
             // col_gridSummaryByColor_availablePcs
             // 
             this.col_gridSummaryByColor_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle58.Format = "N0";
-            this.col_gridSummaryByColor_availablePcs.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "N0";
+            this.col_gridSummaryByColor_availablePcs.DefaultCellStyle = dataGridViewCellStyle27;
             this.col_gridSummaryByColor_availablePcs.HeaderText = "";
             this.col_gridSummaryByColor_availablePcs.MinimumWidth = 20;
             this.col_gridSummaryByColor_availablePcs.Name = "col_gridSummaryByColor_availablePcs";
@@ -926,9 +843,9 @@
             // col_gridSummaryByColor_AvailableQty
             // 
             this.col_gridSummaryByColor_AvailableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle59.Format = "N2";
-            this.col_gridSummaryByColor_AvailableQty.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Format = "N2";
+            this.col_gridSummaryByColor_AvailableQty.DefaultCellStyle = dataGridViewCellStyle28;
             this.col_gridSummaryByColor_AvailableQty.HeaderText = "Qty";
             this.col_gridSummaryByColor_AvailableQty.MinimumWidth = 30;
             this.col_gridSummaryByColor_AvailableQty.Name = "col_gridSummaryByColor_AvailableQty";
@@ -938,8 +855,8 @@
             // col_gridSummaryByColor_UnitName
             // 
             this.col_gridSummaryByColor_UnitName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_gridSummaryByColor_UnitName.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_gridSummaryByColor_UnitName.DefaultCellStyle = dataGridViewCellStyle29;
             this.col_gridSummaryByColor_UnitName.HeaderText = "Unit";
             this.col_gridSummaryByColor_UnitName.MinimumWidth = 40;
             this.col_gridSummaryByColor_UnitName.Name = "col_gridSummaryByColor_UnitName";
@@ -949,9 +866,9 @@
             // col_gridSummaryByColor_BuyValue
             // 
             this.col_gridSummaryByColor_BuyValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle61.Format = "N0";
-            this.col_gridSummaryByColor_BuyValue.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Format = "N0";
+            this.col_gridSummaryByColor_BuyValue.DefaultCellStyle = dataGridViewCellStyle30;
             this.col_gridSummaryByColor_BuyValue.HeaderText = "Buy Value";
             this.col_gridSummaryByColor_BuyValue.MinimumWidth = 75;
             this.col_gridSummaryByColor_BuyValue.Name = "col_gridSummaryByColor_BuyValue";
@@ -961,9 +878,9 @@
             // col_gridSummaryByColor_SellValue
             // 
             this.col_gridSummaryByColor_SellValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle62.Format = "N0";
-            this.col_gridSummaryByColor_SellValue.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle31.Format = "N0";
+            this.col_gridSummaryByColor_SellValue.DefaultCellStyle = dataGridViewCellStyle31;
             this.col_gridSummaryByColor_SellValue.HeaderText = "Sell Value";
             this.col_gridSummaryByColor_SellValue.MinimumWidth = 75;
             this.col_gridSummaryByColor_SellValue.Name = "col_gridSummaryByColor_SellValue";
@@ -1004,23 +921,6 @@
             this.lblRowInfoHeader.Text = "lblRowInfoHeader";
             this.lblRowInfoHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ptRowInfo
-            // 
-            this.ptRowInfo.AdjustLocationOnClick = true;
-            this.ptRowInfo.BackColor = System.Drawing.Color.White;
-            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
-            this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
-            this.ptRowInfo.Location = new System.Drawing.Point(0, 0);
-            this.ptRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.ptRowInfo.MinimumSplitterDistance = 100;
-            this.ptRowInfo.Name = "ptRowInfo";
-            this.ptRowInfo.Size = new System.Drawing.Size(32, 30);
-            this.ptRowInfo.TabIndex = 5;
-            this.ptRowInfo.TogglePanel = null;
-            this.ptRowInfo.pictureBox_ClickEvent += new System.EventHandler(this.ptRowInfo_pictureBox_ClickEvent);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pnlQuickSearch);
@@ -1035,22 +935,103 @@
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlQuickSearch.Controls.Add(this.pbLog);
-            this.pnlQuickSearch.Controls.Add(this.pbRefresh);
-            this.pnlQuickSearch.Controls.Add(this.itxt_QuickSearch);
-            this.pnlQuickSearch.Controls.Add(this.chkShowNotBookedOnly);
             this.pnlQuickSearch.Controls.Add(this.chkCalculateBuyValue);
             this.pnlQuickSearch.Controls.Add(this.chkShowHidden);
             this.pnlQuickSearch.Controls.Add(this.chkRearrange);
+            this.pnlQuickSearch.Controls.Add(this.chkShowNotBookedOnly);
             this.pnlQuickSearch.Controls.Add(this.chkLast3Months);
-            this.pnlQuickSearch.Controls.Add(this.lblCounts);
             this.pnlQuickSearch.Controls.Add(this.chkIncludeInactive);
+            this.pnlQuickSearch.Controls.Add(this.itxt_QuickSearch);
+            this.pnlQuickSearch.Controls.Add(this.pbLog);
+            this.pnlQuickSearch.Controls.Add(this.pbRefresh);
+            this.pnlQuickSearch.Controls.Add(this.lblCounts);
             this.pnlQuickSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlQuickSearch.Location = new System.Drawing.Point(37, 0);
             this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(4);
             this.pnlQuickSearch.Name = "pnlQuickSearch";
             this.pnlQuickSearch.Size = new System.Drawing.Size(1406, 33);
             this.pnlQuickSearch.TabIndex = 0;
+            // 
+            // chkCalculateBuyValue
+            // 
+            this.chkCalculateBuyValue.AutoSize = true;
+            this.chkCalculateBuyValue.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkCalculateBuyValue.Location = new System.Drawing.Point(626, 0);
+            this.chkCalculateBuyValue.Margin = new System.Windows.Forms.Padding(4);
+            this.chkCalculateBuyValue.Name = "chkCalculateBuyValue";
+            this.chkCalculateBuyValue.Size = new System.Drawing.Size(48, 31);
+            this.chkCalculateBuyValue.TabIndex = 18;
+            this.chkCalculateBuyValue.Text = "buy";
+            this.chkCalculateBuyValue.UseVisualStyleBackColor = true;
+            this.chkCalculateBuyValue.CheckedChanged += new System.EventHandler(this.chkCalculateBuyValue_CheckedChanged);
+            // 
+            // chkShowHidden
+            // 
+            this.chkShowHidden.AutoSize = true;
+            this.chkShowHidden.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowHidden.Location = new System.Drawing.Point(592, 0);
+            this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowHidden.Name = "chkShowHidden";
+            this.chkShowHidden.Size = new System.Drawing.Size(34, 31);
+            this.chkShowHidden.TabIndex = 6;
+            this.chkShowHidden.Text = "X";
+            this.chkShowHidden.UseVisualStyleBackColor = true;
+            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
+            // 
+            // chkRearrange
+            // 
+            this.chkRearrange.AutoSize = true;
+            this.chkRearrange.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkRearrange.Location = new System.Drawing.Point(507, 0);
+            this.chkRearrange.Margin = new System.Windows.Forms.Padding(4);
+            this.chkRearrange.Name = "chkRearrange";
+            this.chkRearrange.Size = new System.Drawing.Size(85, 31);
+            this.chkRearrange.TabIndex = 17;
+            this.chkRearrange.TabStop = false;
+            this.chkRearrange.Text = "rearrange";
+            this.chkRearrange.UseVisualStyleBackColor = true;
+            this.chkRearrange.CheckedChanged += new System.EventHandler(this.chkRearrange_CheckedChanged);
+            // 
+            // chkShowNotBookedOnly
+            // 
+            this.chkShowNotBookedOnly.AutoSize = true;
+            this.chkShowNotBookedOnly.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowNotBookedOnly.Location = new System.Drawing.Point(413, 0);
+            this.chkShowNotBookedOnly.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowNotBookedOnly.Name = "chkShowNotBookedOnly";
+            this.chkShowNotBookedOnly.Size = new System.Drawing.Size(94, 31);
+            this.chkShowNotBookedOnly.TabIndex = 10;
+            this.chkShowNotBookedOnly.Text = "not booked";
+            this.chkShowNotBookedOnly.UseVisualStyleBackColor = true;
+            this.chkShowNotBookedOnly.CheckedChanged += new System.EventHandler(this.ChkShowNotBookedOnly_CheckedChanged);
+            // 
+            // chkLast3Months
+            // 
+            this.chkLast3Months.AutoSize = true;
+            this.chkLast3Months.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkLast3Months.Location = new System.Drawing.Point(310, 0);
+            this.chkLast3Months.Margin = new System.Windows.Forms.Padding(4);
+            this.chkLast3Months.Name = "chkLast3Months";
+            this.chkLast3Months.Size = new System.Drawing.Size(103, 31);
+            this.chkLast3Months.TabIndex = 15;
+            this.chkLast3Months.TabStop = false;
+            this.chkLast3Months.Text = "last 3 months";
+            this.chkLast3Months.UseVisualStyleBackColor = true;
+            this.chkLast3Months.CheckedChanged += new System.EventHandler(this.chkLast3Months_CheckedChanged);
+            // 
+            // chkIncludeInactive
+            // 
+            this.chkIncludeInactive.AutoSize = true;
+            this.chkIncludeInactive.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkIncludeInactive.Location = new System.Drawing.Point(204, 0);
+            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4);
+            this.chkIncludeInactive.Name = "chkIncludeInactive";
+            this.chkIncludeInactive.Size = new System.Drawing.Size(106, 31);
+            this.chkIncludeInactive.TabIndex = 1;
+            this.chkIncludeInactive.TabStop = false;
+            this.chkIncludeInactive.Text = "show inactive";
+            this.chkIncludeInactive.UseVisualStyleBackColor = true;
+            this.chkIncludeInactive.CheckedChanged += new System.EventHandler(this.chkIncludeInactive_CheckedChanged);
             // 
             // pbLog
             // 
@@ -1082,126 +1063,17 @@
             this.pbRefresh.TabStop = false;
             this.pbRefresh.Click += new System.EventHandler(this.PbRefresh_Click);
             // 
-            // itxt_QuickSearch
-            // 
-            this.itxt_QuickSearch.IsBrowseMode = false;
-            this.itxt_QuickSearch.LabelText = "textbox";
-            this.itxt_QuickSearch.Location = new System.Drawing.Point(69, 2);
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.itxt_QuickSearch.MaxLength = 32767;
-            this.itxt_QuickSearch.MultiLine = false;
-            this.itxt_QuickSearch.Name = "itxt_QuickSearch";
-            this.itxt_QuickSearch.PasswordChar = '\0';
-            this.itxt_QuickSearch.RowCount = 1;
-            this.itxt_QuickSearch.ShowDeleteButton = true;
-            this.itxt_QuickSearch.ShowFilter = false;
-            this.itxt_QuickSearch.ShowTextboxOnly = true;
-            this.itxt_QuickSearch.Size = new System.Drawing.Size(112, 26);
-            this.itxt_QuickSearch.TabIndex = 0;
-            this.itxt_QuickSearch.ValueText = "";
-            this.itxt_QuickSearch.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.Itxt_QuickSearch_onKeyDown);
-            // 
-            // chkShowNotBookedOnly
-            // 
-            this.chkShowNotBookedOnly.AutoSize = true;
-            this.chkShowNotBookedOnly.Location = new System.Drawing.Point(431, 6);
-            this.chkShowNotBookedOnly.Margin = new System.Windows.Forms.Padding(4);
-            this.chkShowNotBookedOnly.Name = "chkShowNotBookedOnly";
-            this.chkShowNotBookedOnly.Size = new System.Drawing.Size(94, 20);
-            this.chkShowNotBookedOnly.TabIndex = 10;
-            this.chkShowNotBookedOnly.Text = "not booked";
-            this.chkShowNotBookedOnly.UseVisualStyleBackColor = true;
-            this.chkShowNotBookedOnly.CheckedChanged += new System.EventHandler(this.ChkShowNotBookedOnly_CheckedChanged);
-            // 
-            // chkCalculateBuyValue
-            // 
-            this.chkCalculateBuyValue.AutoSize = true;
-            this.chkCalculateBuyValue.Location = new System.Drawing.Point(676, 6);
-            this.chkCalculateBuyValue.Margin = new System.Windows.Forms.Padding(4);
-            this.chkCalculateBuyValue.Name = "chkCalculateBuyValue";
-            this.chkCalculateBuyValue.Size = new System.Drawing.Size(48, 20);
-            this.chkCalculateBuyValue.TabIndex = 18;
-            this.chkCalculateBuyValue.Text = "buy";
-            this.chkCalculateBuyValue.UseVisualStyleBackColor = true;
-            // 
-            // chkShowHidden
-            // 
-            this.chkShowHidden.AutoSize = true;
-            this.chkShowHidden.Location = new System.Drawing.Point(632, 6);
-            this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
-            this.chkShowHidden.Name = "chkShowHidden";
-            this.chkShowHidden.Size = new System.Drawing.Size(34, 20);
-            this.chkShowHidden.TabIndex = 6;
-            this.chkShowHidden.Text = "X";
-            this.chkShowHidden.UseVisualStyleBackColor = true;
-            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
-            // 
-            // chkRearrange
-            // 
-            this.chkRearrange.AutoSize = true;
-            this.chkRearrange.Location = new System.Drawing.Point(537, 6);
-            this.chkRearrange.Margin = new System.Windows.Forms.Padding(4);
-            this.chkRearrange.Name = "chkRearrange";
-            this.chkRearrange.Size = new System.Drawing.Size(85, 20);
-            this.chkRearrange.TabIndex = 17;
-            this.chkRearrange.TabStop = false;
-            this.chkRearrange.Text = "rearrange";
-            this.chkRearrange.UseVisualStyleBackColor = true;
-            this.chkRearrange.CheckedChanged += new System.EventHandler(this.chkRearrange_CheckedChanged);
-            // 
-            // chkLast3Months
-            // 
-            this.chkLast3Months.AutoSize = true;
-            this.chkLast3Months.Location = new System.Drawing.Point(313, 6);
-            this.chkLast3Months.Margin = new System.Windows.Forms.Padding(4);
-            this.chkLast3Months.Name = "chkLast3Months";
-            this.chkLast3Months.Size = new System.Drawing.Size(103, 20);
-            this.chkLast3Months.TabIndex = 15;
-            this.chkLast3Months.TabStop = false;
-            this.chkLast3Months.Text = "last 3 months";
-            this.chkLast3Months.UseVisualStyleBackColor = true;
-            this.chkLast3Months.CheckedChanged += new System.EventHandler(this.chkLast3Months_CheckedChanged);
-            // 
             // lblCounts
             // 
-            this.lblCounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCounts.Location = new System.Drawing.Point(884, 9);
+            this.lblCounts.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblCounts.Location = new System.Drawing.Point(949, 0);
             this.lblCounts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCounts.Name = "lblCounts";
             this.lblCounts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCounts.Size = new System.Drawing.Size(512, 16);
+            this.lblCounts.Size = new System.Drawing.Size(455, 31);
             this.lblCounts.TabIndex = 12;
             this.lblCounts.Text = "lblCounts";
             this.lblCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.AutoSize = true;
-            this.chkIncludeInactive.Location = new System.Drawing.Point(192, 6);
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4);
-            this.chkIncludeInactive.Name = "chkIncludeInactive";
-            this.chkIncludeInactive.Size = new System.Drawing.Size(106, 20);
-            this.chkIncludeInactive.TabIndex = 1;
-            this.chkIncludeInactive.TabStop = false;
-            this.chkIncludeInactive.Text = "show inactive";
-            this.chkIncludeInactive.UseVisualStyleBackColor = true;
-            this.chkIncludeInactive.CheckedChanged += new System.EventHandler(this.chkIncludeInactive_CheckedChanged);
-            // 
-            // ptFilter
-            // 
-            this.ptFilter.AdjustLocationOnClick = false;
-            this.ptFilter.BackColor = System.Drawing.Color.White;
-            this.ptFilter.ContainerPanel = null;
-            this.ptFilter.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
-            this.ptFilter.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
-            this.ptFilter.Location = new System.Drawing.Point(0, 0);
-            this.ptFilter.Margin = new System.Windows.Forms.Padding(5);
-            this.ptFilter.MinimumSplitterDistance = 100;
-            this.ptFilter.Name = "ptFilter";
-            this.ptFilter.Size = new System.Drawing.Size(37, 33);
-            this.ptFilter.TabIndex = 6;
-            this.ptFilter.TogglePanel = this.scMain.Panel1;
             // 
             // btnClearQtyZeroes
             // 
@@ -1285,6 +1157,196 @@
             this.flpButtons.Name = "flpButtons";
             this.flpButtons.Size = new System.Drawing.Size(1445, 36);
             this.flpButtons.TabIndex = 109;
+            // 
+            // btnApplyFilters
+            // 
+            this.btnApplyFilters.Location = new System.Drawing.Point(828, 76);
+            this.btnApplyFilters.Margin = new System.Windows.Forms.Padding(4);
+            this.btnApplyFilters.Name = "btnApplyFilters";
+            this.btnApplyFilters.Size = new System.Drawing.Size(85, 52);
+            this.btnApplyFilters.TabIndex = 23;
+            this.btnApplyFilters.Text = "APPLY";
+            this.btnApplyFilters.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
+            // 
+            // idtp_End
+            // 
+            this.idtp_End.Checked = false;
+            this.idtp_End.CustomFormat = "dd/MM/yyyy";
+            this.idtp_End.DefaultCheckedValue = false;
+            this.idtp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_End.LabelText = "To";
+            this.idtp_End.Location = new System.Drawing.Point(967, -4);
+            this.idtp_End.Margin = new System.Windows.Forms.Padding(4);
+            this.idtp_End.Name = "idtp_End";
+            this.idtp_End.ShowCheckBox = true;
+            this.idtp_End.ShowDateTimePickerOnly = false;
+            this.idtp_End.ShowUpAndDown = false;
+            this.idtp_End.Size = new System.Drawing.Size(131, 50);
+            this.idtp_End.TabIndex = 22;
+            this.idtp_End.Value = null;
+            this.idtp_End.ValueTimeSpan = null;
+            // 
+            // idtp_Start
+            // 
+            this.idtp_Start.Checked = false;
+            this.idtp_Start.CustomFormat = "dd/MM/yyyy";
+            this.idtp_Start.DefaultCheckedValue = false;
+            this.idtp_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_Start.LabelText = "Date";
+            this.idtp_Start.Location = new System.Drawing.Point(828, -4);
+            this.idtp_Start.Margin = new System.Windows.Forms.Padding(4);
+            this.idtp_Start.Name = "idtp_Start";
+            this.idtp_Start.ShowCheckBox = true;
+            this.idtp_Start.ShowDateTimePickerOnly = false;
+            this.idtp_Start.ShowUpAndDown = false;
+            this.idtp_Start.Size = new System.Drawing.Size(131, 50);
+            this.idtp_Start.TabIndex = 21;
+            this.idtp_Start.Value = null;
+            this.idtp_Start.ValueTimeSpan = null;
+            // 
+            // iclb_ProductStoreNames
+            // 
+            this.iclb_ProductStoreNames.LabelText = "Products";
+            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(625, -1);
+            this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
+            this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
+            this.iclb_ProductStoreNames.ShowListOnly = false;
+            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(195, 135);
+            this.iclb_ProductStoreNames.TabIndex = 12;
+            // 
+            // iclb_Colors
+            // 
+            this.iclb_Colors.LabelText = "Colors";
+            this.iclb_Colors.Location = new System.Drawing.Point(425, -1);
+            this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
+            this.iclb_Colors.Name = "iclb_Colors";
+            this.iclb_Colors.ShowListOnly = false;
+            this.iclb_Colors.Size = new System.Drawing.Size(195, 135);
+            this.iclb_Colors.TabIndex = 12;
+            // 
+            // iclb_LengthUnits
+            // 
+            this.iclb_LengthUnits.LabelText = "Unit";
+            this.iclb_LengthUnits.Location = new System.Drawing.Point(287, 5);
+            this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
+            this.iclb_LengthUnits.Name = "iclb_LengthUnits";
+            this.iclb_LengthUnits.ShowListOnly = true;
+            this.iclb_LengthUnits.Size = new System.Drawing.Size(133, 127);
+            this.iclb_LengthUnits.TabIndex = 19;
+            this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
+            // 
+            // iclb_ProductWidths
+            // 
+            this.iclb_ProductWidths.LabelText = "Lebar";
+            this.iclb_ProductWidths.Location = new System.Drawing.Point(146, 5);
+            this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
+            this.iclb_ProductWidths.Name = "iclb_ProductWidths";
+            this.iclb_ProductWidths.ShowListOnly = true;
+            this.iclb_ProductWidths.Size = new System.Drawing.Size(133, 127);
+            this.iclb_ProductWidths.TabIndex = 20;
+            this.iclb_ProductWidths.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
+            // 
+            // iclb_Grades
+            // 
+            this.iclb_Grades.LabelText = "Grades";
+            this.iclb_Grades.Location = new System.Drawing.Point(4, 5);
+            this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5);
+            this.iclb_Grades.Name = "iclb_Grades";
+            this.iclb_Grades.ShowListOnly = true;
+            this.iclb_Grades.Size = new System.Drawing.Size(133, 127);
+            this.iclb_Grades.TabIndex = 6;
+            this.iclb_Grades.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
+            // 
+            // in_BuyPrice
+            // 
+            this.in_BuyPrice.Checked = false;
+            this.in_BuyPrice.DecimalPlaces = 2;
+            this.in_BuyPrice.HideUpDown = true;
+            this.in_BuyPrice.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.LabelText = "Buy Price";
+            this.in_BuyPrice.Location = new System.Drawing.Point(60, 23);
+            this.in_BuyPrice.Margin = new System.Windows.Forms.Padding(5);
+            this.in_BuyPrice.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.Name = "in_BuyPrice";
+            this.in_BuyPrice.ShowAllowDecimalCheckbox = false;
+            this.in_BuyPrice.ShowCheckbox = false;
+            this.in_BuyPrice.ShowTextboxOnly = false;
+            this.in_BuyPrice.Size = new System.Drawing.Size(185, 50);
+            this.in_BuyPrice.TabIndex = 0;
+            this.in_BuyPrice.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_BuyPrice.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.in_BuyPrice_onKeyDown);
+            // 
+            // ptRowInfo
+            // 
+            this.ptRowInfo.AdjustLocationOnClick = true;
+            this.ptRowInfo.BackColor = System.Drawing.Color.White;
+            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
+            this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
+            this.ptRowInfo.Location = new System.Drawing.Point(0, 0);
+            this.ptRowInfo.Margin = new System.Windows.Forms.Padding(5);
+            this.ptRowInfo.MinimumSplitterDistance = 100;
+            this.ptRowInfo.Name = "ptRowInfo";
+            this.ptRowInfo.Size = new System.Drawing.Size(32, 30);
+            this.ptRowInfo.TabIndex = 5;
+            this.ptRowInfo.TogglePanel = null;
+            this.ptRowInfo.pictureBox_ClickEvent += new System.EventHandler(this.ptRowInfo_pictureBox_ClickEvent);
+            // 
+            // itxt_QuickSearch
+            // 
+            this.itxt_QuickSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.itxt_QuickSearch.IsBrowseMode = false;
+            this.itxt_QuickSearch.LabelText = "textbox";
+            this.itxt_QuickSearch.Location = new System.Drawing.Point(66, 0);
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.itxt_QuickSearch.MaxLength = 32767;
+            this.itxt_QuickSearch.MultiLine = false;
+            this.itxt_QuickSearch.Name = "itxt_QuickSearch";
+            this.itxt_QuickSearch.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.itxt_QuickSearch.PasswordChar = '\0';
+            this.itxt_QuickSearch.RowCount = 1;
+            this.itxt_QuickSearch.ShowDeleteButton = true;
+            this.itxt_QuickSearch.ShowFilter = false;
+            this.itxt_QuickSearch.ShowTextboxOnly = true;
+            this.itxt_QuickSearch.Size = new System.Drawing.Size(138, 31);
+            this.itxt_QuickSearch.TabIndex = 0;
+            this.itxt_QuickSearch.ValueText = "";
+            this.itxt_QuickSearch.onKeyDown += new System.Windows.Forms.KeyEventHandler(this.Itxt_QuickSearch_onKeyDown);
+            // 
+            // ptFilter
+            // 
+            this.ptFilter.AdjustLocationOnClick = false;
+            this.ptFilter.BackColor = System.Drawing.Color.White;
+            this.ptFilter.ContainerPanel = null;
+            this.ptFilter.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
+            this.ptFilter.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ptFilter.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
+            this.ptFilter.Location = new System.Drawing.Point(0, 0);
+            this.ptFilter.Margin = new System.Windows.Forms.Padding(5);
+            this.ptFilter.MinimumSplitterDistance = 100;
+            this.ptFilter.Name = "ptFilter";
+            this.ptFilter.Size = new System.Drawing.Size(37, 33);
+            this.ptFilter.TabIndex = 6;
+            this.ptFilter.TogglePanel = this.scMain.Panel1;
             // 
             // Main_Form
             // 
@@ -1409,5 +1471,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn extracol;
         private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_ProductStoreNames;
         private LIBUtil.Desktop.UserControls.InputControl_CheckedListBox iclb_Colors;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_End;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Start;
+        public System.Windows.Forms.Button btnApplyFilters;
     }
 }

@@ -77,12 +77,6 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1045, 34);
             // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(5);
-            this.chkIncludeInactive.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.chkIncludeInactive.Size = new System.Drawing.Size(119, 32);
-            // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 152);
@@ -101,13 +95,13 @@
             // scInputLeft.Panel2
             // 
             this.scInputLeft.Panel2.Controls.Add(this.itxt_Description);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 120);
+            this.scInputLeft.Size = new System.Drawing.Size(500, 113);
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
             this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputRight.Size = new System.Drawing.Size(538, 120);
+            this.scInputRight.Size = new System.Drawing.Size(538, 113);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
@@ -159,7 +153,7 @@
             // 
             this.pnlButtons.Controls.Add(this.btnTransfer);
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlButtons.Size = new System.Drawing.Size(1045, 32);
+            this.pnlButtons.Size = new System.Drawing.Size(1045, 39);
             this.pnlButtons.Controls.SetChildIndex(this.btnSearch, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnUpdate, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnLog, 0);
@@ -168,8 +162,9 @@
             // 
             // scInputContainer
             // 
+            this.scInputContainer.Location = new System.Drawing.Point(0, 39);
             this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputContainer.Size = new System.Drawing.Size(1045, 120);
+            this.scInputContainer.Size = new System.Drawing.Size(1045, 113);
             this.scInputContainer.SplitterWidth = 7;
             // 
             // btnLog
@@ -204,7 +199,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1045, 316);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1045, 351);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -223,7 +218,7 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1045, 290);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1045, 325);
             // 
             // pbLog
             // 
@@ -235,22 +230,20 @@
             // 
             // itxt_QuickSearch
             // 
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.itxt_QuickSearch.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.itxt_QuickSearch.ShowDeleteButton = true;
             // 
             // scContent
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1045, 381);
-            this.scContent.SplitterDistance = 60;
+            this.scContent.SplitterDistance = 25;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Description
             // 
             this.itxt_Description.IsBrowseMode = false;
             this.itxt_Description.LabelText = "Description";
-            this.itxt_Description.Location = new System.Drawing.Point(4, 6);
+            this.itxt_Description.Location = new System.Drawing.Point(4, 4);
             this.itxt_Description.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Description.MaxLength = 32767;
             this.itxt_Description.MultiLine = true;
@@ -275,7 +268,7 @@
             0,
             0});
             this.in_Amount.LabelText = "Amount";
-            this.in_Amount.Location = new System.Drawing.Point(4, 62);
+            this.in_Amount.Location = new System.Drawing.Point(4, 56);
             this.in_Amount.Margin = new System.Windows.Forms.Padding(5);
             this.in_Amount.MaximumValue = new decimal(new int[] {
             999999999,
@@ -305,7 +298,7 @@
             this.iddl_MoneyAccountCategoryAssignments.HideFilter = false;
             this.iddl_MoneyAccountCategoryAssignments.HideUpdateLink = true;
             this.iddl_MoneyAccountCategoryAssignments.LabelText = "Category";
-            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(4, 7);
+            this.iddl_MoneyAccountCategoryAssignments.Location = new System.Drawing.Point(4, 1);
             this.iddl_MoneyAccountCategoryAssignments.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_MoneyAccountCategoryAssignments.Name = "iddl_MoneyAccountCategoryAssignments";
             this.iddl_MoneyAccountCategoryAssignments.SelectedIndex = -1;
@@ -358,10 +351,11 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(110, 7);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 16);
+            this.label3.Size = new System.Drawing.Size(29, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "TO";
             // 
@@ -394,11 +388,11 @@
             // 
             // btnTransfer
             // 
-            this.btnTransfer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTransfer.Location = new System.Drawing.Point(-994, 2);
+            this.btnTransfer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTransfer.Location = new System.Drawing.Point(932, 0);
             this.btnTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.btnTransfer.Name = "btnTransfer";
-            this.btnTransfer.Size = new System.Drawing.Size(113, 28);
+            this.btnTransfer.Size = new System.Drawing.Size(113, 39);
             this.btnTransfer.TabIndex = 125;
             this.btnTransfer.Text = "TRANSFER";
             this.btnTransfer.UseVisualStyleBackColor = true;
@@ -408,8 +402,7 @@
             // 
             this.chkOnlyNotApproved.AutoSize = true;
             this.chkOnlyNotApproved.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotApproved.Location = new System.Drawing.Point(360, 0);
-            this.chkOnlyNotApproved.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOnlyNotApproved.Location = new System.Drawing.Point(363, 0);
             this.chkOnlyNotApproved.Name = "chkOnlyNotApproved";
             this.chkOnlyNotApproved.Size = new System.Drawing.Size(76, 32);
             this.chkOnlyNotApproved.TabIndex = 125;
@@ -435,7 +428,7 @@
             this.idtp_Timestamp_End.DefaultCheckedValue = false;
             this.idtp_Timestamp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Timestamp_End.LabelText = "dropdownlist";
-            this.idtp_Timestamp_End.Location = new System.Drawing.Point(134, 4);
+            this.idtp_Timestamp_End.Location = new System.Drawing.Point(139, 4);
             this.idtp_Timestamp_End.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_Timestamp_End.Name = "idtp_Timestamp_End";
             this.idtp_Timestamp_End.ShowCheckBox = true;

@@ -165,7 +165,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 103);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 177);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -179,17 +179,16 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 77);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 151);
             // 
             // itxt_QuickSearch
             // 
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_QuickSearch.ShowDeleteButton = true;
             // 
             // scContent
             // 
             this.scContent.Size = new System.Drawing.Size(1039, 289);
-            this.scContent.SplitterDistance = 182;
+            this.scContent.SplitterDistance = 108;
             // 
             // itxt_Notes
             // 
@@ -298,8 +297,7 @@
             // 
             this.chkOnlyNotOK.AutoSize = true;
             this.chkOnlyNotOK.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotOK.Location = new System.Drawing.Point(357, 0);
-            this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOnlyNotOK.Location = new System.Drawing.Point(363, 0);
             this.chkOnlyNotOK.Name = "chkOnlyNotOK";
             this.chkOnlyNotOK.Size = new System.Drawing.Size(99, 32);
             this.chkOnlyNotOK.TabIndex = 97;

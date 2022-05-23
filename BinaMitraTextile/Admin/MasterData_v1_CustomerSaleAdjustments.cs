@@ -176,6 +176,7 @@ namespace BinaMitraTextile.Admin
 
         private void MasterData_v1_CustomerSaleAdjustments_Shown(object sender, EventArgs e)
         {
+            scContent.Panel2Collapsed = true;
             ptInputPanel.PerformClick();
         }
 

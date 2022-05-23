@@ -61,24 +61,18 @@
             // 
             // panel1
             // 
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1067, 34);
-            // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.chkIncludeInactive.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.chkIncludeInactive.Size = new System.Drawing.Size(119, 32);
             // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 172);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
             this.pnlActionButtons.Size = new System.Drawing.Size(1067, 28);
             // 
             // scInputLeft
             // 
-            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputLeft.Panel1
             // 
@@ -88,77 +82,78 @@
             // 
             this.scInputLeft.Panel2.Controls.Add(this.iddl_Vendors);
             this.scInputLeft.Panel2.Controls.Add(this.iddl_Customers);
-            this.scInputLeft.Size = new System.Drawing.Size(540, 140);
+            this.scInputLeft.Size = new System.Drawing.Size(540, 134);
             this.scInputLeft.SplitterDistance = 289;
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
-            this.scInputRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.scInputRight.Size = new System.Drawing.Size(520, 140);
+            this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
+            this.scInputRight.Size = new System.Drawing.Size(520, 134);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
             this.btnAdd.Location = new System.Drawing.Point(4, 2);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.Location = new System.Drawing.Point(271, 2);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
             this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
             this.btnSearch.Location = new System.Drawing.Point(137, 2);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(4, 0);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
             this.btnSubmit.Size = new System.Drawing.Size(124, 33);
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(252, 0);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Size = new System.Drawing.Size(124, 33);
             // 
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(128, 0);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(5);
             this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
-            this.scMain.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scMain.Margin = new System.Windows.Forms.Padding(5);
             this.scMain.Size = new System.Drawing.Size(1067, 596);
             this.scMain.SplitterDistance = 200;
             // 
             // pnlButtons
             // 
-            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlButtons.Size = new System.Drawing.Size(1067, 32);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlButtons.Size = new System.Drawing.Size(1067, 38);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.scInputContainer.Size = new System.Drawing.Size(1067, 140);
+            this.scInputContainer.Location = new System.Drawing.Point(0, 38);
+            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.scInputContainer.Size = new System.Drawing.Size(1067, 134);
             this.scInputContainer.SplitterDistance = 540;
             this.scInputContainer.SplitterWidth = 7;
             // 
             // btnLog
             // 
             this.btnLog.Location = new System.Drawing.Point(404, 2);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
             this.btnLog.Size = new System.Drawing.Size(133, 34);
             // 
             // ptInputPanel
@@ -168,7 +163,7 @@
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Controls.Add(this.chkIncludeCompleted);
-            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5);
             this.pnlQuickSearch.Size = new System.Drawing.Size(1033, 34);
             this.pnlQuickSearch.Controls.SetChildIndex(this.pbRefresh, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.pbLog, 0);
@@ -178,17 +173,17 @@
             // 
             // pnlRowInfo
             // 
-            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 128);
+            this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 197);
             // 
             // pnlRowInfoHeaderContainer
             // 
-            this.pnlRowInfoHeaderContainer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlRowInfoHeaderContainer.Margin = new System.Windows.Forms.Padding(5);
             this.pnlRowInfoHeaderContainer.Size = new System.Drawing.Size(1067, 26);
             // 
             // pnlRowInfoHeader
             // 
-            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5);
             this.pnlRowInfoHeader.Size = new System.Drawing.Size(1041, 26);
             // 
             // ptRowInfo
@@ -197,28 +192,26 @@
             // 
             // pnlRowInfoContent
             // 
-            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 102);
+            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 171);
             // 
             // pbLog
             // 
-            this.pbLog.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pbLog.Margin = new System.Windows.Forms.Padding(5);
             // 
             // pbRefresh
             // 
-            this.pbRefresh.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pbRefresh.Margin = new System.Windows.Forms.Padding(5);
             // 
             // itxt_QuickSearch
             // 
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.itxt_QuickSearch.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.itxt_QuickSearch.ShowDeleteButton = true;
             // 
             // scContent
             // 
-            this.scContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1067, 361);
-            this.scContent.SplitterDistance = 228;
+            this.scContent.SplitterDistance = 159;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Description
@@ -226,7 +219,7 @@
             this.itxt_Description.IsBrowseMode = false;
             this.itxt_Description.LabelText = "Description";
             this.itxt_Description.Location = new System.Drawing.Point(4, 4);
-            this.itxt_Description.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_Description.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Description.MaxLength = 32767;
             this.itxt_Description.MultiLine = true;
             this.itxt_Description.Name = "itxt_Description";
@@ -243,8 +236,7 @@
             // 
             this.chkIncludeCompleted.AutoSize = true;
             this.chkIncludeCompleted.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkIncludeCompleted.Location = new System.Drawing.Point(360, 0);
-            this.chkIncludeCompleted.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkIncludeCompleted.Location = new System.Drawing.Point(363, 0);
             this.chkIncludeCompleted.Name = "chkIncludeCompleted";
             this.chkIncludeCompleted.Size = new System.Drawing.Size(124, 32);
             this.chkIncludeCompleted.TabIndex = 14;
@@ -290,7 +282,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1067, 596);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_ToDoList_Form";
             this.Text = "TO DO LIST";

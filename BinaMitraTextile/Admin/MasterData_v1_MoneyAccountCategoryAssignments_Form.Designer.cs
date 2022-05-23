@@ -63,12 +63,6 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1067, 34);
             // 
-            // chkIncludeInactive
-            // 
-            this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(5);
-            this.chkIncludeInactive.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.chkIncludeInactive.Size = new System.Drawing.Size(119, 32);
-            // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 152);
@@ -165,7 +159,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 206);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 256);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -184,7 +178,7 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 180);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 230);
             // 
             // itxt_QuickSearch
             // 
@@ -194,7 +188,7 @@
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1067, 381);
-            this.scContent.SplitterDistance = 170;
+            this.scContent.SplitterDistance = 120;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Notes

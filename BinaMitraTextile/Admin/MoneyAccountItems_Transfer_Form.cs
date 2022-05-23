@@ -53,12 +53,10 @@ namespace BinaMitraTextile.Admin
 
             MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_From, true, MoneyAccount.getUserRoleRestriction(GlobalData.UserAccount.role));
             iddl_MoneyAccounts_From.SelectedValue = _Initial_MoneyAccounts_Id;
-
             if(iddl_MoneyAccounts_From.SelectedValue != null)
                 MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_From, (Guid)iddl_MoneyAccounts_From.SelectedValue, true);
 
             MoneyAccount.populateInputControlDropDownList(iddl_MoneyAccounts_To, true, null);
-
             if (iddl_MoneyAccounts_To.SelectedValue != null)
                 MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_To, (Guid)iddl_MoneyAccounts_To.SelectedValue, true);
 
@@ -126,7 +124,7 @@ namespace BinaMitraTextile.Admin
                 btnSubmit.PerformClick();
         }
 
-        private void iddl_MoneyAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        private void iddl_MoneyAccounts_From_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_isFormShown)
                 MoneyAccountCategoryAssignment.populateInputControlDropDownList(iddl_MoneyAccountCategoryAssignments_From, (Guid)iddl_MoneyAccounts_From.SelectedValue, true);

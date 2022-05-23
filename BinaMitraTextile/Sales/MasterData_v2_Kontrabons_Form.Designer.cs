@@ -140,18 +140,18 @@
             // 
             // panel1
             // 
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1072, 34);
             // 
             // pnlActionButtons
             // 
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 212);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
             this.pnlActionButtons.Size = new System.Drawing.Size(1072, 28);
             // 
             // scInputLeft
             // 
-            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputLeft.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputLeft.Panel1
             // 
@@ -170,7 +170,7 @@
             // 
             // scInputRight
             // 
-            this.scInputRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
             // 
             // scInputRight.Panel1
             // 
@@ -193,22 +193,18 @@
             // 
             // scMain
             // 
-            this.scMain.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scMain.Margin = new System.Windows.Forms.Padding(5);
             this.scMain.Size = new System.Drawing.Size(1072, 689);
             this.scMain.SplitterDistance = 240;
             // 
-            // txtQuickSearch
-            // 
-            this.txtQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            // 
             // pnlButtons
             // 
-            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
             this.pnlButtons.Size = new System.Drawing.Size(1072, 32);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
             this.scInputContainer.Size = new System.Drawing.Size(1072, 180);
             this.scInputContainer.SplitterDistance = 530;
             this.scInputContainer.SplitterWidth = 7;
@@ -216,7 +212,7 @@
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Controls.Add(this.chkShowOnlyApproved);
-            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5);
             this.pnlQuickSearch.Size = new System.Drawing.Size(1032, 34);
             this.pnlQuickSearch.Controls.SetChildIndex(this.txtQuickSearch, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.lnkClearQuickSearch, 0);
@@ -227,18 +223,18 @@
             // pnlRowInfoHeader
             // 
             this.pnlRowInfoHeader.Controls.Add(this.lblRowInfoHeader);
-            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlRowInfoHeader.Margin = new System.Windows.Forms.Padding(5);
             this.pnlRowInfoHeader.Size = new System.Drawing.Size(1045, 26);
             // 
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Controls.Add(this.tcRowInfo);
-            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
             this.pnlRowInfoContent.Size = new System.Drawing.Size(1072, 194);
             // 
             // scContent
             // 
-            this.scContent.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.scContent.Margin = new System.Windows.Forms.Padding(5);
             this.scContent.Panel2MinSize = 220;
             this.scContent.Size = new System.Drawing.Size(1072, 414);
             this.scContent.SplitterDistance = 193;
@@ -249,7 +245,7 @@
             this.itxt_No.IsBrowseMode = false;
             this.itxt_No.LabelText = "Nomor Kontrabon";
             this.itxt_No.Location = new System.Drawing.Point(9, 7);
-            this.itxt_No.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_No.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_No.MaxLength = 32767;
             this.itxt_No.MultiLine = false;
             this.itxt_No.Name = "itxt_No";
@@ -270,7 +266,7 @@
             this.idtp_Timestamp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Timestamp.LabelText = "Date";
             this.idtp_Timestamp.Location = new System.Drawing.Point(9, 117);
-            this.idtp_Timestamp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_Timestamp.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_Timestamp.Name = "idtp_Timestamp";
             this.idtp_Timestamp.ShowCheckBox = false;
             this.idtp_Timestamp.ShowDateTimePickerOnly = false;
@@ -285,7 +281,7 @@
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
             this.itxt_Notes.Location = new System.Drawing.Point(4, 63);
-            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = true;
             this.itxt_Notes.Name = "itxt_Notes";
@@ -306,7 +302,7 @@
             this.idtp_StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_StartDate.LabelText = "Start Date";
             this.idtp_StartDate.Location = new System.Drawing.Point(4, 10);
-            this.idtp_StartDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_StartDate.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_StartDate.Name = "idtp_StartDate";
             this.idtp_StartDate.ShowCheckBox = true;
             this.idtp_StartDate.ShowDateTimePickerOnly = false;
@@ -324,7 +320,7 @@
             this.idtp_EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_EndDate.LabelText = "End Date";
             this.idtp_EndDate.Location = new System.Drawing.Point(126, 10);
-            this.idtp_EndDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_EndDate.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_EndDate.Name = "idtp_EndDate";
             this.idtp_EndDate.ShowCheckBox = true;
             this.idtp_EndDate.ShowDateTimePickerOnly = false;
@@ -338,7 +334,6 @@
             // 
             this.chkShowOnlyApproved.AutoSize = true;
             this.chkShowOnlyApproved.Location = new System.Drawing.Point(265, 7);
-            this.chkShowOnlyApproved.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkShowOnlyApproved.Name = "chkShowOnlyApproved";
             this.chkShowOnlyApproved.Size = new System.Drawing.Size(114, 20);
             this.chkShowOnlyApproved.TabIndex = 15;
@@ -353,7 +348,7 @@
             this.tcRowInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcRowInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tcRowInfo.Location = new System.Drawing.Point(0, 0);
-            this.tcRowInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcRowInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tcRowInfo.Name = "tcRowInfo";
             this.tcRowInfo.SelectedIndex = 0;
             this.tcRowInfo.Size = new System.Drawing.Size(1072, 194);
@@ -364,7 +359,7 @@
             this.tpFakturPajaks.Controls.Add(this.gridFakturPajaks);
             this.tpFakturPajaks.Controls.Add(this.panel5);
             this.tpFakturPajaks.Location = new System.Drawing.Point(4, 22);
-            this.tpFakturPajaks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpFakturPajaks.Margin = new System.Windows.Forms.Padding(4);
             this.tpFakturPajaks.Name = "tpFakturPajaks";
             this.tpFakturPajaks.Size = new System.Drawing.Size(1064, 168);
             this.tpFakturPajaks.TabIndex = 3;
@@ -398,7 +393,7 @@
             this.col_gridFakturPajaks_Notes});
             this.gridFakturPajaks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridFakturPajaks.Location = new System.Drawing.Point(0, 31);
-            this.gridFakturPajaks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridFakturPajaks.Margin = new System.Windows.Forms.Padding(4);
             this.gridFakturPajaks.Name = "gridFakturPajaks";
             this.gridFakturPajaks.RowHeadersVisible = false;
             this.gridFakturPajaks.Size = new System.Drawing.Size(1064, 137);
@@ -500,7 +495,7 @@
             this.panel5.Controls.Add(this.btnAddFakturPajak);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1064, 31);
             this.panel5.TabIndex = 133;
@@ -508,7 +503,7 @@
             // btnAddFakturPajak
             // 
             this.btnAddFakturPajak.Location = new System.Drawing.Point(1, 1);
-            this.btnAddFakturPajak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddFakturPajak.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddFakturPajak.Name = "btnAddFakturPajak";
             this.btnAddFakturPajak.Size = new System.Drawing.Size(53, 28);
             this.btnAddFakturPajak.TabIndex = 128;
@@ -521,10 +516,10 @@
             this.tpSaleInvoices.Controls.Add(this.gridSaleInvoices);
             this.tpSaleInvoices.Controls.Add(this.panel4);
             this.tpSaleInvoices.Location = new System.Drawing.Point(4, 22);
-            this.tpSaleInvoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSaleInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
-            this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(1779, 449);
+            this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(4);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(1064, 168);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -567,7 +562,7 @@
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(1771, 410);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(1056, 129);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -705,15 +700,15 @@
             this.panel4.Controls.Add(this.btnAddSales);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(4, 4);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1771, 31);
+            this.panel4.Size = new System.Drawing.Size(1056, 31);
             this.panel4.TabIndex = 132;
             // 
             // btnAddSales
             // 
             this.btnAddSales.Location = new System.Drawing.Point(1, 1);
-            this.btnAddSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddSales.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddSales.Name = "btnAddSales";
             this.btnAddSales.Size = new System.Drawing.Size(53, 28);
             this.btnAddSales.TabIndex = 127;
@@ -726,9 +721,9 @@
             this.tpSaleReturns.Controls.Add(this.gridReturns);
             this.tpSaleReturns.Controls.Add(this.panel2);
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
-            this.tpSaleReturns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpSaleReturns.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(1779, 449);
+            this.tpSaleReturns.Size = new System.Drawing.Size(1064, 168);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -769,7 +764,7 @@
             dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(1779, 418);
+            this.gridReturns.Size = new System.Drawing.Size(1064, 137);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
@@ -874,15 +869,15 @@
             this.panel2.Controls.Add(this.btnAddReturns);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1779, 31);
+            this.panel2.Size = new System.Drawing.Size(1064, 31);
             this.panel2.TabIndex = 130;
             // 
             // btnAddReturns
             // 
             this.btnAddReturns.Location = new System.Drawing.Point(1, 1);
-            this.btnAddReturns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddReturns.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddReturns.Name = "btnAddReturns";
             this.btnAddReturns.Size = new System.Drawing.Size(53, 28);
             this.btnAddReturns.TabIndex = 129;
@@ -898,7 +893,7 @@
             this.idtp_ReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_ReturnDate.LabelText = "Return Date";
             this.idtp_ReturnDate.Location = new System.Drawing.Point(4, 7);
-            this.idtp_ReturnDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_ReturnDate.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_ReturnDate.Name = "idtp_ReturnDate";
             this.idtp_ReturnDate.ShowCheckBox = true;
             this.idtp_ReturnDate.ShowDateTimePickerOnly = false;
@@ -975,7 +970,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1072, 689);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v2_Kontrabons_Form";
             this.Text = "KONTRABON";

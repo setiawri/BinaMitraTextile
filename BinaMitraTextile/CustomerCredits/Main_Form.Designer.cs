@@ -273,7 +273,7 @@
             this.btnAddPayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddPayment.Location = new System.Drawing.Point(1094, 8);
-            this.btnAddPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddPayment.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddPayment.Name = "btnAddPayment";
             this.btnAddPayment.Size = new System.Drawing.Size(65, 43);
             this.btnAddPayment.TabIndex = 5;
@@ -306,7 +306,7 @@
             this.chkOnlyHasActivityLast3Months.Checked = true;
             this.chkOnlyHasActivityLast3Months.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkOnlyHasActivityLast3Months.Location = new System.Drawing.Point(145, 7);
-            this.chkOnlyHasActivityLast3Months.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkOnlyHasActivityLast3Months.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnlyHasActivityLast3Months.Name = "chkOnlyHasActivityLast3Months";
             this.chkOnlyHasActivityLast3Months.Size = new System.Drawing.Size(180, 20);
             this.chkOnlyHasActivityLast3Months.TabIndex = 134;
@@ -328,7 +328,7 @@
             this.iddl_Customers.SelectedItemText = "";
             this.iddl_Customers.SelectedValue = null;
             this.iddl_Customers.ShowDropdownlistOnly = false;
-            this.iddl_Customers.Size = new System.Drawing.Size(189, 50);
+            this.iddl_Customers.Size = new System.Drawing.Size(189, 47);
             this.iddl_Customers.TabIndex = 135;
             // 
             // in_Amount
@@ -358,7 +358,7 @@
             this.in_Amount.ShowAllowDecimalCheckbox = false;
             this.in_Amount.ShowCheckbox = false;
             this.in_Amount.ShowTextboxOnly = false;
-            this.in_Amount.Size = new System.Drawing.Size(148, 50);
+            this.in_Amount.Size = new System.Drawing.Size(148, 47);
             this.in_Amount.TabIndex = 136;
             this.in_Amount.Value = new decimal(new int[] {
             0,
@@ -380,14 +380,14 @@
             this.iddl_PaymentMethods.SelectedItemText = "";
             this.iddl_PaymentMethods.SelectedValue = null;
             this.iddl_PaymentMethods.ShowDropdownlistOnly = false;
-            this.iddl_PaymentMethods.Size = new System.Drawing.Size(99, 50);
+            this.iddl_PaymentMethods.Size = new System.Drawing.Size(99, 47);
             this.iddl_PaymentMethods.TabIndex = 137;
             // 
             // itxt_Notes
             // 
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
-            this.itxt_Notes.Location = new System.Drawing.Point(828, 4);
+            this.itxt_Notes.Location = new System.Drawing.Point(828, 1);
             this.itxt_Notes.Margin = new System.Windows.Forms.Padding(4);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = false;
@@ -415,7 +415,7 @@
             this.Controls.Add(this.btnAddPayment);
             this.Controls.Add(this.gridSummary);
             this.Controls.Add(this.gridDetail);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "CUSTOMER CREDITS";
             this.Load += new System.EventHandler(this.Form_Load);

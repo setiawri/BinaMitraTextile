@@ -40,6 +40,7 @@ namespace BinaMitraTextile.Admin
         protected override void setupFields()
         {
             Settings.setGeneralSettings(this);
+            scContent.Panel2Collapsed = true;
 
             setColumnsDataPropertyNames(CustomerTerm.COL_DB_ID, CustomerTerm.COL_DB_ACTIVE, null, null, null, null);
             col_dgv_Customers_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Customers_Name", iddl_Customers.LabelText, CustomerTerm.COL_CUSTOMERS_NAME, true, true, "", true, false, 100, DataGridViewContentAlignment.MiddleLeft);
