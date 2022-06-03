@@ -30,46 +30,6 @@
         {
             this.btnPrint = new System.Windows.Forms.Button();
             this.pnlPrint = new System.Windows.Forms.Panel();
-            this.barcodeUC21 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC22 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC23 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC24 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC25 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC26 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC27 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC28 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC29 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC30 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC31 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC32 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC33 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC34 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC35 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC36 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC37 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC38 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC39 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC40 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC16 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC17 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC18 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC19 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC20 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC11 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC12 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC13 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC14 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC15 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC6 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC7 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC8 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC9 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC10 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC5 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC4 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC3 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC2 = new BinaMitraTextile.BarcodeUC();
-            this.barcodeUC1 = new BinaMitraTextile.BarcodeUC();
             this.txtStartHex = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -124,7 +84,49 @@
             this.label2 = new System.Windows.Forms.Label();
             this.in_ManualOffsetX = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.in_ManualOffsetY = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
-            this.chkLabel107 = new System.Windows.Forms.CheckBox();
+            this.rb108_8x5 = new System.Windows.Forms.RadioButton();
+            this.rb107_7x4 = new System.Windows.Forms.RadioButton();
+            this.rb108_7x5 = new System.Windows.Forms.RadioButton();
+            this.barcodeUC21 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC22 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC23 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC24 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC25 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC26 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC27 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC28 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC29 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC30 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC31 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC32 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC33 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC34 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC35 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC36 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC37 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC38 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC39 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC40 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC16 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC17 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC18 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC19 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC20 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC11 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC12 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC13 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC14 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC15 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC6 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC7 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC8 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC9 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC10 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC5 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC4 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC3 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC2 = new BinaMitraTextile.BarcodeUC();
+            this.barcodeUC1 = new BinaMitraTextile.BarcodeUC();
             this.pnlPrint.SuspendLayout();
             this.pnlManualInput.SuspendLayout();
             this.pnlAutomaticInput.SuspendLayout();
@@ -188,6 +190,702 @@
             this.pnlPrint.Name = "pnlPrint";
             this.pnlPrint.Size = new System.Drawing.Size(1101, 745);
             this.pnlPrint.TabIndex = 2;
+            // 
+            // txtStartHex
+            // 
+            this.txtStartHex.Location = new System.Drawing.Point(155, 5);
+            this.txtStartHex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtStartHex.MaxLength = 6;
+            this.txtStartHex.Name = "txtStartHex";
+            this.txtStartHex.Size = new System.Drawing.Size(100, 20);
+            this.txtStartHex.TabIndex = 2;
+            this.txtStartHex.TextChanged += new System.EventHandler(this.txtStartHex_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(3, 1);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(75, 30);
+            this.btnPrevious.TabIndex = 0;
+            this.btnPrevious.Text = "PREV";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(261, 1);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 30);
+            this.btnNext.TabIndex = 3;
+            this.btnNext.Text = "NEXT";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // txtSheetNo
+            // 
+            this.txtSheetNo.Location = new System.Drawing.Point(83, 5);
+            this.txtSheetNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSheetNo.MaxLength = 4;
+            this.txtSheetNo.Name = "txtSheetNo";
+            this.txtSheetNo.Size = new System.Drawing.Size(65, 20);
+            this.txtSheetNo.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.MaxLength = 9;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(109, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.MaxLength = 9;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(216, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.MaxLength = 9;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(323, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox4.MaxLength = 9;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(429, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox5.MaxLength = 9;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(3, 32);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox6.MaxLength = 9;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 5;
+            this.textBox6.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(109, 32);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox7.MaxLength = 9;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 6;
+            this.textBox7.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(216, 32);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox8.MaxLength = 9;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 7;
+            this.textBox8.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(323, 32);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox9.MaxLength = 9;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 8;
+            this.textBox9.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(429, 32);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox10.MaxLength = 9;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 20);
+            this.textBox10.TabIndex = 9;
+            this.textBox10.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(3, 62);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox11.MaxLength = 9;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 10;
+            this.textBox11.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(109, 62);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox12.MaxLength = 9;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 20);
+            this.textBox12.TabIndex = 11;
+            this.textBox12.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(216, 62);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox13.MaxLength = 9;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 12;
+            this.textBox13.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(323, 62);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox14.MaxLength = 9;
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 20);
+            this.textBox14.TabIndex = 13;
+            this.textBox14.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(429, 62);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox15.MaxLength = 9;
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 20);
+            this.textBox15.TabIndex = 14;
+            this.textBox15.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(3, 91);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox16.MaxLength = 9;
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(100, 20);
+            this.textBox16.TabIndex = 15;
+            this.textBox16.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(109, 91);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox17.MaxLength = 9;
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(100, 20);
+            this.textBox17.TabIndex = 16;
+            this.textBox17.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(216, 91);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox18.MaxLength = 9;
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(100, 20);
+            this.textBox18.TabIndex = 17;
+            this.textBox18.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(323, 91);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox19.MaxLength = 9;
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(100, 20);
+            this.textBox19.TabIndex = 18;
+            this.textBox19.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox20
+            // 
+            this.textBox20.Location = new System.Drawing.Point(429, 91);
+            this.textBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox20.MaxLength = 9;
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(100, 20);
+            this.textBox20.TabIndex = 19;
+            this.textBox20.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(3, 121);
+            this.textBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox21.MaxLength = 9;
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(100, 20);
+            this.textBox21.TabIndex = 20;
+            this.textBox21.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox22
+            // 
+            this.textBox22.Location = new System.Drawing.Point(109, 121);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox22.MaxLength = 9;
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(100, 20);
+            this.textBox22.TabIndex = 21;
+            this.textBox22.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox23
+            // 
+            this.textBox23.Location = new System.Drawing.Point(216, 121);
+            this.textBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox23.MaxLength = 9;
+            this.textBox23.Name = "textBox23";
+            this.textBox23.Size = new System.Drawing.Size(100, 20);
+            this.textBox23.TabIndex = 22;
+            this.textBox23.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox24
+            // 
+            this.textBox24.Location = new System.Drawing.Point(323, 121);
+            this.textBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox24.MaxLength = 9;
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(100, 20);
+            this.textBox24.TabIndex = 23;
+            this.textBox24.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(429, 121);
+            this.textBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox25.MaxLength = 9;
+            this.textBox25.Name = "textBox25";
+            this.textBox25.Size = new System.Drawing.Size(100, 20);
+            this.textBox25.TabIndex = 24;
+            this.textBox25.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(3, 150);
+            this.textBox26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox26.MaxLength = 9;
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(100, 20);
+            this.textBox26.TabIndex = 25;
+            this.textBox26.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(109, 150);
+            this.textBox27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox27.MaxLength = 9;
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(100, 20);
+            this.textBox27.TabIndex = 26;
+            this.textBox27.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(216, 150);
+            this.textBox28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox28.MaxLength = 9;
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(100, 20);
+            this.textBox28.TabIndex = 27;
+            this.textBox28.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(323, 150);
+            this.textBox29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox29.MaxLength = 9;
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(100, 20);
+            this.textBox29.TabIndex = 28;
+            this.textBox29.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(429, 150);
+            this.textBox30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox30.MaxLength = 9;
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(100, 20);
+            this.textBox30.TabIndex = 29;
+            this.textBox30.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox31
+            // 
+            this.textBox31.Location = new System.Drawing.Point(3, 180);
+            this.textBox31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox31.MaxLength = 9;
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(100, 20);
+            this.textBox31.TabIndex = 30;
+            this.textBox31.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox32
+            // 
+            this.textBox32.Location = new System.Drawing.Point(109, 180);
+            this.textBox32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox32.MaxLength = 9;
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(100, 20);
+            this.textBox32.TabIndex = 31;
+            this.textBox32.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox33
+            // 
+            this.textBox33.Location = new System.Drawing.Point(216, 180);
+            this.textBox33.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox33.MaxLength = 9;
+            this.textBox33.Name = "textBox33";
+            this.textBox33.Size = new System.Drawing.Size(100, 20);
+            this.textBox33.TabIndex = 32;
+            this.textBox33.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox34
+            // 
+            this.textBox34.Location = new System.Drawing.Point(323, 180);
+            this.textBox34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox34.MaxLength = 9;
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(100, 20);
+            this.textBox34.TabIndex = 33;
+            this.textBox34.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox35
+            // 
+            this.textBox35.Location = new System.Drawing.Point(429, 180);
+            this.textBox35.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox35.MaxLength = 9;
+            this.textBox35.Name = "textBox35";
+            this.textBox35.Size = new System.Drawing.Size(100, 20);
+            this.textBox35.TabIndex = 34;
+            this.textBox35.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox36
+            // 
+            this.textBox36.Location = new System.Drawing.Point(3, 209);
+            this.textBox36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox36.MaxLength = 9;
+            this.textBox36.Name = "textBox36";
+            this.textBox36.Size = new System.Drawing.Size(100, 20);
+            this.textBox36.TabIndex = 35;
+            this.textBox36.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox37
+            // 
+            this.textBox37.Location = new System.Drawing.Point(109, 209);
+            this.textBox37.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox37.MaxLength = 9;
+            this.textBox37.Name = "textBox37";
+            this.textBox37.Size = new System.Drawing.Size(100, 20);
+            this.textBox37.TabIndex = 36;
+            this.textBox37.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox38
+            // 
+            this.textBox38.Location = new System.Drawing.Point(216, 209);
+            this.textBox38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox38.MaxLength = 9;
+            this.textBox38.Name = "textBox38";
+            this.textBox38.Size = new System.Drawing.Size(100, 20);
+            this.textBox38.TabIndex = 37;
+            this.textBox38.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox39
+            // 
+            this.textBox39.Location = new System.Drawing.Point(323, 209);
+            this.textBox39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox39.MaxLength = 9;
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(100, 20);
+            this.textBox39.TabIndex = 38;
+            this.textBox39.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // textBox40
+            // 
+            this.textBox40.Location = new System.Drawing.Point(429, 209);
+            this.textBox40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox40.MaxLength = 9;
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new System.Drawing.Size(100, 20);
+            this.textBox40.TabIndex = 39;
+            this.textBox40.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
+            // 
+            // chkManualInput
+            // 
+            this.chkManualInput.AutoSize = true;
+            this.chkManualInput.Location = new System.Drawing.Point(20, 41);
+            this.chkManualInput.Margin = new System.Windows.Forms.Padding(4);
+            this.chkManualInput.Name = "chkManualInput";
+            this.chkManualInput.Size = new System.Drawing.Size(88, 17);
+            this.chkManualInput.TabIndex = 2;
+            this.chkManualInput.Text = "Manual Input";
+            this.chkManualInput.UseVisualStyleBackColor = true;
+            this.chkManualInput.CheckedChanged += new System.EventHandler(this.chkManualInput_CheckedChanged);
+            // 
+            // pnlManualInput
+            // 
+            this.pnlManualInput.Controls.Add(this.textBox1);
+            this.pnlManualInput.Controls.Add(this.textBox2);
+            this.pnlManualInput.Controls.Add(this.textBox36);
+            this.pnlManualInput.Controls.Add(this.textBox4);
+            this.pnlManualInput.Controls.Add(this.textBox37);
+            this.pnlManualInput.Controls.Add(this.textBox3);
+            this.pnlManualInput.Controls.Add(this.textBox38);
+            this.pnlManualInput.Controls.Add(this.textBox5);
+            this.pnlManualInput.Controls.Add(this.textBox39);
+            this.pnlManualInput.Controls.Add(this.textBox10);
+            this.pnlManualInput.Controls.Add(this.textBox40);
+            this.pnlManualInput.Controls.Add(this.textBox9);
+            this.pnlManualInput.Controls.Add(this.textBox31);
+            this.pnlManualInput.Controls.Add(this.textBox8);
+            this.pnlManualInput.Controls.Add(this.textBox32);
+            this.pnlManualInput.Controls.Add(this.textBox7);
+            this.pnlManualInput.Controls.Add(this.textBox33);
+            this.pnlManualInput.Controls.Add(this.textBox6);
+            this.pnlManualInput.Controls.Add(this.textBox34);
+            this.pnlManualInput.Controls.Add(this.textBox15);
+            this.pnlManualInput.Controls.Add(this.textBox35);
+            this.pnlManualInput.Controls.Add(this.textBox14);
+            this.pnlManualInput.Controls.Add(this.textBox26);
+            this.pnlManualInput.Controls.Add(this.textBox13);
+            this.pnlManualInput.Controls.Add(this.textBox27);
+            this.pnlManualInput.Controls.Add(this.textBox12);
+            this.pnlManualInput.Controls.Add(this.textBox28);
+            this.pnlManualInput.Controls.Add(this.textBox11);
+            this.pnlManualInput.Controls.Add(this.textBox29);
+            this.pnlManualInput.Controls.Add(this.textBox20);
+            this.pnlManualInput.Controls.Add(this.textBox30);
+            this.pnlManualInput.Controls.Add(this.textBox19);
+            this.pnlManualInput.Controls.Add(this.textBox21);
+            this.pnlManualInput.Controls.Add(this.textBox18);
+            this.pnlManualInput.Controls.Add(this.textBox22);
+            this.pnlManualInput.Controls.Add(this.textBox17);
+            this.pnlManualInput.Controls.Add(this.textBox23);
+            this.pnlManualInput.Controls.Add(this.textBox16);
+            this.pnlManualInput.Controls.Add(this.textBox24);
+            this.pnlManualInput.Controls.Add(this.textBox25);
+            this.pnlManualInput.Location = new System.Drawing.Point(577, 5);
+            this.pnlManualInput.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlManualInput.Name = "pnlManualInput";
+            this.pnlManualInput.Size = new System.Drawing.Size(540, 245);
+            this.pnlManualInput.TabIndex = 3;
+            // 
+            // pnlAutomaticInput
+            // 
+            this.pnlAutomaticInput.Controls.Add(this.btnPrevious);
+            this.pnlAutomaticInput.Controls.Add(this.txtStartHex);
+            this.pnlAutomaticInput.Controls.Add(this.btnNext);
+            this.pnlAutomaticInput.Controls.Add(this.txtSheetNo);
+            this.pnlAutomaticInput.Location = new System.Drawing.Point(20, 69);
+            this.pnlAutomaticInput.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAutomaticInput.Name = "pnlAutomaticInput";
+            this.pnlAutomaticInput.Size = new System.Drawing.Size(340, 38);
+            this.pnlAutomaticInput.TabIndex = 0;
+            // 
+            // chkPrintExisting
+            // 
+            this.chkPrintExisting.AutoSize = true;
+            this.chkPrintExisting.Location = new System.Drawing.Point(245, 41);
+            this.chkPrintExisting.Margin = new System.Windows.Forms.Padding(4);
+            this.chkPrintExisting.Name = "chkPrintExisting";
+            this.chkPrintExisting.Size = new System.Drawing.Size(86, 17);
+            this.chkPrintExisting.TabIndex = 5;
+            this.chkPrintExisting.Text = "Print Existing";
+            this.chkPrintExisting.UseVisualStyleBackColor = true;
+            this.chkPrintExisting.CheckedChanged += new System.EventHandler(this.chkPrintExisting_CheckedChanged);
+            // 
+            // chkShowPrintDialog
+            // 
+            this.chkShowPrintDialog.AutoSize = true;
+            this.chkShowPrintDialog.Location = new System.Drawing.Point(107, 114);
+            this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowPrintDialog.Name = "chkShowPrintDialog";
+            this.chkShowPrintDialog.Size = new System.Drawing.Size(77, 17);
+            this.chkShowPrintDialog.TabIndex = 112;
+            this.chkShowPrintDialog.Text = "print dialog";
+            this.chkShowPrintDialog.UseVisualStyleBackColor = true;
+            // 
+            // in_Qty
+            // 
+            this.in_Qty.Checked = false;
+            this.in_Qty.DecimalPlaces = 0;
+            this.in_Qty.HideUpDown = false;
+            this.in_Qty.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Qty.LabelText = "Qty";
+            this.in_Qty.Location = new System.Drawing.Point(20, 114);
+            this.in_Qty.Margin = new System.Windows.Forms.Padding(5);
+            this.in_Qty.MaximumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.in_Qty.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_Qty.Name = "in_Qty";
+            this.in_Qty.ShowAllowDecimalCheckbox = false;
+            this.in_Qty.ShowCheckbox = false;
+            this.in_Qty.ShowTextboxOnly = false;
+            this.in_Qty.Size = new System.Drawing.Size(77, 50);
+            this.in_Qty.TabIndex = 0;
+            this.in_Qty.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 113;
+            this.label2.Text = "position offset";
+            // 
+            // in_ManualOffsetX
+            // 
+            this.in_ManualOffsetX.Checked = false;
+            this.in_ManualOffsetX.DecimalPlaces = 0;
+            this.in_ManualOffsetX.HideUpDown = false;
+            this.in_ManualOffsetX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetX.LabelText = "X";
+            this.in_ManualOffsetX.Location = new System.Drawing.Point(16, 199);
+            this.in_ManualOffsetX.Margin = new System.Windows.Forms.Padding(5);
+            this.in_ManualOffsetX.MaximumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetX.MinimumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.in_ManualOffsetX.Name = "in_ManualOffsetX";
+            this.in_ManualOffsetX.ShowAllowDecimalCheckbox = false;
+            this.in_ManualOffsetX.ShowCheckbox = false;
+            this.in_ManualOffsetX.ShowTextboxOnly = false;
+            this.in_ManualOffsetX.Size = new System.Drawing.Size(61, 50);
+            this.in_ManualOffsetX.TabIndex = 114;
+            this.in_ManualOffsetX.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetX.ValueChanged += new System.EventHandler(this.in_ManualOffsetX_ValueChanged);
+            // 
+            // in_ManualOffsetY
+            // 
+            this.in_ManualOffsetY.Checked = false;
+            this.in_ManualOffsetY.DecimalPlaces = 0;
+            this.in_ManualOffsetY.HideUpDown = false;
+            this.in_ManualOffsetY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetY.LabelText = "Y";
+            this.in_ManualOffsetY.Location = new System.Drawing.Point(85, 199);
+            this.in_ManualOffsetY.Margin = new System.Windows.Forms.Padding(5);
+            this.in_ManualOffsetY.MaximumValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetY.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetY.Name = "in_ManualOffsetY";
+            this.in_ManualOffsetY.ShowAllowDecimalCheckbox = false;
+            this.in_ManualOffsetY.ShowCheckbox = false;
+            this.in_ManualOffsetY.ShowTextboxOnly = false;
+            this.in_ManualOffsetY.Size = new System.Drawing.Size(61, 50);
+            this.in_ManualOffsetY.TabIndex = 115;
+            this.in_ManualOffsetY.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_ManualOffsetY.ValueChanged += new System.EventHandler(this.in_ManualOffsetY_ValueChanged);
+            // 
+            // rb108_8x5
+            // 
+            this.rb108_8x5.AutoSize = true;
+            this.rb108_8x5.Location = new System.Drawing.Point(267, 227);
+            this.rb108_8x5.Name = "rb108_8x5";
+            this.rb108_8x5.Size = new System.Drawing.Size(63, 17);
+            this.rb108_8x5.TabIndex = 118;
+            this.rb108_8x5.Text = "108 8x5";
+            this.rb108_8x5.UseVisualStyleBackColor = true;
+            this.rb108_8x5.CheckedChanged += new System.EventHandler(this.rbLabelTypes_CheckedChanged);
+            // 
+            // rb107_7x4
+            // 
+            this.rb107_7x4.AutoSize = true;
+            this.rb107_7x4.Location = new System.Drawing.Point(330, 227);
+            this.rb107_7x4.Name = "rb107_7x4";
+            this.rb107_7x4.Size = new System.Drawing.Size(113, 17);
+            this.rb107_7x4.TabIndex = 119;
+            this.rb107_7x4.Text = "107 Champion 7x4";
+            this.rb107_7x4.UseVisualStyleBackColor = true;
+            this.rb107_7x4.CheckedChanged += new System.EventHandler(this.rbLabelTypes_CheckedChanged);
+            // 
+            // rb108_7x5
+            // 
+            this.rb108_7x5.AutoSize = true;
+            this.rb108_7x5.Checked = true;
+            this.rb108_7x5.Location = new System.Drawing.Point(154, 227);
+            this.rb108_7x5.Name = "rb108_7x5";
+            this.rb108_7x5.Size = new System.Drawing.Size(113, 17);
+            this.rb108_7x5.TabIndex = 120;
+            this.rb108_7x5.TabStop = true;
+            this.rb108_7x5.Text = "108 Champion 7x5";
+            this.rb108_7x5.UseVisualStyleBackColor = true;
+            this.rb108_7x5.CheckedChanged += new System.EventHandler(this.rbLabelTypes_CheckedChanged);
             // 
             // barcodeUC21
             // 
@@ -509,685 +1207,14 @@
             this.barcodeUC1.Size = new System.Drawing.Size(183, 62);
             this.barcodeUC1.TabIndex = 80;
             // 
-            // txtStartHex
-            // 
-            this.txtStartHex.Location = new System.Drawing.Point(155, 5);
-            this.txtStartHex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtStartHex.MaxLength = 6;
-            this.txtStartHex.Name = "txtStartHex";
-            this.txtStartHex.Size = new System.Drawing.Size(100, 22);
-            this.txtStartHex.TabIndex = 2;
-            this.txtStartHex.TextChanged += new System.EventHandler(this.txtStartHex_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(3, 1);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 30);
-            this.btnPrevious.TabIndex = 0;
-            this.btnPrevious.Text = "PREV";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(261, 1);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 30);
-            this.btnNext.TabIndex = 3;
-            this.btnNext.Text = "NEXT";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // txtSheetNo
-            // 
-            this.txtSheetNo.Location = new System.Drawing.Point(83, 5);
-            this.txtSheetNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSheetNo.MaxLength = 4;
-            this.txtSheetNo.Name = "txtSheetNo";
-            this.txtSheetNo.Size = new System.Drawing.Size(65, 22);
-            this.txtSheetNo.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 2);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.MaxLength = 9;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(109, 2);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.MaxLength = 9;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(216, 2);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.MaxLength = 9;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(323, 2);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox4.MaxLength = 9;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(429, 2);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.MaxLength = 9;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 22);
-            this.textBox5.TabIndex = 4;
-            this.textBox5.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(3, 32);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox6.MaxLength = 9;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 22);
-            this.textBox6.TabIndex = 5;
-            this.textBox6.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(109, 32);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.MaxLength = 9;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 22);
-            this.textBox7.TabIndex = 6;
-            this.textBox7.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(216, 32);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox8.MaxLength = 9;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 22);
-            this.textBox8.TabIndex = 7;
-            this.textBox8.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(323, 32);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.MaxLength = 9;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 22);
-            this.textBox9.TabIndex = 8;
-            this.textBox9.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(429, 32);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.MaxLength = 9;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 22);
-            this.textBox10.TabIndex = 9;
-            this.textBox10.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(3, 62);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.MaxLength = 9;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 22);
-            this.textBox11.TabIndex = 10;
-            this.textBox11.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(109, 62);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.MaxLength = 9;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 22);
-            this.textBox12.TabIndex = 11;
-            this.textBox12.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(216, 62);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox13.MaxLength = 9;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 22);
-            this.textBox13.TabIndex = 12;
-            this.textBox13.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(323, 62);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox14.MaxLength = 9;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 22);
-            this.textBox14.TabIndex = 13;
-            this.textBox14.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(429, 62);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox15.MaxLength = 9;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(100, 22);
-            this.textBox15.TabIndex = 14;
-            this.textBox15.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(3, 91);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox16.MaxLength = 9;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 22);
-            this.textBox16.TabIndex = 15;
-            this.textBox16.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(109, 91);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox17.MaxLength = 9;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(100, 22);
-            this.textBox17.TabIndex = 16;
-            this.textBox17.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox18
-            // 
-            this.textBox18.Location = new System.Drawing.Point(216, 91);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox18.MaxLength = 9;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(100, 22);
-            this.textBox18.TabIndex = 17;
-            this.textBox18.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(323, 91);
-            this.textBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox19.MaxLength = 9;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(100, 22);
-            this.textBox19.TabIndex = 18;
-            this.textBox19.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox20
-            // 
-            this.textBox20.Location = new System.Drawing.Point(429, 91);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox20.MaxLength = 9;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(100, 22);
-            this.textBox20.TabIndex = 19;
-            this.textBox20.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(3, 121);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox21.MaxLength = 9;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(100, 22);
-            this.textBox21.TabIndex = 20;
-            this.textBox21.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox22
-            // 
-            this.textBox22.Location = new System.Drawing.Point(109, 121);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox22.MaxLength = 9;
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(100, 22);
-            this.textBox22.TabIndex = 21;
-            this.textBox22.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox23
-            // 
-            this.textBox23.Location = new System.Drawing.Point(216, 121);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox23.MaxLength = 9;
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(100, 22);
-            this.textBox23.TabIndex = 22;
-            this.textBox23.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox24
-            // 
-            this.textBox24.Location = new System.Drawing.Point(323, 121);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox24.MaxLength = 9;
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(100, 22);
-            this.textBox24.TabIndex = 23;
-            this.textBox24.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox25
-            // 
-            this.textBox25.Location = new System.Drawing.Point(429, 121);
-            this.textBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox25.MaxLength = 9;
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(100, 22);
-            this.textBox25.TabIndex = 24;
-            this.textBox25.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox26
-            // 
-            this.textBox26.Location = new System.Drawing.Point(3, 150);
-            this.textBox26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox26.MaxLength = 9;
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(100, 22);
-            this.textBox26.TabIndex = 25;
-            this.textBox26.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(109, 150);
-            this.textBox27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox27.MaxLength = 9;
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(100, 22);
-            this.textBox27.TabIndex = 26;
-            this.textBox27.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(216, 150);
-            this.textBox28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox28.MaxLength = 9;
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(100, 22);
-            this.textBox28.TabIndex = 27;
-            this.textBox28.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(323, 150);
-            this.textBox29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox29.MaxLength = 9;
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(100, 22);
-            this.textBox29.TabIndex = 28;
-            this.textBox29.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(429, 150);
-            this.textBox30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox30.MaxLength = 9;
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(100, 22);
-            this.textBox30.TabIndex = 29;
-            this.textBox30.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(3, 180);
-            this.textBox31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox31.MaxLength = 9;
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(100, 22);
-            this.textBox31.TabIndex = 30;
-            this.textBox31.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(109, 180);
-            this.textBox32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox32.MaxLength = 9;
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(100, 22);
-            this.textBox32.TabIndex = 31;
-            this.textBox32.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(216, 180);
-            this.textBox33.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox33.MaxLength = 9;
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(100, 22);
-            this.textBox33.TabIndex = 32;
-            this.textBox33.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(323, 180);
-            this.textBox34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox34.MaxLength = 9;
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(100, 22);
-            this.textBox34.TabIndex = 33;
-            this.textBox34.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox35
-            // 
-            this.textBox35.Location = new System.Drawing.Point(429, 180);
-            this.textBox35.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox35.MaxLength = 9;
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(100, 22);
-            this.textBox35.TabIndex = 34;
-            this.textBox35.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox36
-            // 
-            this.textBox36.Location = new System.Drawing.Point(3, 209);
-            this.textBox36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox36.MaxLength = 9;
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(100, 22);
-            this.textBox36.TabIndex = 35;
-            this.textBox36.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox37
-            // 
-            this.textBox37.Location = new System.Drawing.Point(109, 209);
-            this.textBox37.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox37.MaxLength = 9;
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(100, 22);
-            this.textBox37.TabIndex = 36;
-            this.textBox37.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox38
-            // 
-            this.textBox38.Location = new System.Drawing.Point(216, 209);
-            this.textBox38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox38.MaxLength = 9;
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(100, 22);
-            this.textBox38.TabIndex = 37;
-            this.textBox38.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox39
-            // 
-            this.textBox39.Location = new System.Drawing.Point(323, 209);
-            this.textBox39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox39.MaxLength = 9;
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(100, 22);
-            this.textBox39.TabIndex = 38;
-            this.textBox39.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // textBox40
-            // 
-            this.textBox40.Location = new System.Drawing.Point(429, 209);
-            this.textBox40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox40.MaxLength = 9;
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(100, 22);
-            this.textBox40.TabIndex = 39;
-            this.textBox40.TextChanged += new System.EventHandler(this.manualInput_TextChanged);
-            // 
-            // chkManualInput
-            // 
-            this.chkManualInput.AutoSize = true;
-            this.chkManualInput.Location = new System.Drawing.Point(20, 41);
-            this.chkManualInput.Margin = new System.Windows.Forms.Padding(4);
-            this.chkManualInput.Name = "chkManualInput";
-            this.chkManualInput.Size = new System.Drawing.Size(101, 20);
-            this.chkManualInput.TabIndex = 2;
-            this.chkManualInput.Text = "Manual Input";
-            this.chkManualInput.UseVisualStyleBackColor = true;
-            this.chkManualInput.CheckedChanged += new System.EventHandler(this.chkManualInput_CheckedChanged);
-            // 
-            // pnlManualInput
-            // 
-            this.pnlManualInput.Controls.Add(this.textBox1);
-            this.pnlManualInput.Controls.Add(this.textBox2);
-            this.pnlManualInput.Controls.Add(this.textBox36);
-            this.pnlManualInput.Controls.Add(this.textBox4);
-            this.pnlManualInput.Controls.Add(this.textBox37);
-            this.pnlManualInput.Controls.Add(this.textBox3);
-            this.pnlManualInput.Controls.Add(this.textBox38);
-            this.pnlManualInput.Controls.Add(this.textBox5);
-            this.pnlManualInput.Controls.Add(this.textBox39);
-            this.pnlManualInput.Controls.Add(this.textBox10);
-            this.pnlManualInput.Controls.Add(this.textBox40);
-            this.pnlManualInput.Controls.Add(this.textBox9);
-            this.pnlManualInput.Controls.Add(this.textBox31);
-            this.pnlManualInput.Controls.Add(this.textBox8);
-            this.pnlManualInput.Controls.Add(this.textBox32);
-            this.pnlManualInput.Controls.Add(this.textBox7);
-            this.pnlManualInput.Controls.Add(this.textBox33);
-            this.pnlManualInput.Controls.Add(this.textBox6);
-            this.pnlManualInput.Controls.Add(this.textBox34);
-            this.pnlManualInput.Controls.Add(this.textBox15);
-            this.pnlManualInput.Controls.Add(this.textBox35);
-            this.pnlManualInput.Controls.Add(this.textBox14);
-            this.pnlManualInput.Controls.Add(this.textBox26);
-            this.pnlManualInput.Controls.Add(this.textBox13);
-            this.pnlManualInput.Controls.Add(this.textBox27);
-            this.pnlManualInput.Controls.Add(this.textBox12);
-            this.pnlManualInput.Controls.Add(this.textBox28);
-            this.pnlManualInput.Controls.Add(this.textBox11);
-            this.pnlManualInput.Controls.Add(this.textBox29);
-            this.pnlManualInput.Controls.Add(this.textBox20);
-            this.pnlManualInput.Controls.Add(this.textBox30);
-            this.pnlManualInput.Controls.Add(this.textBox19);
-            this.pnlManualInput.Controls.Add(this.textBox21);
-            this.pnlManualInput.Controls.Add(this.textBox18);
-            this.pnlManualInput.Controls.Add(this.textBox22);
-            this.pnlManualInput.Controls.Add(this.textBox17);
-            this.pnlManualInput.Controls.Add(this.textBox23);
-            this.pnlManualInput.Controls.Add(this.textBox16);
-            this.pnlManualInput.Controls.Add(this.textBox24);
-            this.pnlManualInput.Controls.Add(this.textBox25);
-            this.pnlManualInput.Location = new System.Drawing.Point(577, 5);
-            this.pnlManualInput.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlManualInput.Name = "pnlManualInput";
-            this.pnlManualInput.Size = new System.Drawing.Size(540, 245);
-            this.pnlManualInput.TabIndex = 3;
-            // 
-            // pnlAutomaticInput
-            // 
-            this.pnlAutomaticInput.Controls.Add(this.btnPrevious);
-            this.pnlAutomaticInput.Controls.Add(this.txtStartHex);
-            this.pnlAutomaticInput.Controls.Add(this.btnNext);
-            this.pnlAutomaticInput.Controls.Add(this.txtSheetNo);
-            this.pnlAutomaticInput.Location = new System.Drawing.Point(20, 69);
-            this.pnlAutomaticInput.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAutomaticInput.Name = "pnlAutomaticInput";
-            this.pnlAutomaticInput.Size = new System.Drawing.Size(340, 38);
-            this.pnlAutomaticInput.TabIndex = 0;
-            // 
-            // chkPrintExisting
-            // 
-            this.chkPrintExisting.AutoSize = true;
-            this.chkPrintExisting.Location = new System.Drawing.Point(245, 41);
-            this.chkPrintExisting.Margin = new System.Windows.Forms.Padding(4);
-            this.chkPrintExisting.Name = "chkPrintExisting";
-            this.chkPrintExisting.Size = new System.Drawing.Size(101, 20);
-            this.chkPrintExisting.TabIndex = 5;
-            this.chkPrintExisting.Text = "Print Existing";
-            this.chkPrintExisting.UseVisualStyleBackColor = true;
-            this.chkPrintExisting.CheckedChanged += new System.EventHandler(this.chkPrintExisting_CheckedChanged);
-            // 
-            // chkShowPrintDialog
-            // 
-            this.chkShowPrintDialog.AutoSize = true;
-            this.chkShowPrintDialog.Location = new System.Drawing.Point(107, 114);
-            this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4);
-            this.chkShowPrintDialog.Name = "chkShowPrintDialog";
-            this.chkShowPrintDialog.Size = new System.Drawing.Size(92, 20);
-            this.chkShowPrintDialog.TabIndex = 112;
-            this.chkShowPrintDialog.Text = "print dialog";
-            this.chkShowPrintDialog.UseVisualStyleBackColor = true;
-            // 
-            // in_Qty
-            // 
-            this.in_Qty.Checked = false;
-            this.in_Qty.DecimalPlaces = 0;
-            this.in_Qty.HideUpDown = false;
-            this.in_Qty.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_Qty.LabelText = "Qty";
-            this.in_Qty.Location = new System.Drawing.Point(20, 114);
-            this.in_Qty.Margin = new System.Windows.Forms.Padding(5);
-            this.in_Qty.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_Qty.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_Qty.Name = "in_Qty";
-            this.in_Qty.ShowAllowDecimalCheckbox = false;
-            this.in_Qty.ShowCheckbox = false;
-            this.in_Qty.ShowTextboxOnly = false;
-            this.in_Qty.Size = new System.Drawing.Size(77, 50);
-            this.in_Qty.TabIndex = 0;
-            this.in_Qty.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 185);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 16);
-            this.label2.TabIndex = 113;
-            this.label2.Text = "position offset";
-            // 
-            // in_ManualOffsetX
-            // 
-            this.in_ManualOffsetX.Checked = false;
-            this.in_ManualOffsetX.DecimalPlaces = 0;
-            this.in_ManualOffsetX.HideUpDown = false;
-            this.in_ManualOffsetX.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetX.LabelText = "X";
-            this.in_ManualOffsetX.Location = new System.Drawing.Point(16, 199);
-            this.in_ManualOffsetX.Margin = new System.Windows.Forms.Padding(5);
-            this.in_ManualOffsetX.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetX.MinimumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
-            this.in_ManualOffsetX.Name = "in_ManualOffsetX";
-            this.in_ManualOffsetX.ShowAllowDecimalCheckbox = false;
-            this.in_ManualOffsetX.ShowCheckbox = false;
-            this.in_ManualOffsetX.ShowTextboxOnly = false;
-            this.in_ManualOffsetX.Size = new System.Drawing.Size(61, 50);
-            this.in_ManualOffsetX.TabIndex = 114;
-            this.in_ManualOffsetX.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetX.ValueChanged += new System.EventHandler(this.in_ManualOffsetX_ValueChanged);
-            // 
-            // in_ManualOffsetY
-            // 
-            this.in_ManualOffsetY.Checked = false;
-            this.in_ManualOffsetY.DecimalPlaces = 0;
-            this.in_ManualOffsetY.HideUpDown = false;
-            this.in_ManualOffsetY.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetY.LabelText = "Y";
-            this.in_ManualOffsetY.Location = new System.Drawing.Point(85, 199);
-            this.in_ManualOffsetY.Margin = new System.Windows.Forms.Padding(5);
-            this.in_ManualOffsetY.MaximumValue = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetY.MinimumValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetY.Name = "in_ManualOffsetY";
-            this.in_ManualOffsetY.ShowAllowDecimalCheckbox = false;
-            this.in_ManualOffsetY.ShowCheckbox = false;
-            this.in_ManualOffsetY.ShowTextboxOnly = false;
-            this.in_ManualOffsetY.Size = new System.Drawing.Size(61, 50);
-            this.in_ManualOffsetY.TabIndex = 115;
-            this.in_ManualOffsetY.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.in_ManualOffsetY.ValueChanged += new System.EventHandler(this.in_ManualOffsetY_ValueChanged);
-            // 
-            // chkLabel107
-            // 
-            this.chkLabel107.AutoSize = true;
-            this.chkLabel107.Location = new System.Drawing.Point(154, 225);
-            this.chkLabel107.Margin = new System.Windows.Forms.Padding(4);
-            this.chkLabel107.Name = "chkLabel107";
-            this.chkLabel107.Size = new System.Drawing.Size(84, 20);
-            this.chkLabel107.TabIndex = 116;
-            this.chkLabel107.Text = "Label 107";
-            this.chkLabel107.UseVisualStyleBackColor = true;
-            this.chkLabel107.CheckedChanged += new System.EventHandler(this.chkLabel107_CheckedChanged);
-            // 
             // BarcodePrint_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1133, 912);
-            this.Controls.Add(this.chkLabel107);
+            this.Controls.Add(this.rb108_7x5);
+            this.Controls.Add(this.rb107_7x4);
+            this.Controls.Add(this.rb108_8x5);
             this.Controls.Add(this.in_ManualOffsetY);
             this.Controls.Add(this.in_ManualOffsetX);
             this.Controls.Add(this.label2);
@@ -1313,6 +1340,8 @@
         private System.Windows.Forms.Label label2;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_ManualOffsetX;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_ManualOffsetY;
-        private System.Windows.Forms.CheckBox chkLabel107;
+        private System.Windows.Forms.RadioButton rb108_8x5;
+        private System.Windows.Forms.RadioButton rb107_7x4;
+        private System.Windows.Forms.RadioButton rb108_7x5;
     }
 }

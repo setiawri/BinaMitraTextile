@@ -184,15 +184,23 @@ namespace BinaMitraTextile.InventoryForm
             Point markerLocation = new Point(1, (barcodeSize.Height / 2) - (markerSize.Height / 2));
             Font barcodeFont = new Font(barcodeUC1.Barcode.Font.FontFamily, 6);
 
-            if (chkLabel107.Checked)
+            if (rb107_7x4.Checked)
             {
-                startX = -7;
-                startY = 0;
+                startX = -7 + in_ManualOffsetX.ValueInt;
+                startY = 0 + in_ManualOffsetY.ValueInt;
                 gapX = 12;
                 gapY = 24;
                 columnCount = 4;
                 rowCount = 7;
                 barcodeSize = new Size(190, 50);
+            } 
+            else if(rb108_7x5.Checked)
+            {
+                startX = 0 + in_ManualOffsetX.ValueInt;
+                startY = 4 + in_ManualOffsetY.ValueInt;
+                gapX = 11;
+                gapY = 25;
+                rowCount = 7;
             }
 
             //set location of every barcode control
@@ -236,21 +244,37 @@ namespace BinaMitraTextile.InventoryForm
             pnlPrint.Height = (rowCount * barcodeSize.Height) + (gapY * rowCount);
         }
 
-        private void setTextboxVisibilityForLabel107(bool show)
+        private void setTextboxVisibility()
         {
-            textBox5.Visible = show;
-            textBox10.Visible = show;
-            textBox15.Visible = show;
-            textBox20.Visible = show;
-            textBox25.Visible = show;
-            textBox30.Visible = show;
-            textBox35.Visible = show;
+            if(rb107_7x4.Checked)
+            {
+                textBox5.Visible = false;
+                textBox10.Visible = false;
+                textBox15.Visible = false;
+                textBox20.Visible = false;
+                textBox25.Visible = false;
+                textBox30.Visible = false;
+                textBox35.Visible = false;
+                textBox40.Visible = false;
 
-            textBox36.Visible = show;
-            textBox37.Visible = show;
-            textBox38.Visible = show;
-            textBox39.Visible = show;
-            textBox40.Visible = show;
+                textBox36.Visible = false;
+                textBox37.Visible = false;
+                textBox38.Visible = false;
+                textBox39.Visible = false;
+            }
+            else if(rb108_7x5.Checked)
+            {
+                textBox36.Visible = false;
+                textBox37.Visible = false;
+                textBox38.Visible = false;
+                textBox39.Visible = false;
+                textBox40.Visible = false;
+            } 
+            else
+            {
+                foreach (TextBox textbox in listManualInputTexboxes)
+                    textbox.Visible = true;
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -258,7 +282,15 @@ namespace BinaMitraTextile.InventoryForm
             if (in_Qty.ValueInt > 0)
                 for(int i=0; i< in_Qty.ValueInt; i++)
                 {
-                    if (LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint))
+                    bool isSuccess = false;
+                    if(rb107_7x4.Checked)
+                        isSuccess = LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint, 0);
+                    else if (rb108_7x5.Checked)
+                        isSuccess = LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint, 0);
+                    else if(rb108_8x5.Checked)
+                        isSuccess = LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint);
+
+                    if (isSuccess)
                     {
                         btnNext.PerformClick();
 
@@ -328,6 +360,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void checkInputMode()
         {
+            setTextboxVisibility();
             if (chkManualInput.Checked)
             {
                 in_Qty.Value = 1;
@@ -335,7 +368,6 @@ namespace BinaMitraTextile.InventoryForm
                 pnlAutomaticInput.Enabled = false;
                 clearManualInputs();
                 clearBarcodes();
-                setTextboxVisibilityForLabel107(!chkLabel107.Checked);
             }
             else
             {
@@ -430,7 +462,7 @@ namespace BinaMitraTextile.InventoryForm
             setControlLayout();
         }
 
-        private void chkLabel107_CheckedChanged(object sender, EventArgs e)
+        private void rbLabelTypes_CheckedChanged(object sender, EventArgs e)
         {
             setControlLayout();
             checkInputMode();

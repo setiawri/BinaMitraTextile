@@ -127,21 +127,15 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(4, 0);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSubmit.Size = new System.Drawing.Size(124, 33);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(252, 0);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Size = new System.Drawing.Size(124, 33);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(128, 0);
             this.btnReset.Margin = new System.Windows.Forms.Padding(5);
-            this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
@@ -402,9 +396,9 @@
             // 
             this.chkOnlyNotApproved.AutoSize = true;
             this.chkOnlyNotApproved.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotApproved.Location = new System.Drawing.Point(363, 0);
+            this.chkOnlyNotApproved.Location = new System.Drawing.Point(348, 0);
             this.chkOnlyNotApproved.Name = "chkOnlyNotApproved";
-            this.chkOnlyNotApproved.Size = new System.Drawing.Size(76, 32);
+            this.chkOnlyNotApproved.Size = new System.Drawing.Size(67, 32);
             this.chkOnlyNotApproved.TabIndex = 125;
             this.chkOnlyNotApproved.Text = "NOT OK";
             this.chkOnlyNotApproved.UseVisualStyleBackColor = true;

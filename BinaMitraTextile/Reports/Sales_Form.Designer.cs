@@ -145,9 +145,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkShowHidden = new System.Windows.Forms.CheckBox();
             this.iclb_Colors = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
             this.iclb_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_CheckedListBox();
-            this.chkShowHidden = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.chartSales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartProfit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSummaryByMonth)).BeginInit();
@@ -197,7 +197,7 @@
             series2.Name = "Series2";
             this.chartSales.Series.Add(series1);
             this.chartSales.Series.Add(series2);
-            this.chartSales.Size = new System.Drawing.Size(1022, 475);
+            this.chartSales.Size = new System.Drawing.Size(1022, 283);
             this.chartSales.TabIndex = 1;
             this.chartSales.Text = "SALES";
             // 
@@ -220,7 +220,7 @@
             series4.Name = "Series2";
             this.chartProfit.Series.Add(series3);
             this.chartProfit.Series.Add(series4);
-            this.chartProfit.Size = new System.Drawing.Size(1030, 483);
+            this.chartProfit.Size = new System.Drawing.Size(1030, 291);
             this.chartProfit.TabIndex = 2;
             this.chartProfit.Text = "chart1";
             // 
@@ -336,7 +336,7 @@
             series6.Name = "Series2";
             this.chartQty.Series.Add(series5);
             this.chartQty.Series.Add(series6);
-            this.chartQty.Size = new System.Drawing.Size(1022, 283);
+            this.chartQty.Size = new System.Drawing.Size(1022, 291);
             this.chartQty.TabIndex = 3;
             this.chartQty.Text = "chart1";
             // 
@@ -357,7 +357,7 @@
             // scMain.Panel2
             // 
             this.scMain.Panel2.Controls.Add(this.tcCharts);
-            this.scMain.Size = new System.Drawing.Size(1038, 622);
+            this.scMain.Size = new System.Drawing.Size(1038, 630);
             this.scMain.SplitterDistance = 300;
             this.scMain.SplitterWidth = 5;
             this.scMain.TabIndex = 7;
@@ -987,7 +987,7 @@
             this.tcCharts.Margin = new System.Windows.Forms.Padding(4);
             this.tcCharts.Name = "tcCharts";
             this.tcCharts.SelectedIndex = 0;
-            this.tcCharts.Size = new System.Drawing.Size(1038, 317);
+            this.tcCharts.Size = new System.Drawing.Size(1038, 325);
             this.tcCharts.TabIndex = 5;
             // 
             // tpQty
@@ -997,7 +997,7 @@
             this.tpQty.Margin = new System.Windows.Forms.Padding(4);
             this.tpQty.Name = "tpQty";
             this.tpQty.Padding = new System.Windows.Forms.Padding(4);
-            this.tpQty.Size = new System.Drawing.Size(1030, 291);
+            this.tpQty.Size = new System.Drawing.Size(1030, 299);
             this.tpQty.TabIndex = 0;
             this.tpQty.Text = "Qty";
             this.tpQty.UseVisualStyleBackColor = true;
@@ -1009,7 +1009,7 @@
             this.tpSales.Margin = new System.Windows.Forms.Padding(4);
             this.tpSales.Name = "tpSales";
             this.tpSales.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSales.Size = new System.Drawing.Size(1030, 483);
+            this.tpSales.Size = new System.Drawing.Size(1030, 291);
             this.tpSales.TabIndex = 1;
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
@@ -1020,7 +1020,7 @@
             this.tpProfit.Location = new System.Drawing.Point(4, 22);
             this.tpProfit.Margin = new System.Windows.Forms.Padding(4);
             this.tpProfit.Name = "tpProfit";
-            this.tpProfit.Size = new System.Drawing.Size(1030, 483);
+            this.tpProfit.Size = new System.Drawing.Size(1030, 291);
             this.tpProfit.TabIndex = 2;
             this.tpProfit.Text = "Profit";
             this.tpProfit.UseVisualStyleBackColor = true;
@@ -1092,7 +1092,7 @@
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReset.Location = new System.Drawing.Point(177, 585);
+            this.btnReset.Location = new System.Drawing.Point(177, 593);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(95, 28);
@@ -1168,7 +1168,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSubmit.Location = new System.Drawing.Point(69, 585);
+            this.btnSubmit.Location = new System.Drawing.Point(69, 593);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(100, 28);
@@ -1200,8 +1200,20 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 622);
+            this.panel1.Size = new System.Drawing.Size(341, 630);
             this.panel1.TabIndex = 101;
+            // 
+            // chkShowHidden
+            // 
+            this.chkShowHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkShowHidden.AutoSize = true;
+            this.chkShowHidden.Location = new System.Drawing.Point(37, 601);
+            this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowHidden.Name = "chkShowHidden";
+            this.chkShowHidden.Size = new System.Drawing.Size(15, 14);
+            this.chkShowHidden.TabIndex = 5;
+            this.chkShowHidden.UseVisualStyleBackColor = true;
+            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
             // 
             // iclb_Colors
             // 
@@ -1212,7 +1224,7 @@
             this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_Colors.Name = "iclb_Colors";
             this.iclb_Colors.ShowListOnly = false;
-            this.iclb_Colors.Size = new System.Drawing.Size(160, 235);
+            this.iclb_Colors.Size = new System.Drawing.Size(160, 227);
             this.iclb_Colors.TabIndex = 101;
             this.iclb_Colors.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1225,26 +1237,14 @@
             this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
             this.iclb_ProductStoreNames.ShowListOnly = false;
-            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(160, 235);
+            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(160, 227);
             this.iclb_ProductStoreNames.TabIndex = 101;
             this.iclb_ProductStoreNames.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
-            // 
-            // chkShowHidden
-            // 
-            this.chkShowHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkShowHidden.AutoSize = true;
-            this.chkShowHidden.Location = new System.Drawing.Point(37, 593);
-            this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
-            this.chkShowHidden.Name = "chkShowHidden";
-            this.chkShowHidden.Size = new System.Drawing.Size(15, 14);
-            this.chkShowHidden.TabIndex = 5;
-            this.chkShowHidden.UseVisualStyleBackColor = true;
-            this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
             // 
             // Sales_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1379, 622);
+            this.ClientSize = new System.Drawing.Size(1379, 630);
             this.Controls.Add(this.scMain);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);

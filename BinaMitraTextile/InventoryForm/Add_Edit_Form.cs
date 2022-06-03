@@ -212,9 +212,20 @@ namespace BinaMitraTextile.InventoryForm
                 if(_id != null && _id != new Guid())
                     inventory.id = _id;
 
+
                 switch (_formMode)
                 {
                     case FormMode.New:
+                        if (inventory.buy_price == 0)
+                        {
+                            Guid? ProductPrices_Id = ProductPrice.getByCombination(inventory.product_store_name_id, inventory.grade_id, inventory.product_width_id, inventory.length_unit_id, null, inventory.color_id);
+                            if(ProductPrices_Id == null)
+                                ProductPrices_Id = ProductPrice.getByCombination(inventory.product_store_name_id, inventory.grade_id, inventory.product_width_id, inventory.length_unit_id, null, null);
+
+                            if(ProductPrices_Id != null)
+                                inventory.buy_price = new ProductPrice((Guid)ProductPrices_Id).BuyPrice ?? 0;
+                        }
+
                         if (inventory.submitNew() != null)
                         {
                             //Tools.hasMessage("The new data has been added"); 

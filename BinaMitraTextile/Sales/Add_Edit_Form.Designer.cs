@@ -777,6 +777,7 @@
             this.itxt_SaleOrderItems.Size = new System.Drawing.Size(207, 24);
             this.itxt_SaleOrderItems.TabIndex = 124;
             this.itxt_SaleOrderItems.ValueText = "";
+            this.itxt_SaleOrderItems.isBrowseMode_Clicked += new System.EventHandler(this.Iddl_SaleOrderItems_isBrowseMode_Clicked);
             // 
             // rbCustomer
             // 

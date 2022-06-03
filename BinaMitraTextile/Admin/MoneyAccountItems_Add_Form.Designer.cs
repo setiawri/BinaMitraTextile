@@ -134,10 +134,10 @@
             0,
             0});
             this.in_Amount.MinimumValue = new decimal(new int[] {
+            10000000,
             0,
             0,
-            0,
-            0});
+            -2147483648});
             this.in_Amount.Name = "in_Amount";
             this.in_Amount.ShowAllowDecimalCheckbox = false;
             this.in_Amount.ShowCheckbox = false;

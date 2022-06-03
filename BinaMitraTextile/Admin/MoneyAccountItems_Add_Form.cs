@@ -26,16 +26,18 @@ namespace BinaMitraTextile.Admin
 
         private bool _isFormShown = false;
         private Guid _Id;
+        private bool _IsApproved;
 
         #endregion PRIVATE VARIABLES
         /*******************************************************************************************************/
         #region CONSTRUCTOR METHODS
 
-        public MoneyAccountItems_Add_Form(Guid Id) 
+        public MoneyAccountItems_Add_Form(Guid Id, bool isApproved) 
         { 
             InitializeComponent();
 
             _Id = Id;
+            _IsApproved = isApproved;
         }
 
         #endregion CONSTRUCTOR METHODS
@@ -106,7 +108,9 @@ namespace BinaMitraTextile.Admin
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!iddl_MoneyAccounts.hasSelectedValue())
+            if (_IsApproved)
+                Util.displayMessageBoxError("Cannot add expense to locked invoice");
+            else if (!iddl_MoneyAccounts.hasSelectedValue())
                 iddl_MoneyAccounts.SelectedValueError("Select account");
             else if (!iddl_MoneyAccountCategoryAssignments.hasSelectedValue())
                 iddl_MoneyAccountCategoryAssignments.SelectedValueError("Select category");

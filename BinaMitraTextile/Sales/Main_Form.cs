@@ -363,7 +363,7 @@ namespace BinaMitraTextile.Sales
             }
             else if(Util.isColumnMatch(sender, e, col_gridMaster_ShippingExpense))
             {
-                Util.displayForm(new Admin.MoneyAccountItems_Add_Form(selectedRowID()));
+                Util.displayForm(new Admin.MoneyAccountItems_Add_Form(selectedRowID(), (bool)Util.getSelectedRowValue(sender, col_gridmaster_completed)));
                 populateMasterGrid();
             }
             else
