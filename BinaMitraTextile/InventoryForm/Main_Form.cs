@@ -282,11 +282,11 @@ namespace BinaMitraTextile.InventoryForm
 
         private void toggleShowInfo(bool show)
         {
-            col_grid_PONo.Visible = false;
-            col_grid_invoiceNo.Visible = false;
+            col_grid_PONo.Visible = show;
+            col_grid_invoiceNo.Visible = show;
             col_grid_packingListNo.Visible = show;
-            col_grid_FakturPajaks_No.Visible = false;
-            col_grid_active.Visible = false;
+            col_grid_FakturPajaks_No.Visible = show;
+            col_grid_active.Visible = show;
             col_grid_isConsignment.Visible = show;
             col_grid_OpnameMarker.Visible = show;
         }
