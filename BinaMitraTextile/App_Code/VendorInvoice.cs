@@ -63,6 +63,9 @@ namespace BinaMitraTextile
         public const string FILTER_ShowOnlyVendorUsesFakturPajak = "FILTER_ShowOnlyVendorUsesFakturPajak";
         public const string FILTER_showOnlyLast6Months = "FILTER_showOnlyLast6Months";
         public const string FILTER_ShowOnlyReminder = "FILTER_ShowOnlyReminder";
+        public const string FILTER_Timestamp_Start = "FILTER_Timestamp_Start";
+        public const string FILTER_Timestamp_End = "FILTER_Timestamp_End";
+
 
         #endregion DATABASE COLUMNS
         /*******************************************************************************************************/
@@ -110,36 +113,36 @@ namespace BinaMitraTextile
 
         public static DataTable get()
         {
-            return get(null, null, null, false, false, false, null, null, false);
+            return get(null, null, null, false, false, null, null, null, null, false);
         }
 
         public static DataTable get(Guid ID)
         {
-            return get(ID, null, null, false, false, false, null, null, false);
+            return get(ID, null, null, false, false, null, null, null, null, false);
         }
 
         public static DataTable get(bool showOnlyIncomplete)
         {
-            return get(null, null, null, showOnlyIncomplete, false, false, null, null, false);
+            return get(null, null, null, showOnlyIncomplete, false, null, null, null, null, false);
         }
 
         public static DataTable get_Reminder()
         {
-            return get(null, null, null, false, false, false, null, null, true);
+            return get(null, null, null, false, false, null, null, null, null, true);
         }
 
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, null, true, false, false, FakturPajaks_Id, null, false);
+            return get(null, null, null, true, false, null, null, FakturPajaks_Id, null, false);
         }
 
-        public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, bool showOnlyLast6Months)
+        public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, DateTime? Timestamp_Start, DateTime? Timestamp_End)
         {
-            return get(null, null, null, false, false, showOnlyLast6Months, null, BrowsingForFakturPajak_Customers_Id, false);
+            return get(null, null, null, false, false, Timestamp_Start, Timestamp_End, null, BrowsingForFakturPajak_Customers_Id, false);
         }
 
-        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak, 
-            bool showOnlyLast6Months, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id, bool showOnlyReminder)
+        public static DataTable get(Guid? Id, string invoiceNumber, Guid? Vendors_Id, bool showOnlyIncomplete, bool showOnlyVendorUsesFakturPajak,
+            DateTime? Timestamp_Start, DateTime? Timestamp_End, Guid? FakturPajaks_Id, Guid? BrowsingForFakturPajak_Vendors_Id, bool showOnlyReminder)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
@@ -152,7 +155,8 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(Vendors_Id)),
                 new SqlQueryParameter(FILTER_BrowsingForFakturPajak_Vendors_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(BrowsingForFakturPajak_Vendors_Id)),
                 new SqlQueryParameter(FILTER_ShowOnlyIncomplete, SqlDbType.Bit, showOnlyIncomplete),
-                new SqlQueryParameter(FILTER_showOnlyLast6Months, SqlDbType.Bit, showOnlyLast6Months),
+                new SqlQueryParameter(FILTER_Timestamp_Start, SqlDbType.DateTime, Timestamp_Start),
+                new SqlQueryParameter(FILTER_Timestamp_End, SqlDbType.DateTime, Timestamp_End),
                 new SqlQueryParameter(FILTER_ShowOnlyVendorUsesFakturPajak, SqlDbType.Bit, showOnlyVendorUsesFakturPajak),
                 new SqlQueryParameter(FILTER_ShowOnlyReminder, SqlDbType.Bit, showOnlyReminder)
                 );

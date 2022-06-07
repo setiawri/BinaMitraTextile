@@ -67,6 +67,8 @@ namespace BinaMitraTextile.InventoryForm
             Settings.setGeneralSettings(this);
 
             Vendor.populateInputControlDropDownList(iddl_Vendors, true);
+            idtp_Timestamp_Start.Value = Util.getFirstDayOfSelectedMonth(DateTime.Now.AddMonths(-6));
+
             createVendorInvoicePaymentMode(false);
             lblVendorInvoicePayment.Text = "0";
             idtp_VendorInvoicePaymentDate.Value = DateTime.Now;
@@ -145,11 +147,11 @@ namespace BinaMitraTextile.InventoryForm
 
             gridvendorinvoice.AutoGenerateColumns = false; //the line in setupControls() is not working??
             if (_startingMode == FormModes.Browse)
-                dvw = VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, chkShowOnlyLast6Months.Checked).DefaultView;
+                dvw = VendorInvoice.get_by_BrowsingForFakturPajak_Vendors_Id((Guid)_BrowsingForFakturPajak_Vendors_Id, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter).DefaultView;
             else if(_createVendorInvoicePayment)
-                dvw = VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false).DefaultView;
+                dvw = VendorInvoice.get(null, null, (Guid)iddl_Vendors.SelectedValue, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null, null, false).DefaultView;
             else
-                dvw = VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, chkShowOnlyLast6Months.Checked, null, null, false).DefaultView;
+                dvw = VendorInvoice.get(null, null, null, chkShowOnlyIncomplete.Checked, chkShowOnlyVendorUsesFakturPajak.Checked, idtp_Timestamp_Start.ValueAsStartDateFilter, idtp_Timestamp_End.ValueAsEndDateFilter, null, null, false).DefaultView;
 
             string[] fieldNames = { VendorInvoice.COL_VendorName, VendorInvoice.COL_DB_InvoiceNo, VendorInvoice.COL_FakturPajaks_No };
             dvw.RowFilter = Util.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNames);
@@ -181,7 +183,6 @@ namespace BinaMitraTextile.InventoryForm
             if(_createVendorInvoicePayment)
             {
                 chkShowOnlyIncomplete.Checked = true;
-                chkShowOnlyLast6Months.Checked = false;
                 chkShowOnlyVendorUsesFakturPajak.Checked = false;
             }
 
@@ -245,13 +246,28 @@ namespace BinaMitraTextile.InventoryForm
                 lblGrandTotalPayable.Text = string.Format("Total Payable:{0:N0}", Util.compute(Util.getDataTable(gridvendorinvoice.DataSource), "SUM", VendorInvoice.COL_PayableAmount, ""));
         }
 
+        private void hideColumns(bool hide)
+        {
+            col_gridvendorinvoice_CalculatedAmount.Visible = !hide;
+            col_gridvendorinvoice_AmountDifferenceFromCalculated.Visible = !hide;
+            col_gridvendorinvoice_ReturnedValue.Visible = !hide;
+            col_gridVendorInvoice_PaidAmount.Visible = !hide;
+            col_gridvendorinvoice_top.Visible = !hide;
+            col_gridVendorInvoice_DaysPastDue.Visible = !hide;
+            col_gridvendorinvoice_isdue.Visible = !hide;
+            col_gridVendorInvoice_FakturPajaks_No.Visible = !hide;
+            col_gridvendorinvoice_FakturPajaks_Amount.Visible = !hide;
+            col_gridvendorinvoice_AmountDifferenceFromFakturPajaksAmount.Visible = !hide;
+            col_gridvendorinvoice_notes.Visible = !hide;
+        }
+
         #endregion
         /*******************************************************************************************************/
         #region EVENT HANDLERS
 
         private void gridvendorinvoice_SelectionChanged(object sender, EventArgs e)
         {
-            if (isFormShown && gridvendorinvoice.SelectedRows.Count > 0)
+            if (isFormShown && gridvendorinvoice.SelectedRows.Count > 0 && ptRowInfo.isPanelOpen)
             {
                 populateGridInventory();
 
@@ -501,6 +517,16 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (e.KeyData == Keys.Enter)
                 populateGridVendorInvoices();
+        }
+
+        private void btnApplyFilter_Click(object sender, EventArgs e)
+        {
+            populateGridVendorInvoices();
+        }
+
+        private void chkHideColumns_CheckedChanged(object sender, EventArgs e)
+        {
+            hideColumns(chkHideColumns.Checked); 
         }
 
         #endregion

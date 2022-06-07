@@ -236,7 +236,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 186);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 225);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -252,7 +252,7 @@
             // 
             this.pnlRowInfoContent.Controls.Add(this.tcRowInfo);
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 160);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 199);
             // 
             // itxt_QuickSearch
             // 
@@ -261,7 +261,7 @@
             // scContent
             // 
             this.scContent.Size = new System.Drawing.Size(1179, 379);
-            this.scContent.SplitterDistance = 189;
+            this.scContent.SplitterDistance = 150;
             // 
             // itxt_Notes
             // 
@@ -330,7 +330,7 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(1163, 45);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(1163, 95);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -510,7 +510,7 @@
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(1171, 53);
+            this.gridReturns.Size = new System.Drawing.Size(1171, 103);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
@@ -625,9 +625,9 @@
             // 
             this.chkShowCompleted.AutoSize = true;
             this.chkShowCompleted.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowCompleted.Location = new System.Drawing.Point(363, 0);
+            this.chkShowCompleted.Location = new System.Drawing.Point(348, 0);
             this.chkShowCompleted.Name = "chkShowCompleted";
-            this.chkShowCompleted.Size = new System.Drawing.Size(103, 32);
+            this.chkShowCompleted.Size = new System.Drawing.Size(88, 32);
             this.chkShowCompleted.TabIndex = 14;
             this.chkShowCompleted.Text = "Show locked";
             this.chkShowCompleted.UseVisualStyleBackColor = true;
@@ -644,7 +644,7 @@
             this.tcRowInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tcRowInfo.Name = "tcRowInfo";
             this.tcRowInfo.SelectedIndex = 0;
-            this.tcRowInfo.Size = new System.Drawing.Size(1179, 160);
+            this.tcRowInfo.Size = new System.Drawing.Size(1179, 199);
             this.tcRowInfo.TabIndex = 7;
             // 
             // tpVendorInvoices
@@ -655,7 +655,7 @@
             this.tpVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpVendorInvoices.Name = "tpVendorInvoices";
             this.tpVendorInvoices.Padding = new System.Windows.Forms.Padding(4);
-            this.tpVendorInvoices.Size = new System.Drawing.Size(1171, 134);
+            this.tpVendorInvoices.Size = new System.Drawing.Size(1171, 173);
             this.tpVendorInvoices.TabIndex = 1;
             this.tpVendorInvoices.Text = "Vendor Invoices";
             this.tpVendorInvoices.UseVisualStyleBackColor = true;
@@ -691,7 +691,7 @@
             this.gridVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.gridVendorInvoices.Name = "gridVendorInvoices";
             this.gridVendorInvoices.RowHeadersVisible = false;
-            this.gridVendorInvoices.Size = new System.Drawing.Size(1163, 95);
+            this.gridVendorInvoices.Size = new System.Drawing.Size(1163, 134);
             this.gridVendorInvoices.TabIndex = 129;
             this.gridVendorInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVendorInvoices_CellContentClick);
             // 
@@ -815,7 +815,7 @@
             this.tpSaleInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
             this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(1171, 84);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(1171, 134);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -837,7 +837,7 @@
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
             this.tpSaleReturns.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(1171, 84);
+            this.tpSaleReturns.Size = new System.Drawing.Size(1171, 134);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -880,10 +880,10 @@
             // 
             this.chkCopyCell.AutoSize = true;
             this.chkCopyCell.Dock = System.Windows.Forms.DockStyle.Right;
-            this.chkCopyCell.Location = new System.Drawing.Point(1063, 0);
+            this.chkCopyCell.Location = new System.Drawing.Point(1075, 0);
             this.chkCopyCell.Margin = new System.Windows.Forms.Padding(4);
             this.chkCopyCell.Name = "chkCopyCell";
-            this.chkCopyCell.Size = new System.Drawing.Size(80, 32);
+            this.chkCopyCell.Size = new System.Drawing.Size(68, 32);
             this.chkCopyCell.TabIndex = 15;
             this.chkCopyCell.Text = "copy cell";
             this.chkCopyCell.UseVisualStyleBackColor = true;
@@ -891,7 +891,7 @@
             // lblGridInfo
             // 
             this.lblGridInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblGridInfo.Location = new System.Drawing.Point(642, 0);
+            this.lblGridInfo.Location = new System.Drawing.Point(654, 0);
             this.lblGridInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGridInfo.Name = "lblGridInfo";
             this.lblGridInfo.Size = new System.Drawing.Size(421, 32);
@@ -1029,7 +1029,7 @@
             this.iddl_Vendors.DisableTextInput = false;
             this.iddl_Vendors.HideFilter = false;
             this.iddl_Vendors.HideUpdateLink = true;
-            this.iddl_Vendors.LabelText = "Vendors";
+            this.iddl_Vendors.LabelText = "Vendor";
             this.iddl_Vendors.Location = new System.Drawing.Point(31, 61);
             this.iddl_Vendors.Margin = new System.Windows.Forms.Padding(4);
             this.iddl_Vendors.Name = "iddl_Vendors";
@@ -1046,7 +1046,7 @@
             this.iddl_Customers.DisableTextInput = false;
             this.iddl_Customers.HideFilter = false;
             this.iddl_Customers.HideUpdateLink = true;
-            this.iddl_Customers.LabelText = "Customers";
+            this.iddl_Customers.LabelText = "Customer";
             this.iddl_Customers.Location = new System.Drawing.Point(31, 117);
             this.iddl_Customers.Margin = new System.Windows.Forms.Padding(4);
             this.iddl_Customers.Name = "iddl_Customers";

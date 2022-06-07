@@ -88,8 +88,8 @@
             this.lblDueAmount = new System.Windows.Forms.Label();
             this.lblGrandTotalPayable = new System.Windows.Forms.Label();
             this.gbVendorInvoicePayment = new System.Windows.Forms.GroupBox();
-            this.in_AvailableFund = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.lblVendorInvoicePayment = new System.Windows.Forms.Label();
+            this.in_AvailableFund = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.lblAvailableFund = new System.Windows.Forms.Label();
             this.btnClearVendorInvoicePayment = new System.Windows.Forms.Button();
             this.btnSubmitVendorPayments = new System.Windows.Forms.Button();
@@ -98,8 +98,12 @@
             this.btnStartVendorPayments = new System.Windows.Forms.Button();
             this.pnlFilterAndButtonsHeader = new System.Windows.Forms.Panel();
             this.pnlQuickSearch = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.idtp_Timestamp_Start = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.idtp_Timestamp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnApplyFilter = new System.Windows.Forms.Button();
             this.chkShowOnlyVendorUsesFakturPajak = new System.Windows.Forms.CheckBox();
-            this.chkShowOnlyLast6Months = new System.Windows.Forms.CheckBox();
             this.chkShowOnlyIncomplete = new System.Windows.Forms.CheckBox();
             this.itxt_QuickSearch = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.pbLog = new System.Windows.Forms.PictureBox();
@@ -150,12 +154,14 @@
             this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.chkHideColumns = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             this.pnlFilterAndButtons.SuspendLayout();
             this.pnlFilterAndButtonsContent.SuspendLayout();
             this.gbVendorInvoicePayment.SuspendLayout();
             this.pnlFilterAndButtonsHeader.SuspendLayout();
             this.pnlQuickSearch.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridvendorinvoice)).BeginInit();
@@ -215,7 +221,7 @@
             this.gridInventory.Name = "gridInventory";
             this.gridInventory.RowHeadersVisible = false;
             this.gridInventory.RowHeadersWidth = 51;
-            this.gridInventory.Size = new System.Drawing.Size(815, 147);
+            this.gridInventory.Size = new System.Drawing.Size(813, 147);
             this.gridInventory.TabIndex = 6;
             this.gridInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridInventory_CellContentClick);
             this.gridInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridInventory_CellDoubleClick);
@@ -481,6 +487,18 @@
             this.gbVendorInvoicePayment.TabIndex = 9;
             this.gbVendorInvoicePayment.TabStop = false;
             // 
+            // lblVendorInvoicePayment
+            // 
+            this.lblVendorInvoicePayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVendorInvoicePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVendorInvoicePayment.Location = new System.Drawing.Point(107, 36);
+            this.lblVendorInvoicePayment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVendorInvoicePayment.Name = "lblVendorInvoicePayment";
+            this.lblVendorInvoicePayment.Size = new System.Drawing.Size(177, 28);
+            this.lblVendorInvoicePayment.TabIndex = 121;
+            this.lblVendorInvoicePayment.Text = "lblVendorInvoicePayment";
+            this.lblVendorInvoicePayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // in_AvailableFund
             // 
             this.in_AvailableFund.Checked = false;
@@ -516,18 +534,6 @@
             0,
             0});
             this.in_AvailableFund.ValueChanged += new System.EventHandler(this.In_AvailableFund_ValueChanged);
-            // 
-            // lblVendorInvoicePayment
-            // 
-            this.lblVendorInvoicePayment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVendorInvoicePayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVendorInvoicePayment.Location = new System.Drawing.Point(107, 36);
-            this.lblVendorInvoicePayment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblVendorInvoicePayment.Name = "lblVendorInvoicePayment";
-            this.lblVendorInvoicePayment.Size = new System.Drawing.Size(177, 28);
-            this.lblVendorInvoicePayment.TabIndex = 121;
-            this.lblVendorInvoicePayment.Text = "lblVendorInvoicePayment";
-            this.lblVendorInvoicePayment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblAvailableFund
             // 
@@ -635,8 +641,10 @@
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlQuickSearch.Controls.Add(this.chkHideColumns);
+            this.pnlQuickSearch.Controls.Add(this.panel2);
+            this.pnlQuickSearch.Controls.Add(this.btnApplyFilter);
             this.pnlQuickSearch.Controls.Add(this.chkShowOnlyVendorUsesFakturPajak);
-            this.pnlQuickSearch.Controls.Add(this.chkShowOnlyLast6Months);
             this.pnlQuickSearch.Controls.Add(this.chkShowOnlyIncomplete);
             this.pnlQuickSearch.Controls.Add(this.itxt_QuickSearch);
             this.pnlQuickSearch.Controls.Add(this.pbLog);
@@ -648,11 +656,84 @@
             this.pnlQuickSearch.Size = new System.Drawing.Size(1051, 34);
             this.pnlQuickSearch.TabIndex = 97;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.idtp_Timestamp_Start);
+            this.panel2.Controls.Add(this.idtp_Timestamp_End);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(691, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(283, 32);
+            this.panel2.TabIndex = 24;
+            // 
+            // idtp_Timestamp_Start
+            // 
+            this.idtp_Timestamp_Start.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.idtp_Timestamp_Start.Checked = true;
+            this.idtp_Timestamp_Start.CustomFormat = "dd/MM/yy";
+            this.idtp_Timestamp_Start.DefaultCheckedValue = true;
+            this.idtp_Timestamp_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_Timestamp_Start.LabelText = "dropdownlist";
+            this.idtp_Timestamp_Start.Location = new System.Drawing.Point(6, 2);
+            this.idtp_Timestamp_Start.Margin = new System.Windows.Forms.Padding(5);
+            this.idtp_Timestamp_Start.Name = "idtp_Timestamp_Start";
+            this.idtp_Timestamp_Start.ShowCheckBox = true;
+            this.idtp_Timestamp_Start.ShowDateTimePickerOnly = true;
+            this.idtp_Timestamp_Start.ShowUpAndDown = false;
+            this.idtp_Timestamp_Start.Size = new System.Drawing.Size(120, 24);
+            this.idtp_Timestamp_Start.TabIndex = 7;
+            this.idtp_Timestamp_Start.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.idtp_Timestamp_Start.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
+            // 
+            // idtp_Timestamp_End
+            // 
+            this.idtp_Timestamp_End.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.idtp_Timestamp_End.Checked = false;
+            this.idtp_Timestamp_End.CustomFormat = "dd/MM/yy";
+            this.idtp_Timestamp_End.DefaultCheckedValue = false;
+            this.idtp_Timestamp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.idtp_Timestamp_End.LabelText = "dropdownlist";
+            this.idtp_Timestamp_End.Location = new System.Drawing.Point(155, 4);
+            this.idtp_Timestamp_End.Margin = new System.Windows.Forms.Padding(5);
+            this.idtp_Timestamp_End.Name = "idtp_Timestamp_End";
+            this.idtp_Timestamp_End.ShowCheckBox = true;
+            this.idtp_Timestamp_End.ShowDateTimePickerOnly = true;
+            this.idtp_Timestamp_End.ShowUpAndDown = false;
+            this.idtp_Timestamp_End.Size = new System.Drawing.Size(120, 24);
+            this.idtp_Timestamp_End.TabIndex = 9;
+            this.idtp_Timestamp_End.Value = null;
+            this.idtp_Timestamp_End.ValueTimeSpan = null;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(126, 7);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 18);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "TO";
+            // 
+            // btnApplyFilter
+            // 
+            this.btnApplyFilter.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnApplyFilter.Location = new System.Drawing.Point(974, 0);
+            this.btnApplyFilter.Margin = new System.Windows.Forms.Padding(4, 4, 10, 4);
+            this.btnApplyFilter.Name = "btnApplyFilter";
+            this.btnApplyFilter.Size = new System.Drawing.Size(75, 32);
+            this.btnApplyFilter.TabIndex = 23;
+            this.btnApplyFilter.Text = "APPLY";
+            this.btnApplyFilter.UseVisualStyleBackColor = true;
+            this.btnApplyFilter.Click += new System.EventHandler(this.btnApplyFilter_Click);
+            // 
             // chkShowOnlyVendorUsesFakturPajak
             // 
             this.chkShowOnlyVendorUsesFakturPajak.AutoSize = true;
             this.chkShowOnlyVendorUsesFakturPajak.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowOnlyVendorUsesFakturPajak.Location = new System.Drawing.Point(418, 0);
+            this.chkShowOnlyVendorUsesFakturPajak.Location = new System.Drawing.Point(330, 0);
             this.chkShowOnlyVendorUsesFakturPajak.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowOnlyVendorUsesFakturPajak.Name = "chkShowOnlyVendorUsesFakturPajak";
             this.chkShowOnlyVendorUsesFakturPajak.Size = new System.Drawing.Size(86, 32);
@@ -661,22 +742,6 @@
             this.chkShowOnlyVendorUsesFakturPajak.Text = "only uses FP";
             this.chkShowOnlyVendorUsesFakturPajak.UseVisualStyleBackColor = true;
             this.chkShowOnlyVendorUsesFakturPajak.CheckedChanged += new System.EventHandler(this.ChkShowOnlyVendorUsesFakturPajak_CheckedChanged);
-            // 
-            // chkShowOnlyLast6Months
-            // 
-            this.chkShowOnlyLast6Months.AutoSize = true;
-            this.chkShowOnlyLast6Months.Checked = true;
-            this.chkShowOnlyLast6Months.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkShowOnlyLast6Months.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowOnlyLast6Months.Location = new System.Drawing.Point(330, 0);
-            this.chkShowOnlyLast6Months.Margin = new System.Windows.Forms.Padding(4);
-            this.chkShowOnlyLast6Months.Name = "chkShowOnlyLast6Months";
-            this.chkShowOnlyLast6Months.Size = new System.Drawing.Size(88, 32);
-            this.chkShowOnlyLast6Months.TabIndex = 16;
-            this.chkShowOnlyLast6Months.TabStop = false;
-            this.chkShowOnlyLast6Months.Text = "last 6 months";
-            this.chkShowOnlyLast6Months.UseVisualStyleBackColor = true;
-            this.chkShowOnlyLast6Months.CheckedChanged += new System.EventHandler(this.ChkShowOnlyLast6Months_CheckedChanged);
             // 
             // chkShowOnlyIncomplete
             // 
@@ -1150,7 +1215,7 @@
             this.scRowInfo.Panel2.Controls.Add(this.gridSaleInvoices);
             this.scRowInfo.Panel2.Controls.Add(this.lblReturns);
             this.scRowInfo.Size = new System.Drawing.Size(1085, 175);
-            this.scRowInfo.SplitterDistance = 815;
+            this.scRowInfo.SplitterDistance = 813;
             this.scRowInfo.SplitterWidth = 5;
             this.scRowInfo.TabIndex = 7;
             // 
@@ -1161,7 +1226,7 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(254, 20);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(253, 20);
             this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(306, 135);
@@ -1236,7 +1301,7 @@
             this.lblSaleInvoices.Location = new System.Drawing.Point(0, 0);
             this.lblSaleInvoices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaleInvoices.Name = "lblSaleInvoices";
-            this.lblSaleInvoices.Size = new System.Drawing.Size(815, 28);
+            this.lblSaleInvoices.Size = new System.Drawing.Size(813, 28);
             this.lblSaleInvoices.TabIndex = 106;
             this.lblSaleInvoices.Text = "Inventory";
             this.lblSaleInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1278,7 +1343,7 @@
             dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle37;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(265, 147);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(267, 147);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -1385,7 +1450,7 @@
             this.lblReturns.Location = new System.Drawing.Point(0, 0);
             this.lblReturns.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReturns.Name = "lblReturns";
-            this.lblReturns.Size = new System.Drawing.Size(265, 28);
+            this.lblReturns.Size = new System.Drawing.Size(267, 28);
             this.lblReturns.TabIndex = 107;
             this.lblReturns.Text = "Returns";
             this.lblReturns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1428,6 +1493,20 @@
             this.ptRowInfo.TabIndex = 5;
             this.ptRowInfo.TogglePanel = null;
             // 
+            // chkHideColumns
+            // 
+            this.chkHideColumns.AutoSize = true;
+            this.chkHideColumns.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkHideColumns.Location = new System.Drawing.Point(416, 0);
+            this.chkHideColumns.Margin = new System.Windows.Forms.Padding(4);
+            this.chkHideColumns.Name = "chkHideColumns";
+            this.chkHideColumns.Size = new System.Drawing.Size(88, 32);
+            this.chkHideColumns.TabIndex = 25;
+            this.chkHideColumns.TabStop = false;
+            this.chkHideColumns.Text = "hide columns";
+            this.chkHideColumns.UseVisualStyleBackColor = true;
+            this.chkHideColumns.CheckedChanged += new System.EventHandler(this.chkHideColumns_CheckedChanged);
+            // 
             // VendorInvoices_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1448,6 +1527,8 @@
             this.pnlFilterAndButtonsHeader.ResumeLayout(false);
             this.pnlQuickSearch.ResumeLayout(false);
             this.pnlQuickSearch.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridvendorinvoice)).EndInit();
@@ -1482,7 +1563,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_QuickSearch;
         private System.Windows.Forms.Panel pnlFilterAndButtonsContent;
         public System.Windows.Forms.CheckBox chkShowOnlyVendorUsesFakturPajak;
-        public System.Windows.Forms.CheckBox chkShowOnlyLast6Months;
         private System.Windows.Forms.Button btnSubmitVendorPayments;
         private System.Windows.Forms.Button btnCancelVendorPayments;
         private System.Windows.Forms.Button btnStartVendorPayments;
@@ -1548,5 +1628,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridinventory_packinglistno;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridInventory_Notes;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Vendors;
+        private System.Windows.Forms.Button btnApplyFilter;
+        private System.Windows.Forms.Panel panel2;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_Start;
+        private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_End;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.CheckBox chkHideColumns;
     }
 }

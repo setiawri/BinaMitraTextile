@@ -190,134 +190,6 @@ namespace BinaMitraTextile.InventoryForm
 
         #endregion INITIALIZATION
         /*******************************************************************************************************/
-        #region EVENT HANDLERS
-
-        private void selectCheckboxHeader_CheckedChanged(object sender, EventArgs e)
-        {
-            Tools.toggleCheckboxColumn(grid, col_grid_select, _selectCheckboxHeader);
-            calculateSelections();
-        }
-
-        private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Util.isColumnMatch(sender, e, col_grid_buyPrice))
-            {
-                pnlUpdateBuyPrice.Visible = true;
-                _clickedInventoryID = (Guid)Util.getClickedRowValue(sender, e, col_grid_id);
-                Inventory obj = new Inventory(_clickedInventoryID);
-                in_BuyPrice.Value = obj.buy_price;
-                in_BuyPrice.focus();
-            }
-            else if (_formMode == FormMode.Browse)
-            {
-                browseSelection = selectedRowID();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new Add_Edit_Form());
-            populateGridview();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            Inventory inventory = new Inventory(selectedRowID());
-
-            //if inventory has a vendor invoice and it is approved, need to unapproved it first so the invoice doesn't get unlinked from the inventory.
-            if (inventory.VendorInvoiceID != null)
-            {
-                if((bool)inventory.VendorInvoices_Approved)
-                {
-                    Util.displayMessageBoxError(String.Format("Please unlock Vendor Invoice {0} to update this inventory.", inventory.VendorInvoiceNo));
-                    return;
-                }
-            }
-
-            Tools.displayForm(new Add_Edit_Form(inventory.id));
-            populateGridview();
-        }
-
-        protected void chkIncludeInactive_CheckedChanged(object sender, EventArgs e)
-        {
-            populateGridview();
-        }
-
-        private void btnSetPrice_Click(object sender, EventArgs e)
-        {
-            //Util.displayForm(new Admin.MasterData_v1_ProductPrices(selectedRowID()));
-            Tools.displayForm(new Admin.ProductPrices_Form(selectedRowID()));
-            populateGridview();
-        }
-
-        private void btnLog_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnAddItems_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new InventoryForm.Items_Form(selectedRowID()));
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            iclb_LengthUnits.reset();
-            iclb_Colors.reset();
-            iclb_ProductStoreNames.reset();
-            iclb_Grades.reset();
-            iclb_ProductWidths.reset();
-            idtp_Start.reset();
-            idtp_End.reset();
-
-            populateGridview();
-        }
-
-        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_select.Name))
-            {
-                Util.clickDataGridViewCheckbox(sender, e);
-                calculateSelections();
-            }
-            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_OpnameMarker.Name))
-            {
-                Inventory.updateOpnameMarker((Guid)Util.getClickedRowValue(sender, e, col_grid_id), Util.clickDataGridViewCheckbox(sender, e));
-                populateGridview();
-            }
-            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
-            {
-                if (GlobalData.UserAccount.role == Roles.User)
-                    Util.displayMessageBoxError("Must have administrator access to change this value");
-                {
-                    Inventory.updateActiveStatus(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
-                    populateGridview();
-                } 
-            }
-            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_isConsignment.Name))
-            {
-                if (GlobalData.UserAccount.role == Roles.User)
-                    Util.displayMessageBoxError("Must have administrator access to change this value");
-                else
-                {
-                    Inventory.updateIsConsignment(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
-                    populateGridview();
-                }
-            }
-        }
-
-        private void btnUpdateItemColor_Click(object sender, EventArgs e)
-        {
-            Tools.displayForm(new ItemColor_Update_Form());
-        }
-
-        private void btnRefreshPage_Click(object sender, EventArgs e)
-        {
-        }
-        
-        #endregion EVENT HANDLERS
-        /*******************************************************************************************************/
         #region FORM METHODS
 
         protected Guid selectedRowID()
@@ -408,6 +280,140 @@ namespace BinaMitraTextile.InventoryForm
             lblCounts.Visible = true;
         }
 
+        private void toggleShowInfo(bool show)
+        {
+            col_grid_PONo.Visible = false;
+            col_grid_invoiceNo.Visible = false;
+            col_grid_packingListNo.Visible = show;
+            col_grid_FakturPajaks_No.Visible = false;
+            col_grid_active.Visible = false;
+            col_grid_isConsignment.Visible = show;
+            col_grid_OpnameMarker.Visible = show;
+        }
+
+        #endregion FORM METHODS
+        /*******************************************************************************************************/
+        #region SUBMISSION
+        #endregion SUBMISSION
+        /*******************************************************************************************************/
+        #region EVENT HANDLERS
+
+        private void selectCheckboxHeader_CheckedChanged(object sender, EventArgs e)
+        {
+            Tools.toggleCheckboxColumn(grid, col_grid_select, _selectCheckboxHeader);
+            calculateSelections();
+        }
+
+        private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Util.isColumnMatch(sender, e, col_grid_buyPrice))
+            {
+                pnlUpdateBuyPrice.Visible = true;
+                _clickedInventoryID = (Guid)Util.getClickedRowValue(sender, e, col_grid_id);
+                Inventory obj = new Inventory(_clickedInventoryID);
+                in_BuyPrice.Value = obj.buy_price;
+                in_BuyPrice.focus();
+            }
+            else if (_formMode == FormMode.Browse)
+            {
+                browseSelection = selectedRowID();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new Add_Edit_Form());
+            populateGridview();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Inventory inventory = new Inventory(selectedRowID());
+
+            //if inventory has a vendor invoice and it is approved, need to unapproved it first so the invoice doesn't get unlinked from the inventory.
+            if (inventory.VendorInvoiceID != null)
+            {
+                if ((bool)inventory.VendorInvoices_Approved)
+                {
+                    Util.displayMessageBoxError(String.Format("Please unlock Vendor Invoice {0} to update this inventory.", inventory.VendorInvoiceNo));
+                    return;
+                }
+            }
+
+            Tools.displayForm(new Add_Edit_Form(inventory.id));
+            populateGridview();
+        }
+
+        protected void chkIncludeInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            populateGridview();
+        }
+
+        private void btnSetPrice_Click(object sender, EventArgs e)
+        {
+            //Util.displayForm(new Admin.MasterData_v1_ProductPrices(selectedRowID()));
+            Tools.displayForm(new Admin.ProductPrices_Form(selectedRowID()));
+            populateGridview();
+        }
+
+        private void btnAddItems_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new InventoryForm.Items_Form(selectedRowID()));
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            iclb_LengthUnits.reset();
+            iclb_Colors.reset();
+            iclb_ProductStoreNames.reset();
+            iclb_Grades.reset();
+            iclb_ProductWidths.reset();
+            idtp_Start.reset();
+            idtp_End.reset();
+
+            populateGridview();
+        }
+
+        private void grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_select.Name))
+            {
+                Util.clickDataGridViewCheckbox(sender, e);
+                calculateSelections();
+            }
+            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_OpnameMarker.Name))
+            {
+                Inventory.updateOpnameMarker((Guid)Util.getClickedRowValue(sender, e, col_grid_id), Util.clickDataGridViewCheckbox(sender, e));
+                populateGridview();
+            }
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_active.Name))
+            {
+                if (GlobalData.UserAccount.role == Roles.User)
+                    Util.displayMessageBoxError("Must have administrator access to change this value");
+                {
+                    Inventory.updateActiveStatus(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
+                    populateGridview();
+                }
+            }
+            else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_grid_isConsignment.Name))
+            {
+                if (GlobalData.UserAccount.role == Roles.User)
+                    Util.displayMessageBoxError("Must have administrator access to change this value");
+                else
+                {
+                    Inventory.updateIsConsignment(selectedRowID(), !(bool)((DataGridViewCheckBoxCell)grid.Rows[e.RowIndex].Cells[e.ColumnIndex]).Value);
+                    populateGridview();
+                }
+            }
+        }
+
+        private void btnUpdateItemColor_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new ItemColor_Update_Form());
+        }
+
         private void clb_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             CheckedListBox clb = (CheckedListBox)sender;
@@ -417,7 +423,7 @@ namespace BinaMitraTextile.InventoryForm
 
             populateGridview();
         }
-        
+
         private void CheckedListBox_ItemChecked(object sender, EventArgs e)
         {
             populateGridview();
@@ -427,7 +433,7 @@ namespace BinaMitraTextile.InventoryForm
         {
             populateGridview();
         }
-        
+
         private void chkRearrange_CheckedChanged(object sender, EventArgs e)
         {
             int widthOffset = 0;
@@ -445,7 +451,7 @@ namespace BinaMitraTextile.InventoryForm
             if (chkRearrange.Checked)
             {
                 grid.Sort(col_grid_code, ListSortDirection.Ascending);
-                grid.FirstDisplayedScrollingRowIndex = grid.Rows.Count-1;
+                grid.FirstDisplayedScrollingRowIndex = grid.Rows.Count - 1;
                 grid.ClearSelection();
                 grid.Rows[grid.Rows.Count - 1].Selected = true;
                 this.Width -= widthOffset;
@@ -503,7 +509,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void PbLog_Click(object sender, EventArgs e)
         {
-            if(grid.Rows.Count > 0)
+            if (grid.Rows.Count > 0)
                 Tools.displayForm(new Logs.Main_Form(selectedRowID()));
         }
 
@@ -545,10 +551,12 @@ namespace BinaMitraTextile.InventoryForm
             calculateSelections();
         }
 
-        #endregion FORM METHODS
-        /*******************************************************************************************************/
-        #region SUBMISSION
-        #endregion SUBMISSION
+        private void chkShowInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            toggleShowInfo(chkShowInfo.Checked);
+        }
+
+        #endregion EVENT HANDLERS
         /*******************************************************************************************************/
 
     }

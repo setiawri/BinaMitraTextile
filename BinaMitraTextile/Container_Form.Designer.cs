@@ -121,6 +121,7 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
+            this.Admin_StokOpname = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -171,7 +172,7 @@
             // 
             this.Sales_Daftar.Name = "Sales_Daftar";
             this.Sales_Daftar.Size = new System.Drawing.Size(182, 22);
-            this.Sales_Daftar.Text = "Daftar";
+            this.Sales_Daftar.Text = "Sales";
             this.Sales_Daftar.Click += new System.EventHandler(this.Sales_Daftar_Click);
             // 
             // Sales_Returns
@@ -287,7 +288,7 @@
             this.Inventory_Daftar.Name = "Inventory_Daftar";
             this.Inventory_Daftar.ShowShortcutKeys = false;
             this.Inventory_Daftar.Size = new System.Drawing.Size(186, 22);
-            this.Inventory_Daftar.Text = "Daftar";
+            this.Inventory_Daftar.Text = "Inventory";
             this.Inventory_Daftar.Click += new System.EventHandler(this.Inventory_Daftar_Click);
             // 
             // Inventory_StockLevel
@@ -346,7 +347,7 @@
             // 
             this.Inventory_Products_Daftar.Name = "Inventory_Products_Daftar";
             this.Inventory_Products_Daftar.Size = new System.Drawing.Size(137, 22);
-            this.Inventory_Products_Daftar.Text = "Daftar";
+            this.Inventory_Products_Daftar.Text = "Products";
             this.Inventory_Products_Daftar.Click += new System.EventHandler(this.Inventory_Products_Daftar_Click);
             // 
             // Inventory_Products_Colors
@@ -439,6 +440,7 @@
             this.Admin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Admin_Todolist,
             this.Admin_CashAccounts,
+            this.Admin_StokOpname,
             this.toolStripMenuItem6,
             this.Admin_Angkutan,
             this.Admin_Cities,
@@ -656,7 +658,7 @@
             this.pnlShortcutContainer.Controls.Add(this.pnlShortcutHeaderContainer);
             this.pnlShortcutContainer.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlShortcutContainer.Location = new System.Drawing.Point(0, 24);
-            this.pnlShortcutContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlShortcutContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlShortcutContainer.Name = "pnlShortcutContainer";
             this.pnlShortcutContainer.Padding = new System.Windows.Forms.Padding(7, 6, 0, 6);
             this.pnlShortcutContainer.Size = new System.Drawing.Size(193, 770);
@@ -666,7 +668,7 @@
             // 
             this.btnOpname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnOpname.Location = new System.Drawing.Point(13, 708);
-            this.btnOpname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOpname.Margin = new System.Windows.Forms.Padding(4);
             this.btnOpname.Name = "btnOpname";
             this.btnOpname.Size = new System.Drawing.Size(152, 50);
             this.btnOpname.TabIndex = 21;
@@ -681,7 +683,7 @@
             this.pnlShortcuts.Controls.Add(this.gbShortcutsForUsers);
             this.pnlShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlShortcuts.Location = new System.Drawing.Point(7, 6);
-            this.pnlShortcuts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlShortcuts.Margin = new System.Windows.Forms.Padding(4);
             this.pnlShortcuts.Name = "pnlShortcuts";
             this.pnlShortcuts.Size = new System.Drawing.Size(164, 756);
             this.pnlShortcuts.TabIndex = 22;
@@ -690,7 +692,7 @@
             // 
             this.btnChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnChart.Location = new System.Drawing.Point(7, 644);
-            this.btnChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChart.Margin = new System.Windows.Forms.Padding(4);
             this.btnChart.Name = "btnChart";
             this.btnChart.Size = new System.Drawing.Size(152, 50);
             this.btnChart.TabIndex = 23;
@@ -705,11 +707,11 @@
             this.gbShortcutsForAssistants.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbShortcutsForAssistants.Controls.Add(this.flpAssistantShortcuts);
             this.gbShortcutsForAssistants.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbShortcutsForAssistants.Location = new System.Drawing.Point(0, 268);
-            this.gbShortcutsForAssistants.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbShortcutsForAssistants.Location = new System.Drawing.Point(0, 266);
+            this.gbShortcutsForAssistants.Margin = new System.Windows.Forms.Padding(4);
             this.gbShortcutsForAssistants.Name = "gbShortcutsForAssistants";
             this.gbShortcutsForAssistants.Padding = new System.Windows.Forms.Padding(4, 0, 4, 4);
-            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(164, 215);
+            this.gbShortcutsForAssistants.Size = new System.Drawing.Size(164, 213);
             this.gbShortcutsForAssistants.TabIndex = 22;
             this.gbShortcutsForAssistants.TabStop = false;
             // 
@@ -728,8 +730,8 @@
             this.flpAssistantShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpAssistantShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpAssistantShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpAssistantShortcuts.Location = new System.Drawing.Point(4, 15);
-            this.flpAssistantShortcuts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpAssistantShortcuts.Location = new System.Drawing.Point(4, 13);
+            this.flpAssistantShortcuts.Margin = new System.Windows.Forms.Padding(4);
             this.flpAssistantShortcuts.Name = "flpAssistantShortcuts";
             this.flpAssistantShortcuts.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
             this.flpAssistantShortcuts.Size = new System.Drawing.Size(156, 196);
@@ -886,10 +888,10 @@
             this.gbShortcutsForUsers.Controls.Add(this.flpUserShortcuts);
             this.gbShortcutsForUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbShortcutsForUsers.Location = new System.Drawing.Point(0, 0);
-            this.gbShortcutsForUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbShortcutsForUsers.Margin = new System.Windows.Forms.Padding(4);
             this.gbShortcutsForUsers.Name = "gbShortcutsForUsers";
             this.gbShortcutsForUsers.Padding = new System.Windows.Forms.Padding(4, 0, 4, 4);
-            this.gbShortcutsForUsers.Size = new System.Drawing.Size(164, 268);
+            this.gbShortcutsForUsers.Size = new System.Drawing.Size(164, 266);
             this.gbShortcutsForUsers.TabIndex = 14;
             this.gbShortcutsForUsers.TabStop = false;
             // 
@@ -911,8 +913,8 @@
             this.flpUserShortcuts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpUserShortcuts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpUserShortcuts.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flpUserShortcuts.Location = new System.Drawing.Point(4, 15);
-            this.flpUserShortcuts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flpUserShortcuts.Location = new System.Drawing.Point(4, 13);
+            this.flpUserShortcuts.Margin = new System.Windows.Forms.Padding(4);
             this.flpUserShortcuts.Name = "flpUserShortcuts";
             this.flpUserShortcuts.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
             this.flpUserShortcuts.Size = new System.Drawing.Size(156, 249);
@@ -1119,7 +1121,7 @@
             this.pnlShortcutHeader.BackColor = System.Drawing.Color.Transparent;
             this.pnlShortcutHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlShortcutHeader.Location = new System.Drawing.Point(0, 18);
-            this.pnlShortcutHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlShortcutHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlShortcutHeader.Name = "pnlShortcutHeader";
             this.pnlShortcutHeader.Size = new System.Drawing.Size(20, 738);
             this.pnlShortcutHeader.TabIndex = 21;
@@ -1139,6 +1141,13 @@
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
+            // Admin_StokOpname
+            // 
+            this.Admin_StokOpname.Name = "Admin_StokOpname";
+            this.Admin_StokOpname.Size = new System.Drawing.Size(182, 22);
+            this.Admin_StokOpname.Text = "Stok Opname";
+            this.Admin_StokOpname.Click += new System.EventHandler(this.BtnOpname_Click);
+            // 
             // Container_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1146,7 +1155,7 @@
             this.Controls.Add(this.pnlShortcutContainer);
             this.Controls.Add(this.mainMenu);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Container_Form";
             this.Text = "CV. BINA MITRA TEXTILE";
             this.Load += new System.EventHandler(this.Form_Load);
@@ -1265,5 +1274,6 @@
         private System.Windows.Forms.ToolStripMenuItem Admin_CashAccounts;
         private System.Windows.Forms.ToolStripMenuItem Admin_MoneyAccountCategories;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem Admin_StokOpname;
     }
 }
