@@ -99,7 +99,7 @@
             this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.Location = new System.Drawing.Point(177, 3);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(80, 28);
             this.btnSubmit.TabIndex = 3;
@@ -135,7 +135,7 @@
             this.col_griditems_price,
             this.col_griditems_subtotal});
             this.grid.Location = new System.Drawing.Point(6, 81);
-            this.grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
@@ -265,8 +265,8 @@
             // 
             // pnlPrint
             // 
-            this.pnlPrint.Controls.Add(this.lblPageCount);
             this.pnlPrint.Controls.Add(this.lblTotalCounts);
+            this.pnlPrint.Controls.Add(this.lblPageCount);
             this.pnlPrint.Controls.Add(this.txtNotes);
             this.pnlPrint.Controls.Add(this.lblDisclaimer);
             this.pnlPrint.Controls.Add(this.lblShippingCost);
@@ -279,10 +279,10 @@
             this.pnlPrint.Controls.Add(this.lblCustomerInfo);
             this.pnlPrint.Controls.Add(this.label2);
             this.pnlPrint.Controls.Add(this.grid);
-            this.pnlPrint.Controls.Add(this.lblTotalSale);
             this.pnlPrint.Controls.Add(this.lblPayment);
+            this.pnlPrint.Controls.Add(this.lblTotalSale);
             this.pnlPrint.Location = new System.Drawing.Point(5, 3);
-            this.pnlPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlPrint.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPrint.Name = "pnlPrint";
             this.pnlPrint.Size = new System.Drawing.Size(723, 507);
             this.pnlPrint.TabIndex = 110;
@@ -433,10 +433,10 @@
             // lblTotalSale
             // 
             this.lblTotalSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalSale.Location = new System.Drawing.Point(526, 437);
+            this.lblTotalSale.Location = new System.Drawing.Point(565, 436);
             this.lblTotalSale.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalSale.Name = "lblTotalSale";
-            this.lblTotalSale.Size = new System.Drawing.Size(194, 15);
+            this.lblTotalSale.Size = new System.Drawing.Size(155, 15);
             this.lblTotalSale.TabIndex = 115;
             this.lblTotalSale.Text = "lblTotalSale";
             this.lblTotalSale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -458,7 +458,7 @@
             this.btnPackingList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPackingList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPackingList.Location = new System.Drawing.Point(104, 32);
-            this.btnPackingList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPackingList.Margin = new System.Windows.Forms.Padding(2);
             this.btnPackingList.Name = "btnPackingList";
             this.btnPackingList.Size = new System.Drawing.Size(132, 28);
             this.btnPackingList.TabIndex = 5;
@@ -471,7 +471,7 @@
             this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.Location = new System.Drawing.Point(210, 2);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(26, 28);
             this.btnNext.TabIndex = 7;
@@ -484,7 +484,7 @@
             this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevious.Location = new System.Drawing.Point(104, 2);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(26, 28);
             this.btnPrevious.TabIndex = 0;
@@ -497,7 +497,7 @@
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.Location = new System.Drawing.Point(134, 2);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(72, 28);
             this.btnPrint.TabIndex = 4;
@@ -509,7 +509,7 @@
             // 
             this.btnAddNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNotes.Location = new System.Drawing.Point(5, 547);
-            this.btnAddNotes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddNotes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNotes.Name = "btnAddNotes";
             this.btnAddNotes.Size = new System.Drawing.Size(111, 28);
             this.btnAddNotes.TabIndex = 6;
@@ -533,7 +533,7 @@
             // 
             this.btnPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayment.Location = new System.Drawing.Point(120, 547);
-            this.btnPayment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPayment.Margin = new System.Windows.Forms.Padding(2);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(106, 28);
             this.btnPayment.TabIndex = 7;
@@ -709,7 +709,7 @@
             this.Controls.Add(this.btnAddNotes);
             this.Controls.Add(this.pnlPrint);
             this.Controls.Add(this.pnlSubmit1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Invoice_Form";
             this.Text = "VERIFY SALES";
             this.Load += new System.EventHandler(this.Form_Load);
