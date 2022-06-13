@@ -34,9 +34,9 @@
             this.iddl_ProductWidths = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_LengthUnits = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_FabricColors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
-            this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_ProductStoreNames = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_Grades = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_Customers = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scInputLeft)).BeginInit();
@@ -187,7 +187,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 229);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 270);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -205,7 +205,7 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 203);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 244);
             // 
             // itxt_QuickSearch
             // 
@@ -214,7 +214,7 @@
             // scContent
             // 
             this.scContent.Size = new System.Drawing.Size(1039, 299);
-            this.scContent.SplitterDistance = 66;
+            this.scContent.SplitterDistance = 25;
             // 
             // itxt_Notes
             // 
@@ -238,10 +238,10 @@
             // 
             this.chkOnlyNotOK.AutoSize = true;
             this.chkOnlyNotOK.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotOK.Location = new System.Drawing.Point(363, 0);
+            this.chkOnlyNotOK.Location = new System.Drawing.Point(348, 0);
             this.chkOnlyNotOK.Margin = new System.Windows.Forms.Padding(4);
             this.chkOnlyNotOK.Name = "chkOnlyNotOK";
-            this.chkOnlyNotOK.Size = new System.Drawing.Size(99, 32);
+            this.chkOnlyNotOK.Size = new System.Drawing.Size(87, 32);
             this.chkOnlyNotOK.TabIndex = 97;
             this.chkOnlyNotOK.Text = "only not OK  ";
             this.chkOnlyNotOK.UseVisualStyleBackColor = true;
@@ -296,7 +296,7 @@
             this.iddl_ProductWidths.SelectedItemText = "";
             this.iddl_ProductWidths.SelectedValue = null;
             this.iddl_ProductWidths.ShowDropdownlistOnly = false;
-            this.iddl_ProductWidths.Size = new System.Drawing.Size(188, 50);
+            this.iddl_ProductWidths.Size = new System.Drawing.Size(190, 50);
             this.iddl_ProductWidths.TabIndex = 4;
             // 
             // iddl_LengthUnits
@@ -313,7 +313,7 @@
             this.iddl_LengthUnits.SelectedItemText = "";
             this.iddl_LengthUnits.SelectedValue = null;
             this.iddl_LengthUnits.ShowDropdownlistOnly = false;
-            this.iddl_LengthUnits.Size = new System.Drawing.Size(188, 50);
+            this.iddl_LengthUnits.Size = new System.Drawing.Size(190, 50);
             this.iddl_LengthUnits.TabIndex = 5;
             // 
             // iddl_FabricColors
@@ -330,25 +330,8 @@
             this.iddl_FabricColors.SelectedItemText = "";
             this.iddl_FabricColors.SelectedValue = null;
             this.iddl_FabricColors.ShowDropdownlistOnly = false;
-            this.iddl_FabricColors.Size = new System.Drawing.Size(188, 50);
+            this.iddl_FabricColors.Size = new System.Drawing.Size(190, 50);
             this.iddl_FabricColors.TabIndex = 6;
-            // 
-            // iddl_Customers
-            // 
-            this.iddl_Customers.DisableTextInput = false;
-            this.iddl_Customers.HideFilter = false;
-            this.iddl_Customers.HideUpdateLink = true;
-            this.iddl_Customers.LabelText = "Customer";
-            this.iddl_Customers.Location = new System.Drawing.Point(4, 7);
-            this.iddl_Customers.Margin = new System.Windows.Forms.Padding(5);
-            this.iddl_Customers.Name = "iddl_Customers";
-            this.iddl_Customers.SelectedIndex = -1;
-            this.iddl_Customers.SelectedItem = null;
-            this.iddl_Customers.SelectedItemText = "";
-            this.iddl_Customers.SelectedValue = null;
-            this.iddl_Customers.ShowDropdownlistOnly = false;
-            this.iddl_Customers.Size = new System.Drawing.Size(191, 50);
-            this.iddl_Customers.TabIndex = 3;
             // 
             // iddl_ProductStoreNames
             // 
@@ -364,7 +347,7 @@
             this.iddl_ProductStoreNames.SelectedItemText = "";
             this.iddl_ProductStoreNames.SelectedValue = null;
             this.iddl_ProductStoreNames.ShowDropdownlistOnly = false;
-            this.iddl_ProductStoreNames.Size = new System.Drawing.Size(191, 50);
+            this.iddl_ProductStoreNames.Size = new System.Drawing.Size(190, 50);
             this.iddl_ProductStoreNames.TabIndex = 4;
             // 
             // iddl_Grades
@@ -381,8 +364,25 @@
             this.iddl_Grades.SelectedItemText = "";
             this.iddl_Grades.SelectedValue = null;
             this.iddl_Grades.ShowDropdownlistOnly = false;
-            this.iddl_Grades.Size = new System.Drawing.Size(191, 50);
+            this.iddl_Grades.Size = new System.Drawing.Size(190, 50);
             this.iddl_Grades.TabIndex = 5;
+            // 
+            // iddl_Customers
+            // 
+            this.iddl_Customers.DisableTextInput = false;
+            this.iddl_Customers.HideFilter = false;
+            this.iddl_Customers.HideUpdateLink = true;
+            this.iddl_Customers.LabelText = "Customer";
+            this.iddl_Customers.Location = new System.Drawing.Point(3, 7);
+            this.iddl_Customers.Margin = new System.Windows.Forms.Padding(4);
+            this.iddl_Customers.Name = "iddl_Customers";
+            this.iddl_Customers.SelectedIndex = -1;
+            this.iddl_Customers.SelectedItem = null;
+            this.iddl_Customers.SelectedItemText = "";
+            this.iddl_Customers.SelectedValue = null;
+            this.iddl_Customers.ShowDropdownlistOnly = false;
+            this.iddl_Customers.Size = new System.Drawing.Size(190, 50);
+            this.iddl_Customers.TabIndex = 4;
             // 
             // MasterData_v1_CustomerSaleAdjustments
             // 
@@ -430,10 +430,10 @@
         private System.Windows.Forms.CheckBox chkOnlyNotOK;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Grades;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_ProductStoreNames;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Customers;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_FabricColors;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_LengthUnits;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_ProductWidths;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Adjustment;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Customers;
     }
 }
