@@ -57,6 +57,7 @@ namespace BinaMitraTextile.Admin
             col_grid_colorname.DataPropertyName = ProductPrice.COL_COLORNAME;
             col_grid_Checked.DataPropertyName = ProductPrice.COL_DB_Checked;
             col_grid_BuyPrice.DataPropertyName = ProductPrice.COL_DB_BuyPrice;
+            col_grid_Notes.DataPropertyName = ProductPrice.COL_DB_NOTES;
             col_grid_BuyPercentDiscount.DataPropertyName = ProductPrice.COL_DB_BuyPercentDiscount;
 
             if (GlobalData.UserAccount.role != Roles.Super)

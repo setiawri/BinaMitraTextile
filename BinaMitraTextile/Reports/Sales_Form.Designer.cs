@@ -197,7 +197,7 @@
             series2.Name = "Series2";
             this.chartSales.Series.Add(series1);
             this.chartSales.Series.Add(series2);
-            this.chartSales.Size = new System.Drawing.Size(1022, 283);
+            this.chartSales.Size = new System.Drawing.Size(1022, 291);
             this.chartSales.TabIndex = 1;
             this.chartSales.Text = "SALES";
             // 
@@ -220,7 +220,7 @@
             series4.Name = "Series2";
             this.chartProfit.Series.Add(series3);
             this.chartProfit.Series.Add(series4);
-            this.chartProfit.Size = new System.Drawing.Size(1030, 291);
+            this.chartProfit.Size = new System.Drawing.Size(1030, 299);
             this.chartProfit.TabIndex = 2;
             this.chartProfit.Text = "chart1";
             // 
@@ -336,7 +336,7 @@
             series6.Name = "Series2";
             this.chartQty.Series.Add(series5);
             this.chartQty.Series.Add(series6);
-            this.chartQty.Size = new System.Drawing.Size(1022, 291);
+            this.chartQty.Size = new System.Drawing.Size(923, 291);
             this.chartQty.TabIndex = 3;
             this.chartQty.Text = "chart1";
             // 
@@ -345,7 +345,7 @@
             this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scMain.IsSplitterFixed = true;
-            this.scMain.Location = new System.Drawing.Point(341, 0);
+            this.scMain.Location = new System.Drawing.Point(295, 0);
             this.scMain.Margin = new System.Windows.Forms.Padding(4);
             this.scMain.Name = "scMain";
             this.scMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -357,7 +357,7 @@
             // scMain.Panel2
             // 
             this.scMain.Panel2.Controls.Add(this.tcCharts);
-            this.scMain.Size = new System.Drawing.Size(1038, 630);
+            this.scMain.Size = new System.Drawing.Size(939, 630);
             this.scMain.SplitterDistance = 300;
             this.scMain.SplitterWidth = 5;
             this.scMain.TabIndex = 7;
@@ -377,7 +377,7 @@
             // scGridviews.Panel2
             // 
             this.scGridviews.Panel2.Controls.Add(this.tcDetails);
-            this.scGridviews.Size = new System.Drawing.Size(1038, 300);
+            this.scGridviews.Size = new System.Drawing.Size(939, 300);
             this.scGridviews.SplitterDistance = 350;
             this.scGridviews.SplitterWidth = 1;
             this.scGridviews.TabIndex = 100;
@@ -532,7 +532,7 @@
             this.tcDetails.Margin = new System.Windows.Forms.Padding(4);
             this.tcDetails.Name = "tcDetails";
             this.tcDetails.SelectedIndex = 0;
-            this.tcDetails.Size = new System.Drawing.Size(687, 300);
+            this.tcDetails.Size = new System.Drawing.Size(588, 300);
             this.tcDetails.TabIndex = 5;
             // 
             // tabPage1
@@ -542,7 +542,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(679, 274);
+            this.tabPage1.Size = new System.Drawing.Size(580, 274);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sales";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -584,7 +584,7 @@
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dgvDetailBySales.RowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvDetailBySales.RowTemplate.Height = 24;
-            this.dgvDetailBySales.Size = new System.Drawing.Size(671, 266);
+            this.dgvDetailBySales.Size = new System.Drawing.Size(572, 266);
             this.dgvDetailBySales.TabIndex = 100;
             this.dgvDetailBySales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDetail_CellContentClick);
             // 
@@ -987,7 +987,7 @@
             this.tcCharts.Margin = new System.Windows.Forms.Padding(4);
             this.tcCharts.Name = "tcCharts";
             this.tcCharts.SelectedIndex = 0;
-            this.tcCharts.Size = new System.Drawing.Size(1038, 325);
+            this.tcCharts.Size = new System.Drawing.Size(939, 325);
             this.tcCharts.TabIndex = 5;
             // 
             // tpQty
@@ -997,7 +997,7 @@
             this.tpQty.Margin = new System.Windows.Forms.Padding(4);
             this.tpQty.Name = "tpQty";
             this.tpQty.Padding = new System.Windows.Forms.Padding(4);
-            this.tpQty.Size = new System.Drawing.Size(1030, 299);
+            this.tpQty.Size = new System.Drawing.Size(931, 299);
             this.tpQty.TabIndex = 0;
             this.tpQty.Text = "Qty";
             this.tpQty.UseVisualStyleBackColor = true;
@@ -1009,7 +1009,7 @@
             this.tpSales.Margin = new System.Windows.Forms.Padding(4);
             this.tpSales.Name = "tpSales";
             this.tpSales.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSales.Size = new System.Drawing.Size(1030, 291);
+            this.tpSales.Size = new System.Drawing.Size(1030, 299);
             this.tpSales.TabIndex = 1;
             this.tpSales.Text = "Sales";
             this.tpSales.UseVisualStyleBackColor = true;
@@ -1020,7 +1020,7 @@
             this.tpProfit.Location = new System.Drawing.Point(4, 22);
             this.tpProfit.Margin = new System.Windows.Forms.Padding(4);
             this.tpProfit.Name = "tpProfit";
-            this.tpProfit.Size = new System.Drawing.Size(1030, 291);
+            this.tpProfit.Size = new System.Drawing.Size(1030, 299);
             this.tpProfit.TabIndex = 2;
             this.tpProfit.Text = "Profit";
             this.tpProfit.UseVisualStyleBackColor = true;
@@ -1032,7 +1032,7 @@
             this.iclb_Customers.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_Customers.Name = "iclb_Customers";
             this.iclb_Customers.ShowListOnly = false;
-            this.iclb_Customers.Size = new System.Drawing.Size(215, 239);
+            this.iclb_Customers.Size = new System.Drawing.Size(162, 239);
             this.iclb_Customers.TabIndex = 160;
             this.iclb_Customers.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1048,7 +1048,7 @@
             // iclb_LengthUnits
             // 
             this.iclb_LengthUnits.LabelText = "Unit";
-            this.iclb_LengthUnits.Location = new System.Drawing.Point(229, 247);
+            this.iclb_LengthUnits.Location = new System.Drawing.Point(183, 247);
             this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_LengthUnits.Name = "iclb_LengthUnits";
             this.iclb_LengthUnits.ShowListOnly = true;
@@ -1059,7 +1059,7 @@
             // iclb_ProductWidths
             // 
             this.iclb_ProductWidths.LabelText = "Lebar";
-            this.iclb_ProductWidths.Location = new System.Drawing.Point(229, 129);
+            this.iclb_ProductWidths.Location = new System.Drawing.Point(183, 129);
             this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_ProductWidths.Name = "iclb_ProductWidths";
             this.iclb_ProductWidths.ShowListOnly = true;
@@ -1070,7 +1070,7 @@
             // iclb_Grades
             // 
             this.iclb_Grades.LabelText = "Grades";
-            this.iclb_Grades.Location = new System.Drawing.Point(229, 11);
+            this.iclb_Grades.Location = new System.Drawing.Point(183, 11);
             this.iclb_Grades.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_Grades.Name = "iclb_Grades";
             this.iclb_Grades.ShowListOnly = true;
@@ -1116,7 +1116,7 @@
             this.cbExcludeCustomers.Location = new System.Drawing.Point(71, 89);
             this.cbExcludeCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbExcludeCustomers.Name = "cbExcludeCustomers";
-            this.cbExcludeCustomers.Size = new System.Drawing.Size(151, 21);
+            this.cbExcludeCustomers.Size = new System.Drawing.Size(98, 21);
             this.cbExcludeCustomers.TabIndex = 144;
             this.cbExcludeCustomers.SelectedIndexChanged += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1129,7 +1129,7 @@
             this.dtStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtStart.Name = "dtStart";
             this.dtStart.ShowCheckBox = true;
-            this.dtStart.Size = new System.Drawing.Size(151, 20);
+            this.dtStart.Size = new System.Drawing.Size(98, 20);
             this.dtStart.TabIndex = 97;
             this.dtStart.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             this.dtStart.ValueChanged += new System.EventHandler(this.Filter_Item_Checked);
@@ -1143,7 +1143,7 @@
             this.dtEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtEnd.Name = "dtEnd";
             this.dtEnd.ShowCheckBox = true;
-            this.dtEnd.Size = new System.Drawing.Size(151, 20);
+            this.dtEnd.Size = new System.Drawing.Size(98, 20);
             this.dtEnd.TabIndex = 98;
             this.dtEnd.ValueChanged += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1200,7 +1200,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 630);
+            this.panel1.Size = new System.Drawing.Size(295, 630);
             this.panel1.TabIndex = 101;
             // 
             // chkShowHidden
@@ -1220,11 +1220,11 @@
             this.iclb_Colors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.iclb_Colors.LabelText = "Colors";
-            this.iclb_Colors.Location = new System.Drawing.Point(174, 358);
+            this.iclb_Colors.Location = new System.Drawing.Point(149, 358);
             this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_Colors.Name = "iclb_Colors";
             this.iclb_Colors.ShowListOnly = false;
-            this.iclb_Colors.Size = new System.Drawing.Size(160, 227);
+            this.iclb_Colors.Size = new System.Drawing.Size(139, 227);
             this.iclb_Colors.TabIndex = 101;
             this.iclb_Colors.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
@@ -1237,14 +1237,14 @@
             this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
             this.iclb_ProductStoreNames.ShowListOnly = false;
-            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(160, 227);
+            this.iclb_ProductStoreNames.Size = new System.Drawing.Size(139, 227);
             this.iclb_ProductStoreNames.TabIndex = 101;
             this.iclb_ProductStoreNames.Item_Checked += new System.EventHandler(this.Filter_Item_Checked);
             // 
             // Sales_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(1379, 630);
+            this.ClientSize = new System.Drawing.Size(1234, 630);
             this.Controls.Add(this.scMain);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
