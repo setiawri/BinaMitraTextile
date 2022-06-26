@@ -140,7 +140,6 @@
             this.pnlButtons.Size = new System.Drawing.Size(1039, 32);
             this.pnlButtons.Controls.SetChildIndex(this.btnSearch, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnUpdate, 0);
-            this.pnlButtons.Controls.SetChildIndex(this.btnLog, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnAdd, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnDelete, 0);
             // 
@@ -165,7 +164,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 177);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1039, 221);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -179,7 +178,11 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 151);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1039, 195);
+            // 
+            // pbLog
+            // 
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // itxt_QuickSearch
             // 
@@ -188,7 +191,7 @@
             // scContent
             // 
             this.scContent.Size = new System.Drawing.Size(1039, 289);
-            this.scContent.SplitterDistance = 108;
+            this.scContent.SplitterDistance = 64;
             // 
             // itxt_Notes
             // 
@@ -297,13 +300,14 @@
             // 
             this.chkOnlyNotOK.AutoSize = true;
             this.chkOnlyNotOK.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotOK.Location = new System.Drawing.Point(363, 0);
+            this.chkOnlyNotOK.Location = new System.Drawing.Point(277, 0);
             this.chkOnlyNotOK.Name = "chkOnlyNotOK";
-            this.chkOnlyNotOK.Size = new System.Drawing.Size(99, 32);
+            this.chkOnlyNotOK.Size = new System.Drawing.Size(87, 32);
             this.chkOnlyNotOK.TabIndex = 97;
             this.chkOnlyNotOK.Text = "only not OK  ";
             this.chkOnlyNotOK.UseVisualStyleBackColor = true;
             this.chkOnlyNotOK.CheckedChanged += new System.EventHandler(this.chkOnlyNotOK_CheckedChanged);
+            this.chkOnlyNotOK.Click += new System.EventHandler(this.chkOnlyNotOK_CheckedChanged);
             // 
             // in_InventoryCode
             // 
@@ -409,7 +413,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(403, 2);
+            this.btnDelete.Location = new System.Drawing.Point(303, 2);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 28);

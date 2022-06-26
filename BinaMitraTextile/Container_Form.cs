@@ -434,6 +434,11 @@ namespace BinaMitraTextile
             Util.displayMDIChild(new Admin.MasterData_v1_MoneyAccountCategories_Form());
         }
 
+        private void Inventory_IncompletePO_Click(object sender, EventArgs e)
+        {
+            Util.displayMDIChild(new POs.MasterData_v1_Status_Form());
+        }
+
         #endregion MENU - INTERNAL
         /*******************************************************************************************************/
     }

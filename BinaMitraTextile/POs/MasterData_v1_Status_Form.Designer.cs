@@ -85,53 +85,41 @@
             // 
             this.scInputLeft.Panel2.Controls.Add(this.idtp_ExpectedDeliveryDate);
             this.scInputLeft.Panel2.Controls.Add(this.in_PriorityQty);
-            this.scInputLeft.Size = new System.Drawing.Size(520, 65);
+            this.scInputLeft.Size = new System.Drawing.Size(520, 70);
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
             this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputRight.Size = new System.Drawing.Size(585, 65);
+            this.scInputRight.Size = new System.Drawing.Size(585, 70);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnAdd.Location = new System.Drawing.Point(4, 2);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Location = new System.Drawing.Point(271, 2);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(137, 2);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(4, 0);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSubmit.Size = new System.Drawing.Size(124, 33);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(252, 0);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Size = new System.Drawing.Size(124, 33);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(128, 0);
             this.btnReset.Margin = new System.Windows.Forms.Padding(5);
-            this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
@@ -142,21 +130,14 @@
             // pnlButtons
             // 
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlButtons.Size = new System.Drawing.Size(1112, 37);
+            this.pnlButtons.Size = new System.Drawing.Size(1112, 32);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Location = new System.Drawing.Point(0, 37);
             this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputContainer.Size = new System.Drawing.Size(1112, 65);
+            this.scInputContainer.Size = new System.Drawing.Size(1112, 70);
             this.scInputContainer.SplitterDistance = 520;
             this.scInputContainer.SplitterWidth = 7;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(404, 2);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLog.Size = new System.Drawing.Size(133, 34);
             // 
             // ptInputPanel
             // 
@@ -178,7 +159,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1112, 277);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1112, 187);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -197,11 +178,12 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1112, 251);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1112, 161);
             // 
             // pbLog
             // 
             this.pbLog.Margin = new System.Windows.Forms.Padding(5);
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // pbRefresh
             // 
@@ -215,7 +197,7 @@
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1112, 389);
-            this.scContent.SplitterDistance = 107;
+            this.scContent.SplitterDistance = 197;
             this.scContent.SplitterWidth = 5;
             // 
             // idtp_ExpectedDeliveryDate
@@ -240,28 +222,30 @@
             // 
             this.chkShowHidden.AutoSize = true;
             this.chkShowHidden.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowHidden.Location = new System.Drawing.Point(363, 0);
+            this.chkShowHidden.Location = new System.Drawing.Point(277, 0);
             this.chkShowHidden.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowHidden.Name = "chkShowHidden";
-            this.chkShowHidden.Size = new System.Drawing.Size(34, 32);
+            this.chkShowHidden.Size = new System.Drawing.Size(33, 32);
             this.chkShowHidden.TabIndex = 14;
             this.chkShowHidden.Text = "X";
             this.chkShowHidden.UseVisualStyleBackColor = true;
             this.chkShowHidden.Visible = false;
             this.chkShowHidden.CheckedChanged += new System.EventHandler(this.chkShowHidden_CheckedChanged);
+            this.chkShowHidden.Click += new System.EventHandler(this.chkShowHidden_CheckedChanged);
             // 
             // chkShowCustomerName
             // 
             this.chkShowCustomerName.AutoSize = true;
             this.chkShowCustomerName.Dock = System.Windows.Forms.DockStyle.Right;
-            this.chkShowCustomerName.Location = new System.Drawing.Point(993, 0);
+            this.chkShowCustomerName.Location = new System.Drawing.Point(1006, 0);
             this.chkShowCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowCustomerName.Name = "chkShowCustomerName";
-            this.chkShowCustomerName.Size = new System.Drawing.Size(83, 32);
+            this.chkShowCustomerName.Size = new System.Drawing.Size(70, 32);
             this.chkShowCustomerName.TabIndex = 15;
             this.chkShowCustomerName.Text = "Customer";
             this.chkShowCustomerName.UseVisualStyleBackColor = true;
             this.chkShowCustomerName.CheckedChanged += new System.EventHandler(this.ChkShowCustomerName_CheckedChanged);
+            this.chkShowCustomerName.Click += new System.EventHandler(this.ChkShowCustomerName_CheckedChanged);
             // 
             // in_PriorityQty
             // 
@@ -274,7 +258,7 @@
             0,
             0});
             this.in_PriorityQty.LabelText = "Qty";
-            this.in_PriorityQty.Location = new System.Drawing.Point(5, 13);
+            this.in_PriorityQty.Location = new System.Drawing.Point(4, 10);
             this.in_PriorityQty.Margin = new System.Windows.Forms.Padding(5);
             this.in_PriorityQty.MaximumValue = new decimal(new int[] {
             50000,
@@ -290,7 +274,7 @@
             this.in_PriorityQty.ShowAllowDecimalCheckbox = false;
             this.in_PriorityQty.ShowCheckbox = false;
             this.in_PriorityQty.ShowTextboxOnly = false;
-            this.in_PriorityQty.Size = new System.Drawing.Size(95, 47);
+            this.in_PriorityQty.Size = new System.Drawing.Size(95, 50);
             this.in_PriorityQty.TabIndex = 2;
             this.in_PriorityQty.Value = new decimal(new int[] {
             0,
@@ -309,7 +293,7 @@
             0,
             0});
             this.in_PriorityNo.LabelText = "Priority";
-            this.in_PriorityNo.Location = new System.Drawing.Point(182, 13);
+            this.in_PriorityNo.Location = new System.Drawing.Point(182, 10);
             this.in_PriorityNo.Margin = new System.Windows.Forms.Padding(5);
             this.in_PriorityNo.MaximumValue = new decimal(new int[] {
             999,
@@ -325,7 +309,7 @@
             this.in_PriorityNo.ShowAllowDecimalCheckbox = false;
             this.in_PriorityNo.ShowCheckbox = false;
             this.in_PriorityNo.ShowTextboxOnly = false;
-            this.in_PriorityNo.Size = new System.Drawing.Size(60, 47);
+            this.in_PriorityNo.Size = new System.Drawing.Size(60, 50);
             this.in_PriorityNo.TabIndex = 3;
             this.in_PriorityNo.Value = new decimal(new int[] {
             0,
@@ -337,7 +321,7 @@
             // 
             this.iddl_POItemStatus.DisableTextInput = false;
             this.iddl_POItemStatus.HideFilter = false;
-            this.iddl_POItemStatus.HideUpdateLink = false;
+            this.iddl_POItemStatus.HideUpdateLink = true;
             this.iddl_POItemStatus.LabelText = "Status";
             this.iddl_POItemStatus.Location = new System.Drawing.Point(5, 10);
             this.iddl_POItemStatus.Margin = new System.Windows.Forms.Padding(4);
@@ -357,7 +341,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Mode = LIBUtil.FormModes.Add;
             this.Name = "MasterData_v1_Status_Form";
-            this.Text = "PO Status";
+            this.Text = "PO STATUS";
             this.panel1.ResumeLayout(false);
             this.pnlActionButtons.ResumeLayout(false);
             this.scInputLeft.Panel1.ResumeLayout(false);

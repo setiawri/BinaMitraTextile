@@ -101,41 +101,29 @@
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnAdd.Location = new System.Drawing.Point(4, 2);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Location = new System.Drawing.Point(271, 2);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(137, 2);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(4, 0);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSubmit.Size = new System.Drawing.Size(124, 33);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(252, 0);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Size = new System.Drawing.Size(124, 33);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(128, 0);
             this.btnReset.Margin = new System.Windows.Forms.Padding(5);
-            this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
@@ -154,12 +142,6 @@
             this.scInputContainer.Size = new System.Drawing.Size(1015, 120);
             this.scInputContainer.SplitterWidth = 7;
             // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(404, 2);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLog.Size = new System.Drawing.Size(133, 34);
-            // 
             // ptInputPanel
             // 
             this.ptInputPanel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -172,7 +154,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1015, 206);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1015, 256);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -191,11 +173,12 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1015, 180);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1015, 230);
             // 
             // pbLog
             // 
             this.pbLog.Margin = new System.Windows.Forms.Padding(5);
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // pbRefresh
             // 
@@ -209,7 +192,7 @@
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1015, 381);
-            this.scContent.SplitterDistance = 170;
+            this.scContent.SplitterDistance = 120;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Notes
@@ -252,7 +235,7 @@
             // 
             this.itxt_Phone1.IsBrowseMode = false;
             this.itxt_Phone1.LabelText = "Phone 1";
-            this.itxt_Phone1.Location = new System.Drawing.Point(4, 65);
+            this.itxt_Phone1.Location = new System.Drawing.Point(4, 63);
             this.itxt_Phone1.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Phone1.MaxLength = 32767;
             this.itxt_Phone1.MultiLine = false;
@@ -270,7 +253,7 @@
             // 
             this.itxt_Phone2.IsBrowseMode = false;
             this.itxt_Phone2.LabelText = "Phone 2";
-            this.itxt_Phone2.Location = new System.Drawing.Point(128, 65);
+            this.itxt_Phone2.Location = new System.Drawing.Point(128, 63);
             this.itxt_Phone2.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Phone2.MaxLength = 32767;
             this.itxt_Phone2.MultiLine = false;

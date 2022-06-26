@@ -95,35 +95,29 @@
             // scInputLeft.Panel2
             // 
             this.scInputLeft.Panel2.Controls.Add(this.itxt_Description);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 113);
+            this.scInputLeft.Size = new System.Drawing.Size(500, 120);
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
             this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputRight.Size = new System.Drawing.Size(538, 113);
+            this.scInputRight.Size = new System.Drawing.Size(538, 120);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnAdd.Location = new System.Drawing.Point(4, 2);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Location = new System.Drawing.Point(271, 2);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(137, 2);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSubmit
             // 
@@ -147,25 +141,17 @@
             // 
             this.pnlButtons.Controls.Add(this.btnTransfer);
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlButtons.Size = new System.Drawing.Size(1045, 39);
+            this.pnlButtons.Size = new System.Drawing.Size(1045, 32);
             this.pnlButtons.Controls.SetChildIndex(this.btnSearch, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnUpdate, 0);
-            this.pnlButtons.Controls.SetChildIndex(this.btnLog, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnAdd, 0);
             this.pnlButtons.Controls.SetChildIndex(this.btnTransfer, 0);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Location = new System.Drawing.Point(0, 39);
             this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputContainer.Size = new System.Drawing.Size(1045, 113);
+            this.scInputContainer.Size = new System.Drawing.Size(1045, 120);
             this.scInputContainer.SplitterWidth = 7;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(404, 2);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLog.Size = new System.Drawing.Size(133, 34);
             // 
             // ptInputPanel
             // 
@@ -217,6 +203,7 @@
             // pbLog
             // 
             this.pbLog.Margin = new System.Windows.Forms.Padding(5);
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // pbRefresh
             // 
@@ -383,10 +370,10 @@
             // btnTransfer
             // 
             this.btnTransfer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnTransfer.Location = new System.Drawing.Point(932, 0);
+            this.btnTransfer.Location = new System.Drawing.Point(943, 2);
             this.btnTransfer.Margin = new System.Windows.Forms.Padding(4);
             this.btnTransfer.Name = "btnTransfer";
-            this.btnTransfer.Size = new System.Drawing.Size(113, 39);
+            this.btnTransfer.Size = new System.Drawing.Size(100, 28);
             this.btnTransfer.TabIndex = 125;
             this.btnTransfer.Text = "TRANSFER";
             this.btnTransfer.UseVisualStyleBackColor = true;
@@ -396,7 +383,7 @@
             // 
             this.chkOnlyNotApproved.AutoSize = true;
             this.chkOnlyNotApproved.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkOnlyNotApproved.Location = new System.Drawing.Point(348, 0);
+            this.chkOnlyNotApproved.Location = new System.Drawing.Point(277, 0);
             this.chkOnlyNotApproved.Name = "chkOnlyNotApproved";
             this.chkOnlyNotApproved.Size = new System.Drawing.Size(67, 32);
             this.chkOnlyNotApproved.TabIndex = 125;

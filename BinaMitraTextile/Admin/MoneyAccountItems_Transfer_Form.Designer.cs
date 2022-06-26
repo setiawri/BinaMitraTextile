@@ -76,7 +76,7 @@
             this.iddl_MoneyAccountCategoryAssignments_From.SelectedValue = null;
             this.iddl_MoneyAccountCategoryAssignments_From.ShowDropdownlistOnly = false;
             this.iddl_MoneyAccountCategoryAssignments_From.Size = new System.Drawing.Size(185, 50);
-            this.iddl_MoneyAccountCategoryAssignments_From.TabIndex = 12;
+            this.iddl_MoneyAccountCategoryAssignments_From.TabIndex = 1;
             // 
             // iddl_MoneyAccounts_From
             // 
@@ -93,7 +93,7 @@
             this.iddl_MoneyAccounts_From.SelectedValue = null;
             this.iddl_MoneyAccounts_From.ShowDropdownlistOnly = false;
             this.iddl_MoneyAccounts_From.Size = new System.Drawing.Size(185, 50);
-            this.iddl_MoneyAccounts_From.TabIndex = 11;
+            this.iddl_MoneyAccounts_From.TabIndex = 0;
             this.iddl_MoneyAccounts_From.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccounts_From_SelectedIndexChanged);
             // 
             // iddl_MoneyAccountCategoryAssignments_To
@@ -111,7 +111,7 @@
             this.iddl_MoneyAccountCategoryAssignments_To.SelectedValue = null;
             this.iddl_MoneyAccountCategoryAssignments_To.ShowDropdownlistOnly = false;
             this.iddl_MoneyAccountCategoryAssignments_To.Size = new System.Drawing.Size(185, 50);
-            this.iddl_MoneyAccountCategoryAssignments_To.TabIndex = 10;
+            this.iddl_MoneyAccountCategoryAssignments_To.TabIndex = 5;
             // 
             // iddl_MoneyAccounts_To
             // 
@@ -128,7 +128,7 @@
             this.iddl_MoneyAccounts_To.SelectedValue = null;
             this.iddl_MoneyAccounts_To.ShowDropdownlistOnly = false;
             this.iddl_MoneyAccounts_To.Size = new System.Drawing.Size(185, 50);
-            this.iddl_MoneyAccounts_To.TabIndex = 9;
+            this.iddl_MoneyAccounts_To.TabIndex = 4;
             this.iddl_MoneyAccounts_To.SelectedIndexChanged += new System.EventHandler(this.iddl_MoneyAccounts_To_SelectedIndexChanged);
             // 
             // in_Amount
@@ -159,7 +159,7 @@
             this.in_Amount.ShowCheckbox = false;
             this.in_Amount.ShowTextboxOnly = false;
             this.in_Amount.Size = new System.Drawing.Size(137, 50);
-            this.in_Amount.TabIndex = 8;
+            this.in_Amount.TabIndex = 3;
             this.in_Amount.Value = new decimal(new int[] {
             0,
             0,

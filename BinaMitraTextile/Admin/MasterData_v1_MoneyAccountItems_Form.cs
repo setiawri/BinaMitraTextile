@@ -81,7 +81,7 @@ namespace BinaMitraTextile.Admin
                 chkOnlyNotApproved.Visible = false;
                 col_dgv_Checkbox1.Visible = false;
                 btnUpdate.Visible = false;
-                btnLog.Visible = false;
+                pbLog.Visible = false;
             }
         }
 

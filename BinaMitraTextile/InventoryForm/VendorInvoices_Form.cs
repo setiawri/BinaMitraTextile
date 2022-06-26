@@ -30,7 +30,10 @@ namespace BinaMitraTextile.InventoryForm
 
         public VendorInvoices_Form(string quickSearchText) : this()
         {
-            itxt_QuickSearch.ValueText = quickSearchText;
+            itxt_QuickSearch.ValueText = quickSearchText.Trim();
+            if(itxt_QuickSearch.ValueText != "")
+                chkShowOnlyIncomplete.Checked = false;
+            
         }
 
         public VendorInvoices_Form(FormModes startingMode, Guid BrowsingForFakturPajak_Vendors_Id) : this()

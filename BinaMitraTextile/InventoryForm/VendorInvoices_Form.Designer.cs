@@ -83,7 +83,6 @@
             this.col_gridInventory_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlFilterAndButtons = new System.Windows.Forms.Panel();
             this.pnlFilterAndButtonsContent = new System.Windows.Forms.Panel();
-            this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.lblPayableAmount = new System.Windows.Forms.Label();
             this.lblDueAmount = new System.Windows.Forms.Label();
             this.lblGrandTotalPayable = new System.Windows.Forms.Label();
@@ -98,6 +97,7 @@
             this.btnStartVendorPayments = new System.Windows.Forms.Button();
             this.pnlFilterAndButtonsHeader = new System.Windows.Forms.Panel();
             this.pnlQuickSearch = new System.Windows.Forms.Panel();
+            this.chkHideColumns = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.idtp_Timestamp_Start = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_Timestamp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
@@ -154,7 +154,8 @@
             this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.chkHideColumns = new System.Windows.Forms.CheckBox();
+            this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.scContent = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             this.pnlFilterAndButtons.SuspendLayout();
             this.pnlFilterAndButtonsContent.SuspendLayout();
@@ -173,6 +174,10 @@
             this.pnlUpdateBuyPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleInvoices)).BeginInit();
             this.pnlRowInfoHeaderContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).BeginInit();
+            this.scContent.Panel1.SuspendLayout();
+            this.scContent.Panel2.SuspendLayout();
+            this.scContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridInventory
@@ -221,7 +226,7 @@
             this.gridInventory.Name = "gridInventory";
             this.gridInventory.RowHeadersVisible = false;
             this.gridInventory.RowHeadersWidth = 51;
-            this.gridInventory.Size = new System.Drawing.Size(813, 147);
+            this.gridInventory.Size = new System.Drawing.Size(812, 206);
             this.gridInventory.TabIndex = 6;
             this.gridInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridInventory_CellContentClick);
             this.gridInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridInventory_CellDoubleClick);
@@ -414,24 +419,6 @@
             this.pnlFilterAndButtonsContent.Size = new System.Drawing.Size(1085, 80);
             this.pnlFilterAndButtonsContent.TabIndex = 9;
             // 
-            // iddl_Vendors
-            // 
-            this.iddl_Vendors.DisableTextInput = false;
-            this.iddl_Vendors.HideFilter = false;
-            this.iddl_Vendors.HideUpdateLink = true;
-            this.iddl_Vendors.LabelText = "Vendors";
-            this.iddl_Vendors.Location = new System.Drawing.Point(7, 26);
-            this.iddl_Vendors.Margin = new System.Windows.Forms.Padding(4);
-            this.iddl_Vendors.Name = "iddl_Vendors";
-            this.iddl_Vendors.SelectedIndex = -1;
-            this.iddl_Vendors.SelectedItem = null;
-            this.iddl_Vendors.SelectedItemText = "";
-            this.iddl_Vendors.SelectedValue = null;
-            this.iddl_Vendors.ShowDropdownlistOnly = false;
-            this.iddl_Vendors.Size = new System.Drawing.Size(163, 47);
-            this.iddl_Vendors.TabIndex = 9;
-            this.iddl_Vendors.SelectedIndexChanged += new System.EventHandler(this.Iddl_Vendors_SelectedIndexChanged);
-            // 
             // lblPayableAmount
             // 
             this.lblPayableAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -461,7 +448,7 @@
             // lblGrandTotalPayable
             // 
             this.lblGrandTotalPayable.AutoSize = true;
-            this.lblGrandTotalPayable.Location = new System.Drawing.Point(9, 6);
+            this.lblGrandTotalPayable.Location = new System.Drawing.Point(4, 6);
             this.lblGrandTotalPayable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrandTotalPayable.Name = "lblGrandTotalPayable";
             this.lblGrandTotalPayable.Size = new System.Drawing.Size(108, 13);
@@ -655,6 +642,20 @@
             this.pnlQuickSearch.Name = "pnlQuickSearch";
             this.pnlQuickSearch.Size = new System.Drawing.Size(1051, 34);
             this.pnlQuickSearch.TabIndex = 97;
+            // 
+            // chkHideColumns
+            // 
+            this.chkHideColumns.AutoSize = true;
+            this.chkHideColumns.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkHideColumns.Location = new System.Drawing.Point(416, 0);
+            this.chkHideColumns.Margin = new System.Windows.Forms.Padding(4);
+            this.chkHideColumns.Name = "chkHideColumns";
+            this.chkHideColumns.Size = new System.Drawing.Size(88, 32);
+            this.chkHideColumns.TabIndex = 25;
+            this.chkHideColumns.TabStop = false;
+            this.chkHideColumns.Text = "hide columns";
+            this.chkHideColumns.UseVisualStyleBackColor = true;
+            this.chkHideColumns.CheckedChanged += new System.EventHandler(this.chkHideColumns_CheckedChanged);
             // 
             // panel2
             // 
@@ -877,12 +878,12 @@
             dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridvendorinvoice.DefaultCellStyle = dataGridViewCellStyle30;
             this.gridvendorinvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridvendorinvoice.Location = new System.Drawing.Point(0, 114);
+            this.gridvendorinvoice.Location = new System.Drawing.Point(0, 0);
             this.gridvendorinvoice.Margin = new System.Windows.Forms.Padding(4);
             this.gridvendorinvoice.Name = "gridvendorinvoice";
             this.gridvendorinvoice.RowHeadersVisible = false;
             this.gridvendorinvoice.RowHeadersWidth = 51;
-            this.gridvendorinvoice.Size = new System.Drawing.Size(1085, 375);
+            this.gridvendorinvoice.Size = new System.Drawing.Size(1085, 312);
             this.gridvendorinvoice.TabIndex = 6;
             this.gridvendorinvoice.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridvendorinvoice_CellContentClick);
             this.gridvendorinvoice.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridvendorinvoice_CellDoubleClick);
@@ -1188,11 +1189,11 @@
             // 
             this.pnlRowInfo.Controls.Add(this.scRowInfo);
             this.pnlRowInfo.Controls.Add(this.pnlRowInfoHeaderContainer);
-            this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlRowInfo.Location = new System.Drawing.Point(0, 489);
+            this.pnlRowInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRowInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlRowInfo.Name = "pnlRowInfo";
-            this.pnlRowInfo.Size = new System.Drawing.Size(1085, 201);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1085, 260);
             this.pnlRowInfo.TabIndex = 8;
             // 
             // scRowInfo
@@ -1214,8 +1215,8 @@
             // 
             this.scRowInfo.Panel2.Controls.Add(this.gridSaleInvoices);
             this.scRowInfo.Panel2.Controls.Add(this.lblReturns);
-            this.scRowInfo.Size = new System.Drawing.Size(1085, 175);
-            this.scRowInfo.SplitterDistance = 813;
+            this.scRowInfo.Size = new System.Drawing.Size(1085, 234);
+            this.scRowInfo.SplitterDistance = 812;
             this.scRowInfo.SplitterWidth = 5;
             this.scRowInfo.TabIndex = 7;
             // 
@@ -1226,7 +1227,7 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(253, 20);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(253, 69);
             this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(306, 135);
@@ -1301,7 +1302,7 @@
             this.lblSaleInvoices.Location = new System.Drawing.Point(0, 0);
             this.lblSaleInvoices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaleInvoices.Name = "lblSaleInvoices";
-            this.lblSaleInvoices.Size = new System.Drawing.Size(813, 28);
+            this.lblSaleInvoices.Size = new System.Drawing.Size(812, 28);
             this.lblSaleInvoices.TabIndex = 106;
             this.lblSaleInvoices.Text = "Inventory";
             this.lblSaleInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1343,7 +1344,7 @@
             dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle37;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(267, 147);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(268, 206);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -1450,7 +1451,7 @@
             this.lblReturns.Location = new System.Drawing.Point(0, 0);
             this.lblReturns.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReturns.Name = "lblReturns";
-            this.lblReturns.Size = new System.Drawing.Size(267, 28);
+            this.lblReturns.Size = new System.Drawing.Size(268, 28);
             this.lblReturns.TabIndex = 107;
             this.lblReturns.Text = "Returns";
             this.lblReturns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1493,26 +1494,46 @@
             this.ptRowInfo.TabIndex = 5;
             this.ptRowInfo.TogglePanel = null;
             // 
-            // chkHideColumns
+            // iddl_Vendors
             // 
-            this.chkHideColumns.AutoSize = true;
-            this.chkHideColumns.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkHideColumns.Location = new System.Drawing.Point(416, 0);
-            this.chkHideColumns.Margin = new System.Windows.Forms.Padding(4);
-            this.chkHideColumns.Name = "chkHideColumns";
-            this.chkHideColumns.Size = new System.Drawing.Size(88, 32);
-            this.chkHideColumns.TabIndex = 25;
-            this.chkHideColumns.TabStop = false;
-            this.chkHideColumns.Text = "hide columns";
-            this.chkHideColumns.UseVisualStyleBackColor = true;
-            this.chkHideColumns.CheckedChanged += new System.EventHandler(this.chkHideColumns_CheckedChanged);
+            this.iddl_Vendors.DisableTextInput = false;
+            this.iddl_Vendors.HideFilter = false;
+            this.iddl_Vendors.HideUpdateLink = true;
+            this.iddl_Vendors.LabelText = "Vendors";
+            this.iddl_Vendors.Location = new System.Drawing.Point(4, 22);
+            this.iddl_Vendors.Margin = new System.Windows.Forms.Padding(4);
+            this.iddl_Vendors.Name = "iddl_Vendors";
+            this.iddl_Vendors.SelectedIndex = -1;
+            this.iddl_Vendors.SelectedItem = null;
+            this.iddl_Vendors.SelectedItemText = "";
+            this.iddl_Vendors.SelectedValue = null;
+            this.iddl_Vendors.ShowDropdownlistOnly = false;
+            this.iddl_Vendors.Size = new System.Drawing.Size(150, 50);
+            this.iddl_Vendors.TabIndex = 10;
+            // 
+            // scContent
+            // 
+            this.scContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scContent.Location = new System.Drawing.Point(0, 114);
+            this.scContent.Name = "scContent";
+            this.scContent.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scContent.Panel1
+            // 
+            this.scContent.Panel1.Controls.Add(this.gridvendorinvoice);
+            // 
+            // scContent.Panel2
+            // 
+            this.scContent.Panel2.Controls.Add(this.pnlRowInfo);
+            this.scContent.Size = new System.Drawing.Size(1085, 576);
+            this.scContent.SplitterDistance = 312;
+            this.scContent.TabIndex = 9;
             // 
             // VendorInvoices_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1085, 690);
-            this.Controls.Add(this.gridvendorinvoice);
-            this.Controls.Add(this.pnlRowInfo);
+            this.Controls.Add(this.scContent);
             this.Controls.Add(this.pnlFilterAndButtons);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VendorInvoices_Form";
@@ -1540,6 +1561,10 @@
             this.pnlUpdateBuyPrice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleInvoices)).EndInit();
             this.pnlRowInfoHeaderContainer.ResumeLayout(false);
+            this.scContent.Panel1.ResumeLayout(false);
+            this.scContent.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scContent)).EndInit();
+            this.scContent.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1627,12 +1652,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridInventory_BuyValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridinventory_packinglistno;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridInventory_Notes;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Vendors;
         private System.Windows.Forms.Button btnApplyFilter;
         private System.Windows.Forms.Panel panel2;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_Start;
         private LIBUtil.Desktop.UserControls.InputControl_DateTimePicker idtp_Timestamp_End;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.CheckBox chkHideColumns;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_Vendors;
+        private System.Windows.Forms.SplitContainer scContent;
     }
 }

@@ -68,9 +68,9 @@
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 200);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 202);
             this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlActionButtons.Size = new System.Drawing.Size(1067, 30);
+            this.pnlActionButtons.Size = new System.Drawing.Size(1067, 28);
             // 
             // scInputLeft
             // 
@@ -87,13 +87,13 @@
             this.scInputLeft.Panel2.Controls.Add(this.in_MaxCommissionAmount);
             this.scInputLeft.Panel2.Controls.Add(this.in_PercentageOfPercentCommission);
             this.scInputLeft.Panel2.Controls.Add(this.itxt_Notes);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 168);
+            this.scInputLeft.Size = new System.Drawing.Size(500, 170);
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
             // 
             this.scInputRight.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputRight.Size = new System.Drawing.Size(560, 168);
+            this.scInputRight.Size = new System.Drawing.Size(560, 170);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
@@ -137,12 +137,8 @@
             // scInputContainer
             // 
             this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputContainer.Size = new System.Drawing.Size(1067, 168);
+            this.scInputContainer.Size = new System.Drawing.Size(1067, 170);
             this.scInputContainer.SplitterWidth = 7;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
             // 
             // ptInputPanel
             // 
@@ -156,7 +152,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 261);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 176);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -175,11 +171,12 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 235);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 150);
             // 
             // pbLog
             // 
             this.pbLog.Margin = new System.Windows.Forms.Padding(5);
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // pbRefresh
             // 
@@ -193,7 +190,7 @@
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1067, 331);
-            this.scContent.SplitterDistance = 65;
+            this.scContent.SplitterDistance = 150;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Notes
@@ -248,6 +245,7 @@
             this.iddl_ProductStoreNames.ShowDropdownlistOnly = false;
             this.iddl_ProductStoreNames.Size = new System.Drawing.Size(240, 50);
             this.iddl_ProductStoreNames.TabIndex = 5;
+            this.iddl_ProductStoreNames.UpdateLink_Click += new System.EventHandler(this.iddl_StoreName_UpdateLink_Click);
             // 
             // iddl_Vendors
             // 
@@ -265,6 +263,7 @@
             this.iddl_Vendors.ShowDropdownlistOnly = false;
             this.iddl_Vendors.Size = new System.Drawing.Size(240, 50);
             this.iddl_Vendors.TabIndex = 6;
+            this.iddl_Vendors.UpdateLink_Click += new System.EventHandler(this.iddl_Vendors_UpdateLink_Click);
             // 
             // in_PercentageOfPercentCommission
             // 

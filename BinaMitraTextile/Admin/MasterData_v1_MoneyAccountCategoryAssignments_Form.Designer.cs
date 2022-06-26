@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.itxt_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.iddl_MoneyAccounts_Id = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
+            this.iddl_MoneyAccounts = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.iddl_MoneyAccountCategories = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.panel1.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -76,7 +76,7 @@
             // scInputLeft.Panel1
             // 
             this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccountCategories);
-            this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccounts_Id);
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_MoneyAccounts);
             // 
             // scInputLeft.Panel2
             // 
@@ -93,41 +93,29 @@
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnAdd.Location = new System.Drawing.Point(4, 2);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Location = new System.Drawing.Point(271, 2);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(137, 2);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(4, 0);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSubmit.Size = new System.Drawing.Size(124, 33);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(252, 0);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Size = new System.Drawing.Size(124, 33);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(128, 0);
             this.btnReset.Margin = new System.Windows.Forms.Padding(5);
-            this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
@@ -146,12 +134,6 @@
             this.scInputContainer.Size = new System.Drawing.Size(1067, 120);
             this.scInputContainer.SplitterWidth = 7;
             // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(404, 2);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLog.Size = new System.Drawing.Size(133, 34);
-            // 
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Size = new System.Drawing.Size(1033, 34);
@@ -159,7 +141,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 256);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1067, 316);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -178,7 +160,11 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 230);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1067, 290);
+            // 
+            // pbLog
+            // 
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // itxt_QuickSearch
             // 
@@ -188,7 +174,7 @@
             // 
             this.scContent.Margin = new System.Windows.Forms.Padding(4);
             this.scContent.Size = new System.Drawing.Size(1067, 381);
-            this.scContent.SplitterDistance = 120;
+            this.scContent.SplitterDistance = 60;
             this.scContent.SplitterWidth = 5;
             // 
             // itxt_Notes
@@ -209,22 +195,23 @@
             this.itxt_Notes.TabIndex = 0;
             this.itxt_Notes.ValueText = "";
             // 
-            // iddl_MoneyAccounts_Id
+            // iddl_MoneyAccounts
             // 
-            this.iddl_MoneyAccounts_Id.DisableTextInput = false;
-            this.iddl_MoneyAccounts_Id.HideFilter = false;
-            this.iddl_MoneyAccounts_Id.HideUpdateLink = false;
-            this.iddl_MoneyAccounts_Id.LabelText = "Account";
-            this.iddl_MoneyAccounts_Id.Location = new System.Drawing.Point(5, 10);
-            this.iddl_MoneyAccounts_Id.Margin = new System.Windows.Forms.Padding(5);
-            this.iddl_MoneyAccounts_Id.Name = "iddl_MoneyAccounts_Id";
-            this.iddl_MoneyAccounts_Id.SelectedIndex = -1;
-            this.iddl_MoneyAccounts_Id.SelectedItem = null;
-            this.iddl_MoneyAccounts_Id.SelectedItemText = "";
-            this.iddl_MoneyAccounts_Id.SelectedValue = null;
-            this.iddl_MoneyAccounts_Id.ShowDropdownlistOnly = false;
-            this.iddl_MoneyAccounts_Id.Size = new System.Drawing.Size(239, 50);
-            this.iddl_MoneyAccounts_Id.TabIndex = 7;
+            this.iddl_MoneyAccounts.DisableTextInput = false;
+            this.iddl_MoneyAccounts.HideFilter = false;
+            this.iddl_MoneyAccounts.HideUpdateLink = false;
+            this.iddl_MoneyAccounts.LabelText = "Account";
+            this.iddl_MoneyAccounts.Location = new System.Drawing.Point(5, 10);
+            this.iddl_MoneyAccounts.Margin = new System.Windows.Forms.Padding(5);
+            this.iddl_MoneyAccounts.Name = "iddl_MoneyAccounts";
+            this.iddl_MoneyAccounts.SelectedIndex = -1;
+            this.iddl_MoneyAccounts.SelectedItem = null;
+            this.iddl_MoneyAccounts.SelectedItemText = "";
+            this.iddl_MoneyAccounts.SelectedValue = null;
+            this.iddl_MoneyAccounts.ShowDropdownlistOnly = false;
+            this.iddl_MoneyAccounts.Size = new System.Drawing.Size(239, 50);
+            this.iddl_MoneyAccounts.TabIndex = 7;
+            this.iddl_MoneyAccounts.UpdateLink_Click += new System.EventHandler(this.iddl_MoneyAccounts_UpdateLink_Click);
             // 
             // iddl_MoneyAccountCategories
             // 
@@ -242,6 +229,7 @@
             this.iddl_MoneyAccountCategories.ShowDropdownlistOnly = false;
             this.iddl_MoneyAccountCategories.Size = new System.Drawing.Size(239, 50);
             this.iddl_MoneyAccountCategories.TabIndex = 8;
+            this.iddl_MoneyAccountCategories.UpdateLink_Click += new System.EventHandler(this.iddl_MoneyAccountCategories_UpdateLink_Click);
             // 
             // MasterData_v1_MoneyAccountCategoryAssignments_Form
             // 
@@ -285,6 +273,6 @@
 
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_Notes;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccountCategories;
-        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccounts_Id;
+        private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_MoneyAccounts;
     }
 }

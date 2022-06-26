@@ -11,7 +11,7 @@ namespace BinaMitraTextile.Admin
         /*******************************************************************************************************/
         #region SETTINGS
 
-        private const bool FORM_SHOWDATAONLOAD = true;
+        private const bool FORM_SHOWDATAONLOAD = false;
         private const bool FORM_SHOWPROGRESSBARONPOPULATE = false;
         private const int FORM_TIMERTIMEOUTSECONDS = 20;
 

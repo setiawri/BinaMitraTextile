@@ -71,7 +71,7 @@
             // 
             // pnlActionButtons
             // 
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 202);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 197);
             this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(5);
             this.pnlActionButtons.Size = new System.Drawing.Size(1179, 28);
             // 
@@ -81,16 +81,16 @@
             // 
             // scInputLeft.Panel1
             // 
-            this.scInputLeft.Panel1.Controls.Add(this.iddl_Sales_UserAccounts);
+            this.scInputLeft.Panel1.Controls.Add(this.iddl_Cities);
             this.scInputLeft.Panel1.Controls.Add(this.itxt_Phone2);
             this.scInputLeft.Panel1.Controls.Add(this.itxt_Phone1);
             this.scInputLeft.Panel1.Controls.Add(this.itxt_Name);
             // 
             // scInputLeft.Panel2
             // 
-            this.scInputLeft.Panel2.Controls.Add(this.iddl_Cities);
+            this.scInputLeft.Panel2.Controls.Add(this.iddl_Transports);
             this.scInputLeft.Panel2.Controls.Add(this.itxt_Address);
-            this.scInputLeft.Size = new System.Drawing.Size(500, 164);
+            this.scInputLeft.Size = new System.Drawing.Size(500, 165);
             this.scInputLeft.SplitterWidth = 7;
             // 
             // scInputRight
@@ -99,73 +99,42 @@
             // 
             // scInputRight.Panel1
             // 
-            this.scInputRight.Panel1.Controls.Add(this.iddl_Transports);
+            this.scInputRight.Panel1.Controls.Add(this.iddl_Sales_UserAccounts);
             this.scInputRight.Panel1.Controls.Add(this.itxt_Notes);
-            this.scInputRight.Size = new System.Drawing.Size(672, 164);
+            this.scInputRight.Size = new System.Drawing.Size(672, 165);
             this.scInputRight.SplitterWidth = 7;
             // 
             // btnAdd
             // 
             this.btnAdd.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnAdd.Location = new System.Drawing.Point(4, 2);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAdd.Size = new System.Drawing.Size(133, 34);
             // 
             // btnUpdate
             // 
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Location = new System.Drawing.Point(271, 2);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(5);
-            this.btnUpdate.Size = new System.Drawing.Size(133, 34);
             // 
             // btnSearch
             // 
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(137, 2);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSearch.Size = new System.Drawing.Size(133, 34);
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(4, 0);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSubmit.Size = new System.Drawing.Size(124, 33);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(252, 0);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Size = new System.Drawing.Size(124, 33);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(128, 0);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(5);
-            this.btnReset.Size = new System.Drawing.Size(124, 33);
             // 
             // scMain
             // 
             this.scMain.Margin = new System.Windows.Forms.Padding(5);
             this.scMain.Size = new System.Drawing.Size(1179, 596);
-            this.scMain.SplitterDistance = 230;
+            this.scMain.SplitterDistance = 225;
             // 
             // pnlButtons
             // 
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlButtons.Size = new System.Drawing.Size(1179, 38);
+            this.pnlButtons.Size = new System.Drawing.Size(1179, 32);
             // 
             // scInputContainer
             // 
-            this.scInputContainer.Location = new System.Drawing.Point(0, 38);
             this.scInputContainer.Margin = new System.Windows.Forms.Padding(5);
-            this.scInputContainer.Size = new System.Drawing.Size(1179, 164);
+            this.scInputContainer.Size = new System.Drawing.Size(1179, 165);
             this.scInputContainer.SplitterWidth = 7;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Location = new System.Drawing.Point(404, 2);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(5);
-            this.btnLog.Size = new System.Drawing.Size(133, 34);
             // 
             // ptInputPanel
             // 
@@ -179,7 +148,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 262);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 296);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -197,7 +166,11 @@
             // pnlRowInfoContent
             // 
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 236);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 270);
+            // 
+            // pbLog
+            // 
+            this.pbLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // itxt_QuickSearch
             // 
@@ -205,14 +178,14 @@
             // 
             // scContent
             // 
-            this.scContent.Size = new System.Drawing.Size(1179, 331);
-            this.scContent.SplitterDistance = 65;
+            this.scContent.Size = new System.Drawing.Size(1179, 336);
+            this.scContent.SplitterDistance = 36;
             // 
             // itxt_Notes
             // 
             this.itxt_Notes.IsBrowseMode = false;
             this.itxt_Notes.LabelText = "Notes";
-            this.itxt_Notes.Location = new System.Drawing.Point(5, 58);
+            this.itxt_Notes.Location = new System.Drawing.Point(5, 7);
             this.itxt_Notes.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Notes.MaxLength = 32767;
             this.itxt_Notes.MultiLine = true;
@@ -223,7 +196,7 @@
             this.itxt_Notes.ShowFilter = false;
             this.itxt_Notes.ShowTextboxOnly = false;
             this.itxt_Notes.Size = new System.Drawing.Size(239, 101);
-            this.itxt_Notes.TabIndex = 7;
+            this.itxt_Notes.TabIndex = 6;
             this.itxt_Notes.ValueText = "";
             // 
             // itxt_Name
@@ -248,7 +221,7 @@
             // 
             this.itxt_Phone1.IsBrowseMode = false;
             this.itxt_Phone1.LabelText = "Phone 1";
-            this.itxt_Phone1.Location = new System.Drawing.Point(4, 58);
+            this.itxt_Phone1.Location = new System.Drawing.Point(4, 57);
             this.itxt_Phone1.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Phone1.MaxLength = 32767;
             this.itxt_Phone1.MultiLine = false;
@@ -266,7 +239,7 @@
             // 
             this.itxt_Phone2.IsBrowseMode = false;
             this.itxt_Phone2.LabelText = "Phone 2";
-            this.itxt_Phone2.Location = new System.Drawing.Point(128, 56);
+            this.itxt_Phone2.Location = new System.Drawing.Point(128, 57);
             this.itxt_Phone2.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_Phone2.MaxLength = 32767;
             this.itxt_Phone2.MultiLine = false;
@@ -286,7 +259,7 @@
             this.iddl_Sales_UserAccounts.HideFilter = false;
             this.iddl_Sales_UserAccounts.HideUpdateLink = false;
             this.iddl_Sales_UserAccounts.LabelText = "Sales";
-            this.iddl_Sales_UserAccounts.Location = new System.Drawing.Point(4, 109);
+            this.iddl_Sales_UserAccounts.Location = new System.Drawing.Point(5, 109);
             this.iddl_Sales_UserAccounts.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_Sales_UserAccounts.Name = "iddl_Sales_UserAccounts";
             this.iddl_Sales_UserAccounts.SelectedIndex = -1;
@@ -294,8 +267,8 @@
             this.iddl_Sales_UserAccounts.SelectedItemText = "";
             this.iddl_Sales_UserAccounts.SelectedValue = null;
             this.iddl_Sales_UserAccounts.ShowDropdownlistOnly = false;
-            this.iddl_Sales_UserAccounts.Size = new System.Drawing.Size(240, 47);
-            this.iddl_Sales_UserAccounts.TabIndex = 4;
+            this.iddl_Sales_UserAccounts.Size = new System.Drawing.Size(240, 50);
+            this.iddl_Sales_UserAccounts.TabIndex = 7;
             // 
             // iddl_Cities
             // 
@@ -303,7 +276,7 @@
             this.iddl_Cities.HideFilter = false;
             this.iddl_Cities.HideUpdateLink = false;
             this.iddl_Cities.LabelText = "City";
-            this.iddl_Cities.Location = new System.Drawing.Point(4, 6);
+            this.iddl_Cities.Location = new System.Drawing.Point(4, 109);
             this.iddl_Cities.Margin = new System.Windows.Forms.Padding(5);
             this.iddl_Cities.Name = "iddl_Cities";
             this.iddl_Cities.SelectedIndex = -1;
@@ -311,8 +284,9 @@
             this.iddl_Cities.SelectedItemText = "";
             this.iddl_Cities.SelectedValue = null;
             this.iddl_Cities.ShowDropdownlistOnly = false;
-            this.iddl_Cities.Size = new System.Drawing.Size(235, 50);
-            this.iddl_Cities.TabIndex = 6;
+            this.iddl_Cities.Size = new System.Drawing.Size(240, 50);
+            this.iddl_Cities.TabIndex = 3;
+            this.iddl_Cities.UpdateLink_Click += new System.EventHandler(this.Iddl_Cities_UpdateLink_Click);
             // 
             // iddl_Transports
             // 
@@ -320,16 +294,17 @@
             this.iddl_Transports.HideFilter = false;
             this.iddl_Transports.HideUpdateLink = false;
             this.iddl_Transports.LabelText = "Angkutan";
-            this.iddl_Transports.Location = new System.Drawing.Point(5, 6);
-            this.iddl_Transports.Margin = new System.Windows.Forms.Padding(5);
+            this.iddl_Transports.Location = new System.Drawing.Point(4, 7);
+            this.iddl_Transports.Margin = new System.Windows.Forms.Padding(4);
             this.iddl_Transports.Name = "iddl_Transports";
             this.iddl_Transports.SelectedIndex = -1;
             this.iddl_Transports.SelectedItem = null;
             this.iddl_Transports.SelectedItemText = "";
             this.iddl_Transports.SelectedValue = null;
             this.iddl_Transports.ShowDropdownlistOnly = false;
-            this.iddl_Transports.Size = new System.Drawing.Size(239, 50);
-            this.iddl_Transports.TabIndex = 8;
+            this.iddl_Transports.Size = new System.Drawing.Size(235, 50);
+            this.iddl_Transports.TabIndex = 4;
+            this.iddl_Transports.UpdateLink_Click += new System.EventHandler(this.Iddl_Transports_UpdateLink_Click);
             // 
             // itxt_Address
             // 
@@ -346,7 +321,7 @@
             this.itxt_Address.ShowFilter = false;
             this.itxt_Address.ShowTextboxOnly = false;
             this.itxt_Address.Size = new System.Drawing.Size(235, 101);
-            this.itxt_Address.TabIndex = 7;
+            this.itxt_Address.TabIndex = 5;
             this.itxt_Address.ValueText = "";
             // 
             // MasterData_v1_Customers_Form

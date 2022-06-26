@@ -162,6 +162,12 @@ namespace BinaMitraTextile.Admin
             ProductStoreName.populateDropDownList(iddl_ProductStoreNames.Dropdownlist.combobox, false, true);
         }
 
+        private void iddl_Vendors_UpdateLink_Click(object sender, EventArgs e)
+        {
+            Util.displayForm(null, new MasterData_v1_Vendors_Form(FormModes.Add), false);
+            Vendor.populateDropDownList(iddl_Vendors.Dropdownlist.combobox, false, true);
+        }
+
         #endregion EVENT HANDLERS
         /*******************************************************************************************************/
     }

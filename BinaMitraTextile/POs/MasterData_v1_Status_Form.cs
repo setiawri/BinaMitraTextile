@@ -53,7 +53,7 @@ namespace BinaMitraTextile.POs
             
             setColumnsDataPropertyNames(POItem.COL_DB_ID, null, POItem.COL_STATUSNAME, POItem.COL_DB_STATUSENUMID, null, null);
             btnAdd.Enabled = false;
-            btnLog.Enabled = false;
+            pbLog.Visible = false;
             
             iddl_POItemStatus.populate(typeof(POItemStatus));
 

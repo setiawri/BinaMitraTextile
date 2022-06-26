@@ -171,7 +171,7 @@
             this.scInputMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scInputMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scInputMain.IsSplitterFixed = true;
-            this.scInputMain.Location = new System.Drawing.Point(4, 19);
+            this.scInputMain.Location = new System.Drawing.Point(4, 17);
             this.scInputMain.Margin = new System.Windows.Forms.Padding(0);
             this.scInputMain.MinimumSize = new System.Drawing.Size(1067, 0);
             this.scInputMain.Name = "scInputMain";
@@ -183,7 +183,7 @@
             // scInputMain.Panel2
             // 
             this.scInputMain.Panel2.Controls.Add(this.scInputRight);
-            this.scInputMain.Size = new System.Drawing.Size(1325, 355);
+            this.scInputMain.Size = new System.Drawing.Size(1325, 357);
             this.scInputMain.SplitterDistance = 496;
             this.scInputMain.SplitterWidth = 5;
             this.scInputMain.TabIndex = 0;
@@ -198,7 +198,7 @@
             this.scInputLeft.Margin = new System.Windows.Forms.Padding(0);
             this.scInputLeft.MinimumSize = new System.Drawing.Size(533, 0);
             this.scInputLeft.Name = "scInputLeft";
-            this.scInputLeft.Size = new System.Drawing.Size(533, 355);
+            this.scInputLeft.Size = new System.Drawing.Size(533, 357);
             this.scInputLeft.SplitterDistance = 248;
             this.scInputLeft.SplitterWidth = 5;
             this.scInputLeft.TabIndex = 0;
@@ -211,7 +211,7 @@
             this.scInputRight.Margin = new System.Windows.Forms.Padding(0);
             this.scInputRight.MinimumSize = new System.Drawing.Size(533, 0);
             this.scInputRight.Name = "scInputRight";
-            this.scInputRight.Size = new System.Drawing.Size(824, 355);
+            this.scInputRight.Size = new System.Drawing.Size(824, 357);
             this.scInputRight.SplitterDistance = 401;
             this.scInputRight.SplitterWidth = 5;
             this.scInputRight.TabIndex = 1;
@@ -220,10 +220,10 @@
             // chkIncludeInactive
             // 
             this.chkIncludeInactive.AutoSize = true;
-            this.chkIncludeInactive.Location = new System.Drawing.Point(277, 7);
+            this.chkIncludeInactive.Location = new System.Drawing.Point(201, 9);
             this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4);
             this.chkIncludeInactive.Name = "chkIncludeInactive";
-            this.chkIncludeInactive.Size = new System.Drawing.Size(106, 20);
+            this.chkIncludeInactive.Size = new System.Drawing.Size(91, 17);
             this.chkIncludeInactive.TabIndex = 8;
             this.chkIncludeInactive.TabStop = false;
             this.chkIncludeInactive.Text = "show inactive";
@@ -549,7 +549,7 @@
             this.lnkClearQuickSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkClearQuickSearch.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkClearQuickSearch.LinkColor = System.Drawing.Color.DarkOrange;
-            this.lnkClearQuickSearch.Location = new System.Drawing.Point(252, 10);
+            this.lnkClearQuickSearch.Location = new System.Drawing.Point(176, 11);
             this.lnkClearQuickSearch.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lnkClearQuickSearch.Name = "lnkClearQuickSearch";
             this.lnkClearQuickSearch.Size = new System.Drawing.Size(15, 13);
@@ -562,19 +562,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Location = new System.Drawing.Point(4, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 16);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Quick Search:";
             // 
             // txtQuickSearch
             // 
-            this.txtQuickSearch.Location = new System.Drawing.Point(104, 5);
+            this.txtQuickSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.txtQuickSearch.Location = new System.Drawing.Point(79, 5);
             this.txtQuickSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuickSearch.Name = "txtQuickSearch";
-            this.txtQuickSearch.Size = new System.Drawing.Size(145, 22);
+            this.txtQuickSearch.Size = new System.Drawing.Size(94, 24);
             this.txtQuickSearch.TabIndex = 0;
             this.txtQuickSearch.TextChanged += new System.EventHandler(this.txtQuickSearch_TextChanged);
             // 

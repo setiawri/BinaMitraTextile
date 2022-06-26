@@ -67,6 +67,7 @@
             this.Admin = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Todolist = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_CashAccounts = new System.Windows.Forms.ToolStripMenuItem();
+            this.Admin_StokOpname = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Angkutan = new System.Windows.Forms.ToolStripMenuItem();
             this.Admin_Cities = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +122,7 @@
             this.pnlShortcutHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlShortcutHeader = new System.Windows.Forms.Panel();
             this.tpShortcutPanel = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.Admin_StokOpname = new System.Windows.Forms.ToolStripMenuItem();
+            this.Inventory_IncompletePO = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.pnlShortcutContainer.SuspendLayout();
             this.pnlShortcuts.SuspendLayout();
@@ -217,28 +218,28 @@
             // Sales_Customers_Daftar
             // 
             this.Sales_Customers_Daftar.Name = "Sales_Customers_Daftar";
-            this.Sales_Customers_Daftar.Size = new System.Drawing.Size(130, 22);
-            this.Sales_Customers_Daftar.Text = "Daftar";
+            this.Sales_Customers_Daftar.Size = new System.Drawing.Size(163, 22);
+            this.Sales_Customers_Daftar.Text = "Customers";
             this.Sales_Customers_Daftar.Click += new System.EventHandler(this.Sales_Customers_Daftar_Click);
             // 
             // Sales_Customers_Credits
             // 
             this.Sales_Customers_Credits.Name = "Sales_Customers_Credits";
-            this.Sales_Customers_Credits.Size = new System.Drawing.Size(130, 22);
+            this.Sales_Customers_Credits.Size = new System.Drawing.Size(163, 22);
             this.Sales_Customers_Credits.Text = "Credits";
             this.Sales_Customers_Credits.Click += new System.EventHandler(this.Sales_Customers_Credits_Click);
             // 
             // Sales_Customers_Discounts
             // 
             this.Sales_Customers_Discounts.Name = "Sales_Customers_Discounts";
-            this.Sales_Customers_Discounts.Size = new System.Drawing.Size(130, 22);
-            this.Sales_Customers_Discounts.Text = "Discounts";
+            this.Sales_Customers_Discounts.Size = new System.Drawing.Size(163, 22);
+            this.Sales_Customers_Discounts.Text = "Price Adjustments";
             this.Sales_Customers_Discounts.Click += new System.EventHandler(this.Sales_Customers_Discounts_Click);
             // 
             // Sales_Customers_DebLimits
             // 
             this.Sales_Customers_DebLimits.Name = "Sales_Customers_DebLimits";
-            this.Sales_Customers_DebLimits.Size = new System.Drawing.Size(130, 22);
+            this.Sales_Customers_DebLimits.Size = new System.Drawing.Size(163, 22);
             this.Sales_Customers_DebLimits.Text = "Debt Limits";
             this.Sales_Customers_DebLimits.Click += new System.EventHandler(this.Sales_Customers_DebLimits_Click);
             // 
@@ -275,6 +276,7 @@
             this.Inventory_Products,
             this.toolStripMenuItem2,
             this.Inventory_PurchaseOrders,
+            this.Inventory_IncompletePO,
             this.Inventory_VendorInvoices,
             this.Inventory_FakturPajak,
             this.Inventory_VendorInvoicePayment});
@@ -463,6 +465,13 @@
             this.Admin_CashAccounts.Size = new System.Drawing.Size(182, 22);
             this.Admin_CashAccounts.Text = "Petty Cash";
             this.Admin_CashAccounts.Click += new System.EventHandler(this.Admin_CashAccounts_Click);
+            // 
+            // Admin_StokOpname
+            // 
+            this.Admin_StokOpname.Name = "Admin_StokOpname";
+            this.Admin_StokOpname.Size = new System.Drawing.Size(182, 22);
+            this.Admin_StokOpname.Text = "Stok Opname";
+            this.Admin_StokOpname.Click += new System.EventHandler(this.BtnOpname_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -1141,12 +1150,12 @@
             this.tpShortcutPanel.TabIndex = 19;
             this.tpShortcutPanel.TogglePanel = null;
             // 
-            // Admin_StokOpname
+            // Inventory_IncompletePO
             // 
-            this.Admin_StokOpname.Name = "Admin_StokOpname";
-            this.Admin_StokOpname.Size = new System.Drawing.Size(182, 22);
-            this.Admin_StokOpname.Text = "Stok Opname";
-            this.Admin_StokOpname.Click += new System.EventHandler(this.BtnOpname_Click);
+            this.Inventory_IncompletePO.Name = "Inventory_IncompletePO";
+            this.Inventory_IncompletePO.Size = new System.Drawing.Size(186, 22);
+            this.Inventory_IncompletePO.Text = "Incomplete PO";
+            this.Inventory_IncompletePO.Click += new System.EventHandler(this.Inventory_IncompletePO_Click);
             // 
             // Container_Form
             // 
@@ -1275,5 +1284,6 @@
         private System.Windows.Forms.ToolStripMenuItem Admin_MoneyAccountCategories;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem Admin_StokOpname;
+        private System.Windows.Forms.ToolStripMenuItem Inventory_IncompletePO;
     }
 }
