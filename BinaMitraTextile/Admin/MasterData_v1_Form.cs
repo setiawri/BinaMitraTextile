@@ -114,8 +114,8 @@ namespace BinaMitraTextile
                 col_grid_active.Visible = false;
                 col_grid_default.Visible = false;
                 col_grid_checkbox1.Visible = false;
-                txtQuickSearch.Select();
             }
+            txtQuickSearch.Select();
         }
 
         #endregion INITIALIZATION
@@ -322,11 +322,12 @@ namespace BinaMitraTextile
         {
             if (isValidToPopulateGridViewDataSource())
             {
-                DataView dvw;
-                if (reloadFromDB)
-                    dvw = loadGridviewDataSource();
-                else
+                DataView dvw = null;
+                if (!reloadFromDB)
                     dvw = (DataView)gridview.DataSource;
+
+                if (reloadFromDB || dvw == null)
+                    dvw = loadGridviewDataSource();
 
                 dvw.RowFilter = Tools.compileQuickSearchFilter(txtQuickSearch.Text.Trim(), FieldnamesForQuickSearch.ToArray());
                 setGridviewDataSource(dvw);
@@ -436,13 +437,7 @@ namespace BinaMitraTextile
 
         protected void txtQuickSearch_TextChanged(object sender, EventArgs e)
         {
-            if (Mode == FormMode.Update)
-            {
-                btnSearch.PerformClick();
-                txtQuickSearch.Focus();
-            }
 
-            populateGridViewDataSource(false);
         }
 
         protected void lnkClearQuickSearch_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -592,6 +587,18 @@ namespace BinaMitraTextile
                 gridview.SelectionMode = DataGridViewSelectionMode.CellSelect;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void txtQuickSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                if (Mode == FormMode.Update)
+                    btnSearch.PerformClick();
+
+                populateGridViewDataSource(false);
+                txtQuickSearch.Focus();
+            }
         }
 
         #endregion EVENT HANDLERS

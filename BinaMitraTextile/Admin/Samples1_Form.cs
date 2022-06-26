@@ -18,7 +18,7 @@ namespace BinaMitraTextile.Admin
 
         private const string FORM_TITLE = "SAMPLES";
         private const int FORM_MINIMUMWIDTH = 900;
-        private const bool FORM_SHOWDATAONLOAD = true;
+        private const bool FORM_SHOWDATAONLOAD = false;
 
         #endregion SETTINGS
         /*******************************************************************************************************/
