@@ -79,8 +79,8 @@ namespace BinaMitraTextile.InventoryForm
             DataTable dt = InventoryItem.getItems(_inventory.id);
             grid.DataSource = dt;
             Inventory.setCount(lblCount,
-                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL", InventoryItem.COL_IS_SOLD)).ToString(),
-                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL", InventoryItem.COL_IS_SOLD)).ToString());
+                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL OR {0} = 0", InventoryItem.COL_IS_SOLD)).ToString(),
+                dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL OR {0} = 0", InventoryItem.COL_IS_SOLD)).ToString());
             Inventory.setCount(lblReceived,
                 dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH),"").ToString(),
                 dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
