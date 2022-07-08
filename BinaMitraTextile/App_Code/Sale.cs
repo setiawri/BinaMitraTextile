@@ -126,6 +126,7 @@ namespace BinaMitraTextile
         public Guid? Vendors_Id;
         public bool voided;
         public Guid user_id;
+        public bool Completed = false;
         public string notes = "";
         public DataTable temporaryDataTable;
         public string barcode = "";
@@ -179,6 +180,7 @@ namespace BinaMitraTextile
                 Vendors_Id = Util.wrapNullable<Guid?>(row, COL_DB_Vendors_Id);
                 voided = (Boolean)row["voided"];
                 user_id = (Guid)row["user_id"];
+                Completed = Util.wrapNullable<bool>(row, COL_COMPLETED);
                 notes = row["notes"].ToString();
                 customer_info = row["customer_info"].ToString();
                 barcode = Util.wrapNullable<string>(row["hexbarcode"]);
@@ -512,6 +514,7 @@ namespace BinaMitraTextile
         {
             return get(null, null, null, null, null, null, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null, false, true, null);
         }
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(null, null, null, null, null, Id, false, false, false, false, false, null, null, null, false, false, null, null, null, null, null, false, false, null)); }
         public static DataTable get(DateTime? dateStart, DateTime? dateEnd, Guid? inventoryID, Guid? customerID, Guid? Vendors_Id, Guid? saleID,
            bool onlyHasReceivable, bool OnlyNoFakturPajak, bool onlyLossProfit, bool onlyReturnedToSupplier, bool onlyWithCommission, Guid? salesUserAccountID,
            DataTable dtProductStoreNameID, DataTable dtColorID, bool onlyNotCompleted, bool onlyManualAdjustment, string inventoryCode)

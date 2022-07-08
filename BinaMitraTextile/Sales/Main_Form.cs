@@ -366,6 +366,18 @@ namespace BinaMitraTextile.Sales
                 Util.displayForm(new Admin.MoneyAccountItems_Add_Form(selectedRowID(), (bool)Util.getSelectedRowValue(sender, col_gridmaster_completed)));
                 populateMasterGrid();
             }
+            else if (Util.isColumnMatch(sender, e, col_gridmaster_shippingcost))
+            {
+                Sale sale = new Sale(selectedRowID());
+                if (sale.Completed)
+                    Util.displayMessageBoxError("Cannot edit approved invoice. Please contact supervisor.");
+                else
+                {
+                    in_ShippingCost.Value = sale.ShippingCost;
+                    pnlUpdateShippingAmount.Visible = true;
+                    in_ShippingCost.focus();
+                }
+            }
             else
             {
                 //show details and summary
@@ -446,6 +458,28 @@ namespace BinaMitraTextile.Sales
         private void pbRefresh_Click(object sender, EventArgs e)
         {
             populateMasterGrid();
+        }
+
+        private void btnUpdateShippingCost_Click(object sender, EventArgs e)
+        {
+            Sale sale = new Sale(selectedRowID());
+            if(in_ShippingCost.Value != sale.ShippingCost)
+            {
+                Sale.update(sale.id, sale.customer_id, sale.Vendors_Id, sale.sale_items, sale.TransportID, in_ShippingCost.ValueInt, sale.notes);
+                populateMasterGrid();
+            }
+            pnlUpdateShippingAmount.Visible = false;
+        }
+
+        private void btnCancelUpdateShippingCost_Click(object sender, EventArgs e)
+        {
+            pnlUpdateShippingAmount.Visible = false;
+        }
+
+        private void in_ShippingCost_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+                btnUpdateShippingCost.PerformClick();
         }
 
         #endregion FORM METHODS
