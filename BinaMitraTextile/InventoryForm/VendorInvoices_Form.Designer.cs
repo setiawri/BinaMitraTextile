@@ -83,6 +83,7 @@
             this.col_gridInventory_Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlFilterAndButtons = new System.Windows.Forms.Panel();
             this.pnlFilterAndButtonsContent = new System.Windows.Forms.Panel();
+            this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.lblPayableAmount = new System.Windows.Forms.Label();
             this.lblDueAmount = new System.Windows.Forms.Label();
             this.lblGrandTotalPayable = new System.Windows.Forms.Label();
@@ -154,7 +155,6 @@
             this.pnlRowInfoHeaderContainer = new System.Windows.Forms.Panel();
             this.pnlRowInfoHeader = new System.Windows.Forms.Panel();
             this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
-            this.iddl_Vendors = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.scContent = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             this.pnlFilterAndButtons.SuspendLayout();
@@ -174,6 +174,7 @@
             this.pnlUpdateBuyPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleInvoices)).BeginInit();
             this.pnlRowInfoHeaderContainer.SuspendLayout();
+            this.scContent.Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scContent)).BeginInit();
             this.scContent.Panel1.SuspendLayout();
             this.scContent.Panel2.SuspendLayout();
@@ -226,7 +227,7 @@
             this.gridInventory.Name = "gridInventory";
             this.gridInventory.RowHeadersVisible = false;
             this.gridInventory.RowHeadersWidth = 51;
-            this.gridInventory.Size = new System.Drawing.Size(812, 206);
+            this.gridInventory.Size = new System.Drawing.Size(810, 206);
             this.gridInventory.TabIndex = 6;
             this.gridInventory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridInventory_CellContentClick);
             this.gridInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridInventory_CellDoubleClick);
@@ -418,6 +419,24 @@
             this.pnlFilterAndButtonsContent.Name = "pnlFilterAndButtonsContent";
             this.pnlFilterAndButtonsContent.Size = new System.Drawing.Size(1085, 80);
             this.pnlFilterAndButtonsContent.TabIndex = 9;
+            // 
+            // iddl_Vendors
+            // 
+            this.iddl_Vendors.DisableTextInput = false;
+            this.iddl_Vendors.HideFilter = false;
+            this.iddl_Vendors.HideUpdateLink = true;
+            this.iddl_Vendors.LabelText = "Vendors";
+            this.iddl_Vendors.Location = new System.Drawing.Point(4, 22);
+            this.iddl_Vendors.Margin = new System.Windows.Forms.Padding(4);
+            this.iddl_Vendors.Name = "iddl_Vendors";
+            this.iddl_Vendors.SelectedIndex = -1;
+            this.iddl_Vendors.SelectedItem = null;
+            this.iddl_Vendors.SelectedItemText = "";
+            this.iddl_Vendors.SelectedValue = null;
+            this.iddl_Vendors.ShowDropdownlistOnly = false;
+            this.iddl_Vendors.Size = new System.Drawing.Size(150, 50);
+            this.iddl_Vendors.TabIndex = 10;
+            this.iddl_Vendors.SelectedIndexChanged += new System.EventHandler(this.Iddl_Vendors_SelectedIndexChanged);
             // 
             // lblPayableAmount
             // 
@@ -1216,7 +1235,7 @@
             this.scRowInfo.Panel2.Controls.Add(this.gridSaleInvoices);
             this.scRowInfo.Panel2.Controls.Add(this.lblReturns);
             this.scRowInfo.Size = new System.Drawing.Size(1085, 234);
-            this.scRowInfo.SplitterDistance = 812;
+            this.scRowInfo.SplitterDistance = 810;
             this.scRowInfo.SplitterWidth = 5;
             this.scRowInfo.TabIndex = 7;
             // 
@@ -1227,7 +1246,7 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(253, 69);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(252, 69);
             this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(306, 135);
@@ -1302,7 +1321,7 @@
             this.lblSaleInvoices.Location = new System.Drawing.Point(0, 0);
             this.lblSaleInvoices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaleInvoices.Name = "lblSaleInvoices";
-            this.lblSaleInvoices.Size = new System.Drawing.Size(812, 28);
+            this.lblSaleInvoices.Size = new System.Drawing.Size(810, 28);
             this.lblSaleInvoices.TabIndex = 106;
             this.lblSaleInvoices.Text = "Inventory";
             this.lblSaleInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1344,7 +1363,7 @@
             dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle37;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(268, 206);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(270, 206);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -1451,7 +1470,7 @@
             this.lblReturns.Location = new System.Drawing.Point(0, 0);
             this.lblReturns.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReturns.Name = "lblReturns";
-            this.lblReturns.Size = new System.Drawing.Size(268, 28);
+            this.lblReturns.Size = new System.Drawing.Size(270, 28);
             this.lblReturns.TabIndex = 107;
             this.lblReturns.Text = "Returns";
             this.lblReturns.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1482,7 +1501,11 @@
             // 
             this.ptRowInfo.AdjustLocationOnClick = true;
             this.ptRowInfo.BackColor = System.Drawing.Color.White;
-            this.ptRowInfo.ContainerPanel = this.pnlRowInfo;
+            // 
+            // scContent.Panel2
+            // 
+            this.scContent.Panel2.Controls.Add(this.pnlRowInfo);
+            this.ptRowInfo.ContainerPanel = this.scContent.Panel2;
             this.ptRowInfo.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.ptRowInfo.Dock = System.Windows.Forms.DockStyle.Left;
             this.ptRowInfo.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
@@ -1492,24 +1515,7 @@
             this.ptRowInfo.Name = "ptRowInfo";
             this.ptRowInfo.Size = new System.Drawing.Size(27, 26);
             this.ptRowInfo.TabIndex = 5;
-            this.ptRowInfo.TogglePanel = null;
-            // 
-            // iddl_Vendors
-            // 
-            this.iddl_Vendors.DisableTextInput = false;
-            this.iddl_Vendors.HideFilter = false;
-            this.iddl_Vendors.HideUpdateLink = true;
-            this.iddl_Vendors.LabelText = "Vendors";
-            this.iddl_Vendors.Location = new System.Drawing.Point(4, 22);
-            this.iddl_Vendors.Margin = new System.Windows.Forms.Padding(4);
-            this.iddl_Vendors.Name = "iddl_Vendors";
-            this.iddl_Vendors.SelectedIndex = -1;
-            this.iddl_Vendors.SelectedItem = null;
-            this.iddl_Vendors.SelectedItemText = "";
-            this.iddl_Vendors.SelectedValue = null;
-            this.iddl_Vendors.ShowDropdownlistOnly = false;
-            this.iddl_Vendors.Size = new System.Drawing.Size(150, 50);
-            this.iddl_Vendors.TabIndex = 10;
+            this.ptRowInfo.TogglePanel = this.scContent.Panel2;
             // 
             // scContent
             // 
@@ -1561,6 +1567,7 @@
             this.pnlUpdateBuyPrice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleInvoices)).EndInit();
             this.pnlRowInfoHeaderContainer.ResumeLayout(false);
+            this.scContent.Panel2.ResumeLayout(false);
             this.scContent.Panel1.ResumeLayout(false);
             this.scContent.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scContent)).EndInit();
