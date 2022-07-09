@@ -133,7 +133,7 @@ namespace BinaMitraTextile
 
         public static DataTable get_by_FakturPajaks_Id(Guid FakturPajaks_Id)
         {
-            return get(null, null, null, true, false, null, null, FakturPajaks_Id, null, false);
+            return get(null, null, null, false, false, null, null, FakturPajaks_Id, null, false);
         }
 
         public static DataTable get_by_BrowsingForFakturPajak_Vendors_Id(Guid BrowsingForFakturPajak_Customers_Id, DateTime? Timestamp_Start, DateTime? Timestamp_End)
