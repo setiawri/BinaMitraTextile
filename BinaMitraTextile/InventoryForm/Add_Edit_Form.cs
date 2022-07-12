@@ -295,7 +295,6 @@ namespace BinaMitraTextile.InventoryForm
                 if (!chkPOItem.Checked && poItemPricePerUnit > 0)
                     buyPriceBeforePOItemChecked = poItemPricePerUnit;
             }
-            txtCode.Focus();
 
             //automatically fill out form
             if (_formMode == FormMode.New)

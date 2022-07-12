@@ -67,7 +67,7 @@
             // 
             this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNotes.Location = new System.Drawing.Point(137, 272);
+            this.txtNotes.Location = new System.Drawing.Point(122, 272);
             this.txtNotes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNotes.MaxLength = 500;
             this.txtNotes.Multiline = true;
@@ -78,7 +78,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(85, 272);
+            this.label5.Location = new System.Drawing.Point(81, 271);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 98;
@@ -87,7 +87,7 @@
             // lblBuyPrice
             // 
             this.lblBuyPrice.AutoSize = true;
-            this.lblBuyPrice.Location = new System.Drawing.Point(63, 404);
+            this.lblBuyPrice.Location = new System.Drawing.Point(64, 403);
             this.lblBuyPrice.Name = "lblBuyPrice";
             this.lblBuyPrice.Size = new System.Drawing.Size(52, 13);
             this.lblBuyPrice.TabIndex = 93;
@@ -95,7 +95,7 @@
             // 
             // txtBuyPrice
             // 
-            this.txtBuyPrice.Location = new System.Drawing.Point(137, 400);
+            this.txtBuyPrice.Location = new System.Drawing.Point(122, 400);
             this.txtBuyPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuyPrice.Name = "txtBuyPrice";
             this.txtBuyPrice.Size = new System.Drawing.Size(100, 20);
@@ -109,7 +109,7 @@
             this.btnAddGrade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddGrade.FlatAppearance.BorderSize = 0;
             this.btnAddGrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddGrade.Location = new System.Drawing.Point(417, 153);
+            this.btnAddGrade.Location = new System.Drawing.Point(402, 153);
             this.btnAddGrade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddGrade.Name = "btnAddGrade";
             this.btnAddGrade.Size = new System.Drawing.Size(20, 20);
@@ -122,7 +122,7 @@
             this.cbGrades.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbGrades.FormattingEnabled = true;
-            this.cbGrades.Location = new System.Drawing.Point(137, 151);
+            this.cbGrades.Location = new System.Drawing.Point(122, 151);
             this.cbGrades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbGrades.Name = "cbGrades";
             this.cbGrades.Size = new System.Drawing.Size(273, 21);
@@ -132,7 +132,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(84, 155);
+            this.label8.Location = new System.Drawing.Point(80, 154);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 133;
@@ -146,7 +146,7 @@
             this.btnAddColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddColor.FlatAppearance.BorderSize = 0;
             this.btnAddColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddColor.Location = new System.Drawing.Point(417, 242);
+            this.btnAddColor.Location = new System.Drawing.Point(402, 242);
             this.btnAddColor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddColor.Name = "btnAddColor";
             this.btnAddColor.Size = new System.Drawing.Size(20, 20);
@@ -159,7 +159,7 @@
             this.cbColors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbColors.FormattingEnabled = true;
-            this.cbColors.Location = new System.Drawing.Point(137, 241);
+            this.cbColors.Location = new System.Drawing.Point(122, 241);
             this.cbColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbColors.Name = "cbColors";
             this.cbColors.Size = new System.Drawing.Size(273, 21);
@@ -168,7 +168,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(91, 245);
+            this.label7.Location = new System.Drawing.Point(85, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 132;
@@ -182,7 +182,7 @@
             this.btnAddLengthUnit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddLengthUnit.FlatAppearance.BorderSize = 0;
             this.btnAddLengthUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddLengthUnit.Location = new System.Drawing.Point(417, 212);
+            this.btnAddLengthUnit.Location = new System.Drawing.Point(402, 212);
             this.btnAddLengthUnit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddLengthUnit.Name = "btnAddLengthUnit";
             this.btnAddLengthUnit.Size = new System.Drawing.Size(20, 20);
@@ -198,7 +198,7 @@
             this.btnAddProductWidth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddProductWidth.FlatAppearance.BorderSize = 0;
             this.btnAddProductWidth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProductWidth.Location = new System.Drawing.Point(417, 182);
+            this.btnAddProductWidth.Location = new System.Drawing.Point(402, 182);
             this.btnAddProductWidth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddProductWidth.Name = "btnAddProductWidth";
             this.btnAddProductWidth.Size = new System.Drawing.Size(20, 20);
@@ -214,7 +214,7 @@
             this.btnAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddProduct.FlatAppearance.BorderSize = 0;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProduct.Location = new System.Drawing.Point(417, 122);
+            this.btnAddProduct.Location = new System.Drawing.Point(402, 122);
             this.btnAddProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(20, 20);
@@ -225,7 +225,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 214);
+            this.label3.Location = new System.Drawing.Point(54, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 129;
@@ -236,7 +236,7 @@
             this.cbProductWidths.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbProductWidths.FormattingEnabled = true;
-            this.cbProductWidths.Location = new System.Drawing.Point(137, 182);
+            this.cbProductWidths.Location = new System.Drawing.Point(122, 182);
             this.cbProductWidths.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbProductWidths.Name = "cbProductWidths";
             this.cbProductWidths.Size = new System.Drawing.Size(273, 21);
@@ -248,7 +248,7 @@
             this.cbLengthUnits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbLengthUnits.FormattingEnabled = true;
-            this.cbLengthUnits.Location = new System.Drawing.Point(137, 212);
+            this.cbLengthUnits.Location = new System.Drawing.Point(122, 212);
             this.cbLengthUnits.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbLengthUnits.Name = "cbLengthUnits";
             this.cbLengthUnits.Size = new System.Drawing.Size(273, 21);
@@ -258,7 +258,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(73, 124);
+            this.label6.Location = new System.Drawing.Point(72, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 131;
@@ -267,7 +267,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 185);
+            this.label2.Location = new System.Drawing.Point(81, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 130;
@@ -300,7 +300,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 96);
+            this.label4.Location = new System.Drawing.Point(57, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 135;
@@ -309,7 +309,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(29, 37);
+            this.label9.Location = new System.Drawing.Point(39, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(77, 13);
             this.label9.TabIndex = 137;
@@ -319,7 +319,7 @@
             // 
             this.txtPackingListNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPackingListNo.Location = new System.Drawing.Point(137, 33);
+            this.txtPackingListNo.Location = new System.Drawing.Point(122, 33);
             this.txtPackingListNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPackingListNo.MaxLength = 50;
             this.txtPackingListNo.Name = "txtPackingListNo";
@@ -330,7 +330,7 @@
             // 
             this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCode.Location = new System.Drawing.Point(137, 334);
+            this.txtCode.Location = new System.Drawing.Point(122, 334);
             this.txtCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCode.MaxLength = 5;
             this.txtCode.Name = "txtCode";
@@ -340,7 +340,7 @@
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(89, 337);
+            this.lblCode.Location = new System.Drawing.Point(84, 336);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(32, 13);
             this.lblCode.TabIndex = 128;
@@ -349,7 +349,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 66);
+            this.label1.Location = new System.Drawing.Point(62, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 1001;
@@ -363,7 +363,7 @@
             this.btnAddVendorInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAddVendorInvoice.FlatAppearance.BorderSize = 0;
             this.btnAddVendorInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddVendorInvoice.Location = new System.Drawing.Point(417, 64);
+            this.btnAddVendorInvoice.Location = new System.Drawing.Point(402, 64);
             this.btnAddVendorInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddVendorInvoice.Name = "btnAddVendorInvoice";
             this.btnAddVendorInvoice.Size = new System.Drawing.Size(20, 20);
@@ -375,7 +375,7 @@
             // 
             this.txtProductName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProductName.Location = new System.Drawing.Point(137, 122);
+            this.txtProductName.Location = new System.Drawing.Point(122, 122);
             this.txtProductName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtProductName.MaxLength = 50;
             this.txtProductName.Name = "txtProductName";
@@ -388,7 +388,7 @@
             // 
             this.chkPOItem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkPOItem.AutoSize = true;
-            this.chkPOItem.Location = new System.Drawing.Point(141, 456);
+            this.chkPOItem.Location = new System.Drawing.Point(124, 447);
             this.chkPOItem.Margin = new System.Windows.Forms.Padding(4);
             this.chkPOItem.Name = "chkPOItem";
             this.chkPOItem.Size = new System.Drawing.Size(63, 17);
@@ -401,7 +401,7 @@
             // 
             this.itxt_POItemID.IsBrowseMode = true;
             this.itxt_POItemID.LabelText = "textbox";
-            this.itxt_POItemID.Location = new System.Drawing.Point(137, 92);
+            this.itxt_POItemID.Location = new System.Drawing.Point(122, 92);
             this.itxt_POItemID.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_POItemID.MaxLength = 32767;
             this.itxt_POItemID.MultiLine = false;
@@ -411,7 +411,7 @@
             this.itxt_POItemID.ShowDeleteButton = true;
             this.itxt_POItemID.ShowFilter = false;
             this.itxt_POItemID.ShowTextboxOnly = true;
-            this.itxt_POItemID.Size = new System.Drawing.Size(297, 26);
+            this.itxt_POItemID.Size = new System.Drawing.Size(300, 26);
             this.itxt_POItemID.TabIndex = 1006;
             this.itxt_POItemID.ValueText = "";
             this.itxt_POItemID.isBrowseMode_Clicked += new System.EventHandler(this.Itxt_POItemID_isBrowseMode_Clicked);
@@ -420,7 +420,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(136, 432);
+            this.label10.Location = new System.Drawing.Point(121, 430);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(182, 13);
@@ -433,7 +433,7 @@
             this.iddl_VendorInvoices.HideFilter = true;
             this.iddl_VendorInvoices.HideUpdateLink = false;
             this.iddl_VendorInvoices.LabelText = "dropdownlist";
-            this.iddl_VendorInvoices.Location = new System.Drawing.Point(137, 61);
+            this.iddl_VendorInvoices.Location = new System.Drawing.Point(122, 61);
             this.iddl_VendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.iddl_VendorInvoices.Name = "iddl_VendorInvoices";
             this.iddl_VendorInvoices.SelectedIndex = -1;
