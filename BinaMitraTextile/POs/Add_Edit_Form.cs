@@ -171,7 +171,14 @@ namespace BinaMitraTextile.POs
 
         private void gridPOItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewTextBoxColumn), col_gridPOItems_qty.Name) 
+                || Tools.isCorrectColumn(sender, e, typeof(DataGridViewTextBoxColumn), col_gridPOItems_pricePerUnit.Name)
+                || Tools.isCorrectColumn(sender, e, typeof(DataGridViewTextBoxColumn), col_gridPOItems_PercentDiscount.Name))
+            {
+                calculateSubtotal(e.RowIndex);
+                calculateGrandTotal();
+            }
+            addNewRowIfNeeded(e.RowIndex);
         }
 
         private void addNewRowIfNeeded(int currentRowIndex)
@@ -393,7 +400,7 @@ namespace BinaMitraTextile.POs
             return row.Cells[col_gridPOItems_qty.Name].Value != null && Tools.isNumeric(row.Cells[col_gridPOItems_qty.Name].Value.ToString());
         }
 
-        private void Add_Edit_Form_Shown(object sender, EventArgs e)
+        private void Add_Edit_Form_Shown(object sender, EventArgs e) 
         {
         }
 
