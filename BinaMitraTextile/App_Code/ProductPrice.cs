@@ -31,6 +31,7 @@ namespace BinaMitraTextile
         public const string COL_ProductWidths_Name = "width_name";
         public const string COL_LengthUnits_Name = "length_unit_name";
         public const string COL_Inventory_Code = "inventory_code";
+        public const string COL_availableQty = "availableQty";
 
         public const string FILTER_OnlyNotChecked = "FILTER_OnlyNotChecked";
         public const string ARRAY_ProductPrices_Id = "ARRAY_ProductPrices_Id";

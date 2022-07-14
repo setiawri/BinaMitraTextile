@@ -54,6 +54,7 @@ namespace BinaMitraTextile.Admin
 
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            col_grid_AvailableQty.DataPropertyName = ProductPrice.COL_availableQty;
             col_grid_colorname.DataPropertyName = ProductPrice.COL_COLORNAME;
             col_grid_Checked.DataPropertyName = ProductPrice.COL_DB_Checked;
             col_grid_BuyPrice.DataPropertyName = ProductPrice.COL_DB_BuyPrice;
