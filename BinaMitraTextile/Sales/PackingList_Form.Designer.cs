@@ -36,13 +36,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnPrint = new System.Windows.Forms.Button();
             this.pnlPrint = new System.Windows.Forms.Panel();
+            this.lblPageCount = new System.Windows.Forms.Label();
+            this.lblTotalCounts = new System.Windows.Forms.Label();
             this.lblTransportName = new System.Windows.Forms.Label();
             this.lblInvoiceNo = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCustomerInfo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblPageCount = new System.Windows.Forms.Label();
             this.grid3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,7 +54,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTotalCounts = new System.Windows.Forms.Label();
             this.grid1 = new System.Windows.Forms.DataGridView();
             this.inventory_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inventory_item_barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,6 +107,27 @@
             this.pnlPrint.Name = "pnlPrint";
             this.pnlPrint.Size = new System.Drawing.Size(756, 526);
             this.pnlPrint.TabIndex = 148;
+            // 
+            // lblPageCount
+            // 
+            this.lblPageCount.AutoSize = true;
+            this.lblPageCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPageCount.Location = new System.Drawing.Point(8, 506);
+            this.lblPageCount.Name = "lblPageCount";
+            this.lblPageCount.Size = new System.Drawing.Size(88, 16);
+            this.lblPageCount.TabIndex = 155;
+            this.lblPageCount.Text = "lblPageCount";
+            this.lblPageCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTotalCounts
+            // 
+            this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCounts.Location = new System.Drawing.Point(329, 497);
+            this.lblTotalCounts.Name = "lblTotalCounts";
+            this.lblTotalCounts.Size = new System.Drawing.Size(411, 25);
+            this.lblTotalCounts.TabIndex = 149;
+            this.lblTotalCounts.Text = "TotalCounts";
+            this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTransportName
             // 
@@ -163,17 +184,6 @@
             this.label3.Size = new System.Drawing.Size(98, 20);
             this.label3.TabIndex = 157;
             this.label3.Text = "PACK LIST";
-            // 
-            // lblPageCount
-            // 
-            this.lblPageCount.AutoSize = true;
-            this.lblPageCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPageCount.Location = new System.Drawing.Point(8, 506);
-            this.lblPageCount.Name = "lblPageCount";
-            this.lblPageCount.Size = new System.Drawing.Size(88, 16);
-            this.lblPageCount.TabIndex = 155;
-            this.lblPageCount.Text = "lblPageCount";
-            this.lblPageCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // grid3
             // 
@@ -327,16 +337,6 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 40;
             // 
-            // lblTotalCounts
-            // 
-            this.lblTotalCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCounts.Location = new System.Drawing.Point(329, 497);
-            this.lblTotalCounts.Name = "lblTotalCounts";
-            this.lblTotalCounts.Size = new System.Drawing.Size(411, 25);
-            this.lblTotalCounts.TabIndex = 149;
-            this.lblTotalCounts.Text = "TotalCounts";
-            this.lblTotalCounts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // grid1
             // 
             this.grid1.AllowUserToAddRows = false;
@@ -478,9 +478,9 @@
             this.chkShowPrintDialog.Location = new System.Drawing.Point(249, 544);
             this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowPrintDialog.Name = "chkShowPrintDialog";
-            this.chkShowPrintDialog.Size = new System.Drawing.Size(54, 17);
+            this.chkShowPrintDialog.Size = new System.Drawing.Size(78, 17);
             this.chkShowPrintDialog.TabIndex = 149;
-            this.chkShowPrintDialog.Text = "dialog";
+            this.chkShowPrintDialog.Text = "Print dialog";
             this.chkShowPrintDialog.UseVisualStyleBackColor = true;
             // 
             // chkPrintAllPages

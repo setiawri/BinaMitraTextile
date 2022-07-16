@@ -34,7 +34,7 @@ namespace BinaMitraTextile.Returns
             setupControls();
             populatePage();
 
-            Tools.rearrangeButtonsInPanel(pnlButtons, HorizontalAlignment.Center);
+            //Tools.rearrangeButtonsInPanel(pnlButtons, HorizontalAlignment.Center);
             Tools.disableResizing(this);
         }
 
@@ -93,7 +93,7 @@ namespace BinaMitraTextile.Returns
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            LIBUtil.Util.print(true, false, pnlPrint);
+            LIBUtil.Util.print(chkShowPrintDialog.Checked, false, pnlPrint);
         }
 
         #endregion PRINT METHODS
