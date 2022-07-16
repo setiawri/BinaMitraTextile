@@ -104,7 +104,7 @@
             this.lblDate.AutoSize = true;
             this.lblDate.Location = new System.Drawing.Point(4, 96);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(50, 16);
+            this.lblDate.Size = new System.Drawing.Size(40, 13);
             this.lblDate.TabIndex = 127;
             this.lblDate.Text = "lblDate";
             // 
@@ -121,7 +121,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 540);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 117;
             this.label1.Text = "Notes:";
             // 
@@ -374,12 +374,13 @@
             // 
             // Print_Form
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(995, 708);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.pnlPrint);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Print_Form";
             this.Text = "SALES RETURN";
             this.Load += new System.EventHandler(this.Form_Load);

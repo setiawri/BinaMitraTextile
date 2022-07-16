@@ -93,7 +93,7 @@ namespace BinaMitraTextile.Returns
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            LIBUtil.Util.print(false, false, pnlPrint);
+            LIBUtil.Util.print(true, false, pnlPrint);
         }
 
         #endregion PRINT METHODS
