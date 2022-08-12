@@ -175,7 +175,7 @@
             // btnAddPayment
             // 
             this.btnAddPayment.Location = new System.Drawing.Point(547, 35);
-            this.btnAddPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddPayment.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddPayment.Name = "btnAddPayment";
             this.btnAddPayment.Size = new System.Drawing.Size(81, 28);
             this.btnAddPayment.TabIndex = 3;
@@ -248,7 +248,7 @@
             this.in_PaymentAmount.ShowCheckbox = false;
             this.in_PaymentAmount.ShowTextboxOnly = false;
             this.in_PaymentAmount.Size = new System.Drawing.Size(148, 50);
-            this.in_PaymentAmount.TabIndex = 121;
+            this.in_PaymentAmount.TabIndex = 1;
             this.in_PaymentAmount.Value = new decimal(new int[] {
             0,
             0,
@@ -270,7 +270,7 @@
             this.iddl_PaymentMethods.SelectedValue = null;
             this.iddl_PaymentMethods.ShowDropdownlistOnly = false;
             this.iddl_PaymentMethods.Size = new System.Drawing.Size(99, 50);
-            this.iddl_PaymentMethods.TabIndex = 138;
+            this.iddl_PaymentMethods.TabIndex = 0;
             // 
             // itxt_Notes
             // 
@@ -287,7 +287,7 @@
             this.itxt_Notes.ShowFilter = false;
             this.itxt_Notes.ShowTextboxOnly = false;
             this.itxt_Notes.Size = new System.Drawing.Size(257, 50);
-            this.itxt_Notes.TabIndex = 140;
+            this.itxt_Notes.TabIndex = 2;
             this.itxt_Notes.ValueText = "";
             // 
             // Payment_Form
@@ -302,7 +302,7 @@
             this.Controls.Add(this.lblTotalAmount);
             this.Controls.Add(this.btnAddPayment);
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Payment_Form";
             this.Text = "Payment";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Payment_Form_FormClosing);
