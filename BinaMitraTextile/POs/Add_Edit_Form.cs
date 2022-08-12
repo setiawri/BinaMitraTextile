@@ -339,7 +339,7 @@ namespace BinaMitraTextile.POs
             txtPONo.Text = DBUtil.sanitize(txtPONo.Text);
             txtNotes.Text = DBUtil.sanitize(txtNotes.Text);
 
-            if (string.IsNullOrEmpty(txtPONo.Text))
+            if (string.IsNullOrEmpty(txtPONo.Text) && iddl_Vendor.Enabled)
                 return Tools.inputError<TextBox>(txtPONo, "PO Number is required");
             else if (PO.isPONoExist(txtPONo.Text))
                 return Tools.inputError<TextBox>(txtPONo, "PO Number already exists");
