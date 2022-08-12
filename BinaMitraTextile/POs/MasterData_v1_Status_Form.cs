@@ -55,7 +55,7 @@ namespace BinaMitraTextile.POs
             btnAdd.Enabled = false;
             pbLog.Visible = false;
             
-            iddl_POItemStatus.populate(typeof(POItemStatus));
+            iddl_POItemStatus.populate<POItemStatus>();
 
             col_ProductDescription = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_ProductDescription", "Description", POItem.COL_DB_PRODUCTDESCRIPTION, true, true, "", true, true, 100, DataGridViewContentAlignment.TopLeft);
             col_ProductDescription.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

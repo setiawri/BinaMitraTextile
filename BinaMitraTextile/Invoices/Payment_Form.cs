@@ -75,7 +75,7 @@ namespace BinaMitraTextile.Invoices
             col_grid_notes.DataPropertyName = Payment.COL_DB_Notes;
             col_grid_Checked.DataPropertyName = Payment.COL_DB_Checked;
 
-            iddl_PaymentMethods.populate(typeof(PaymentMethod));
+            iddl_PaymentMethods.populate<PaymentMethod>();
             iddl_PaymentMethods.focus();
 
             if (GlobalData.UserAccount.role != Roles.Super)
@@ -119,9 +119,9 @@ namespace BinaMitraTextile.Invoices
             lblTotalAmount.Text = String.Format("Balance: Rp.{0:N2} / Rp.{1:N2}", _payableAmount, startingBalance);
             
             if (_creditBalance > 0)
-                iddl_PaymentMethods.SelectedItem = PaymentMethod.Credit;
+                iddl_PaymentMethods.SelectedValue = PaymentMethod.Credit;
             else
-                iddl_PaymentMethods.SelectedItem = PaymentMethod.Cash;
+                iddl_PaymentMethods.SelectedValue = PaymentMethod.Cash;
 
             autoSetPaymentAmount();
         }
@@ -140,8 +140,12 @@ namespace BinaMitraTextile.Invoices
 
             decimal paymentAmount = in_PaymentAmount.ValueDecimal;
 
-            if (paymentAmount <= 0)
-                return in_PaymentAmount.isValueError("Invalid Payment Amount");
+            //if (paymentAmount <= 0)
+            //    return in_PaymentAmount.isValueError("Invalid Payment Amount");
+            if(_sale.Completed && paymentAmount != 0)
+                return in_PaymentAmount.isValueError("Tidak dapat menambahkan entry untuk invoice yang sudah dikunci");
+            else if (paymentAmount <= 0 && string.IsNullOrWhiteSpace(itxt_Notes.ValueText))
+                return in_PaymentAmount.isValueError("Provide information for entry with negative value");
             else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue != PaymentMethod.Cash && paymentAmount > _payableAmount)
                 return in_PaymentAmount.isValueError("Pembayaran melebihi jumlah yang belum dibayar");
             else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Credit && paymentAmount > _creditBalance)

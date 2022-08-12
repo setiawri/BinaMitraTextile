@@ -138,6 +138,7 @@ namespace BinaMitraTextile.Users
             txtName.Text = obj.name;
             cbRoles.SelectedItem = obj.role;
             in_PercentCommission.Value = obj.percentCommission;
+            in_GlobalPercentComission.Value = obj.GlobalPercentComission;
             txtNotes.Text = obj.notes;
             txtCurrentPassword.Enabled = true;
             itxt_PasswordReset.Enabled = btnResetPassword.Enabled = true;

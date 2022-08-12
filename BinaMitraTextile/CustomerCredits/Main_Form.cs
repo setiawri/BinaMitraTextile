@@ -37,7 +37,8 @@ namespace BinaMitraTextile.CustomerCredits
         {
             Settings.setGeneralSettings(this);
 
-            iddl_PaymentMethods.populate(typeof(PaymentMethod));
+            //iddl_PaymentMethods.populate(typeof(PaymentMethod));
+            iddl_PaymentMethods.populate<PaymentMethod>();
 
             gridSummary.AutoGenerateColumns = false;
             gridSummary.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -157,8 +158,8 @@ namespace BinaMitraTextile.CustomerCredits
         {
             if (!iddl_Customers.isValidSelectedValue())
                 return iddl_Customers.SelectedValueError("Please select a customer from the drop down list");
-            else if (in_Amount.Value == 0)
-                return in_Amount.isValueError("Invalid amount");
+            //else if (in_Amount.Value == 0)
+            //    return in_Amount.isValueError("Invalid amount");
             else if (!iddl_PaymentMethods.isValidSelectedValue())
                 return iddl_PaymentMethods.SelectedValueError("Please select a payment method from the dropdownlist");
             else if ((PaymentMethod)iddl_PaymentMethods.SelectedValue == PaymentMethod.Giro && string.IsNullOrEmpty(itxt_Notes.ValueText.Trim()))
