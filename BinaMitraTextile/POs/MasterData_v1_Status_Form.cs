@@ -115,7 +115,7 @@ namespace BinaMitraTextile.POs
         protected override void populateInputFields()
         {
             POItem obj = new POItem(selectedRowID());
-            iddl_POItemStatus.SelectedItem = obj.Status;
+            iddl_POItemStatus.SelectedValue = obj.Status;
             in_PriorityNo.Value = obj.PriorityNo;
             in_PriorityQty.Value = obj.PriorityQty;
             idtp_ExpectedDeliveryDate.Value = obj.ExpectedDeliveryDate;

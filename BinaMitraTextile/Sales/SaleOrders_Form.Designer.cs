@@ -159,6 +159,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlSaleOrderInfo = new System.Windows.Forms.Panel();
             this.chkShowShippedBookedSisa = new System.Windows.Forms.CheckBox();
+            this.in_SaleOrderItemPricePerUnit = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -213,10 +214,10 @@
             this.chkShowIncompleteOnly.Checked = true;
             this.chkShowIncompleteOnly.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowIncompleteOnly.Location = new System.Drawing.Point(66, 99);
-            this.chkShowIncompleteOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowIncompleteOnly.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowIncompleteOnly.Name = "chkShowIncompleteOnly";
             this.chkShowIncompleteOnly.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkShowIncompleteOnly.Size = new System.Drawing.Size(122, 20);
+            this.chkShowIncompleteOnly.Size = new System.Drawing.Size(102, 17);
             this.chkShowIncompleteOnly.TabIndex = 113;
             this.chkShowIncompleteOnly.Text = "Incomplete Only";
             this.chkShowIncompleteOnly.UseVisualStyleBackColor = true;
@@ -226,7 +227,7 @@
             this.txtCustomerPONo.Location = new System.Drawing.Point(66, 12);
             this.txtCustomerPONo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCustomerPONo.Name = "txtCustomerPONo";
-            this.txtCustomerPONo.Size = new System.Drawing.Size(111, 22);
+            this.txtCustomerPONo.Size = new System.Drawing.Size(111, 20);
             this.txtCustomerPONo.TabIndex = 0;
             // 
             // label2
@@ -234,7 +235,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(29, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 111;
             this.label2.Text = "PO #";
             // 
@@ -246,7 +247,7 @@
             this.dtpStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.ShowCheckBox = true;
-            this.dtpStart.Size = new System.Drawing.Size(188, 22);
+            this.dtpStart.Size = new System.Drawing.Size(188, 20);
             this.dtpStart.TabIndex = 6;
             this.dtpStart.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             // 
@@ -255,7 +256,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(32, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 16);
+            this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 96;
             this.label3.Text = "from";
             // 
@@ -278,7 +279,7 @@
             this.dtpEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.ShowCheckBox = true;
-            this.dtpEnd.Size = new System.Drawing.Size(188, 22);
+            this.dtpEnd.Size = new System.Drawing.Size(188, 20);
             this.dtpEnd.TabIndex = 7;
             // 
             // label1
@@ -286,7 +287,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(47, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 16);
+            this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 94;
             this.label1.Text = "to";
             // 
@@ -441,7 +442,7 @@
             this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scMain.IsSplitterFixed = true;
             this.scMain.Location = new System.Drawing.Point(0, 0);
-            this.scMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scMain.Margin = new System.Windows.Forms.Padding(4);
             this.scMain.Name = "scMain";
             // 
             // scMain.Panel1
@@ -464,7 +465,7 @@
             this.panel1.Controls.Add(this.btnAddPO);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(7, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(283, 41);
             this.panel1.TabIndex = 115;
@@ -472,7 +473,7 @@
             // btnLog
             // 
             this.btnLog.Location = new System.Drawing.Point(141, 3);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(4);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(114, 34);
             this.btnLog.TabIndex = 2;
@@ -711,7 +712,7 @@
             // 
             this.scDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scDetails.Location = new System.Drawing.Point(0, 0);
-            this.scDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scDetails.Margin = new System.Windows.Forms.Padding(4);
             this.scDetails.Name = "scDetails";
             // 
             // scDetails.Panel1
@@ -734,7 +735,7 @@
             this.tcSummary.Controls.Add(this.tcInventory);
             this.tcSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcSummary.Location = new System.Drawing.Point(0, 0);
-            this.tcSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcSummary.Margin = new System.Windows.Forms.Padding(4);
             this.tcSummary.Name = "tcSummary";
             this.tcSummary.SelectedIndex = 0;
             this.tcSummary.Size = new System.Drawing.Size(408, 186);
@@ -746,10 +747,10 @@
             this.tcPO.Controls.Add(this.btnRemoveSOFromPOItem);
             this.tcPO.Controls.Add(this.gridPOItems);
             this.tcPO.Controls.Add(this.lblPOItems);
-            this.tcPO.Location = new System.Drawing.Point(4, 25);
-            this.tcPO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcPO.Location = new System.Drawing.Point(4, 22);
+            this.tcPO.Margin = new System.Windows.Forms.Padding(4);
             this.tcPO.Name = "tcPO";
-            this.tcPO.Size = new System.Drawing.Size(400, 157);
+            this.tcPO.Size = new System.Drawing.Size(400, 160);
             this.tcPO.TabIndex = 2;
             this.tcPO.Text = "PO";
             this.tcPO.UseVisualStyleBackColor = true;
@@ -758,7 +759,7 @@
             // 
             this.btnRemoveSOFromPOItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveSOFromPOItem.Location = new System.Drawing.Point(289, 1);
-            this.btnRemoveSOFromPOItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveSOFromPOItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveSOFromPOItem.Name = "btnRemoveSOFromPOItem";
             this.btnRemoveSOFromPOItem.Size = new System.Drawing.Size(108, 25);
             this.btnRemoveSOFromPOItem.TabIndex = 126;
@@ -801,7 +802,7 @@
             dataGridViewCellStyle123.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridPOItems.RowsDefaultCellStyle = dataGridViewCellStyle123;
             this.gridPOItems.RowTemplate.Height = 24;
-            this.gridPOItems.Size = new System.Drawing.Size(400, 129);
+            this.gridPOItems.Size = new System.Drawing.Size(400, 132);
             this.gridPOItems.TabIndex = 104;
             this.gridPOItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GridPOItems_MouseDoubleClick);
             // 
@@ -896,11 +897,11 @@
             // 
             this.tcSales.Controls.Add(this.gridSales);
             this.tcSales.Controls.Add(this.lblSales);
-            this.tcSales.Location = new System.Drawing.Point(4, 25);
-            this.tcSales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcSales.Location = new System.Drawing.Point(4, 22);
+            this.tcSales.Margin = new System.Windows.Forms.Padding(4);
             this.tcSales.Name = "tcSales";
-            this.tcSales.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tcSales.Size = new System.Drawing.Size(400, 157);
+            this.tcSales.Padding = new System.Windows.Forms.Padding(4);
+            this.tcSales.Size = new System.Drawing.Size(400, 160);
             this.tcSales.TabIndex = 0;
             this.tcSales.Text = "Shipped";
             this.tcSales.UseVisualStyleBackColor = true;
@@ -938,7 +939,7 @@
             dataGridViewCellStyle128.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSales.RowsDefaultCellStyle = dataGridViewCellStyle128;
             this.gridSales.RowTemplate.Height = 24;
-            this.gridSales.Size = new System.Drawing.Size(392, 121);
+            this.gridSales.Size = new System.Drawing.Size(392, 124);
             this.gridSales.TabIndex = 103;
             this.gridSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSales_CellContentClick);
             this.gridSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GridSales_MouseDoubleClick);
@@ -1014,11 +1015,11 @@
             // 
             this.tcInventory.Controls.Add(this.gridInventory);
             this.tcInventory.Controls.Add(this.lblInventory);
-            this.tcInventory.Location = new System.Drawing.Point(4, 25);
-            this.tcInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcInventory.Location = new System.Drawing.Point(4, 22);
+            this.tcInventory.Margin = new System.Windows.Forms.Padding(4);
             this.tcInventory.Name = "tcInventory";
-            this.tcInventory.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tcInventory.Size = new System.Drawing.Size(400, 157);
+            this.tcInventory.Padding = new System.Windows.Forms.Padding(4);
+            this.tcInventory.Size = new System.Drawing.Size(400, 160);
             this.tcInventory.TabIndex = 1;
             this.tcInventory.Text = "Booked";
             this.tcInventory.UseVisualStyleBackColor = true;
@@ -1055,7 +1056,7 @@
             dataGridViewCellStyle132.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridInventory.RowsDefaultCellStyle = dataGridViewCellStyle132;
             this.gridInventory.RowTemplate.Height = 24;
-            this.gridInventory.Size = new System.Drawing.Size(392, 121);
+            this.gridInventory.Size = new System.Drawing.Size(392, 124);
             this.gridInventory.TabIndex = 102;
             this.gridInventory.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GridInventory_MouseDoubleClick);
             // 
@@ -1213,7 +1214,7 @@
             this.pnlInventoryItems.Controls.Add(this.btnRemoveSOFromInventoryItems);
             this.pnlInventoryItems.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInventoryItems.Location = new System.Drawing.Point(0, 0);
-            this.pnlInventoryItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlInventoryItems.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInventoryItems.Name = "pnlInventoryItems";
             this.pnlInventoryItems.Size = new System.Drawing.Size(897, 27);
             this.pnlInventoryItems.TabIndex = 105;
@@ -1246,7 +1247,7 @@
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox2.Location = new System.Drawing.Point(0, 0);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(210, 22);
+            this.textBox2.Size = new System.Drawing.Size(210, 20);
             this.textBox2.TabIndex = 1;
             // 
             // pnlUpdateSaleOrder
@@ -1258,7 +1259,7 @@
             this.pnlUpdateSaleOrder.Controls.Add(this.btnCancelUpdateTargetDate);
             this.pnlUpdateSaleOrder.Controls.Add(this.btnUpdateSaleOrder);
             this.pnlUpdateSaleOrder.Location = new System.Drawing.Point(503, 277);
-            this.pnlUpdateSaleOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUpdateSaleOrder.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateSaleOrder.Name = "pnlUpdateSaleOrder";
             this.pnlUpdateSaleOrder.Size = new System.Drawing.Size(307, 183);
             this.pnlUpdateSaleOrder.TabIndex = 117;
@@ -1269,7 +1270,7 @@
             this.itxt_CustomerPONo.IsBrowseMode = false;
             this.itxt_CustomerPONo.LabelText = "PO";
             this.itxt_CustomerPONo.Location = new System.Drawing.Point(39, 16);
-            this.itxt_CustomerPONo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_CustomerPONo.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_CustomerPONo.MaxLength = 32767;
             this.itxt_CustomerPONo.MultiLine = false;
             this.itxt_CustomerPONo.Name = "itxt_CustomerPONo";
@@ -1290,7 +1291,7 @@
             this.idtp_SaleOrders_TargetDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_SaleOrders_TargetDate.LabelText = "Due date";
             this.idtp_SaleOrders_TargetDate.Location = new System.Drawing.Point(39, 74);
-            this.idtp_SaleOrders_TargetDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.idtp_SaleOrders_TargetDate.Margin = new System.Windows.Forms.Padding(5);
             this.idtp_SaleOrders_TargetDate.Name = "idtp_SaleOrders_TargetDate";
             this.idtp_SaleOrders_TargetDate.ShowCheckBox = false;
             this.idtp_SaleOrders_TargetDate.ShowDateTimePickerOnly = false;
@@ -1303,7 +1304,7 @@
             // btnCancelUpdateTargetDate
             // 
             this.btnCancelUpdateTargetDate.Location = new System.Drawing.Point(161, 137);
-            this.btnCancelUpdateTargetDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelUpdateTargetDate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelUpdateTargetDate.Name = "btnCancelUpdateTargetDate";
             this.btnCancelUpdateTargetDate.Size = new System.Drawing.Size(80, 28);
             this.btnCancelUpdateTargetDate.TabIndex = 2;
@@ -1314,7 +1315,7 @@
             // btnUpdateSaleOrder
             // 
             this.btnUpdateSaleOrder.Location = new System.Drawing.Point(67, 137);
-            this.btnUpdateSaleOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateSaleOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateSaleOrder.Name = "btnUpdateSaleOrder";
             this.btnUpdateSaleOrder.Size = new System.Drawing.Size(95, 28);
             this.btnUpdateSaleOrder.TabIndex = 1;
@@ -1328,7 +1329,7 @@
             this.pnlDetails.Controls.Add(this.scDetails);
             this.pnlDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlDetails.Location = new System.Drawing.Point(0, 438);
-            this.pnlDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlDetails.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDetails.Name = "pnlDetails";
             this.pnlDetails.Size = new System.Drawing.Size(1312, 188);
             this.pnlDetails.TabIndex = 119;
@@ -1342,7 +1343,7 @@
             this.ptDetails.ContainerPanelOriginalSize = new System.Drawing.Size(0, 0);
             this.ptDetails.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Down;
             this.ptDetails.Location = new System.Drawing.Point(0, 409);
-            this.ptDetails.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ptDetails.Margin = new System.Windows.Forms.Padding(5);
             this.ptDetails.MinimumSplitterDistance = 100;
             this.ptDetails.Name = "ptDetails";
             this.ptDetails.Size = new System.Drawing.Size(33, 30);
@@ -1354,13 +1355,14 @@
             // 
             this.pnlUpdateSaleOrderItemQty.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlUpdateSaleOrderItemQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdateSaleOrderItemQty.Controls.Add(this.in_SaleOrderItemPricePerUnit);
             this.pnlUpdateSaleOrderItemQty.Controls.Add(this.btnCancelUpdateSaleOrderItemQty);
             this.pnlUpdateSaleOrderItemQty.Controls.Add(this.btnUpdateSaleOrderItemQty);
             this.pnlUpdateSaleOrderItemQty.Controls.Add(this.in_SaleOrderItemQty);
             this.pnlUpdateSaleOrderItemQty.Location = new System.Drawing.Point(503, 283);
-            this.pnlUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateSaleOrderItemQty.Name = "pnlUpdateSaleOrderItemQty";
-            this.pnlUpdateSaleOrderItemQty.Size = new System.Drawing.Size(306, 135);
+            this.pnlUpdateSaleOrderItemQty.Size = new System.Drawing.Size(306, 160);
             this.pnlUpdateSaleOrderItemQty.TabIndex = 120;
             this.pnlUpdateSaleOrderItemQty.Visible = false;
             // 
@@ -1368,11 +1370,11 @@
             // 
             this.btnCancelUpdateSaleOrderItemQty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelUpdateSaleOrderItemQty.Location = new System.Drawing.Point(164, 81);
-            this.btnCancelUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelUpdateSaleOrderItemQty.Location = new System.Drawing.Point(164, 119);
+            this.btnCancelUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelUpdateSaleOrderItemQty.Name = "btnCancelUpdateSaleOrderItemQty";
             this.btnCancelUpdateSaleOrderItemQty.Size = new System.Drawing.Size(81, 28);
-            this.btnCancelUpdateSaleOrderItemQty.TabIndex = 2;
+            this.btnCancelUpdateSaleOrderItemQty.TabIndex = 3;
             this.btnCancelUpdateSaleOrderItemQty.Text = "CANCEL";
             this.btnCancelUpdateSaleOrderItemQty.UseVisualStyleBackColor = true;
             this.btnCancelUpdateSaleOrderItemQty.Click += new System.EventHandler(this.BtnCancelUpdatePOItemQty_Click);
@@ -1381,11 +1383,11 @@
             // 
             this.btnUpdateSaleOrderItemQty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateSaleOrderItemQty.Location = new System.Drawing.Point(60, 81);
-            this.btnUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateSaleOrderItemQty.Location = new System.Drawing.Point(60, 119);
+            this.btnUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateSaleOrderItemQty.Name = "btnUpdateSaleOrderItemQty";
             this.btnUpdateSaleOrderItemQty.Size = new System.Drawing.Size(96, 28);
-            this.btnUpdateSaleOrderItemQty.TabIndex = 1;
+            this.btnUpdateSaleOrderItemQty.TabIndex = 2;
             this.btnUpdateSaleOrderItemQty.Text = "UPDATE";
             this.btnUpdateSaleOrderItemQty.UseVisualStyleBackColor = true;
             this.btnUpdateSaleOrderItemQty.Click += new System.EventHandler(this.BtnUpdateSaleOrderItemQty_Click);
@@ -1401,8 +1403,8 @@
             0,
             0});
             this.in_SaleOrderItemQty.LabelText = "Qty";
-            this.in_SaleOrderItemQty.Location = new System.Drawing.Point(60, 23);
-            this.in_SaleOrderItemQty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.in_SaleOrderItemQty.Location = new System.Drawing.Point(60, 12);
+            this.in_SaleOrderItemQty.Margin = new System.Windows.Forms.Padding(5);
             this.in_SaleOrderItemQty.MaximumValue = new decimal(new int[] {
             10000000,
             0,
@@ -1417,7 +1419,7 @@
             this.in_SaleOrderItemQty.ShowAllowDecimalCheckbox = false;
             this.in_SaleOrderItemQty.ShowCheckbox = false;
             this.in_SaleOrderItemQty.ShowTextboxOnly = false;
-            this.in_SaleOrderItemQty.Size = new System.Drawing.Size(185, 50);
+            this.in_SaleOrderItemQty.Size = new System.Drawing.Size(185, 48);
             this.in_SaleOrderItemQty.TabIndex = 0;
             this.in_SaleOrderItemQty.Value = new decimal(new int[] {
             0,
@@ -1432,11 +1434,11 @@
             this.chkShowPOPending.Checked = true;
             this.chkShowPOPending.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowPOPending.Dock = System.Windows.Forms.DockStyle.Right;
-            this.chkShowPOPending.Location = new System.Drawing.Point(1016, 0);
-            this.chkShowPOPending.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowPOPending.Location = new System.Drawing.Point(1061, 0);
+            this.chkShowPOPending.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowPOPending.Name = "chkShowPOPending";
             this.chkShowPOPending.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkShowPOPending.Size = new System.Drawing.Size(101, 33);
+            this.chkShowPOPending.Size = new System.Drawing.Size(86, 33);
             this.chkShowPOPending.TabIndex = 114;
             this.chkShowPOPending.Text = "PO, Pending";
             this.chkShowPOPending.UseVisualStyleBackColor = true;
@@ -1462,7 +1464,7 @@
             this.panelToggle1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelToggle1.InitialArrowDirection = System.Windows.Forms.ArrowDirection.Up;
             this.panelToggle1.Location = new System.Drawing.Point(1281, 0);
-            this.panelToggle1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panelToggle1.Margin = new System.Windows.Forms.Padding(5);
             this.panelToggle1.MinimumSplitterDistance = 100;
             this.panelToggle1.Name = "panelToggle1";
             this.panelToggle1.Size = new System.Drawing.Size(31, 33);
@@ -1475,7 +1477,7 @@
             this.pnlMain.Controls.Add(this.scMain);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1312, 226);
             this.pnlMain.TabIndex = 123;
@@ -1488,7 +1490,7 @@
             this.pnlSaleOrderInfo.Controls.Add(this.panelToggle1);
             this.pnlSaleOrderInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSaleOrderInfo.Location = new System.Drawing.Point(0, 226);
-            this.pnlSaleOrderInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSaleOrderInfo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSaleOrderInfo.Name = "pnlSaleOrderInfo";
             this.pnlSaleOrderInfo.Size = new System.Drawing.Size(1312, 33);
             this.pnlSaleOrderInfo.TabIndex = 125;
@@ -1499,28 +1501,63 @@
             this.chkShowShippedBookedSisa.Checked = true;
             this.chkShowShippedBookedSisa.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShowShippedBookedSisa.Dock = System.Windows.Forms.DockStyle.Right;
-            this.chkShowShippedBookedSisa.Location = new System.Drawing.Point(1117, 0);
-            this.chkShowShippedBookedSisa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkShowShippedBookedSisa.Location = new System.Drawing.Point(1147, 0);
+            this.chkShowShippedBookedSisa.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowShippedBookedSisa.Name = "chkShowShippedBookedSisa";
             this.chkShowShippedBookedSisa.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chkShowShippedBookedSisa.Size = new System.Drawing.Size(164, 33);
+            this.chkShowShippedBookedSisa.Size = new System.Drawing.Size(134, 33);
             this.chkShowShippedBookedSisa.TabIndex = 123;
             this.chkShowShippedBookedSisa.Text = "Shipped, Booked, Sisa";
             this.chkShowShippedBookedSisa.UseVisualStyleBackColor = true;
             this.chkShowShippedBookedSisa.CheckedChanged += new System.EventHandler(this.ChkShowShippedBookedSisa_CheckedChanged);
             // 
+            // in_SaleOrderItemPricePerUnit
+            // 
+            this.in_SaleOrderItemPricePerUnit.Checked = false;
+            this.in_SaleOrderItemPricePerUnit.DecimalPlaces = 2;
+            this.in_SaleOrderItemPricePerUnit.HideUpDown = true;
+            this.in_SaleOrderItemPricePerUnit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_SaleOrderItemPricePerUnit.LabelText = "Price / Unit";
+            this.in_SaleOrderItemPricePerUnit.Location = new System.Drawing.Point(60, 60);
+            this.in_SaleOrderItemPricePerUnit.Margin = new System.Windows.Forms.Padding(5);
+            this.in_SaleOrderItemPricePerUnit.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_SaleOrderItemPricePerUnit.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_SaleOrderItemPricePerUnit.Name = "in_SaleOrderItemPricePerUnit";
+            this.in_SaleOrderItemPricePerUnit.ShowAllowDecimalCheckbox = false;
+            this.in_SaleOrderItemPricePerUnit.ShowCheckbox = false;
+            this.in_SaleOrderItemPricePerUnit.ShowTextboxOnly = false;
+            this.in_SaleOrderItemPricePerUnit.Size = new System.Drawing.Size(185, 50);
+            this.in_SaleOrderItemPricePerUnit.TabIndex = 1;
+            this.in_SaleOrderItemPricePerUnit.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
             // SaleOrders_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1312, 626);
+            this.Controls.Add(this.pnlUpdateSaleOrderItemQty);
             this.Controls.Add(this.ptDetails);
             this.Controls.Add(this.pnlUpdateSaleOrder);
-            this.Controls.Add(this.pnlUpdateSaleOrderItemQty);
             this.Controls.Add(this.gridSaleOrderItems);
             this.Controls.Add(this.pnlSaleOrderInfo);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlDetails);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SaleOrders_Form";
             this.Text = "SALE ORDERS";
             this.Load += new System.EventHandler(this.Form_Load);
@@ -1657,5 +1694,6 @@
         private System.Windows.Forms.Panel pnlSaleOrderInfo;
         private System.Windows.Forms.CheckBox chkShowShippedBookedSisa;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_CustomerPONo;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_SaleOrderItemPricePerUnit;
     }
 }

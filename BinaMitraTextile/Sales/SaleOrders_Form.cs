@@ -409,10 +409,11 @@ namespace BinaMitraTextile.Sales
             }
             else if (_formMode != FormMode.Browse)
             {
-                if (Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Qty))
+                if (Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Qty) || Util.isColumnMatch(sender, e, col_gridSaleOrderItems_PricePerUnit))
                 {
                     pnlUpdateSaleOrderItemQty.Visible = true;
                     in_SaleOrderItemQty.Value = (decimal)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Qty);
+                    in_SaleOrderItemPricePerUnit.Value = (decimal)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_PricePerUnit);
                     in_SaleOrderItemQty.focus();
                 }
                 else
@@ -461,7 +462,7 @@ namespace BinaMitraTextile.Sales
 
         private void BtnUpdateSaleOrderItemQty_Click(object sender, EventArgs e)
         {
-            SaleOrderItem.updateQty(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal);
+            SaleOrderItem.updateQty(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal, in_SaleOrderItemPricePerUnit.ValueInt);
             in_SaleOrderItemQty.Value = 0;
             pnlUpdateSaleOrderItemQty.Visible = false;
             populateGridSaleOrderItems();

@@ -68,7 +68,7 @@ namespace BinaMitraTextile
         private void setLastConnectedPortNo()
         {
             if ((rbLiveDB.Checked || rbLocalDB.Checked) && Settings.LastConnectedPortNo != null)
-                iddl_Ports.SelectedItem = Settings.LastConnectedPortNo;
+                iddl_Ports.SelectedValue = Settings.LastConnectedPortNo;
             else
                 iddl_Ports.reset();
         }
@@ -85,7 +85,7 @@ namespace BinaMitraTextile
             if (GlobalData.UserAccount != null)
             {
                 if(rbLiveDB.Checked || rbLocalDB.Checked)
-                    Settings.LastConnectedPortNo = (ConnectionPorts)iddl_Ports.SelectedItem;
+                    Settings.LastConnectedPortNo = (ConnectionPorts)iddl_Ports.SelectedValue;
 
                 this.Hide();
                 Util.displayForm(null, new Container_Form(), true);
@@ -131,7 +131,7 @@ namespace BinaMitraTextile
         {
             string servername = itxt_ServerName.ValueText;
             if (iddl_Ports.hasSelectedValue())
-                servername += ((ConnectionPorts)iddl_Ports.SelectedItem).ToString().Replace("port", ",");
+                servername += ((ConnectionPorts)iddl_Ports.SelectedValue).ToString().Replace("port", ",");
             DBConnection.update(servername, itxt_DatabaseName.ValueText);
         }
 

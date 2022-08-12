@@ -171,22 +171,24 @@ namespace BinaMitraTextile
             return datatable;
         }
 
-        public static void updateQty(Guid id, decimal Qty)
+        public static void updateQty(Guid id, decimal Qty, decimal PricePerUnit)
         {
             SaleOrderItem objOld = new SaleOrderItem(id);
 
             string log = "";
-            log = Util.appendChange(log, objOld.Qty, Qty, "Qty: '{0}' to '{1}'");
+            log = Util.appendChange(log, objOld.Qty, Qty, "Qty: '{0:N2}' to '{1:N2}'");
+            log = Util.appendChange(log, objOld.PricePerUnit, PricePerUnit, "Price Per Unit: '{0:N2}' to '{1:N2}'");
 
-            if(!string.IsNullOrWhiteSpace(log))
+            if (!string.IsNullOrWhiteSpace(log))
             {
                 SqlQueryResult result = DBConnection.query(
                     false,
                     DBConnection.ActiveSqlConnection,
                     QueryTypes.ExecuteNonQuery,
-                    "SaleOrderItems_update_Qty",
+                    "SaleOrderItems_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
-                    new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, Qty)
+                    new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, Qty),
+                    new SqlQueryParameter(COL_DB_PricePerUnit, SqlDbType.Decimal, PricePerUnit)
                 );
 
                 if (result.IsSuccessful)
