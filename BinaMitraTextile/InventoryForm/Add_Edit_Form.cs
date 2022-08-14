@@ -92,6 +92,7 @@ namespace BinaMitraTextile.InventoryForm
                     itxt_POItemID.setValue(string.Format("[{0}] {1}", obj.PONo, obj.POItemDescription), obj.POItemID);
                 txtNotes.Text = obj.notes;
                 txtBuyPrice.Text = obj.buy_price.ToString();
+                buyPriceBeforePOItemChecked = obj.buy_price;
             }
         }
 

@@ -167,7 +167,24 @@ namespace BinaMitraTextile.Sales
 
         public void changeStatus_Click(object sender, EventArgs args)
         {
-            SaleOrderItem.updateStatus(selectedSaleOrderItemsRowId(), Tools.parseEnum<SaleOrderItemStatus>(sender.ToString()));
+            SaleOrderItemStatus newStatus = Tools.parseEnum<SaleOrderItemStatus>(sender.ToString());            
+            if(newStatus == SaleOrderItemStatus.Completed || newStatus == SaleOrderItemStatus.Cancelled)
+            {
+                DataTable unsoldBookedItems = InventoryItem.get_Booked(selectedSaleOrderItemsRowId());
+                if (unsoldBookedItems.Rows.Count > 0)
+                {
+                    if (!Util.displayMessageBoxYesNo("Cancelling or completing sale order will remove any booked items. Please confirm to continue."))
+                        return;
+                    else
+                    {
+                        List<Guid> IdList = new List<Guid>();
+                        foreach(DataRow row in unsoldBookedItems.Rows)
+                            IdList.Add((Guid)row[InventoryItem.COL_DB_ID]);
+                        InventoryItem.updateSaleOrderItem(IdList, null, null);
+                    }
+                }
+            }
+            SaleOrderItem.updateStatus(selectedSaleOrderItemsRowId(), newStatus);
             populateGridSaleOrderItems();
         }
 

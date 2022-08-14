@@ -294,7 +294,7 @@
             // 
             this.iddl_MoneyAccounts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iddl_MoneyAccounts.DisableTextInput = false;
-            this.iddl_MoneyAccounts.HideFilter = false;
+            this.iddl_MoneyAccounts.HideFilter = true;
             this.iddl_MoneyAccounts.HideUpdateLink = true;
             this.iddl_MoneyAccounts.LabelText = "Account";
             this.iddl_MoneyAccounts.Location = new System.Drawing.Point(6, 1);

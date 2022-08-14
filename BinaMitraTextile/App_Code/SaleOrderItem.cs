@@ -43,6 +43,7 @@ namespace BinaMitraTextile
         public decimal Subtotal;
         public Guid Customers_Id;
         public string CustomerName;
+        public string SaleOrders_No;
 
         #endregion PUBLIC VARIABLES
         /*-----------------------------------------------------------------------------------------------------*/
@@ -76,6 +77,7 @@ namespace BinaMitraTextile
         public const string COL_RemainingQty = "RemainingQty";
         public const string COL_Customers_Id = "Customers_Id";
         public const string COL_CustomerName = "CustomerName";
+        public const string COL_SaleOrders_No = "SaleOrders_No";
 
         public const string FILTER_Customers_Id = "FILTER_Customers_Id";
         public const string FILTER_StatusCompleted = "FILTER_StatusCompleted";
@@ -90,21 +92,23 @@ namespace BinaMitraTextile
         {
             Id = id;
             DataTable dt = get(Id, null, null, false);
-            SaleOrders_Id = (Guid)dt.Rows[0][COL_DB_SaleOrders_Id];
-            if (dt.Rows[0][COL_DB_Ref_Inventory_Id] != DBNull.Value) Ref_Inventory_Id = (Guid)dt.Rows[0][COL_DB_Ref_Inventory_Id];
-            PricePerUnit = Convert.ToDecimal(dt.Rows[0][COL_DB_PricePerUnit]);
-            ProductDescription = dt.Rows[0][COL_DB_ProductDescription].ToString();
-            Qty = Convert.ToInt16(dt.Rows[0][COL_DB_Qty]);
-            UnitName = dt.Rows[0][COL_DB_UnitName].ToString();
-            LineNo = Convert.ToInt16(dt.Rows[0][COL_DB_LineNo]);
-            PriorityNo = DBUtil.parseData<int>(dt.Rows[0], COL_DB_PriorityNo);
-            ExpectedDeliveryDate = DBUtil.parseData<DateTime?>(dt.Rows[0], COL_DB_ExpectedDeliveryDate);
-            Notes = dt.Rows[0][COL_DB_Notes].ToString();
+            DataRow row = dt.Rows[0];
+            SaleOrders_Id = (Guid)row[COL_DB_SaleOrders_Id];
+            if (row[COL_DB_Ref_Inventory_Id] != DBNull.Value) Ref_Inventory_Id = (Guid)row[COL_DB_Ref_Inventory_Id];
+            PricePerUnit = Convert.ToDecimal(row[COL_DB_PricePerUnit]);
+            ProductDescription = row[COL_DB_ProductDescription].ToString();
+            Qty = Convert.ToInt16(row[COL_DB_Qty]);
+            UnitName = row[COL_DB_UnitName].ToString();
+            LineNo = Convert.ToInt16(row[COL_DB_LineNo]);
+            PriorityNo = DBUtil.parseData<int>(row, COL_DB_PriorityNo);
+            ExpectedDeliveryDate = DBUtil.parseData<DateTime?>(row, COL_DB_ExpectedDeliveryDate);
+            Notes = row[COL_DB_Notes].ToString();
 
-            Subtotal = DBUtil.parseData<decimal>(dt.Rows[0], COL_Subtotal);
-            Status = Util.parseEnum<SaleOrderItemStatus>(DBUtil.parseData<object>(dt.Rows[0], COL_DB_Status_enum_id));
-            Customers_Id = DBUtil.parseData<Guid>(dt.Rows[0], COL_Customers_Id);
-            CustomerName = DBUtil.parseData<string>(dt.Rows[0], COL_CustomerName);
+            Subtotal = DBUtil.parseData<decimal>(row, COL_Subtotal);
+            Status = Util.parseEnum<SaleOrderItemStatus>(DBUtil.parseData<object>(row, COL_DB_Status_enum_id));
+            Customers_Id = DBUtil.parseData<Guid>(row, COL_Customers_Id);
+            CustomerName = DBUtil.parseData<string>(row, COL_CustomerName);
+            SaleOrders_No = Util.wrapNullable<string>(row, COL_SaleOrders_No);
         }
 
         public SaleOrderItem(Guid id, Guid saleOrders_Id, int lineNo, string productDescription, decimal qty, string unitName, decimal pricePerUnit, string notes, Guid? referencedInventoryID)

@@ -239,14 +239,14 @@ namespace BinaMitraTextile
             return result.Datatable;
         }
 
-        public static DataTable get_Booked(Guid saleOrders_Id)
+        public static DataTable get_Booked(Guid saleOrderItems_Id)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "InventoryItems_get_Booked",
-                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, saleOrders_Id)
+                    new SqlQueryParameter(FILTER_SaleOrderItems_Id, SqlDbType.UniqueIdentifier, saleOrderItems_Id)
                 );
             return result.Datatable;
         }
