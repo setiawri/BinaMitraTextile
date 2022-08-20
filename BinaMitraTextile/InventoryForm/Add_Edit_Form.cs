@@ -249,8 +249,8 @@ namespace BinaMitraTextile.InventoryForm
 
             if (!string.IsNullOrEmpty(txtBuyPrice.Text) && !Tools.isNumeric(txtBuyPrice.Text))
                 return Tools.inputError<TextBox>(txtBuyPrice, "Invalid buy price");
-            else if (!iddl_VendorInvoices.hasSelectedValue())
-                return iddl_VendorInvoices.SelectedValueError("Please select an invoice");
+            //else if (!iddl_VendorInvoices.hasSelectedValue())
+            //    return iddl_VendorInvoices.SelectedValueError("Please select an invoice");
             else if (cbGrades.SelectedValue == null)
                 return Tools.inputError<ComboBox>(cbGrades, "Please select a grade listed in the drop down list");
             else if (_browsedProductID == null)
