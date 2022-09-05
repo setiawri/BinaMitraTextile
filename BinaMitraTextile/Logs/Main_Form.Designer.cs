@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grid = new System.Windows.Forms.DataGridView();
             this.col_grid_Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,14 +54,14 @@
             this.grid.BackgroundColor = System.Drawing.Color.White;
             this.grid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_grid_Timestamp,
@@ -81,9 +81,9 @@
             // col_grid_Timestamp
             // 
             this.col_grid_Timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle6.Format = "dd/MM/yy HH:mm";
-            this.col_grid_Timestamp.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.Format = "dd/MM/yy HH:mm";
+            this.col_grid_Timestamp.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_grid_Timestamp.HeaderText = "Timestamp";
             this.col_grid_Timestamp.MinimumWidth = 60;
             this.col_grid_Timestamp.Name = "col_grid_Timestamp";
@@ -94,8 +94,8 @@
             // col_grid_Username
             // 
             this.col_grid_Username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            this.col_grid_Username.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.col_grid_Username.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_grid_Username.HeaderText = "User";
             this.col_grid_Username.MinimumWidth = 30;
             this.col_grid_Username.Name = "col_grid_Username";
@@ -105,9 +105,9 @@
             // col_grid_Description
             // 
             this.col_grid_Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_grid_Description.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_Description.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_grid_Description.HeaderText = "Description";
             this.col_grid_Description.Name = "col_grid_Description";
             this.col_grid_Description.ReadOnly = true;
@@ -117,7 +117,7 @@
             this.txtDescription.Location = new System.Drawing.Point(497, 14);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(305, 22);
+            this.txtDescription.Size = new System.Drawing.Size(305, 20);
             this.txtDescription.TabIndex = 0;
             // 
             // btnAdd
@@ -135,8 +135,8 @@
             // 
             this.itxt_QuickSearch.IsBrowseMode = false;
             this.itxt_QuickSearch.LabelText = "textbox";
-            this.itxt_QuickSearch.Location = new System.Drawing.Point(79, 12);
-            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.itxt_QuickSearch.Location = new System.Drawing.Point(57, 12);
+            this.itxt_QuickSearch.Margin = new System.Windows.Forms.Padding(5);
             this.itxt_QuickSearch.MaxLength = 32767;
             this.itxt_QuickSearch.MultiLine = false;
             this.itxt_QuickSearch.Name = "itxt_QuickSearch";
@@ -145,7 +145,7 @@
             this.itxt_QuickSearch.ShowDeleteButton = false;
             this.itxt_QuickSearch.ShowFilter = false;
             this.itxt_QuickSearch.ShowTextboxOnly = true;
-            this.itxt_QuickSearch.Size = new System.Drawing.Size(79, 24);
+            this.itxt_QuickSearch.Size = new System.Drawing.Size(79, 26);
             this.itxt_QuickSearch.TabIndex = 5;
             this.itxt_QuickSearch.ValueText = "";
             this.itxt_QuickSearch.onTextChanged += new System.EventHandler(this.itxt_QuickSearch_onTextChanged);
@@ -156,7 +156,7 @@
             this.label1.Location = new System.Drawing.Point(16, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 16);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Search";
             // 
@@ -164,12 +164,12 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(897, 494);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.itxt_QuickSearch);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "LOG";
             this.Load += new System.EventHandler(this.Main_Form_Load);
