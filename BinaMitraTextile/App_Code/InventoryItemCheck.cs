@@ -70,7 +70,7 @@ namespace BinaMitraTextile
 
         public static string submitNew(string barcodeWithoutPrefix, bool isManualInput, bool rescanToday, bool ignoreSold, string itemLocation)
         {
-            if (barcodeWithoutPrefix.Length != Settings.itemBarcodeLength)
+            if (barcodeWithoutPrefix.Length != Settings.itemBarcodeLength && barcodeWithoutPrefix.Length != Settings.itemBarcodeLength+3)
                 return barcodeWithoutPrefix + " is not a valid item barcode";
 
             try
