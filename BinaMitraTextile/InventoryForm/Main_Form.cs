@@ -74,7 +74,7 @@ namespace BinaMitraTextile.InventoryForm
             ProductStoreName.populateInputControlCheckedListBox(iclb_ProductStoreNames, false);
             LengthUnit.populateInputControlCheckedListBox(iclb_LengthUnits, false);
             FabricColor.populateInputControlCheckedListBox(iclb_Colors, false);
-            
+
             grid.AutoGenerateColumns = false;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             col_grid_active.DataPropertyName = Inventory.COL_DB_ACTIVE;
@@ -155,18 +155,22 @@ namespace BinaMitraTextile.InventoryForm
         {
             if (_isFormShown && pnlRowInfo.Visible && ptRowInfo.isPanelOpen)
             {
-                DataView dvw = Inventory.compileSummaryData(Util.getDataTable(grid.DataSource), false).DefaultView;
+                DataTable dataTable = Util.getDataTable(grid.DataSource);
+                DataView dvw = Inventory.compileSummaryData(dataTable, false).DefaultView;
                 dvw.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME);
                 gridSummary.DataSource = dvw;
 
                 //show summary of inventory item color
                 List<Guid?> inventoryIdList = new List<Guid?>();                
-                foreach(DataRow row in Util.getDataTable(grid.DataSource).Rows)
+                foreach(DataRow row in dataTable.Rows)
                 {
                     inventoryIdList.Add(Util.wrapNullable<Guid?>(row, Inventory.COL_DB_ID));
                 }
                 if (inventoryIdList.Count == 0)
+                {
                     gridSummaryByColor.DataSource = null;
+                    lblRowInfoHeader.Text = String.Empty;
+                }
                 else
                 {
                     SqlQueryResult result = DBConnection.query(
@@ -177,13 +181,18 @@ namespace BinaMitraTextile.InventoryForm
                         DBConnection.createTableParameters(
                             new SqlQueryTableParameterGuid("ARRAY_Inventory_Id", inventoryIdList.ToArray())
                             ),
-                        new SqlQueryParameter("FILTER_ShowNotBookedOnly", SqlDbType.Bit, chkShowNotBookedOnly.Checked)
+                        new SqlQueryParameter("FILTER_ShowNotBookedOnly", SqlDbType.Bit, chkShowNotBookedOnly.Checked),
+                        new SqlQueryParameter("MinimumLength", SqlDbType.Int, (int?)in_MinimumLength.Value),
+                        new SqlQueryParameter("MaximumLength", SqlDbType.Int, (int?)in_MaximumLength.Value)
                     );
                     
                     DataView dvwByColor = result.Datatable.DefaultView;
                     dvwByColor.Sort = string.Format("{0} ASC, {1} ASC, {2} ASC, {3} ASC", Inventory.COL_GRADE_NAME, Inventory.COL_PRODUCTSTORENAME, Inventory.COL_PRODUCT_WIDTH_NAME, Inventory.COL_COLOR_NAME);
                     gridSummaryByColor.DataSource = dvwByColor;
-
+                    lblRowInfoHeader.Text = String.Format("Available Qty: {0:N0} pcs / {1:N2}", 
+                            Util.compute(dataTable, "SUM", Inventory.COL_AVAILABLEQTY, ""),
+                            Util.compute(dataTable, "SUM", Inventory.COL_AVAILABLEITEMLENGTH, "")
+                        );
                 }
             }
         }
@@ -231,7 +240,9 @@ namespace BinaMitraTextile.InventoryForm
                 chkShowNotBookedOnly.Checked,
                 itxt_QuickSearch.ValueText,
                 idtp_Start.ValueAsStartDateFilter,
-                idtp_End.ValueAsEndDateFilter);
+                idtp_End.ValueAsEndDateFilter,
+                (int?)in_MinimumLength.Value,
+                (int?)in_MaximumLength.Value);
 
             //dvw.RowFilter = Tools.compileQuickSearchFilter(itxt_QuickSearch.ValueText, fieldNamesForQuickSearch);
             setGridviewDataSource(datatable);

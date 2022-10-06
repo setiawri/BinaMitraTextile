@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,19 +60,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Form));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.scMain = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.in_MaximumLength = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.in_MinimumLength = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.btnApplyFilters = new System.Windows.Forms.Button();
             this.idtp_End = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
             this.idtp_Start = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
@@ -75,6 +78,30 @@
             this.btnUpdateBuyPrice = new System.Windows.Forms.Button();
             this.in_BuyPrice = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.grid = new System.Windows.Forms.DataGridView();
+            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_receiveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_productWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_buyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_sellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_availablePcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_availableQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_totalPcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_totalQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_PONo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_invoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_VendorInvoices_Approved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_packingListNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_FakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_grid_active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_isConsignment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.col_grid_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.extracol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlRowInfo = new System.Windows.Forms.Panel();
             this.scSummary = new System.Windows.Forms.SplitContainer();
             this.gridSummary = new System.Windows.Forms.DataGridView();
@@ -106,6 +133,7 @@
             this.ptRowInfo = new LIBUtil.Desktop.UserControls.PanelToggle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlQuickSearch = new System.Windows.Forms.Panel();
+            this.chkShowInfo = new System.Windows.Forms.CheckBox();
             this.chkCalculateBuyValue = new System.Windows.Forms.CheckBox();
             this.chkShowHidden = new System.Windows.Forms.CheckBox();
             this.chkRearrange = new System.Windows.Forms.CheckBox();
@@ -124,31 +152,6 @@
             this.btnSetPrice = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.chkShowInfo = new System.Windows.Forms.CheckBox();
-            this.col_grid_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_receiveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_productWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_buyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_sellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_grid_availablePcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_availableQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_totalPcs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_totalQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_PONo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_invoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_VendorInvoices_Approved = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_packingListNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_FakturPajaks_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_grid_active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_grid_isConsignment = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.col_grid_OpnameMarker = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.extracol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -185,6 +188,9 @@
             // scMain.Panel1
             // 
             this.scMain.Panel1.BackColor = System.Drawing.Color.White;
+            this.scMain.Panel1.Controls.Add(this.label1);
+            this.scMain.Panel1.Controls.Add(this.in_MaximumLength);
+            this.scMain.Panel1.Controls.Add(this.in_MinimumLength);
             this.scMain.Panel1.Controls.Add(this.btnApplyFilters);
             this.scMain.Panel1.Controls.Add(this.idtp_End);
             this.scMain.Panel1.Controls.Add(this.idtp_Start);
@@ -207,12 +213,84 @@
             this.scMain.SplitterWidth = 1;
             this.scMain.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(345, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 24);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "-";
+            // 
+            // in_MaximumLength
+            // 
+            this.in_MaximumLength.Checked = false;
+            this.in_MaximumLength.DecimalPlaces = 0;
+            this.in_MaximumLength.HideUpDown = true;
+            this.in_MaximumLength.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.in_MaximumLength.LabelText = "MAX Length";
+            this.in_MaximumLength.Location = new System.Drawing.Point(364, 5);
+            this.in_MaximumLength.Margin = new System.Windows.Forms.Padding(4);
+            this.in_MaximumLength.MaximumValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.in_MaximumLength.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_MaximumLength.Name = "in_MaximumLength";
+            this.in_MaximumLength.ShowAllowDecimalCheckbox = false;
+            this.in_MaximumLength.ShowCheckbox = true;
+            this.in_MaximumLength.ShowTextboxOnly = true;
+            this.in_MaximumLength.Size = new System.Drawing.Size(65, 26);
+            this.in_MaximumLength.TabIndex = 25;
+            this.in_MaximumLength.Value = null;
+            // 
+            // in_MinimumLength
+            // 
+            this.in_MinimumLength.Checked = false;
+            this.in_MinimumLength.DecimalPlaces = 0;
+            this.in_MinimumLength.HideUpDown = true;
+            this.in_MinimumLength.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.in_MinimumLength.LabelText = "MIN Length";
+            this.in_MinimumLength.Location = new System.Drawing.Point(278, 5);
+            this.in_MinimumLength.Margin = new System.Windows.Forms.Padding(4);
+            this.in_MinimumLength.MaximumValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.in_MinimumLength.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_MinimumLength.Name = "in_MinimumLength";
+            this.in_MinimumLength.ShowAllowDecimalCheckbox = false;
+            this.in_MinimumLength.ShowCheckbox = true;
+            this.in_MinimumLength.ShowTextboxOnly = true;
+            this.in_MinimumLength.Size = new System.Drawing.Size(65, 26);
+            this.in_MinimumLength.TabIndex = 24;
+            this.in_MinimumLength.Value = null;
+            // 
             // btnApplyFilters
             // 
-            this.btnApplyFilters.Location = new System.Drawing.Point(828, 76);
+            this.btnApplyFilters.Location = new System.Drawing.Point(832, 56);
             this.btnApplyFilters.Margin = new System.Windows.Forms.Padding(4);
             this.btnApplyFilters.Name = "btnApplyFilters";
-            this.btnApplyFilters.Size = new System.Drawing.Size(85, 52);
+            this.btnApplyFilters.Size = new System.Drawing.Size(81, 74);
             this.btnApplyFilters.TabIndex = 23;
             this.btnApplyFilters.Text = "APPLY";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
@@ -225,7 +303,7 @@
             this.idtp_End.DefaultCheckedValue = false;
             this.idtp_End.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_End.LabelText = "To";
-            this.idtp_End.Location = new System.Drawing.Point(967, -4);
+            this.idtp_End.Location = new System.Drawing.Point(972, -4);
             this.idtp_End.Margin = new System.Windows.Forms.Padding(4);
             this.idtp_End.Name = "idtp_End";
             this.idtp_End.ShowCheckBox = true;
@@ -243,7 +321,7 @@
             this.idtp_Start.DefaultCheckedValue = false;
             this.idtp_Start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.idtp_Start.LabelText = "Date";
-            this.idtp_Start.Location = new System.Drawing.Point(828, -4);
+            this.idtp_Start.Location = new System.Drawing.Point(833, -4);
             this.idtp_Start.Margin = new System.Windows.Forms.Padding(4);
             this.idtp_Start.Name = "idtp_Start";
             this.idtp_Start.ShowCheckBox = true;
@@ -257,7 +335,7 @@
             // iclb_ProductStoreNames
             // 
             this.iclb_ProductStoreNames.LabelText = "Products";
-            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(625, -1);
+            this.iclb_ProductStoreNames.Location = new System.Drawing.Point(630, -2);
             this.iclb_ProductStoreNames.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_ProductStoreNames.Name = "iclb_ProductStoreNames";
             this.iclb_ProductStoreNames.ShowListOnly = false;
@@ -267,7 +345,7 @@
             // iclb_Colors
             // 
             this.iclb_Colors.LabelText = "Colors";
-            this.iclb_Colors.Location = new System.Drawing.Point(425, -1);
+            this.iclb_Colors.Location = new System.Drawing.Point(432, -2);
             this.iclb_Colors.Margin = new System.Windows.Forms.Padding(4);
             this.iclb_Colors.Name = "iclb_Colors";
             this.iclb_Colors.ShowListOnly = false;
@@ -276,30 +354,30 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(921, 76);
+            this.btnReset.Location = new System.Drawing.Point(921, 56);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 52);
+            this.btnReset.Size = new System.Drawing.Size(80, 74);
             this.btnReset.TabIndex = 12;
-            this.btnReset.Text = "RESET FILTERS";
+            this.btnReset.Text = "RESET";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // iclb_LengthUnits
             // 
             this.iclb_LengthUnits.LabelText = "Unit";
-            this.iclb_LengthUnits.Location = new System.Drawing.Point(287, 5);
+            this.iclb_LengthUnits.Location = new System.Drawing.Point(277, 35);
             this.iclb_LengthUnits.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_LengthUnits.Name = "iclb_LengthUnits";
             this.iclb_LengthUnits.ShowListOnly = true;
-            this.iclb_LengthUnits.Size = new System.Drawing.Size(133, 127);
+            this.iclb_LengthUnits.Size = new System.Drawing.Size(152, 98);
             this.iclb_LengthUnits.TabIndex = 19;
             this.iclb_LengthUnits.Item_Checked += new System.EventHandler(this.CheckedListBox_ItemChecked);
             // 
             // iclb_ProductWidths
             // 
             this.iclb_ProductWidths.LabelText = "Lebar";
-            this.iclb_ProductWidths.Location = new System.Drawing.Point(146, 5);
+            this.iclb_ProductWidths.Location = new System.Drawing.Point(140, 5);
             this.iclb_ProductWidths.Margin = new System.Windows.Forms.Padding(5);
             this.iclb_ProductWidths.Name = "iclb_ProductWidths";
             this.iclb_ProductWidths.ShowListOnly = true;
@@ -325,7 +403,7 @@
             this.pnlUpdateBuyPrice.Controls.Add(this.btnCancelUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.btnUpdateBuyPrice);
             this.pnlUpdateBuyPrice.Controls.Add(this.in_BuyPrice);
-            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(568, 160);
+            this.pnlUpdateBuyPrice.Location = new System.Drawing.Point(568, 168);
             this.pnlUpdateBuyPrice.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateBuyPrice.Name = "pnlUpdateBuyPrice";
             this.pnlUpdateBuyPrice.Size = new System.Drawing.Size(306, 135);
@@ -445,6 +523,252 @@
             this.grid.TabIndex = 5;
             this.grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellContentClick);
             this.grid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
+            // 
+            // col_grid_id
+            // 
+            this.col_grid_id.DataPropertyName = "id";
+            this.col_grid_id.HeaderText = "id";
+            this.col_grid_id.MinimumWidth = 6;
+            this.col_grid_id.Name = "col_grid_id";
+            this.col_grid_id.ReadOnly = true;
+            this.col_grid_id.Visible = false;
+            this.col_grid_id.Width = 125;
+            // 
+            // col_grid_receiveDate
+            // 
+            this.col_grid_receiveDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            this.col_grid_receiveDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col_grid_receiveDate.HeaderText = "Terima";
+            this.col_grid_receiveDate.MinimumWidth = 50;
+            this.col_grid_receiveDate.Name = "col_grid_receiveDate";
+            this.col_grid_receiveDate.ReadOnly = true;
+            this.col_grid_receiveDate.Width = 50;
+            // 
+            // col_grid_code
+            // 
+            this.col_grid_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_code.DefaultCellStyle = dataGridViewCellStyle3;
+            this.col_grid_code.HeaderText = "Code";
+            this.col_grid_code.MinimumWidth = 40;
+            this.col_grid_code.Name = "col_grid_code";
+            this.col_grid_code.ReadOnly = true;
+            this.col_grid_code.Width = 40;
+            // 
+            // col_grid_grade
+            // 
+            this.col_grid_grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_grade.DefaultCellStyle = dataGridViewCellStyle4;
+            this.col_grid_grade.HeaderText = "Grade";
+            this.col_grid_grade.MinimumWidth = 40;
+            this.col_grid_grade.Name = "col_grid_grade";
+            this.col_grid_grade.ReadOnly = true;
+            this.col_grid_grade.Width = 40;
+            // 
+            // col_grid_product
+            // 
+            this.col_grid_product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_grid_product.HeaderText = "Product";
+            this.col_grid_product.MinimumWidth = 80;
+            this.col_grid_product.Name = "col_grid_product";
+            this.col_grid_product.ReadOnly = true;
+            // 
+            // col_grid_productWidth
+            // 
+            this.col_grid_productWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_productWidth.DefaultCellStyle = dataGridViewCellStyle5;
+            this.col_grid_productWidth.HeaderText = "Lebar";
+            this.col_grid_productWidth.MinimumWidth = 40;
+            this.col_grid_productWidth.Name = "col_grid_productWidth";
+            this.col_grid_productWidth.ReadOnly = true;
+            this.col_grid_productWidth.Width = 40;
+            // 
+            // col_grid_color
+            // 
+            this.col_grid_color.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_color.DefaultCellStyle = dataGridViewCellStyle6;
+            this.col_grid_color.HeaderText = "Warna";
+            this.col_grid_color.MinimumWidth = 40;
+            this.col_grid_color.Name = "col_grid_color";
+            this.col_grid_color.ReadOnly = true;
+            this.col_grid_color.Width = 40;
+            // 
+            // col_grid_buyPrice
+            // 
+            this.col_grid_buyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            this.col_grid_buyPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            this.col_grid_buyPrice.HeaderText = "Buy";
+            this.col_grid_buyPrice.MinimumWidth = 40;
+            this.col_grid_buyPrice.Name = "col_grid_buyPrice";
+            this.col_grid_buyPrice.ReadOnly = true;
+            this.col_grid_buyPrice.Width = 40;
+            // 
+            // col_grid_sellPrice
+            // 
+            this.col_grid_sellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            this.col_grid_sellPrice.DefaultCellStyle = dataGridViewCellStyle8;
+            this.col_grid_sellPrice.HeaderText = "Price";
+            this.col_grid_sellPrice.MinimumWidth = 40;
+            this.col_grid_sellPrice.Name = "col_grid_sellPrice";
+            this.col_grid_sellPrice.ReadOnly = true;
+            this.col_grid_sellPrice.Width = 40;
+            // 
+            // col_grid_select
+            // 
+            this.col_grid_select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_select.HeaderText = "";
+            this.col_grid_select.MinimumWidth = 30;
+            this.col_grid_select.Name = "col_grid_select";
+            this.col_grid_select.Width = 30;
+            // 
+            // col_grid_availablePcs
+            // 
+            this.col_grid_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_availablePcs.DefaultCellStyle = dataGridViewCellStyle9;
+            this.col_grid_availablePcs.HeaderText = "";
+            this.col_grid_availablePcs.MinimumWidth = 30;
+            this.col_grid_availablePcs.Name = "col_grid_availablePcs";
+            this.col_grid_availablePcs.ReadOnly = true;
+            this.col_grid_availablePcs.Width = 30;
+            // 
+            // col_grid_availableQty
+            // 
+            this.col_grid_availableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            this.col_grid_availableQty.DefaultCellStyle = dataGridViewCellStyle10;
+            this.col_grid_availableQty.HeaderText = "Qty";
+            this.col_grid_availableQty.MinimumWidth = 30;
+            this.col_grid_availableQty.Name = "col_grid_availableQty";
+            this.col_grid_availableQty.ReadOnly = true;
+            this.col_grid_availableQty.Width = 30;
+            // 
+            // col_grid_unit
+            // 
+            this.col_grid_unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_grid_unit.DefaultCellStyle = dataGridViewCellStyle11;
+            this.col_grid_unit.HeaderText = "Unit";
+            this.col_grid_unit.MinimumWidth = 40;
+            this.col_grid_unit.Name = "col_grid_unit";
+            this.col_grid_unit.ReadOnly = true;
+            this.col_grid_unit.Width = 40;
+            // 
+            // col_grid_totalPcs
+            // 
+            this.col_grid_totalPcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.col_grid_totalPcs.DefaultCellStyle = dataGridViewCellStyle12;
+            this.col_grid_totalPcs.HeaderText = "";
+            this.col_grid_totalPcs.MinimumWidth = 30;
+            this.col_grid_totalPcs.Name = "col_grid_totalPcs";
+            this.col_grid_totalPcs.ReadOnly = true;
+            this.col_grid_totalPcs.Width = 30;
+            // 
+            // col_grid_totalQty
+            // 
+            this.col_grid_totalQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            this.col_grid_totalQty.DefaultCellStyle = dataGridViewCellStyle13;
+            this.col_grid_totalQty.HeaderText = "Terima";
+            this.col_grid_totalQty.MinimumWidth = 50;
+            this.col_grid_totalQty.Name = "col_grid_totalQty";
+            this.col_grid_totalQty.ReadOnly = true;
+            this.col_grid_totalQty.Width = 50;
+            // 
+            // col_grid_PONo
+            // 
+            this.col_grid_PONo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_PONo.HeaderText = "PO";
+            this.col_grid_PONo.MinimumWidth = 30;
+            this.col_grid_PONo.Name = "col_grid_PONo";
+            this.col_grid_PONo.ReadOnly = true;
+            this.col_grid_PONo.Visible = false;
+            // 
+            // col_grid_invoiceNo
+            // 
+            this.col_grid_invoiceNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_invoiceNo.HeaderText = "Invoice";
+            this.col_grid_invoiceNo.MinimumWidth = 50;
+            this.col_grid_invoiceNo.Name = "col_grid_invoiceNo";
+            this.col_grid_invoiceNo.ReadOnly = true;
+            this.col_grid_invoiceNo.Visible = false;
+            // 
+            // col_grid_VendorInvoices_Approved
+            // 
+            this.col_grid_VendorInvoices_Approved.HeaderText = "VendorInvoices_Approved";
+            this.col_grid_VendorInvoices_Approved.MinimumWidth = 6;
+            this.col_grid_VendorInvoices_Approved.Name = "col_grid_VendorInvoices_Approved";
+            this.col_grid_VendorInvoices_Approved.ReadOnly = true;
+            this.col_grid_VendorInvoices_Approved.Visible = false;
+            this.col_grid_VendorInvoices_Approved.Width = 125;
+            // 
+            // col_grid_packingListNo
+            // 
+            this.col_grid_packingListNo.HeaderText = "PackList";
+            this.col_grid_packingListNo.MinimumWidth = 50;
+            this.col_grid_packingListNo.Name = "col_grid_packingListNo";
+            this.col_grid_packingListNo.ReadOnly = true;
+            this.col_grid_packingListNo.Visible = false;
+            this.col_grid_packingListNo.Width = 50;
+            // 
+            // col_grid_FakturPajaks_No
+            // 
+            this.col_grid_FakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_FakturPajaks_No.HeaderText = "FP";
+            this.col_grid_FakturPajaks_No.MinimumWidth = 30;
+            this.col_grid_FakturPajaks_No.Name = "col_grid_FakturPajaks_No";
+            this.col_grid_FakturPajaks_No.ReadOnly = true;
+            this.col_grid_FakturPajaks_No.Visible = false;
+            // 
+            // col_grid_active
+            // 
+            this.col_grid_active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_active.HeaderText = "On";
+            this.col_grid_active.MinimumWidth = 30;
+            this.col_grid_active.Name = "col_grid_active";
+            this.col_grid_active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_grid_active.Visible = false;
+            // 
+            // col_grid_isConsignment
+            // 
+            this.col_grid_isConsignment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_isConsignment.HeaderText = "Titip";
+            this.col_grid_isConsignment.MinimumWidth = 30;
+            this.col_grid_isConsignment.Name = "col_grid_isConsignment";
+            this.col_grid_isConsignment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_isConsignment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_grid_isConsignment.Visible = false;
+            // 
+            // col_grid_OpnameMarker
+            // 
+            this.col_grid_OpnameMarker.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.col_grid_OpnameMarker.HeaderText = "OP";
+            this.col_grid_OpnameMarker.MinimumWidth = 30;
+            this.col_grid_OpnameMarker.Name = "col_grid_OpnameMarker";
+            this.col_grid_OpnameMarker.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_grid_OpnameMarker.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_grid_OpnameMarker.Visible = false;
+            // 
+            // extracol
+            // 
+            this.extracol.HeaderText = "";
+            this.extracol.MinimumWidth = 6;
+            this.extracol.Name = "extracol";
+            this.extracol.ReadOnly = true;
+            this.extracol.Width = 6;
             // 
             // pnlRowInfo
             // 
@@ -862,6 +1186,19 @@
             this.pnlQuickSearch.Size = new System.Drawing.Size(1406, 33);
             this.pnlQuickSearch.TabIndex = 0;
             // 
+            // chkShowInfo
+            // 
+            this.chkShowInfo.AutoSize = true;
+            this.chkShowInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowInfo.Location = new System.Drawing.Point(610, 0);
+            this.chkShowInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowInfo.Name = "chkShowInfo";
+            this.chkShowInfo.Size = new System.Drawing.Size(74, 31);
+            this.chkShowInfo.TabIndex = 21;
+            this.chkShowInfo.Text = "Show Info";
+            this.chkShowInfo.UseVisualStyleBackColor = true;
+            this.chkShowInfo.CheckedChanged += new System.EventHandler(this.chkShowInfo_CheckedChanged);
+            // 
             // chkCalculateBuyValue
             // 
             this.chkCalculateBuyValue.AutoSize = true;
@@ -1105,271 +1442,6 @@
             this.flpButtons.Size = new System.Drawing.Size(1445, 36);
             this.flpButtons.TabIndex = 109;
             // 
-            // chkShowInfo
-            // 
-            this.chkShowInfo.AutoSize = true;
-            this.chkShowInfo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowInfo.Location = new System.Drawing.Point(610, 0);
-            this.chkShowInfo.Margin = new System.Windows.Forms.Padding(4);
-            this.chkShowInfo.Name = "chkShowInfo";
-            this.chkShowInfo.Size = new System.Drawing.Size(74, 31);
-            this.chkShowInfo.TabIndex = 21;
-            this.chkShowInfo.Text = "Show Info";
-            this.chkShowInfo.UseVisualStyleBackColor = true;
-            this.chkShowInfo.CheckedChanged += new System.EventHandler(this.chkShowInfo_CheckedChanged);
-            // 
-            // col_grid_id
-            // 
-            this.col_grid_id.DataPropertyName = "id";
-            this.col_grid_id.HeaderText = "id";
-            this.col_grid_id.MinimumWidth = 6;
-            this.col_grid_id.Name = "col_grid_id";
-            this.col_grid_id.ReadOnly = true;
-            this.col_grid_id.Visible = false;
-            this.col_grid_id.Width = 125;
-            // 
-            // col_grid_receiveDate
-            // 
-            this.col_grid_receiveDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "dd/MM/yy";
-            this.col_grid_receiveDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.col_grid_receiveDate.HeaderText = "Terima";
-            this.col_grid_receiveDate.MinimumWidth = 50;
-            this.col_grid_receiveDate.Name = "col_grid_receiveDate";
-            this.col_grid_receiveDate.ReadOnly = true;
-            this.col_grid_receiveDate.Width = 50;
-            // 
-            // col_grid_code
-            // 
-            this.col_grid_code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_code.DefaultCellStyle = dataGridViewCellStyle3;
-            this.col_grid_code.HeaderText = "Code";
-            this.col_grid_code.MinimumWidth = 40;
-            this.col_grid_code.Name = "col_grid_code";
-            this.col_grid_code.ReadOnly = true;
-            this.col_grid_code.Width = 40;
-            // 
-            // col_grid_grade
-            // 
-            this.col_grid_grade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_grade.DefaultCellStyle = dataGridViewCellStyle4;
-            this.col_grid_grade.HeaderText = "Grade";
-            this.col_grid_grade.MinimumWidth = 40;
-            this.col_grid_grade.Name = "col_grid_grade";
-            this.col_grid_grade.ReadOnly = true;
-            this.col_grid_grade.Width = 40;
-            // 
-            // col_grid_product
-            // 
-            this.col_grid_product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_grid_product.HeaderText = "Product";
-            this.col_grid_product.MinimumWidth = 80;
-            this.col_grid_product.Name = "col_grid_product";
-            this.col_grid_product.ReadOnly = true;
-            // 
-            // col_grid_productWidth
-            // 
-            this.col_grid_productWidth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_productWidth.DefaultCellStyle = dataGridViewCellStyle5;
-            this.col_grid_productWidth.HeaderText = "Lebar";
-            this.col_grid_productWidth.MinimumWidth = 40;
-            this.col_grid_productWidth.Name = "col_grid_productWidth";
-            this.col_grid_productWidth.ReadOnly = true;
-            this.col_grid_productWidth.Width = 40;
-            // 
-            // col_grid_color
-            // 
-            this.col_grid_color.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_color.DefaultCellStyle = dataGridViewCellStyle6;
-            this.col_grid_color.HeaderText = "Warna";
-            this.col_grid_color.MinimumWidth = 40;
-            this.col_grid_color.Name = "col_grid_color";
-            this.col_grid_color.ReadOnly = true;
-            this.col_grid_color.Width = 40;
-            // 
-            // col_grid_buyPrice
-            // 
-            this.col_grid_buyPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            this.col_grid_buyPrice.DefaultCellStyle = dataGridViewCellStyle7;
-            this.col_grid_buyPrice.HeaderText = "Buy";
-            this.col_grid_buyPrice.MinimumWidth = 40;
-            this.col_grid_buyPrice.Name = "col_grid_buyPrice";
-            this.col_grid_buyPrice.ReadOnly = true;
-            this.col_grid_buyPrice.Width = 40;
-            // 
-            // col_grid_sellPrice
-            // 
-            this.col_grid_sellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            this.col_grid_sellPrice.DefaultCellStyle = dataGridViewCellStyle8;
-            this.col_grid_sellPrice.HeaderText = "Price";
-            this.col_grid_sellPrice.MinimumWidth = 40;
-            this.col_grid_sellPrice.Name = "col_grid_sellPrice";
-            this.col_grid_sellPrice.ReadOnly = true;
-            this.col_grid_sellPrice.Width = 40;
-            // 
-            // col_grid_select
-            // 
-            this.col_grid_select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_select.HeaderText = "";
-            this.col_grid_select.MinimumWidth = 30;
-            this.col_grid_select.Name = "col_grid_select";
-            this.col_grid_select.Width = 30;
-            // 
-            // col_grid_availablePcs
-            // 
-            this.col_grid_availablePcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_availablePcs.DefaultCellStyle = dataGridViewCellStyle9;
-            this.col_grid_availablePcs.HeaderText = "";
-            this.col_grid_availablePcs.MinimumWidth = 30;
-            this.col_grid_availablePcs.Name = "col_grid_availablePcs";
-            this.col_grid_availablePcs.ReadOnly = true;
-            this.col_grid_availablePcs.Width = 30;
-            // 
-            // col_grid_availableQty
-            // 
-            this.col_grid_availableQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            this.col_grid_availableQty.DefaultCellStyle = dataGridViewCellStyle10;
-            this.col_grid_availableQty.HeaderText = "Qty";
-            this.col_grid_availableQty.MinimumWidth = 30;
-            this.col_grid_availableQty.Name = "col_grid_availableQty";
-            this.col_grid_availableQty.ReadOnly = true;
-            this.col_grid_availableQty.Width = 30;
-            // 
-            // col_grid_unit
-            // 
-            this.col_grid_unit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_grid_unit.DefaultCellStyle = dataGridViewCellStyle11;
-            this.col_grid_unit.HeaderText = "Unit";
-            this.col_grid_unit.MinimumWidth = 40;
-            this.col_grid_unit.Name = "col_grid_unit";
-            this.col_grid_unit.ReadOnly = true;
-            this.col_grid_unit.Width = 40;
-            // 
-            // col_grid_totalPcs
-            // 
-            this.col_grid_totalPcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.col_grid_totalPcs.DefaultCellStyle = dataGridViewCellStyle12;
-            this.col_grid_totalPcs.HeaderText = "";
-            this.col_grid_totalPcs.MinimumWidth = 30;
-            this.col_grid_totalPcs.Name = "col_grid_totalPcs";
-            this.col_grid_totalPcs.ReadOnly = true;
-            this.col_grid_totalPcs.Width = 30;
-            // 
-            // col_grid_totalQty
-            // 
-            this.col_grid_totalQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "N2";
-            this.col_grid_totalQty.DefaultCellStyle = dataGridViewCellStyle13;
-            this.col_grid_totalQty.HeaderText = "Terima";
-            this.col_grid_totalQty.MinimumWidth = 50;
-            this.col_grid_totalQty.Name = "col_grid_totalQty";
-            this.col_grid_totalQty.ReadOnly = true;
-            this.col_grid_totalQty.Width = 50;
-            // 
-            // col_grid_PONo
-            // 
-            this.col_grid_PONo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_PONo.HeaderText = "PO";
-            this.col_grid_PONo.MinimumWidth = 30;
-            this.col_grid_PONo.Name = "col_grid_PONo";
-            this.col_grid_PONo.ReadOnly = true;
-            this.col_grid_PONo.Visible = false;
-            this.col_grid_PONo.Width = 30;
-            // 
-            // col_grid_invoiceNo
-            // 
-            this.col_grid_invoiceNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_invoiceNo.HeaderText = "Invoice";
-            this.col_grid_invoiceNo.MinimumWidth = 50;
-            this.col_grid_invoiceNo.Name = "col_grid_invoiceNo";
-            this.col_grid_invoiceNo.ReadOnly = true;
-            this.col_grid_invoiceNo.Visible = false;
-            this.col_grid_invoiceNo.Width = 50;
-            // 
-            // col_grid_VendorInvoices_Approved
-            // 
-            this.col_grid_VendorInvoices_Approved.HeaderText = "VendorInvoices_Approved";
-            this.col_grid_VendorInvoices_Approved.MinimumWidth = 6;
-            this.col_grid_VendorInvoices_Approved.Name = "col_grid_VendorInvoices_Approved";
-            this.col_grid_VendorInvoices_Approved.ReadOnly = true;
-            this.col_grid_VendorInvoices_Approved.Visible = false;
-            this.col_grid_VendorInvoices_Approved.Width = 125;
-            // 
-            // col_grid_packingListNo
-            // 
-            this.col_grid_packingListNo.HeaderText = "PackList";
-            this.col_grid_packingListNo.MinimumWidth = 50;
-            this.col_grid_packingListNo.Name = "col_grid_packingListNo";
-            this.col_grid_packingListNo.ReadOnly = true;
-            this.col_grid_packingListNo.Visible = false;
-            this.col_grid_packingListNo.Width = 50;
-            // 
-            // col_grid_FakturPajaks_No
-            // 
-            this.col_grid_FakturPajaks_No.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_FakturPajaks_No.HeaderText = "FP";
-            this.col_grid_FakturPajaks_No.MinimumWidth = 30;
-            this.col_grid_FakturPajaks_No.Name = "col_grid_FakturPajaks_No";
-            this.col_grid_FakturPajaks_No.ReadOnly = true;
-            this.col_grid_FakturPajaks_No.Visible = false;
-            this.col_grid_FakturPajaks_No.Width = 30;
-            // 
-            // col_grid_active
-            // 
-            this.col_grid_active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_active.HeaderText = "On";
-            this.col_grid_active.MinimumWidth = 30;
-            this.col_grid_active.Name = "col_grid_active";
-            this.col_grid_active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_grid_active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_grid_active.Visible = false;
-            this.col_grid_active.Width = 30;
-            // 
-            // col_grid_isConsignment
-            // 
-            this.col_grid_isConsignment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_isConsignment.HeaderText = "Titip";
-            this.col_grid_isConsignment.MinimumWidth = 30;
-            this.col_grid_isConsignment.Name = "col_grid_isConsignment";
-            this.col_grid_isConsignment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_grid_isConsignment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_grid_isConsignment.Visible = false;
-            this.col_grid_isConsignment.Width = 30;
-            // 
-            // col_grid_OpnameMarker
-            // 
-            this.col_grid_OpnameMarker.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.col_grid_OpnameMarker.HeaderText = "OP";
-            this.col_grid_OpnameMarker.MinimumWidth = 30;
-            this.col_grid_OpnameMarker.Name = "col_grid_OpnameMarker";
-            this.col_grid_OpnameMarker.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_grid_OpnameMarker.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_grid_OpnameMarker.Visible = false;
-            this.col_grid_OpnameMarker.Width = 30;
-            // 
-            // extracol
-            // 
-            this.extracol.HeaderText = "";
-            this.extracol.MinimumWidth = 6;
-            this.extracol.Name = "extracol";
-            this.extracol.ReadOnly = true;
-            this.extracol.Width = 6;
-            // 
             // Main_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -1382,6 +1454,7 @@
             this.Load += new System.EventHandler(this.Form_Load);
             this.Shown += new System.EventHandler(this.Form_Shown);
             this.scMain.Panel1.ResumeLayout(false);
+            this.scMain.Panel1.PerformLayout();
             this.scMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
             this.scMain.ResumeLayout(false);
@@ -1497,5 +1570,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_isConsignment;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_grid_OpnameMarker;
         private System.Windows.Forms.DataGridViewTextBoxColumn extracol;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_MaximumLength;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_MinimumLength;
+        private System.Windows.Forms.Label label1;
     }
 }
