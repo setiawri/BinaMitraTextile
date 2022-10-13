@@ -314,11 +314,12 @@ namespace BinaMitraTextile.Sales
             }
             else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewLinkColumn), gridMasterSaleAmount.Name))
             {
-                var form = new Invoices.Payment_Form(typeof(Sale), new Guid(gridMaster.Rows[e.RowIndex].Cells[col_gridmaster_saleid.Name].Value.ToString()));
-                Tools.displayForm(form);
-                if (form.DialogResult == DialogResult.OK)
+                if(Util.getSelectedRowValue(sender, customer_name) != DBNull.Value)
                 {
-                    populateMasterGrid();
+                    var form = new Invoices.Payment_Form(typeof(Sale), new Guid(gridMaster.Rows[e.RowIndex].Cells[col_gridmaster_saleid.Name].Value.ToString()));
+                    Tools.displayForm(form);
+                    if (form.DialogResult == DialogResult.OK)
+                        populateMasterGrid();
                 }
             }
             else if (Tools.isCorrectColumn(sender, e, typeof(DataGridViewCheckBoxColumn), col_gridmaster_completed.Name))

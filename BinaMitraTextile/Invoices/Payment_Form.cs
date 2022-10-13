@@ -104,7 +104,8 @@ namespace BinaMitraTextile.Invoices
                 referenceId = _sale.id;
                 startingBalance = _sale.SaleAmount + _sale.ShippingCost;
                 
-                _creditBalance = CustomerCredit.getBalance((Guid)_sale.customer_id);
+                if(_sale.customer_id != null)
+                    _creditBalance = CustomerCredit.getBalance((Guid)_sale.customer_id);
                 lblCreditBalance.Text = String.Format("Credit {0}: Rp.{1:N2}", new Customer(_sale.customer_id).Name, _creditBalance);
             }
 
