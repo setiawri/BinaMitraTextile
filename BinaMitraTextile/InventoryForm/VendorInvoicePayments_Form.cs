@@ -89,6 +89,13 @@ namespace BinaMitraTextile.InventoryForm
             populateGridVendorInvoicePayments();
         }
 
+        public void populateGridVendorInvoicePaymentItems()
+        {
+            DataTable data = VendorInvoicePaymentItem.get(null, (Guid)Util.getSelectedRowValue(gridVendorInvoicePayments, col_gridVendorInvoicePayments_Id));
+            Util.setGridviewDataSource(gridVendorInvoicePaymentItems, false, false, data);
+            lblRowInfoHeader.Text = string.Format("Payment No: {0}", Util.getSelectedRowValue(gridVendorInvoicePayments, col_gridVendorInvoicePayments_No).ToString());
+        }
+
         #endregion
         /*******************************************************************************************************/
         #region EVENT HANDLERS
@@ -98,17 +105,16 @@ namespace BinaMitraTextile.InventoryForm
             if (Util.isColumnMatch(sender, e, col_gridVendorInvoicePayments_Notes, col_gridVendorInvoicePayments_Timestamp))
             {
                 pnlUpdateVendorInvoicePayment.Visible = true;
+                pnlUpdateVendorInvoicePaymentItem.Visible = false;
                 _updateitem_Id = Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id);
                 VendorInvoicePayment obj = new VendorInvoicePayment(_updateitem_Id);
-                idtp_Timestamp.Value = obj.Timestamp;
-                itxt_Notes.ValueText = obj.Notes;
-                idtp_Timestamp.focus();
+                idtp_VendorInvoicePayment_Timestamp.Value = obj.Timestamp;
+                itxt_VendorInvoicePayment_Notes.ValueText = obj.Notes;
+                idtp_VendorInvoicePayment_Timestamp.focus();
             }
             else if (e.RowIndex > -1)
             {
-                DataTable data = VendorInvoicePaymentItem.get(null, Util.getSelectedRowID(sender, col_gridVendorInvoicePayments_Id));
-                Util.setGridviewDataSource(gridVendorInvoicePaymentItems, false, false, data);
-                lblRowInfoHeader.Text = string.Format("Payment No: {0}", Util.getSelectedRowValue(sender, col_gridVendorInvoicePayments_No));
+                populateGridVendorInvoicePaymentItems();
             }
         }
 
@@ -165,7 +171,7 @@ namespace BinaMitraTextile.InventoryForm
 
         private void btnUpdateVendorInvoicePayment_Click(object sender, EventArgs e)
         {
-            VendorInvoicePayment.update(_updateitem_Id, (DateTime)idtp_Timestamp.ValueAsStartDateFilter, itxt_Notes.ValueText);
+            VendorInvoicePayment.update(_updateitem_Id, (DateTime)idtp_VendorInvoicePayment_Timestamp.ValueAsStartDateFilter, itxt_VendorInvoicePayment_Notes.ValueText);
             pnlUpdateVendorInvoicePayment.Visible = false;
             populateGridVendorInvoicePayments();
         }
@@ -173,6 +179,31 @@ namespace BinaMitraTextile.InventoryForm
         private void btnCancelUpdateVendorInvoicePayment_Click(object sender, EventArgs e)
         {
             pnlUpdateVendorInvoicePayment.Visible = false;
+        }
+
+        private void btnCancelUpdateVendorInvoicePaymentItem_Click(object sender, EventArgs e)
+        {
+            pnlUpdateVendorInvoicePaymentItem.Visible = false;
+        }
+
+        private void btnUpdateVendorInvoicePaymentItem_Click(object sender, EventArgs e)
+        {
+            VendorInvoicePaymentItem.update(_updateitem_Id, itxt_VendorInvoicePaymentItem_Notes.ValueText);
+            pnlUpdateVendorInvoicePaymentItem.Visible = false;
+            populateGridVendorInvoicePaymentItems();
+        }
+
+        private void gridVendorInvoicePaymentItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Util.isColumnMatch(sender, e, col_gridVendorInvoicePaymentItems_Notes))
+            {
+                pnlUpdateVendorInvoicePaymentItem.Visible = true;
+                pnlUpdateVendorInvoicePayment.Visible = false;
+                _updateitem_Id = Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePaymentItems_Id);
+                VendorInvoicePaymentItem obj = new VendorInvoicePaymentItem((Guid)Util.getSelectedRowValue(sender, col_gridVendorInvoicePaymentItems_Id));
+                itxt_VendorInvoicePaymentItem_Notes.ValueText = obj.Notes;
+                itxt_VendorInvoicePaymentItem_Notes.selectText();
+            }
         }
 
         #endregion

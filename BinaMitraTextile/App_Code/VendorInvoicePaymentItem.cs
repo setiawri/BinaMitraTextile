@@ -38,6 +38,21 @@ namespace BinaMitraTextile
         /*******************************************************************************************************/
         #region CONSTRUCTORS
 
+        public VendorInvoicePaymentItem(Guid? id)
+        {
+            if (id != null)
+            {
+                DataRow row = get((Guid)id);
+                Id = (Guid)id;
+                VendorInvoicePayments_Id = Util.wrapNullable<Guid>(row, COL_DB_VendorInvoicePayments_Id);
+                VendorInvoices_Id = Util.wrapNullable<Guid>(row, COL_DB_VendorInvoices_Id);
+                Amount = Util.wrapNullable<decimal>(row, COL_DB_Amount);
+                Notes = Util.wrapNullable<string>(row, COL_DB_Notes);
+
+                VendorInvoices_No = Util.wrapNullable<string>(row, COL_VendorInvoices_No);
+            }
+        }
+
         #endregion CONSTRUCTORS
         /*******************************************************************************************************/
         #region DATABASE STATIC METHODS
@@ -58,6 +73,7 @@ namespace BinaMitraTextile
             }
         }
 
+        public static DataRow get(Guid Id) { return Util.getFirstRow(get(Id, null)); }
         public static DataTable get(Guid? Id, Guid? VendorInvoicePayments_Id)
         {
             SqlQueryResult result = DBConnection.query(
@@ -69,6 +85,32 @@ namespace BinaMitraTextile
                 new SqlQueryParameter(COL_DB_VendorInvoicePayments_Id, SqlDbType.UniqueIdentifier, Util.wrapNullable(VendorInvoicePayments_Id))
                 );
             return result.Datatable;
+        }
+
+        public static bool update(Guid Id, string Notes)
+        {
+            VendorInvoicePaymentItem objOld = new VendorInvoicePaymentItem(Id);
+            string log = "";
+            log = Util.appendChange(log, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
+
+            if (string.IsNullOrEmpty(log))
+                return Util.displayMessageBoxError("No changes to record");
+            else
+            {
+                SqlQueryResult result = DBConnection.query(
+                    false,
+                    DBConnection.ActiveSqlConnection,
+                    QueryTypes.ExecuteNonQuery,
+                    "VendorInvoicePaymentItems_update",
+                    new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, Id),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.NVarChar, Util.wrapNullable(Notes))
+                );
+
+                if (result.IsSuccessful)
+                    ActivityLog.submit(Id, String.Format("Updated: {0}", log));
+
+                return result.IsSuccessful;
+            }
         }
 
         #endregion DATABASE STATIC METHODS
