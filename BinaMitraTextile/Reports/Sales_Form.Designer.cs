@@ -28,51 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartProfit = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gridSummaryByMonth = new System.Windows.Forms.DataGridView();
@@ -180,46 +180,46 @@
             // 
             // chartSales
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartSales.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.chartSales.ChartAreas.Add(chartArea1);
             this.chartSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Name = "Legend1";
-            this.chartSales.Legends.Add(legend4);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chartSales.Legends.Add(legend1);
             this.chartSales.Location = new System.Drawing.Point(4, 4);
             this.chartSales.Margin = new System.Windows.Forms.Padding(4);
             this.chartSales.Name = "chartSales";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series2";
-            this.chartSales.Series.Add(series7);
-            this.chartSales.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            this.chartSales.Series.Add(series1);
+            this.chartSales.Series.Add(series2);
             this.chartSales.Size = new System.Drawing.Size(923, 291);
             this.chartSales.TabIndex = 1;
             this.chartSales.Text = "SALES";
             // 
             // chartProfit
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartProfit.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.chartProfit.ChartAreas.Add(chartArea2);
             this.chartProfit.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend5.Name = "Legend1";
-            this.chartProfit.Legends.Add(legend5);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.chartProfit.Legends.Add(legend2);
             this.chartProfit.Location = new System.Drawing.Point(0, 0);
             this.chartProfit.Margin = new System.Windows.Forms.Padding(4);
             this.chartProfit.Name = "chartProfit";
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series2";
-            this.chartProfit.Series.Add(series9);
-            this.chartProfit.Series.Add(series10);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series2";
+            this.chartProfit.Series.Add(series3);
+            this.chartProfit.Series.Add(series4);
             this.chartProfit.Size = new System.Drawing.Size(931, 299);
             this.chartProfit.TabIndex = 2;
             this.chartProfit.Text = "chart1";
@@ -232,14 +232,14 @@
             this.gridSummaryByMonth.BackgroundColor = System.Drawing.Color.White;
             this.gridSummaryByMonth.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSummaryByMonth.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F);
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummaryByMonth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummaryByMonth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gridSummaryByMonth.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSummaryByMonth.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_gridsummary_month,
@@ -271,9 +271,9 @@
             // col_gridsummary_qty
             // 
             this.col_gridsummary_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "N0";
-            this.col_gridsummary_qty.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.col_gridsummary_qty.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_gridsummary_qty.HeaderText = "Qty";
             this.col_gridsummary_qty.MinimumWidth = 30;
             this.col_gridsummary_qty.Name = "col_gridsummary_qty";
@@ -284,9 +284,9 @@
             // 
             this.col_gridsummary_sales.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_gridsummary_sales.DataPropertyName = "sale_total";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "N0";
-            this.col_gridsummary_sales.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.col_gridsummary_sales.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_gridsummary_sales.HeaderText = "sales";
             this.col_gridsummary_sales.MinimumWidth = 60;
             this.col_gridsummary_sales.Name = "col_gridsummary_sales";
@@ -297,9 +297,9 @@
             // 
             this.col_gridsummary_profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_gridsummary_profit.DataPropertyName = "profit";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle37.Format = "N0";
-            this.col_gridsummary_profit.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            this.col_gridsummary_profit.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_gridsummary_profit.HeaderText = "profit";
             this.col_gridsummary_profit.MinimumWidth = 40;
             this.col_gridsummary_profit.Name = "col_gridsummary_profit";
@@ -309,9 +309,9 @@
             // col_gridsummary_percentage
             // 
             this.col_gridsummary_percentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "N1";
-            this.col_gridsummary_percentage.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N1";
+            this.col_gridsummary_percentage.DefaultCellStyle = dataGridViewCellStyle5;
             this.col_gridsummary_percentage.HeaderText = "%";
             this.col_gridsummary_percentage.Name = "col_gridsummary_percentage";
             this.col_gridsummary_percentage.ReadOnly = true;
@@ -319,23 +319,23 @@
             // 
             // chartQty
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartQty.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.chartQty.ChartAreas.Add(chartArea3);
             this.chartQty.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend6.Name = "Legend1";
-            this.chartQty.Legends.Add(legend6);
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend3.Name = "Legend1";
+            this.chartQty.Legends.Add(legend3);
             this.chartQty.Location = new System.Drawing.Point(4, 4);
             this.chartQty.Margin = new System.Windows.Forms.Padding(4);
             this.chartQty.Name = "chartQty";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series2";
-            this.chartQty.Series.Add(series11);
-            this.chartQty.Series.Add(series12);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series2";
+            this.chartQty.Series.Add(series5);
+            this.chartQty.Series.Add(series6);
             this.chartQty.Size = new System.Drawing.Size(923, 291);
             this.chartQty.TabIndex = 3;
             this.chartQty.Text = "chart1";
@@ -426,14 +426,14 @@
             this.gridSummaryByCustomers.BackgroundColor = System.Drawing.Color.White;
             this.gridSummaryByCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridSummaryByCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridSummaryByCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSummaryByCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.gridSummaryByCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSummaryByCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_dgvSummaryByCustomers_customer_id,
@@ -449,8 +449,8 @@
             this.gridSummaryByCustomers.Name = "gridSummaryByCustomers";
             this.gridSummaryByCustomers.ReadOnly = true;
             this.gridSummaryByCustomers.RowHeadersVisible = false;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.gridSummaryByCustomers.RowsDefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.gridSummaryByCustomers.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.gridSummaryByCustomers.RowTemplate.Height = 24;
             this.gridSummaryByCustomers.Size = new System.Drawing.Size(334, 266);
             this.gridSummaryByCustomers.TabIndex = 103;
@@ -476,9 +476,9 @@
             // col_dgvSummaryByCustomers_sale_length
             // 
             this.col_dgvSummaryByCustomers_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle40.Format = "N0";
-            this.col_dgvSummaryByCustomers_sale_length.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.col_dgvSummaryByCustomers_sale_length.DefaultCellStyle = dataGridViewCellStyle7;
             this.col_dgvSummaryByCustomers_sale_length.HeaderText = "Qty";
             this.col_dgvSummaryByCustomers_sale_length.MinimumWidth = 30;
             this.col_dgvSummaryByCustomers_sale_length.Name = "col_dgvSummaryByCustomers_sale_length";
@@ -488,9 +488,9 @@
             // col_dgvSummaryByCustomers_sale_amount
             // 
             this.col_dgvSummaryByCustomers_sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle41.Format = "N0";
-            this.col_dgvSummaryByCustomers_sale_amount.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            this.col_dgvSummaryByCustomers_sale_amount.DefaultCellStyle = dataGridViewCellStyle8;
             this.col_dgvSummaryByCustomers_sale_amount.HeaderText = "Amount";
             this.col_dgvSummaryByCustomers_sale_amount.MinimumWidth = 40;
             this.col_dgvSummaryByCustomers_sale_amount.Name = "col_dgvSummaryByCustomers_sale_amount";
@@ -501,9 +501,9 @@
             // col_dgvSummaryByCustomers_profit_amount
             // 
             this.col_dgvSummaryByCustomers_profit_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle42.Format = "N0";
-            this.col_dgvSummaryByCustomers_profit_amount.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            this.col_dgvSummaryByCustomers_profit_amount.DefaultCellStyle = dataGridViewCellStyle9;
             this.col_dgvSummaryByCustomers_profit_amount.HeaderText = "Profit";
             this.col_dgvSummaryByCustomers_profit_amount.MinimumWidth = 40;
             this.col_dgvSummaryByCustomers_profit_amount.Name = "col_dgvSummaryByCustomers_profit_amount";
@@ -513,9 +513,9 @@
             // col_dgvSummaryByCustomers_profit_percent
             // 
             this.col_dgvSummaryByCustomers_profit_percent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle43.Format = "N2";
-            this.col_dgvSummaryByCustomers_profit_percent.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            this.col_dgvSummaryByCustomers_profit_percent.DefaultCellStyle = dataGridViewCellStyle10;
             this.col_dgvSummaryByCustomers_profit_percent.HeaderText = "%";
             this.col_dgvSummaryByCustomers_profit_percent.MinimumWidth = 20;
             this.col_dgvSummaryByCustomers_profit_percent.Name = "col_dgvSummaryByCustomers_profit_percent";
@@ -555,14 +555,14 @@
             this.dgvDetailBySales.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetailBySales.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDetailBySales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailBySales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailBySales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvDetailBySales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetailBySales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_griddetail_timestamp,
@@ -577,12 +577,11 @@
             this.dgvDetailBySales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetailBySales.Location = new System.Drawing.Point(4, 4);
             this.dgvDetailBySales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvDetailBySales.MultiSelect = false;
             this.dgvDetailBySales.Name = "dgvDetailBySales";
             this.dgvDetailBySales.ReadOnly = true;
             this.dgvDetailBySales.RowHeadersVisible = false;
-            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvDetailBySales.RowsDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvDetailBySales.RowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvDetailBySales.RowTemplate.Height = 24;
             this.dgvDetailBySales.Size = new System.Drawing.Size(572, 266);
             this.dgvDetailBySales.TabIndex = 100;
@@ -592,9 +591,9 @@
             // 
             this.col_griddetail_timestamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_griddetail_timestamp.DataPropertyName = "time_stamp";
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle46.Format = "dd-MMM";
-            this.col_griddetail_timestamp.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Format = "dd-MMM";
+            this.col_griddetail_timestamp.DefaultCellStyle = dataGridViewCellStyle13;
             this.col_griddetail_timestamp.HeaderText = "Date";
             this.col_griddetail_timestamp.MinimumWidth = 30;
             this.col_griddetail_timestamp.Name = "col_griddetail_timestamp";
@@ -632,9 +631,9 @@
             // 
             this.col_griddetail_pcs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_griddetail_pcs.DataPropertyName = "sale_qty";
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle47.Format = "N0";
-            this.col_griddetail_pcs.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N0";
+            this.col_griddetail_pcs.DefaultCellStyle = dataGridViewCellStyle14;
             this.col_griddetail_pcs.HeaderText = "Pcs";
             this.col_griddetail_pcs.MinimumWidth = 30;
             this.col_griddetail_pcs.Name = "col_griddetail_pcs";
@@ -645,9 +644,9 @@
             // 
             this.col_griddetail_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_griddetail_qty.DataPropertyName = "sale_length";
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle48.Format = "N0";
-            this.col_griddetail_qty.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N0";
+            this.col_griddetail_qty.DefaultCellStyle = dataGridViewCellStyle15;
             this.col_griddetail_qty.HeaderText = "Qty";
             this.col_griddetail_qty.MinimumWidth = 40;
             this.col_griddetail_qty.Name = "col_griddetail_qty";
@@ -658,9 +657,9 @@
             // 
             this.col_griddetail_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.col_griddetail_amount.DataPropertyName = "sale_amount";
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle49.Format = "N0";
-            this.col_griddetail_amount.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N0";
+            this.col_griddetail_amount.DefaultCellStyle = dataGridViewCellStyle16;
             this.col_griddetail_amount.HeaderText = "Amount";
             this.col_griddetail_amount.MinimumWidth = 50;
             this.col_griddetail_amount.Name = "col_griddetail_amount";
@@ -679,9 +678,9 @@
             // col_griddetail_profit
             // 
             this.col_griddetail_profit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.Format = "N0";
-            this.col_griddetail_profit.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            this.col_griddetail_profit.DefaultCellStyle = dataGridViewCellStyle17;
             this.col_griddetail_profit.HeaderText = "Profit";
             this.col_griddetail_profit.MinimumWidth = 50;
             this.col_griddetail_profit.Name = "col_griddetail_profit";
@@ -691,9 +690,9 @@
             // col_griddetail_profitpercent
             // 
             this.col_griddetail_profitpercent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle51.Format = "N2";
-            this.col_griddetail_profitpercent.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N2";
+            this.col_griddetail_profitpercent.DefaultCellStyle = dataGridViewCellStyle18;
             this.col_griddetail_profitpercent.HeaderText = "%";
             this.col_griddetail_profitpercent.MinimumWidth = 30;
             this.col_griddetail_profitpercent.Name = "col_griddetail_profitpercent";
@@ -721,14 +720,14 @@
             this.dgvDetailByProducts.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetailByProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDetailByProducts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailByProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailByProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvDetailByProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetailByProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_dgvDetailByProducts_product_name,
@@ -746,8 +745,8 @@
             this.dgvDetailByProducts.Name = "dgvDetailByProducts";
             this.dgvDetailByProducts.ReadOnly = true;
             this.dgvDetailByProducts.RowHeadersVisible = false;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvDetailByProducts.RowsDefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvDetailByProducts.RowsDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvDetailByProducts.RowTemplate.Height = 24;
             this.dgvDetailByProducts.Size = new System.Drawing.Size(572, 266);
             this.dgvDetailByProducts.TabIndex = 101;
@@ -773,9 +772,9 @@
             // col_dgvDetailByProducts_sale_qty
             // 
             this.col_dgvDetailByProducts_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle54.Format = "N0";
-            this.col_dgvDetailByProducts_sale_qty.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N0";
+            this.col_dgvDetailByProducts_sale_qty.DefaultCellStyle = dataGridViewCellStyle21;
             this.col_dgvDetailByProducts_sale_qty.HeaderText = "Pcs";
             this.col_dgvDetailByProducts_sale_qty.MinimumWidth = 30;
             this.col_dgvDetailByProducts_sale_qty.Name = "col_dgvDetailByProducts_sale_qty";
@@ -785,9 +784,9 @@
             // col_dgvDetailByProducts_sale_length
             // 
             this.col_dgvDetailByProducts_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle55.Format = "N0";
-            this.col_dgvDetailByProducts_sale_length.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N0";
+            this.col_dgvDetailByProducts_sale_length.DefaultCellStyle = dataGridViewCellStyle22;
             this.col_dgvDetailByProducts_sale_length.HeaderText = "Qty";
             this.col_dgvDetailByProducts_sale_length.MinimumWidth = 40;
             this.col_dgvDetailByProducts_sale_length.Name = "col_dgvDetailByProducts_sale_length";
@@ -797,9 +796,9 @@
             // col_dgvDetailByProducts_sale_amount
             // 
             this.col_dgvDetailByProducts_sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle56.Format = "N0";
-            this.col_dgvDetailByProducts_sale_amount.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle23.Format = "N0";
+            this.col_dgvDetailByProducts_sale_amount.DefaultCellStyle = dataGridViewCellStyle23;
             this.col_dgvDetailByProducts_sale_amount.HeaderText = "Amount";
             this.col_dgvDetailByProducts_sale_amount.MinimumWidth = 50;
             this.col_dgvDetailByProducts_sale_amount.Name = "col_dgvDetailByProducts_sale_amount";
@@ -818,9 +817,9 @@
             // col_dgvDetailByProducts_profit_amount
             // 
             this.col_dgvDetailByProducts_profit_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle57.Format = "N0";
-            this.col_dgvDetailByProducts_profit_amount.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "N0";
+            this.col_dgvDetailByProducts_profit_amount.DefaultCellStyle = dataGridViewCellStyle24;
             this.col_dgvDetailByProducts_profit_amount.HeaderText = "Profit";
             this.col_dgvDetailByProducts_profit_amount.MinimumWidth = 50;
             this.col_dgvDetailByProducts_profit_amount.Name = "col_dgvDetailByProducts_profit_amount";
@@ -830,9 +829,9 @@
             // col_dgvDetailByProducts_profit_percent
             // 
             this.col_dgvDetailByProducts_profit_percent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle58.Format = "N2";
-            this.col_dgvDetailByProducts_profit_percent.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "N2";
+            this.col_dgvDetailByProducts_profit_percent.DefaultCellStyle = dataGridViewCellStyle25;
             this.col_dgvDetailByProducts_profit_percent.HeaderText = "%";
             this.col_dgvDetailByProducts_profit_percent.MinimumWidth = 30;
             this.col_dgvDetailByProducts_profit_percent.Name = "col_dgvDetailByProducts_profit_percent";
@@ -869,14 +868,14 @@
             this.dgvDetailByCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetailByCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDetailByCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailByCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailByCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgvDetailByCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetailByCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_dgvDetailByCustomers_customer_id,
@@ -893,8 +892,8 @@
             this.dgvDetailByCustomers.Name = "dgvDetailByCustomers";
             this.dgvDetailByCustomers.ReadOnly = true;
             this.dgvDetailByCustomers.RowHeadersVisible = false;
-            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            this.dgvDetailByCustomers.RowsDefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvDetailByCustomers.RowsDefaultCellStyle = dataGridViewCellStyle33;
             this.dgvDetailByCustomers.RowTemplate.Height = 24;
             this.dgvDetailByCustomers.Size = new System.Drawing.Size(572, 266);
             this.dgvDetailByCustomers.TabIndex = 102;
@@ -919,9 +918,9 @@
             // col_dgvDetailByCustomers_sale_qty
             // 
             this.col_dgvDetailByCustomers_sale_qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle61.Format = "N0";
-            this.col_dgvDetailByCustomers_sale_qty.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Format = "N0";
+            this.col_dgvDetailByCustomers_sale_qty.DefaultCellStyle = dataGridViewCellStyle28;
             this.col_dgvDetailByCustomers_sale_qty.HeaderText = "Pcs";
             this.col_dgvDetailByCustomers_sale_qty.MinimumWidth = 30;
             this.col_dgvDetailByCustomers_sale_qty.Name = "col_dgvDetailByCustomers_sale_qty";
@@ -931,9 +930,9 @@
             // col_dgvDetailByCustomers_sale_length
             // 
             this.col_dgvDetailByCustomers_sale_length.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle62.Format = "N0";
-            this.col_dgvDetailByCustomers_sale_length.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle29.Format = "N0";
+            this.col_dgvDetailByCustomers_sale_length.DefaultCellStyle = dataGridViewCellStyle29;
             this.col_dgvDetailByCustomers_sale_length.HeaderText = "Qty";
             this.col_dgvDetailByCustomers_sale_length.MinimumWidth = 40;
             this.col_dgvDetailByCustomers_sale_length.Name = "col_dgvDetailByCustomers_sale_length";
@@ -943,9 +942,9 @@
             // col_dgvDetailByCustomers_sale_amount
             // 
             this.col_dgvDetailByCustomers_sale_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle63.Format = "N0";
-            this.col_dgvDetailByCustomers_sale_amount.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Format = "N0";
+            this.col_dgvDetailByCustomers_sale_amount.DefaultCellStyle = dataGridViewCellStyle30;
             this.col_dgvDetailByCustomers_sale_amount.HeaderText = "Amount";
             this.col_dgvDetailByCustomers_sale_amount.MinimumWidth = 50;
             this.col_dgvDetailByCustomers_sale_amount.Name = "col_dgvDetailByCustomers_sale_amount";
@@ -956,9 +955,9 @@
             // col_dgvDetailByCustomers_profit_amount
             // 
             this.col_dgvDetailByCustomers_profit_amount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle64.Format = "N0";
-            this.col_dgvDetailByCustomers_profit_amount.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle31.Format = "N0";
+            this.col_dgvDetailByCustomers_profit_amount.DefaultCellStyle = dataGridViewCellStyle31;
             this.col_dgvDetailByCustomers_profit_amount.HeaderText = "Profit";
             this.col_dgvDetailByCustomers_profit_amount.MinimumWidth = 50;
             this.col_dgvDetailByCustomers_profit_amount.Name = "col_dgvDetailByCustomers_profit_amount";
@@ -968,9 +967,9 @@
             // col_dgvDetailByCustomers_profit_percent
             // 
             this.col_dgvDetailByCustomers_profit_percent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle65.Format = "N2";
-            this.col_dgvDetailByCustomers_profit_percent.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle32.Format = "N2";
+            this.col_dgvDetailByCustomers_profit_percent.DefaultCellStyle = dataGridViewCellStyle32;
             this.col_dgvDetailByCustomers_profit_percent.HeaderText = "%";
             this.col_dgvDetailByCustomers_profit_percent.MinimumWidth = 30;
             this.col_dgvDetailByCustomers_profit_percent.Name = "col_dgvDetailByCustomers_profit_percent";

@@ -55,31 +55,26 @@
         <div class="navbar-collapse collapse" id="navbar-navigation">
             <ul class="navbar-nav">
                 <li id="Menu_Home" class="nav-item">
-                    <a href="@Url.Action("Index", "Home", new { rss=1 })" class="navbar-nav-link">
-                        <i class="icon-home4 mr-2"></i>Dashboard
-                    </a>
+                    <a href="@Url.Action("Index", "Home", new { rss=1 })" class="navbar-nav-link"><i class="icon-home4 mr-2"></i>Dashboard</a>
                 </li>
                 <li id="Menu_Sales" class="nav-item dropdown">
-                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-list3 mr-2"></i>
-                        Supplies
-                    </a>
+                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown"><i class="icon-list3 mr-2"></i>Supplies</a>
                     <div class="dropdown-menu">
                         <a href="@Url.Action("Index", "Supplies", new { rss=1 })" class="dropdown-item">Supplies</a>
                         <a href="@Url.Action("Index", "SupplyItems", new { rss=1 })" class="dropdown-item">Items</a>
                     </div>
                 </li>
                 <li id="Menu_StockOpname" class="nav-item">
-                    <a href="@Url.Action("Input", "InventoryChecks", new { rss=1 })" class="navbar-nav-link">
-                        <i class="icon-meter2 mr-2"></i>
-                        Stok Opname
-                    </a>
+                    <a href="@Url.Action("Input", "InventoryChecks", new { rss=1 })" class="navbar-nav-link"><i class="icon-meter2 mr-2"></i>Stok Opname</a>
                 </li>
                 <li id="Menu_Units" class="nav-item">
-                    <a href="@Url.Action("Index", "Units", new { rss=1 })" class="navbar-nav-link">
-                        <i class="icon-meter2 mr-2"></i>
-                        Units
-                    </a>
+                    <a href="@Url.Action("Index", "Units", new { rss=1 })" class="navbar-nav-link"><i class="icon-meter2 mr-2"></i>Units</a>
+                </li>
+                <li id="Menu_Reports" class="nav-item dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown"><i class="icon-list3 mr-2"></i>Reports</a>
+                    <div class="dropdown-menu">
+                        <a href="@Url.Action("Index", "FinancialReports", new { rss=1 })" class="dropdown-item">Financial</a>
+                    </div>
                 </li>
             </ul>
         </div>

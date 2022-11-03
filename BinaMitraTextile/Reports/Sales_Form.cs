@@ -51,7 +51,8 @@ namespace BinaMitraTextile.Reports
             col_dgvSummaryByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITPERCENT;
 
             dgvDetailBySales.AutoGenerateColumns = false;
-            Tools.clearWhenSelected(dgvDetailBySales);
+            dgvDetailBySales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //Tools.clearWhenSelected(dgvDetailBySales);
             col_griddetail_saleid.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_SALEID;
             col_griddetail_timestamp.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_TIMESTAMP;
             col_griddetail_barcode.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_SALEBARCODE;

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using LIBUtil;
+using static System.Collections.Specialized.BitVector32;
 
 namespace BinaMitraTextile
 {
@@ -91,6 +93,8 @@ namespace BinaMitraTextile
                 Util.displayForm(null, new Container_Form(), true);
                 this.Show();
                 this.Close();
+
+                generateMonthlyFinancialReport();
             }
             else
             {
@@ -133,6 +137,11 @@ namespace BinaMitraTextile
             if (iddl_Ports.hasSelectedValue())
                 servername += ((ConnectionPorts)iddl_Ports.SelectedValue).ToString().Replace("port", ",");
             DBConnection.update(servername, itxt_DatabaseName.ValueText);
+        }
+
+        private void generateMonthlyFinancialReport()
+        {
+            DBConnection.executeQuery(DBConnection.ActiveSqlConnection.ConnectionString, "generateMonthlyFinancialReport", true, false);
         }
 
         #endregion

@@ -126,6 +126,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivityLogsController.cs" />
+    <Compile Include="Controllers\FinancialReportsController.cs" />
     <Compile Include="Controllers\SuppliesController.cs" />
     <Compile Include="Controllers\SupplyItemsController.cs" />
     <Compile Include="Controllers\UnitsController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Models\ActivityLogsModel.cs" />
+    <Compile Include="Models\FinancialReportsModel.cs" />
     <Compile Include="Models\SuppliesModel.cs" />
     <Compile Include="Models\UnitsModel.cs" />
     <Compile Include="Models\SupplyItemsModel.cs" />
@@ -339,6 +341,7 @@
     <Content Include="Views\SupplyItems\Index.cshtml" />
     <Content Include="Views\Supplies\Create.cshtml" />
     <Content Include="Views\Supplies\Index.cshtml" />
+    <Content Include="Views\FinancialReports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
