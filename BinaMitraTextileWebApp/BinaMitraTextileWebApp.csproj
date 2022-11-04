@@ -132,6 +132,7 @@
     <Compile Include="Controllers\UnitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryChecksController.cs" />
+    <Compile Include="Controllers\UserAccountRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,6 +140,7 @@
     <Compile Include="Helpers\DBContext.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Models\UserAccountRolesModel.cs" />
     <Compile Include="Models\ActivityLogsModel.cs" />
     <Compile Include="Models\FinancialReportsModel.cs" />
     <Compile Include="Models\SuppliesModel.cs" />
@@ -342,6 +344,11 @@
     <Content Include="Views\Supplies\Create.cshtml" />
     <Content Include="Views\Supplies\Index.cshtml" />
     <Content Include="Views\FinancialReports\Index.cshtml" />
+    <Content Include="Views\UserAccountRoles\Create.cshtml" />
+    <Content Include="Views\UserAccountRoles\Edit.cshtml" />
+    <Content Include="Views\UserAccountRoles\Index.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

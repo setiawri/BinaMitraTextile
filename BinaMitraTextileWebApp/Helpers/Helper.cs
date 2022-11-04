@@ -189,8 +189,8 @@ namespace BinaMitraTextileWebApp
             string id = value.ToString().ToLower();
             if (typeof(T) == typeof(UnitsModel))
                 return db.Units.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
-            //else if (typeof(T) == typeof(UsersModel))
-            //    return new UsersController().get((Guid)value).Fullname;
+            else if (typeof(T) == typeof(UserAccountRolesModel))
+                return db.UserAccountRoles.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
             //else if (typeof(T) == typeof(BranchesModel))
             //    return db.Branches.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
             //else if (typeof(T) == typeof(PromotionEventsModel))

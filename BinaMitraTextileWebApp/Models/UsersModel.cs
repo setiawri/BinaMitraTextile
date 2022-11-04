@@ -24,12 +24,28 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Password = new ModelMember { Name = "hashed_password", Display = "Password" };
 
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? Birthdate { get; set; } = Helper.getCurrentDateTime();
+        public static ModelMember COL_Birthdate = new ModelMember { Name = "Birthdate", Display = "Birthdate", LogDisplay = ActivityLogsController.editDateFormat("Birthdate") };
+
+
         [Display(Name = "Active")]
         public bool active { get; set; } = true;
         public static ModelMember COL_Active = new ModelMember { Name = "active", Display = "Active", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Active") };
+        
+
+        public string notes { get; set; }
+        public static ModelMember COL_notes = new ModelMember { Name = "notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("Notes") };
 
 
         /******************************************************************************************************************************************************/
+
+
+        [Display(Name = "Roles")]
+        public string Roles { get; set; }
+        public static ModelMember COL_Roles = new ModelMember { Name = "Roles", LogDisplay = ActivityLogsController.editListStringFormat("Roles") };
+        public List<string> Roles_List { get; set; }
+        public static ModelMember COL_Roles_List = new ModelMember { Name = "Roles_List" };
 
     }
 }

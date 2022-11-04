@@ -1,0 +1,55 @@
+﻿@model BinaMitraTextileWebApp.Models.UserAccountRolesModel
+
+@{
+    BinaMitraTextileWebApp.Models.UserAccountRolesModel access = BinaMitraTextileWebApp.Controllers.UsersController.getUserAccess(Session);
+    ViewBag.SelectedNavigationMenu = "Settings";
+    ViewBag.Title = "Roles";
+    ViewBag.Subtitle = "Create";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content area -->
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <!-- Form inputs -->
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title text-uppercase">@ViewBag.Title</h5>
+                </div>
+                <div class="card-body">
+                    <fieldset class="mb-3">
+                        <legend class="text-uppercase font-size-sm font-weight-bold">@ViewBag.Subtitle</legend>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label col-lg-1 required" })
+                            <div class="col-lg-2">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-9"></div>
+                        </div>
+                    </fieldset>
+
+                    @if (access == null || access.UserAccountRoles_Add)
+                    {
+                        <div>
+                            <button type="submit" onclick="showLoadingSpinner()" class="btn btn-primary"><i class="icon-paperplane mr-2"></i>Submit</button>
+                            <a href="@Url.Action("Index", "UserAccountRoles")" class="btn btn-warning"><i class="icon-cross2 mr-2"></i>Cancel</a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- /form inputs -->
+        }
+    </div>
+    <!-- /content area -->
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    });
+</script>

@@ -1,0 +1,126 @@
+﻿@model BinaMitraTextileWebApp.Models.UserAccountRolesModel
+
+@{
+    BinaMitraTextileWebApp.Models.UserAccountRolesModel access = BinaMitraTextileWebApp.Controllers.UsersController.getUserAccess(Session);
+    ViewBag.SelectedNavigationMenu = "Settings";
+    ViewBag.Title = "ROLE ACCESS";
+    ViewBag.Subtitle = "Edit";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content area -->
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                <!-- Form inputs -->
+                <div class="card">
+                    <div class="card-header header-elements-inline">
+                        <h3 class="card-title text-uppercase">@ViewBag.Title</h3>
+                    </div>
+                    <div class="card-body">
+                        <fieldset>
+                            <div class="form-group row">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label ml-2" })
+                                <div class="col-lg-2">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <label class="h5 mb-0">USER ACCOUNT ROLES</label>
+                            <div class="pl-0">
+                                <div id="UserAccountRoles_Div">
+                                    <button id="UserAccountRoles" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="UserAccountRoles_Label" class="col-form-label">@Model.UserAccountRoles_Notes</label>
+                                </div>
+                                <div id="UserAccountRoles_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.UserAccountRoles_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.UserAccountRoles_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.UserAccountRoles_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.UserAccountRoles_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.UserAccountRoles_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.UserAccountRoles_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.UserAccountRoles_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <label class="h5 mb-0">USER ACCOUNTS</label>
+                            <div class="pl-0">
+                                <div id="UserAccounts_Div">
+                                    <button id="UserAccounts" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="UserAccounts_Label" class="col-form-label">@Model.UserAccounts_Notes</label>
+                                </div>
+                                <div id="UserAccounts_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.UserAccounts_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.UserAccounts_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.UserAccounts_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.UserAccounts_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.UserAccounts_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.UserAccounts_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.UserAccounts_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                        </fieldset>
+
+                        @if (access == null || access.UserAccountRoles_Edit)
+                        {
+                            <div id="submitDiv" class="mt-3">
+                                <button type="submit" onclick="showLoadingSpinner()" class="btn btn-primary"><i class="icon-paperplane mr-2"></i>Submit</button>
+                                <a href="@Url.Action("Index", "UserAccountRoles")" class="btn btn-warning"><i class="icon-cross2 mr-2"></i>Cancel</a>
+                            </div>
+
+                            <div style="position:fixed; bottom:100px;right:30px;">
+                                <button type="button" class="btn mb-1 mr-1 btn-lg fa-2x" style="width:70px;height:70px;" onclick="ScrollTo('submitDiv',1000); this.blur();">
+                                    <span class="icon-arrow-down52 text-primary" style="font-size:28pt;"></span>
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- /form inputs -->
+            }
+        }
+    </div>
+    <!-- /content area -->
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    });
+
+</script>

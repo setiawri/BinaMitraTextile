@@ -1,6 +1,6 @@
 ﻿@using BinaMitraTextileWebApp.Controllers
 @{
-
+    BinaMitraTextileWebApp.Models.UserAccountRolesModel access = BinaMitraTextileWebApp.Controllers.UsersController.getUserAccess(Session);
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +74,16 @@
                     <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown"><i class="icon-list3 mr-2"></i>Reports</a>
                     <div class="dropdown-menu">
                         <a href="@Url.Action("Index", "FinancialReports", new { rss=1 })" class="dropdown-item">Financial</a>
+                    </div>
+                </li>
+                <li id="Menu_Internal" class="nav-item dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown"><i class="icon-list3 mr-2"></i>Internal</a>
+                    <div class="dropdown-menu">
+                        @if (access == null || access.UserAccountRoles_View)
+                        {
+                            <a href="@Url.Action("Index", "Users", new { rss=1 })" class="dropdown-item">User Accounts</a>
+                            <a href="@Url.Action("Index", "UserAccountRoles", new { rss=1 })" class="dropdown-item">User Roles</a>
+                        }
                     </div>
                 </li>
             </ul>

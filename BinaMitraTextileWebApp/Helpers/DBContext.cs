@@ -11,6 +11,7 @@ namespace BinaMitraTextileWebApp
 
         public DbSet<ActivityLogsModel> ActivityLogs { get; set; }
         public DbSet<UnitsModel> Units { get; set; }
+        public DbSet<UserAccountRolesModel> UserAccountRoles { get; set; }
 
         /******************************************************************************************************************************************************/
 
