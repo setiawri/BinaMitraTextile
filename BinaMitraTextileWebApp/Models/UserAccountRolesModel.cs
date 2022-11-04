@@ -54,6 +54,24 @@ namespace BinaMitraTextileWebApp.Models
         public bool UserAccounts_Edit { get; set; }
         public static ModelMember COL_UserAccounts_Edit = new ModelMember { Name = "UserAccounts_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("UserAccounts Edit") };
 
+        /* FINANCIAL REPORTS **********************************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string FinancialReports_Notes { get; set; }
+        public static ModelMember COL_FinancialReports_Notes = new ModelMember { Name = "FinancialReports_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("FinancialReports Notes") };
+
+        [Display(Name = "Add")]
+        public bool FinancialReports_Add { get; set; }
+        public static ModelMember COL_FinancialReports_Add = new ModelMember { Name = "FinancialReports_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("FinancialReports Add") };
+
+        [Display(Name = "View")]
+        public bool FinancialReports_View { get; set; }
+        public static ModelMember COL_FinancialReports_View = new ModelMember { Name = "FinancialReports_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("FinancialReports View") };
+
+        [Display(Name = "Edit")]
+        public bool FinancialReports_Edit { get; set; }
+        public static ModelMember COL_FinancialReports_Edit = new ModelMember { Name = "FinancialReports_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("FinancialReports Edit") };
+
         /******************************************************************************************************************************************************************************************************************************************************************************************************/
 
     }

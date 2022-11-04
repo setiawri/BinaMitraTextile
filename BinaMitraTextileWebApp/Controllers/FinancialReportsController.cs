@@ -17,8 +17,8 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public ActionResult Index(int? rss, bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
-            //if (!UserAccountsController.getUserAccess(Session).FinancialReports_View)
-            //    return RedirectToAction(nameof(HomeController.Index), "Home");
+            if (!UsersController.getUserAccess(Session).FinancialReports_View)
+                return RedirectToAction(nameof(HomeController.Index), "Home");
 
             if (UtilWebMVC.hasNoFilter(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo))
             {

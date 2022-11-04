@@ -17,7 +17,7 @@
                 <i class="icon-info22 text-primary ml-2 d-none" data-container="body" data-toggle="popover" data-placement="left" data-content="hidden"></i>
             </div>
             <div class="card-body">
-                @if ((access != null && access.UserAccountRoles_Add) || Model.Count() == 0)
+                @if ((access.UserAccountRoles_Add) || Model.Count() == 0)
                 {
                     <div class="mr-2">
                         <a href="@Url.Action("Create", "UserAccountRoles")" class="btn btn-sm btn-success"><i class="icon-plus22 mr-2"></i>CREATE</a>
@@ -37,7 +37,7 @@
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                     <td>
-                                        @if ((access != null && access.UserAccountRoles_Edit))
+                                        @if ((access.UserAccountRoles_Edit))
                                         {
                                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:• 
                                         }

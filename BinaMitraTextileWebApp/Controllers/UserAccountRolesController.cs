@@ -28,7 +28,7 @@ namespace BinaMitraTextileWebApp.Controllers
         // GET: UserAccountRoles
         public ActionResult Index(int? rss)
         {
-            if (UsersController.getUserAccess(Session) != null && !UsersController.getUserAccess(Session).UserAccountRoles_View)
+            if (!UsersController.getUserAccess(Session).UserAccountRoles_View)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
             ViewBag.RemoveDatatablesStateSave = rss;
@@ -41,7 +41,7 @@ namespace BinaMitraTextileWebApp.Controllers
         // GET: UserAccountRoles/Create
         public ActionResult Create()
         {
-            if (UsersController.getUserAccess(Session) != null && !UsersController.getUserAccess(Session).UserAccountRoles_Add)
+            if (!UsersController.getUserAccess(Session).UserAccountRoles_Add)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
             return View(new UserAccountRolesModel());
@@ -74,7 +74,7 @@ namespace BinaMitraTextileWebApp.Controllers
         // GET: UserAccountRoles/Edit/{id}
         public ActionResult Edit(Guid? id)
         {
-            if (UsersController.getUserAccess(Session) != null && !UsersController.getUserAccess(Session).UserAccountRoles_Edit)
+            if (!UsersController.getUserAccess(Session).UserAccountRoles_Edit)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
             if (id == null)
@@ -111,6 +111,12 @@ namespace BinaMitraTextileWebApp.Controllers
                     log = Helper.append(log, originalModel.UserAccounts_Add, model.UserAccounts_Add, UserAccountRolesModel.COL_UserAccounts_Add.LogDisplay);
                     log = Helper.append(log, originalModel.UserAccounts_Edit, model.UserAccounts_Edit, UserAccountRolesModel.COL_UserAccounts_Edit.LogDisplay);
                     log = Helper.append(log, originalModel.UserAccounts_View, model.UserAccounts_View, UserAccountRolesModel.COL_UserAccounts_View.LogDisplay);
+
+                    //FinancialReports
+                    log = Helper.append(log, originalModel.FinancialReports_Notes, model.FinancialReports_Notes, UserAccountRolesModel.COL_FinancialReports_Notes.LogDisplay);
+                    log = Helper.append(log, originalModel.FinancialReports_Add, model.FinancialReports_Add, UserAccountRolesModel.COL_FinancialReports_Add.LogDisplay);
+                    log = Helper.append(log, originalModel.FinancialReports_Edit, model.FinancialReports_Edit, UserAccountRolesModel.COL_FinancialReports_Edit.LogDisplay);
+                    log = Helper.append(log, originalModel.FinancialReports_View, model.FinancialReports_View, UserAccountRolesModel.COL_FinancialReports_View.LogDisplay);
 
                     if (!string.IsNullOrEmpty(log))
                     {
@@ -163,6 +169,11 @@ namespace BinaMitraTextileWebApp.Controllers
                 if (item.UserAccounts_Add) model.UserAccounts_Add = true;
                 if (item.UserAccounts_Edit) model.UserAccounts_Edit = true;
                 if (item.UserAccounts_View) model.UserAccounts_View = true;
+
+                //FinancialReports
+                if (item.FinancialReports_Add) model.FinancialReports_Add = true;
+                if (item.FinancialReports_Edit) model.FinancialReports_Edit = true;
+                if (item.FinancialReports_View) model.FinancialReports_View = true;
 
             }
 

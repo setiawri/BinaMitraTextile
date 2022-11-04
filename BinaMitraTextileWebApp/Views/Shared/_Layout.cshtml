@@ -73,7 +73,10 @@
                 <li id="Menu_Reports" class="nav-item dropdown">
                     <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown"><i class="icon-list3 mr-2"></i>Reports</a>
                     <div class="dropdown-menu">
-                        <a href="@Url.Action("Index", "FinancialReports", new { rss=1 })" class="dropdown-item">Financial</a>
+                        @if (access == null || access.FinancialReports_View)
+                        {
+                            <a href="@Url.Action("Index", "FinancialReports", new { rss=1 })" class="dropdown-item">Financial</a>
+                        }
                     </div>
                 </li>
                 <li id="Menu_Internal" class="nav-item dropdown">

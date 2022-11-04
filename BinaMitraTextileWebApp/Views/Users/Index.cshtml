@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row mx-0">
-                        @if (access == null || access.UserAccounts_Add)
+                        @if (access.UserAccounts_Add)
                         {
                             <div class="mr-2">
                                 <label class="mb-0">&nbsp;</label>
@@ -101,7 +101,7 @@
                                                 }
                                             </td>
                                             <td class="align-top">
-                                                @if (access == null || access.UserAccounts_Edit)
+                                                @if (access.UserAccounts_Edit)
                                                 {
                                                     <a href="javascript:void(0)" onclick="ActionWithId('@item.id', 'Edit', '@ControllerName')">Edit</a> @:•
                                                 }

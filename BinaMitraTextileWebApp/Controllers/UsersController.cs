@@ -28,7 +28,7 @@ namespace BinaMitraTextileWebApp.Controllers
         // GET: UserAccounts
         public ActionResult Index(int? rss, string FILTER_Keyword, int? FILTER_Active)
         {
-            if (getUserAccess(Session) != null && !getUserAccess(Session).UserAccounts_View)
+            if (!getUserAccess(Session).UserAccounts_View)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
             if (rss != null)
@@ -221,6 +221,7 @@ namespace BinaMitraTextileWebApp.Controllers
             {
                 Session[SESSION_UserAccount] = model;
                 Session[SESSION_ConnectToLiveDatabase] = ConnectToLiveDatabase;
+                Session[SESSION_UserAccountAccess] = UserAccountRolesController.getAccesses(model);
             }
         }
 
