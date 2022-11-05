@@ -420,6 +420,11 @@ namespace BinaMitraTextile.Sales
             _MoneyAccountCategoryAssignments_Id = (Guid)Settings.SalePayment_MoneyAccountCategoryAssignments_Id_Cash;
         }
 
+        private void btnShippingLabels_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new ShippingLabels_Form(_sale.id));
+        }
+
         #endregion PRINT METHODS
         /*******************************************************************************************************/
 
