@@ -20,9 +20,24 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Notes = new ModelMember { Name = "Notes", Display = "Notes" };
 
 
+        [Display(Name = "Sales Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesQty { get; set; }
+
+
         [Display(Name = "Sales Sell Value")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesSellValue { get; set; }
+
+
+        [Display(Name = "Sales Buy Value (COGS)")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesBuyValue { get; set; }
+
+
+        [Display(Name = "Sales Gross Profit")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesGrossProfit { get; set; }
 
 
         [Display(Name = "Sales Shipping Cost")]
@@ -35,24 +50,69 @@ namespace BinaMitraTextileWebApp.Models
         public decimal? SalesShippingExpense { get; set; }
 
 
-        [Display(Name = "Sales Buy Value")]
+        [Display(Name = "Sales Net Profit")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? SalesBuyValue { get; set; }
+        public decimal? SalesNetProfit { get; set; }
 
 
-        [Display(Name = "Sales Profit")]
+        [Display(Name = "Beginning Stock Value")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? SalesProfit { get; set; }
+        public decimal? BeginningStockValue { get; set; }
 
 
-        [Display(Name = "Beginning Inventory Buy Value")]
+        [Display(Name = "Beginning Stock Qty")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? BeginningInventoryBuyValue { get; set; }
+        public decimal? BeginningStockQty { get; set; }
 
 
-        [Display(Name = "Ending Inventory Buy Value")]
+        [Display(Name = "Ending Stock Value")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? EndingInventoryBuyValue { get; set; }
+        public decimal? EndingStockValue { get; set; }
+
+
+        [Display(Name = "Ending Stock Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? EndingStockQty { get; set; }
+
+
+        [Display(Name = "Stock Increase Value")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? StockIncreaseValue { get; set; }
+
+
+        [Display(Name = "Stock Increase Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? StockIncreaseQty { get; set; }
+
+
+        [Display(Name = "Received Inventory Value")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? ReceivedInventoryValue { get; set; }
+
+
+        [Display(Name = "Received Inventory Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? ReceivedInventoryQty { get; set; }
+
+
+        [Display(Name = "Returned Inventory To Vendor Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? ReturnedToVendorInventoryQty { get; set; }
+
+
+        [Display(Name = "Returned Inventory To Vendor Value")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? ReturnedToVendorInventoryValue { get; set; }
+
+
+        [Display(Name = "Net Purchased Inventory Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? NetPurchasedInventoryQty { get; set; }
+
+
+        [Display(Name = "Net Purchased Inventory Value")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? NetPurchasedInventoryValue { get; set; }
 
 
         [Display(Name = "Total Vendor Invoices")]

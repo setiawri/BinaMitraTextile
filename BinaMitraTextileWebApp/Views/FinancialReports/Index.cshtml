@@ -63,33 +63,28 @@
                             <table class="">
                                 <thead>
                                     <tr>
-                                        <th style="width:200px;">@Html.DisplayNameFor(model => model.Period)</th>
+                                        <th style="width:250px;"class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
                                         @foreach (var item in Model)
                                         {
                                             <th style="width:150px;" class="text-right">@Html.DisplayFor(modelItem => item.Period)</th>
                                         }
                                     </tr>
                                 </thead>
-                                <tbody>                                    
+                                <tbody>
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">SALES</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesQty)</td>
+                                        }
+                                    </tr>
                                     <tr>
                                         <td>@Html.DisplayNameFor(model => model.SalesSellValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesSellValue)</td>
-                                        }
-                                    </tr>                                    
-                                    <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesShippingCost)</td>
-                                        @foreach (var item in Model)
-                                        {
-                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesShippingCost)</td>
-                                        }
-                                    </tr>                                    
-                                    <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesShippingExpense)</td>
-                                        @foreach (var item in Model)
-                                        {
-                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesShippingExpense)</td>
                                         }
                                     </tr>
                                     <tr>
@@ -100,26 +95,155 @@
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesProfit)</td>
+                                        <td>@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
                                         @foreach (var item in Model)
                                         {
-                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesProfit)</td>
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesGrossProfit)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.BeginningInventoryBuyValue)</td>
+                                        <td>@Html.DisplayNameFor(model => model.SalesShippingCost)</td>
                                         @foreach (var item in Model)
                                         {
-                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.BeginningInventoryBuyValue)</td>
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesShippingCost)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.EndingInventoryBuyValue)</td>
+                                        <td>@Html.DisplayNameFor(model => model.SalesShippingExpense)</td>
                                         @foreach (var item in Model)
                                         {
-                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.EndingInventoryBuyValue)</td>
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesShippingExpense)</td>
                                         }
                                     </tr>
+                                    <tr class="font-weight-bold">
+                                        <td>@Html.DisplayNameFor(model => model.SalesNetProfit)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesNetProfit)</td>
+                                        }
+                                    </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">INVENTORY INCREASE</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeginningStockValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.BeginningStockValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeginningStockQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.BeginningStockQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.EndingStockValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.EndingStockValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.EndingStockQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.EndingStockQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.StockIncreaseValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.StockIncreaseValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.StockIncreaseQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.StockIncreaseQty)</td>
+                                        }
+                                    </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">RECEIVED INVENTORY</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.ReceivedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedInventoryQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.ReceivedInventoryQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReturnedToVendorInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.ReturnedToVendorInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReturnedToVendorInventoryQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.ReturnedToVendorInventoryQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.NetPurchasedInventoryQty)</td>
+                                        }
+                                    </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr>
+                                        <td class="font-weight-bold">CROSS CHECK <i class="icon-info22 text-primary ml-2" data-container="body" data-toggle="popover" data-placement="right" data-content="COGS = Purchased - Stock increase"></i></td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@(item.SalesBuyValue + item.StockIncreaseValue - item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.SalesBuyValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.StockIncreaseValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">&nbsp;@Html.DisplayFor(modelItem => item.StockIncreaseValue)</td>
+                                        }
+                                    </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
                                     <tr>
                                         <td>@Html.DisplayNameFor(model => model.TotalVendorInvoices)</td>
                                         @foreach (var item in Model)
@@ -164,34 +288,34 @@
                                     </tr>
 
                                     @*@for (int i = 0; i < ModelProperties.Length; i++)
-                                    {
-                                        System.Reflection.PropertyInfo property = ModelProperties[i];
+        {
+            System.Reflection.PropertyInfo property = ModelProperties[i];
 
-                                        <tr>
-                                            <td class="align-top font-weight-bold">@property.Name</td>
+            <tr>
+                <td class="align-top font-weight-bold">@property.Name</td>
 
-                                            @foreach (BinaMitraTextileWebApp.Models.FinancialReportsModel item in Model)
-                                            {
-                                                foreach(var x in item.)
-                                                BinaMitraTextileWebApp.Models.FinancialReportsModel model = models[i];
-                                                <td class="align-top">model.SalesSellValue</td>
-                                                <td class="align-top">model.SalesShippingCost</td>
-                                                <td class="align-top">model.SalesShippingExpense</td>
-                                                <td class="align-top">model.SalesBuyValue</td>
-                                                <td class="align-top">model.SalesProfit</td>
-                                                <td class="align-top">model.BeginningInventoryBuyValue</td>
-                                                <td class="align-top">model.EndingInventoryBuyValue</td>
-                                                <td class="align-top">model.TotalVendorInvoices</td>
-                                                <td class="align-top">model.PayableVendorInvoices</td>
-                                                <td class="align-top">model.BankDeposits</td>
-                                                <td class="align-top">model.Receivables</td>
-                                                <td class="align-top">model.Transfers</td>
-                                                <td class="align-top">model.Expenses</td>
-                                            }
+                @foreach (BinaMitraTextileWebApp.Models.FinancialReportsModel item in Model)
+                {
+                    foreach(var x in item.)
+                    BinaMitraTextileWebApp.Models.FinancialReportsModel model = models[i];
+                    <td class="align-top">model.SalesSellValue</td>
+                    <td class="align-top">model.SalesShippingCost</td>
+                    <td class="align-top">model.SalesShippingExpense</td>
+                    <td class="align-top">model.SalesBuyValue</td>
+                    <td class="align-top">model.SalesProfit</td>
+                    <td class="align-top">model.BeginningInventoryBuyValue</td>
+                    <td class="align-top">model.EndingInventoryBuyValue</td>
+                    <td class="align-top">model.TotalVendorInvoices</td>
+                    <td class="align-top">model.PayableVendorInvoices</td>
+                    <td class="align-top">model.BankDeposits</td>
+                    <td class="align-top">model.Receivables</td>
+                    <td class="align-top">model.Transfers</td>
+                    <td class="align-top">model.Expenses</td>
+                }
 
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                    }*@
+                <td>&nbsp;</td>
+            </tr>
+        }*@
                                 </tbody>
                             </table>
                         </div>

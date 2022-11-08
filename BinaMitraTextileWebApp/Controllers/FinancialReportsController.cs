@@ -84,14 +84,12 @@ namespace BinaMitraTextileWebApp.Controllers
 							    
                             -- SALES --------------------------------------------------------------------------------------------------------------------------
                             DECLARE @SalesSellValue decimal(15,2) = NULL
-                            DECLARE @SalesShippingCost decimal(15,2) = NULL
-                            DECLARE @SalesShippingExpense decimal(15,2) = NULL
                             DECLARE @SalesBuyValue decimal(15,2) = NULL
+                            DECLARE @SalesQty decimal(15,2) = NULL
                             SET @SalesSellValue = 0;
                             SELECT @SalesSellValue = SUM(InventoryItems.item_length * (SaleItems.sell_price+SaleItems.adjustment)),
-                                @SalesShippingCost = SUM(COALESCE(Sales.shipping_cost,0)),
-                                @SalesShippingExpense = SUM(COALESCE(Sales.ShippingExpense,0)),
-                                @SalesBuyValue = SUM(InventoryItems.item_length * (Inventory.buy_price))
+                                @SalesBuyValue = SUM(InventoryItems.item_length * (Inventory.buy_price)),
+                                @SalesQty = SUM(InventoryItems.item_length)
                             FROM SaleItems
                                 LEFT JOIN Sales ON Sales.id = SaleItems.sale_id
                                 LEFT JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
@@ -102,13 +100,27 @@ namespace BinaMitraTextileWebApp.Controllers
                                 AND SaleItems.return_id IS NULL
                                 AND Vendors_Id IS NULL
 
-                            DECLARE @SalesProfit decimal(15,2) = NULL
-                            SET @SalesProfit = @SalesSellValue + @SalesShippingCost - @SalesShippingExpense - @SalesBuyValue;
-                        
+                            DECLARE @SalesGrossProfit decimal(15,2) = NULL
+                            SET @SalesGrossProfit = @SalesSellValue - @SalesBuyValue;
 
+                            DECLARE @SalesShippingCost decimal(15,2) = NULL
+                            DECLARE @SalesShippingExpense decimal(15,2) = NULL
+                            SELECT @SalesShippingCost = SUM(COALESCE(Sales.shipping_cost,0)),
+                                @SalesShippingExpense = SUM(COALESCE(Sales.ShippingExpense,0))
+                            FROM Sales
+                            WHERE 1=1
+                                AND Sales.time_stamp >= @PeriodStart 
+                                AND Sales.time_stamp <= @PeriodEnd
+                                AND Vendors_Id IS NULL
+
+                            DECLARE @SalesNetProfit decimal(15,2) = NULL
+                            SET @SalesNetProfit = @SalesGrossProfit + @SalesShippingCost - @SalesShippingExpense;
+                        
                             -- INVENTORY ----------------------------------------------------------------------------------------------------------------------
-                            DECLARE @BeginningInventoryBuyValue decimal(15,2) = NULL
-                            SELECT @BeginningInventoryBuyValue = SUM(InventoryItems.item_length * Inventory.buy_price)
+                            DECLARE @BeginningStockValue decimal(15,2) = NULL
+                            DECLARE @BeginningStockQty decimal(15,2) = NULL
+                            SELECT @BeginningStockValue = SUM(InventoryItems.item_length * Inventory.buy_price),
+                                @BeginningStockQty = SUM(InventoryItems.item_length)
                             FROM InventoryItems
                                 LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
                                 LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
@@ -116,8 +128,10 @@ namespace BinaMitraTextileWebApp.Controllers
                             WHERE Sales.id IS NULL
                                 AND Inventory.receive_date <= @PeriodStart
                         
-                            DECLARE @EndingInventoryBuyValue decimal(15,2) = NULL
-                            SELECT @EndingInventoryBuyValue = SUM(InventoryItems.item_length * Inventory.buy_price)
+                            DECLARE @EndingStockValue decimal(15,2) = NULL
+                            DECLARE @EndingStockQty decimal(15,2) = NULL
+                            SELECT @EndingStockValue = SUM(InventoryItems.item_length * Inventory.buy_price),
+                                @EndingStockQty = SUM(InventoryItems.item_length)
                             FROM InventoryItems
                                 LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
                                 LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
@@ -125,7 +139,38 @@ namespace BinaMitraTextileWebApp.Controllers
                             WHERE Sales.id IS NULL
                                 AND Inventory.receive_date <= @PeriodEnd
 
-                            
+                            DECLARE @StockIncreaseValue decimal(15,2) = NULL
+                            SET @StockIncreaseValue = @EndingStockValue - @BeginningStockValue;
+                            DECLARE @StockIncreaseQty decimal(15,2) = NULL
+                            SET @StockIncreaseQty = @EndingStockQty - @BeginningStockQty;
+                                         
+                            DECLARE @ReceivedInventoryQty decimal(15,2) = NULL
+                            DECLARE @ReceivedInventoryValue decimal(15,2) = NULL
+                            SELECT @ReceivedInventoryQty = SUM(InventoryItems.item_length),
+                                @ReceivedInventoryValue = SUM(InventoryItems.item_length * Inventory.buy_price)
+                            FROM InventoryItems
+                                LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+                            WHERE 1=1
+                                AND Inventory.receive_date >= @PeriodStart
+                                AND Inventory.receive_date <= @PeriodEnd
+
+                            DECLARE @ReturnedToVendorInventoryQty decimal(15,2) = NULL
+                            DECLARE @ReturnedToVendorInventoryValue decimal(15,2) = NULL
+                            SELECT @ReturnedToVendorInventoryQty = SUM(InventoryItems.item_length),
+                                @ReturnedToVendorInventoryValue = SUM(InventoryItems.item_length * Inventory.buy_price)
+                            FROM InventoryItems
+                                LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+                                LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
+                                LEFT JOIN Sales ON Sales.id = SaleItems.sale_id AND Sales.time_stamp >= @PeriodStart AND Sales.time_stamp <= @PeriodEnd
+                            WHERE 1=1
+                                AND Sales.Vendors_Id IS NOT NULL
+           
+                            DECLARE @NetPurchasedInventoryQty decimal(15,2) = NULL
+                            SELECT @NetPurchasedInventoryQty = @ReceivedInventoryQty - @ReturnedToVendorInventoryQty
+
+                            DECLARE @NetPurchasedInventoryValue decimal(15,2) = NULL
+                            SELECT @NetPurchasedInventoryValue = @ReceivedInventoryValue - @ReturnedToVendorInventoryValue
+
                             -- INVOICES -----------------------------------------------------------------------------------------------------------------------
                             DECLARE @TotalVendorInvoices decimal(15,2) = NULL
                             SELECT @TotalVendorInvoices = SUM(VendorInvoices.Amount)
@@ -179,13 +224,25 @@ namespace BinaMitraTextileWebApp.Controllers
                         	    SELECT 
                                     NEWID() AS Id,
                                     @PeriodStart AS [Period],
+                                    @SalesQty AS SalesQty,
                                     @SalesSellValue AS SalesSellValue,
+                                    @SalesBuyValue AS SalesBuyValue,
+                                    @SalesGrossProfit AS SalesGrossProfit,
                                     @SalesShippingCost AS SalesShippingCost,
                                     @SalesShippingExpense AS SalesShippingExpense,
-                                    @SalesBuyValue AS SalesBuyValue,
-                                    @SalesProfit AS SalesProfit,
-                                    @BeginningInventoryBuyValue AS BeginningInventoryBuyValue,
-                                    @EndingInventoryBuyValue AS EndingInventoryBuyValue,
+                                    @SalesNetProfit AS SalesNetProfit,
+                                    @BeginningStockValue AS BeginningStockValue,
+                                    @BeginningStockQty AS BeginningStockQty,
+                                    @EndingStockValue AS EndingStockValue,
+                                    @EndingStockQty AS EndingStockQty,
+                                    @StockIncreaseValue AS StockIncreaseValue,
+                                    @StockIncreaseQty AS StockIncreaseQty,
+                                    @ReceivedInventoryValue AS ReceivedInventoryValue,
+                                    @ReceivedInventoryQty AS ReceivedInventoryQty,
+                                    @ReturnedToVendorInventoryValue AS ReturnedToVendorInventoryValue,
+                                    @ReturnedToVendorInventoryQty AS ReturnedToVendorInventoryQty,
+                                    @NetPurchasedInventoryValue AS NetPurchasedInventoryValue,
+                                    @NetPurchasedInventoryQty AS NetPurchasedInventoryQty,
                                     @TotalVendorInvoices AS TotalVendorInvoices,
                                     @PayableVendorInvoices AS PayableVendorInvoices,
                                     @BankDeposits AS BankDeposits,
@@ -200,13 +257,25 @@ namespace BinaMitraTextileWebApp.Controllers
                                 SELECT
                                     NEWID() AS Id,
                                     @PeriodStart AS [Period],
+                                    @SalesQty AS SalesQty,
                                     @SalesSellValue AS SalesSellValue,
+                                    @SalesBuyValue AS SalesBuyValue,
+                                    @SalesGrossProfit AS SalesGrossProfit,
                                     @SalesShippingCost AS SalesShippingCost,
                                     @SalesShippingExpense AS SalesShippingExpense,
-                                    @SalesBuyValue AS SalesBuyValue,
-                                    @SalesProfit AS SalesProfit,
-                                    @BeginningInventoryBuyValue AS BeginningInventoryBuyValue,
-                                    @EndingInventoryBuyValue AS EndingInventoryBuyValue,
+                                    @SalesNetProfit AS SalesNetProfit,
+                                    @BeginningStockValue AS BeginningStockValue,
+                                    @BeginningStockQty AS BeginningStockQty,
+                                    @EndingStockValue AS EndingStockValue,
+                                    @EndingStockQty AS EndingStockQty,
+                                    @StockIncreaseValue AS StockIncreaseValue,
+                                    @StockIncreaseQty AS StockIncreaseQty,
+                                    @ReceivedInventoryValue AS ReceivedInventoryValue,
+                                    @ReceivedInventoryQty AS ReceivedInventoryQty,
+                                    @ReturnedToVendorInventoryValue AS ReturnedToVendorInventoryValue,
+                                    @ReturnedToVendorInventoryQty AS ReturnedToVendorInventoryQty,
+                                    @NetPurchasedInventoryValue AS NetPurchasedInventoryValue,
+                                    @NetPurchasedInventoryQty AS NetPurchasedInventoryQty,
                                     @TotalVendorInvoices AS TotalVendorInvoices,
                                     @PayableVendorInvoices AS PayableVendorInvoices,
                                     @BankDeposits AS BankDeposits,

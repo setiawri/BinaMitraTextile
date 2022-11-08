@@ -282,6 +282,7 @@ namespace BinaMitraTextile
                 cmd.Parameters.Add("@" + COL_VENDORID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorID);
                 cmd.Parameters.Add("@" + COL_DB_VENDORINVOICEID, SqlDbType.UniqueIdentifier).Value = Util.wrapNullable(vendorInvoiceID);
                 cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = StartDate;
+                cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = EndDate;
                 cmd.Parameters.Add("@MinimumLength", SqlDbType.Int).Value = Util.wrapNullable(MinimumLength);
                 cmd.Parameters.Add("@MaximumLength", SqlDbType.Int).Value = Util.wrapNullable(MaximumLength);
 
