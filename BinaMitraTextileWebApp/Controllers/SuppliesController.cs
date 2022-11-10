@@ -63,8 +63,8 @@ namespace BinaMitraTextileWebApp.Controllers
             {
                 model.Timestamp = DateTime.Now;
                 add(model);
-                ActivityLogsController.Add(db, Session, model.SupplyItems_Id, String.Format("Qty: {0:N0}", model.Qty));
                 db.SaveChanges();
+                ActivityLogsController.Add(db, Session, model.SupplyItems_Id, String.Format("Qty: {0:N0}", model.Qty));
                 return RedirectToAction(nameof(Index), new { id = model.Id, FILTER_Keyword = FILTER_Keyword });
             }
 
@@ -97,8 +97,8 @@ namespace BinaMitraTextileWebApp.Controllers
             model.Notes = parameters[2];
             model.Timestamp = DateTime.Now;
             add(model);
-            ActivityLogsController.Add(db, Session, model.SupplyItems_Id, String.Format("Qty: {0:N0}", model.Qty));
             db.SaveChanges();
+            ActivityLogsController.Add(db, Session, model.SupplyItems_Id, String.Format("Qty: {0:N0}", model.Qty));
             return Json(new { Message = "" });
         }
 

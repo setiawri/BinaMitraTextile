@@ -1,0 +1,87 @@
+﻿@model BinaMitraTextileWebApp.Models.MoneyAccountCategoryAssignmentsModel
+
+@{
+    BinaMitraTextileWebApp.Models.UserAccountRolesModel access = BinaMitraTextileWebApp.Controllers.UsersController.getUserAccess(Session);
+    string ControllerName = "MoneyAccountCategoryAssignments";
+    ViewBag.SelectedNavigationMenu = "Internal";
+    ViewBag.Title = "Money Accounts Category Assignments";
+    ViewBag.Subtitle = "Create";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content area -->
+    <div class="content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <!-- Form inputs -->
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title text-uppercase">@ViewBag.Title</h5>
+                </div>
+                <div class="card-body">
+                    <fieldset class="mb-3">
+                        <legend class="text-uppercase font-size-sm font-weight-bold">@ViewBag.Subtitle</legend>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label col-lg-1 required" })
+                            <div class="col-lg-5">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.MoneyAccounts_Id, htmlAttributes: new { @class = "col-form-label col-lg-1 required" })
+                            <div class="col-lg-3">
+                                @Html.DropDownListFor(model => model.MoneyAccounts_Id, ViewBag.MoneyAccounts as SelectList, "Please Select", new { @class = "form-control select2" })
+                                @Html.ValidationMessageFor(model => model.MoneyAccounts_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.MoneyAccountCategories_Id, htmlAttributes: new { @class = "col-form-label col-lg-1 required" })
+                            <div class="col-lg-3">
+                                @Html.DropDownListFor(model => model.MoneyAccountCategories_Id, ViewBag.MoneyAccountCategories as SelectList, "Please Select", new { @class = "form-control select2" })
+                                @Html.ValidationMessageFor(model => model.MoneyAccountCategories_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Default, htmlAttributes: new { @class = "col-form-label col-lg-1" })
+                            <div class="col-lg-5">
+                                <div class="form-check form-check-switchery">
+                                    <label class="form-check-label">
+                                        @Html.EditorFor(model => model.Default, new { htmlAttributes = new { @class = "form-check-input-switchery" } })
+                                    </label>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Default, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "col-form-label col-lg-1" })
+                            <div class="col-lg-5">
+                                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    @if (access.MoneyAccounts_Add)
+                    {
+                        <div>
+                            <button type="submit" onclick="showLoadingSpinner()" class="btn btn-primary"><i class="icon-paperplane mr-2"></i>Submit</button>
+                            <a href="javascript:void(0)" onclick="Action('Index', '@ControllerName')" class="btn btn-warning">Cancel<i class="icon-cross2 ml-2"></i></a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- /form inputs -->
+        }
+    </div>
+    <!-- /content area -->
+
+</div>

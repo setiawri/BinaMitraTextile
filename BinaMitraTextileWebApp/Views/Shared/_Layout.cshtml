@@ -82,11 +82,36 @@
                 <li id="Menu_Internal" class="nav-item dropdown">
                     <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown"><i class="icon-list3 mr-2"></i>Internal</a>
                     <div class="dropdown-menu">
-                        @if (access == null || access.UserAccountRoles_View)
-                        {
-                            <a href="@Url.Action("Index", "Users", new { rss=1 })" class="dropdown-item">User Accounts</a>
-                            <a href="@Url.Action("Index", "UserAccountRoles", new { rss=1 })" class="dropdown-item">User Roles</a>
-                        }
+                        <div class="dropdown-submenu">
+                            <a href="#" class="dropdown-item dropdown-toggle">User Accounts</a>
+                            <div class="dropdown-menu">
+                                @if (access == null || access.UserAccountRoles_View)
+                                {
+                                    <a href="@Url.Action("Index", "Users", new { rss=1 })" class="dropdown-item">User Accounts</a>
+                                }
+                                @if (access == null || access.UserAccounts_View)
+                                {
+                                    <a href="@Url.Action("Index", "UserAccountRoles", new { rss=1 })" class="dropdown-item">User Roles</a>
+                                }
+                            </div>
+                        </div>
+                        <div class="dropdown-submenu">
+                            <a href="#" class="dropdown-item dropdown-toggle">MoneyAccounts</a>
+                            <div class="dropdown-menu">
+                                @if (access == null || access.MoneyAccounts_View)
+                                {
+                                    <a href="@Url.Action("Index", "MoneyAccounts", new { rss=1 })" class="dropdown-item">Money Accounts</a>
+                                }
+                                @if (access == null || access.MoneyAccountCategories_View)
+                                {
+                                    <a href="@Url.Action("Index", "MoneyAccountCategories", new { rss=1 })" class="dropdown-item">Categories</a>
+                                }
+                                @if (access == null || access.MoneyAccountCategoryAssignments_View)
+                                {
+                                    <a href="@Url.Action("Index", "MoneyAccountCategoryAssignments", new { rss=1 })" class="dropdown-item">Category Assignments</a>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>

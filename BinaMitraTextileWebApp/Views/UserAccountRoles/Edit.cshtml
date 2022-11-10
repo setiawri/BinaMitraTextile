@@ -93,6 +93,96 @@
 
                             <hr />
 
+                            <label class="h5 mb-0">MONEY ACCOUNTS</label>
+                            <div class="pl-0">
+                                <div id="MoneyAccounts_Div">
+                                    <button id="MoneyAccounts" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="MoneyAccounts_Label" class="col-form-label">@Model.MoneyAccounts_Notes</label>
+                                </div>
+                                <div id="MoneyAccounts_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.MoneyAccounts_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.MoneyAccounts_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.MoneyAccounts_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.MoneyAccounts_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.MoneyAccounts_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.MoneyAccounts_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.MoneyAccounts_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <label class="h5 mb-0">MONEY ACCOUNT CATEGORIES</label>
+                            <div class="pl-0">
+                                <div id="MoneyAccountCategories_Div">
+                                    <button id="MoneyAccountCategories" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="MoneyAccountCategories_Label" class="col-form-label">@Model.MoneyAccountCategories_Notes</label>
+                                </div>
+                                <div id="MoneyAccountCategories_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.MoneyAccountCategories_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.MoneyAccountCategories_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.MoneyAccountCategories_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.MoneyAccountCategories_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.MoneyAccountCategories_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.MoneyAccountCategories_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.MoneyAccountCategories_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <label class="h5 mb-0">MONEY ACCOUNT CATEGORY ASSIGNMENTS</label>
+                            <div class="pl-0">
+                                <div id="MoneyAccountCategoryAssignments_Div">
+                                    <button id="MoneyAccountCategoryAssignments" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="MoneyAccountCategoryAssignments_Label" class="col-form-label">@Model.MoneyAccountCategoryAssignments_Notes</label>
+                                </div>
+                                <div id="MoneyAccountCategoryAssignments_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.MoneyAccountCategoryAssignments_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.MoneyAccountCategoryAssignments_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.MoneyAccountCategoryAssignments_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.MoneyAccountCategoryAssignments_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.MoneyAccountCategoryAssignments_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.MoneyAccountCategoryAssignments_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.MoneyAccountCategoryAssignments_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
                             <label class="h5 mb-0">FINANCIAL REPORTS</label>
                             <div class="pl-0">
                                 <div id="FinancialReports_Div">

@@ -338,7 +338,6 @@ namespace BinaMitraTextileWebApp.Controllers
             updateLoginSession(Session);
 
             ActivityLogsController.AddEditLog(db, Session, model.id, log);
-            db.SaveChanges();
         }
 
         /******************************************************************************************************************************************************/

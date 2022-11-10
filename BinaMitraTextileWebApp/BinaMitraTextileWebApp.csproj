@@ -127,8 +127,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivityLogsController.cs" />
     <Compile Include="Controllers\FinancialReportsController.cs" />
+    <Compile Include="Controllers\MoneyAccountCategoryAssignmentsController.cs" />
+    <Compile Include="Controllers\MoneyAccountCategoriesController.cs" />
     <Compile Include="Controllers\SuppliesController.cs" />
     <Compile Include="Controllers\SupplyItemsController.cs" />
+    <Compile Include="Controllers\MoneyAccountsController.cs" />
     <Compile Include="Controllers\UnitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryChecksController.cs" />
@@ -140,6 +143,9 @@
     <Compile Include="Helpers\DBContext.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Models\MoneyAccountCategoriesModel.cs" />
+    <Compile Include="Models\MoneyAccountCategoryAssignmentsModel.cs" />
+    <Compile Include="Models\MoneyAccountsModel.cs" />
     <Compile Include="Models\UserAccountRolesModel.cs" />
     <Compile Include="Models\ActivityLogsModel.cs" />
     <Compile Include="Models\FinancialReportsModel.cs" />
@@ -349,6 +355,15 @@
     <Content Include="Views\UserAccountRoles\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\MoneyAccounts\Create.cshtml" />
+    <Content Include="Views\MoneyAccounts\Edit.cshtml" />
+    <Content Include="Views\MoneyAccounts\Index.cshtml" />
+    <Content Include="Views\MoneyAccountCategories\Create.cshtml" />
+    <Content Include="Views\MoneyAccountCategories\Edit.cshtml" />
+    <Content Include="Views\MoneyAccountCategories\Index.cshtml" />
+    <Content Include="Views\MoneyAccountCategoryAssignments\Create.cshtml" />
+    <Content Include="Views\MoneyAccountCategoryAssignments\Edit.cshtml" />
+    <Content Include="Views\MoneyAccountCategoryAssignments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

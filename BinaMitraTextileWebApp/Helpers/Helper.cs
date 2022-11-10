@@ -140,7 +140,6 @@ namespace BinaMitraTextileWebApp
             else
             {
                 ActivityLogsController.Add(db, Session, ReferenceId, newlog);
-                db.SaveChanges();
                 return Util.append(log, string.Format("UPDATE: {0} to {1}", oldValue, newValue), Environment.NewLine + Environment.NewLine);
             }
         }
@@ -187,20 +186,17 @@ namespace BinaMitraTextileWebApp
         public static string getName<T>(object value)
         {
             string id = value.ToString().ToLower();
+            Guid Id = new Guid(id);
             if (typeof(T) == typeof(UnitsModel))
                 return db.Units.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
             else if (typeof(T) == typeof(UserAccountRolesModel))
                 return db.UserAccountRoles.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
-            //else if (typeof(T) == typeof(BranchesModel))
-            //    return db.Branches.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
-            //else if (typeof(T) == typeof(PromotionEventsModel))
-            //    return db.PromotionEvents.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
-            //else if (typeof(T) == typeof(LanguagesModel))
-            //    return db.Languages.Where(x => x.Id.ToString().ToLower() == id).FirstOrDefault().Name;
-            //else if (typeof(T) == typeof(SaleInvoiceItemsModel))
-            //    return SaleInvoiceItemsController.get_by_IdList(id).FirstOrDefault().SaleInvoices_No;
-            //else
-            return null;
+            else if (typeof(T) == typeof(MoneyAccountsModel))
+                return new MoneyAccountsController().get(Id).Name;
+            else if (typeof(T) == typeof(MoneyAccountCategoriesModel))
+                return new MoneyAccountCategoriesController().get(Id).Name;
+            else
+                return null;
         }
 
         public static DateTime getCurrentDateTime()

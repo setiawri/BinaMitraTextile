@@ -129,7 +129,6 @@ namespace BinaMitraTextileWebApp.Controllers
             //    DBConnection.getSqlParameter(InventoryChecksModel.COL_Notes.Name, model.Notes)
             //);
             //ActivityLogsController.AddCreateLog(db, Session, model.Id);
-            //db.SaveChanges();
         }
 
         /******************************************************************************************************************************************************/

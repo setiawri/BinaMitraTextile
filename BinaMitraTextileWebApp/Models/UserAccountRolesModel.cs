@@ -72,6 +72,60 @@ namespace BinaMitraTextileWebApp.Models
         public bool FinancialReports_Edit { get; set; }
         public static ModelMember COL_FinancialReports_Edit = new ModelMember { Name = "FinancialReports_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("FinancialReports Edit") };
 
+        /* MONEY ACCOUNTS *************************************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string MoneyAccounts_Notes { get; set; }
+        public static ModelMember COL_MoneyAccounts_Notes = new ModelMember { Name = "MoneyAccounts_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("Money Accounts Notes") };
+
+        [Display(Name = "Add")]
+        public bool MoneyAccounts_Add { get; set; }
+        public static ModelMember COL_MoneyAccounts_Add = new ModelMember { Name = "MoneyAccounts_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("Money Accounts Add") };
+
+        [Display(Name = "View")]
+        public bool MoneyAccounts_View { get; set; }
+        public static ModelMember COL_MoneyAccounts_View = new ModelMember { Name = "MoneyAccounts_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("Money Accounts View") };
+
+        [Display(Name = "Edit")]
+        public bool MoneyAccounts_Edit { get; set; }
+        public static ModelMember COL_MoneyAccounts_Edit = new ModelMember { Name = "MoneyAccounts_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("Money Accounts Edit") };
+
+        /* MONEY ACCOUNT CATEGORIES ***************************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string MoneyAccountCategories_Notes { get; set; }
+        public static ModelMember COL_MoneyAccountCategories_Notes = new ModelMember { Name = "MoneyAccountCategories_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("Money Account Categories Notes") };
+
+        [Display(Name = "Add")]
+        public bool MoneyAccountCategories_Add { get; set; }
+        public static ModelMember COL_MoneyAccountCategories_Add = new ModelMember { Name = "MoneyAccountCategories_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Categories Add") };
+
+        [Display(Name = "View")]
+        public bool MoneyAccountCategories_View { get; set; }
+        public static ModelMember COL_MoneyAccountCategories_View = new ModelMember { Name = "MoneyAccountCategories_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Categories View") };
+
+        [Display(Name = "Edit")]
+        public bool MoneyAccountCategories_Edit { get; set; }
+        public static ModelMember COL_MoneyAccountCategories_Edit = new ModelMember { Name = "MoneyAccountCategories_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Categories Edit") };
+
+        /* MONEY ACCOUNT CATEGORY ASSIGNMENTS *****************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string MoneyAccountCategoryAssignments_Notes { get; set; }
+        public static ModelMember COL_MoneyAccountCategoryAssignments_Notes = new ModelMember { Name = "MoneyAccountCategoryAssignments_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("Money Account Category Assignments Notes") };
+
+        [Display(Name = "Add")]
+        public bool MoneyAccountCategoryAssignments_Add { get; set; }
+        public static ModelMember COL_MoneyAccountCategoryAssignments_Add = new ModelMember { Name = "MoneyAccountCategoryAssignments_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Category Assignments Add") };
+
+        [Display(Name = "View")]
+        public bool MoneyAccountCategoryAssignments_View { get; set; }
+        public static ModelMember COL_MoneyAccountCategoryAssignments_View = new ModelMember { Name = "MoneyAccountCategoryAssignments_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Category Assignments View") };
+
+        [Display(Name = "Edit")]
+        public bool MoneyAccountCategoryAssignments_Edit { get; set; }
+        public static ModelMember COL_MoneyAccountCategoryAssignments_Edit = new ModelMember { Name = "MoneyAccountCategoryAssignments_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Category Assignments Edit") };
+
         /******************************************************************************************************************************************************************************************************************************************************************************************************/
 
     }

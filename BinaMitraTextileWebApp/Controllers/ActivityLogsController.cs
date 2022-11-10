@@ -59,15 +59,13 @@ namespace BinaMitraTextileWebApp.Controllers
         public static void AddCreateLog(DBContext db, HttpSessionStateBase Session, Guid ReferenceId) { Add(db, Session, ReferenceId, "Created"); }
         public static void Add(DBContext db, HttpSessionStateBase Session, Guid ReferenceId, string description)
         {
-            db.ActivityLogs.Add(new ActivityLogsModel
-            {
-                Id = Guid.NewGuid(),
-                ReferenceId = ReferenceId,
-                Timestamp = Helper.getCurrentDateTime(),
-                Description = description,
-                UserAccounts_Id = (Guid)UsersController.getUserId(Session),
-                UserAccounts_Fullname = UsersController.getUserAccount(Session).username
-            });
+            LIBWebMVC.WebDBConnection.Insert(db.Database, "ActivityLogs",
+                DBConnection.getSqlParameter(ActivityLogsModel.COL_Id.Name, Guid.NewGuid()),
+                DBConnection.getSqlParameter(ActivityLogsModel.COL_Timestamp.Name, Helper.getCurrentDateTime()),
+                DBConnection.getSqlParameter(ActivityLogsModel.COL_ReferenceId.Name, ReferenceId),
+                DBConnection.getSqlParameter(ActivityLogsModel.COL_Description.Name, description),
+                DBConnection.getSqlParameter(ActivityLogsModel.COL_UserAccounts_Id.Name, (Guid)UsersController.getUserId(Session))
+            );
         }
 
         /* DATABASE METHODS ***********************************************************************************************************************************/
@@ -80,7 +78,8 @@ namespace BinaMitraTextileWebApp.Controllers
                             Users.username AS UserAccounts_Fullname
                         FROM ActivityLogs
                             LEFT JOIN Users ON Users.id = ActivityLogs.UserAccounts_Id
-                        WHERE ActivityLogs.ReferenceId = @ReferenceId
+                        WHERE 1=1 
+    						AND (@ReferenceId IS NULL OR ActivityLogs.ReferenceId = @ReferenceId)
 						ORDER BY ActivityLogs.Timestamp DESC
                     ",
                     DBConnection.getSqlParameter(ActivityLogsModel.COL_ReferenceId.Name, ReferenceId)

@@ -60,8 +60,8 @@ namespace BinaMitraTextileWebApp.Controllers
                 {
                     model.Id = Guid.NewGuid();
                     db.UserAccountRoles.Add(model);
-                    ActivityLogsController.AddCreateLog(db, Session, model.Id);
                     db.SaveChanges();
+                    ActivityLogsController.AddCreateLog(db, Session, model.Id);
                     return RedirectToAction(nameof(Edit), new { id = model.Id });
                 }
             }
@@ -112,6 +112,24 @@ namespace BinaMitraTextileWebApp.Controllers
                     log = Helper.append(log, originalModel.UserAccounts_Edit, model.UserAccounts_Edit, UserAccountRolesModel.COL_UserAccounts_Edit.LogDisplay);
                     log = Helper.append(log, originalModel.UserAccounts_View, model.UserAccounts_View, UserAccountRolesModel.COL_UserAccounts_View.LogDisplay);
 
+                    //MoneyAccounts
+                    log = Helper.append(log, originalModel.MoneyAccounts_Notes, model.MoneyAccounts_Notes, UserAccountRolesModel.COL_MoneyAccounts_Notes.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccounts_Add, model.MoneyAccounts_Add, UserAccountRolesModel.COL_MoneyAccounts_Add.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccounts_Edit, model.MoneyAccounts_Edit, UserAccountRolesModel.COL_MoneyAccounts_Edit.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccounts_View, model.MoneyAccounts_View, UserAccountRolesModel.COL_MoneyAccounts_View.LogDisplay);
+
+                    //MoneyAccountCategories
+                    log = Helper.append(log, originalModel.MoneyAccountCategories_Notes, model.MoneyAccountCategories_Notes, UserAccountRolesModel.COL_MoneyAccountCategories_Notes.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccountCategories_Add, model.MoneyAccountCategories_Add, UserAccountRolesModel.COL_MoneyAccountCategories_Add.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccountCategories_Edit, model.MoneyAccountCategories_Edit, UserAccountRolesModel.COL_MoneyAccountCategories_Edit.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccountCategories_View, model.MoneyAccountCategories_View, UserAccountRolesModel.COL_MoneyAccountCategories_View.LogDisplay);
+
+                    //MoneyAccountCategoryAssignments
+                    log = Helper.append(log, originalModel.MoneyAccountCategoryAssignments_Notes, model.MoneyAccountCategoryAssignments_Notes, UserAccountRolesModel.COL_MoneyAccountCategoryAssignments_Notes.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccountCategoryAssignments_Add, model.MoneyAccountCategoryAssignments_Add, UserAccountRolesModel.COL_MoneyAccountCategoryAssignments_Add.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccountCategoryAssignments_Edit, model.MoneyAccountCategoryAssignments_Edit, UserAccountRolesModel.COL_MoneyAccountCategoryAssignments_Edit.LogDisplay);
+                    log = Helper.append(log, originalModel.MoneyAccountCategoryAssignments_View, model.MoneyAccountCategoryAssignments_View, UserAccountRolesModel.COL_MoneyAccountCategoryAssignments_View.LogDisplay);
+
                     //FinancialReports
                     log = Helper.append(log, originalModel.FinancialReports_Notes, model.FinancialReports_Notes, UserAccountRolesModel.COL_FinancialReports_Notes.LogDisplay);
                     log = Helper.append(log, originalModel.FinancialReports_Add, model.FinancialReports_Add, UserAccountRolesModel.COL_FinancialReports_Add.LogDisplay);
@@ -121,8 +139,8 @@ namespace BinaMitraTextileWebApp.Controllers
                     if (!string.IsNullOrEmpty(log))
                     {
                         db.Entry(model).State = EntityState.Modified;
-                        ActivityLogsController.AddEditLog(db, Session, model.Id, log);
                         db.SaveChanges();
+                        ActivityLogsController.AddEditLog(db, Session, model.Id, log);
                     }
 
                     UsersController.updateLoginSession(Session);
@@ -169,6 +187,21 @@ namespace BinaMitraTextileWebApp.Controllers
                 if (item.UserAccounts_Add) model.UserAccounts_Add = true;
                 if (item.UserAccounts_Edit) model.UserAccounts_Edit = true;
                 if (item.UserAccounts_View) model.UserAccounts_View = true;
+
+                //MoneyAccounts
+                if (item.MoneyAccounts_Add) model.MoneyAccounts_Add = true;
+                if (item.MoneyAccounts_Edit) model.MoneyAccounts_Edit = true;
+                if (item.MoneyAccounts_View) model.MoneyAccounts_View = true;
+
+                //MoneyAccountCategories
+                if (item.MoneyAccountCategories_Add) model.MoneyAccountCategories_Add = true;
+                if (item.MoneyAccountCategories_Edit) model.MoneyAccountCategories_Edit = true;
+                if (item.MoneyAccountCategories_View) model.MoneyAccountCategories_View = true;
+
+                //MoneyAccountCategoryAssignments
+                if (item.MoneyAccountCategoryAssignments_Add) model.MoneyAccountCategoryAssignments_Add = true;
+                if (item.MoneyAccountCategoryAssignments_Edit) model.MoneyAccountCategoryAssignments_Edit = true;
+                if (item.MoneyAccountCategoryAssignments_View) model.MoneyAccountCategoryAssignments_View = true;
 
                 //FinancialReports
                 if (item.FinancialReports_Add) model.FinancialReports_Add = true;
