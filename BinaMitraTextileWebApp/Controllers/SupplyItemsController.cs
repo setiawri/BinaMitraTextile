@@ -55,7 +55,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(null, model.Name))
-                    ModelState.AddModelError(SupplyItemsModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                    ModelState.AddModelError(SupplyItemsModel.COL_Name.Name, $"{model.Name} exists. Please change.");
                 else
                 {
                     add(model);
@@ -90,7 +90,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(modifiedModel.Id, modifiedModel.Name))
-                    ModelState.AddModelError(SupplyItemsModel.COL_Name.Name, $"{modifiedModel.Name} sudah terdaftar");
+                    ModelState.AddModelError(SupplyItemsModel.COL_Name.Name, $"{modifiedModel.Name} exists. Please change.");
                 else
                 {
                     SupplyItemsModel originalModel = get(modifiedModel.Id);
@@ -136,16 +136,10 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public bool isExists(Guid? Id, string Name)
         {
-            return db.Database.SqlQuery<SupplyItemsModel>(@"
-                        SELECT SupplyItems.*
-                        FROM SupplyItems
-                        WHERE 1=1 
-							AND (@Id IS NOT NULL OR SupplyItems.Name = @Name)
-							AND (@Id IS NULL OR (SupplyItems.Name = @Name AND SupplyItems.Id <> @Id))
-                    ",
-                    DBConnection.getSqlParameter(SupplyItemsModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter(SupplyItemsModel.COL_Name.Name, Name)
-                ).Count() > 0;
+            return LIBWebMVC.WebDBConnection.IsExist(db.Database, "SupplyItems",
+                DBConnection.getSqlParameter(SupplyItemsModel.COL_Id.Name, Id),
+                DBConnection.getSqlParameter(SupplyItemsModel.COL_Name.Name, Name)
+            );
         }
 
         public static List<SupplyItemsModel> get(int? FILTER_Active, string IdList) { return get(null, FILTER_Active, null, IdList); }

@@ -64,7 +64,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(null, model.Name))
-                    ModelState.AddModelError(UnitsModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                    ModelState.AddModelError(UnitsModel.COL_Name.Name, $"{model.Name} exists. Please change.");
                 else
                 {
                     model.Id = Guid.NewGuid();
@@ -101,7 +101,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(modifiedModel.Id, modifiedModel.Name))
-                    ModelState.AddModelError(UnitsModel.COL_Name.Name, $"{modifiedModel.Name} sudah terdaftar");
+                    ModelState.AddModelError(UnitsModel.COL_Name.Name, $"{modifiedModel.Name} exists. Please change.");
                 else
                 {
                     UnitsModel originalModel = db.Units.AsNoTracking().Where(x => x.Id == modifiedModel.Id).FirstOrDefault();
@@ -137,16 +137,10 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public bool isExists(Guid? Id, string Name)
         {
-            return db.Database.SqlQuery<UnitsModel>(@"
-                        SELECT Units.*
-                        FROM Units
-                        WHERE 1=1 
-							AND (@Id IS NOT NULL OR Units.Name = @Name)
-							AND (@Id IS NULL OR (Units.Name = @Name AND Units.Id <> @Id))
-                    ",
-                    DBConnection.getSqlParameter(UnitsModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter(UnitsModel.COL_Name.Name, Name)
-                ).Count() > 0;
+            return LIBWebMVC.WebDBConnection.IsExist(db.Database, "Units",
+                DBConnection.getSqlParameter(UnitsModel.COL_Id.Name, Id),
+                DBConnection.getSqlParameter(UnitsModel.COL_Name.Name, Name)
+            );
         }
 
         public static List<UnitsModel> get(int? FILTER_Active, string IdList) { return get(null, FILTER_Active, null, IdList); }

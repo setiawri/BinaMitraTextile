@@ -55,7 +55,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(EnumActions.Create, null, model.Name))
-                    ModelState.AddModelError(UserAccountRolesModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                    ModelState.AddModelError(UserAccountRolesModel.COL_Name.Name, $"{model.Name} exists. Please change.");
                 else
                 {
                     model.Id = Guid.NewGuid();
@@ -92,7 +92,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(EnumActions.Edit, model.Id, model.Name))
-                    ModelState.AddModelError(UserAccountRolesModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                    ModelState.AddModelError(UserAccountRolesModel.COL_Name.Name, $"{model.Name} exists. Please change.");
                 else
                 {
                     UserAccountRolesModel originalModel = get(model.Id);

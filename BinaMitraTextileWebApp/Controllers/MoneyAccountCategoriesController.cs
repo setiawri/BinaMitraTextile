@@ -55,7 +55,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(null, model.Name))
-                    ModelState.AddModelError(MoneyAccountCategoriesModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                    ModelState.AddModelError(MoneyAccountCategoriesModel.COL_Name.Name, $"{model.Name} exists. Please change.");
                 else
                 {
                     add(model);
@@ -89,7 +89,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(modifiedModel.Id, modifiedModel.Name))
-                    ModelState.AddModelError(MoneyAccountCategoriesModel.COL_Name.Name, $"{modifiedModel.Name} sudah terdaftar");
+                    ModelState.AddModelError(MoneyAccountCategoriesModel.COL_Name.Name, $"{modifiedModel.Name} exists. Please change.");
                 else
                 {
                     MoneyAccountCategoriesModel originalModel = get(modifiedModel.Id);
@@ -130,16 +130,10 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public bool isExists(Guid? Id, string Name)
         {
-            return db.Database.SqlQuery<MoneyAccountCategoriesModel>(@"
-                        SELECT MoneyAccountCategories.*
-                        FROM MoneyAccountCategories
-                        WHERE 1=1 
-							AND (@Id IS NOT NULL OR MoneyAccountCategories.Name = @Name)
-							AND (@Id IS NULL OR (MoneyAccountCategories.Name = @Name AND MoneyAccountCategories.Id <> @Id))
-                    ",
-                    DBConnection.getSqlParameter(MoneyAccountCategoriesModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter(MoneyAccountCategoriesModel.COL_Name.Name, Name)
-                ).Count() > 0;
+            return LIBWebMVC.WebDBConnection.IsExist(db.Database, "MoneyAccountCategories",
+                DBConnection.getSqlParameter(MoneyAccountCategoriesModel.COL_Id.Name, Id),
+                DBConnection.getSqlParameter(MoneyAccountCategoriesModel.COL_Name.Name, Name)
+            );
         }
 
         public List<MoneyAccountCategoriesModel> get(string FILTER_Keyword, int? FILTER_Active) { return get(null, FILTER_Active, FILTER_Keyword); }

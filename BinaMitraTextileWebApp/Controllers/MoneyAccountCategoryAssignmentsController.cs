@@ -55,7 +55,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(null, model.MoneyAccounts_Id, model.MoneyAccountCategories_Id))
-                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, $"Kombinasi {model.MoneyAccounts_Name} dan {model.MoneyAccountCategories_Name} sudah terdaftar");
+                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, $"Combination of {model.MoneyAccounts_Name} and {model.MoneyAccountCategories_Name} exists. Please change.");
                 else
                 {
                     add(model);
@@ -89,7 +89,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(modifiedModel.Id, modifiedModel.MoneyAccounts_Id, modifiedModel.MoneyAccountCategories_Id))
-                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, $"Kombinasi {modifiedModel.MoneyAccounts_Name} dan {modifiedModel.MoneyAccountCategories_Name} sudah terdaftar");
+                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, $"Combination of {modifiedModel.MoneyAccounts_Name} and {modifiedModel.MoneyAccountCategories_Name} exists. Please change.");
                 else
                 {
                     MoneyAccountCategoryAssignmentsModel originalModel = get(modifiedModel.Id);

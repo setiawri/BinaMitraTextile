@@ -73,7 +73,7 @@ namespace BinaMitraTextileWebApp.Controllers
             {
                 modifiedModel.username = modifiedModel.username.Replace("  ", " ").Replace("  ", " ");
                 if (isExists(modifiedModel.id, modifiedModel.username))
-                    ModelState.AddModelError(UsersModel.COL_Username.Name, $"{modifiedModel.username} sudah terdaftar");
+                    ModelState.AddModelError(UsersModel.COL_Username.Name, $"{modifiedModel.username} exists. Please change.");
                 else
                 {
                     UsersModel originalModel = get(modifiedModel.id);
@@ -277,16 +277,10 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public bool isExists(Guid? Id, string Username)
         {
-            return db.Database.SqlQuery<UsersModel>(@"
-                        SELECT Users.*
-                        FROM Users
-                        WHERE 1=1 
-							AND (@Id IS NOT NULL OR Users.Username = @Username)
-							AND (@Id IS NULL OR (Users.Username = @Username AND Users.Id <> @Id))
-                    ",
-                    DBConnection.getSqlParameter(UsersModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter(UsersModel.COL_Username.Name, Username)
-                ).Count() > 0;
+            return LIBWebMVC.WebDBConnection.IsExist(db.Database, "Users",
+                DBConnection.getSqlParameter(UsersModel.COL_Id.Name, Id),
+                DBConnection.getSqlParameter(UsersModel.COL_Username.Name, Username)
+            );
         }
 
         public UsersModel get(Guid Id) { return get(null, Id, null, null, null).FirstOrDefault(); }

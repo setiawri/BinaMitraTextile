@@ -56,7 +56,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(null, model.Name))
-                    ModelState.AddModelError(MoneyAccountsModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                    ModelState.AddModelError(MoneyAccountsModel.COL_Name.Name, $"{model.Name} exists. Please change.");
                 else
                 {
                     add(model);
@@ -90,7 +90,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (ModelState.IsValid)
             {
                 if (isExists(modifiedModel.Id, modifiedModel.Name))
-                    ModelState.AddModelError(MoneyAccountsModel.COL_Name.Name, $"{modifiedModel.Name} sudah terdaftar");
+                    ModelState.AddModelError(MoneyAccountsModel.COL_Name.Name, $"{modifiedModel.Name} exists. Please change.");
                 else
                 {
                     MoneyAccountsModel originalModel = get(modifiedModel.Id);
@@ -133,16 +133,10 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public bool isExists(Guid? Id, string Name)
         {
-            return db.Database.SqlQuery<MoneyAccountsModel>(@"
-                        SELECT MoneyAccounts.*
-                        FROM MoneyAccounts
-                        WHERE 1=1 
-							AND (@Id IS NOT NULL OR MoneyAccounts.Name = @Name)
-							AND (@Id IS NULL OR (MoneyAccounts.Name = @Name AND MoneyAccounts.Id <> @Id))
-                    ",
-                    DBConnection.getSqlParameter(MoneyAccountsModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter(MoneyAccountsModel.COL_Name.Name, Name)
-                ).Count() > 0;
+            return LIBWebMVC.WebDBConnection.IsExist(db.Database, "MoneyAccounts",
+                DBConnection.getSqlParameter(MoneyAccountsModel.COL_Id.Name, Id),
+                DBConnection.getSqlParameter(MoneyAccountsModel.COL_Name.Name, Name)
+            );
         }
 
         public List<MoneyAccountsModel> get(string FILTER_Keyword, int? FILTER_Active) { return get(null, FILTER_Active, FILTER_Keyword); }
