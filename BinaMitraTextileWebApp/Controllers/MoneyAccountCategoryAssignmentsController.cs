@@ -54,8 +54,8 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (isExists(null, model.Name))
-                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_Name.Name, $"{model.Name} sudah terdaftar");
+                if (isExists(null, model.MoneyAccounts_Id, model.MoneyAccountCategories_Id))
+                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, $"Kombinasi {model.MoneyAccounts_Name} dan {model.MoneyAccountCategories_Name} sudah terdaftar");
                 else
                 {
                     add(model);
@@ -88,17 +88,17 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (isExists(modifiedModel.Id, modifiedModel.Name))
-                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_Name.Name, $"{modifiedModel.Name} sudah terdaftar");
+                if (isExists(modifiedModel.Id, modifiedModel.MoneyAccounts_Id, modifiedModel.MoneyAccountCategories_Id))
+                    ModelState.AddModelError(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, $"Kombinasi {modifiedModel.MoneyAccounts_Name} dan {modifiedModel.MoneyAccountCategories_Name} sudah terdaftar");
                 else
                 {
                     MoneyAccountCategoryAssignmentsModel originalModel = get(modifiedModel.Id);
 
                     string log = string.Empty;
-                    log = Helper.append(log, originalModel.Name, modifiedModel.Name, MoneyAccountCategoryAssignmentsModel.COL_Name.LogDisplay);
                     log = Helper.append(log, originalModel.Notes, modifiedModel.Notes, MoneyAccountCategoryAssignmentsModel.COL_Notes.LogDisplay);
                     log = Helper.append<MoneyAccountsModel>(log, originalModel.MoneyAccounts_Id, modifiedModel.MoneyAccounts_Id, MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.LogDisplay);
                     log = Helper.append<MoneyAccountCategoriesModel>(log, originalModel.MoneyAccountCategories_Id, modifiedModel.MoneyAccountCategories_Id, MoneyAccountCategoryAssignmentsModel.COL_MoneyAccountCategories_Id.LogDisplay);
+                    log = Helper.append(log, originalModel.Default, modifiedModel.Default, MoneyAccountCategoryAssignmentsModel.COL_Default.LogDisplay);
                     log = Helper.append(log, originalModel.Active, modifiedModel.Active, MoneyAccountCategoryAssignmentsModel.COL_Active.LogDisplay);
 
                     if (!string.IsNullOrEmpty(log))
@@ -117,11 +117,6 @@ namespace BinaMitraTextileWebApp.Controllers
 
         /* METHODS ********************************************************************************************************************************************/
 
-        public static void setDropDownListViewBag(ControllerBase controller)
-        {
-            controller.ViewBag.MoneyAccountCategoryAssignments = new SelectList(get(), MoneyAccountCategoryAssignmentsModel.COL_Id.Name, MoneyAccountCategoryAssignmentsModel.COL_Name.Name);
-        }
-
         public void setViewBag(string FILTER_Keyword, int? FILTER_Active)
         {
             ViewBag.FILTER_Keyword = FILTER_Keyword;
@@ -133,18 +128,13 @@ namespace BinaMitraTextileWebApp.Controllers
 
         /* DATABASE METHODS ***********************************************************************************************************************************/
 
-        public bool isExists(Guid? Id, string Name)
+        public bool isExists(Guid? Id, Guid? MoneyAccounts_Id, Guid? MoneyAccountCategories_Id)
         {
-            return db.Database.SqlQuery<MoneyAccountCategoryAssignmentsModel>(@"
-                        SELECT MoneyAccountCategoryAssignments.*
-                        FROM MoneyAccountCategoryAssignments
-                        WHERE 1=1 
-							AND (@Id IS NOT NULL OR MoneyAccountCategoryAssignments.Name = @Name)
-							AND (@Id IS NULL OR (MoneyAccountCategoryAssignments.Name = @Name AND MoneyAccountCategoryAssignments.Id <> @Id))
-                    ",
-                    DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Name.Name, Name)
-                ).Count() > 0;
+            return LIBWebMVC.WebDBConnection.IsExist(db.Database, "MoneyAccountCategoryAssignments",
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Id.Name, Id),
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, MoneyAccounts_Id),
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccountCategories_Id.Name, MoneyAccountCategories_Id)
+            );
         }
 
         public List<MoneyAccountCategoryAssignmentsModel> get(string FILTER_Keyword, int? FILTER_Active) { return get(null, FILTER_Active, FILTER_Keyword); }
@@ -180,9 +170,9 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             LIBWebMVC.WebDBConnection.Insert(db.Database, "MoneyAccountCategoryAssignments",
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Id.Name, model.Id),
-                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Name.Name, model.Name),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, model.MoneyAccounts_Id),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccountCategories_Id.Name, model.MoneyAccountCategories_Id),
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Default.Name, model.Default),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Notes.Name, model.Notes)
             );
@@ -192,9 +182,9 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             LIBWebMVC.WebDBConnection.Update(db.Database, "MoneyAccountCategoryAssignments",
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Id.Name, model.Id),
-                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Name.Name, model.Name),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccounts_Id.Name, model.MoneyAccounts_Id),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_MoneyAccountCategories_Id.Name, model.MoneyAccountCategories_Id),
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Default.Name, model.Default),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Notes.Name, model.Notes)
             );
