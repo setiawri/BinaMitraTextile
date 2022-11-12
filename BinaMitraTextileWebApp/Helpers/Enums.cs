@@ -3,6 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BinaMitraTextileWebApp
 {
+    public enum PaymentMethods
+    {
+        Cash,
+        EDC,
+        Transfer,
+        Credit,
+        Giro,
+        Hutang,
+        [Description("Lain-lain")]
+        Lainlain
+    };
+
     public enum EnumReminderStatuses : byte
     {
         New,

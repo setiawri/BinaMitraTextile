@@ -59,7 +59,9 @@
                                 <tr>
                                     <th style="width:200px;">@Html.DisplayNameFor(model => model.MoneyAccounts_Id)</th>
                                     <th style="width:300px;">@Html.DisplayNameFor(model => model.MoneyAccountCategories_Id)</th>
-                                    <th style="width:50px;">@Html.DisplayNameFor(model => model.Default)</th>
+                                    <th style="width:50px;" class="text-right">@Html.DisplayNameFor(model => model.Expense)</th>
+                                    <th style="width:170px;" class="text-right">@Html.DisplayNameFor(model => model.BankCashDeposit)</th>
+                                    <th style="width:50px;" class="text-right">@Html.DisplayNameFor(model => model.Default)</th>
                                     <th class="non-sortable">@Html.DisplayNameFor(model => model.Notes)</th>
                                     <th style="width:100px;" class="non-sortable"></th>
                                     <th style="width:100px;" class="non-searchable non-sortable"></th>
@@ -73,6 +75,18 @@
                                         <tr>
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.MoneyAccounts_Name)</td>
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.MoneyAccountCategories_Name)</td>
+                                            <td class="align-top text-right">
+                                                @if (item.Expense)
+                                                {
+                                                    <i class="icon-checkmark"></i>
+                                                }
+                                            </td>
+                                            <td class="align-top text-right">
+                                                @if (item.BankCashDeposit)
+                                                {
+                                                    <i class="icon-checkmark"></i>
+                                                }
+                                            </td>
                                             <td class="align-top text-right">
                                                 @if (item.Default)
                                                 {

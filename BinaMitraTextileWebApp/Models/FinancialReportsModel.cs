@@ -19,11 +19,7 @@ namespace BinaMitraTextileWebApp.Models
         public string Notes { get; set; }
         public static ModelMember COL_Notes = new ModelMember { Name = "Notes", Display = "Notes" };
 
-
-        [Display(Name = "Sales Qty")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? SalesQty { get; set; }
-
+        /******************************************************************************************************************************************************/
 
         [Display(Name = "Sales Sell Value")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
@@ -33,6 +29,11 @@ namespace BinaMitraTextileWebApp.Models
         [Display(Name = "Sales Buy Value (COGS)")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesBuyValue { get; set; }
+
+
+        [Display(Name = "Sales Qty")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesQty { get; set; }
 
 
         [Display(Name = "Sales Gross Profit")]
@@ -54,6 +55,41 @@ namespace BinaMitraTextileWebApp.Models
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesNetProfit { get; set; }
 
+
+        [Display(Name = "Sales Payments - Cash")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesPayments_Cash { get; set; }
+
+
+        [Display(Name = "Sales Payments - EDC")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesPayments_EDC { get; set; }
+
+
+        [Display(Name = "Sales Payments - Transfer")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesPayments_Transfer { get; set; }
+
+
+        [Display(Name = "Sales Payments - Credit")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesPayments_Credit { get; set; }
+
+
+        [Display(Name = "Sales Payments - Giro")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesPayments_Giro { get; set; }
+
+
+        [Display(Name = "Sales Payments - Others")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesPayments_Others { get; set; }
+
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? Receivables { get; set; }
+
+        /******************************************************************************************************************************************************/
 
         [Display(Name = "Beginning Stock Value")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
@@ -114,6 +150,27 @@ namespace BinaMitraTextileWebApp.Models
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? NetPurchasedInventoryValue { get; set; }
 
+        /******************************************************************************************************************************************************/
+
+        [Display(Name = "Beginning Petty Cash Balance")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? BeginningPettyCashBalance { get; set; }
+
+
+        [Display(Name = "Ending Petty Cash Balance")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? EndingPettyCashBalance { get; set; }
+
+
+        [Display(Name = "Bank Cash Deposits")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? BankCashDeposits { get; set; }
+
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? Expenses { get; set; }
+
+        /******************************************************************************************************************************************************/
 
         [Display(Name = "Total Vendor Invoices")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
@@ -123,22 +180,6 @@ namespace BinaMitraTextileWebApp.Models
         [Display(Name = "Payable Vendor Invoices")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? PayableVendorInvoices { get; set; }
-
-
-        [Display(Name = "Bank Deposits")]
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? BankDeposits { get; set; }
-
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Receivables { get; set; }
-
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Transfers { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Expenses { get; set; }
 
 
         /******************************************************************************************************************************************************/
