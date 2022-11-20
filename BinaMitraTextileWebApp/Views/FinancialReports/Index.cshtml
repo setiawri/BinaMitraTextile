@@ -124,7 +124,7 @@
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesNetProfit)</td>
                                         }
                                     </tr>
-                                    
+
                                     @*================================================================================================================================================================*@
 
                                     <tr><td>&nbsp;</td></tr>
@@ -181,7 +181,7 @@
                                         <td>@Html.DisplayNameFor(model => model.Receivables)</td>
                                         @foreach (var item in Model)
                                         {
-                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Receivables)</td>
+                                            <td class="align-top text-right text-warning">@Html.DisplayFor(modelItem => item.Receivables)</td>
                                         }
                                     </tr>
 
@@ -282,7 +282,7 @@
                                     @*================================================================================================================================================================*@
 
                                     <tr><td>&nbsp;</td></tr>
-                                    <tr>
+                                    <tr class="table-warning">
                                         <td class="font-weight-bold">CROSS CHECK<i class="icon-info22 text-primary ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="COGS = Purchased - Stock increase"></i></td>
                                         @foreach (var item in Model)
                                         {
@@ -335,6 +335,20 @@
                                         }
                                     </tr>
                                     <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedCashFromSales)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReceivedCashFromSales)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedCashFromOthers)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReceivedCashFromOthers)</td>
+                                        }
+                                    </tr>
+                                    <tr>
                                         <td>@Html.DisplayNameFor(model => model.BankCashDeposits)<i class="icon-info22 text-danger ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="Belum klop. harusnya sama dengan sales net profit dikurangi expenses. Mungkin masuk ke customer credit?"></i></td>
                                         @foreach (var item in Model)
                                         {
@@ -346,6 +360,13 @@
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Expenses)</td>
+                                        }
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td><span class="font-weight-bold">CROSS CHECK</span><i class="icon-info22 text-primary ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="Ending balance = Beginning balance + Received Cash - Bank Deposits - Expenses"></i></td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right font-weight-bold">@(string.Format("{0:N2}", item.BeginningPettyCashBalance + item.ReceivedCashFromSales + item.ReceivedCashFromOthers - item.BankCashDeposits - item.Expenses - item.EndingPettyCashBalance))</td>
                                         }
                                     </tr>
 

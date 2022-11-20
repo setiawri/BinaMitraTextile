@@ -162,6 +162,16 @@ namespace BinaMitraTextileWebApp.Models
         public decimal? EndingPettyCashBalance { get; set; }
 
 
+        [Display(Name = "Received Cash From Sales")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? ReceivedCashFromSales { get; set; }
+
+
+        [Display(Name = "Received Cash From Others")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? ReceivedCashFromOthers { get; set; }
+
+
         [Display(Name = "Bank Cash Deposits")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? BankCashDeposits { get; set; }

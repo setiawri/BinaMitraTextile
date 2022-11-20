@@ -300,12 +300,32 @@ namespace BinaMitraTextileWebApp.Controllers
 			    ORDER BY ResultTable.Timestamp DESC
 		    ) LastEntry
 
+        DECLARE @ReceivedCashFromSales decimal(15,2) = NULL
+        SELECT @ReceivedCashFromSales = SUM(COALESCE(Payments.Amount,0))
+        FROM Payments
+        WHERE 1=1
+            AND Payments.PaymentMethod_enumid = 0
+            AND Payments.Timestamp >= @PeriodStart 
+            AND Payments.Timestamp <= @PeriodEnd
+
+        DECLARE @ReceivedCashFromOthers decimal(15,2) = NULL
+        SELECT @ReceivedCashFromOthers = ISNULL(SUM(COALESCE(MoneyAccountItems.Amount,0)),0)
+        FROM MoneyAccountItems
+			LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
+            LEFT JOIN MoneyAccountCategoryAssignments ON MoneyAccountCategoryAssignments.MoneyAccounts_Id = MoneyAccountItems.MoneyAccounts_Id AND MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = MoneyAccountItems.MoneyAccountCategories_Id 
+        WHERE 1=1
+            AND MoneyAccounts.[Default] = 1
+            AND MoneyAccountItems.Timestamp >= @PeriodStart
+            AND MoneyAccountItems.Timestamp <= @PeriodEnd
+            AND MoneyAccountCategoryAssignments.ReceivedCash = 1
 
         DECLARE @BankCashDeposits decimal(15,2) = NULL
         SELECT @BankCashDeposits = SUM(MoneyAccountItems.Amount * -1)
         FROM MoneyAccountItems
+			LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
             LEFT JOIN MoneyAccountCategoryAssignments ON MoneyAccountCategoryAssignments.MoneyAccounts_Id = MoneyAccountItems.MoneyAccounts_Id AND MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = MoneyAccountItems.MoneyAccountCategories_Id 
         WHERE 1=1
+            AND MoneyAccounts.[Default] = 1
             AND MoneyAccountItems.Timestamp >= @PeriodStart
             AND MoneyAccountItems.Timestamp <= @PeriodEnd
             AND MoneyAccountCategoryAssignments.BankCashDeposit = 1
@@ -313,8 +333,10 @@ namespace BinaMitraTextileWebApp.Controllers
         DECLARE @Expenses decimal(15,2) = NULL
         SELECT @Expenses = SUM(MoneyAccountItems.Amount * -1)
         FROM MoneyAccountItems
+			LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
             LEFT JOIN MoneyAccountCategoryAssignments ON MoneyAccountCategoryAssignments.MoneyAccounts_Id = MoneyAccountItems.MoneyAccounts_Id AND MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = MoneyAccountItems.MoneyAccountCategories_Id 
         WHERE 1=1
+            AND MoneyAccounts.[Default] = 1
             AND MoneyAccountItems.Timestamp >= @PeriodStart
             AND MoneyAccountItems.Timestamp <= @PeriodEnd
             AND MoneyAccountCategoryAssignments.Expense = 1
@@ -396,6 +418,8 @@ namespace BinaMitraTextileWebApp.Controllers
 
     @BeginningPettyCashBalance AS BeginningPettyCashBalance,
     @EndingPettyCashBalance AS EndingPettyCashBalance,
+    @ReceivedCashFromSales AS ReceivedCashFromSales,
+    @ReceivedCashFromOthers AS ReceivedCashFromOthers,
     @BankCashDeposits AS BankCashDeposits,
     @Expenses AS Expenses,
 
