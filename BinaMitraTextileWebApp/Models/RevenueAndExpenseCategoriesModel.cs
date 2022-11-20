@@ -15,6 +15,14 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Name = new ModelMember { Name = "Name", Display = "Name", LogDisplay = LIBUtil.ActivityLog.editStringFormat("Name") };
 
 
+        public bool Personal { get; set; } = true;
+        public static ModelMember COL_Personal = new ModelMember { Name = "Personal", Display = "Personal", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Personal") };
+
+
+        public bool Company { get; set; } = true;
+        public static ModelMember COL_Company = new ModelMember { Name = "Company", Display = "Company", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Company") };
+
+
         public string Notes { get; set; }
         public static ModelMember COL_Notes = new ModelMember { Name = "Notes", Display = "Notes", LogDisplay = LIBUtil.ActivityLog.editStringFormat("Notes") };
 

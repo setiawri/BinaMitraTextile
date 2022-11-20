@@ -58,6 +58,8 @@
                             <thead>
                                 <tr>
                                     <th style="width:200px;">@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th style="width:100px;" class="text-right">@Html.DisplayNameFor(model => model.Personal)</th>
+                                    <th style="width:100px;" class="text-right">@Html.DisplayNameFor(model => model.Company)</th>
                                     <th class="non-sortable">@Html.DisplayNameFor(model => model.Notes)</th>
                                     <th style="width:100px;" class="non-sortable"></th>
                                     <th style="width:100px;" class="non-searchable non-sortable"></th>
@@ -70,6 +72,18 @@
                                     {
                                         <tr>
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.Name)</td>
+                                            <td class="align-top text-right">
+                                                @if (item.Personal)
+                                                {
+                                                    <i class="icon-checkmark"></i>
+                                                }
+                                            </td>
+                                            <td class="align-top text-right">
+                                                @if (item.Company)
+                                                {
+                                                    <i class="icon-checkmark"></i>
+                                                }
+                                            </td>
                                             <td class="align-top tablecellwrap">@Html.DisplayFor(modelItem => item.Notes)</td>
                                             <td class="align-top">
                                                 @if (item.Active)
