@@ -27,6 +27,7 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Description = new ModelMember { Name = "Description", Display = "Description", LogDisplay = LIBUtil.ActivityLog.editStringFormat("Description") };
 
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public long Amount { get; set; } = 0;
         public static ModelMember COL_Amount = new ModelMember { Name = "Amount", Display = "Amount", LogDisplay = LIBUtil.ActivityLog.editIntFormat("Amount") };
 

@@ -182,6 +182,43 @@ namespace BinaMitraTextileWebApp.Models
 
         /******************************************************************************************************************************************************/
 
+        [Display(Name = "TOTAL REVENUES & EXPENSES")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TotalRevenuesAndExpenses { get; set; }
+
+
+        [Display(Name = "Company Revenues & Expenses")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? CompanyTotalRevenuesAndExpenses { get; set; }
+
+
+        [Display(Name = "Company Revenues")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? CompanyRevenues { get; set; }
+
+
+        [Display(Name = "Company Expenses")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? CompanyExpenses { get; set; }
+
+
+        [Display(Name = "Personal Revenues & Expenses")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? PersonalTotalRevenuesAndExpenses { get; set; }
+
+
+        [Display(Name = "Personal Revenues")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? PersonalRevenues { get; set; }
+
+
+        [Display(Name = "Personal Expenses")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? PersonalExpenses { get; set; }
+
+
+        /******************************************************************************************************************************************************/
+
         [Display(Name = "Total Vendor Invoices")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? TotalVendorInvoices { get; set; }

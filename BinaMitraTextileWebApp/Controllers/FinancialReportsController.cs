@@ -105,7 +105,7 @@ namespace BinaMitraTextileWebApp.Controllers
             LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
         WHERE 1=1
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND SaleItems.return_id IS NULL
             AND Sales.Vendors_Id IS NULL
 
@@ -119,7 +119,7 @@ namespace BinaMitraTextileWebApp.Controllers
         FROM Sales
         WHERE 1=1
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @SalesNetProfit decimal(15,2) = NULL
@@ -134,7 +134,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 0
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @SalesPayments_EDC decimal(15,2) = 0
@@ -144,7 +144,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 1
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @SalesPayments_Transfer decimal(15,2) = 0
@@ -154,7 +154,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 2
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @SalesPayments_Credit decimal(15,2) = 0
@@ -164,7 +164,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 3
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @SalesPayments_Giro decimal(15,2) = 0
@@ -174,7 +174,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 4
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @SalesPayments_Others decimal(15,2) = 0
@@ -184,7 +184,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 6
             AND Sales.time_stamp >= @PeriodStart 
-            AND Sales.time_stamp <= @PeriodEnd
+            AND Sales.time_stamp < @PeriodEnd
             AND Sales.Vendors_Id IS NULL
 
         DECLARE @Receivables decimal(15,2) = 
@@ -204,7 +204,7 @@ namespace BinaMitraTextileWebApp.Controllers
 --                    LEFT JOIN Sales ON Sales.id = SaleItems.sale_id
 --                    LEFT JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
 --                    LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
---                WHERE Sales.time_stamp <= @PeriodEnd
+--                WHERE Sales.time_stamp < @PeriodEnd
 --                    AND Sales.Vendors_Id IS NULL
 --                GROUP BY SaleItems.sale_id
 --            ) CompiledSales
@@ -212,10 +212,10 @@ namespace BinaMitraTextileWebApp.Controllers
 --            LEFT JOIN (
 --                SELECT Payments.ReferenceId, SUM(Payments.Amount) AS Amount
 --                FROM Payments
---                WHERE Payments.Timestamp <= @PeriodEnd
+--                WHERE Payments.Timestamp < @PeriodEnd
 --                GROUP BY Payments.ReferenceId
 --            ) SalePayments ON SalePayments.ReferenceId = Sales.id
---        WHERE Sales.time_stamp <= @PeriodEnd
+--        WHERE Sales.time_stamp < @PeriodEnd
                         
         -- INVENTORY ----------------------------------------------------------------------------------------------------------------------
         DECLARE @BeginningStockValue decimal(15,2) = NULL
@@ -236,9 +236,9 @@ namespace BinaMitraTextileWebApp.Controllers
         FROM InventoryItems
             LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
             LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
-            LEFT JOIN Sales ON Sales.id = SaleItems.sale_id AND Sales.time_stamp <= @PeriodEnd
+            LEFT JOIN Sales ON Sales.id = SaleItems.sale_id AND Sales.time_stamp < @PeriodEnd
         WHERE Sales.id IS NULL
-            AND Inventory.receive_date <= @PeriodEnd
+            AND Inventory.receive_date < @PeriodEnd
 
         DECLARE @StockIncreaseValue decimal(15,2) = NULL
         SET @StockIncreaseValue = @EndingStockValue - @BeginningStockValue;
@@ -253,7 +253,7 @@ namespace BinaMitraTextileWebApp.Controllers
             LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
         WHERE 1=1
             AND Inventory.receive_date >= @PeriodStart
-            AND Inventory.receive_date <= @PeriodEnd
+            AND Inventory.receive_date < @PeriodEnd
 
         DECLARE @ReturnedToVendorInventoryQty decimal(15,2) = NULL
         DECLARE @ReturnedToVendorInventoryValue decimal(15,2) = NULL
@@ -262,7 +262,7 @@ namespace BinaMitraTextileWebApp.Controllers
         FROM InventoryItems
             LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
             LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
-            LEFT JOIN Sales ON Sales.id = SaleItems.sale_id AND Sales.time_stamp >= @PeriodStart AND Sales.time_stamp <= @PeriodEnd
+            LEFT JOIN Sales ON Sales.id = SaleItems.sale_id AND Sales.time_stamp >= @PeriodStart AND Sales.time_stamp < @PeriodEnd
         WHERE 1=1
             AND Sales.Vendors_Id IS NOT NULL
            
@@ -306,7 +306,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND Payments.PaymentMethod_enumid = 0
             AND Payments.Timestamp >= @PeriodStart 
-            AND Payments.Timestamp <= @PeriodEnd
+            AND Payments.Timestamp < @PeriodEnd
 
         DECLARE @ReceivedCashFromOthers decimal(15,2) = NULL
         SELECT @ReceivedCashFromOthers = ISNULL(SUM(COALESCE(MoneyAccountItems.Amount,0)),0)
@@ -316,7 +316,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND MoneyAccounts.[Default] = 1
             AND MoneyAccountItems.Timestamp >= @PeriodStart
-            AND MoneyAccountItems.Timestamp <= @PeriodEnd
+            AND MoneyAccountItems.Timestamp < @PeriodEnd
             AND MoneyAccountCategoryAssignments.ReceivedCash = 1
 
         DECLARE @BankCashDeposits decimal(15,2) = NULL
@@ -327,7 +327,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND MoneyAccounts.[Default] = 1
             AND MoneyAccountItems.Timestamp >= @PeriodStart
-            AND MoneyAccountItems.Timestamp <= @PeriodEnd
+            AND MoneyAccountItems.Timestamp < @PeriodEnd
             AND MoneyAccountCategoryAssignments.BankCashDeposit = 1
 
         DECLARE @Expenses decimal(15,2) = NULL
@@ -338,7 +338,7 @@ namespace BinaMitraTextileWebApp.Controllers
         WHERE 1=1
             AND MoneyAccounts.[Default] = 1
             AND MoneyAccountItems.Timestamp >= @PeriodStart
-            AND MoneyAccountItems.Timestamp <= @PeriodEnd
+            AND MoneyAccountItems.Timestamp < @PeriodEnd
             AND MoneyAccountCategoryAssignments.Expense = 1
 
         -- INVOICES -----------------------------------------------------------------------------------------------------------------------
@@ -346,7 +346,7 @@ namespace BinaMitraTextileWebApp.Controllers
         SELECT @TotalVendorInvoices = SUM(VendorInvoices.Amount)
         FROM VendorInvoices
         WHERE VendorInvoices.timestamp >= @PeriodStart
-            AND VendorInvoices.timestamp <= @PeriodEnd
+            AND VendorInvoices.timestamp < @PeriodEnd
 
         DECLARE @PayableVendorInvoices decimal(15,2) = NULL
         SELECT @PayableVendorInvoices = SUM(TotaledVendorInvoicePaymentItems.Amount - VendorInvoices.Amount)
@@ -356,15 +356,68 @@ namespace BinaMitraTextileWebApp.Controllers
                 FROM VendorInvoicePaymentItems
                 GROUP BY VendorInvoicePaymentItems.VendorInvoices_Id
             ) TotaledVendorInvoicePaymentItems ON TotaledVendorInvoicePaymentItems.VendorInvoices_Id =  VendorInvoices.id
-        WHERE VendorInvoices.timestamp <= @PeriodEnd
+        WHERE VendorInvoices.timestamp < @PeriodEnd
+
+        -- REVENUES AND EXPENSES ----------------------------------------------------------------------------------------------------------
+        DECLARE @TotalRevenuesAndExpenses decimal(15,2) = NULL
+        SELECT @TotalRevenuesAndExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            
+
+        DECLARE @CompanyTotalRevenuesAndExpenses decimal(15,2) = NULL
+        SELECT @CompanyTotalRevenuesAndExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+            LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            AND Company = 1
+            
+        DECLARE @CompanyRevenues decimal(15,2) = NULL
+        SELECT @CompanyRevenues = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+            LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            AND Company = 1
+            AND Revenue = 1
+
+        DECLARE @CompanyExpenses decimal(15,2) = NULL
+        SELECT @CompanyExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+            LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            AND Company = 1
+            AND Expense = 1
 
 
-        DECLARE @BankDeposits decimal(15,2) = NULL
-        SET @BankDeposits = 0;
-                        
-        DECLARE @Transfers decimal(15,2) = NULL
-        SET @Transfers = 0;
-                        
+        DECLARE @PersonalTotalRevenuesAndExpenses decimal(15,2) = NULL
+        SELECT @PersonalTotalRevenuesAndExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+            LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            AND Personal = 1
+            
+        DECLARE @PersonalRevenues decimal(15,2) = NULL
+        SELECT @PersonalRevenues = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+            LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            AND Personal = 1
+            AND Revenue = 1
+
+        DECLARE @PersonalExpenses decimal(15,2) = NULL
+        SELECT @PersonalExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+        FROM RevenuesAndExpenses
+            LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
+        WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
+            AND RevenuesAndExpenses.Timestamp < @PeriodEnd
+            AND Personal = 1
+            AND Expense = 1
 
         -- COMPILE RESULTS ----------------------------------------------------------------------------------------------------------------
 
@@ -422,6 +475,14 @@ namespace BinaMitraTextileWebApp.Controllers
     @ReceivedCashFromOthers AS ReceivedCashFromOthers,
     @BankCashDeposits AS BankCashDeposits,
     @Expenses AS Expenses,
+
+    @TotalRevenuesAndExpenses AS TotalRevenuesAndExpenses,
+    @CompanyTotalRevenuesAndExpenses AS CompanyTotalRevenuesAndExpenses,
+    @CompanyRevenues AS CompanyRevenues,
+    @CompanyExpenses AS CompanyExpenses,
+    @PersonalTotalRevenuesAndExpenses AS PersonalTotalRevenuesAndExpenses,
+    @PersonalRevenues AS PersonalRevenues,
+    @PersonalExpenses AS PersonalExpenses,
 
     @TotalVendorInvoices AS TotalVendorInvoices,
     @PayableVendorInvoices AS PayableVendorInvoices

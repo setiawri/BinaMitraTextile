@@ -96,6 +96,10 @@ namespace BinaMitraTextileWebApp.Controllers
 
                     string log = string.Empty;
                     log = Helper.append(log, originalModel.Name, modifiedModel.Name, RevenueAndExpenseCategoriesModel.COL_Name.LogDisplay);
+                    log = Helper.append(log, originalModel.Personal, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Personal.LogDisplay);
+                    log = Helper.append(log, originalModel.Company, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Company.LogDisplay);
+                    log = Helper.append(log, originalModel.Revenue, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Revenue.LogDisplay);
+                    log = Helper.append(log, originalModel.Expense, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Expense.LogDisplay);
                     log = Helper.append(log, originalModel.Notes, modifiedModel.Notes, RevenueAndExpenseCategoriesModel.COL_Notes.LogDisplay);
                     log = Helper.append(log, originalModel.Active, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Active.LogDisplay);
 
@@ -163,6 +167,10 @@ namespace BinaMitraTextileWebApp.Controllers
             LIBWebMVC.WebDBConnection.Insert(db.Database, "RevenueAndExpenseCategories",
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Id.Name, model.Id),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Name.Name, model.Name),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Revenue.Name, model.Revenue),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Expense.Name, model.Expense),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Personal.Name, model.Personal),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Company.Name, model.Company),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Notes.Name, model.Notes)
             );
@@ -173,6 +181,10 @@ namespace BinaMitraTextileWebApp.Controllers
             LIBWebMVC.WebDBConnection.Update(db.Database, "RevenueAndExpenseCategories",
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Id.Name, model.Id),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Name.Name, model.Name),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Revenue.Name, model.Revenue),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Expense.Name, model.Expense),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Personal.Name, model.Personal),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Company.Name, model.Company),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Notes.Name, model.Notes)
             );

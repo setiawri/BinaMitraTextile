@@ -373,6 +373,59 @@
                                     @*================================================================================================================================================================*@
 
                                     <tr><td>&nbsp;</td></tr>
+                                    <tr class="font-weight-bold">
+                                        <td>@Html.DisplayNameFor(model => model.TotalRevenuesAndExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.TotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyTotalRevenuesAndExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyRevenues)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PersonalTotalRevenuesAndExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PersonalRevenues)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PersonalExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
                                     <tr>
                                         <td>@Html.DisplayNameFor(model => model.TotalVendorInvoices)</td>
                                         @foreach (var item in Model)

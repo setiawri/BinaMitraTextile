@@ -74,6 +74,7 @@
                                     <th style="width:100px;">@Html.DisplayNameFor(model => model.Timestamp)</th>
                                     <th style="width:200px;">@Html.DisplayNameFor(model => model.RevenueAndExpenseCategories_Id)</th>
                                     <th>@Html.DisplayNameFor(model => model.Description)</th>
+                                    <th style="width:200px;" class="text-right">@Html.DisplayNameFor(model => model.Amount)</th>
                                     <th style="width:100px;" class="non-searchable non-sortable"></th>
                                 </tr>
                             </thead>
@@ -86,6 +87,7 @@
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.Timestamp)</td>
                                             <td class="align-top">@Html.DisplayFor(modelItem => item.RevenueAndExpenseCategories_Name)</td>
                                             <td class="align-top tablecellwrap">@Html.DisplayFor(modelItem => item.Description)</td>
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Amount)</td>
                                             <td class="align-top">
                                                 @if (access.RevenuesAndExpenses_Edit)
                                                 {
