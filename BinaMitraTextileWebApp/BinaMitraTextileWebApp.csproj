@@ -127,6 +127,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivityLogsController.cs" />
     <Compile Include="Controllers\FinancialReportsController.cs" />
+    <Compile Include="Controllers\RevenueAndExpenseCategoriesController.cs" />
+    <Compile Include="Controllers\RevenuesAndExpensesController.cs" />
     <Compile Include="Controllers\MoneyAccountCategoryAssignmentsController.cs" />
     <Compile Include="Controllers\MoneyAccountCategoriesController.cs" />
     <Compile Include="Controllers\SuppliesController.cs" />
@@ -143,8 +145,10 @@
     <Compile Include="Helpers\DBContext.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Models\MoneyAccountCategoryAssignmentsModel - Copy.cs" />
+    <Compile Include="Models\RevenueAndExpenseCategoriesModel.cs" />
     <Compile Include="Models\MoneyAccountCategoriesModel.cs" />
-    <Compile Include="Models\MoneyAccountCategoryAssignmentsModel.cs" />
+    <Compile Include="Models\RevenuesAndExpensesModel.cs" />
     <Compile Include="Models\MoneyAccountsModel.cs" />
     <Compile Include="Models\UserAccountRolesModel.cs" />
     <Compile Include="Models\ActivityLogsModel.cs" />
@@ -364,6 +368,12 @@
     <Content Include="Views\MoneyAccountCategoryAssignments\Create.cshtml" />
     <Content Include="Views\MoneyAccountCategoryAssignments\Edit.cshtml" />
     <Content Include="Views\MoneyAccountCategoryAssignments\Index.cshtml" />
+    <Content Include="Views\RevenueAndExpenseCategories\Create.cshtml" />
+    <Content Include="Views\RevenueAndExpenseCategories\Edit.cshtml" />
+    <Content Include="Views\RevenueAndExpenseCategories\Index.cshtml" />
+    <Content Include="Views\RevenuesAndExpenses\Create.cshtml" />
+    <Content Include="Views\RevenuesAndExpenses\Edit.cshtml" />
+    <Content Include="Views\RevenuesAndExpenses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

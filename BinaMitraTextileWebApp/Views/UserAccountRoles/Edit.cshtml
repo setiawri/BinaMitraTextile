@@ -213,6 +213,66 @@
 
                             <hr />
 
+                            <label class="h5 mb-0">REVENUE AND EXPENSE CATEGORIES</label>
+                            <div class="pl-0">
+                                <div id="RevenueAndExpenseCategories_Div">
+                                    <button id="RevenueAndExpenseCategories" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="RevenueAndExpenseCategories_Label" class="col-form-label">@Model.RevenueAndExpenseCategories_Notes</label>
+                                </div>
+                                <div id="RevenueAndExpenseCategories_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.RevenueAndExpenseCategories_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.RevenueAndExpenseCategories_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.RevenueAndExpenseCategories_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.RevenueAndExpenseCategories_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.RevenueAndExpenseCategories_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.RevenueAndExpenseCategories_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.RevenueAndExpenseCategories_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <label class="h5 mb-0">REVENUES AND EXPENSES</label>
+                            <div class="pl-0">
+                                <div id="RevenuesAndExpenses_Div">
+                                    <button id="RevenuesAndExpenses" type="button" class="btn mb-1 mr-1 px-1 icon-compose notesbutton" onclick="toggleNotes()"></button>
+                                    <label id="RevenuesAndExpenses_Label" class="col-form-label">@Model.RevenuesAndExpenses_Notes</label>
+                                </div>
+                                <div id="RevenuesAndExpenses_Edit" class="input-group d-none mb-1">
+                                    <div class="input-group-prepend"><span class="input-group-text">Edit</span></div>
+                                    @Html.EditorFor(model => model.RevenuesAndExpenses_Notes, new { htmlAttributes = new { @class = "form-control", @placeholder = "Notes" } })
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-text">
+                                    @Html.CheckBoxFor(model => model.RevenuesAndExpenses_View)
+                                </div>
+                                <div class="input-group-append">
+                                    @Html.LabelFor(model => model.RevenuesAndExpenses_View, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.RevenuesAndExpenses_Add)
+                                    </div>
+                                    @Html.LabelFor(model => model.RevenuesAndExpenses_Add, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                    <div class="input-group-text">
+                                        @Html.CheckBoxFor(model => model.RevenuesAndExpenses_Edit)
+                                    </div>
+                                    @Html.LabelFor(model => model.RevenuesAndExpenses_Edit, htmlAttributes: new { @class = "input-group-text mr-2" })
+                                </div>
+                            </div>
+
+                            <hr />
+
                         </fieldset>
 
                         @if (access == null || access.UserAccountRoles_Edit)

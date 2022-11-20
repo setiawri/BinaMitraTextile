@@ -126,6 +126,42 @@ namespace BinaMitraTextileWebApp.Models
         public bool MoneyAccountCategoryAssignments_Edit { get; set; }
         public static ModelMember COL_MoneyAccountCategoryAssignments_Edit = new ModelMember { Name = "MoneyAccountCategoryAssignments_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("Money Account Category Assignments Edit") };
 
+        /* REVENUE AND EXPENSE CATEGORIES *********************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string RevenueAndExpenseCategories_Notes { get; set; }
+        public static ModelMember COL_RevenueAndExpenseCategories_Notes = new ModelMember { Name = "RevenueAndExpenseCategories_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("RevenueAndExpenseCategories Notes") };
+
+        [Display(Name = "Add")]
+        public bool RevenueAndExpenseCategories_Add { get; set; }
+        public static ModelMember COL_RevenueAndExpenseCategories_Add = new ModelMember { Name = "RevenueAndExpenseCategories_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("RevenueAndExpenseCategories Add") };
+
+        [Display(Name = "View")]
+        public bool RevenueAndExpenseCategories_View { get; set; }
+        public static ModelMember COL_RevenueAndExpenseCategories_View = new ModelMember { Name = "RevenueAndExpenseCategories_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("RevenueAndExpenseCategories View") };
+
+        [Display(Name = "Edit")]
+        public bool RevenueAndExpenseCategories_Edit { get; set; }
+        public static ModelMember COL_RevenueAndExpenseCategories_Edit = new ModelMember { Name = "RevenueAndExpenseCategories_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("RevenueAndExpenseCategories Edit") };
+
+        /* REVENUES AND EXPENSES ******************************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string RevenuesAndExpenses_Notes { get; set; }
+        public static ModelMember COL_RevenuesAndExpenses_Notes = new ModelMember { Name = "RevenuesAndExpenses_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("RevenuesAndExpenses Notes") };
+
+        [Display(Name = "Add")]
+        public bool RevenuesAndExpenses_Add { get; set; }
+        public static ModelMember COL_RevenuesAndExpenses_Add = new ModelMember { Name = "RevenuesAndExpenses_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("RevenuesAndExpenses Add") };
+
+        [Display(Name = "View")]
+        public bool RevenuesAndExpenses_View { get; set; }
+        public static ModelMember COL_RevenuesAndExpenses_View = new ModelMember { Name = "RevenuesAndExpenses_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("RevenuesAndExpenses View") };
+
+        [Display(Name = "Edit")]
+        public bool RevenuesAndExpenses_Edit { get; set; }
+        public static ModelMember COL_RevenuesAndExpenses_Edit = new ModelMember { Name = "RevenuesAndExpenses_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("RevenuesAndExpenses Edit") };
+
         /******************************************************************************************************************************************************************************************************************************************************************************************************/
 
     }

@@ -195,6 +195,8 @@ namespace BinaMitraTextileWebApp
                 return new MoneyAccountsController().get(Id).Name;
             else if (typeof(T) == typeof(MoneyAccountCategoriesModel))
                 return new MoneyAccountCategoriesController().get(Id).Name;
+            else if (typeof(T) == typeof(RevenueAndExpenseCategoriesModel))
+                return new RevenueAndExpenseCategoriesController().get(Id).Name;
             else
                 return null;
         }

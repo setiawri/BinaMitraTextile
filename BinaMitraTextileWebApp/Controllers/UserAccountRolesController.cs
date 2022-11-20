@@ -136,6 +136,18 @@ namespace BinaMitraTextileWebApp.Controllers
                     log = Helper.append(log, originalModel.FinancialReports_Edit, model.FinancialReports_Edit, UserAccountRolesModel.COL_FinancialReports_Edit.LogDisplay);
                     log = Helper.append(log, originalModel.FinancialReports_View, model.FinancialReports_View, UserAccountRolesModel.COL_FinancialReports_View.LogDisplay);
 
+                    //RevenueAndExpenseCategories
+                    log = Helper.append(log, originalModel.RevenueAndExpenseCategories_Notes, model.RevenueAndExpenseCategories_Notes, UserAccountRolesModel.COL_RevenueAndExpenseCategories_Notes.LogDisplay);
+                    log = Helper.append(log, originalModel.RevenueAndExpenseCategories_Add, model.RevenueAndExpenseCategories_Add, UserAccountRolesModel.COL_RevenueAndExpenseCategories_Add.LogDisplay);
+                    log = Helper.append(log, originalModel.RevenueAndExpenseCategories_Edit, model.RevenueAndExpenseCategories_Edit, UserAccountRolesModel.COL_RevenueAndExpenseCategories_Edit.LogDisplay);
+                    log = Helper.append(log, originalModel.RevenueAndExpenseCategories_View, model.RevenueAndExpenseCategories_View, UserAccountRolesModel.COL_RevenueAndExpenseCategories_View.LogDisplay);
+
+                    //RevenuesAndExpenses
+                    log = Helper.append(log, originalModel.RevenuesAndExpenses_Notes, model.RevenuesAndExpenses_Notes, UserAccountRolesModel.COL_RevenuesAndExpenses_Notes.LogDisplay);
+                    log = Helper.append(log, originalModel.RevenuesAndExpenses_Add, model.RevenuesAndExpenses_Add, UserAccountRolesModel.COL_RevenuesAndExpenses_Add.LogDisplay);
+                    log = Helper.append(log, originalModel.RevenuesAndExpenses_Edit, model.RevenuesAndExpenses_Edit, UserAccountRolesModel.COL_RevenuesAndExpenses_Edit.LogDisplay);
+                    log = Helper.append(log, originalModel.RevenuesAndExpenses_View, model.RevenuesAndExpenses_View, UserAccountRolesModel.COL_RevenuesAndExpenses_View.LogDisplay);
+
                     if (!string.IsNullOrEmpty(log))
                     {
                         db.Entry(model).State = EntityState.Modified;
@@ -207,6 +219,16 @@ namespace BinaMitraTextileWebApp.Controllers
                 if (item.FinancialReports_Add) model.FinancialReports_Add = true;
                 if (item.FinancialReports_Edit) model.FinancialReports_Edit = true;
                 if (item.FinancialReports_View) model.FinancialReports_View = true;
+
+                //RevenueAndExpenseCategories
+                if (item.RevenueAndExpenseCategories_Add) model.RevenueAndExpenseCategories_Add = true;
+                if (item.RevenueAndExpenseCategories_Edit) model.RevenueAndExpenseCategories_Edit = true;
+                if (item.RevenueAndExpenseCategories_View) model.RevenueAndExpenseCategories_View = true;
+
+                //RevenuesAndExpenses
+                if (item.RevenuesAndExpenses_Add) model.RevenuesAndExpenses_Add = true;
+                if (item.RevenuesAndExpenses_Edit) model.RevenuesAndExpenses_Edit = true;
+                if (item.RevenuesAndExpenses_View) model.RevenuesAndExpenses_View = true;
 
             }
 

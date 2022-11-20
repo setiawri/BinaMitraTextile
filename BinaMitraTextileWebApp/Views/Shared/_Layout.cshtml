@@ -112,6 +112,19 @@
                                 }
                             </div>
                         </div>
+                        <div class="dropdown-submenu">
+                            <a href="#" class="dropdown-item dropdown-toggle">Revenues And Expenses</a>
+                            <div class="dropdown-menu">
+                                @if (access == null || access.RevenuesAndExpenses_View)
+                                {
+                                    <a href="@Url.Action("Index", "RevenuesAndExpenses", new { rss=1 })" class="dropdown-item">Revenues And Expenses</a>
+                                }
+                                @if (access == null || access.RevenueAndExpenseCategories_View)
+                                {
+                                    <a href="@Url.Action("Index", "RevenueAndExpenseCategories", new { rss=1 })" class="dropdown-item">Categories</a>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>
