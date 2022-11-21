@@ -100,6 +100,7 @@ namespace BinaMitraTextileWebApp.Controllers
                     log = Helper.append(log, originalModel.Company, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Company.LogDisplay);
                     log = Helper.append(log, originalModel.Revenue, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Revenue.LogDisplay);
                     log = Helper.append(log, originalModel.Expense, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Expense.LogDisplay);
+                    log = Helper.append(log, originalModel.ProfitLoss, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_ProfitLoss.LogDisplay);
                     log = Helper.append(log, originalModel.Notes, modifiedModel.Notes, RevenueAndExpenseCategoriesModel.COL_Notes.LogDisplay);
                     log = Helper.append(log, originalModel.Active, modifiedModel.Active, RevenueAndExpenseCategoriesModel.COL_Active.LogDisplay);
 
@@ -170,6 +171,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Revenue.Name, model.Revenue),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Expense.Name, model.Expense),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Personal.Name, model.Personal),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_ProfitLoss.Name, model.ProfitLoss),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Company.Name, model.Company),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Notes.Name, model.Notes)
@@ -184,6 +186,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Revenue.Name, model.Revenue),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Expense.Name, model.Expense),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Personal.Name, model.Personal),
+                DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_ProfitLoss.Name, model.ProfitLoss),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Company.Name, model.Company),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(RevenueAndExpenseCategoriesModel.COL_Notes.Name, model.Notes)

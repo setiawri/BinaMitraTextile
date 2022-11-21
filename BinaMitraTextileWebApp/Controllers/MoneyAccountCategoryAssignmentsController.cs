@@ -101,6 +101,7 @@ namespace BinaMitraTextileWebApp.Controllers
                     log = Helper.append(log, originalModel.Expense, modifiedModel.Expense, MoneyAccountCategoryAssignmentsModel.COL_Expense.LogDisplay);
                     log = Helper.append(log, originalModel.BankCashDeposit, modifiedModel.BankCashDeposit, MoneyAccountCategoryAssignmentsModel.COL_BankCashDeposit.LogDisplay);
                     log = Helper.append(log, originalModel.ReceivedCash, modifiedModel.ReceivedCash, MoneyAccountCategoryAssignmentsModel.COL_ReceivedCash.LogDisplay);
+                    log = Helper.append(log, originalModel.ProfitLoss, modifiedModel.Active, MoneyAccountCategoryAssignmentsModel.COL_ProfitLoss.LogDisplay);
                     log = Helper.append(log, originalModel.Default, modifiedModel.Default, MoneyAccountCategoryAssignmentsModel.COL_Default.LogDisplay);
                     log = Helper.append(log, originalModel.Active, modifiedModel.Active, MoneyAccountCategoryAssignmentsModel.COL_Active.LogDisplay);
 
@@ -178,6 +179,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Expense.Name, model.Expense),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_BankCashDeposit.Name, model.BankCashDeposit),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_ReceivedCash.Name, model.ReceivedCash),
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_ProfitLoss.Name, model.ProfitLoss),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Default.Name, model.Default),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Notes.Name, model.Notes)
@@ -193,6 +195,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Expense.Name, model.Expense),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_BankCashDeposit.Name, model.BankCashDeposit),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_ReceivedCash.Name, model.ReceivedCash),
+                DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_ProfitLoss.Name, model.ProfitLoss),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Default.Name, model.Default),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Active.Name, model.Active),
                 DBConnection.getSqlParameter(MoneyAccountCategoryAssignmentsModel.COL_Notes.Name, model.Notes)

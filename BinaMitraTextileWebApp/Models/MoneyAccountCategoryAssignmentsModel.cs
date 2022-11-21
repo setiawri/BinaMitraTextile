@@ -42,9 +42,15 @@ namespace BinaMitraTextileWebApp.Models
         public bool BankCashDeposit { get; set; } = false;
         public static ModelMember COL_BankCashDeposit = new ModelMember { Name = "BankCashDeposit", Display = "Bank Cash Deposit", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Bank Cash Deposit") };
 
+
         [Display(Name = "Received Cash")]
         public bool ReceivedCash { get; set; } = false;
         public static ModelMember COL_ReceivedCash = new ModelMember { Name = "ReceivedCash", Display = "Received Cash", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Received Cash") };
+
+
+        public bool ProfitLoss { get; set; } = false;
+        public static ModelMember COL_ProfitLoss = new ModelMember { Name = "ProfitLoss", Display = "ProfitLoss", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("ProfitLoss") };
+
 
         /******************************************************************************************************************************************************/
 

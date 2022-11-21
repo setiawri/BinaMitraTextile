@@ -62,6 +62,7 @@
                                     <th style="width:50px;" class="text-right">@Html.DisplayNameFor(model => model.Expense)</th>
                                     <th style="width:170px;" class="text-right">@Html.DisplayNameFor(model => model.BankCashDeposit)</th>
                                     <th style="width:170px;" class="text-right">@Html.DisplayNameFor(model => model.ReceivedCash)</th>
+                                    <th style="width:170px;" class="text-right">@Html.DisplayNameFor(model => model.ProfitLoss)</th>
                                     <th style="width:50px;" class="text-right">@Html.DisplayNameFor(model => model.Default)</th>
                                     <th class="non-sortable">@Html.DisplayNameFor(model => model.Notes)</th>
                                     <th style="width:100px;" class="non-sortable"></th>
@@ -90,6 +91,12 @@
                                             </td>
                                             <td class="align-top text-right">
                                                 @if (item.ReceivedCash)
+                                                {
+                                                    <i class="icon-checkmark"></i>
+                                                }
+                                            </td>
+                                            <td class="align-top text-right">
+                                                @if (item.ProfitLoss)
                                                 {
                                                     <i class="icon-checkmark"></i>
                                                 }

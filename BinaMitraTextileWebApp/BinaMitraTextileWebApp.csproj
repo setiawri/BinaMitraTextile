@@ -145,7 +145,7 @@
     <Compile Include="Helpers\DBContext.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
-    <Compile Include="Models\MoneyAccountCategoryAssignmentsModel - Copy.cs" />
+    <Compile Include="Models\MoneyAccountCategoryAssignmentsModel.cs" />
     <Compile Include="Models\RevenueAndExpenseCategoriesModel.cs" />
     <Compile Include="Models\MoneyAccountCategoriesModel.cs" />
     <Compile Include="Models\RevenuesAndExpensesModel.cs" />
