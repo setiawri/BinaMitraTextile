@@ -72,6 +72,24 @@ namespace BinaMitraTextileWebApp.Models
         public bool FinancialReports_Edit { get; set; }
         public static ModelMember COL_FinancialReports_Edit = new ModelMember { Name = "FinancialReports_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("FinancialReports Edit") };
 
+        /* PROFIT & LOSS STATEMENTS ***************************************************************************************************************************************************************************************************************************************************************************/
+
+        [Display(Name = "Notes")]
+        public string ProfitLossStatements_Notes { get; set; }
+        public static ModelMember COL_ProfitLossStatements_Notes = new ModelMember { Name = "ProfitLossStatements_Notes", Display = "Notes", LogDisplay = ActivityLogsController.editStringFormat("ProfitLossStatements Notes") };
+
+        [Display(Name = "Add")]
+        public bool ProfitLossStatements_Add { get; set; }
+        public static ModelMember COL_ProfitLossStatements_Add = new ModelMember { Name = "ProfitLossStatements_Add", Display = "Add", LogDisplay = ActivityLogsController.editBooleanFormat("ProfitLossStatements Add") };
+
+        [Display(Name = "View")]
+        public bool ProfitLossStatements_View { get; set; }
+        public static ModelMember COL_ProfitLossStatements_View = new ModelMember { Name = "ProfitLossStatements_View", Display = "View", LogDisplay = ActivityLogsController.editBooleanFormat("ProfitLossStatements View") };
+
+        [Display(Name = "Edit")]
+        public bool ProfitLossStatements_Edit { get; set; }
+        public static ModelMember COL_ProfitLossStatements_Edit = new ModelMember { Name = "ProfitLossStatements_Edit", Display = "Edit", LogDisplay = ActivityLogsController.editBooleanFormat("ProfitLossStatements Edit") };
+
         /* MONEY ACCOUNTS *************************************************************************************************************************************************************************************************************************************************************************************/
 
         [Display(Name = "Notes")]

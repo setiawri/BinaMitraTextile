@@ -1,0 +1,137 @@
+﻿@model IEnumerable<BinaMitraTextileWebApp.Models.ProfitLossStatementsModel>
+
+@{
+    //BinaMitraTextileWebApp.Models.UserAccountRolesModel access = BinaMitraTextileWebApp.Controllers.UserAccountsController.getUserAccess(Session);
+    string ControllerName = "ProfitLossStatements";
+    ViewBag.SelectedNavigationMenu = "Reports";
+    ViewBag.Title = "Profit & Loss";
+    ViewBag.Subtitle = "Index";
+
+    System.Reflection.PropertyInfo[] ModelProperties = typeof(BinaMitraTextileWebApp.Models.ProfitLossStatementsModel).GetProperties();
+
+}
+<style>
+    tr {
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+<div class="content-wrapper">
+    <!-- Content area -->
+    <div class="content">
+        @using (Html.BeginForm("Index", ControllerName, FormMethod.Post))
+        {
+            <!-- Form inputs -->
+            <div class="card animated bounceInLeft">
+                <div class="card-header header-elements-inline pb-1">
+                    <h5 class="card-title text-uppercase">@ViewBag.Title</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mx-0">
+                        <div class="row ml-0 mr-2" style="width:150px;">
+                            <label class="mb-0">Date From</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_chkDateFrom", false, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Editor("FILTER_DateFrom", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                            </div>
+                        </div>
+
+                        <div class="row ml-0 mr-2" style="width:150px;">
+                            <label class="mb-0">Date To</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_chkDateTo", false, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Editor("FILTER_DateTo", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                            </div>
+                        </div>
+
+                        <div class="ml-0 mr-2">
+                            <label class="mb-0">&nbsp;</label>
+                            <button type="submit" id="LoadData" onclick="showLoadingSpinner()" class="btn btn-outline-primary form-control"><i class="icon-reload-alt mr-2"></i>LOAD</button>
+                        </div>
+                    </div>
+                    
+                    @if (Model != null)
+                    {
+                        <div class="mx-0 mt-2">
+                            <table class="">
+                                <thead>
+                                    <tr>
+                                        <th style="width:250px;"class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
+                                        @foreach (var item in Model)
+                                        {
+                                            <th style="width:150px;" class="text-right">@Html.DisplayFor(modelItem => item.Period)</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">SALES</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesSellValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesSellValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesBuyValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesGrossProfit)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeginningStockValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.BeginningStockValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.EndingStockValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.EndingStockValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- /form inputs -->
+        }
+    </div>
+    <!-- /content area -->
+</div>

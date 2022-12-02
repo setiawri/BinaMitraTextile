@@ -24,18 +24,12 @@ namespace BinaMitraTextileWebApp.Models
         [Display(Name = "Sales Sell Value")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesSellValue { get; set; }
-
-
         [Display(Name = "Sales Buy Value (COGS)")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesBuyValue { get; set; }
-
-
         [Display(Name = "Sales Qty")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesQty { get; set; }
-
-
         [Display(Name = "Sales Gross Profit")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesGrossProfit { get; set; }
