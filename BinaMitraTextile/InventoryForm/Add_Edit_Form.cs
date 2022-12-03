@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LIBUtil;
+using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace BinaMitraTextile.InventoryForm
@@ -8,11 +10,15 @@ namespace BinaMitraTextile.InventoryForm
         /*******************************************************************************************************/
         #region CLASS VARIABLES
 
+        private bool _isFormShown = false;
+
         private Guid _id;
         private FormMode _formMode = FormMode.New;
         private Guid? _browsedProductID;
+        private Guid? _browsedProductStorenameID;
+        private POItem _browsedPOItem = null;
 
-        private decimal buyPriceBeforePOItemChecked = 0;
+        private decimal buyPriceOnPopulate = 0;
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
@@ -64,7 +70,6 @@ namespace BinaMitraTextile.InventoryForm
             {
                 lblBuyPrice.Visible = false;
                 txtBuyPrice.Visible = false;
-                this.Height -= 60;
             }
         }
 
@@ -81,18 +86,21 @@ namespace BinaMitraTextile.InventoryForm
                 else
                     iddl_VendorInvoices.SelectedValue = obj.VendorInvoiceID;
 
+                if(obj.POItemID != null)
+                    _browsedPOItem = new POItem((Guid)obj.POItemID);
                 cbColors.SelectedValue = obj.color_id;
                 cbGrades.SelectedValue = obj.grade_id;
                 cbLengthUnits.SelectedValue = obj.length_unit_id;
                 _browsedProductID = obj.product_id;
                 populateProductName(obj.product_store_name, obj.product_name_vendor);
+                _browsedProductStorenameID = obj.product_store_name_id;
                 cbProductWidths.SelectedValue = obj.product_width_id;
                 txtPackingListNo.Text = obj.PackingListNo;
                 if(obj.POItemID != null)
                     itxt_POItemID.setValue(string.Format("[{0}] {1}", obj.PONo, obj.POItemDescription), obj.POItemID);
                 txtNotes.Text = obj.notes;
                 txtBuyPrice.Text = obj.buy_price.ToString();
-                buyPriceBeforePOItemChecked = obj.buy_price;
+                buyPriceOnPopulate = obj.buy_price;
             }
         }
 
@@ -100,15 +108,45 @@ namespace BinaMitraTextile.InventoryForm
         /*******************************************************************************************************/
         #region FORM METHODS
         
-        private void chkPOItem_CheckedChanged(object sender, EventArgs e)
+        private void updateBuyPrice()
         {
-            if (chkPOItem.Checked)
-                txtBuyPrice.Text = LIBUtil.Util.zeroNonNumericString(buyPriceBeforePOItemChecked).ToString();
-            else
+            //do not change buy price on update to avoid changes to vendor invoice calculations.
+            //inventory without referenced_inventory_id most likely will have the wrong value
+            if(_isFormShown && _formMode == FormMode.New)
             {
-                buyPriceBeforePOItemChecked = LIBUtil.Util.zeroNonNumericString(txtBuyPrice.Text);
-                txtBuyPrice.Text = "0";
+                if(_browsedPOItem == null)
+                    txtBuyPrice.Text = getBuyPrice().ToString("N2");
+                else
+                {
+                    txtBuyPrice.Text = _browsedPOItem.PricePerUnit.ToString("N2");
+                    if (_browsedPOItem.ReferencedInventoryID != null)
+                    {
+                        Inventory inventory = new Inventory((Guid)_browsedPOItem.ReferencedInventoryID);
+                        if(inventory.product_store_name_id != _browsedProductStorenameID
+                            || inventory.grade_id != (Guid?)cbGrades.SelectedValue
+                            || inventory.product_width_id != (Guid?)cbProductWidths.SelectedValue
+                            || inventory.length_unit_id != (Guid?)cbLengthUnits.SelectedValue)
+                        {
+                            txtBuyPrice.Text = getBuyPrice().ToString("N2");
+                        }
+                    }
+                }
             }
+        }
+
+        private decimal getBuyPrice()
+        {
+            //get price with color if available
+            DataTable datatable = ProductPrice.get(null, _browsedProductStorenameID, (Guid?)cbGrades.SelectedValue, (Guid?)cbProductWidths.SelectedValue, (Guid?)cbLengthUnits.SelectedValue, null, (Guid?)cbColors.SelectedValue, false);
+
+            //if not available, get price without color
+            if (datatable != null && datatable.Rows.Count == 0)
+                datatable = ProductPrice.get(null, _browsedProductStorenameID, (Guid?)cbGrades.SelectedValue, (Guid?)cbProductWidths.SelectedValue, (Guid?)cbLengthUnits.SelectedValue, null, null, false);
+
+            if (datatable != null && datatable.Rows.Count > 0)
+                return Util.wrapNullable<decimal>(datatable.Rows[0], ProductPrice.COL_DB_BuyPrice);
+            else
+                return 0;
         }
 
         private void populateProductName(string productStoreName, string productVendorName)
@@ -127,7 +165,6 @@ namespace BinaMitraTextile.InventoryForm
                     Tools.resetDropDownList(cbProductWidths);
                     txtNotes.Text = "";
                     txtBuyPrice.Text = "";
-                    chkPOItem.Checked = false;
                     break;
                 case FormMode.Update:
                     populatePageData();
@@ -145,7 +182,7 @@ namespace BinaMitraTextile.InventoryForm
                 Product obj = new Product(form.BrowsedItemSelectionId);
                 populateProductName(obj.StoreName, obj.NameVendor);
 
-                chkPOItem.Checked = false;
+                updateBuyPrice();
             }
             cbGrades.Focus();
         }
@@ -269,17 +306,17 @@ namespace BinaMitraTextile.InventoryForm
 
         private void cbGrades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkPOItem.Checked = false;
+            updateBuyPrice();
         }
 
         private void cbProductWidths_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkPOItem.Checked = false;
+            updateBuyPrice();
         }
 
         private void cbLengthUnits_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkPOItem.Checked = false;
+            updateBuyPrice();
         }
 
         private void Itxt_POItemID_isBrowseMode_Clicked(object sender, EventArgs e)
@@ -289,34 +326,35 @@ namespace BinaMitraTextile.InventoryForm
             if (form.DialogResult == DialogResult.OK)
             {
                 itxt_POItemID.setValue(form.browseItemDescription, form.browseItemSelection);
+                _browsedPOItem = new POItem(form.browseItemSelection);
 
-                decimal poItemPricePerUnit = LIBUtil.Util.zeroNonNumericString(form.browseItemPricePerUnit.ToString());
-                txtBuyPrice.Text = poItemPricePerUnit.ToString();
-
-                if (!chkPOItem.Checked && poItemPricePerUnit > 0)
-                    buyPriceBeforePOItemChecked = poItemPricePerUnit;
+                txtBuyPrice.Text = _browsedPOItem.PricePerUnit.ToString();
             }
 
             //automatically fill out form
             if (_formMode == FormMode.New)
             {
-                if (itxt_POItemID.ValueGuid != null)
+                if (_browsedPOItem != null)
                 { 
-                    Guid? inventoryID = new POItem((Guid)itxt_POItemID.ValueGuid).ReferencedInventoryID;
+                    Guid? inventoryID = _browsedPOItem.ReferencedInventoryID;
                     if (inventoryID != null)
                     {
                         Inventory obj = new Inventory((Guid)inventoryID);
                         _browsedProductID = obj.product_id;
+                        _browsedProductStorenameID = obj.product_store_name_id;
                         populateProductName(obj.product_store_name, obj.product_name_vendor);
                         cbGrades.SelectedValue = obj.grade_id;
                         cbProductWidths.SelectedValue = obj.product_width_id;
                         cbLengthUnits.SelectedValue = obj.length_unit_id;
                         cbColors.SelectedValue = obj.color_id;
-
-                        chkPOItem.Checked = true;
                     }
                 }
             }
+        }
+
+        private void Add_Edit_Form_Shown(object sender, EventArgs e)
+        {
+            _isFormShown = true;
         }
 
         #endregion SUBMISSION

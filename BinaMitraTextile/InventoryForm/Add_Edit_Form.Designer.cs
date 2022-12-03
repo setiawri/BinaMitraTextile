@@ -57,9 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddVendorInvoice = new System.Windows.Forms.Button();
             this.txtProductName = new System.Windows.Forms.TextBox();
-            this.chkPOItem = new System.Windows.Forms.CheckBox();
             this.itxt_POItemID = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
-            this.label10 = new System.Windows.Forms.Label();
             this.iddl_VendorInvoices = new LIBUtil.Desktop.UserControls.InputControl_Dropdownlist();
             this.SuspendLayout();
             // 
@@ -87,7 +85,7 @@
             // lblBuyPrice
             // 
             this.lblBuyPrice.AutoSize = true;
-            this.lblBuyPrice.Location = new System.Drawing.Point(64, 403);
+            this.lblBuyPrice.Location = new System.Drawing.Point(64, 374);
             this.lblBuyPrice.Name = "lblBuyPrice";
             this.lblBuyPrice.Size = new System.Drawing.Size(52, 13);
             this.lblBuyPrice.TabIndex = 93;
@@ -95,7 +93,7 @@
             // 
             // txtBuyPrice
             // 
-            this.txtBuyPrice.Location = new System.Drawing.Point(122, 400);
+            this.txtBuyPrice.Location = new System.Drawing.Point(122, 371);
             this.txtBuyPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuyPrice.Name = "txtBuyPrice";
             this.txtBuyPrice.Size = new System.Drawing.Size(100, 20);
@@ -276,7 +274,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSubmit.Location = new System.Drawing.Point(140, 479);
+            this.btnSubmit.Location = new System.Drawing.Point(140, 413);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(103, 23);
@@ -288,7 +286,7 @@
             // btnReset
             // 
             this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReset.Location = new System.Drawing.Point(245, 479);
+            this.btnReset.Location = new System.Drawing.Point(245, 413);
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
@@ -384,19 +382,6 @@
             this.txtProductName.TabIndex = 1004;
             this.txtProductName.Click += new System.EventHandler(this.txtProductName_Click);
             // 
-            // chkPOItem
-            // 
-            this.chkPOItem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.chkPOItem.AutoSize = true;
-            this.chkPOItem.Location = new System.Drawing.Point(124, 447);
-            this.chkPOItem.Margin = new System.Windows.Forms.Padding(4);
-            this.chkPOItem.Name = "chkPOItem";
-            this.chkPOItem.Size = new System.Drawing.Size(63, 17);
-            this.chkPOItem.TabIndex = 1005;
-            this.chkPOItem.Text = "PO item";
-            this.chkPOItem.UseVisualStyleBackColor = true;
-            this.chkPOItem.CheckedChanged += new System.EventHandler(this.chkPOItem_CheckedChanged);
-            // 
             // itxt_POItemID
             // 
             this.itxt_POItemID.IsBrowseMode = true;
@@ -415,17 +400,6 @@
             this.itxt_POItemID.TabIndex = 1006;
             this.itxt_POItemID.ValueText = "";
             this.itxt_POItemID.isBrowseMode_Clicked += new System.EventHandler(this.Itxt_POItemID_isBrowseMode_Clicked);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(121, 430);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(182, 13);
-            this.label10.TabIndex = 1007;
-            this.label10.Text = "biarkan kosong kalau bukan grade A";
             // 
             // iddl_VendorInvoices
             // 
@@ -447,11 +421,9 @@
             // Add_Edit_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(460, 528);
+            this.ClientSize = new System.Drawing.Size(460, 458);
             this.Controls.Add(this.iddl_VendorInvoices);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.itxt_POItemID);
-            this.Controls.Add(this.chkPOItem);
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.btnAddVendorInvoice);
             this.Controls.Add(this.label1);
@@ -484,6 +456,7 @@
             this.Name = "Add_Edit_Form";
             this.Text = "CREATE INVENTORY";
             this.Load += new System.EventHandler(this.Add_Edit_Form_Load);
+            this.Shown += new System.EventHandler(this.Add_Edit_Form_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,9 +492,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddVendorInvoice;
         private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.CheckBox chkPOItem;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_POItemID;
-        private System.Windows.Forms.Label label10;
         private LIBUtil.Desktop.UserControls.InputControl_Dropdownlist iddl_VendorInvoices;
     }
 }
