@@ -1,0 +1,483 @@
+﻿@model IEnumerable<BinaMitraTextileWebApp.Models.FinancialReportsModel>
+
+@{
+    //BinaMitraTextileWebApp.Models.UserAccountRolesModel access = BinaMitraTextileWebApp.Controllers.UserAccountsController.getUserAccess(Session);
+    string ControllerName = "FinancialReports";
+    ViewBag.SelectedNavigationMenu = "Reports";
+    ViewBag.Title = "Financial";
+    ViewBag.Subtitle = "Index";
+
+    System.Reflection.PropertyInfo[] ModelProperties = typeof(BinaMitraTextileWebApp.Models.FinancialReportsModel).GetProperties();
+
+}
+<style>
+    tr {
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+<div class="content-wrapper">
+    <!-- Content area -->
+    <div class="content">
+        @using (Html.BeginForm("Index", ControllerName, FormMethod.Post))
+        {
+            <!-- Form inputs -->
+            <div class="card animated bounceInLeft">
+                <div class="card-header header-elements-inline pb-1">
+                    <h5 class="card-title text-uppercase">@ViewBag.Title</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mx-0">
+                        <div class="row ml-0 mr-2" style="width:150px;">
+                            <label class="mb-0">Date From</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_chkDateFrom", false, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Editor("FILTER_DateFrom", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                            </div>
+                        </div>
+
+                        <div class="row ml-0 mr-2" style="width:150px;">
+                            <label class="mb-0">Date To</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        @Html.CheckBox("FILTER_chkDateTo", false, new { @class = "form-check-input check-styled" })
+                                    </div>
+                                </div>
+                                @Html.Editor("FILTER_DateTo", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                            </div>
+                        </div>
+
+                        <div class="ml-0 mr-2">
+                            <label class="mb-0">&nbsp;</label>
+                            <button type="submit" id="LoadData" onclick="showLoadingSpinner()" class="btn btn-outline-primary form-control"><i class="icon-reload-alt mr-2"></i>LOAD</button>
+                        </div>
+                    </div>
+                    
+                    @if (Model != null)
+                    {
+                        <div class="mx-0 mt-2">
+                            <table class="">
+                                <thead>
+                                    <tr>
+                                        <th style="width:250px;"class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
+                                        @foreach (var item in Model)
+                                        {
+                                            <th style="width:150px;" class="text-right">@Html.DisplayFor(modelItem => item.Period)</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">SALES</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesSellValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesSellValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesBuyValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesGrossProfit)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesShippingCost)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesShippingCost)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesShippingExpense)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesShippingExpense)</td>
+                                        }
+                                    </tr>
+                                    <tr class="font-weight-bold">
+                                        <td>@Html.DisplayNameFor(model => model.SalesNetProfit)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesNetProfit)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr>
+                                        <td class="font-weight-bold">SALES PAYMENTS<i class="icon-info22 text-primary ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="Sales Sell Value + Shipping Cost = Payments + Receivables"></i></td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right font-weight-bold">@(string.Format("{0:N2}", item.SalesSellValue + item.SalesShippingCost))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesPayments_Cash)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesPayments_Cash)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesPayments_EDC)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesPayments_EDC)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesPayments_Transfer)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesPayments_Transfer)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesPayments_Credit)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesPayments_Credit)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesPayments_Giro)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesPayments_Giro)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesPayments_Others)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesPayments_Others)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.Receivables)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right text-warning">@Html.DisplayFor(modelItem => item.Receivables)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">INVENTORY INCREASE</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeginningStockValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.BeginningStockValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeginningStockQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.BeginningStockQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.EndingStockValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.EndingStockValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.EndingStockQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.EndingStockQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.StockIncreaseValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.StockIncreaseValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.StockIncreaseQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.StockIncreaseQty)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">RECEIVED INVENTORY</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReceivedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedInventoryQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReceivedInventoryQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReturnedToVendorInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReturnedToVendorInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReturnedToVendorInventoryQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReturnedToVendorInventoryQty)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryQty)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.NetPurchasedInventoryQty)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr class="table-warning">
+                                        <td class="font-weight-bold">CROSS CHECK<i class="icon-info22 text-primary ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="COGS = Purchased - Stock increase"></i></td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@(item.SalesBuyValue + item.StockIncreaseValue - item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesBuyValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.NetPurchasedInventoryValue)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.StockIncreaseValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.StockIncreaseValue)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">SALES PAYMENTS</td></tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr><td class="font-weight-bold">PETTY CASH</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BeginningPettyCashBalance)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.BeginningPettyCashBalance)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.EndingPettyCashBalance)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.EndingPettyCashBalance)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedCashFromSales)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReceivedCashFromSales)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.ReceivedCashFromOthers)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.ReceivedCashFromOthers)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.BankCashDeposits)<i class="icon-info22 text-danger ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="Belum klop. harusnya sama dengan sales net profit dikurangi expenses. Mungkin masuk ke customer credit?"></i></td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.BankCashDeposits)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.Expenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Expenses)</td>
+                                        }
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td><span class="font-weight-bold">CROSS CHECK</span><i class="icon-info22 text-primary ml-1" data-container="body" data-toggle="popover" data-placement="right" data-content="Ending balance = Beginning balance + Received Cash - Bank Deposits - Expenses"></i></td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right font-weight-bold">@(string.Format("{0:N2}", item.BeginningPettyCashBalance + item.ReceivedCashFromSales + item.ReceivedCashFromOthers - item.BankCashDeposits - item.Expenses - item.EndingPettyCashBalance))</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr class="font-weight-bold">
+                                        <td>@Html.DisplayNameFor(model => model.TotalRevenuesAndExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.TotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyTotalRevenuesAndExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyRevenues)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.CompanyExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PersonalTotalRevenuesAndExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PersonalRevenues)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PersonalExpenses)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
+                                        }
+                                    </tr>
+
+                                    @*================================================================================================================================================================*@
+
+                                    <tr><td>&nbsp;</td></tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.TotalVendorInvoices)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.TotalVendorInvoices)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.PayableVendorInvoices)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PayableVendorInvoices)</td>
+                                        }
+                                    </tr>
+
+                                    @*@for (int i = 0; i < ModelProperties.Length; i++)
+        {
+            System.Reflection.PropertyInfo property = ModelProperties[i];
+
+            <tr>
+                <td class="align-top font-weight-bold">@property.Name</td>
+
+                @foreach (BinaMitraTextileWebApp.Models.FinancialReportsModel item in Model)
+                {
+                    foreach(var x in item.)
+                    BinaMitraTextileWebApp.Models.FinancialReportsModel model = models[i];
+                    <td class="align-top">model.SalesSellValue</td>
+                    <td class="align-top">model.SalesShippingCost</td>
+                    <td class="align-top">model.SalesShippingExpense</td>
+                    <td class="align-top">model.SalesBuyValue</td>
+                    <td class="align-top">model.SalesProfit</td>
+                    <td class="align-top">model.BeginningInventoryBuyValue</td>
+                    <td class="align-top">model.EndingInventoryBuyValue</td>
+                    <td class="align-top">model.TotalVendorInvoices</td>
+                    <td class="align-top">model.PayableVendorInvoices</td>
+                    <td class="align-top">model.BankDeposits</td>
+                    <td class="align-top">model.Receivables</td>
+                    <td class="align-top">model.Transfers</td>
+                    <td class="align-top">model.Expenses</td>
+                }
+
+                <td>&nbsp;</td>
+            </tr>
+        }*@
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- /form inputs -->
+        }
+    </div>
+    <!-- /content area -->
+</div>

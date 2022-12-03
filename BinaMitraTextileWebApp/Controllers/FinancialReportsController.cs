@@ -49,6 +49,42 @@ namespace BinaMitraTextileWebApp.Controllers
             return View(models);
         }
 
+        /* PROFT LOSS STATEMENTS ******************************************************************************************************************************/
+
+        public ActionResult ProfitLossStatements(int? rss, bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        {
+            if (!UsersController.getUserAccess(Session).FinancialReports_View)
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+
+            if (UtilWebMVC.hasNoFilter(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo))
+            {
+                FILTER_chkDateFrom = true;
+                FILTER_DateFrom = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime().AddMonths(-1));
+                FILTER_chkDateTo = true;
+                FILTER_DateTo = Util.getLastDayOfSelectedMonth((DateTime)FILTER_DateFrom);
+                setViewBag(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            }
+
+            if (rss != null)
+            {
+                ViewBag.RemoveDatatablesStateSave = rss;
+                return View();
+            }
+            else
+            {
+                List<FinancialReportsModel> models = get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+                return View(models);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ProfitLossStatements(bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        {
+            setViewBag(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            List<FinancialReportsModel> models = get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            return View(models);
+        }
+
         /* METHODS ********************************************************************************************************************************************/
 
         public void setViewBag(bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)

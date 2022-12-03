@@ -126,7 +126,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivityLogsController.cs" />
-    <Compile Include="Controllers\ProfitLossStatementsController.cs" />
     <Compile Include="Controllers\FinancialReportsController.cs" />
     <Compile Include="Controllers\RevenueAndExpenseCategoriesController.cs" />
     <Compile Include="Controllers\RevenuesAndExpensesController.cs" />
@@ -146,7 +145,6 @@
     <Compile Include="Helpers\DBContext.cs" />
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Helper.cs" />
-    <Compile Include="Models\ProfitLossStatementsModel.cs" />
     <Compile Include="Models\MoneyAccountCategoryAssignmentsModel.cs" />
     <Compile Include="Models\RevenueAndExpenseCategoriesModel.cs" />
     <Compile Include="Models\MoneyAccountCategoriesModel.cs" />
@@ -376,7 +374,7 @@
     <Content Include="Views\RevenuesAndExpenses\Create.cshtml" />
     <Content Include="Views\RevenuesAndExpenses\Edit.cshtml" />
     <Content Include="Views\RevenuesAndExpenses\Index.cshtml" />
-    <Content Include="Views\ProfitLossStatements\Index.cshtml" />
+    <Content Include="Views\FinancialReports\ProfitLossStatements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

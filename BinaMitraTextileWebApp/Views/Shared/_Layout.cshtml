@@ -76,6 +76,7 @@
                         @if (access == null || access.FinancialReports_View)
                         {
                             <a href="@Url.Action("Index", "FinancialReports", new { rss=1 })" class="dropdown-item">Financial</a>
+                            <a href="@Url.Action("ProfitLossStatements", "FinancialReports", new { rss=1 })" class="dropdown-item">Financial</a>
                         }
                     </div>
                 </li>

@@ -136,12 +136,6 @@ namespace BinaMitraTextileWebApp.Controllers
                     log = Helper.append(log, originalModel.FinancialReports_Edit, model.FinancialReports_Edit, UserAccountRolesModel.COL_FinancialReports_Edit.LogDisplay);
                     log = Helper.append(log, originalModel.FinancialReports_View, model.FinancialReports_View, UserAccountRolesModel.COL_FinancialReports_View.LogDisplay);
 
-                    //ProfitLossStatements
-                    log = Helper.append(log, originalModel.ProfitLossStatements_Notes, model.ProfitLossStatements_Notes, UserAccountRolesModel.COL_ProfitLossStatements_Notes.LogDisplay);
-                    log = Helper.append(log, originalModel.ProfitLossStatements_Add, model.ProfitLossStatements_Add, UserAccountRolesModel.COL_ProfitLossStatements_Add.LogDisplay);
-                    log = Helper.append(log, originalModel.ProfitLossStatements_Edit, model.ProfitLossStatements_Edit, UserAccountRolesModel.COL_ProfitLossStatements_Edit.LogDisplay);
-                    log = Helper.append(log, originalModel.ProfitLossStatements_View, model.ProfitLossStatements_View, UserAccountRolesModel.COL_ProfitLossStatements_View.LogDisplay);
-
                     //RevenueAndExpenseCategories
                     log = Helper.append(log, originalModel.RevenueAndExpenseCategories_Notes, model.RevenueAndExpenseCategories_Notes, UserAccountRolesModel.COL_RevenueAndExpenseCategories_Notes.LogDisplay);
                     log = Helper.append(log, originalModel.RevenueAndExpenseCategories_Add, model.RevenueAndExpenseCategories_Add, UserAccountRolesModel.COL_RevenueAndExpenseCategories_Add.LogDisplay);
@@ -225,11 +219,6 @@ namespace BinaMitraTextileWebApp.Controllers
                 if (item.FinancialReports_Add) model.FinancialReports_Add = true;
                 if (item.FinancialReports_Edit) model.FinancialReports_Edit = true;
                 if (item.FinancialReports_View) model.FinancialReports_View = true;
-
-                //ProfitLossStatements
-                if (item.ProfitLossStatements_Add) model.ProfitLossStatements_Add = true;
-                if (item.ProfitLossStatements_Edit) model.ProfitLossStatements_Edit = true;
-                if (item.ProfitLossStatements_View) model.ProfitLossStatements_View = true;
 
                 //RevenueAndExpenseCategories
                 if (item.RevenueAndExpenseCategories_Add) model.RevenueAndExpenseCategories_Add = true;
