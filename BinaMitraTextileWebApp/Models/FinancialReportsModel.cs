@@ -225,5 +225,21 @@ namespace BinaMitraTextileWebApp.Models
 
         /******************************************************************************************************************************************************/
 
+        [Display(Name = "Personal Net Profit")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? PersonalNetProfit { get; set; }
+
+
+        [Display(Name = "Personal Assets Starting Balance")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? PersonalAssetsStartingBalance { get; set; }
+
+
+        [Display(Name = "Personal Assets Ending Balance")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? PersonalAssetsEndingBalance { get; set; }
+
+        /******************************************************************************************************************************************************/
+
     }
 }

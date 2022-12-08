@@ -119,14 +119,14 @@ namespace BinaMitraTextileWebApp.Controllers
             string statements = "";
             string variables = initializeSql();
 
-            sql_SalesNetProfit(ref statements, ref variables);            
+            sql_PettyCash(ref statements, ref variables);
+            sql_SalesNetProfit(ref statements, ref variables);
             sql_Receivables(ref statements, ref variables);
             sql_StockIncrease(ref statements, ref variables);
             sql_NetPurchasedInventory(ref statements, ref variables);
-            sql_PettyCash(ref statements, ref variables);
-            sql_RevenuesAndExpenses(ref statements, ref variables);
             sql_VendorInvoices(ref statements, ref variables);
             sql_PayableVendorInvoices(ref statements, ref variables);
+            sql_PersonalNetProfit(ref statements, ref variables);
 
             return finalizeSql(statements, variables);
         }
@@ -180,12 +180,13 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public static void sql_SalesNetProfit(ref string statements, ref string variables)
         {
+            sql_RevenuesAndExpenses(ref statements, ref variables); 
             sql_SalesGrossProfit(ref statements, ref variables);
             sql_SalesShippingCost(ref statements, ref variables);
 
             statements += @"
                     DECLARE @SalesNetProfit decimal(15,2) = NULL
-                    SET @SalesNetProfit = @SalesGrossProfit + @SalesShippingCost - @SalesShippingExpense;
+                    SET @SalesNetProfit = @SalesGrossProfit + @SalesShippingCost - @SalesShippingExpense - @Expenses + @CompanyTotalRevenuesAndExpenses;
                 ";
 
             variables = Util.append(variables, @"
@@ -671,11 +672,7 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             sql_TotalRevenuesAndExpenses(ref statements, ref variables);
             sql_CompanyTotalRevenuesAndExpenses(ref statements, ref variables);
-            sql_CompanyRevenues(ref statements, ref variables);
-            sql_CompanyExpenses(ref statements, ref variables);
             sql_PersonalTotalRevenuesAndExpenses(ref statements, ref variables);
-            sql_PersonalRevenues(ref statements, ref variables);
-            sql_PersonalExpenses(ref statements, ref variables);
         }
 
         public static void sql_TotalRevenuesAndExpenses(ref string statements, ref string variables)
@@ -696,14 +693,11 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public static void sql_CompanyTotalRevenuesAndExpenses(ref string statements, ref string variables)
         {
+            sql_CompanyRevenues(ref statements, ref variables);
+            sql_CompanyExpenses(ref statements, ref variables);
+
             statements += @"
-                    DECLARE @CompanyTotalRevenuesAndExpenses decimal(15,2) = NULL
-                    SELECT @CompanyTotalRevenuesAndExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
-                    FROM RevenuesAndExpenses
-                        LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
-                    WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
-                        AND RevenuesAndExpenses.Timestamp < @PeriodEnd
-                        AND Company = 1
+                    DECLARE @CompanyTotalRevenuesAndExpenses decimal(15,2) = @CompanyRevenues - @CompanyExpenses
                 ";
 
             variables = Util.append(variables, @"
@@ -749,14 +743,11 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public static void sql_PersonalTotalRevenuesAndExpenses(ref string statements, ref string variables)
         {
+            sql_PersonalRevenues(ref statements, ref variables);
+            sql_PersonalExpenses(ref statements, ref variables);
+
             statements += @"
-                    DECLARE @PersonalTotalRevenuesAndExpenses decimal(15,2) = NULL
-                    SELECT @PersonalTotalRevenuesAndExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
-                    FROM RevenuesAndExpenses
-                        LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
-                    WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
-                        AND RevenuesAndExpenses.Timestamp < @PeriodEnd
-                        AND Personal = 1
+                    DECLARE @PersonalTotalRevenuesAndExpenses decimal(15,2) = @PersonalRevenues - @PersonalExpenses
                 ";
 
             variables = Util.append(variables, @"
@@ -797,6 +788,20 @@ namespace BinaMitraTextileWebApp.Controllers
 
             variables = Util.append(variables, @"
                     @PersonalExpenses AS PersonalExpenses
+                ", ",");
+        }
+
+        /* PERSONAL NET PROFIT ********************************************************************************************************************************/
+
+        public static void sql_PersonalNetProfit(ref string statements, ref string variables)
+        {
+            statements += @"
+                    -- INVOICES -----------------------------------------------------------------------------------------------------------------------
+                    DECLARE @PersonalNetProfit decimal(15,2) = @SalesNetProfit + @PersonalTotalRevenuesAndExpenses
+                ";
+
+            variables = Util.append(variables, @"
+                    @PersonalNetProfit AS PersonalNetProfit
                 ", ",");
         }
 
