@@ -175,7 +175,7 @@ namespace BinaMitraTextile
             return datatable;
         }
 
-        public static void updateQty(Guid id, decimal Qty, decimal PricePerUnit)
+        public static void update(Guid id, decimal Qty, decimal PricePerUnit)
         {
             SaleOrderItem objOld = new SaleOrderItem(id);
 

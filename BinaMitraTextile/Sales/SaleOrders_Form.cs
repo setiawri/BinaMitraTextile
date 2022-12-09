@@ -228,7 +228,10 @@ namespace BinaMitraTextile.Sales
         {
             clearGridInventoryItems();
             if (gridSaleOrders.SelectedRows.Count == 0)
+            {
+                lblSaleOrderInfo.Text = "";
                 gridSaleOrderItems.DataSource = null;
+            }
             else
             {
                 gridSaleOrderItems.DataSource = SaleOrderItem.get(null, selectedSaleOrdersRowID(), _Customers_Id, false);
@@ -387,25 +390,12 @@ namespace BinaMitraTextile.Sales
             }
         }
 
-        private void GridSaleOrders_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Util.isColumnMatch(sender, e, col_gridSaleOrders_TargetDate, col_gridSaleOrders_CustomerPONo))
-            {
-                pnlUpdateSaleOrder.Visible = true;
-                idtp_SaleOrders_TargetDate.Value = (DateTime)Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_TargetDate);
-                itxt_CustomerPONo.ValueText = Util.getSelectedRowValue(gridSaleOrders, col_gridSaleOrders_CustomerPONo).ToString();
-            }
-            else
-            {
-                populateGridSaleOrderItems();
-            }
-        }
-
         private void BtnUpdateSaleOrder_Click(object sender, EventArgs e)
         {
-            SaleOrder.update(Util.getSelectedRowID(gridSaleOrders, col_gridSaleOrders_id), (DateTime)idtp_SaleOrders_TargetDate.Value, itxt_CustomerPONo.ValueText);
+            SaleOrder.update(Util.getSelectedRowID(gridSaleOrders, col_gridSaleOrders_id), (DateTime)idtp_SaleOrders_TargetDate.Value, itxt_CustomerPONo.ValueText, itxt_SaleOrders_Notes.ValueText);
             pnlUpdateSaleOrder.Visible = false;
             populateGridSaleOrders();
+            populateGridSaleOrderItems();
         }
 
         private void BtnCancelUpdateSaleOrder_Click(object sender, EventArgs e)
@@ -479,7 +469,7 @@ namespace BinaMitraTextile.Sales
 
         private void BtnUpdateSaleOrderItemQty_Click(object sender, EventArgs e)
         {
-            SaleOrderItem.updateQty(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal, in_SaleOrderItemPricePerUnit.ValueInt);
+            SaleOrderItem.update(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal, in_SaleOrderItemPricePerUnit.ValueInt);
             in_SaleOrderItemQty.Value = 0;
             pnlUpdateSaleOrderItemQty.Visible = false;
             populateGridSaleOrderItems();
@@ -508,6 +498,23 @@ namespace BinaMitraTextile.Sales
             col_gridSaleOrderItems_ShippedQty.Visible = chkShowShippedBookedSisa.Checked;
             col_gridSaleOrderItems_BookedQty.Visible = chkShowShippedBookedSisa.Checked;
             col_gridSaleOrderItems_RemainingQty.Visible = chkShowShippedBookedSisa.Checked;
+        }
+
+        private void gridSaleOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Util.isColumnMatch(sender, e, col_gridSaleOrders_TargetDate, col_gridSaleOrders_CustomerPONo, col_gridSaleOrders_Notes))
+            {
+                pnlUpdateSaleOrder.Visible = true;
+                SaleOrder saleOrder = new SaleOrder(Util.getSelectedRowID(sender, col_gridSaleOrders_id));
+                idtp_SaleOrders_TargetDate.Value = saleOrder.TargetDate;
+                itxt_CustomerPONo.ValueText = saleOrder.CustomerPONo;
+                itxt_SaleOrders_Notes.ValueText = saleOrder.Notes;
+                itxt_SaleOrders_Notes.focus();
+            }
+            else
+            {
+                populateGridSaleOrderItems();
+            }
         }
 
         #endregion FORM METHODS

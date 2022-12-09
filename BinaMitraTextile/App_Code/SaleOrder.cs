@@ -132,13 +132,14 @@ namespace BinaMitraTextile
             return isSuccess;
         }
 
-        public static void update(Guid id, DateTime TargetDate, string CustomerPONo)
+        public static void update(Guid id, DateTime TargetDate, string CustomerPONo, string Notes)
         {
             SaleOrder objOld = new SaleOrder(id);
 
             string log = "";
             log = Util.appendChange(log, objOld.TargetDate, TargetDate, "Target Date: '{0:dd/MM/yy} to {1:dd/MM/yy}");
             log = Util.appendChange(log, objOld.CustomerPONo, CustomerPONo, "PO: '{0}' to '{1}'");
+            log = Util.appendChange(log, objOld.Notes, Notes, "Notes: '{0:N2}' to '{1:N2}'");
 
             if (!string.IsNullOrWhiteSpace(log))
             {
@@ -149,7 +150,8 @@ namespace BinaMitraTextile
                     "SaleOrders_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
                     new SqlQueryParameter(COL_DB_TargetDate, SqlDbType.DateTime, TargetDate),
-                    new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, CustomerPONo)
+                    new SqlQueryParameter(COL_DB_CustomerPONo, SqlDbType.VarChar, CustomerPONo),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Notes)
                 );
 
                 if (result.IsSuccessful)
