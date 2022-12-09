@@ -50,6 +50,11 @@ namespace BinaMitraTextileWebApp.Models
         public decimal? SalesNetProfit { get; set; }
 
 
+        [Display(Name = "Sales Net Profit Up To Date")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? SalesNetProfitUpToDate { get; set; }
+
+
         [Display(Name = "Sales Payments - Cash")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? SalesPayments_Cash { get; set; }

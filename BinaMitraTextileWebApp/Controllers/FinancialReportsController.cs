@@ -13,6 +13,9 @@ namespace BinaMitraTextileWebApp.Controllers
     {
         private readonly DBContext db = new DBContext();
 
+        private const string Guid_SalesNetProfitUpToDate = "2C1356F9-079E-4FAB-931F-4AF501ED76F2";
+        private const string Guid_PersonalAssets = "63B78400-4A9E-41E1-B4E9-30FF85C6FBBE";
+
         /* INDEX **********************************************************************************************************************************************/
 
         public ActionResult Index(int? rss, DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
@@ -178,12 +181,22 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_SalesGrossProfit(ref statements, ref variables);
             sql_SalesShippingCost(ref statements, ref variables);
 
-            statements += @"
+            statements += string.Format(@"
                     DECLARE @SalesNetProfit decimal(15,2) = 0
                     SET @SalesNetProfit = ISNULL(@SalesGrossProfit,0) + ISNULL(@SalesShippingCost,0) - ISNULL(@SalesShippingExpense,0) - ISNULL(@Expenses,0) + ISNULL(@CompanyTotalRevenuesAndExpenses,0);
-                ";
+
+
+                    DECLARE @SalesNetProfitUpToDate decimal(15,2) = 0
+                    SELECT TOP 1 @SalesNetProfitUpToDate = ISNULL(ReportBalances.Amount,0)
+                    FROM ReportBalances
+                    WHERE ReportBalances.[Period] = DATEADD(month, -1, @PeriodStart) AND ReportBalances.TypeId = '{0}'
+                    SET @SalesNetProfitUpToDate = ISNULL(@SalesNetProfitUpToDate,0) + ISNULL(@SalesNetProfit,0)
+                    DELETE ReportBalances WHERE ReportBalances.[Period] = @PeriodStart AND ReportBalances.TypeId = '{0}'                     
+                    INSERT INTO ReportBalances(Id,Period,Amount,TypeId) VALUES(NEWID(),@PeriodStart,@SalesNetProfitUpToDate,'{0}')
+                ", Guid_SalesNetProfitUpToDate);
 
             variables = appendVariable(variables, "SalesNetProfit");
+            variables = appendVariable(variables, "SalesNetProfitUpToDate");
         }
 
         public static void sql_SalesGrossProfit(ref string statements, ref string variables)
@@ -727,20 +740,19 @@ namespace BinaMitraTextileWebApp.Controllers
 
         public static void sql_PersonalNetProfit(ref string statements, ref string variables)
         {
-            statements += @"
+            statements += string.Format(@"
                     DECLARE @PersonalAssetsStartingBalance decimal(15,2) = 0
                     SELECT TOP 1 @PersonalAssetsStartingBalance = ISNULL(ReportBalances.Amount,0)
                     FROM ReportBalances
-                    WHERE ReportBalances.Personal = 1 
-                        AND ReportBalances.[Period] = DATEADD(month, -1, @PeriodStart)
+                    WHERE ReportBalances.[Period] = DATEADD(month, -1, @PeriodStart) AND ReportBalances.TypeId = '{0}' 
 
                     DECLARE @PersonalNetProfit decimal(15,2) = ISNULL(@SalesNetProfit,0) + ISNULL(@PersonalTotalRevenuesAndExpenses,0)
 
                     DECLARE @PersonalAssetsEndingBalance decimal(15,2) = ISNULL(@PersonalAssetsStartingBalance,0) + ISNULL(@PersonalNetProfit,0)
                     
-                    DELETE ReportBalances WHERE ReportBalances.Personal = 1 AND ReportBalances.[Period] = @PeriodStart                 
-                    INSERT INTO ReportBalances(Id,Period,Amount,Personal) VALUES(NEWID(),@PeriodStart,@PersonalAssetsEndingBalance,1)
-                ";
+                    DELETE ReportBalances WHERE ReportBalances.[Period] = @PeriodStart AND ReportBalances.TypeId = '{0}'               
+                    INSERT INTO ReportBalances(Id,Period,Amount,TypeId) VALUES(NEWID(),@PeriodStart,@PersonalAssetsEndingBalance,'{0}')
+                ", Guid_PersonalAssets);
 
             variables = appendVariable(variables, "PersonalNetProfit");
             variables = appendVariable(variables, "PersonalAssetsStartingBalance");

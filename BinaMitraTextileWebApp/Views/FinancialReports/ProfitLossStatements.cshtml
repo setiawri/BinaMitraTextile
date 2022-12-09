@@ -223,6 +223,23 @@
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesNetProfit)</td>
                                         }
                                     </tr>
+                                    <tr>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesNetProfitUpToDate)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesNetProfitUpToDate)</td>
+                                        }
+                                    </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
+
+                                    <tr style="background-color:cornflowerblue;">
+                                        <td class="text-white font-weight-bold h4">PERSONAL</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td>&nbsp;</td>
+                                        }
+                                    </tr>
 
                                     <tr><td>&nbsp;</td></tr>
 
@@ -313,9 +330,6 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        //$('.datatable').DataTable({
-        //    "scrollX": true
-        //});
     });
 
     function applyLast() {
