@@ -15,18 +15,16 @@ namespace BinaMitraTextileWebApp.Controllers
 
         /* INDEX **********************************************************************************************************************************************/
 
-        public ActionResult Index(int? rss, bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        public ActionResult Index(int? rss, DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
             if (!UsersController.getUserAccess(Session).FinancialReports_View)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
-            if (UtilWebMVC.hasNoFilter(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo))
+            if (UtilWebMVC.hasNoFilter(FILTER_DatePeriodStart, FILTER_DatePeriodEnd))
             {
-                FILTER_chkDateFrom = true;
-                FILTER_DateFrom = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime().AddMonths(-1));
-                FILTER_chkDateTo = true;
-                FILTER_DateTo = Util.getLastDayOfSelectedMonth((DateTime)FILTER_DateFrom);
-                setViewBag(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+                FILTER_DatePeriodStart = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime().AddMonths(-1));
+                FILTER_DatePeriodEnd = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime());
+                setViewBag(FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
             }
 
             if (rss != null)
@@ -36,33 +34,31 @@ namespace BinaMitraTextileWebApp.Controllers
             }
             else
             {
-                List<FinancialReportsModel> models = get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+                List<FinancialReportsModel> models = get(null, FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
                 return View(models);
             }
         }
 
         [HttpPost]
-        public ActionResult Index(bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        public ActionResult Index(DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
-            setViewBag(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
-            List<FinancialReportsModel> models = get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
+            List<FinancialReportsModel> models = get(null, FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
             return View(models);
         }
 
         /* PROFT LOSS STATEMENTS ******************************************************************************************************************************/
 
-        public ActionResult ProfitLossStatements(int? rss, bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        public ActionResult ProfitLossStatements(int? rss, DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
             if (!UsersController.getUserAccess(Session).FinancialReports_View)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
-            if (UtilWebMVC.hasNoFilter(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo))
+            if (UtilWebMVC.hasNoFilter(FILTER_DatePeriodStart, FILTER_DatePeriodEnd))
             {
-                FILTER_chkDateFrom = true;
-                FILTER_DateFrom = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime().AddMonths(-1));
-                FILTER_chkDateTo = true;
-                FILTER_DateTo = Util.getLastDayOfSelectedMonth((DateTime)FILTER_DateFrom);
-                setViewBag(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+                FILTER_DatePeriodStart = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime().AddMonths(-1));
+                FILTER_DatePeriodEnd = Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime());
+                setViewBag(FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
             }
 
             if (rss != null)
@@ -72,45 +68,37 @@ namespace BinaMitraTextileWebApp.Controllers
             }
             else
             {
-                List<FinancialReportsModel> models = get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+                List<FinancialReportsModel> models = get(null, FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
                 return View(models);
             }
         }
 
         [HttpPost]
-        public ActionResult ProfitLossStatements(bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        public ActionResult ProfitLossStatements(DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
-            setViewBag(FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
-            List<FinancialReportsModel> models = get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
+            List<FinancialReportsModel> models = get(null, FILTER_DatePeriodStart, FILTER_DatePeriodEnd);
             return View(models);
         }
 
         /* METHODS ********************************************************************************************************************************************/
 
-        public void setViewBag(bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+        public void setViewBag(DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
-            ViewBag.FILTER_chkDateFrom = FILTER_chkDateFrom;
-            ViewBag.FILTER_DateFrom = FILTER_DateFrom;
-            ViewBag.FILTER_chkDateTo = FILTER_chkDateTo;
-            ViewBag.FILTER_DateTo = FILTER_DateTo;
+            ViewBag.FILTER_DatePeriodStart = FILTER_DatePeriodStart ?? Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime());
+            ViewBag.FILTER_DatePeriodEnd = FILTER_DatePeriodEnd ?? Util.getFirstDayOfSelectedMonth(Helper.getCurrentDateTime());
         }
 
         /* DATABASE METHODS ***********************************************************************************************************************************/
 
-        public static FinancialReportsModel get(bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo) { return get(null, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo).FirstOrDefault(); }
+        public static FinancialReportsModel get(DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd) { return get(null, FILTER_DatePeriodStart, FILTER_DatePeriodEnd).FirstOrDefault(); }
         public static List<FinancialReportsModel> get(Guid? Id, 
-            bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
+            DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
-            if (FILTER_chkDateFrom == null || !(bool)FILTER_chkDateFrom)
-                FILTER_DateFrom = null;
-
-            if (FILTER_chkDateTo == null || !(bool)FILTER_chkDateTo)
-                FILTER_DateTo = null;
-
             return new DBContext().Database.SqlQuery<FinancialReportsModel>(getSQL(),
                     DBConnection.getSqlParameter(FinancialReportsModel.COL_Id.Name, Id),
-                    DBConnection.getSqlParameter("FILTER_DateFrom", FILTER_DateFrom),
-                    DBConnection.getSqlParameter("FILTER_DateTo", Util.getAsEndDate(FILTER_DateTo))
+                    DBConnection.getSqlParameter("FILTER_DatePeriodStart", FILTER_DatePeriodStart),
+                    DBConnection.getSqlParameter("FILTER_DatePeriodEnd", Util.getAsEndDate(FILTER_DatePeriodEnd))
                 ).ToList();
         }
 
@@ -143,14 +131,15 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             string sql = string.Format(@"
 
-                    DECLARE @PeriodStart datetime = @FILTER_DateFrom
-                    DECLARE @PeriodEnd datetime = @FILTER_DateFrom
+                    DECLARE @PeriodStart datetime = @FILTER_DatePeriodStart
+                    DECLARE @PeriodEnd datetime = @FILTER_DatePeriodStart
 
-                    WHILE @PeriodEnd < @FILTER_DateTo
+                    WHILE @PeriodEnd <= @FILTER_DatePeriodEnd
                     BEGIN
                         SET @PeriodStart = @PeriodEnd
-                        SET @PeriodEnd = DATEADD(day, 1, EOMONTH(@PeriodEnd))
+                        SET @PeriodEnd = DATEADD(month, 1, @PeriodEnd)
 
+                        -- SQL STATEMENTS TO POPULATE VARIABLES -------------------------------------------------------------------------------------------
                         {0}
 
                         -- COMPILE RESULTS ----------------------------------------------------------------------------------------------------------------
@@ -176,6 +165,11 @@ namespace BinaMitraTextileWebApp.Controllers
             return sql;
         }
 
+        public static string appendVariable(string variables, string field)
+        {
+            return Util.append(variables, string.Format("ISNULL(@{0},0) AS {0}", field), ",");
+        }
+
         /* SALES **********************************************************************************************************************************************/
 
         public static void sql_SalesNetProfit(ref string statements, ref string variables)
@@ -185,13 +179,11 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_SalesShippingCost(ref statements, ref variables);
 
             statements += @"
-                    DECLARE @SalesNetProfit decimal(15,2) = NULL
-                    SET @SalesNetProfit = @SalesGrossProfit + @SalesShippingCost - @SalesShippingExpense - @Expenses + @CompanyTotalRevenuesAndExpenses;
+                    DECLARE @SalesNetProfit decimal(15,2) = 0
+                    SET @SalesNetProfit = ISNULL(@SalesGrossProfit,0) + ISNULL(@SalesShippingCost,0) - ISNULL(@SalesShippingExpense,0) - ISNULL(@Expenses,0) + ISNULL(@CompanyTotalRevenuesAndExpenses,0);
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesNetProfit AS SalesNetProfit
-                ", ",");
+            variables = appendVariable(variables, "SalesNetProfit");
         }
 
         public static void sql_SalesGrossProfit(ref string statements, ref string variables)
@@ -199,24 +191,22 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_Sales(ref statements, ref variables);
 
             statements += @"
-                    DECLARE @SalesGrossProfit decimal(15,2) = @SalesSellValue - @SalesBuyValue;
+                    DECLARE @SalesGrossProfit decimal(15,2) = ISNULL(@SalesSellValue,0) - ISNULL(@SalesBuyValue,0);
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesGrossProfit AS SalesGrossProfit
-                ", ",");
+            variables = appendVariable(variables, "SalesGrossProfit");
         }
 
         public static void sql_Sales(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @SalesSellValue decimal(15,2) = NULL
-                    DECLARE @SalesBuyValue decimal(15,2) = NULL
-                    DECLARE @SalesQty decimal(15,2) = NULL
+                    DECLARE @SalesSellValue decimal(15,2) = 0
+                    DECLARE @SalesBuyValue decimal(15,2) = 0
+                    DECLARE @SalesQty decimal(15,2) = 0
                     SET @SalesSellValue = 0;
-                    SELECT @SalesSellValue = SUM(InventoryItems.item_length * (SaleItems.sell_price+SaleItems.adjustment)),
-                        @SalesBuyValue = SUM(InventoryItems.item_length * (Inventory.buy_price)),
-                        @SalesQty = SUM(InventoryItems.item_length)
+                    SELECT @SalesSellValue = SUM(ISNULL(InventoryItems.item_length,0) * (ISNULL(SaleItems.sell_price,0) + ISNULL(SaleItems.adjustment,0))),
+                        @SalesBuyValue = SUM(ISNULL(InventoryItems.item_length,0) * ISNULL(Inventory.buy_price,0)),
+                        @SalesQty = SUM(ISNULL(InventoryItems.item_length,0))
                     FROM SaleItems
                         LEFT JOIN Sales ON Sales.id = SaleItems.sale_id
                         LEFT JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
@@ -228,20 +218,18 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesQty AS SalesQty,
-                    @SalesSellValue AS SalesSellValue,
-                    @SalesBuyValue AS SalesBuyValue
-                ", ",");
+            variables = appendVariable(variables, "SalesSellValue");
+            variables = appendVariable(variables, "SalesBuyValue");
+            variables = appendVariable(variables, "SalesQty");
         }
 
         public static void sql_SalesShippingCost(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @SalesShippingCost decimal(15,2) = NULL
-                    DECLARE @SalesShippingExpense decimal(15,2) = NULL
-                    SELECT @SalesShippingCost = SUM(COALESCE(Sales.shipping_cost,0)),
-                        @SalesShippingExpense = SUM(COALESCE(Sales.ShippingExpense,0))
+                    DECLARE @SalesShippingCost decimal(15,2) = 0
+                    DECLARE @SalesShippingExpense decimal(15,2) = 0
+                    SELECT @SalesShippingCost = SUM(ISNULL(Sales.shipping_cost,0)),
+                        @SalesShippingExpense = SUM(ISNULL(Sales.ShippingExpense,0))
                     FROM Sales
                     WHERE 1=1
                         AND Sales.time_stamp >= @PeriodStart 
@@ -249,10 +237,8 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesShippingCost AS SalesShippingCost,
-                    @SalesShippingExpense AS SalesShippingExpense
-                ", ",");
+            variables = appendVariable(variables, "SalesShippingCost");
+            variables = appendVariable(variables, "SalesShippingExpense");
         }
 
         /* SALES PAYMENTS *************************************************************************************************************************************/
@@ -279,9 +265,9 @@ namespace BinaMitraTextileWebApp.Controllers
                         - @SalesPayments_Others    
 
                     -- ALTERNATIVE CALCULATION
-                    --        SELECT @Receivables = SUM(CompiledSales.Amount + Sales.shipping_cost - SalePayments.Amount)
+                    --        SELECT @Receivables = SUM(ISNULL(CompiledSales.Amount,0) + ISNULL(Sales.shipping_cost,0) - ISNULL(SalePayments.Amount,0))
                     --        FROM (
-                    --                SELECT SaleItems.sale_id, SUM((InventoryItems.item_length * (SaleItems.sell_price+SaleItems.adjustment))) AS Amount
+                    --                SELECT SaleItems.sale_id, SUM((ISNULL(InventoryItems.item_length,0) * (ISNULL(SaleItems.sell_price,0) + ISNULL(SaleItems.adjustment,0)))) AS Amount
                     --                FROM SaleItems
                     --                    LEFT JOIN Sales ON Sales.id = SaleItems.sale_id
                     --                    LEFT JOIN InventoryItems ON InventoryItems.id = SaleItems.inventory_item_id
@@ -292,7 +278,7 @@ namespace BinaMitraTextileWebApp.Controllers
                     --            ) CompiledSales
                     --            LEFT JOIN Sales ON Sales.id = CompiledSales.sale_id
                     --            LEFT JOIN (
-                    --                SELECT Payments.ReferenceId, SUM(Payments.Amount) AS Amount
+                    --                SELECT Payments.ReferenceId, SUM(ISNULL(Payments.Amount,0)) AS Amount
                     --                FROM Payments
                     --                WHERE Payments.Timestamp < @PeriodEnd
                     --                GROUP BY Payments.ReferenceId
@@ -301,16 +287,14 @@ namespace BinaMitraTextileWebApp.Controllers
                       
                 ";
 
-            variables = Util.append(variables, @"
-                    @Receivables AS Receivables
-                ", ",");
+            variables = appendVariable(variables, "Receivables");
         }
 
         public static void sql_SalesPayments_Cash(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @SalesPayments_Cash decimal(15,2) = NULL
-                    SELECT @SalesPayments_Cash = SUM(COALESCE(Payments.Amount,0))
+                    DECLARE @SalesPayments_Cash decimal(15,2) = 0
+                    SELECT @SalesPayments_Cash = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                         LEFT JOIN Sales ON Sales.Id = Payments.ReferenceId
                     WHERE 1=1
@@ -320,16 +304,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesPayments_Cash AS SalesPayments_Cash
-                ", ",");
+            variables = appendVariable(variables, "SalesPayments_Cash");
         }
 
         public static void sql_SalesPayments_EDC(ref string statements, ref string variables)
         {
             statements += @"
                     DECLARE @SalesPayments_EDC decimal(15,2) = 0
-                    SELECT @SalesPayments_EDC = ISNULL(SUM(COALESCE(Payments.Amount,0)),0)
+                    SELECT @SalesPayments_EDC = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                         LEFT JOIN Sales ON Sales.Id = Payments.ReferenceId
                     WHERE 1=1
@@ -339,16 +321,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesPayments_EDC AS SalesPayments_EDC
-                ", ",");
+            variables = appendVariable(variables, "SalesPayments_EDC");
         }
 
         public static void sql_SalesPayments_Transfer(ref string statements, ref string variables)
         {
             statements += @"
                     DECLARE @SalesPayments_Transfer decimal(15,2) = 0
-                    SELECT @SalesPayments_Transfer = ISNULL(SUM(COALESCE(Payments.Amount,0)),0)
+                    SELECT @SalesPayments_Transfer = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                         LEFT JOIN Sales ON Sales.Id = Payments.ReferenceId
                     WHERE 1=1
@@ -358,16 +338,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesPayments_Transfer AS SalesPayments_Transfer
-                ", ",");
+            variables = appendVariable(variables, "SalesPayments_Transfer");
         }
 
         public static void sql_SalesPayments_Credit(ref string statements, ref string variables)
         {
             statements += @"
                     DECLARE @SalesPayments_Credit decimal(15,2) = 0
-                    SELECT @SalesPayments_Credit = ISNULL(SUM(COALESCE(Payments.Amount,0)),0)
+                    SELECT @SalesPayments_Credit = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                         LEFT JOIN Sales ON Sales.Id = Payments.ReferenceId
                     WHERE 1=1
@@ -377,16 +355,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesPayments_Credit AS SalesPayments_Credit
-                ", ",");
+            variables = appendVariable(variables, "SalesPayments_Credit");
         }
 
         public static void sql_SalesPayments_Giro(ref string statements, ref string variables)
         {
             statements += @"
                     DECLARE @SalesPayments_Giro decimal(15,2) = 0
-                    SELECT @SalesPayments_Giro = ISNULL(SUM(COALESCE(Payments.Amount,0)),0)
+                    SELECT @SalesPayments_Giro = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                         LEFT JOIN Sales ON Sales.Id = Payments.ReferenceId
                     WHERE 1=1
@@ -396,16 +372,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesPayments_Giro AS SalesPayments_Giro
-                ", ",");
+            variables = appendVariable(variables, "SalesPayments_Giro");
         }
 
         public static void sql_SalesPayments_Others(ref string statements, ref string variables)
         {
             statements += @"
                     DECLARE @SalesPayments_Others decimal(15,2) = 0
-                    SELECT @SalesPayments_Others = ISNULL(SUM(COALESCE(Payments.Amount,0)),0)
+                    SELECT @SalesPayments_Others = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                         LEFT JOIN Sales ON Sales.Id = Payments.ReferenceId
                     WHERE 1=1
@@ -415,9 +389,7 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NULL
                 ";
 
-            variables = Util.append(variables, @"
-                    @SalesPayments_Others AS SalesPayments_Others
-                ", ",");
+            variables = appendVariable(variables, "SalesPayments_Others");
         }
 
         /* INVENTORY ******************************************************************************************************************************************/
@@ -428,23 +400,21 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_EndingStock(ref statements, ref variables);
 
             statements += @"
-                    DECLARE @StockIncreaseValue decimal(15,2) = @EndingStockValue - @BeginningStockValue;
-                    DECLARE @StockIncreaseQty decimal(15,2) = @EndingStockQty - @BeginningStockQty;                                         
+                    DECLARE @StockIncreaseValue decimal(15,2) = ISNULL(@EndingStockValue,0) - ISNULL(@BeginningStockValue,0);
+                    DECLARE @StockIncreaseQty decimal(15,2) = ISNULL(@EndingStockQty,0) - ISNULL(@BeginningStockQty,0);                                         
                 ";
 
-            variables = Util.append(variables, @"
-                    @StockIncreaseValue AS StockIncreaseValue,
-                    @StockIncreaseQty AS StockIncreaseQty
-                ", ",");
+            variables = appendVariable(variables, "StockIncreaseValue");
+            variables = appendVariable(variables, "StockIncreaseQty");
         }
 
         public static void sql_BeginningStock(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @BeginningStockValue decimal(15,2) = NULL
-                    DECLARE @BeginningStockQty decimal(15,2) = NULL
-                    SELECT @BeginningStockValue = SUM(InventoryItems.item_length * Inventory.buy_price),
-                        @BeginningStockQty = SUM(InventoryItems.item_length)
+                    DECLARE @BeginningStockValue decimal(15,2) = 0
+                    DECLARE @BeginningStockQty decimal(15,2) = 0
+                    SELECT @BeginningStockValue = SUM(ISNULL(InventoryItems.item_length,0) * ISNULL(Inventory.buy_price,0)),
+                        @BeginningStockQty = SUM(ISNULL(InventoryItems.item_length,0))
                     FROM InventoryItems
                         LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
                         LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
@@ -453,19 +423,17 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Inventory.receive_date <= @PeriodStart
                 ";
 
-            variables = Util.append(variables, @"
-                    @BeginningStockValue AS BeginningStockValue,
-                    @BeginningStockQty AS BeginningStockQty
-                ", ",");
+            variables = appendVariable(variables, "BeginningStockValue");
+            variables = appendVariable(variables, "BeginningStockQty");
         }
 
         public static void sql_EndingStock(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @EndingStockValue decimal(15,2) = NULL
-                    DECLARE @EndingStockQty decimal(15,2) = NULL
-                    SELECT @EndingStockValue = SUM(InventoryItems.item_length * Inventory.buy_price),
-                        @EndingStockQty = SUM(InventoryItems.item_length)
+                    DECLARE @EndingStockValue decimal(15,2) = 0
+                    DECLARE @EndingStockQty decimal(15,2) = 0
+                    SELECT @EndingStockValue = SUM(ISNULL(InventoryItems.item_length,0) * ISNULL(Inventory.buy_price,0)),
+                        @EndingStockQty = SUM(ISNULL(InventoryItems.item_length,0))
                     FROM InventoryItems
                         LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
                         LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
@@ -474,10 +442,8 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Inventory.receive_date < @PeriodEnd
                 ";
 
-            variables = Util.append(variables, @"
-                    @EndingStockValue AS EndingStockValue,
-                    @EndingStockQty AS EndingStockQty
-                ", ",");
+            variables = appendVariable(variables, "EndingStockValue");
+            variables = appendVariable(variables, "EndingStockQty");
         }
 
         public static void sql_NetPurchasedInventory(ref string statements, ref string variables)
@@ -486,23 +452,21 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_ReturnedToVendorInventory(ref statements, ref variables);
 
             statements += @"
-                    DECLARE @NetPurchasedInventoryQty decimal(15,2) = @ReceivedInventoryQty - @ReturnedToVendorInventoryQty
-                    DECLARE @NetPurchasedInventoryValue decimal(15,2) = @ReceivedInventoryValue - @ReturnedToVendorInventoryValue
+                    DECLARE @NetPurchasedInventoryQty decimal(15,2) = ISNULL(@ReceivedInventoryQty,0) - ISNULL(@ReturnedToVendorInventoryQty,0)
+                    DECLARE @NetPurchasedInventoryValue decimal(15,2) = ISNULL(@ReceivedInventoryValue,0) - ISNULL(@ReturnedToVendorInventoryValue,0)
                 ";
 
-            variables = Util.append(variables, @"
-                    @NetPurchasedInventoryValue AS NetPurchasedInventoryValue,
-                    @NetPurchasedInventoryQty AS NetPurchasedInventoryQty
-                ", ",");
+            variables = appendVariable(variables, "NetPurchasedInventoryValue");
+            variables = appendVariable(variables, "NetPurchasedInventoryQty");
         }
 
         public static void sql_ReceivedInventory(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @ReceivedInventoryQty decimal(15,2) = NULL
-                    DECLARE @ReceivedInventoryValue decimal(15,2) = NULL
-                    SELECT @ReceivedInventoryQty = SUM(InventoryItems.item_length),
-                        @ReceivedInventoryValue = SUM(InventoryItems.item_length * Inventory.buy_price)
+                    DECLARE @ReceivedInventoryQty decimal(15,2) = 0
+                    DECLARE @ReceivedInventoryValue decimal(15,2) = 0
+                    SELECT @ReceivedInventoryQty = SUM(ISNULL(InventoryItems.item_length,0)),
+                        @ReceivedInventoryValue = SUM(ISNULL(InventoryItems.item_length,0) * ISNULL(Inventory.buy_price,0))
                     FROM InventoryItems
                         LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
                     WHERE 1=1
@@ -510,19 +474,17 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Inventory.receive_date < @PeriodEnd
                 ";
 
-            variables = Util.append(variables, @"
-                    @ReceivedInventoryValue AS ReceivedInventoryValue,
-                    @ReceivedInventoryQty AS ReceivedInventoryQty
-                ", ",");
+            variables = appendVariable(variables, "ReceivedInventoryValue");
+            variables = appendVariable(variables, "ReceivedInventoryQty");
         }
 
         public static void sql_ReturnedToVendorInventory(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @ReturnedToVendorInventoryQty decimal(15,2) = NULL
-                    DECLARE @ReturnedToVendorInventoryValue decimal(15,2) = NULL
-                    SELECT @ReturnedToVendorInventoryQty = SUM(InventoryItems.item_length),
-                        @ReturnedToVendorInventoryValue = SUM(InventoryItems.item_length * Inventory.buy_price)
+                    DECLARE @ReturnedToVendorInventoryQty decimal(15,2) = 0
+                    DECLARE @ReturnedToVendorInventoryValue decimal(15,2) = 0
+                    SELECT @ReturnedToVendorInventoryQty = SUM(ISNULL(InventoryItems.item_length,0)),
+                        @ReturnedToVendorInventoryValue = SUM(ISNULL(InventoryItems.item_length,0) * ISNULL(Inventory.buy_price,0))
                     FROM InventoryItems
                         LEFT JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
                         LEFT JOIN SaleItems ON SaleItems.inventory_item_id = InventoryItems.id AND SaleItems.return_id IS NULL
@@ -531,10 +493,8 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Sales.Vendors_Id IS NOT NULL           
                 ";
 
-            variables = Util.append(variables, @"
-                    @ReturnedToVendorInventoryValue AS ReturnedToVendorInventoryValue,
-                    @ReturnedToVendorInventoryQty AS ReturnedToVendorInventoryQty
-                ", ",");
+            variables = appendVariable(variables, "ReturnedToVendorInventoryValue");
+            variables = appendVariable(variables, "ReturnedToVendorInventoryQty");
         }
 
         /* PETTY CASH *****************************************************************************************************************************************/
@@ -551,19 +511,19 @@ namespace BinaMitraTextileWebApp.Controllers
         public static void sql_PettyCashBalance(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @BeginningPettyCashBalance decimal(15,2) = NULL		
-                    DECLARE @EndingPettyCashBalance decimal(15,2) = NULL
-	                SELECT @BeginningPettyCashBalance = LastEntry.InitialBalance,
-		                @EndingPettyCashBalance = LastEntry.Balance
+                    DECLARE @BeginningPettyCashBalance decimal(15,2) = 0		
+                    DECLARE @EndingPettyCashBalance decimal(15,2) = 0
+	                SELECT @BeginningPettyCashBalance = ISNULL(LastEntry.InitialBalance,0),
+		                @EndingPettyCashBalance = ISNULL(LastEntry.Balance,0)
 	                FROM (
 			                SELECT TOP 1 * FROM (
 				                SELECT MoneyAccountItems.*,
-					                InitialBalance.Amount + (SUM(MoneyAccountItems.Amount) OVER(ORDER BY MoneyAccountItems.Timestamp ASC)) AS Balance,
-					                InitialBalance.Amount AS InitialBalance
+					                ISNULL(InitialBalance.Amount,0) + (SUM(ISNULL(MoneyAccountItems.Amount,0)) OVER(ORDER BY MoneyAccountItems.Timestamp ASC)) AS Balance,
+					                ISNULL(InitialBalance.Amount,0) AS InitialBalance
 				                FROM MoneyAccountItems
 					                LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
 					                LEFT JOIN (
-							                SELECT 1 AS Id, ISNULL(SUM(MoneyAccountItems.Amount),0) AS Amount
+							                SELECT 1 AS Id, SUM(ISNULL(MoneyAccountItems.Amount,0)) AS Amount
 							                FROM MoneyAccountItems
 								                LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
 							                WHERE 1=1
@@ -577,23 +537,17 @@ namespace BinaMitraTextileWebApp.Controllers
 			                ) ResultTable
 			                ORDER BY ResultTable.Timestamp DESC
 		                ) LastEntry
-
-
-
-
                 ";
 
-            variables = Util.append(variables, @"
-                    @BeginningPettyCashBalance AS BeginningPettyCashBalance,
-                    @EndingPettyCashBalance AS EndingPettyCashBalance
-                ", ",");
+            variables = appendVariable(variables, "BeginningPettyCashBalance");
+            variables = appendVariable(variables, "EndingPettyCashBalance");
         }
 
         public static void sql_ReceivedCashFromSales(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @ReceivedCashFromSales decimal(15,2) = NULL
-                    SELECT @ReceivedCashFromSales = SUM(COALESCE(Payments.Amount,0))
+                    DECLARE @ReceivedCashFromSales decimal(15,2) = 0
+                    SELECT @ReceivedCashFromSales = SUM(ISNULL(Payments.Amount,0))
                     FROM Payments
                     WHERE 1=1
                         AND Payments.PaymentMethod_enumid = 0
@@ -601,16 +555,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Payments.Timestamp < @PeriodEnd
                 ";
 
-            variables = Util.append(variables, @"
-                    @ReceivedCashFromSales AS ReceivedCashFromSales
-                ", ",");
+            variables = appendVariable(variables, "ReceivedCashFromSales");
         }
 
         public static void sql_ReceivedCashFromOthers(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @ReceivedCashFromOthers decimal(15,2) = NULL
-                    SELECT @ReceivedCashFromOthers = ISNULL(SUM(COALESCE(MoneyAccountItems.Amount,0)),0)
+                    DECLARE @ReceivedCashFromOthers decimal(15,2) = 0
+                    SELECT @ReceivedCashFromOthers = SUM(ISNULL(MoneyAccountItems.Amount,0))
                     FROM MoneyAccountItems
 			            LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
                         LEFT JOIN MoneyAccountCategoryAssignments ON MoneyAccountCategoryAssignments.MoneyAccounts_Id = MoneyAccountItems.MoneyAccounts_Id AND MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = MoneyAccountItems.MoneyAccountCategories_Id 
@@ -621,16 +573,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND MoneyAccountCategoryAssignments.ReceivedCash = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @ReceivedCashFromOthers AS ReceivedCashFromOthers
-                ", ",");
+            variables = appendVariable(variables, "ReceivedCashFromOthers");
         }
 
         public static void sql_BankCashDeposits(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @BankCashDeposits decimal(15,2) = NULL
-                    SELECT @BankCashDeposits = SUM(MoneyAccountItems.Amount * -1)
+                    DECLARE @BankCashDeposits decimal(15,2) = 0
+                    SELECT @BankCashDeposits = SUM(ISNULL(MoneyAccountItems.Amount,0) * -1)
                     FROM MoneyAccountItems
 			            LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
                         LEFT JOIN MoneyAccountCategoryAssignments ON MoneyAccountCategoryAssignments.MoneyAccounts_Id = MoneyAccountItems.MoneyAccounts_Id AND MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = MoneyAccountItems.MoneyAccountCategories_Id 
@@ -641,16 +591,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND MoneyAccountCategoryAssignments.BankCashDeposit = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @BankCashDeposits AS BankCashDeposits
-                ", ",");
+            variables = appendVariable(variables, "BankCashDeposits");
         }
 
         public static void sql_Expenses(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @Expenses decimal(15,2) = NULL
-                    SELECT @Expenses = SUM(MoneyAccountItems.Amount * -1)
+                    DECLARE @Expenses decimal(15,2) = 0
+                    SELECT @Expenses = SUM(ISNULL(MoneyAccountItems.Amount,0) * -1)
                     FROM MoneyAccountItems
 			            LEFT JOIN MoneyAccounts ON MoneyAccounts.Id = MoneyAccountItems.MoneyAccounts_Id
                         LEFT JOIN MoneyAccountCategoryAssignments ON MoneyAccountCategoryAssignments.MoneyAccounts_Id = MoneyAccountItems.MoneyAccounts_Id AND MoneyAccountCategoryAssignments.MoneyAccountCategories_Id = MoneyAccountItems.MoneyAccountCategories_Id 
@@ -661,9 +609,7 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND MoneyAccountCategoryAssignments.Expense = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @Expenses AS Expenses
-                ", ",");
+            variables = appendVariable(variables, "Expenses");
         }
 
         /******************************************************************************************************************************************************/
@@ -679,16 +625,14 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             statements += @"
                     -- REVENUES AND EXPENSES ----------------------------------------------------------------------------------------------------------
-                    DECLARE @TotalRevenuesAndExpenses decimal(15,2) = NULL
-                    SELECT @TotalRevenuesAndExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+                    DECLARE @TotalRevenuesAndExpenses decimal(15,2) = 0
+                    SELECT @TotalRevenuesAndExpenses = SUM(ISNULL(RevenuesAndExpenses.Amount,0))
                     FROM RevenuesAndExpenses
                     WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
                         AND RevenuesAndExpenses.Timestamp < @PeriodEnd
                 ";
 
-            variables = Util.append(variables, @"
-                    @TotalRevenuesAndExpenses AS TotalRevenuesAndExpenses
-                ", ",");
+            variables = appendVariable(variables, "TotalRevenuesAndExpenses");
         }
 
         public static void sql_CompanyTotalRevenuesAndExpenses(ref string statements, ref string variables)
@@ -697,19 +641,17 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_CompanyExpenses(ref statements, ref variables);
 
             statements += @"
-                    DECLARE @CompanyTotalRevenuesAndExpenses decimal(15,2) = @CompanyRevenues - @CompanyExpenses
+                    DECLARE @CompanyTotalRevenuesAndExpenses decimal(15,2) = ISNULL(@CompanyRevenues,0) - ISNULL(@CompanyExpenses,0)
                 ";
 
-            variables = Util.append(variables, @"
-                    @CompanyTotalRevenuesAndExpenses AS CompanyTotalRevenuesAndExpenses
-                ", ",");
+            variables = appendVariable(variables, "CompanyTotalRevenuesAndExpenses");
         }
 
         public static void sql_CompanyRevenues(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @CompanyRevenues decimal(15,2) = NULL
-                    SELECT @CompanyRevenues = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+                    DECLARE @CompanyRevenues decimal(15,2) = 0
+                    SELECT @CompanyRevenues = SUM(ISNULL(RevenuesAndExpenses.Amount,0))
                     FROM RevenuesAndExpenses
                         LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
                     WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
@@ -718,16 +660,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Revenue = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @CompanyRevenues AS CompanyRevenues
-                ", ",");
+            variables = appendVariable(variables, "CompanyRevenues");
         }
 
         public static void sql_CompanyExpenses(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @CompanyExpenses decimal(15,2) = NULL
-                    SELECT @CompanyExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+                    DECLARE @CompanyExpenses decimal(15,2) = 0
+                    SELECT @CompanyExpenses = SUM(ISNULL(RevenuesAndExpenses.Amount,0))
                     FROM RevenuesAndExpenses
                         LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
                     WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
@@ -736,9 +676,7 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Expense = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @CompanyExpenses AS CompanyExpenses
-                ", ",");
+            variables = appendVariable(variables, "CompanyExpenses");
         }
 
         public static void sql_PersonalTotalRevenuesAndExpenses(ref string statements, ref string variables)
@@ -747,19 +685,17 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_PersonalExpenses(ref statements, ref variables);
 
             statements += @"
-                    DECLARE @PersonalTotalRevenuesAndExpenses decimal(15,2) = @PersonalRevenues - @PersonalExpenses
+                    DECLARE @PersonalTotalRevenuesAndExpenses decimal(15,2) = ISNULL(@PersonalRevenues,0) - ISNULL(@PersonalExpenses,0)
                 ";
 
-            variables = Util.append(variables, @"
-                    @PersonalTotalRevenuesAndExpenses AS PersonalTotalRevenuesAndExpenses
-                ", ",");
+            variables = appendVariable(variables, "PersonalTotalRevenuesAndExpenses");
         }
 
         public static void sql_PersonalRevenues(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @PersonalRevenues decimal(15,2) = NULL
-                    SELECT @PersonalRevenues = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+                    DECLARE @PersonalRevenues decimal(15,2) = 0
+                    SELECT @PersonalRevenues = SUM(ISNULL(RevenuesAndExpenses.Amount,0))
                     FROM RevenuesAndExpenses
                         LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
                     WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
@@ -768,16 +704,14 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Revenue = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @PersonalRevenues AS PersonalRevenues
-                ", ",");
+            variables = appendVariable(variables, "PersonalRevenues");
         }
 
         public static void sql_PersonalExpenses(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @PersonalExpenses decimal(15,2) = NULL
-                    SELECT @PersonalExpenses = ISNULL(SUM(COALESCE(RevenuesAndExpenses.Amount,0)),0)
+                    DECLARE @PersonalExpenses decimal(15,2) = 0
+                    SELECT @PersonalExpenses = SUM(ISNULL(RevenuesAndExpenses.Amount,0))
                     FROM RevenuesAndExpenses
                         LEFT JOIN RevenueAndExpenseCategories ON RevenueAndExpenseCategories.Id = RevenuesAndExpenses.RevenueAndExpenseCategories_Id
                     WHERE RevenuesAndExpenses.Timestamp >= @PeriodStart
@@ -786,9 +720,7 @@ namespace BinaMitraTextileWebApp.Controllers
                         AND Expense = 1
                 ";
 
-            variables = Util.append(variables, @"
-                    @PersonalExpenses AS PersonalExpenses
-                ", ",");
+            variables = appendVariable(variables, "PersonalExpenses");
         }
 
         /* PERSONAL NET PROFIT ********************************************************************************************************************************/
@@ -796,13 +728,23 @@ namespace BinaMitraTextileWebApp.Controllers
         public static void sql_PersonalNetProfit(ref string statements, ref string variables)
         {
             statements += @"
-                    -- INVOICES -----------------------------------------------------------------------------------------------------------------------
-                    DECLARE @PersonalNetProfit decimal(15,2) = @SalesNetProfit + @PersonalTotalRevenuesAndExpenses
+                    DECLARE @PersonalAssetsStartingBalance decimal(15,2) = 0
+                    SELECT TOP 1 @PersonalAssetsStartingBalance = ISNULL(ReportBalances.Amount,0)
+                    FROM ReportBalances
+                    WHERE ReportBalances.Personal = 1 
+                        AND ReportBalances.[Period] = DATEADD(month, -1, @PeriodStart)
+
+                    DECLARE @PersonalNetProfit decimal(15,2) = ISNULL(@SalesNetProfit,0) + ISNULL(@PersonalTotalRevenuesAndExpenses,0)
+
+                    DECLARE @PersonalAssetsEndingBalance decimal(15,2) = ISNULL(@PersonalAssetsStartingBalance,0) + ISNULL(@PersonalNetProfit,0)
+                    
+                    DELETE ReportBalances WHERE ReportBalances.Personal = 1 AND ReportBalances.[Period] = @PeriodStart                 
+                    INSERT INTO ReportBalances(Id,Period,Amount,Personal) VALUES(NEWID(),@PeriodStart,@PersonalAssetsEndingBalance,1)
                 ";
 
-            variables = Util.append(variables, @"
-                    @PersonalNetProfit AS PersonalNetProfit
-                ", ",");
+            variables = appendVariable(variables, "PersonalNetProfit");
+            variables = appendVariable(variables, "PersonalAssetsStartingBalance");
+            variables = appendVariable(variables, "PersonalAssetsEndingBalance");
         }
 
         /******************************************************************************************************************************************************/
@@ -811,35 +753,31 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             statements += @"
                     -- INVOICES -----------------------------------------------------------------------------------------------------------------------
-                    DECLARE @TotalVendorInvoices decimal(15,2) = NULL
-                    SELECT @TotalVendorInvoices = SUM(VendorInvoices.Amount)
+                    DECLARE @TotalVendorInvoices decimal(15,2) = 0
+                    SELECT @TotalVendorInvoices = SUM(ISNULL(VendorInvoices.Amount,0))
                     FROM VendorInvoices
                     WHERE VendorInvoices.timestamp >= @PeriodStart
                         AND VendorInvoices.timestamp < @PeriodEnd
                 ";
 
-            variables = Util.append(variables, @"
-                    @TotalVendorInvoices AS TotalVendorInvoices
-                ", ",");
+            variables = appendVariable(variables, "TotalVendorInvoices");
         }
 
         public static void sql_PayableVendorInvoices(ref string statements, ref string variables)
         {
             statements += @"
-                    DECLARE @PayableVendorInvoices decimal(15,2) = NULL
-                    SELECT @PayableVendorInvoices = SUM(TotaledVendorInvoicePaymentItems.Amount - VendorInvoices.Amount)
+                    DECLARE @PayableVendorInvoices decimal(15,2) = 0
+                    SELECT @PayableVendorInvoices = SUM(ISNULL(TotaledVendorInvoicePaymentItems.Amount,0) - ISNULL(VendorInvoices.Amount,0))
                     FROM VendorInvoices
                         LEFT JOIN (
-                            SELECT VendorInvoicePaymentItems.VendorInvoices_Id, SUM(VendorInvoicePaymentItems.Amount) AS Amount
+                            SELECT VendorInvoicePaymentItems.VendorInvoices_Id, SUM(ISNULL(VendorInvoicePaymentItems.Amount,0)) AS Amount
                             FROM VendorInvoicePaymentItems
                             GROUP BY VendorInvoicePaymentItems.VendorInvoices_Id
                         ) TotaledVendorInvoicePaymentItems ON TotaledVendorInvoicePaymentItems.VendorInvoices_Id =  VendorInvoices.id
                     WHERE VendorInvoices.timestamp < @PeriodEnd
                 ";
 
-            variables = Util.append(variables, @"
-                    @PayableVendorInvoices AS PayableVendorInvoices
-                ", ",");
+            variables = appendVariable(variables, "PayableVendorInvoices");
         }
 
         /******************************************************************************************************************************************************/

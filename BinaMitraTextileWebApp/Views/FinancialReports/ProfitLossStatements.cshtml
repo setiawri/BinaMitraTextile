@@ -20,34 +20,62 @@
     <div class="content">
         @using (Html.BeginForm("ProfitLossStatements", ControllerName, FormMethod.Post))
         {
+            <input type="hidden" id="FILTER_DatePeriodStart" name="FILTER_DatePeriodStart" value="@ViewBag.FILTER_DatePeriodStart" />
+            <input type="hidden" id="FILTER_DatePeriodEnd" name="FILTER_DatePeriodEnd" value="@ViewBag.FILTER_DatePeriodEnd" />
             <!-- Form inputs -->
             <div class="card animated bounceInLeft">
                 <div class="card-header header-elements-inline pb-1">
                     <h5 class="card-title text-uppercase">@ViewBag.Title</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="min-height:400px">
                     <div class="row mx-0">
-                        <div class="row ml-0 mr-2" style="width:150px;">
-                            <label class="mb-0">Date From</label>
+                        <div class="row ml-0 mr-2" style="width:300px;">
+                            <label class="mb-0">Period Start</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        @Html.CheckBox("FILTER_chkDateFrom", false, new { @class = "form-check-input check-styled" })
-                                    </div>
+                                <div class="input-group-prepend" style="width:160px">
+                                    <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('previous','FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">&lt;</button>
+                                    <select id="FILTER_DatePeriodStart_Month" class="form-control select2" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
                                 </div>
-                                @Html.Editor("FILTER_DateFrom", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                                <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('next','FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">&gt;</button>
+                                <input id="FILTER_DatePeriodStart_Year" name="FILTER_DatePeriodStart_Year" type="number" class="form-control text-center positiveintegeronly period-year" value="@DateTime.UtcNow.Year" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">
                             </div>
                         </div>
 
-                        <div class="row ml-0 mr-2" style="width:150px;">
-                            <label class="mb-0">Date To</label>
+                        <div class="row ml-0 mr-2" style="width:300px;">
+                            <label class="mb-0">Period End</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        @Html.CheckBox("FILTER_chkDateTo", false, new { @class = "form-check-input check-styled" })
-                                    </div>
+                                <div class="input-group-prepend" style="width:160px">
+                                    <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('previous','FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">&lt;</button>
+                                    <select id="FILTER_DatePeriodEnd_Month" class="form-control select2" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
                                 </div>
-                                @Html.Editor("FILTER_DateTo", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                                <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('next','FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">&gt;</button>
+                                <input id="FILTER_DatePeriodEnd_Year" name="FILTER_DatePeriodEnd_Year" type="number" class="form-control text-center positiveintegeronly period-year" value="@DateTime.UtcNow.Year" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">
                             </div>
                         </div>
 
@@ -56,14 +84,14 @@
                             <button type="submit" id="LoadData" onclick="showLoadingSpinner()" class="btn btn-outline-primary form-control"><i class="icon-reload-alt mr-2"></i>LOAD</button>
                         </div>
                     </div>
-                    
+
                     @if (Model != null)
                     {
                         <div class="mx-0 mt-2">
-                            <table class="">
+                            <table class="table-responsive">
                                 <thead>
                                     <tr>
-                                        <th style="width:250px;"class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
+                                        <th style="width:250px;" class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
                                         @foreach (var item in Model)
                                         {
                                             <th style="width:150px;" class="text-right">@Html.DisplayFor(modelItem => item.Period)</th>
@@ -75,28 +103,28 @@
 
                                     <tr><td>&nbsp;</td></tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.BeginningStockValue)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.BeginningStockValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.BeginningStockValue)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.NetPurchasedInventoryValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.NetPurchasedInventoryValue)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.EndingStockValue)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.EndingStockValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">-@Html.DisplayFor(modelItem => item.EndingStockValue)</td>
                                         }
                                     </tr>
                                     <tr class="font-weight-bold">
-                                        <td>@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesBuyValue)</td>
@@ -106,21 +134,21 @@
                                     <tr><td>&nbsp;</td></tr>
 
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesSellValue)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesSellValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesSellValue)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesBuyValue)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">-@Html.DisplayFor(modelItem => item.SalesBuyValue)</td>
                                         }
                                     </tr>
                                     <tr class="font-weight-bold">
-                                        <td>@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesGrossProfit)</td>
@@ -130,21 +158,21 @@
                                     <tr><td>&nbsp;</td></tr>
 
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.CompanyRevenues)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.CompanyRevenues)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyRevenues)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.CompanyExpenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.CompanyExpenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">-@Html.DisplayFor(modelItem => item.CompanyExpenses)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.CompanyTotalRevenuesAndExpenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.CompanyTotalRevenuesAndExpenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
@@ -154,42 +182,42 @@
                                     <tr><td>&nbsp;</td></tr>
 
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesGrossProfit)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesGrossProfit)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.CompanyTotalRevenuesAndExpenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.CompanyTotalRevenuesAndExpenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.CompanyTotalRevenuesAndExpenses)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesShippingCost)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesShippingCost)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesShippingCost)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesShippingExpense)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesShippingExpense)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">-@Html.DisplayFor(modelItem => item.SalesShippingExpense)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.Expenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.Expenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">-@Html.DisplayFor(modelItem => item.Expenses)</td>
                                         }
                                     </tr>
                                     <tr class="font-weight-bold">
-                                        <td>@Html.DisplayNameFor(model => model.SalesNetProfit)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesNetProfit)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesNetProfit)</td>
@@ -199,21 +227,21 @@
                                     <tr><td>&nbsp;</td></tr>
 
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.PersonalRevenues)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalRevenues)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalRevenues)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.PersonalExpenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalExpenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">-@Html.DisplayFor(modelItem => item.PersonalExpenses)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.PersonalTotalRevenuesAndExpenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalTotalRevenuesAndExpenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
@@ -223,21 +251,21 @@
                                     <tr><td>&nbsp;</td></tr>
 
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.SalesNetProfit)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.SalesNetProfit)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.SalesNetProfit)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.PersonalTotalRevenuesAndExpenses)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalTotalRevenuesAndExpenses)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalTotalRevenuesAndExpenses)</td>
                                         }
                                     </tr>
                                     <tr class="font-weight-bold">
-                                        <td>@Html.DisplayNameFor(model => model.PersonalNetProfit)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalNetProfit)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalNetProfit)</td>
@@ -247,26 +275,29 @@
                                     <tr><td>&nbsp;</td></tr>
 
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.PersonalAssetsStartingBalance)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalAssetsStartingBalance)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalAssetsStartingBalance)</td>
                                         }
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayNameFor(model => model.PersonalNetProfit)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalNetProfit)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalNetProfit)</td>
                                         }
                                     </tr>
                                     <tr class="font-weight-bold">
-                                        <td>@Html.DisplayNameFor(model => model.PersonalAssetsEndingBalance)</td>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PersonalAssetsEndingBalance)</td>
                                         @foreach (var item in Model)
                                         {
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PersonalAssetsEndingBalance)</td>
                                         }
                                     </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -278,3 +309,18 @@
     </div>
     <!-- /content area -->
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        //$('.datatable').DataTable({
+        //    "scrollX": true
+        //});
+    });
+
+    function applyLast() {
+        setDatePeriodFilter('FILTER_DatePeriodStart', 'FILTER_DatePeriodStart_Month', 'FILTER_DatePeriodStart_Year', '@string.Format("{0:MM/dd/yyyy}", ViewBag.FILTER_DatePeriodStart ?? Helper.getCurrentDateTime())');
+        setDatePeriodFilter('FILTER_DatePeriodEnd', 'FILTER_DatePeriodEnd_Month', 'FILTER_DatePeriodEnd_Year', '@string.Format("{0:MM/dd/yyyy}", ViewBag.FILTER_DatePeriodEnd ?? Helper.getCurrentDateTime())');
+    }
+
+</script>
