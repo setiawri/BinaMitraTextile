@@ -32,12 +32,9 @@ namespace BinaMitraTextileWebApp.Controllers
             if (rss != null)
             {
                 ViewBag.RemoveDatatablesStateSave = rss;
-                return View();
             }
-            else
-            {
-                return View();
-            }
+
+            return View(new InventoryChecksModel());
         }
 
         // POST: StudentSchedules
@@ -45,7 +42,7 @@ namespace BinaMitraTextileWebApp.Controllers
         public ActionResult Input(string FILTER_Keyword)
         {
             setViewBag(FILTER_Keyword);
-            return View();
+            return View(new InventoryChecksModel());
         }
 
         /* METHODS ********************************************************************************************************************************************/

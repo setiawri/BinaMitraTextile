@@ -13,12 +13,12 @@ namespace BinaMitraTextileWebApp.Models
 
         [Display(Name = "Timestamp")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
-        public DateTime? Timestamp { get; set; }
+        public DateTime? Timestamp { get; set; } = null;
         public static ModelMember COL_Timestamp = new ModelMember { Name = "Timestamp", Display = "Timestamp", LogDisplay = ActivityLogsController.editDateTimeFormat("Timestamp") };
 
 
         [Display(Name = "Category")]
-        public Guid RevenueAndExpenseCategories_Id { get; set; }
+        public Guid RevenueAndExpenseCategories_Id { get; set; } = Guid.NewGuid();
         public static ModelMember COL_RevenueAndExpenseCategories_Id = new ModelMember { Name = "RevenueAndExpenseCategories_Id", Display = "Category", LogDisplay = LIBUtil.ActivityLog.editBooleanFormat("Category") };
         public string RevenueAndExpenseCategories_Name { get; set; }
 

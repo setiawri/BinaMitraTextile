@@ -54,7 +54,7 @@ namespace BinaMitraTextileWebApp.Controllers
             //    return RedirectToAction(nameof(HomeController.Index), "Home");
 
             setViewBag(FILTER_Keyword, FILTER_Active);
-            return View();
+            return View(new UnitsModel());
         }
 
         [HttpPost]

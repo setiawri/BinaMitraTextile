@@ -51,7 +51,7 @@ namespace BinaMitraTextileWebApp.Controllers
             //    return RedirectToAction(nameof(HomeController.Index), "Home");
 
             setViewBag(FILTER_Keyword, FILTER_IsLastOnly, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
-            return View();
+            return View(new SuppliesModel());
         }
 
         [HttpPost]
