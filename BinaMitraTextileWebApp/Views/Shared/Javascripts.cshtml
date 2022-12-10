@@ -356,6 +356,7 @@
         setDateRangePicker(id, value, value);
     }
 
+    function setDateRangePickerWithStringDateValue(id, value) { setDateRangePickerWithStringDate(id, value, value); }
     function setDateRangePickerWithStringDate(id, start, end) { setDateRangePicker(id, parseJSONDate(start), parseJSONDate(end)); }
     function setDateRangePicker(id, start, end) {
         if ($('#' + id).is(":hidden") == false) {

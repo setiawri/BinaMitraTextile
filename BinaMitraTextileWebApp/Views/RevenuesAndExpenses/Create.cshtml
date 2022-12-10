@@ -79,3 +79,14 @@
     <!-- /content area -->
 
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        setDateRangePickerValue('Timestamp','@string.Format("{0:yyyy/MM/dd}", Model.Timestamp ?? Helper.getCurrentDateTime())');
+    });
+
+    function applyLast() {
+    }
+
+</script>

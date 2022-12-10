@@ -11,7 +11,7 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Id = new ModelMember { Name = "Id", Display = "Id" };
 
 
-        [Display(Name = "Timestamp")]
+        [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
         public DateTime? Timestamp { get; set; } = null;
         public static ModelMember COL_Timestamp = new ModelMember { Name = "Timestamp", Display = "Timestamp", LogDisplay = ActivityLogsController.editDateTimeFormat("Timestamp") };

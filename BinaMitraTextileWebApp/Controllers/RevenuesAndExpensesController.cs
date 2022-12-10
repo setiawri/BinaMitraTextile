@@ -57,7 +57,9 @@ namespace BinaMitraTextileWebApp.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
             setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
-            return View(new RevenuesAndExpensesModel());
+            RevenuesAndExpensesModel model = new RevenuesAndExpensesModel();
+            model.Timestamp = DateTime.Now.Date.AddDays(1);
+            return View(model);
         }
 
         [HttpPost]
@@ -67,14 +69,21 @@ namespace BinaMitraTextileWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                add(model);
-                ActivityLogsController.AddCreateLog(db, Session, model.Id);
-                if (Request.Form["SubmitAndAddMoreButton"] == null)
-                    return RedirectToAction(nameof(Index), new { id = model.Id, FILTER_Keyword = FILTER_Keyword, FILTER_chkDateFrom = FILTER_chkDateFrom, FILTER_DateFrom = FILTER_DateFrom, FILTER_chkDateTo = FILTER_chkDateTo, FILTER_DateTo = FILTER_DateTo });
+                if (string.IsNullOrEmpty(model.Description))
+                    ModelState.AddModelError(RevenuesAndExpensesModel.COL_Description.Name, "Please provide description.");
                 else
                 {
-                    model.Description = "";
-                    model.Amount = 0;
+                    add(model);
+                    ActivityLogsController.AddCreateLog(db, Session, model.Id);
+                    if (Request.Form["SubmitAndAddMoreButton"] == null)
+                        return RedirectToAction(nameof(Index), new { id = model.Id, FILTER_Keyword = FILTER_Keyword, FILTER_chkDateFrom = FILTER_chkDateFrom, FILTER_DateFrom = FILTER_DateFrom, FILTER_chkDateTo = FILTER_chkDateTo, FILTER_DateTo = FILTER_DateTo });
+                    else
+                    {
+                        //ModelState.Remove("Description");
+                        //model.Description = ""; 
+                        ModelState.Remove("Amount");
+                        model.Amount = 0;
+                    }
                 }
             }
 
