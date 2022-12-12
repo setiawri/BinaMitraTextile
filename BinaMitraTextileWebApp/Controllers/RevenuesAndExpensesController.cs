@@ -13,7 +13,7 @@ namespace BinaMitraTextileWebApp.Controllers
 
         /* INDEX **********************************************************************************************************************************************/
 
-        public ActionResult Index(int? rss, string FILTER_Keyword,
+        public ActionResult Index(int? rss, string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             if (!UsersController.getUserAccess(Session).RevenuesAndExpenses_View)
@@ -28,7 +28,7 @@ namespace BinaMitraTextileWebApp.Controllers
             if (FILTER_DateTo == null)
                 FILTER_DateTo = DateTime.Now.Date;
 
-            setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
             if (rss != null)
             {
                 ViewBag.RemoveDatatablesStateSave = rss;
@@ -36,27 +36,27 @@ namespace BinaMitraTextileWebApp.Controllers
             }
             else
             {
-                return View(get(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo));
+                return View(get(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo));
             }
         }
 
         [HttpPost]
-        public ActionResult Index(string FILTER_Keyword,
+        public ActionResult Index(string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
-            setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
-            return View(get(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo));
+            setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            return View(get(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo));
         }
 
         /* CREATE *********************************************************************************************************************************************/
 
-        public ActionResult Create(string FILTER_Keyword,
+        public ActionResult Create(string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             if (!UsersController.getUserAccess(Session).RevenuesAndExpenses_Add)
                 return RedirectToAction(nameof(HomeController.Index), "Home");
 
-            setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
             RevenuesAndExpensesModel model = new RevenuesAndExpensesModel();
             model.Timestamp = DateTime.Now.Date.AddDays(1);
             return View(model);
@@ -64,7 +64,7 @@ namespace BinaMitraTextileWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RevenuesAndExpensesModel model, string FILTER_Keyword,
+        public ActionResult Create(RevenuesAndExpensesModel model, string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             if (ModelState.IsValid)
@@ -76,24 +76,24 @@ namespace BinaMitraTextileWebApp.Controllers
                     add(model);
                     ActivityLogsController.AddCreateLog(db, Session, model.Id);
                     if (Request.Form["SubmitAndAddMoreButton"] == null)
-                        return RedirectToAction(nameof(Index), new { id = model.Id, FILTER_Keyword = FILTER_Keyword, FILTER_chkDateFrom = FILTER_chkDateFrom, FILTER_DateFrom = FILTER_DateFrom, FILTER_chkDateTo = FILTER_chkDateTo, FILTER_DateTo = FILTER_DateTo });
+                        return RedirectToAction(nameof(Index), new { id = model.Id, FILTER_Keyword = FILTER_Keyword, FILTER_RevenueAndExpenseCategories = FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom = FILTER_chkDateFrom, FILTER_DateFrom = FILTER_DateFrom, FILTER_chkDateTo = FILTER_chkDateTo, FILTER_DateTo = FILTER_DateTo });
                     else
                     {
                         //ModelState.Remove("Description");
                         //model.Description = ""; 
-                        ModelState.Remove("Amount");
-                        model.Amount = 0;
+                        //ModelState.Remove("Amount");
+                        //model.Amount = 0;
                     }
                 }
             }
 
-            setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
             return View(model);
         }
 
         /* EDIT ***********************************************************************************************************************************************/
 
-        public ActionResult Edit(Guid? id, string FILTER_Keyword,
+        public ActionResult Edit(Guid? id, string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             if (!UsersController.getUserAccess(Session).RevenuesAndExpenses_Edit)
@@ -102,13 +102,13 @@ namespace BinaMitraTextileWebApp.Controllers
             if (id == null)
                 return RedirectToAction(nameof(Index));
 
-            setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
             return View(get((Guid)id));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(RevenuesAndExpensesModel modifiedModel, string FILTER_Keyword,
+        public ActionResult Edit(RevenuesAndExpensesModel modifiedModel, string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             if (ModelState.IsValid)
@@ -127,19 +127,20 @@ namespace BinaMitraTextileWebApp.Controllers
                     ActivityLogsController.AddEditLog(db, Session, modifiedModel.Id, log);
                 }
 
-                return RedirectToAction(nameof(Index), new { FILTER_Keyword = FILTER_Keyword });
+                return RedirectToAction(nameof(Index), new { FILTER_Keyword = FILTER_Keyword, FILTER_RevenueAndExpenseCategories = FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom = FILTER_chkDateFrom, FILTER_DateFrom = FILTER_DateFrom, FILTER_chkDateTo = FILTER_chkDateTo, FILTER_DateTo = FILTER_DateTo });
             }
 
-            setViewBag(FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
+            setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
             return View(modifiedModel);
         }
 
         /* METHODS ********************************************************************************************************************************************/
 
-        public void setViewBag(string FILTER_Keyword,
+        public void setViewBag(string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             ViewBag.FILTER_Keyword = FILTER_Keyword;
+            ViewBag.FILTER_RevenueAndExpenseCategories = FILTER_RevenueAndExpenseCategories;
             ViewBag.FILTER_chkDateFrom = FILTER_chkDateFrom;
             ViewBag.FILTER_DateFrom = FILTER_DateFrom;
             ViewBag.FILTER_chkDateTo = FILTER_chkDateTo;
@@ -150,10 +151,11 @@ namespace BinaMitraTextileWebApp.Controllers
 
         /* DATABASE METHODS ***********************************************************************************************************************************/
 
-        public List<RevenuesAndExpensesModel> get(string FILTER_Keyword, bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo) { return get(null, FILTER_Keyword, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo); }
-        public RevenuesAndExpensesModel get(Guid Id) { return get(Id, null, null, null, null, null).FirstOrDefault(); }
-        public static List<RevenuesAndExpensesModel> get() { return get(null, null, null, null, null, null); }
-        public static List<RevenuesAndExpensesModel> get(Guid? Id, string FILTER_Keyword,
+        public List<RevenuesAndExpensesModel> get(string FILTER_Keyword, Guid? FILTER_RevenueAndExpenseCategories, bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo) 
+        { return get(null, FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo); }
+        public RevenuesAndExpensesModel get(Guid Id) { return get(Id, null, null, null, null, null, null).FirstOrDefault(); }
+        public static List<RevenuesAndExpensesModel> get() { return get(null, null, null, null, null, null, null); }
+        public static List<RevenuesAndExpensesModel> get(Guid? Id, string FILTER_Keyword, Guid? RevenueAndExpenseCategories,
             bool? FILTER_chkDateFrom, DateTime? FILTER_DateFrom, bool? FILTER_chkDateTo, DateTime? FILTER_DateTo)
         {
             if (FILTER_chkDateFrom == null || !(bool)FILTER_chkDateFrom)
@@ -171,12 +173,14 @@ namespace BinaMitraTextileWebApp.Controllers
 							AND (@Id IS NULL OR RevenuesAndExpenses.Id = @Id)
 							AND (@Id IS NOT NULL OR (
     							(@FILTER_Keyword IS NULL OR (RevenuesAndExpenses.Description LIKE '%'+@FILTER_Keyword+'%'))
+                                AND (@RevenueAndExpenseCategories_Id IS NULL OR RevenuesAndExpenses.RevenueAndExpenseCategories_Id = @RevenueAndExpenseCategories_Id)
                                 AND (@FILTER_DateFrom IS NULL OR RevenuesAndExpenses.Timestamp >= @FILTER_DateFrom)
                                 AND (@FILTER_DateTo IS NULL OR RevenuesAndExpenses.Timestamp <= @FILTER_DateTo)
                             ))
 						ORDER BY RevenuesAndExpenses.Timestamp DESC
                     ",
                     DBConnection.getSqlParameter(RevenuesAndExpensesModel.COL_Id.Name, Id),
+                    DBConnection.getSqlParameter(RevenuesAndExpensesModel.COL_RevenueAndExpenseCategories_Id.Name, RevenueAndExpenseCategories),
                     DBConnection.getSqlParameter("FILTER_Keyword", FILTER_Keyword),
                     DBConnection.getSqlParameter("FILTER_DateFrom", FILTER_DateFrom),
                     DBConnection.getSqlParameter("FILTER_DateTo", Util.getAsEndDate(FILTER_DateTo))

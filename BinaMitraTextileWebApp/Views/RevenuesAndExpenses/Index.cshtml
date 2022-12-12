@@ -37,6 +37,13 @@
                             </div>
                         </div>
 
+                        <div class="row ml-0 mr-2" style="width:200px;">
+                            <label class="mb-0">Category</label>
+                            <div class="input-group">
+                                @Html.DropDownList("FILTER_RevenueAndExpenseCategories", ViewBag.RevenueAndExpenseCategories as SelectList, "ALL", new { @class = "form-control select2" })
+                            </div>
+                        </div>
+
                         <div class="row ml-0 mr-2" style="width:150px;">
                             <label class="mb-0">Date From</label>
                             <div class="input-group">

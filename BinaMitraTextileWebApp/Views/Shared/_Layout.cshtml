@@ -179,6 +179,7 @@ FILTERING
 <input type="hidden" id="FILTER_chkDateTo" name="FILTER_chkDateTo" value="@ViewBag.FILTER_chkDateTo" />
 <input type="hidden" id="FILTER_DateTo" name="FILTER_DateTo" value="@ViewBag.FILTER_DateTo" />
 <input type="hidden" id="FILTER_IsLastOnly" name="FILTER_IsLastOnly" value="@ViewBag.FILTER_IsLastOnly" />
+<input type="hidden" id="FILTER_RevenueAndExpenseCategories" name="FILTER_IsLastOnly" value="@ViewBag.FILTER_RevenueAndExpenseCategories" />
 
 <script type="text/javascript">
 
@@ -187,6 +188,7 @@ FILTERING
         setValue('returnurl', '@ViewBag.returnurl');
         setValue('FILTER_Keyword', '@ViewBag.FILTER_Keyword');
         setValue('FILTER_Active', '@ViewBag.FILTER_Active');
+        setValue('FILTER_RevenueAndExpenseCategories', '@ViewBag.FILTER_RevenueAndExpenseCategories');
 
         setCheckboxFilter('FILTER_chkDateFrom', '@ViewBag.FILTER_chkDateFrom');
         setCheckboxFilter('FILTER_chkDateTo', '@ViewBag.FILTER_chkDateTo');
@@ -199,9 +201,13 @@ FILTERING
     function getFilter() {
         var filter = '';
 
-        if ($('#FILTER_Active') != null)
+        if ($('#FILTER_Keyword') != null)
             FILTER_Keyword = $('#FILTER_Keyword').val();
         filter += appendFilter(FILTER_Keyword, "FILTER_Keyword");
+
+        if ($('#FILTER_RevenueAndExpenseCategories') != null)
+            FILTER_RevenueAndExpenseCategories = $('#FILTER_RevenueAndExpenseCategories').val();
+        filter += appendFilter(FILTER_RevenueAndExpenseCategories, "FILTER_RevenueAndExpenseCategories");
 
         if ($('#FILTER_Active') != null)
             FILTER_Active = $('#FILTER_Active').val();
@@ -226,6 +232,10 @@ FILTERING
         if ($('#FILTER_IsLastOnly') != null)
             FILTER_IsLastOnly = getCheckboxFilterValue('FILTER_IsLastOnly');
         filter += appendFilter(FILTER_IsLastOnly, "FILTER_IsLastOnly");
+        
+        if ($('#FILTER_Keyword') != null)
+            FILTER_Keyword = $('#FILTER_Keyword').val();
+        filter += appendFilter(FILTER_Keyword, "FILTER_Keyword");
 
         return filter;
     }

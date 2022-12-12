@@ -98,7 +98,8 @@ namespace BinaMitraTextileWebApp.Controllers
         public static List<FinancialReportsModel> get(Guid? Id, 
             DateTime? FILTER_DatePeriodStart, DateTime? FILTER_DatePeriodEnd)
         {
-            return new DBContext().Database.SqlQuery<FinancialReportsModel>(getSQL(),
+            DBContext dbContext = new DBContext(180);
+            return dbContext.Database.SqlQuery<FinancialReportsModel>(getSQL(),
                     DBConnection.getSqlParameter(FinancialReportsModel.COL_Id.Name, Id),
                     DBConnection.getSqlParameter("FILTER_DatePeriodStart", FILTER_DatePeriodStart),
                     DBConnection.getSqlParameter("FILTER_DatePeriodEnd", Util.getAsEndDate(FILTER_DatePeriodEnd))
