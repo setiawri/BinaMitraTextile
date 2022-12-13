@@ -87,6 +87,7 @@
                                     @if (ViewBag.FILTER_IsLastOnly != null && !ViewBag.FILTER_IsLastOnly)
                                     {
                                         <th>@Html.DisplayNameFor(model => model.Notes)</th>
+                                        <th class="text-right" style="width:150px;">@Html.DisplayNameFor(model => model.PricePerUnit)</th>
                                         <th class="text-right" style="width:100px;">@Html.DisplayNameFor(model => model.Qty)</th>
                                     }
                                     <th class="text-right" style="width:100px;">@Html.DisplayNameFor(model => model.Balance)</th>
@@ -110,6 +111,7 @@
                                             @if (ViewBag.FILTER_IsLastOnly != null && !ViewBag.FILTER_IsLastOnly)
                                             {
                                                 <td class="align-top">@Html.DisplayFor(modelItem => item.Notes)</td>
+                                                <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PricePerUnit)</td>
                                                 <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Qty)</td>
                                             }
                                             <td class="align-top text-right">@Html.DisplayFor(modelItem => item.Balance)</td>
@@ -169,6 +171,13 @@
                             </div>
 
                             <div class="form-group row">
+                                <label class="col-form-label col-sm-2">Unit Price</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="modal_Add_PricePerUnit" id="modal_Add_PricePerUnit" class="form-control integeronly" placeholder="Unit Price" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label class="col-form-label col-sm-2">Notes</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" id="modal_Add_Notes" rows="2" placeholder="Notes"></textarea>
@@ -203,6 +212,7 @@
 
     function PopulateAddModal(id) {
         $('#modal_Add_SupplyItems_Id').val(id);
+        setValue('modal_Add_PricePerUnit',0);
         AjaxAssignValue('modal_Add_Balance', 'Ajax_Get_Balance', '@ControllerName', id);
     }
 
@@ -221,7 +231,7 @@
     }
 
     function Add() {
-        var params = getValueString('modal_Add_SupplyItems_Id') + "|" + getValueInt('modal_Add_NewQty') + "|" + getValueString('modal_Add_Notes');
+        var params = getValueString('modal_Add_SupplyItems_Id') + "|" + getValueInt('modal_Add_NewQty') + "|" + getValueInt('modal_Add_PricePerUnit') + "|" + getValueString('modal_Add_Notes');
         AjaxExecute('Ajax_Add', '@ControllerName', params, function (data) {
             $('#LoadData').trigger('click');
         });

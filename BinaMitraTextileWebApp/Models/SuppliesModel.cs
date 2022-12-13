@@ -28,6 +28,12 @@ namespace BinaMitraTextileWebApp.Models
         public static ModelMember COL_Qty = new ModelMember { Name = "Qty", Display = "Qty" };
 
 
+        [Display(Name = "Unit Price")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public int PricePerUnit { get; set; } = 0;
+        public static ModelMember COL_PricePerUnit = new ModelMember { Name = "PricePerUnit", Display = "Price Per Unit" };
+
+
         public string Notes { get; set; }
         public static ModelMember COL_Notes = new ModelMember { Name = "Notes", Display = "Notes" };
 

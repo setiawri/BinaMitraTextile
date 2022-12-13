@@ -94,11 +94,12 @@ namespace BinaMitraTextileWebApp.Controllers
             SuppliesModel model = new SuppliesModel();
             model.SupplyItems_Id = new Guid(parameters[0]);
             model.Qty = Int32.Parse(parameters[1]);
-            model.Notes = parameters[2];
+            model.PricePerUnit = Int32.Parse(parameters[2]);
+            model.Notes = parameters[3];
             model.Timestamp = DateTime.Now;
             add(model);
             db.SaveChanges();
-            ActivityLogsController.Add(db, Session, model.SupplyItems_Id, String.Format("Qty: {0:N0}", model.Qty));
+            ActivityLogsController.Add(db, Session, model.SupplyItems_Id, String.Format("Qty: {0:N0}, Price Per Unit: {1:N0}", model.Qty, model.PricePerUnit));
             return Json(new { Message = "" });
         }
 
@@ -192,6 +193,7 @@ namespace BinaMitraTextileWebApp.Controllers
                 DBConnection.getSqlParameter(SuppliesModel.COL_SupplyItems_Id.Name, model.SupplyItems_Id),
                 DBConnection.getSqlParameter(SuppliesModel.COL_Timestamp.Name, model.Timestamp),
                 DBConnection.getSqlParameter(SuppliesModel.COL_Qty.Name, model.Qty),
+                DBConnection.getSqlParameter(SuppliesModel.COL_PricePerUnit.Name, model.PricePerUnit),
                 DBConnection.getSqlParameter(SuppliesModel.COL_Notes.Name, model.Notes)
             );
         }
