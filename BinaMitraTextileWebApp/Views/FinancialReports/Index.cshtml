@@ -20,6 +20,8 @@
     <div class="content">
         @using (Html.BeginForm("Index", ControllerName, FormMethod.Post))
         {
+            <input type="hidden" id="FILTER_DatePeriodStart" name="FILTER_DatePeriodStart" value="@ViewBag.FILTER_DatePeriodStart" />
+            <input type="hidden" id="FILTER_DatePeriodEnd" name="FILTER_DatePeriodEnd" value="@ViewBag.FILTER_DatePeriodEnd" />
             <!-- Form inputs -->
             <div class="card animated bounceInLeft">
                 <div class="card-header header-elements-inline pb-1">
@@ -27,27 +29,54 @@
                 </div>
                 <div class="card-body" style="min-height:400px">
                     <div class="row mx-0">
-                        <div class="row ml-0 mr-2" style="width:150px;">
-                            <label class="mb-0">Date From</label>
+
+                        <div class="row ml-0 mr-2" style="width:300px;">
+                            <label class="mb-0">Period Start</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        @Html.CheckBox("FILTER_chkDateFrom", false, new { @class = "form-check-input check-styled" })
-                                    </div>
+                                <div class="input-group-prepend" style="width:160px">
+                                    <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('previous','FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">&lt;</button>
+                                    <select id="FILTER_DatePeriodStart_Month" class="form-control select2" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
                                 </div>
-                                @Html.Editor("FILTER_DateFrom", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                                <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('next','FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">&gt;</button>
+                                <input id="FILTER_DatePeriodStart_Year" name="FILTER_DatePeriodStart_Year" type="number" class="form-control text-center positiveintegeronly period-year" value="@DateTime.UtcNow.Year" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodStart','FILTER_DatePeriodStart_Month','FILTER_DatePeriodStart_Year')">
                             </div>
                         </div>
 
-                        <div class="row ml-0 mr-2" style="width:150px;">
-                            <label class="mb-0">Date To</label>
+                        <div class="row ml-0 mr-2" style="width:300px;">
+                            <label class="mb-0">Period End</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        @Html.CheckBox("FILTER_chkDateTo", false, new { @class = "form-check-input check-styled" })
-                                    </div>
+                                <div class="input-group-prepend" style="width:160px">
+                                    <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('previous','FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">&lt;</button>
+                                    <select id="FILTER_DatePeriodEnd_Month" class="form-control select2" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
                                 </div>
-                                @Html.Editor("FILTER_DateTo", new { htmlAttributes = new { @class = "form-control daterange-picker" } })
+                                <button type="button" class="btn btn-light" onclick="updateFILTER_DatePeriod_Month('next','FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">&gt;</button>
+                                <input id="FILTER_DatePeriodEnd_Year" name="FILTER_DatePeriodEnd_Year" type="number" class="form-control text-center positiveintegeronly period-year" value="@DateTime.UtcNow.Year" onchange="updateFILTER_DatePeriod('FILTER_DatePeriodEnd','FILTER_DatePeriodEnd_Month','FILTER_DatePeriodEnd_Year')">
                             </div>
                         </div>
 
@@ -56,14 +85,14 @@
                             <button type="submit" id="LoadData" onclick="showLoadingSpinner()" class="btn btn-outline-primary form-control"><i class="icon-reload-alt mr-2"></i>LOAD</button>
                         </div>
                     </div>
-                    
+
                     @if (Model != null)
                     {
                         <div class="mx-0 mt-2">
                             <table class="">
                                 <thead>
                                     <tr>
-                                        <th style="width:250px;"class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
+                                        <th style="width:250px;" class="text-uppercase">@Html.DisplayNameFor(model => model.Period)</th>
                                         @foreach (var item in Model)
                                         {
                                             <th style="width:150px;" class="text-right">@Html.DisplayFor(modelItem => item.Period)</th>
@@ -441,35 +470,6 @@
                                         }
                                     </tr>
 
-                                    @*@for (int i = 0; i < ModelProperties.Length; i++)
-        {
-            System.Reflection.PropertyInfo property = ModelProperties[i];
-
-            <tr>
-                <td class="align-top font-weight-bold">@property.Name</td>
-
-                @foreach (BinaMitraTextileWebApp.Models.FinancialReportsModel item in Model)
-                {
-                    foreach(var x in item.)
-                    BinaMitraTextileWebApp.Models.FinancialReportsModel model = models[i];
-                    <td class="align-top">model.SalesSellValue</td>
-                    <td class="align-top">model.SalesShippingCost</td>
-                    <td class="align-top">model.SalesShippingExpense</td>
-                    <td class="align-top">model.SalesBuyValue</td>
-                    <td class="align-top">model.SalesProfit</td>
-                    <td class="align-top">model.BeginningInventoryBuyValue</td>
-                    <td class="align-top">model.EndingInventoryBuyValue</td>
-                    <td class="align-top">model.TotalVendorInvoices</td>
-                    <td class="align-top">model.PayableVendorInvoices</td>
-                    <td class="align-top">model.BankDeposits</td>
-                    <td class="align-top">model.Receivables</td>
-                    <td class="align-top">model.Transfers</td>
-                    <td class="align-top">model.Expenses</td>
-                }
-
-                <td>&nbsp;</td>
-            </tr>
-        }*@
                                 </tbody>
                             </table>
                         </div>
@@ -481,3 +481,15 @@
     </div>
     <!-- /content area -->
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+    });
+
+    function applyLast() {
+        setDatePeriodFilter('FILTER_DatePeriodStart', 'FILTER_DatePeriodStart_Month', 'FILTER_DatePeriodStart_Year', '@string.Format("{0:MM/dd/yyyy}", ViewBag.FILTER_DatePeriodStart ?? Helper.getCurrentDateTime())');
+        setDatePeriodFilter('FILTER_DatePeriodEnd', 'FILTER_DatePeriodEnd_Month', 'FILTER_DatePeriodEnd_Year', '@string.Format("{0:MM/dd/yyyy}", ViewBag.FILTER_DatePeriodEnd ?? Helper.getCurrentDateTime())');
+    }
+
+</script>

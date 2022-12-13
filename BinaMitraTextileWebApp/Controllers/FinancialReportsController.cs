@@ -109,7 +109,7 @@ namespace BinaMitraTextileWebApp.Controllers
         public static string getSQL()
         {
             string statements = "";
-            string variables = initializeSql();
+            string variables = initializeVariables();
 
             sql_PettyCash(ref statements, ref variables);
             sql_SalesNetProfit(ref statements, ref variables);
@@ -123,7 +123,7 @@ namespace BinaMitraTextileWebApp.Controllers
             return finalizeSql(statements, variables);
         }
 
-        public static string initializeSql()
+        public static string initializeVariables()
         {
             return @"
                     NEWID() AS Id,
@@ -159,7 +159,8 @@ namespace BinaMitraTextileWebApp.Controllers
 		
                     END
 
-                    SELECT * FROM #TEMP_RESULT
+	                IF(SELECT object_id('TempDB..#TEMP_RESULT')) IS NOT NULL
+                        SELECT * FROM #TEMP_RESULT
 						
 	                -- clean up
 	                IF(SELECT object_id('TempDB..#TEMP_RESULT')) IS NOT NULL
