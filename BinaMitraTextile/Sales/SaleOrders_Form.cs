@@ -403,31 +403,6 @@ namespace BinaMitraTextile.Sales
             pnlUpdateSaleOrder.Visible = false;
         }
 
-        private void GridSaleOrderItems_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1 && _formMode == FormMode.Browse)
-            {
-                DataGridViewRow row = gridSaleOrderItems.Rows[e.RowIndex];
-                browseItemSelection = (Guid)row.Cells[col_gridSaleOrderItems_Id.Name].Value;
-                browseItemDescription = string.Format("{0} Line {1}", row.Cells[col_gridSaleOrderItems_CustomerPONo.Name].Value.ToString(), row.Cells[col_gridSaleOrderItems_LineNo.Name].Value.ToString());
-                browseItemCustomers_Id = (Guid)row.Cells[col_gridSaleOrderItems_Customers_Id.Name].Value;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else if (_formMode != FormMode.Browse)
-            {
-                if (Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Qty) || Util.isColumnMatch(sender, e, col_gridSaleOrderItems_PricePerUnit))
-                {
-                    pnlUpdateSaleOrderItemQty.Visible = true;
-                    in_SaleOrderItemQty.Value = (decimal)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Qty);
-                    in_SaleOrderItemPricePerUnit.Value = (decimal)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_PricePerUnit);
-                    in_SaleOrderItemQty.focus();
-                }
-                else
-                    Tools.displayForm(new Logs.Main_Form(selectedSaleOrderItemsRowId()));
-            }
-        }
-
         private void PtDetails_pictureBox_ClickEvent(object sender, EventArgs e)
         {
             populateGridDetails();
@@ -469,7 +444,7 @@ namespace BinaMitraTextile.Sales
 
         private void BtnUpdateSaleOrderItemQty_Click(object sender, EventArgs e)
         {
-            SaleOrderItem.update(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal, in_SaleOrderItemPricePerUnit.ValueInt);
+            SaleOrderItem.update(selectedSaleOrderItemsRowId(), in_SaleOrderItemQty.ValueDecimal, in_SaleOrderItemPricePerUnit.ValueInt, itxt_SaleOrderItemNotes.ValueText);
             in_SaleOrderItemQty.Value = 0;
             pnlUpdateSaleOrderItemQty.Visible = false;
             populateGridSaleOrderItems();
@@ -514,6 +489,33 @@ namespace BinaMitraTextile.Sales
             else
             {
                 populateGridSaleOrderItems();
+            }
+        }
+
+        private void gridSaleOrderItems_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && _formMode == FormMode.Browse)
+            {
+                DataGridViewRow row = gridSaleOrderItems.Rows[e.RowIndex];
+                browseItemSelection = (Guid)row.Cells[col_gridSaleOrderItems_Id.Name].Value;
+                browseItemDescription = string.Format("{0} Line {1}", row.Cells[col_gridSaleOrderItems_CustomerPONo.Name].Value.ToString(), row.Cells[col_gridSaleOrderItems_LineNo.Name].Value.ToString());
+                browseItemCustomers_Id = (Guid)row.Cells[col_gridSaleOrderItems_Customers_Id.Name].Value;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else if (_formMode != FormMode.Browse)
+            {
+                if (Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Qty) || Util.isColumnMatch(sender, e, col_gridSaleOrderItems_PricePerUnit) || Util.isColumnMatch(sender, e, col_gridSaleOrderItems_Notes))
+                {
+                    SaleOrderItem saleOrder = new SaleOrderItem((Guid)Util.getSelectedRowValue(gridSaleOrderItems, col_gridSaleOrderItems_Id));
+                    pnlUpdateSaleOrderItemQty.Visible = true;
+                    in_SaleOrderItemQty.Value = saleOrder.Qty;
+                    in_SaleOrderItemPricePerUnit.Value = saleOrder.PricePerUnit;
+                    itxt_SaleOrderItemNotes.ValueText = saleOrder.Notes;
+                    in_SaleOrderItemQty.focus();
+                }
+                else
+                    Tools.displayForm(new Logs.Main_Form(selectedSaleOrderItemsRowId()));
             }
         }
 

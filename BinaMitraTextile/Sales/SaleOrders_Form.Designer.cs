@@ -145,6 +145,7 @@
             this.pnlUpdateSaleOrder = new System.Windows.Forms.Panel();
             this.itxt_CustomerPONo = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.idtp_SaleOrders_TargetDate = new LIBUtil.Desktop.UserControls.InputControl_DateTimePicker();
+            this.itxt_SaleOrders_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.btnCancelUpdateTargetDate = new System.Windows.Forms.Button();
             this.btnUpdateSaleOrder = new System.Windows.Forms.Button();
             this.pnlDetails = new System.Windows.Forms.Panel();
@@ -160,7 +161,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlSaleOrderInfo = new System.Windows.Forms.Panel();
             this.chkShowShippedBookedSisa = new System.Windows.Forms.CheckBox();
-            this.itxt_SaleOrders_Notes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.itxt_SaleOrderItemNotes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaleOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -529,7 +530,7 @@
             this.gridSaleOrderItems.RowTemplate.Height = 24;
             this.gridSaleOrderItems.Size = new System.Drawing.Size(1312, 179);
             this.gridSaleOrderItems.TabIndex = 116;
-            this.gridSaleOrderItems.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleOrderItems_CellContentDoubleClick);
+            this.gridSaleOrderItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSaleOrderItems_CellDoubleClick_1);
             this.gridSaleOrderItems.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridSaleOrderItems_CellMouseDown);
             this.gridSaleOrderItems.SelectionChanged += new System.EventHandler(this.GridSaleOrderItems_SelectionChanged);
             // 
@@ -1303,6 +1304,24 @@
             this.idtp_SaleOrders_TargetDate.Value = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.idtp_SaleOrders_TargetDate.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
             // 
+            // itxt_SaleOrders_Notes
+            // 
+            this.itxt_SaleOrders_Notes.IsBrowseMode = false;
+            this.itxt_SaleOrders_Notes.LabelText = "Notes";
+            this.itxt_SaleOrders_Notes.Location = new System.Drawing.Point(38, 109);
+            this.itxt_SaleOrders_Notes.Margin = new System.Windows.Forms.Padding(4);
+            this.itxt_SaleOrders_Notes.MaxLength = 32767;
+            this.itxt_SaleOrders_Notes.MultiLine = true;
+            this.itxt_SaleOrders_Notes.Name = "itxt_SaleOrders_Notes";
+            this.itxt_SaleOrders_Notes.PasswordChar = '\0';
+            this.itxt_SaleOrders_Notes.RowCount = 4;
+            this.itxt_SaleOrders_Notes.ShowDeleteButton = false;
+            this.itxt_SaleOrders_Notes.ShowFilter = false;
+            this.itxt_SaleOrders_Notes.ShowTextboxOnly = false;
+            this.itxt_SaleOrders_Notes.Size = new System.Drawing.Size(228, 98);
+            this.itxt_SaleOrders_Notes.TabIndex = 5;
+            this.itxt_SaleOrders_Notes.ValueText = "";
+            // 
             // btnCancelUpdateTargetDate
             // 
             this.btnCancelUpdateTargetDate.Location = new System.Drawing.Point(159, 215);
@@ -1357,6 +1376,7 @@
             // 
             this.pnlUpdateSaleOrderItemQty.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlUpdateSaleOrderItemQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdateSaleOrderItemQty.Controls.Add(this.itxt_SaleOrderItemNotes);
             this.pnlUpdateSaleOrderItemQty.Controls.Add(this.in_SaleOrderItemPricePerUnit);
             this.pnlUpdateSaleOrderItemQty.Controls.Add(this.btnCancelUpdateSaleOrderItemQty);
             this.pnlUpdateSaleOrderItemQty.Controls.Add(this.btnUpdateSaleOrderItemQty);
@@ -1364,7 +1384,7 @@
             this.pnlUpdateSaleOrderItemQty.Location = new System.Drawing.Point(503, 283);
             this.pnlUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4);
             this.pnlUpdateSaleOrderItemQty.Name = "pnlUpdateSaleOrderItemQty";
-            this.pnlUpdateSaleOrderItemQty.Size = new System.Drawing.Size(306, 183);
+            this.pnlUpdateSaleOrderItemQty.Size = new System.Drawing.Size(306, 249);
             this.pnlUpdateSaleOrderItemQty.TabIndex = 120;
             this.pnlUpdateSaleOrderItemQty.Visible = false;
             // 
@@ -1379,7 +1399,7 @@
             0,
             0});
             this.in_SaleOrderItemPricePerUnit.LabelText = "Price / Unit";
-            this.in_SaleOrderItemPricePerUnit.Location = new System.Drawing.Point(60, 69);
+            this.in_SaleOrderItemPricePerUnit.Location = new System.Drawing.Point(38, 52);
             this.in_SaleOrderItemPricePerUnit.Margin = new System.Windows.Forms.Padding(5);
             this.in_SaleOrderItemPricePerUnit.MaximumValue = new decimal(new int[] {
             10000000,
@@ -1395,7 +1415,7 @@
             this.in_SaleOrderItemPricePerUnit.ShowAllowDecimalCheckbox = false;
             this.in_SaleOrderItemPricePerUnit.ShowCheckbox = false;
             this.in_SaleOrderItemPricePerUnit.ShowTextboxOnly = false;
-            this.in_SaleOrderItemPricePerUnit.Size = new System.Drawing.Size(185, 50);
+            this.in_SaleOrderItemPricePerUnit.Size = new System.Drawing.Size(228, 50);
             this.in_SaleOrderItemPricePerUnit.TabIndex = 1;
             this.in_SaleOrderItemPricePerUnit.Value = new decimal(new int[] {
             0,
@@ -1407,7 +1427,7 @@
             // 
             this.btnCancelUpdateSaleOrderItemQty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelUpdateSaleOrderItemQty.Location = new System.Drawing.Point(164, 132);
+            this.btnCancelUpdateSaleOrderItemQty.Location = new System.Drawing.Point(164, 209);
             this.btnCancelUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelUpdateSaleOrderItemQty.Name = "btnCancelUpdateSaleOrderItemQty";
             this.btnCancelUpdateSaleOrderItemQty.Size = new System.Drawing.Size(81, 28);
@@ -1420,7 +1440,7 @@
             // 
             this.btnUpdateSaleOrderItemQty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateSaleOrderItemQty.Location = new System.Drawing.Point(60, 132);
+            this.btnUpdateSaleOrderItemQty.Location = new System.Drawing.Point(60, 209);
             this.btnUpdateSaleOrderItemQty.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateSaleOrderItemQty.Name = "btnUpdateSaleOrderItemQty";
             this.btnUpdateSaleOrderItemQty.Size = new System.Drawing.Size(96, 28);
@@ -1440,7 +1460,7 @@
             0,
             0});
             this.in_SaleOrderItemQty.LabelText = "Qty";
-            this.in_SaleOrderItemQty.Location = new System.Drawing.Point(60, 21);
+            this.in_SaleOrderItemQty.Location = new System.Drawing.Point(38, 4);
             this.in_SaleOrderItemQty.Margin = new System.Windows.Forms.Padding(5);
             this.in_SaleOrderItemQty.MaximumValue = new decimal(new int[] {
             10000000,
@@ -1456,7 +1476,7 @@
             this.in_SaleOrderItemQty.ShowAllowDecimalCheckbox = false;
             this.in_SaleOrderItemQty.ShowCheckbox = false;
             this.in_SaleOrderItemQty.ShowTextboxOnly = false;
-            this.in_SaleOrderItemQty.Size = new System.Drawing.Size(185, 48);
+            this.in_SaleOrderItemQty.Size = new System.Drawing.Size(228, 48);
             this.in_SaleOrderItemQty.TabIndex = 0;
             this.in_SaleOrderItemQty.Value = new decimal(new int[] {
             0,
@@ -1548,30 +1568,30 @@
             this.chkShowShippedBookedSisa.UseVisualStyleBackColor = true;
             this.chkShowShippedBookedSisa.CheckedChanged += new System.EventHandler(this.ChkShowShippedBookedSisa_CheckedChanged);
             // 
-            // itxt_SaleOrders_Notes
+            // itxt_SaleOrderItemNotes
             // 
-            this.itxt_SaleOrders_Notes.IsBrowseMode = false;
-            this.itxt_SaleOrders_Notes.LabelText = "Notes";
-            this.itxt_SaleOrders_Notes.Location = new System.Drawing.Point(38, 109);
-            this.itxt_SaleOrders_Notes.Margin = new System.Windows.Forms.Padding(4);
-            this.itxt_SaleOrders_Notes.MaxLength = 32767;
-            this.itxt_SaleOrders_Notes.MultiLine = true;
-            this.itxt_SaleOrders_Notes.Name = "itxt_SaleOrders_Notes";
-            this.itxt_SaleOrders_Notes.PasswordChar = '\0';
-            this.itxt_SaleOrders_Notes.RowCount = 4;
-            this.itxt_SaleOrders_Notes.ShowDeleteButton = false;
-            this.itxt_SaleOrders_Notes.ShowFilter = false;
-            this.itxt_SaleOrders_Notes.ShowTextboxOnly = false;
-            this.itxt_SaleOrders_Notes.Size = new System.Drawing.Size(228, 98);
-            this.itxt_SaleOrders_Notes.TabIndex = 5;
-            this.itxt_SaleOrders_Notes.ValueText = "";
+            this.itxt_SaleOrderItemNotes.IsBrowseMode = false;
+            this.itxt_SaleOrderItemNotes.LabelText = "Notes";
+            this.itxt_SaleOrderItemNotes.Location = new System.Drawing.Point(38, 103);
+            this.itxt_SaleOrderItemNotes.Margin = new System.Windows.Forms.Padding(4);
+            this.itxt_SaleOrderItemNotes.MaxLength = 32767;
+            this.itxt_SaleOrderItemNotes.MultiLine = true;
+            this.itxt_SaleOrderItemNotes.Name = "itxt_SaleOrderItemNotes";
+            this.itxt_SaleOrderItemNotes.PasswordChar = '\0';
+            this.itxt_SaleOrderItemNotes.RowCount = 4;
+            this.itxt_SaleOrderItemNotes.ShowDeleteButton = false;
+            this.itxt_SaleOrderItemNotes.ShowFilter = false;
+            this.itxt_SaleOrderItemNotes.ShowTextboxOnly = false;
+            this.itxt_SaleOrderItemNotes.Size = new System.Drawing.Size(228, 98);
+            this.itxt_SaleOrderItemNotes.TabIndex = 6;
+            this.itxt_SaleOrderItemNotes.ValueText = "";
             // 
             // SaleOrders_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1312, 626);
-            this.Controls.Add(this.pnlUpdateSaleOrder);
             this.Controls.Add(this.pnlUpdateSaleOrderItemQty);
+            this.Controls.Add(this.pnlUpdateSaleOrder);
             this.Controls.Add(this.ptDetails);
             this.Controls.Add(this.gridSaleOrderItems);
             this.Controls.Add(this.pnlSaleOrderInfo);
@@ -1716,5 +1736,6 @@
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_CustomerPONo;
         private LIBUtil.Desktop.UserControls.InputControl_Numeric in_SaleOrderItemPricePerUnit;
         private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_SaleOrders_Notes;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_SaleOrderItemNotes;
     }
 }

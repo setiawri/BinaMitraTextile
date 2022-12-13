@@ -43,7 +43,6 @@ namespace BinaMitraTextile
         public decimal Subtotal;
         public Guid Customers_Id;
         public string CustomerName;
-        public string SaleOrders_No;
 
         #endregion PUBLIC VARIABLES
         /*-----------------------------------------------------------------------------------------------------*/
@@ -77,7 +76,6 @@ namespace BinaMitraTextile
         public const string COL_RemainingQty = "RemainingQty";
         public const string COL_Customers_Id = "Customers_Id";
         public const string COL_CustomerName = "CustomerName";
-        public const string COL_SaleOrders_No = "SaleOrders_No";
 
         public const string FILTER_Customers_Id = "FILTER_Customers_Id";
         public const string FILTER_StatusCompleted = "FILTER_StatusCompleted";
@@ -108,7 +106,6 @@ namespace BinaMitraTextile
             Status = Util.parseEnum<SaleOrderItemStatus>(DBUtil.parseData<object>(row, COL_DB_Status_enum_id));
             Customers_Id = DBUtil.parseData<Guid>(row, COL_Customers_Id);
             CustomerName = DBUtil.parseData<string>(row, COL_CustomerName);
-            SaleOrders_No = Util.wrapNullable<string>(row, COL_SaleOrders_No);
         }
 
         public SaleOrderItem(Guid id, Guid saleOrders_Id, int lineNo, string productDescription, decimal qty, string unitName, decimal pricePerUnit, string notes, Guid? referencedInventoryID)
@@ -175,13 +172,14 @@ namespace BinaMitraTextile
             return datatable;
         }
 
-        public static void update(Guid id, decimal Qty, decimal PricePerUnit)
+        public static void update(Guid id, decimal Qty, decimal PricePerUnit, string Notes)
         {
             SaleOrderItem objOld = new SaleOrderItem(id);
 
             string log = "";
             log = Util.appendChange(log, objOld.Qty, Qty, "Qty: '{0:N2}' to '{1:N2}'");
             log = Util.appendChange(log, objOld.PricePerUnit, PricePerUnit, "Price Per Unit: '{0:N2}' to '{1:N2}'");
+            log = Util.appendChange(log, objOld.Notes, Notes, "Notes: '{0:N2}' to '{1:N2}'");
 
             if (!string.IsNullOrWhiteSpace(log))
             {
@@ -192,7 +190,8 @@ namespace BinaMitraTextile
                     "SaleOrderItems_update",
                     new SqlQueryParameter(COL_DB_Id, SqlDbType.UniqueIdentifier, id),
                     new SqlQueryParameter(COL_DB_Qty, SqlDbType.Decimal, Qty),
-                    new SqlQueryParameter(COL_DB_PricePerUnit, SqlDbType.Decimal, PricePerUnit)
+                    new SqlQueryParameter(COL_DB_PricePerUnit, SqlDbType.Decimal, PricePerUnit),
+                    new SqlQueryParameter(COL_DB_Notes, SqlDbType.VarChar, Notes)
                 );
 
                 if (result.IsSuccessful)
