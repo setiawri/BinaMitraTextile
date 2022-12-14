@@ -210,14 +210,15 @@ namespace BinaMitraTextile
             return masterTable;
         }
 
-        public static DataTable getItems(Guid inventoryID)
+        public static DataTable getItems(Guid inventoryID, bool HideSoldItems)
         {
             SqlQueryResult result = DBConnection.query(
                 false,
                 DBConnection.ActiveSqlConnection,
                 QueryTypes.FillByAdapter,
                 "inventoryitem_get_by_inventory_id",
-                new SqlQueryParameter(COL_DB_INVENTORY_ID, SqlDbType.UniqueIdentifier, inventoryID)
+                new SqlQueryParameter(COL_DB_INVENTORY_ID, SqlDbType.UniqueIdentifier, inventoryID),
+                new SqlQueryParameter("HideSoldItems", SqlDbType.Bit, HideSoldItems)
             );
             return result.Datatable;
         }

@@ -59,7 +59,7 @@ namespace BinaMitraTextile.InventoryForm
             col_grid_SaleOrderItemDescription.DataPropertyName = InventoryItem.COL_SaleOrderItemDescription;
             col_grid_Sales_Hexbarcode.DataPropertyName = InventoryItem.COL_Sales_Hexbarcode;
             col_grid_Sales_Id.DataPropertyName = InventoryItem.COL_Sales_Id;
-            populateGrid();
+            populatePageData();
 
             txtBarcode.MaxLength = Settings.itemBarcodeLength + Settings.itemBarcodeMandatoryPrefix.Length;
         }
@@ -74,15 +74,21 @@ namespace BinaMitraTextile.InventoryForm
 
         #region LIST
 
-        private void populateGrid()
+        private DataTable populateGrid()
         {
-            DataTable dt = InventoryItem.getItems(_inventory.id);
+            DataTable dt = InventoryItem.getItems(_inventory.id, chkHideSoldItems.Checked);
             grid.DataSource = dt;
+            return dt;
+        }
+
+        private void populatePageData()
+        {
+            DataTable dt = populateGrid();
             Inventory.setCount(lblCount,
                 dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL OR {0} = 0", InventoryItem.COL_IS_SOLD)).ToString(),
                 dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), String.Format("{0} IS NULL OR {0} = 0", InventoryItem.COL_IS_SOLD)).ToString());
             Inventory.setCount(lblReceived,
-                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH),"").ToString(),
+                dt.Compute(String.Format("COUNT({0})", InventoryItem.COL_DB_LENGTH), "").ToString(),
                 dt.Compute(String.Format("SUM({0})", InventoryItem.COL_DB_LENGTH), "").ToString());
         }
 
@@ -184,7 +190,7 @@ namespace BinaMitraTextile.InventoryForm
                             InventoryItem inventoryItem = new InventoryItem(_id, _inventory.id, Convert.ToDecimal(txtLength.Text), lblBarcode.Text, (Guid?)cbColors.SelectedValue, txtNotes.Text.Trim());
                             if (inventoryItem.submitNew() != null)
                             {
-                                populateGrid();
+                                populatePageData();
                                 disableForm();
                             }
                         }
@@ -197,7 +203,7 @@ namespace BinaMitraTextile.InventoryForm
                             InventoryItem inventoryItem = new InventoryItem(_id, _inventory.id, Convert.ToDecimal(txtLength.Text), lblBarcode.Text, (Guid?)cbColors.SelectedValue, txtNotes.Text.Trim());
                             if (inventoryItem.update())
                             {
-                                populateGrid();
+                                populatePageData();
                                 disableForm();
                             }
                         }
@@ -241,6 +247,11 @@ namespace BinaMitraTextile.InventoryForm
 
                 grid.DataSource = dt;
             }
+        }
+
+        private void chkHideSoldItems_CheckedChanged(object sender, EventArgs e)
+        {
+            populateGrid();
         }
 
         #endregion ADD/UPDATE ITEM
