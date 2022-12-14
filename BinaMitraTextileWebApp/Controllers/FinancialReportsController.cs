@@ -119,6 +119,7 @@ namespace BinaMitraTextileWebApp.Controllers
             sql_VendorInvoices(ref statements, ref variables);
             sql_PayableVendorInvoices(ref statements, ref variables);
             sql_PersonalNetProfit(ref statements, ref variables);
+            sql_PurchaseOrders(ref statements, ref variables);
 
             return finalizeSql(statements, variables);
         }
@@ -759,6 +760,34 @@ namespace BinaMitraTextileWebApp.Controllers
             variables = appendVariable(variables, "PersonalNetProfit");
             variables = appendVariable(variables, "PersonalAssetsStartingBalance");
             variables = appendVariable(variables, "PersonalAssetsEndingBalance");
+        }
+
+        /******************************************************************************************************************************************************/
+
+        public static void sql_PurchaseOrders(ref string statements, ref string variables)
+        {
+            //status_enum_id 2 is cancelled, 4 is completed
+            statements += @"
+                    -- INVOICES -----------------------------------------------------------------------------------------------------------------------
+                    DECLARE @PendingPOValue decimal(15,2) = 0
+	                SELECT @PendingPOValue = SUM(POItems.price_per_unit * (ISNULL(POItems.qty,0) - ISNULL(ReceivedInventory.total_length,0)))
+	                FROM POItems 
+		                LEFT OUTER JOIN (
+				                SELECT Inventory.po_item_id, SUM(InventoryItems.item_length) AS total_length
+				                FROM InventoryItems
+					                LEFT OUTER JOIN Inventory ON Inventory.id = InventoryItems.inventory_id
+				                WHERE Inventory.po_item_id IS NOT NULL 
+					                AND InventoryItems.id NOT IN (SELECT inventory_item_id FROM SaleItems LEFT OUTER JOIN Sales ON Sales.id = SaleItems.sale_id WHERE Sales.Vendors_Id IS NOT NULL)
+					                AND Inventory.receive_date < @PeriodEnd
+				                GROUP BY Inventory.po_item_id
+			                ) 
+			                ReceivedInventory ON ReceivedInventory.po_item_id = POItems.id
+		                LEFT OUTER JOIN POs ON POs.id = POItems.po_id
+	                WHERE POItems.status_enum_id <> 2 AND POItems.status_enum_id <> 4
+		                AND POs.time_stamp < @PeriodEnd
+                ";
+
+            variables = appendVariable(variables, "PendingPOValue");
         }
 
         /******************************************************************************************************************************************************/

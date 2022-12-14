@@ -316,6 +316,16 @@
 
                                     <tr><td>&nbsp;</td></tr>
 
+                                    <tr>
+                                        <td style="min-width:200px;">@Html.DisplayNameFor(model => model.PendingPOValue)</td>
+                                        @foreach (var item in Model)
+                                        {
+                                            <td class="align-top text-right">@Html.DisplayFor(modelItem => item.PendingPOValue)</td>
+                                        }
+                                    </tr>
+
+                                    <tr><td>&nbsp;</td></tr>
+
                                 </tbody>
                             </table>
                         </div>
