@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LIBUtil;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -237,14 +238,23 @@ namespace BinaMitraTextile.POs
 
         private void gridPOItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex > -1 && _formMode == FormMode.Browse)
+            if (e.RowIndex > -1 && _formMode == FormMode.Browse)
             {
                 DataGridViewRow row = gridPOItems.Rows[e.RowIndex];
-                browseItemSelection = (Guid)row.Cells[col_gridPOItems_id.Name].Value; 
+                browseItemSelection = (Guid)row.Cells[col_gridPOItems_id.Name].Value;
                 browseItemDescription = string.Format("[{0}] {1}", row.Cells[col_gridPOItems_po_no.Name].Value.ToString(), row.Cells[col_gridPOItems_productDescription.Name].Value.ToString());
                 browseItemPricePerUnit = row.Cells[col_gridPOItems_pricePerUnit.Name].Value.ToString();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+            else if (_formMode != FormMode.Browse && (Util.isColumnMatch(sender, e, col_gridPOItems_pricePerUnit) || Util.isColumnMatch(sender, e, col_gridPOItems_notes) || Util.isColumnMatch(sender, e, col_gridPOItems_qty)))
+            {
+                POItem obj = new POItem((Guid)Util.getSelectedRowValue(gridPOItems, col_gridPOItems_id));
+                in_POItemQty.Value = obj.Qty;
+                in_POItemPricePerUnit.Value = obj.PricePerUnit;
+                itxt_POItemNotes.ValueText = obj.Notes;
+                pnlUpdatePOItem.Visible = true;
+                in_POItemQty.focus();
             }
         }
 
@@ -272,6 +282,25 @@ namespace BinaMitraTextile.POs
             Tools.resetDropDownList(cbStatus);
             Tools.resetDropDownList(cbVendors);
             dtpEnd.Checked = false;
+        }
+
+        private void btnCancelUpdatePOItemQty_Click(object sender, EventArgs e)
+        {
+            pnlUpdatePOItem.Visible = false;
+        }
+
+        private void btnUpdatePOItem_Click(object sender, EventArgs e)
+        {
+            POItem obj = new POItem((Guid)Util.getSelectedRowValue(gridPOItems, col_gridPOItems_id));
+            POItem.update(GlobalData.UserAccount.id, selectedPOItemsRowID(), obj.PriorityNo, obj.PriorityQty, obj.ExpectedDeliveryDate, in_POItemQty.ValueDecimal, in_POItemPricePerUnit.ValueDecimal, itxt_POItemNotes.ValueText);
+            pnlUpdatePOItem.Visible = false;
+            Guid selectedRowId = selectedRowID();
+            populateGridPO();
+            foreach(DataGridViewRow row in gridPO.Rows)
+            {
+                if ((Guid)Util.getRowValue(row, col_gridPO_id) == selectedRowId)
+                    row.Selected = true;
+            }
         }
 
         #endregion FORM METHODS

@@ -126,7 +126,8 @@ namespace BinaMitraTextile.POs
 
         protected override void update()
         {
-            POItem.update(GlobalData.UserAccount.id, selectedRowID(), in_PriorityNo.ValueInt, in_PriorityQty.ValueInt, idtp_ExpectedDeliveryDate.Value);
+            POItem obj = new POItem(selectedRowID());
+            POItem.update(GlobalData.UserAccount.id, selectedRowID(), in_PriorityNo.ValueInt, in_PriorityQty.ValueInt, idtp_ExpectedDeliveryDate.Value, obj.Qty, obj.PricePerUnit, obj.Notes);
         }
 
         protected override void add()

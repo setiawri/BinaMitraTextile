@@ -86,6 +86,12 @@
             this.col_gridPOItems_status_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_gridPOItems_statusEnumID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_grid_SaleOrderItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlUpdatePOItem = new System.Windows.Forms.Panel();
+            this.itxt_POItemNotes = new LIBUtil.Desktop.UserControls.InputControl_Textbox();
+            this.in_POItemPricePerUnit = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
+            this.btnCancelUpdatePOItemQty = new System.Windows.Forms.Button();
+            this.btnUpdatePOItem = new System.Windows.Forms.Button();
+            this.in_POItemQty = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
@@ -94,6 +100,7 @@
             this.scMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPOItems)).BeginInit();
+            this.pnlUpdatePOItem.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -131,7 +138,7 @@
             this.cbProductStoreNames.Location = new System.Drawing.Point(88, 107);
             this.cbProductStoreNames.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbProductStoreNames.Name = "cbProductStoreNames";
-            this.cbProductStoreNames.Size = new System.Drawing.Size(189, 24);
+            this.cbProductStoreNames.Size = new System.Drawing.Size(189, 21);
             this.cbProductStoreNames.TabIndex = 3;
             // 
             // label8
@@ -139,7 +146,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(17, 79);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 16);
+            this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 117;
             this.label8.Text = "Invoice No";
             // 
@@ -148,7 +155,7 @@
             this.txtInvoiceNo.Location = new System.Drawing.Point(88, 76);
             this.txtInvoiceNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInvoiceNo.Name = "txtInvoiceNo";
-            this.txtInvoiceNo.Size = new System.Drawing.Size(111, 22);
+            this.txtInvoiceNo.Size = new System.Drawing.Size(111, 20);
             this.txtInvoiceNo.TabIndex = 2;
             // 
             // label7
@@ -156,7 +163,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 50);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 16);
+            this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 115;
             this.label7.Text = "Pack List No";
             // 
@@ -165,7 +172,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(35, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 16);
+            this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 99;
             this.label5.Text = "Product";
             // 
@@ -174,7 +181,7 @@
             this.txtPackingListNo.Location = new System.Drawing.Point(88, 47);
             this.txtPackingListNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPackingListNo.Name = "txtPackingListNo";
-            this.txtPackingListNo.Size = new System.Drawing.Size(111, 22);
+            this.txtPackingListNo.Size = new System.Drawing.Size(111, 20);
             this.txtPackingListNo.TabIndex = 1;
             // 
             // label6
@@ -182,7 +189,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(44, 171);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 16);
+            this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 113;
             this.label6.Text = "Status";
             // 
@@ -192,7 +199,7 @@
             this.cbStatus.Location = new System.Drawing.Point(88, 168);
             this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(189, 24);
+            this.cbStatus.Size = new System.Drawing.Size(189, 21);
             this.cbStatus.TabIndex = 5;
             // 
             // txtPONo
@@ -200,7 +207,7 @@
             this.txtPONo.Location = new System.Drawing.Point(88, 17);
             this.txtPONo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPONo.Name = "txtPONo";
-            this.txtPONo.Size = new System.Drawing.Size(111, 22);
+            this.txtPONo.Size = new System.Drawing.Size(111, 20);
             this.txtPONo.TabIndex = 0;
             // 
             // label2
@@ -208,7 +215,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(52, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 111;
             this.label2.Text = "PO #";
             // 
@@ -220,7 +227,7 @@
             this.dtpStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.ShowCheckBox = true;
-            this.dtpStart.Size = new System.Drawing.Size(189, 22);
+            this.dtpStart.Size = new System.Drawing.Size(189, 20);
             this.dtpStart.TabIndex = 6;
             this.dtpStart.Value = new System.DateTime(2014, 11, 15, 0, 0, 0, 0);
             // 
@@ -229,7 +236,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(55, 203);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 16);
+            this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 96;
             this.label3.Text = "from";
             // 
@@ -239,7 +246,7 @@
             this.cbVendors.Location = new System.Drawing.Point(88, 138);
             this.cbVendors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbVendors.Name = "cbVendors";
-            this.cbVendors.Size = new System.Drawing.Size(189, 24);
+            this.cbVendors.Size = new System.Drawing.Size(189, 21);
             this.cbVendors.TabIndex = 4;
             // 
             // btnFilter
@@ -261,7 +268,7 @@
             this.dtpEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.ShowCheckBox = true;
-            this.dtpEnd.Size = new System.Drawing.Size(189, 22);
+            this.dtpEnd.Size = new System.Drawing.Size(189, 20);
             this.dtpEnd.TabIndex = 7;
             // 
             // label4
@@ -269,7 +276,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(37, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 104;
             this.label4.Text = "Vendor";
             // 
@@ -278,7 +285,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(70, 233);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 16);
+            this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 94;
             this.label1.Text = "to";
             // 
@@ -422,7 +429,7 @@
             this.scMain.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scMain.IsSplitterFixed = true;
             this.scMain.Location = new System.Drawing.Point(0, 0);
-            this.scMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scMain.Margin = new System.Windows.Forms.Padding(4);
             this.scMain.Name = "scMain";
             // 
             // scMain.Panel1
@@ -433,6 +440,7 @@
             // 
             // scMain.Panel2
             // 
+            this.scMain.Panel2.Controls.Add(this.pnlUpdatePOItem);
             this.scMain.Panel2.Controls.Add(this.gridPO);
             this.scMain.Size = new System.Drawing.Size(1155, 354);
             this.scMain.SplitterDistance = 297;
@@ -445,7 +453,7 @@
             this.panel1.Controls.Add(this.btnAddPO);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(7, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(283, 41);
             this.panel1.TabIndex = 115;
@@ -453,7 +461,7 @@
             // btnLog
             // 
             this.btnLog.Location = new System.Drawing.Point(141, 3);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(4);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(129, 34);
             this.btnLog.TabIndex = 2;
@@ -647,13 +655,143 @@
             this.col_grid_SaleOrderItemDescription.ReadOnly = true;
             this.col_grid_SaleOrderItemDescription.Width = 30;
             // 
+            // pnlUpdatePOItem
+            // 
+            this.pnlUpdatePOItem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlUpdatePOItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUpdatePOItem.Controls.Add(this.itxt_POItemNotes);
+            this.pnlUpdatePOItem.Controls.Add(this.in_POItemPricePerUnit);
+            this.pnlUpdatePOItem.Controls.Add(this.btnCancelUpdatePOItemQty);
+            this.pnlUpdatePOItem.Controls.Add(this.btnUpdatePOItem);
+            this.pnlUpdatePOItem.Controls.Add(this.in_POItemQty);
+            this.pnlUpdatePOItem.Location = new System.Drawing.Point(120, 82);
+            this.pnlUpdatePOItem.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlUpdatePOItem.Name = "pnlUpdatePOItem";
+            this.pnlUpdatePOItem.Size = new System.Drawing.Size(306, 249);
+            this.pnlUpdatePOItem.TabIndex = 121;
+            this.pnlUpdatePOItem.Visible = false;
+            // 
+            // itxt_POItemNotes
+            // 
+            this.itxt_POItemNotes.IsBrowseMode = false;
+            this.itxt_POItemNotes.LabelText = "Notes";
+            this.itxt_POItemNotes.Location = new System.Drawing.Point(38, 103);
+            this.itxt_POItemNotes.Margin = new System.Windows.Forms.Padding(4);
+            this.itxt_POItemNotes.MaxLength = 32767;
+            this.itxt_POItemNotes.MultiLine = true;
+            this.itxt_POItemNotes.Name = "itxt_POItemNotes";
+            this.itxt_POItemNotes.PasswordChar = '\0';
+            this.itxt_POItemNotes.RowCount = 4;
+            this.itxt_POItemNotes.ShowDeleteButton = false;
+            this.itxt_POItemNotes.ShowFilter = false;
+            this.itxt_POItemNotes.ShowTextboxOnly = false;
+            this.itxt_POItemNotes.Size = new System.Drawing.Size(228, 98);
+            this.itxt_POItemNotes.TabIndex = 6;
+            this.itxt_POItemNotes.ValueText = "";
+            // 
+            // in_POItemPricePerUnit
+            // 
+            this.in_POItemPricePerUnit.Checked = false;
+            this.in_POItemPricePerUnit.DecimalPlaces = 2;
+            this.in_POItemPricePerUnit.HideUpDown = true;
+            this.in_POItemPricePerUnit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_POItemPricePerUnit.LabelText = "Price / Unit";
+            this.in_POItemPricePerUnit.Location = new System.Drawing.Point(38, 52);
+            this.in_POItemPricePerUnit.Margin = new System.Windows.Forms.Padding(5);
+            this.in_POItemPricePerUnit.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_POItemPricePerUnit.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_POItemPricePerUnit.Name = "in_POItemPricePerUnit";
+            this.in_POItemPricePerUnit.ShowAllowDecimalCheckbox = false;
+            this.in_POItemPricePerUnit.ShowCheckbox = false;
+            this.in_POItemPricePerUnit.ShowTextboxOnly = false;
+            this.in_POItemPricePerUnit.Size = new System.Drawing.Size(228, 50);
+            this.in_POItemPricePerUnit.TabIndex = 1;
+            this.in_POItemPricePerUnit.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // btnCancelUpdatePOItemQty
+            // 
+            this.btnCancelUpdatePOItemQty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelUpdatePOItemQty.Location = new System.Drawing.Point(164, 209);
+            this.btnCancelUpdatePOItemQty.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelUpdatePOItemQty.Name = "btnCancelUpdatePOItemQty";
+            this.btnCancelUpdatePOItemQty.Size = new System.Drawing.Size(81, 28);
+            this.btnCancelUpdatePOItemQty.TabIndex = 3;
+            this.btnCancelUpdatePOItemQty.Text = "CANCEL";
+            this.btnCancelUpdatePOItemQty.UseVisualStyleBackColor = true;
+            this.btnCancelUpdatePOItemQty.Click += new System.EventHandler(this.btnCancelUpdatePOItemQty_Click);
+            // 
+            // btnUpdatePOItem
+            // 
+            this.btnUpdatePOItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdatePOItem.Location = new System.Drawing.Point(60, 209);
+            this.btnUpdatePOItem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdatePOItem.Name = "btnUpdatePOItem";
+            this.btnUpdatePOItem.Size = new System.Drawing.Size(96, 28);
+            this.btnUpdatePOItem.TabIndex = 2;
+            this.btnUpdatePOItem.Text = "UPDATE";
+            this.btnUpdatePOItem.UseVisualStyleBackColor = true;
+            this.btnUpdatePOItem.Click += new System.EventHandler(this.btnUpdatePOItem_Click);
+            // 
+            // in_POItemQty
+            // 
+            this.in_POItemQty.Checked = false;
+            this.in_POItemQty.DecimalPlaces = 2;
+            this.in_POItemQty.HideUpDown = true;
+            this.in_POItemQty.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_POItemQty.LabelText = "Qty";
+            this.in_POItemQty.Location = new System.Drawing.Point(38, 4);
+            this.in_POItemQty.Margin = new System.Windows.Forms.Padding(5);
+            this.in_POItemQty.MaximumValue = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.in_POItemQty.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_POItemQty.Name = "in_POItemQty";
+            this.in_POItemQty.ShowAllowDecimalCheckbox = false;
+            this.in_POItemQty.ShowCheckbox = false;
+            this.in_POItemQty.ShowTextboxOnly = false;
+            this.in_POItemQty.Size = new System.Drawing.Size(228, 48);
+            this.in_POItemQty.TabIndex = 0;
+            this.in_POItemQty.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
             // Main_Form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1155, 553);
             this.Controls.Add(this.gridPOItems);
             this.Controls.Add(this.scMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main_Form";
             this.Text = "PURCHASE ORDERS";
             this.Load += new System.EventHandler(this.Form_Load);
@@ -666,6 +804,7 @@
             this.scMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPOItems)).EndInit();
+            this.pnlUpdatePOItem.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -718,5 +857,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridPOItems_status_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_gridPOItems_statusEnumID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_grid_SaleOrderItemDescription;
+        private System.Windows.Forms.Panel pnlUpdatePOItem;
+        private LIBUtil.Desktop.UserControls.InputControl_Textbox itxt_POItemNotes;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_POItemPricePerUnit;
+        public System.Windows.Forms.Button btnCancelUpdatePOItemQty;
+        public System.Windows.Forms.Button btnUpdatePOItem;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_POItemQty;
     }
 }

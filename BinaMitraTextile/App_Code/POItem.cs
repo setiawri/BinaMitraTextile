@@ -256,12 +256,15 @@ namespace BinaMitraTextile
             catch (Exception ex) { Tools.showError(ex.Message); }
         }
 
-        public static void update(Guid userAccountID, Guid id, int priorityNo, int priorityQty, DateTime? expectedDeliveryDate)
+        public static void update(Guid userAccountID, Guid id, int priorityNo, int priorityQty, DateTime? expectedDeliveryDate, decimal Qty, decimal PricePerUnit, string Notes)
         {
             POItem objOld = new POItem(id);
 
             //generate log description
             string log = "";
+            log = ActivityLog.appendChange(log, objOld.Qty, Qty, "Qty: '{0:N0}' to '{1:N0}'");
+            log = ActivityLog.appendChange(log, objOld.PricePerUnit, PricePerUnit, "Price Per Unit: '{0:N2}' to '{1:N2}'");
+            log = ActivityLog.appendChange(log, objOld.Notes, Notes, "Notes: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.ExpectedDeliveryDate, expectedDeliveryDate, "Expected Delivery: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.PriorityNo, priorityNo, "Priority No: '{0}' to '{1}'");
             log = ActivityLog.appendChange(log, objOld.PriorityQty, priorityQty, "Priority Qty: '{0}' to '{1}'");
@@ -274,6 +277,9 @@ namespace BinaMitraTextile
                     QueryTypes.ExecuteNonQuery,
                     "poitem_update",
                     new SqlQueryParameter(COL_DB_ID, SqlDbType.UniqueIdentifier, id),
+                    new SqlQueryParameter(COL_DB_QTY, SqlDbType.Int, Util.wrapNullable(Qty)),
+                    new SqlQueryParameter(COL_DB_PRICEPERUNIT, SqlDbType.Decimal, Util.wrapNullable(PricePerUnit)),
+                    new SqlQueryParameter(COL_DB_NOTES, SqlDbType.VarChar, Util.wrapNullable(Notes)),
                     new SqlQueryParameter(COL_DB_PriorityNo, SqlDbType.SmallInt, Util.wrapNullable(priorityNo)),
                     new SqlQueryParameter(COL_DB_PriorityQty, SqlDbType.Int, Util.wrapNullable(priorityQty)),
                     new SqlQueryParameter(COL_DB_ExpectedDeliveryDate, SqlDbType.Date, Util.wrapNullable(expectedDeliveryDate))
