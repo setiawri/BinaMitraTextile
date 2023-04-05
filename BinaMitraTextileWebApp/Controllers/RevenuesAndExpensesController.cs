@@ -58,7 +58,7 @@ namespace BinaMitraTextileWebApp.Controllers
 
             setViewBag(FILTER_Keyword, FILTER_RevenueAndExpenseCategories, FILTER_chkDateFrom, FILTER_DateFrom, FILTER_chkDateTo, FILTER_DateTo);
             RevenuesAndExpensesModel model = new RevenuesAndExpensesModel();
-            model.Timestamp = DateTime.Now.Date.AddDays(1);
+            model.Timestamp = DateTime.Now.Date;
             return View(model);
         }
 

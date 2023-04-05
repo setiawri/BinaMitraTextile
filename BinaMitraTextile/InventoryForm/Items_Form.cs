@@ -41,6 +41,7 @@ namespace BinaMitraTextile.InventoryForm
             lblGrade.Text = _inventory.grade_name;
             lblWidth.Text = _inventory.product_width_name;
             lblReceiveDate.Text = string.Format("{0:dd/MM/yy HH:mm}", _inventory.receive_date);
+            itxt_Notes.ValueText = _inventory.notes;
             if (new FabricColor(_inventory.color_id).Allow2ndColor)
             {
                 cbColors.Enabled = true;
