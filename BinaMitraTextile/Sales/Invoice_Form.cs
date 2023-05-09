@@ -425,6 +425,11 @@ namespace BinaMitraTextile.Sales
             Tools.displayForm(new ShippingLabels_Form(_sale.id));
         }
 
+        private void btnShippingEnvelope_Click(object sender, EventArgs e)
+        {
+            Tools.displayForm(new ShippingEnvelopes_Form(_sale.id));
+        }
+
         #endregion PRINT METHODS
         /*******************************************************************************************************/
 
