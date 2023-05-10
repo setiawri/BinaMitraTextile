@@ -30,11 +30,11 @@
         {
             this.btnPrint = new System.Windows.Forms.Button();
             this.pnlPrint = new System.Windows.Forms.Panel();
-            this.chkShowPrintDialog = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblShippingAddress = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblShippingAddress = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.chkShowPrintDialog = new System.Windows.Forms.CheckBox();
             this.pnlPrint.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,44 @@
             this.pnlPrint.Size = new System.Drawing.Size(756, 360);
             this.pnlPrint.TabIndex = 148;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 24);
+            this.label3.TabIndex = 149;
+            this.label3.Text = "KEPADA:";
+            // 
+            // lblShippingAddress
+            // 
+            this.lblShippingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShippingAddress.Location = new System.Drawing.Point(3, 118);
+            this.lblShippingAddress.Name = "lblShippingAddress";
+            this.lblShippingAddress.Size = new System.Drawing.Size(516, 227);
+            this.lblShippingAddress.TabIndex = 148;
+            this.lblShippingAddress.Text = "lblShippingAddress";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(3, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(187, 70);
+            this.label8.TabIndex = 147;
+            this.label8.Text = "CV. BINA MITRA TEXTILE\r\nJl. Mayor Sunarya Blok K No. 11A\r\nBandung, Jawa Barat\r\n08" +
+    "1.2240.44338\r\n";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.TabIndex = 146;
+            this.label1.Text = "DARI:";
+            // 
             // chkShowPrintDialog
             // 
             this.chkShowPrintDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -74,44 +112,6 @@
             this.chkShowPrintDialog.TabIndex = 149;
             this.chkShowPrintDialog.Text = "Print dialog";
             this.chkShowPrintDialog.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(16, 35);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(187, 70);
-            this.label8.TabIndex = 147;
-            this.label8.Text = "CV. BINA MITRA TEXTILE\r\nJl. Mayor Sunarya Blok K No. 11A\r\nBandung, Jawa Barat\r\n08" +
-    "1.2240.44338\r\n";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
-            this.label1.TabIndex = 146;
-            this.label1.Text = "DARI:";
-            // 
-            // lblShippingAddress
-            // 
-            this.lblShippingAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShippingAddress.Location = new System.Drawing.Point(227, 104);
-            this.lblShippingAddress.Name = "lblShippingAddress";
-            this.lblShippingAddress.Size = new System.Drawing.Size(453, 210);
-            this.lblShippingAddress.TabIndex = 148;
-            this.lblShippingAddress.Text = "lblShippingAddress";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(227, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 24);
-            this.label3.TabIndex = 149;
-            this.label3.Text = "KEPADA:";
             // 
             // ShippingEnvelopes_Form
             // 
