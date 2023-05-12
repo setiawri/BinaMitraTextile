@@ -90,7 +90,7 @@
             this.itxt_InvoiceNo.ShowFilter = false;
             this.itxt_InvoiceNo.ShowTextboxOnly = false;
             this.itxt_InvoiceNo.Size = new System.Drawing.Size(215, 50);
-            this.itxt_InvoiceNo.TabIndex = 7;
+            this.itxt_InvoiceNo.TabIndex = 1;
             this.itxt_InvoiceNo.ValueText = "";
             // 
             // in_Amount
@@ -121,7 +121,7 @@
             this.in_Amount.ShowCheckbox = false;
             this.in_Amount.ShowTextboxOnly = false;
             this.in_Amount.Size = new System.Drawing.Size(215, 49);
-            this.in_Amount.TabIndex = 6;
+            this.in_Amount.TabIndex = 3;
             this.in_Amount.Value = new decimal(new int[] {
             0,
             0,
@@ -156,7 +156,7 @@
             this.in_TOP.ShowCheckbox = false;
             this.in_TOP.ShowTextboxOnly = false;
             this.in_TOP.Size = new System.Drawing.Size(215, 49);
-            this.in_TOP.TabIndex = 5;
+            this.in_TOP.TabIndex = 2;
             this.in_TOP.Value = new decimal(new int[] {
             0,
             0,
@@ -245,7 +245,7 @@
             this.in_FakturPajak_PPN.ShowCheckbox = false;
             this.in_FakturPajak_PPN.ShowTextboxOnly = false;
             this.in_FakturPajak_PPN.Size = new System.Drawing.Size(215, 49);
-            this.in_FakturPajak_PPN.TabIndex = 7;
+            this.in_FakturPajak_PPN.TabIndex = 3;
             this.in_FakturPajak_PPN.Value = new decimal(new int[] {
             0,
             0,
@@ -281,7 +281,7 @@
             this.in_FakturPajak_DPP.ShowCheckbox = false;
             this.in_FakturPajak_DPP.ShowTextboxOnly = false;
             this.in_FakturPajak_DPP.Size = new System.Drawing.Size(215, 49);
-            this.in_FakturPajak_DPP.TabIndex = 6;
+            this.in_FakturPajak_DPP.TabIndex = 2;
             this.in_FakturPajak_DPP.Value = new decimal(new int[] {
             0,
             0,
@@ -304,7 +304,7 @@
             this.itxt_FakturPajak_No.ShowFilter = false;
             this.itxt_FakturPajak_No.ShowTextboxOnly = false;
             this.itxt_FakturPajak_No.Size = new System.Drawing.Size(215, 50);
-            this.itxt_FakturPajak_No.TabIndex = 5;
+            this.itxt_FakturPajak_No.TabIndex = 1;
             this.itxt_FakturPajak_No.ValueText = "";
             // 
             // lblDiffTotalPajakToAmount

@@ -314,7 +314,7 @@ namespace BinaMitraTextile.Admin
 
             //create PO
             if (items.Count == 0)
-                Tools.showError("No item to generate");
+                Tools.showError("No item to generate. Some items may have never been ordered before and must be created manually for the first time.");
             else
                 Tools.displayForm(new POs.Add_Edit_Form(items));
         }

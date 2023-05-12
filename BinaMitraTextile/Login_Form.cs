@@ -185,7 +185,8 @@ namespace BinaMitraTextile
             if (keyData == (Keys.Control | Keys.C))
             {
                 toggleConnectionProperties();
-                iddl_Ports.focus();
+                rbLocalDB.Focus();
+                //iddl_Ports.focus();
             }
             else if (keyData == (Keys.Control | Keys.L))
             {

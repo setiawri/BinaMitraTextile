@@ -161,11 +161,13 @@ namespace BinaMitraTextile.InventoryForm
             {
                 VendorInvoicePayment.update_Approved(Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id), !Util.getCheckboxValue(sender, e));
                 populateGridVendorInvoicePayments();
+                gridVendorInvoicePaymentItems.DataSource = null;
             }
             else if (Util.isColumnMatch(sender, e, col_gridVendorInvoicePayments_Cancelled))
             {
                 VendorInvoicePayment.update_Cancelled(Util.getClickedRowValue<Guid>(sender, e, col_gridVendorInvoicePayments_Id), !Util.getCheckboxValue(sender, e));
                 populateGridVendorInvoicePayments();
+                gridVendorInvoicePaymentItems.DataSource = null;
             }
         }
 
