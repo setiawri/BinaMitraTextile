@@ -373,8 +373,8 @@ namespace BinaMitraTextile.Admin
         
         private void cbVendors_TextChanged(object sender, EventArgs e)
         {
-            Tools.resetDropDownList(_inputDDLProducts.Dropdownlist);
-            _inputDDLProducts.Enabled = false;
+            //Tools.resetDropDownList(_inputDDLProducts.Dropdownlist);
+            //_inputDDLProducts.Enabled = false;
         }
 
         private void lnkUpdateVendors_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
