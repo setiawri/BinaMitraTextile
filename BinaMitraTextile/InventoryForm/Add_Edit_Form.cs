@@ -328,7 +328,8 @@ namespace BinaMitraTextile.InventoryForm
                 itxt_POItemID.setValue(form.browseItemDescription, form.browseItemSelection);
                 _browsedPOItem = new POItem(form.browseItemSelection);
 
-                txtBuyPrice.Text = _browsedPOItem.PricePerUnit.ToString();
+                if(_formMode== FormMode.New)
+                    txtBuyPrice.Text = _browsedPOItem.PricePerUnit.ToString();
             }
 
             //automatically fill out form

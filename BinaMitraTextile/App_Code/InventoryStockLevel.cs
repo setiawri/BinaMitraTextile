@@ -202,7 +202,7 @@ namespace BinaMitraTextile
 
         public static DataTable getRow(Guid ID)
         {
-            return DBUtil.getRows("inventorystocklevel_get", ID);
+            return DBUtil.getRows("inventorystocklevel_get", ID); 
         }
 
         public static DataTable getAll(Guid? gradeID, Guid? productID, Guid? productWidthID, Guid? lengthUnitID, Guid? colorID, Guid? vendorID, bool hasNewOrderQtyOnly)

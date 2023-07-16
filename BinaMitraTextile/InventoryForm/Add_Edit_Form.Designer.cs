@@ -71,7 +71,7 @@
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(273, 56);
-            this.txtNotes.TabIndex = 7;
+            this.txtNotes.TabIndex = 8;
             // 
             // label5
             // 
@@ -97,7 +97,7 @@
             this.txtBuyPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuyPrice.Name = "txtBuyPrice";
             this.txtBuyPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtBuyPrice.TabIndex = 9;
+            this.txtBuyPrice.TabIndex = 10;
             // 
             // btnAddGrade
             // 
@@ -112,6 +112,7 @@
             this.btnAddGrade.Name = "btnAddGrade";
             this.btnAddGrade.Size = new System.Drawing.Size(20, 20);
             this.btnAddGrade.TabIndex = 121;
+            this.btnAddGrade.TabStop = false;
             this.btnAddGrade.UseVisualStyleBackColor = false;
             this.btnAddGrade.Click += new System.EventHandler(this.btnAddGrade_Click);
             // 
@@ -124,7 +125,7 @@
             this.cbGrades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbGrades.Name = "cbGrades";
             this.cbGrades.Size = new System.Drawing.Size(273, 21);
-            this.cbGrades.TabIndex = 3;
+            this.cbGrades.TabIndex = 4;
             this.cbGrades.SelectedIndexChanged += new System.EventHandler(this.cbGrades_SelectedIndexChanged);
             // 
             // label8
@@ -149,6 +150,7 @@
             this.btnAddColor.Name = "btnAddColor";
             this.btnAddColor.Size = new System.Drawing.Size(20, 20);
             this.btnAddColor.TabIndex = 127;
+            this.btnAddColor.TabStop = false;
             this.btnAddColor.UseVisualStyleBackColor = false;
             this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
             // 
@@ -161,7 +163,7 @@
             this.cbColors.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbColors.Name = "cbColors";
             this.cbColors.Size = new System.Drawing.Size(273, 21);
-            this.cbColors.TabIndex = 6;
+            this.cbColors.TabIndex = 7;
             // 
             // label7
             // 
@@ -185,6 +187,7 @@
             this.btnAddLengthUnit.Name = "btnAddLengthUnit";
             this.btnAddLengthUnit.Size = new System.Drawing.Size(20, 20);
             this.btnAddLengthUnit.TabIndex = 125;
+            this.btnAddLengthUnit.TabStop = false;
             this.btnAddLengthUnit.UseVisualStyleBackColor = false;
             this.btnAddLengthUnit.Click += new System.EventHandler(this.btnAddLengthUnit_Click);
             // 
@@ -201,6 +204,7 @@
             this.btnAddProductWidth.Name = "btnAddProductWidth";
             this.btnAddProductWidth.Size = new System.Drawing.Size(20, 20);
             this.btnAddProductWidth.TabIndex = 123;
+            this.btnAddProductWidth.TabStop = false;
             this.btnAddProductWidth.UseVisualStyleBackColor = false;
             this.btnAddProductWidth.Click += new System.EventHandler(this.btnAddProductWidth_Click);
             // 
@@ -217,6 +221,7 @@
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(20, 20);
             this.btnAddProduct.TabIndex = 119;
+            this.btnAddProduct.TabStop = false;
             this.btnAddProduct.UseVisualStyleBackColor = false;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
@@ -238,7 +243,7 @@
             this.cbProductWidths.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbProductWidths.Name = "cbProductWidths";
             this.cbProductWidths.Size = new System.Drawing.Size(273, 21);
-            this.cbProductWidths.TabIndex = 4;
+            this.cbProductWidths.TabIndex = 5;
             this.cbProductWidths.SelectedIndexChanged += new System.EventHandler(this.cbProductWidths_SelectedIndexChanged);
             // 
             // cbLengthUnits
@@ -250,7 +255,7 @@
             this.cbLengthUnits.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbLengthUnits.Name = "cbLengthUnits";
             this.cbLengthUnits.Size = new System.Drawing.Size(273, 21);
-            this.cbLengthUnits.TabIndex = 5;
+            this.cbLengthUnits.TabIndex = 6;
             this.cbLengthUnits.SelectedIndexChanged += new System.EventHandler(this.cbLengthUnits_SelectedIndexChanged);
             // 
             // label6
@@ -278,7 +283,7 @@
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(103, 23);
-            this.btnSubmit.TabIndex = 10;
+            this.btnSubmit.TabIndex = 11;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -290,7 +295,7 @@
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 11;
+            this.btnReset.TabIndex = 12;
             this.btnReset.Text = "RESET";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -333,7 +338,7 @@
             this.txtCode.MaxLength = 5;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 20);
-            this.txtCode.TabIndex = 8;
+            this.txtCode.TabIndex = 9;
             // 
             // lblCode
             // 
@@ -366,6 +371,7 @@
             this.btnAddVendorInvoice.Name = "btnAddVendorInvoice";
             this.btnAddVendorInvoice.Size = new System.Drawing.Size(20, 20);
             this.btnAddVendorInvoice.TabIndex = 1002;
+            this.btnAddVendorInvoice.TabStop = false;
             this.btnAddVendorInvoice.UseVisualStyleBackColor = false;
             this.btnAddVendorInvoice.Click += new System.EventHandler(this.btnAddVendorInvoice_Click);
             // 
@@ -379,7 +385,7 @@
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.ReadOnly = true;
             this.txtProductName.Size = new System.Drawing.Size(273, 20);
-            this.txtProductName.TabIndex = 1004;
+            this.txtProductName.TabIndex = 3;
             this.txtProductName.Click += new System.EventHandler(this.txtProductName_Click);
             // 
             // itxt_POItemID
@@ -397,7 +403,7 @@
             this.itxt_POItemID.ShowFilter = false;
             this.itxt_POItemID.ShowTextboxOnly = true;
             this.itxt_POItemID.Size = new System.Drawing.Size(300, 26);
-            this.itxt_POItemID.TabIndex = 1006;
+            this.itxt_POItemID.TabIndex = 2;
             this.itxt_POItemID.ValueText = "";
             this.itxt_POItemID.isBrowseMode_Clicked += new System.EventHandler(this.Itxt_POItemID_isBrowseMode_Clicked);
             // 
@@ -416,7 +422,7 @@
             this.iddl_VendorInvoices.SelectedValue = null;
             this.iddl_VendorInvoices.ShowDropdownlistOnly = true;
             this.iddl_VendorInvoices.Size = new System.Drawing.Size(273, 27);
-            this.iddl_VendorInvoices.TabIndex = 1008;
+            this.iddl_VendorInvoices.TabIndex = 1;
             // 
             // Add_Edit_Form
             // 
