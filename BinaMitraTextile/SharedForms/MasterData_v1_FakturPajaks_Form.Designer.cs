@@ -218,6 +218,10 @@
             this.scInputContainer.SplitterDistance = 670;
             this.scInputContainer.SplitterWidth = 7;
             // 
+            // ptInputPanel
+            // 
+            this.ptInputPanel.TabIndex = 0;
+            // 
             // pnlQuickSearch
             // 
             this.pnlQuickSearch.Controls.Add(this.chkShowCompleted);
@@ -225,6 +229,7 @@
             this.pnlQuickSearch.Controls.Add(this.chkCopyCell);
             this.pnlQuickSearch.Margin = new System.Windows.Forms.Padding(5);
             this.pnlQuickSearch.Size = new System.Drawing.Size(1145, 34);
+            this.pnlQuickSearch.TabIndex = 0;
             this.pnlQuickSearch.Controls.SetChildIndex(this.pbRefresh, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.pbLog, 0);
             this.pnlQuickSearch.Controls.SetChildIndex(this.itxt_QuickSearch, 0);
@@ -236,7 +241,7 @@
             // pnlRowInfo
             // 
             this.pnlRowInfo.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 225);
+            this.pnlRowInfo.Size = new System.Drawing.Size(1179, 256);
             // 
             // pnlRowInfoHeaderContainer
             // 
@@ -252,16 +257,17 @@
             // 
             this.pnlRowInfoContent.Controls.Add(this.tcRowInfo);
             this.pnlRowInfoContent.Margin = new System.Windows.Forms.Padding(5);
-            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 199);
+            this.pnlRowInfoContent.Size = new System.Drawing.Size(1179, 230);
             // 
             // itxt_QuickSearch
             // 
             this.itxt_QuickSearch.ShowDeleteButton = true;
+            this.itxt_QuickSearch.TabIndex = 0;
             // 
             // scContent
             // 
             this.scContent.Size = new System.Drawing.Size(1179, 379);
-            this.scContent.SplitterDistance = 150;
+            this.scContent.SplitterDistance = 119;
             // 
             // itxt_Notes
             // 
@@ -278,7 +284,7 @@
             this.itxt_Notes.ShowFilter = false;
             this.itxt_Notes.ShowTextboxOnly = false;
             this.itxt_Notes.Size = new System.Drawing.Size(312, 112);
-            this.itxt_Notes.TabIndex = 5;
+            this.itxt_Notes.TabIndex = 2;
             this.itxt_Notes.ValueText = "";
             // 
             // btnAddSales
@@ -330,7 +336,7 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridSaleInvoices.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.gridSaleInvoices.RowTemplate.Height = 24;
-            this.gridSaleInvoices.Size = new System.Drawing.Size(1163, 95);
+            this.gridSaleInvoices.Size = new System.Drawing.Size(1163, 134);
             this.gridSaleInvoices.TabIndex = 128;
             this.gridSaleInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridSaleInvoices_CellContentClick);
             // 
@@ -510,7 +516,7 @@
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.gridReturns.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.gridReturns.RowTemplate.Height = 24;
-            this.gridReturns.Size = new System.Drawing.Size(1171, 103);
+            this.gridReturns.Size = new System.Drawing.Size(1171, 142);
             this.gridReturns.TabIndex = 108;
             this.gridReturns.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridReturns_CellContentClick);
             // 
@@ -625,10 +631,10 @@
             // 
             this.chkShowCompleted.AutoSize = true;
             this.chkShowCompleted.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowCompleted.Location = new System.Drawing.Point(348, 0);
+            this.chkShowCompleted.Location = new System.Drawing.Point(277, 0);
             this.chkShowCompleted.Name = "chkShowCompleted";
             this.chkShowCompleted.Size = new System.Drawing.Size(88, 32);
-            this.chkShowCompleted.TabIndex = 14;
+            this.chkShowCompleted.TabIndex = 2;
             this.chkShowCompleted.Text = "Show locked";
             this.chkShowCompleted.UseVisualStyleBackColor = true;
             this.chkShowCompleted.CheckedChanged += new System.EventHandler(this.ChkShowCompleted_CheckedChanged);
@@ -644,7 +650,7 @@
             this.tcRowInfo.Margin = new System.Windows.Forms.Padding(4);
             this.tcRowInfo.Name = "tcRowInfo";
             this.tcRowInfo.SelectedIndex = 0;
-            this.tcRowInfo.Size = new System.Drawing.Size(1179, 199);
+            this.tcRowInfo.Size = new System.Drawing.Size(1179, 230);
             this.tcRowInfo.TabIndex = 7;
             // 
             // tpVendorInvoices
@@ -655,7 +661,7 @@
             this.tpVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpVendorInvoices.Name = "tpVendorInvoices";
             this.tpVendorInvoices.Padding = new System.Windows.Forms.Padding(4);
-            this.tpVendorInvoices.Size = new System.Drawing.Size(1171, 173);
+            this.tpVendorInvoices.Size = new System.Drawing.Size(1171, 204);
             this.tpVendorInvoices.TabIndex = 1;
             this.tpVendorInvoices.Text = "Vendor Invoices";
             this.tpVendorInvoices.UseVisualStyleBackColor = true;
@@ -691,7 +697,7 @@
             this.gridVendorInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.gridVendorInvoices.Name = "gridVendorInvoices";
             this.gridVendorInvoices.RowHeadersVisible = false;
-            this.gridVendorInvoices.Size = new System.Drawing.Size(1163, 134);
+            this.gridVendorInvoices.Size = new System.Drawing.Size(1163, 165);
             this.gridVendorInvoices.TabIndex = 129;
             this.gridVendorInvoices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridVendorInvoices_CellContentClick);
             // 
@@ -815,7 +821,7 @@
             this.tpSaleInvoices.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleInvoices.Name = "tpSaleInvoices";
             this.tpSaleInvoices.Padding = new System.Windows.Forms.Padding(4);
-            this.tpSaleInvoices.Size = new System.Drawing.Size(1171, 134);
+            this.tpSaleInvoices.Size = new System.Drawing.Size(1171, 173);
             this.tpSaleInvoices.TabIndex = 0;
             this.tpSaleInvoices.Text = "Sale Invoices";
             this.tpSaleInvoices.UseVisualStyleBackColor = true;
@@ -837,7 +843,7 @@
             this.tpSaleReturns.Location = new System.Drawing.Point(4, 22);
             this.tpSaleReturns.Margin = new System.Windows.Forms.Padding(4);
             this.tpSaleReturns.Name = "tpSaleReturns";
-            this.tpSaleReturns.Size = new System.Drawing.Size(1171, 134);
+            this.tpSaleReturns.Size = new System.Drawing.Size(1171, 173);
             this.tpSaleReturns.TabIndex = 2;
             this.tpSaleReturns.Text = "Sale Returns";
             this.tpSaleReturns.UseVisualStyleBackColor = true;
@@ -884,7 +890,7 @@
             this.chkCopyCell.Margin = new System.Windows.Forms.Padding(4);
             this.chkCopyCell.Name = "chkCopyCell";
             this.chkCopyCell.Size = new System.Drawing.Size(68, 32);
-            this.chkCopyCell.TabIndex = 15;
+            this.chkCopyCell.TabIndex = 3;
             this.chkCopyCell.Text = "copy cell";
             this.chkCopyCell.UseVisualStyleBackColor = true;
             // 
@@ -914,7 +920,7 @@
             this.itxt_No.ShowFilter = false;
             this.itxt_No.ShowTextboxOnly = false;
             this.itxt_No.Size = new System.Drawing.Size(177, 50);
-            this.itxt_No.TabIndex = 5;
+            this.itxt_No.TabIndex = 0;
             this.itxt_No.ValueText = "";
             // 
             // idtp_Timestamp
@@ -931,7 +937,7 @@
             this.idtp_Timestamp.ShowDateTimePickerOnly = false;
             this.idtp_Timestamp.ShowUpAndDown = false;
             this.idtp_Timestamp.Size = new System.Drawing.Size(133, 50);
-            this.idtp_Timestamp.TabIndex = 5;
+            this.idtp_Timestamp.TabIndex = 1;
             this.idtp_Timestamp.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.idtp_Timestamp.ValueTimeSpan = System.TimeSpan.Parse("00:00:00");
             // 
@@ -949,7 +955,7 @@
             this.idtp_MonthFilter.ShowDateTimePickerOnly = false;
             this.idtp_MonthFilter.ShowUpAndDown = false;
             this.idtp_MonthFilter.Size = new System.Drawing.Size(133, 50);
-            this.idtp_MonthFilter.TabIndex = 20;
+            this.idtp_MonthFilter.TabIndex = 0;
             this.idtp_MonthFilter.Value = null;
             this.idtp_MonthFilter.ValueTimeSpan = null;
             // 
@@ -981,7 +987,7 @@
             this.in_DPP.ShowCheckbox = false;
             this.in_DPP.ShowTextboxOnly = false;
             this.in_DPP.Size = new System.Drawing.Size(153, 50);
-            this.in_DPP.TabIndex = 5;
+            this.in_DPP.TabIndex = 0;
             this.in_DPP.Value = new decimal(new int[] {
             0,
             0,
@@ -1017,7 +1023,7 @@
             this.in_PPN.ShowCheckbox = false;
             this.in_PPN.ShowTextboxOnly = false;
             this.in_PPN.Size = new System.Drawing.Size(153, 50);
-            this.in_PPN.TabIndex = 6;
+            this.in_PPN.TabIndex = 1;
             this.in_PPN.Value = new decimal(new int[] {
             0,
             0,
@@ -1039,7 +1045,7 @@
             this.iddl_Vendors.SelectedValue = null;
             this.iddl_Vendors.ShowDropdownlistOnly = false;
             this.iddl_Vendors.Size = new System.Drawing.Size(291, 50);
-            this.iddl_Vendors.TabIndex = 5;
+            this.iddl_Vendors.TabIndex = 2;
             // 
             // iddl_Customers
             // 
@@ -1056,7 +1062,7 @@
             this.iddl_Customers.SelectedValue = null;
             this.iddl_Customers.ShowDropdownlistOnly = false;
             this.iddl_Customers.Size = new System.Drawing.Size(291, 50);
-            this.iddl_Customers.TabIndex = 20;
+            this.iddl_Customers.TabIndex = 3;
             // 
             // MasterData_v1_FakturPajaks_Form
             // 
