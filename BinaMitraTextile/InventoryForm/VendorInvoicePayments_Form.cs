@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Data;
 using LIBUtil;
+using System.Drawing;
 
 namespace BinaMitraTextile.InventoryForm
 {
@@ -46,6 +47,8 @@ namespace BinaMitraTextile.InventoryForm
 
             gridVendorInvoicePayments.AutoGenerateColumns = false;
             gridVendorInvoicePayments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridVendorInvoicePayments.DefaultCellStyle.SelectionBackColor = Color.White;
+            gridVendorInvoicePayments.DefaultCellStyle.SelectionForeColor = Color.Black;
             col_gridVendorInvoicePayments_Id.DataPropertyName = VendorInvoicePayment.COL_DB_Id;
             col_gridVendorInvoicePayments_No.DataPropertyName = VendorInvoicePayment.COL_DB_No;
             col_gridVendorInvoicePayments_Timestamp.DataPropertyName = VendorInvoicePayment.COL_DB_Timestamp;
@@ -58,6 +61,8 @@ namespace BinaMitraTextile.InventoryForm
 
             gridVendorInvoicePaymentItems.AutoGenerateColumns = false;
             gridVendorInvoicePaymentItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridVendorInvoicePaymentItems.DefaultCellStyle.SelectionBackColor = Color.White;
+            gridVendorInvoicePaymentItems.DefaultCellStyle.SelectionForeColor = Color.Black;
             col_gridVendorInvoicePaymentItems_Amount.DataPropertyName = VendorInvoicePaymentItem.COL_DB_Amount;
             col_gridVendorInvoicePaymentItems_VendorInvoices_Id.DataPropertyName = VendorInvoicePaymentItem.COL_DB_VendorInvoices_Id;
             col_gridVendorInvoicePaymentItems_Id.DataPropertyName = VendorInvoicePaymentItem.COL_DB_Id;
