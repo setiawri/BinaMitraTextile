@@ -32,6 +32,7 @@
             this.pnlPrint = new System.Windows.Forms.Panel();
             this.flpShippingLabels = new System.Windows.Forms.FlowLayoutPanel();
             this.chkShowPrintDialog = new System.Windows.Forms.CheckBox();
+            this.in_Qty = new LIBUtil.Desktop.UserControls.InputControl_Numeric();
             this.pnlPrint.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,11 +40,11 @@
             // 
             this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(325, 562);
+            this.btnPrint.Location = new System.Drawing.Point(367, 562);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(129, 36);
-            this.btnPrint.TabIndex = 1;
+            this.btnPrint.TabIndex = 2;
             this.btnPrint.Text = "PRINT";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -70,13 +71,48 @@
             // 
             this.chkShowPrintDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShowPrintDialog.AutoSize = true;
-            this.chkShowPrintDialog.Location = new System.Drawing.Point(326, 544);
+            this.chkShowPrintDialog.Location = new System.Drawing.Point(362, 544);
             this.chkShowPrintDialog.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowPrintDialog.Name = "chkShowPrintDialog";
             this.chkShowPrintDialog.Size = new System.Drawing.Size(78, 17);
-            this.chkShowPrintDialog.TabIndex = 149;
+            this.chkShowPrintDialog.TabIndex = 1;
             this.chkShowPrintDialog.Text = "Print dialog";
             this.chkShowPrintDialog.UseVisualStyleBackColor = true;
+            // 
+            // in_Qty
+            // 
+            this.in_Qty.Checked = false;
+            this.in_Qty.DecimalPlaces = 0;
+            this.in_Qty.HideUpDown = false;
+            this.in_Qty.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.in_Qty.LabelText = "Labels Qty";
+            this.in_Qty.Location = new System.Drawing.Point(283, 542);
+            this.in_Qty.Margin = new System.Windows.Forms.Padding(4);
+            this.in_Qty.MaximumValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.in_Qty.MinimumValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.in_Qty.Name = "in_Qty";
+            this.in_Qty.ShowAllowDecimalCheckbox = false;
+            this.in_Qty.ShowCheckbox = false;
+            this.in_Qty.ShowTextboxOnly = false;
+            this.in_Qty.Size = new System.Drawing.Size(76, 50);
+            this.in_Qty.TabIndex = 0;
+            this.in_Qty.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // ShippingLabels_Form
             // 
@@ -84,6 +120,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(779, 613);
+            this.Controls.Add(this.in_Qty);
             this.Controls.Add(this.chkShowPrintDialog);
             this.Controls.Add(this.pnlPrint);
             this.Controls.Add(this.btnPrint);
@@ -103,5 +140,6 @@
         private System.Windows.Forms.Panel pnlPrint;
         private System.Windows.Forms.CheckBox chkShowPrintDialog;
         private System.Windows.Forms.FlowLayoutPanel flpShippingLabels;
+        private LIBUtil.Desktop.UserControls.InputControl_Numeric in_Qty;
     }
 }

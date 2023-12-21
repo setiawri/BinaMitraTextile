@@ -50,6 +50,7 @@ namespace BinaMitraTextile.Sales
         private void btnPrint_Click(object sender, EventArgs e)
         {
             LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint);
+            this.Close();
         }
 
         #endregion PRINT METHODS

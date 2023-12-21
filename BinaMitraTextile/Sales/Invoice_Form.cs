@@ -422,7 +422,8 @@ namespace BinaMitraTextile.Sales
 
         private void btnShippingLabels_Click(object sender, EventArgs e)
         {
-            Tools.displayForm(new ShippingLabels_Form(_sale.id));
+            int labelsQty = Convert.ToInt32(_data.Compute(String.Format("SUM({0})", InventoryItem.COL_SALE_QTY), ""));
+            Tools.displayForm(new ShippingLabels_Form(_sale.id, labelsQty));
         }
 
         private void btnShippingEnvelope_Click(object sender, EventArgs e)

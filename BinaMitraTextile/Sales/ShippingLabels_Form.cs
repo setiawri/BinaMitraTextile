@@ -12,18 +12,20 @@ namespace BinaMitraTextile.Sales
         #region CLASS VARIABLES
 
         private static Sale _sale;
+        private int _labelsQty = 0;
 
         #endregion CLASS VARIABLES
         /*******************************************************************************************************/
         #region INITIALIZATION
 
-        public ShippingLabels_Form(Guid SaleID)
+        public ShippingLabels_Form(Guid SaleID, int labelsQty)
         {
             InitializeComponent();
 
             Settings.setGeneralSettings(this);
             _sale = new Sale(SaleID);
             Tools.disableResizing(this);
+            in_Qty.Value = labelsQty;
         }
 
         private void Form_Load(object sender, EventArgs e)
@@ -74,7 +76,13 @@ namespace BinaMitraTextile.Sales
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint);
+            int counter = in_Qty.ValueInt;
+            while (counter > 0)
+            {
+                LIBUtil.Util.print(chkShowPrintDialog.Checked, chkShowPrintDialog.Checked, pnlPrint);
+                counter -= flpShippingLabels.Controls.Count;
+            }
+            this.Close();
         }
 
         #endregion PRINT METHODS
