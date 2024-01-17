@@ -65,7 +65,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 14);
+            this.label3.Location = new System.Drawing.Point(15, 3);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(176, 20);
@@ -74,7 +74,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(465, 30);
+            this.label8.Location = new System.Drawing.Point(465, 19);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(236, 57);
@@ -86,7 +86,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(46, 74);
+            this.lblDate.Location = new System.Drawing.Point(46, 63);
             this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(40, 13);
@@ -97,7 +97,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 601);
+            this.label1.Location = new System.Drawing.Point(16, 583);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
@@ -107,7 +107,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 74);
+            this.label4.Location = new System.Drawing.Point(16, 63);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
@@ -116,7 +116,7 @@
             // 
             // lblVendorInfo
             // 
-            this.lblVendorInfo.Location = new System.Drawing.Point(190, 14);
+            this.lblVendorInfo.Location = new System.Drawing.Point(190, 3);
             this.lblVendorInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVendorInfo.Name = "lblVendorInfo";
             this.lblVendorInfo.Size = new System.Drawing.Size(250, 73);
@@ -127,7 +127,7 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(456, 595);
+            this.lblTotalAmount.Location = new System.Drawing.Point(456, 584);
             this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(245, 32);
@@ -157,10 +157,10 @@
             // lblNotes
             // 
             this.lblNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblNotes.Location = new System.Drawing.Point(58, 601);
+            this.lblNotes.Location = new System.Drawing.Point(58, 583);
             this.lblNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(394, 71);
+            this.lblNotes.Size = new System.Drawing.Size(394, 97);
             this.lblNotes.TabIndex = 132;
             this.lblNotes.Text = "lblNotes";
             // 
@@ -168,7 +168,7 @@
             // 
             this.lblPONo.AutoSize = true;
             this.lblPONo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPONo.Location = new System.Drawing.Point(16, 34);
+            this.lblPONo.Location = new System.Drawing.Point(16, 23);
             this.lblPONo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPONo.Name = "lblPONo";
             this.lblPONo.Size = new System.Drawing.Size(94, 16);
@@ -179,7 +179,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(479, 10);
+            this.label2.Location = new System.Drawing.Point(479, 1);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(222, 20);
@@ -224,7 +224,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridPOItems.DefaultCellStyle = dataGridViewCellStyle8;
             this.gridPOItems.Enabled = false;
-            this.gridPOItems.Location = new System.Drawing.Point(19, 89);
+            this.gridPOItems.Location = new System.Drawing.Point(19, 78);
             this.gridPOItems.Margin = new System.Windows.Forms.Padding(2);
             this.gridPOItems.MultiSelect = false;
             this.gridPOItems.Name = "gridPOItems";
