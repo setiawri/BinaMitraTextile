@@ -70,7 +70,7 @@
             this.lbl5rb.Location = new System.Drawing.Point(15, 178);
             this.lbl5rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl5rb.Name = "lbl5rb";
-            this.lbl5rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl5rb.Size = new System.Drawing.Size(21, 13);
             this.lbl5rb.TabIndex = 156;
             this.lbl5rb.Text = "0 x";
             // 
@@ -80,7 +80,7 @@
             this.lbl10rb.Location = new System.Drawing.Point(15, 151);
             this.lbl10rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl10rb.Name = "lbl10rb";
-            this.lbl10rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl10rb.Size = new System.Drawing.Size(21, 13);
             this.lbl10rb.TabIndex = 155;
             this.lbl10rb.Text = "0 x";
             // 
@@ -90,7 +90,7 @@
             this.lbl20rb.Location = new System.Drawing.Point(15, 124);
             this.lbl20rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl20rb.Name = "lbl20rb";
-            this.lbl20rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl20rb.Size = new System.Drawing.Size(21, 13);
             this.lbl20rb.TabIndex = 154;
             this.lbl20rb.Text = "0 x";
             // 
@@ -100,7 +100,7 @@
             this.lbl50rb.Location = new System.Drawing.Point(15, 97);
             this.lbl50rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl50rb.Name = "lbl50rb";
-            this.lbl50rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl50rb.Size = new System.Drawing.Size(21, 13);
             this.lbl50rb.TabIndex = 153;
             this.lbl50rb.Text = "0 x";
             // 
@@ -110,7 +110,7 @@
             this.lbl100rb.Location = new System.Drawing.Point(15, 70);
             this.lbl100rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl100rb.Name = "lbl100rb";
-            this.lbl100rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl100rb.Size = new System.Drawing.Size(21, 13);
             this.lbl100rb.TabIndex = 152;
             this.lbl100rb.Text = "0 x";
             // 
@@ -120,7 +120,7 @@
             this.lbl100.Location = new System.Drawing.Point(217, 178);
             this.lbl100.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl100.Name = "lbl100";
-            this.lbl100.Size = new System.Drawing.Size(23, 16);
+            this.lbl100.Size = new System.Drawing.Size(21, 13);
             this.lbl100.TabIndex = 151;
             this.lbl100.Text = "0 x";
             // 
@@ -130,7 +130,7 @@
             this.lbl200.Location = new System.Drawing.Point(217, 151);
             this.lbl200.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl200.Name = "lbl200";
-            this.lbl200.Size = new System.Drawing.Size(23, 16);
+            this.lbl200.Size = new System.Drawing.Size(21, 13);
             this.lbl200.TabIndex = 150;
             this.lbl200.Text = "0 x";
             // 
@@ -140,7 +140,7 @@
             this.lbl500.Location = new System.Drawing.Point(217, 124);
             this.lbl500.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl500.Name = "lbl500";
-            this.lbl500.Size = new System.Drawing.Size(23, 16);
+            this.lbl500.Size = new System.Drawing.Size(21, 13);
             this.lbl500.TabIndex = 149;
             this.lbl500.Text = "0 x";
             // 
@@ -150,7 +150,7 @@
             this.lbl1rb.Location = new System.Drawing.Point(217, 97);
             this.lbl1rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl1rb.Name = "lbl1rb";
-            this.lbl1rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl1rb.Size = new System.Drawing.Size(21, 13);
             this.lbl1rb.TabIndex = 148;
             this.lbl1rb.Text = "0 x";
             // 
@@ -160,7 +160,7 @@
             this.lbl2rb.Location = new System.Drawing.Point(217, 70);
             this.lbl2rb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl2rb.Name = "lbl2rb";
-            this.lbl2rb.Size = new System.Drawing.Size(23, 16);
+            this.lbl2rb.Size = new System.Drawing.Size(21, 13);
             this.lbl2rb.TabIndex = 147;
             this.lbl2rb.Text = "0 x";
             // 
@@ -188,7 +188,7 @@
             // btnResetCalculator
             // 
             this.btnResetCalculator.Location = new System.Drawing.Point(15, 207);
-            this.btnResetCalculator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetCalculator.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetCalculator.Name = "btnResetCalculator";
             this.btnResetCalculator.Size = new System.Drawing.Size(69, 55);
             this.btnResetCalculator.TabIndex = 145;
@@ -213,7 +213,7 @@
             this.label13.Location = new System.Drawing.Point(251, 178);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(28, 16);
+            this.label13.Size = new System.Drawing.Size(25, 13);
             this.label13.TabIndex = 131;
             this.label13.Text = "100";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,7 +224,7 @@
             this.label12.Location = new System.Drawing.Point(251, 151);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 16);
+            this.label12.Size = new System.Drawing.Size(25, 13);
             this.label12.TabIndex = 130;
             this.label12.Text = "200";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -235,7 +235,7 @@
             this.label11.Location = new System.Drawing.Point(251, 124);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 16);
+            this.label11.Size = new System.Drawing.Size(25, 13);
             this.label11.TabIndex = 129;
             this.label11.Text = "500";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -246,7 +246,7 @@
             this.label10.Location = new System.Drawing.Point(255, 97);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(26, 16);
+            this.label10.Size = new System.Drawing.Size(22, 13);
             this.label10.TabIndex = 128;
             this.label10.Text = "1rb";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -257,7 +257,7 @@
             this.label9.Location = new System.Drawing.Point(255, 70);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 16);
+            this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 127;
             this.label9.Text = "2rb";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -268,7 +268,7 @@
             this.label7.Location = new System.Drawing.Point(61, 178);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 16);
+            this.label7.Size = new System.Drawing.Size(22, 13);
             this.label7.TabIndex = 126;
             this.label7.Text = "5rb";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,7 +279,7 @@
             this.label6.Location = new System.Drawing.Point(53, 151);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 16);
+            this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 125;
             this.label6.Text = "10rb";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -290,7 +290,7 @@
             this.label5.Location = new System.Drawing.Point(53, 124);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 16);
+            this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 124;
             this.label5.Text = "20rb";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -301,7 +301,7 @@
             this.label8.Location = new System.Drawing.Point(53, 97);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 16);
+            this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 123;
             this.label8.Text = "50rb";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -312,7 +312,7 @@
             this.label14.Location = new System.Drawing.Point(45, 70);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(40, 16);
+            this.label14.Size = new System.Drawing.Size(34, 13);
             this.label14.TabIndex = 122;
             this.label14.Text = "100rb";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -351,6 +351,7 @@
             0,
             0,
             0});
+            this.in_100.ValueChanged += new System.EventHandler(this.in_Calculator_ValueChanged);
             // 
             // in_200
             // 
@@ -386,6 +387,7 @@
             0,
             0,
             0});
+            this.in_200.ValueChanged += new System.EventHandler(this.in_Calculator_ValueChanged);
             // 
             // in_500
             // 
@@ -421,6 +423,7 @@
             0,
             0,
             0});
+            this.in_500.ValueChanged += new System.EventHandler(this.in_Calculator_ValueChanged);
             // 
             // in_1rb
             // 
@@ -456,6 +459,7 @@
             0,
             0,
             0});
+            this.in_1rb.ValueChanged += new System.EventHandler(this.in_Calculator_ValueChanged);
             // 
             // in_2rb
             // 
@@ -491,6 +495,7 @@
             0,
             0,
             0});
+            this.in_2rb.ValueChanged += new System.EventHandler(this.in_Calculator_ValueChanged);
             // 
             // in_5rb
             // 
@@ -711,7 +716,7 @@
             this.Controls.Add(this.in_50rb);
             this.Controls.Add(this.in_100rb);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Calculator_Form";
             this.Text = "CALCULATOR";
             this.Load += new System.EventHandler(this.Form_Load);
