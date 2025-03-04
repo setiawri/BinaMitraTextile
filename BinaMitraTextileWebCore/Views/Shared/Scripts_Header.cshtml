@@ -1,0 +1,64 @@
+﻿
+<base href="" />
+<title>@ViewBag.Title</title>
+<meta charset="utf-8" />
+
+<link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+
+<!--begin::Fonts(mandatory for all pages)-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+<!--end::Fonts-->
+<!--begin::Vendor Stylesheets-->
+<link rel="stylesheet" type="text/css" href="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" />
+<link rel="stylesheet" type="text/css" href="~/assets/plugins/custom/datatables/datatables.bundle.css" />
+
+<!--end::Vendor Stylesheets-->
+<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+<link rel="stylesheet" type="text/css" href="~/assets/plugins/global/plugins.bundle.css" />
+<link rel="stylesheet" type="text/css" href="~/assets/css/style.bundle.css" />
+<!--end::Global Stylesheets Bundle-->
+
+<style>
+
+    .tablecellwrap {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .required::before {
+        content: "*";
+        position: relative;
+        font-size: inherit;
+        color: var(--bs-danger);
+        padding-right: 0.25rem;
+        font-weight: 600;
+    }
+
+    /* Change hover color on table-hover */
+    .table-hover > tbody > tr:hover {
+        background-color: #f8f9f9;
+    }
+
+    /* to override css in bundle.cs for the first and last column of tables */
+    .table:not(.table-bordered) tr:first-child, .table:not(.table-bordered) th:first-child, .table:not(.table-bordered) td:first-child {
+        padding-left: 10px;    
+    }
+    .table:not(.table-bordered) tr:last-child, .table:not(.table-bordered) th:last-child, .table:not(.table-bordered) td:last-child {
+        padding-right: 10px;
+    }
+
+</style>
+
+@if (ViewBag.PrintingPage == true)
+{
+    <style>
+
+        /* Force printer to print as shown on web */
+        * {
+            -webkit-print-color-adjust: exact !important; /* Chrome, Safari 6 – 15.3, Edge */
+            color-adjust: exact !important; /* Firefox 48 – 96 */
+            print-color-adjust: exact !important; /* Firefox 97+, Safari 15.4+ */
+        }
+
+    </style>
+}

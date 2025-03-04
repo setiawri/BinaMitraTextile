@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using LIBUtil;
+using System.Windows.Forms;
 
 namespace BinaMitraTextile
 {
@@ -537,7 +538,8 @@ namespace BinaMitraTextile
             using (SqlCommand cmd = new SqlCommand("Sales_get", DBConnection.ActiveSqlConnection))
             using (SqlDataAdapter adapter = new SqlDataAdapter())
             {
-                cmd.CommandType = CommandType.StoredProcedure; 
+                cmd.CommandTimeout = DBConnection.SQLCOMMANDTIMEOUT;
+				cmd.CommandType = CommandType.StoredProcedure; 
                 cmd.Parameters.Add("@date_start", SqlDbType.DateTime).Value = (object)dateStart ?? DBNull.Value;
                 cmd.Parameters.Add("@date_end", SqlDbType.DateTime).Value = (object)dateEnd ?? DBNull.Value;
                 cmd.Parameters.Add("@inventory_item_id", SqlDbType.UniqueIdentifier).Value = (object)inventoryID ?? DBNull.Value;

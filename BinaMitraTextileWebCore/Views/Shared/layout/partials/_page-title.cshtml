@@ -1,0 +1,35 @@
+<!--begin::Page title-->
+<div data-kt-swapper="true" data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_header_wrapper'}" class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-5 mb-lg-0">
+    <!--begin::Title-->
+    <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
+        @ViewBag.PageTitle
+    </h1>
+    <!--end::Title-->
+    <!--begin::Breadcrumb-->
+    @if (ViewBag.Breadcrumb != null)
+    {
+        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+            @{ List<Breadcrumb> breadcrumbs = ViewBag.Breadcrumb as List<Breadcrumb>; }
+            @if (breadcrumbs.Count > 0)
+            {
+                <li class="breadcrumb-item"><a href="@Url.Action(nameof(iSpeakCore.Controllers.HomeController.Index), iSpeakCore.Controllers.HomeController.CONTROLLERNAME)" class="text-hover-primary fs-6">Home</a></li>
+                foreach (Breadcrumb breadcrumb in breadcrumbs)
+                {
+                    <li class="breadcrumb-item text-muted"><span class="menu-icon"><i class="ki-solid ki-right align-bottom fs-4"></i></span></li>
+                    <li class="breadcrumb-item fs-6">
+                        @if (!string.IsNullOrWhiteSpace(breadcrumb.URL))
+                        {
+                            <a href="@breadcrumb.URL" class="text-hover-primary">@breadcrumb.DisplayText</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">@breadcrumb.DisplayText</span>
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    }
+    <!--end::Breadcrumb-->
+</div>
+<!--end::Page title-->

@@ -196,7 +196,7 @@ namespace BinaMitraTextile.InventoryForm
             } 
             else if(rb108_7x5.Checked)
             {
-                startX = 0 + in_ManualOffsetX.ValueInt;
+                startX = 10 + in_ManualOffsetX.ValueInt;
                 startY = 4 + in_ManualOffsetY.ValueInt;
                 gapX = 11;
                 gapY = 25;
