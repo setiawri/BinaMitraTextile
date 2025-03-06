@@ -11,7 +11,7 @@ namespace BinaMitraTextile
     {
         public static string autologinusername = "";
 
-        public static string bypass_password1 = "qer";
+        public static string bypass_password1 = "qef";
         public static string autologinusername1 = "ricky";
         public static string bypass_password2 = "adf";
         public static string autologinusername2 = "lixia";
