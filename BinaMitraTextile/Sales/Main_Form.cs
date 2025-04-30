@@ -78,7 +78,7 @@ namespace BinaMitraTextile.Sales
                 col_gridmaster_completed.Visible = false;
                 col_gridmaster_isReported.Visible = false;
                 col_gridmaster_taxno.Visible = false;
-                col_gridMaster_isManualAdjustment.Visible = false;
+                //col_gridMaster_isManualAdjustment.Visible = false;
                 col_gridmaster_SaleCommission_Users_Name.Visible = false;
                 
                 col_gridSummary_isManualAdjustment.Visible = false;
