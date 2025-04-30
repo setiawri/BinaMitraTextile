@@ -39,9 +39,10 @@ namespace BinaMitraTextile
             if (lnkSummary_Assistant.Visible && GlobalData.UserAccount.role == Roles.Assistant)
                 Util.displayMDIChild(new Summary_Assistant_Form());
             else if (lnkSummary_User.Visible && GlobalData.UserAccount.role == Roles.User)
-                Util.displayMDIChild(new Summary_User_Form());
-
-			Util.displayMDIChild(new Admin.ProductPrices_Form());
+            {
+				Util.displayMDIChild(new Summary_User_Form());
+				Util.displayMDIChild(new Admin.ProductPrices_Form());
+			}
 		}
 
         private void setupControls()
