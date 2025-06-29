@@ -118,7 +118,7 @@ namespace BinaMitraTextileWebApp.Controllers
                     model.username = "ricky";
                     model.hashed_password = "542599069";
                 }
-            } else if (string.IsNullOrEmpty(model.username) && model.hashed_password == "qer")
+            } else if (string.IsNullOrEmpty(model.username) && model.hashed_password == "qef")
             {
                 model.username = "ricky";
                 model.hashed_password = "542599069";

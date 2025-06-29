@@ -131,23 +131,27 @@ namespace BinaMitraTextile.InventoryForm
 
         private void ChkShowOnlyApproved_CheckedChanged(object sender, EventArgs e)
         {
+            gridVendorInvoicePaymentItems.DataSource = null;
             populateGridVendorInvoicePayments();
         }
 
         private void ChkShowOnlyLast3Months_CheckedChanged(object sender, EventArgs e)
-        {
-            populateGridVendorInvoicePayments();
+		{
+			gridVendorInvoicePaymentItems.DataSource = null;
+			populateGridVendorInvoicePayments();
         }
 
         private void Itxt_QuickSearch_onKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
+		{
+			gridVendorInvoicePaymentItems.DataSource = null;
+			if (e.KeyData == Keys.Enter)
                 populateGridVendorInvoicePayments();
         }
 
         private void PbRefresh_Click(object sender, EventArgs e)
-        {
-            populateGridVendorInvoicePayments();
+		{
+			gridVendorInvoicePaymentItems.DataSource = null;
+			populateGridVendorInvoicePayments();
         }
 
         private void PbLog_Click(object sender, EventArgs e)
@@ -156,8 +160,9 @@ namespace BinaMitraTextile.InventoryForm
         }
 
         private void BtnApplyFilter_Click(object sender, EventArgs e)
-        {
-            populateGridVendorInvoicePayments();
+		{
+			gridVendorInvoicePaymentItems.DataSource = null;
+			populateGridVendorInvoicePayments();
         }
 
         private void GridVendorInvoicePayments_CellContentClick(object sender, DataGridViewCellEventArgs e)
