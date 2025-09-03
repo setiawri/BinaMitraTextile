@@ -71,13 +71,13 @@
         return newMonth;
     }
 
-    function MonthsDropdownChange(id, action) {
-        if (action == '@EnumActions.Previous.ToString()') {
-            DropdownChange(id, getMonthDropDownValue($('#' + id).val(), -1));
-        } else {
-            DropdownChange(id, getMonthDropDownValue($('#' + id).val(), 1));
-        }
-    }
+    @*// function MonthsDropdownChange(id, action) {
+    //     if (action == '@EnumActions.Previous.ToString()') {
+    //         DropdownChange(id, getMonthDropDownValue($('#' + id).val(), -1));
+    //     } else {
+    //         DropdownChange(id, getMonthDropDownValue($('#' + id).val(), 1));
+    //     }
+    // }*@
 
     function DropdownChange(id, value) {
         $('#' + id).val(value).trigger('change');
@@ -707,7 +707,7 @@
             window.top.location.replace(window.self.location.href);
         }
 
-        // // Fix for error in browser console "The connection to wss://localhost:44302/iSpeakCore/ was interrupted while the page was loading""
+        // // Fix for error in browser console "The connection to wss://localhost:44302/BinaMitraTextileWebCore/ was interrupted while the page was loading""
         // $(window).on('beforeunload', function(){
         //     socket.close();
         // });

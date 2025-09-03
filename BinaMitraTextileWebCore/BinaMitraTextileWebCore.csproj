@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,9 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="HelperClasses\Helper.cs" />
+    <Compile Remove="HelperClasses\HelperClasses.cs" />
+    <Compile Remove="HelperClasses\HelperVariables.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\assets\appresources\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="HelperClasses\Helper.cs" />
+    <None Include="HelperClasses\HelperClasses.cs" />
+    <None Include="HelperClasses\HelperVariables.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.17" />
   </ItemGroup>
 
 </Project>
