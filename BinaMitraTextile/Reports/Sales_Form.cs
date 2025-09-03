@@ -98,7 +98,6 @@ namespace BinaMitraTextile.Reports
             col_griddetail_amount.Visible = false;
             col_griddetail_profit.Visible = false;
             col_griddetail_profitpercent.Visible = false;
-			//col_griddetail_other.Visible = false;
 
 			col_dgvDetailByProducts_profit_amount.Visible = false;
             col_dgvDetailByProducts_profit_percent.Visible = false;
@@ -117,7 +116,8 @@ namespace BinaMitraTextile.Reports
                 tcCharts.TabPages.Remove(tpSales);
                 tcCharts.TabPages.Remove(tpProfit);
                 chkIsReported.Visible = false;
-            }
+				col_griddetail_other.Visible = false;
+			}
         }
 
         private void populatePageData()
