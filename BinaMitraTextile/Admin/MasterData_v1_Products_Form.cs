@@ -19,7 +19,8 @@ namespace BinaMitraTextile.Admin
         private DataGridViewColumn col_dgv_ProductStoreName;
         private DataGridViewColumn col_dgv_NameVendor;
         private DataGridViewColumn col_dgv_Vendors_Name;
-        private DataGridViewColumn col_dgv_PercentageOfPercentCommission;
+		private DataGridViewColumn col_dgv_Company_Name;
+		private DataGridViewColumn col_dgv_PercentageOfPercentCommission;
         private DataGridViewColumn col_dgv_MaxCommissionAmount;
         private DataGridViewColumn col_dgv_Active;
         private DataGridViewColumn col_dgv_Notes;
@@ -44,11 +45,14 @@ namespace BinaMitraTextile.Admin
             Settings.setGeneralSettings(this);
             scContent.Panel2Collapsed = true;
 
-            setColumnsDataPropertyNames(Product.COL_DB_ID, Product.COL_DB_ACTIVE, null, null, null, null);
+			iddl_Companies.populate<Companies>();
+
+			setColumnsDataPropertyNames(Product.COL_DB_ID, Product.COL_DB_ACTIVE, null, null, null, null);
             col_dgv_ProductStoreName = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_ProductStoreName", iddl_ProductStoreNames.LabelText, Product.COL_STORENAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_NameVendor = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_NameVendor", itxt_NameVendor.LabelText, Product.COL_DB_NAMEVENDOR, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
             col_dgv_Vendors_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Vendors_Name", iddl_Vendors.LabelText, Product.COL_VENDORNAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
-            col_dgv_PercentageOfPercentCommission = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_PercentageOfPercentCommission", "%of%", Product.COL_DB_PercentageOfPercentCommission, true, true, "N2", false, false, 40, DataGridViewContentAlignment.MiddleRight);
+			col_dgv_Company_Name = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Company_Name", iddl_Companies.LabelText, Product.COL_COMPANYNAME, true, true, "", true, false, 50, DataGridViewContentAlignment.MiddleLeft);
+			col_dgv_PercentageOfPercentCommission = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_PercentageOfPercentCommission", "%of%", Product.COL_DB_PercentageOfPercentCommission, true, true, "N2", false, false, 40, DataGridViewContentAlignment.MiddleRight);
             col_dgv_MaxCommissionAmount = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_MaxCommission", "Max", Product.COL_DB_MaxCommissionAmount, true, true, "N0", false, false, 30, DataGridViewContentAlignment.MiddleRight);
 
             col_dgv_Notes = base.addColumn<DataGridViewTextBoxCell>(dgv, "col_dgv_Notes", itxt_Notes.LabelText, Product.COL_DB_NOTES, true, true, "", true, true, null, DataGridViewContentAlignment.MiddleLeft);
@@ -56,8 +60,9 @@ namespace BinaMitraTextile.Admin
 
             ProductStoreName.populateInputControlDropDownList(iddl_ProductStoreNames, true);
             Vendor.populateDropDownList(iddl_Vendors.Dropdownlist.combobox, false, true);
+			iddl_Companies.populate<Companies>();
 
-            InputToDisableOnSearch.Add(in_PercentageOfPercentCommission);
+			InputToDisableOnSearch.Add(in_PercentageOfPercentCommission);
             InputToDisableOnSearch.Add(in_MaxCommissionAmount);
 
             ptInputPanel.PerformClick();
@@ -84,6 +89,7 @@ namespace BinaMitraTextile.Admin
             in_PercentageOfPercentCommission.Value = 100;
             in_MaxCommissionAmount.reset();
             iddl_Vendors.reset();
+            iddl_Companies.reset();
             itxt_Notes.reset();
         }
 
@@ -106,6 +112,7 @@ namespace BinaMitraTextile.Admin
             iddl_ProductStoreNames.SelectedValue = obj.StoreNameID;
             itxt_NameVendor.ValueText = obj.NameVendor;
             iddl_Vendors.SelectedValue = obj.VendorID;
+            iddl_Companies.SelectedValue = obj.Company;
             in_PercentageOfPercentCommission.Value = obj.PercentageOfPercentCommission;
             in_MaxCommissionAmount.Value = obj.MaxCommissionAmount;
             itxt_Notes.ValueText = obj.Notes;
@@ -113,12 +120,12 @@ namespace BinaMitraTextile.Admin
 
         protected override void update()
         {
-            Product.update(selectedRowID(), (Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, in_PercentageOfPercentCommission.ValueDecimal, in_MaxCommissionAmount.Value, itxt_Notes.ValueText);
+            Product.update(selectedRowID(), (Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, (Companies)iddl_Companies.SelectedValue, in_PercentageOfPercentCommission.ValueDecimal, in_MaxCommissionAmount.Value, itxt_Notes.ValueText);
         }
 
         protected override void add()
         {
-            Product.add((Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, in_PercentageOfPercentCommission.ValueDecimal, in_MaxCommissionAmount.Value, itxt_Notes.ValueText);
+            Product.add((Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, (Companies)iddl_Companies.SelectedValue, in_PercentageOfPercentCommission.ValueDecimal, in_MaxCommissionAmount.Value, itxt_Notes.ValueText);
         }
 
         protected override Boolean isInputFieldsValid()
@@ -129,7 +136,9 @@ namespace BinaMitraTextile.Admin
                 return iddl_ProductStoreNames.SelectedValueError("Please input product name (vendor)");
             else if (!iddl_Vendors.hasSelectedValue())
                 return iddl_ProductStoreNames.SelectedValueError("Please select a vendor");
-            else if ((Mode != FormModes.Update && Product.isNameCombinationExist((Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, null))
+			else if (!iddl_Companies.hasSelectedValue())
+				return iddl_Companies.SelectedValueError("Please select a company");
+			else if ((Mode != FormModes.Update && Product.isNameCombinationExist((Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, null))
                 || (Mode == FormModes.Update && Product.isNameCombinationExist((Guid)iddl_ProductStoreNames.SelectedValue, itxt_NameVendor.ValueText, (Guid)iddl_Vendors.SelectedValue, selectedRowID())))
                 return iddl_ProductStoreNames.SelectedValueError("Product Name (Store) combination with Product Name (Vendor) and Vendor is already in the list");
 

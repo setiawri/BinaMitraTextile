@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BinaMitraTextile
 {
-    public enum FormMode
+	public enum Companies
+	{
+		CV,
+		Pribadi
+	};
+
+	public enum FormMode
     {
         Search,
         New,
