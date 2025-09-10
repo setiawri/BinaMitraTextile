@@ -180,6 +180,7 @@ namespace BinaMitraTextile.InventoryForm
             {
                 _browsedProductID = form.BrowsedItemSelectionId;
                 Product obj = new Product(form.BrowsedItemSelectionId);
+                _browsedProductStorenameID = obj.StoreNameID;
                 populateProductName(obj.StoreName, obj.NameVendor);
 
                 updateBuyPrice();
@@ -306,17 +307,20 @@ namespace BinaMitraTextile.InventoryForm
 
         private void cbGrades_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateBuyPrice();
+            if(_isFormShown)
+                updateBuyPrice();
         }
 
         private void cbProductWidths_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            updateBuyPrice();
+		{
+			if (_isFormShown)
+				updateBuyPrice();
         }
 
         private void cbLengthUnits_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            updateBuyPrice();
+		{
+			if (_isFormShown)
+				updateBuyPrice();
         }
 
         private void Itxt_POItemID_isBrowseMode_Clicked(object sender, EventArgs e)
