@@ -83,31 +83,41 @@ namespace BinaMitraTextile
         public const string COL_CHART_QTY = "sale_qty";
         public const string COL_CHART_TOTAL = "sale_total";
         public const string COL_CHART_PROFIT = "profit";
-        public const string COL_CHART_PERCENT = "sale_profit_percent";
+		public const string COL_CHART_OTHER = "sale_other";
+		public const string COL_CHART_PERCENT = "sale_profit_percent";
+		public const string COL_CHART_PROFITWITHOUTOTHER = "profitWithoutOther";
+		public const string COL_CHART_PERCENT_WITHOUTOTHER = "sale_profit_percent_WithoutOther";
 
-        public const string COL_CHARTSUMMARYBYCUSTOMERS_CUSTOMERID = "customer_id";
+		public const string COL_CHARTSUMMARYBYCUSTOMERS_CUSTOMERID = "customer_id";
         public const string COL_CHARTSUMMARYBYCUSTOMERS_CUSTOMERNAME = "customer_name";
         public const string COL_CHARTSUMMARYBYCUSTOMERS_SALEQTY = "sale_length";
         public const string COL_CHARTSUMMARYBYCUSTOMERS_SALEAMOUNT = "sale_amount";
-        public const string COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNT = "profit_amount";
+		public const string COL_CHARTSUMMARYBYCUSTOMERS_OTHERAMOUNT = "sale_other";
+		public const string COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNT = "profit_amount";
         public const string COL_CHARTSUMMARYBYCUSTOMERS_PROFITPERCENT = "profit_percent";
+		public const string COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNTWITHOUTOTHER = "profit_amount_WithoutOther";
+		public const string COL_CHARTSUMMARYBYCUSTOMERS_PROFITPERCENTWITHOUTOTHER = "profit_percent_WithoutOther";
 
-        public const string COL_CHARTDETAILBYSALES_SALEID = "sale_id";
+		public const string COL_CHARTDETAILBYSALES_SALEID = "sale_id";
         public const string COL_CHARTDETAILBYSALES_TIMESTAMP = "time_stamp";
         public const string COL_CHARTDETAILBYSALES_SALEBARCODE = "barcode";
         public const string COL_CHARTDETAILBYSALES_CUSTOMERNAME = "customer_name";
         public const string COL_CHARTDETAILBYSALES_SALEPCS = "sale_pcs";
         public const string COL_CHARTDETAILBYSALES_SALEQTY = "sale_length";
         public const string COL_CHARTDETAILBYSALES_SALEAMOUNT = "sale_amount";
-        public const string COL_CHARTDETAILBYSALES_PROFITAMOUNT = "profit";
+		public const string COL_CHARTDETAILBYSALES_OTHERAMOUNT = "sale_otheramount";
+		public const string COL_CHARTDETAILBYSALES_PROFITAMOUNT = "profit";
         public const string COL_CHARTDETAILBYSALES_PROFITPERCENT = "profit_percent";
+		public const string COL_CHARTDETAILBYSALES_PROFITAMOUNTWITHOUTOTHER = "profitWithoutOther";
+		public const string COL_CHARTDETAILBYSALES_PROFITPERCENTWITHOUTOTHER = "profit_percent_WithoutOther";
 
-        public const string COL_CHARTDETAILBYPRODUCTS_PRODUCTID = "product_id";
+		public const string COL_CHARTDETAILBYPRODUCTS_PRODUCTID = "product_id";
         public const string COL_CHARTDETAILBYPRODUCTS_PRODUCTNAME = "product_name";
         public const string COL_CHARTDETAILBYPRODUCTS_SALEPCS = "sale_pcs";
         public const string COL_CHARTDETAILBYPRODUCTS_SALEQTY = "sale_length";
         public const string COL_CHARTDETAILBYPRODUCTS_SALEAMOUNT = "sale_amount";
-        public const string COL_CHARTDETAILBYPRODUCTS_PROFITAMOUNT = "profit_amount";
+		public const string COL_CHARTDETAILBYPRODUCTS_OTHERAMOUNT = "sale_other";
+		public const string COL_CHARTDETAILBYPRODUCTS_PROFITAMOUNT = "profit_amount";
         public const string COL_CHARTDETAILBYPRODUCTS_PROFITPERCENT = "profit_percent";
         public const string COL_CHARTDETAILBYPRODUCTS_GRADE = "grade_name";
 
@@ -116,12 +126,15 @@ namespace BinaMitraTextile
         public const string COL_CHARTDETAILBYCUSTOMERS_SALEPCS = "sale_pcs";
         public const string COL_CHARTDETAILBYCUSTOMERS_SALEQTY = "sale_length";
         public const string COL_CHARTDETAILBYCUSTOMERS_SALEAMOUNT = "sale_amount";
-        public const string COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNT = "profit_amount";
+		public const string COL_CHARTDETAILBYCUSTOMERS_OTHERAMOUNT = "sale_other";
+		public const string COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNT = "profit_amount";
         public const string COL_CHARTDETAILBYCUSTOMERS_PROFITPERCENT = "profit_percent";
+		public const string COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNTWITHOUTOTHER = "profit_amount_WithoutOther";
+		public const string COL_CHARTDETAILBYCUSTOMERS_PROFITPERCENTWITHOUTOTHER = "profit_percent_WithoutOther";
 
-        //*************************************************************************
+		//*************************************************************************
 
-        public Guid id;
+		public Guid id;
         public DateTime time_stamp;
         public Guid? customer_id;
         public Guid? Vendors_Id;

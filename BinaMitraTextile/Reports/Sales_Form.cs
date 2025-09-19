@@ -39,6 +39,7 @@ namespace BinaMitraTextile.Reports
             col_gridsummary_qty.DataPropertyName = Sale.COL_CHART_QTY;
             col_gridsummary_sales.DataPropertyName = Sale.COL_CHART_TOTAL;
             col_gridsummary_profit.DataPropertyName = Sale.COL_CHART_PROFIT;
+            col_gridsummary_other.DataPropertyName = Sale.COL_CHART_OTHER;
             col_gridsummary_percentage.DataPropertyName = Sale.COL_CHART_PERCENT;
 
             gridSummaryByCustomers.AutoGenerateColumns = false;
@@ -47,10 +48,11 @@ namespace BinaMitraTextile.Reports
             col_dgvSummaryByCustomers_customer_name.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_CUSTOMERNAME;
             col_dgvSummaryByCustomers_sale_length.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_SALEQTY;
             col_dgvSummaryByCustomers_sale_amount.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_SALEAMOUNT;
-            col_dgvSummaryByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNT;
+			col_dgvSummaryByCustomers_other_amount.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_OTHERAMOUNT;
+			col_dgvSummaryByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNT;
             col_dgvSummaryByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITPERCENT;
 
-            dgvDetailBySales.AutoGenerateColumns = false;
+			dgvDetailBySales.AutoGenerateColumns = false;
             dgvDetailBySales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             //Tools.clearWhenSelected(dgvDetailBySales);
             col_griddetail_saleid.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_SALEID;
@@ -60,7 +62,8 @@ namespace BinaMitraTextile.Reports
             col_griddetail_pcs.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_SALEPCS;
             col_griddetail_qty.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_SALEQTY;
             col_griddetail_amount.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_SALEAMOUNT;
-            col_griddetail_profit.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITAMOUNT;
+			col_griddetail_other.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_OTHERAMOUNT;
+			col_griddetail_profit.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITAMOUNT;
             col_griddetail_profitpercent.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITPERCENT;
 
             dgvDetailByProducts.AutoGenerateColumns = false;
@@ -70,7 +73,8 @@ namespace BinaMitraTextile.Reports
             col_dgvDetailByProducts_sale_qty.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_SALEPCS;
             col_dgvDetailByProducts_sale_length.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_SALEQTY;
             col_dgvDetailByProducts_sale_amount.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_SALEAMOUNT;
-            col_dgvDetailByProducts_profit_amount.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_PROFITAMOUNT;
+			//col_dgvDetailByProducts_other_amount.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_OTHERAMOUNT;
+			col_dgvDetailByProducts_profit_amount.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_PROFITAMOUNT;
             col_dgvDetailByProducts_profit_percent.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_PROFITPERCENT;
             col_dgvDetailByProducts_grade.DataPropertyName = Sale.COL_CHARTDETAILBYPRODUCTS_GRADE;
 
@@ -81,15 +85,17 @@ namespace BinaMitraTextile.Reports
             col_dgvDetailByCustomers_sale_qty.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_SALEPCS;
             col_dgvDetailByCustomers_sale_length.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_SALEQTY;
             col_dgvDetailByCustomers_sale_amount.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_SALEAMOUNT;
-            col_dgvDetailByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNT;
+			col_dgvDetailByCustomers_other_amount.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_OTHERAMOUNT;
+			col_dgvDetailByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNT;
             col_dgvDetailByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITPERCENT;
 
-            clearCharts();
+			clearCharts();
 
             //Hidden
             col_gridsummary_sales.Visible = false;
             col_gridsummary_profit.Visible = false;
-            col_gridsummary_percentage.Visible = false;
+			col_gridsummary_other.Visible = false;
+			col_gridsummary_percentage.Visible = false;
 
             col_dgvSummaryByCustomers_sale_amount.Visible = false;
             col_dgvSummaryByCustomers_profit_amount.Visible = false;
@@ -102,12 +108,14 @@ namespace BinaMitraTextile.Reports
 			col_dgvDetailByProducts_profit_amount.Visible = false;
             col_dgvDetailByProducts_profit_percent.Visible = false;
             col_dgvDetailByProducts_sale_amount.Visible = false;
+			//col_dgvDetailByProducts_other_amount.Visible = false;
 
-            col_dgvDetailByCustomers_profit_amount.Visible = false;
+			col_dgvDetailByCustomers_profit_amount.Visible = false;
             col_dgvDetailByCustomers_profit_percent.Visible = false;
             col_dgvDetailByCustomers_sale_amount.Visible = false;
+			col_dgvDetailByCustomers_other_amount.Visible = false;
 
-            if (GlobalData.UserAccount.role != Roles.Super)
+			if (GlobalData.UserAccount.role != Roles.Super)
             {
                 chkShowHidden.Visible = false;
 
@@ -437,7 +445,8 @@ namespace BinaMitraTextile.Reports
         {
             col_gridsummary_sales.Visible = chkShowHidden.Checked;
             col_gridsummary_profit.Visible = chkShowHidden.Checked;
-            col_gridsummary_percentage.Visible = chkShowHidden.Checked;
+			col_gridsummary_other.Visible = chkShowHidden.Checked;
+			col_gridsummary_percentage.Visible = chkShowHidden.Checked;
 
             col_dgvSummaryByCustomers_sale_amount.Visible = chkShowHidden.Checked;
             col_dgvSummaryByCustomers_profit_amount.Visible = chkShowHidden.Checked;
@@ -450,11 +459,13 @@ namespace BinaMitraTextile.Reports
             col_dgvDetailByProducts_profit_amount.Visible = chkShowHidden.Checked;
             col_dgvDetailByProducts_profit_percent.Visible = chkShowHidden.Checked;
             col_dgvDetailByProducts_sale_amount.Visible = chkShowHidden.Checked;
+			//col_dgvDetailByProducts_other_amount.Visible = chkShowHidden.Checked;
 
-            col_dgvDetailByCustomers_profit_amount.Visible = chkShowHidden.Checked;
+			col_dgvDetailByCustomers_profit_amount.Visible = chkShowHidden.Checked;
             col_dgvDetailByCustomers_profit_percent.Visible = chkShowHidden.Checked;
             col_dgvDetailByCustomers_sale_amount.Visible = chkShowHidden.Checked;
-        }
+			col_dgvDetailByCustomers_other_amount.Visible = chkShowHidden.Checked;
+		}
 
         private void Sales_Form_Shown(object sender, EventArgs e)
         {
@@ -470,5 +481,42 @@ namespace BinaMitraTextile.Reports
                 btnSubmit.PerformClick();
             }
         }
-    }
+
+		private void chkExcludeOtherAmount_CheckedChanged(object sender, EventArgs e)
+		{
+			col_gridsummary_other.Visible = !chkExcludeOtherAmount.Checked;
+			col_dgvSummaryByCustomers_other_amount.Visible = !chkExcludeOtherAmount.Checked;
+			col_griddetail_other.Visible = !chkExcludeOtherAmount.Checked;
+			col_dgvDetailByCustomers_other_amount.Visible = !chkExcludeOtherAmount.Checked;
+
+			if (!chkExcludeOtherAmount.Checked)
+			{
+				col_gridsummary_profit.DataPropertyName = Sale.COL_CHART_PROFIT;
+				col_gridsummary_percentage.DataPropertyName = Sale.COL_CHART_PERCENT;
+
+				col_dgvSummaryByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNT;
+				col_dgvSummaryByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITPERCENT;
+
+				col_griddetail_profit.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITAMOUNT;
+				col_griddetail_profitpercent.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITPERCENT;
+
+				col_dgvDetailByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNT;
+				col_dgvDetailByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITPERCENT;
+			}
+            else
+			{
+				col_gridsummary_profit.DataPropertyName = Sale.COL_CHART_PROFITWITHOUTOTHER;
+				col_gridsummary_percentage.DataPropertyName = Sale.COL_CHART_PERCENT_WITHOUTOTHER;
+
+				col_dgvSummaryByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITAMOUNTWITHOUTOTHER;
+				col_dgvSummaryByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTSUMMARYBYCUSTOMERS_PROFITPERCENTWITHOUTOTHER;
+
+				col_griddetail_profit.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITAMOUNTWITHOUTOTHER;
+				col_griddetail_profitpercent.DataPropertyName = Sale.COL_CHARTDETAILBYSALES_PROFITPERCENTWITHOUTOTHER;
+
+				col_dgvDetailByCustomers_profit_amount.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITAMOUNTWITHOUTOTHER;
+				col_dgvDetailByCustomers_profit_percent.DataPropertyName = Sale.COL_CHARTDETAILBYCUSTOMERS_PROFITPERCENTWITHOUTOTHER;
+			}
+		}
+	}
 }
