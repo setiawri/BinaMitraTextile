@@ -35,9 +35,11 @@ namespace BinaMitraTextile
 
         public const string FILTER_IncludeInactive = "FILTER_IncludeInactive";
 
-        private const int SALT_LENGTH = 10;
+		private const int SaltSize = 16;     // 128-bit
+		private const int HashSize = 32;     // 256-bit
+		private const int Iterations = 100_000;
 
-        public const string PASSWORD_REQUIREMENTS = "Password must be at least 6 characters";
+		public const string PASSWORD_REQUIREMENTS = "Password must be at least 6 characters";
         public const int PASSWORD_MIN_LENGTH = 4;
 
         public Guid id;
@@ -249,36 +251,56 @@ namespace BinaMitraTextile
             return null;
     }
 
-        public bool authenticated(string password)
-        {
-            return _hashed_password == hashPassword(password, _hashed_password.Substring(_hashed_password.Length - SALT_LENGTH, SALT_LENGTH));
-        }
+		public bool authenticated(string password)
+		{
+			if (string.IsNullOrWhiteSpace(_hashed_password)) return false;
 
-        public static string hashPassword(string password)
-        {
-            string salt = createSalt();
-            return hashPassword(password, salt);
-        }
+			string[] parts = _hashed_password.Split('.');
+			if (parts.Length != 3) return false;
 
-        public static string hashPassword(string password, string salt)
-        {
-            byte[] bytes   = Encoding.Unicode.GetBytes(password + salt);
-            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+			int iterations;
+			if (!int.TryParse(parts[0], out iterations)) return false;
 
-            int i = (Convert.ToBase64String(inArray) + salt).Length;
+			byte[] salt = Convert.FromBase64String(parts[1]);
+			byte[] storedHash = Convert.FromBase64String(parts[2]);
 
-            return Convert.ToBase64String(inArray) + salt; //produces 28 characters in addition to length of salt
-        }
+			using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
+			{
+				byte[] computed = pbkdf2.GetBytes(storedHash.Length);
+				return AreHashesEqual(computed, storedHash);
+			}
+		}
 
-        public static string createSalt()
-        {
-            string salt = "";
-            while (salt.Length < SALT_LENGTH)
-                salt += new Guid();
-            return salt.Substring(0, SALT_LENGTH);
-        }
+		private static bool AreHashesEqual(byte[] a, byte[] b)
+		{
+			if (a.Length != b.Length) return false;
+			int result = 0;
+			for (int i = 0; i < a.Length; i++)
+				result |= a[i] ^ b[i];
+			return result == 0;
+		}
 
-        public static Boolean isValidNewPassword(string password)
+		public static string hashPassword(string password)
+		{
+			byte[] salt = new byte[SaltSize];
+			using (var rng = RandomNumberGenerator.Create())
+			{
+				rng.GetBytes(salt);
+			}
+
+			byte[] hash;
+			using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, Iterations, HashAlgorithmName.SHA256))
+			{
+				hash = pbkdf2.GetBytes(HashSize);
+			}
+
+			return string.Format("{0}.{1}.{2}",
+				Iterations,
+				Convert.ToBase64String(salt),
+				Convert.ToBase64String(hash));
+		}
+
+		public static Boolean isValidNewPassword(string password)
         {
             if (string.IsNullOrEmpty(password))
                 return false;
