@@ -56,9 +56,11 @@ namespace BinaMitraTextile
         private static Guid GUID_LastStartHexNo = new Guid("d1ae33ec-4ae5-465a-b896-bd454559ab9f");
         private static Guid GUID_OffsetX = new Guid("6BA57BBD-DC44-4295-88C0-47292C1D8B26");
         private static Guid GUID_OffsetY = new Guid("9630BE8A-01A3-4363-9E63-2DF17DB2339C");
+		private static Guid GUID_GapX = new Guid("19DF1D9F-9B52-48B7-AAF3-C5AA1A531214");
+		private static Guid GUID_GapY = new Guid("07CB9B7D-1B95-463E-9B4D-B0165E0A5A68");
 
-        //Sale Payment
-        private static Guid GUID_SalePayment_MoneyAccounts_Id = new Guid("388DD793-937D-44E6-AB53-F7ED79B264BC");
+		//Sale Payment
+		private static Guid GUID_SalePayment_MoneyAccounts_Id = new Guid("388DD793-937D-44E6-AB53-F7ED79B264BC");
         private static Guid GUID_SalePayment_MoneyAccountCategoryAssignments_Id_Cash = new Guid("C17F446E-0DD6-4A55-B4E2-43235182E590");
         private static Guid GUID_SalePayment_MoneyAccountCategoryAssignments_Id_TransferOwe = new Guid("8493D84B-F1CA-4155-BF31-31A692C42BF7");
         private static Guid GUID_MoneyAccountCategories_Id_PenjualanTunai = new Guid("4507866B-48B7-4C14-9FD5-2F17E08F8221");
@@ -127,8 +129,20 @@ namespace BinaMitraTextile
             get { return getIntValue(GUID_OffsetY, 0); }
             set { update(GUID_OffsetY, value); }
         }
-                
-        public static DateTime LastOpnameCleanupDate
+
+		public static int GapX
+		{
+			get { return getIntValue(GUID_GapX, 0); }
+			set { update(GUID_GapX, value); }
+		}
+
+		public static int GapY
+		{
+			get { return getIntValue(GUID_GapY, 0); }
+			set { update(GUID_GapY, value); }
+		}
+
+		public static DateTime LastOpnameCleanupDate
         {
             get {
                 string value = getStringValue(GUID_LastOpnameCleanupDate);

@@ -71,7 +71,9 @@ namespace BinaMitraTextile.InventoryForm
             in_Qty.Value = 5;
             in_ManualOffsetX.Value = Settings.OffsetX;
             in_ManualOffsetY.Value = Settings.OffsetY;
-        }
+			in_ManualGapX.Value = Settings.GapX;
+			in_ManualGapY.Value = Settings.GapY;
+		}
 
         private void BarcodePrint_Form_Load(object sender, EventArgs e)
         {
@@ -173,8 +175,8 @@ namespace BinaMitraTextile.InventoryForm
         {
             int startX = -10 + in_ManualOffsetX.ValueInt;
             int startY = 0 + in_ManualOffsetY.ValueInt;
-            int gapX = 7;
-            int gapY = 24;
+            int gapX = 7 + in_ManualGapX.ValueInt;
+            int gapY = 24 + in_ManualGapY.ValueInt;
             int columnCount = 5;
             int rowCount = 8;
 
@@ -188,8 +190,8 @@ namespace BinaMitraTextile.InventoryForm
             {
                 startX = -7 + in_ManualOffsetX.ValueInt;
                 startY = 0 + in_ManualOffsetY.ValueInt;
-                gapX = 12;
-                gapY = 24;
+                gapX = 12 + in_ManualGapX.ValueInt;
+                gapY = 24 + in_ManualGapY.ValueInt;
                 columnCount = 4;
                 rowCount = 7;
                 barcodeSize = new Size(190, 50);
@@ -198,8 +200,8 @@ namespace BinaMitraTextile.InventoryForm
             {
                 startX = 10 + in_ManualOffsetX.ValueInt;
                 startY = 4 + in_ManualOffsetY.ValueInt;
-                gapX = 11;
-                gapY = 25;
+                gapX = 11 + in_ManualGapX.ValueInt;
+                gapY = 25 + in_ManualGapY.ValueInt;
                 rowCount = 7;
             }
 
@@ -299,7 +301,9 @@ namespace BinaMitraTextile.InventoryForm
                         Settings.LastStartHexNo = txtStartHex.Text;
                         Settings.OffsetX = in_ManualOffsetX.ValueInt;
                         Settings.OffsetY = in_ManualOffsetY.ValueInt;
-                    }
+						Settings.GapX = in_ManualGapX.ValueInt;
+						Settings.GapY = in_ManualGapY.ValueInt;
+					}
                 }
         }
 
@@ -452,17 +456,12 @@ namespace BinaMitraTextile.InventoryForm
             }
         }
 
-        private void in_ManualOffsetX_ValueChanged(object sender, EventArgs e)
-        {
-            setControlLayout();
-        }
+		private void in_Offset_ValueChanged(object sender, EventArgs e)
+		{
+			setControlLayout();
+		}
 
-        private void in_ManualOffsetY_ValueChanged(object sender, EventArgs e)
-        {
-            setControlLayout();
-        }
-
-        private void rbLabelTypes_CheckedChanged(object sender, EventArgs e)
+		private void rbLabelTypes_CheckedChanged(object sender, EventArgs e)
         {
             setControlLayout();
             checkInputMode();
